@@ -23853,13 +23853,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical .s-product-card-image {
   position: relative;
-  max-height: 350px;
-  min-height: 350px;
+  max-height: 490px;
+  min-height: 490px;
 }
 @media (max-width: 768px) {
   .s-product-card-vertical .s-product-card-image {
-    max-height: 377px;
-    min-height: 377px;
+    max-height: 261px;
+    min-height: 261px;
   }
 }
 .s-product-card-vertical .s-product-card-image .card-floating-btn {
