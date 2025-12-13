@@ -1051,6 +1051,16 @@
             "icon": "sicon-store",
             "path": "home.AR-Products",
             "fields": []
+        },
+        {
+            "key": "2c10d0ac-ba70-43da-af40-d4a4c477a074",
+            "title": {
+                "en": "Sub-banner - Arabian",
+                "ar": "بانر فرعي - عربي"
+            },
+            "icon": "sicon-store",
+            "path": "home.AR-Sub-banner",
+            "fields": []
         }
     ],
     "support_url": null,
