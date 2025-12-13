@@ -956,6 +956,12 @@ select {
 .z-\[2\] {
     z-index: 2;
 }
+.z-2 {
+    z-index: 2;
+}
+.z-\[5\] {
+    z-index: 5;
+}
 .col-span-2 {
     grid-column: span 2 / span 2;
 }
@@ -987,6 +993,10 @@ select {
 .my-2\.5 {
     margin-top: 0.625rem;
     margin-bottom: 0.625rem;
+}
+.mx-auto {
+    margin-left: auto;
+    margin-right: auto;
 }
 .-mb-52 {
     margin-bottom: -13rem;
@@ -1185,6 +1195,9 @@ select {
 }
 .h-px {
     height: 1px;
+}
+.h-\[70vh\] {
+    height: 70vh;
 }
 .max-h-0 {
     max-height: 0px;
@@ -1903,6 +1916,15 @@ select {
     font-size: 0.75rem;
     line-height: 1rem;
 }
+.text-\[clamp\(0\.75rem\2c 0\.6447rem\+0\.4493vw\2c 1\.094rem\)\] {
+    font-size: clamp(0.75rem,0.6447rem + 0.4493vw,1.094rem);
+}
+.text-\[clamp\(0\.875rem\2c 0\.7602rem\+0\.4898vw\2c 1\.25rem\)\] {
+    font-size: clamp(0.875rem,0.7602rem + 0.4898vw,1.25rem);
+}
+.text-\[clamp\(1rem\2c 0\.6939rem\+1\.3061vw\2c 2rem\)\] {
+    font-size: clamp(1rem,0.6939rem + 1.3061vw,2rem);
+}
 .font-bold {
     font-weight: 700;
 }
@@ -1914,6 +1936,9 @@ select {
 }
 .font-semibold {
     font-weight: 600;
+}
+.font-light {
+    font-weight: 300;
 }
 .leading-10 {
     line-height: 2.5rem;
@@ -2152,6 +2177,9 @@ select {
 }
 .ease-out {
     transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+.ease-in-out {
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .s-hidden {
     display: none;
@@ -23927,6 +23955,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .target\:btn:target:hover {
     opacity: 0.8;
 }
+.hover\:border-primary:hover {
+    border-color: #414042;
+    border-color: var(--color-primary);
+}
 .hover\:text-dark:hover {
     --tw-text-opacity: 1;
     color: rgba(29, 31, 31, 1);
@@ -24044,6 +24076,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 4rem;
         padding-bottom: 4rem;
     }
+    .sm\:px-7 {
+        padding-left: 1.75rem;
+        padding-right: 1.75rem;
+    }
     .sm\:pb-0 {
         padding-bottom: 0px;
     }
@@ -24096,6 +24132,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:h-\[400px\] {
         height: 400px;
+    }
+    .md\:h-screen {
+        height: 100vh;
     }
     .md\:\!w-2\/4 {
         width: 50% !important;
@@ -24207,6 +24246,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:text-base {
         font-size: 1rem;
         line-height: 1.5rem;
+    }
+    .md\:font-semibold {
+        font-weight: 600;
     }
     .md\:first\:pt-24:first-child {
         padding-top: 6rem;
@@ -24463,6 +24505,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:pr-px:where([dir="ltr"], [dir="ltr"] *) {
     padding-right: 1px;
 }
+.ltr\:pl-3:where([dir="ltr"], [dir="ltr"] *) {
+    padding-left: 0.75rem;
+}
 .ltr\:text-right:where([dir="ltr"], [dir="ltr"] *) {
     text-align: right;
 }
@@ -24601,6 +24646,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:pr-5:where([dir="rtl"], [dir="rtl"] *) {
     padding-right: 1.25rem;
+}
+.rtl\:pr-3:where([dir="rtl"], [dir="rtl"] *) {
+    padding-right: 0.75rem;
 }
 .rtl\:text-left:where([dir="rtl"], [dir="rtl"] *) {
     text-align: left;
