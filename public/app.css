@@ -23835,9 +23835,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-image::before {
   font-family: "sallaicons";
 }
-.s-product-card-vertical {
-  height: 586px !important;
-}
 @media (max-width: 768px) {
   .s-product-card-vertical {
     height: 290px !important;
