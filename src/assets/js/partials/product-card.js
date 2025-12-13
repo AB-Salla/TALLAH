@@ -8,8 +8,11 @@ class ProductCard extends HTMLElement {
   connectedCallback() {
     // Parse product data
     this.product = this.product || JSON.parse(this.getAttribute("product"));
+    console.log(this.product);
+    
     if (window.app?.status === "ready") {
       this.onReady();
+
     } else {
       document.addEventListener("theme::ready", () => this.onReady());
     }
