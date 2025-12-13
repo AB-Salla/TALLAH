@@ -1041,6 +1041,16 @@
             "icon": "sicon-store",
             "path": "home.AR-Hero-section",
             "fields": []
+        },
+        {
+            "key": "b971f076-8647-42e9-b91f-e68ae56b991d",
+            "title": {
+                "en": "Products - Arabian",
+                "ar": "منتجات - عربي"
+            },
+            "icon": "sicon-store",
+            "path": "home.AR-Products",
+            "fields": []
         }
     ],
     "support_url": null,
