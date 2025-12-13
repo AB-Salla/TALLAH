@@ -151,13 +151,13 @@
 
   &-vertical {
     height: 586px !important;
-    min-height: 586px;
-    max-height: 586px;
+    // min-height: 586px;
+    // max-height: 586px;
 
     @media (max-width: 768px) {
       height: 290px !important;
-      min-height: 290px;
-      max-height: 290px;
+    //   min-height: 290px;
+    //   max-height: 290px;
     }
 
     // Image container inside vertical card

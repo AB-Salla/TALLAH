@@ -23838,10 +23838,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-vertical {
   height: 586px !important;
 }
-.s-product-card-vertical {
-  min-height: 586px;
-  max-height: 586px;
-}
 @media (max-width: 768px) {
   .s-product-card-vertical {
     height: 290px !important;
