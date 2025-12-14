@@ -22,7 +22,7 @@
 				<div slot="items">
 				{% endif %}
             {% for item in  component.banner %}                                    
-			<div class="banner  banner-{{loop.index}}  flex flex-col items-center justify-center relative md:h-screen h-[70vh] py-16 overflow-hidden">
+			<div class="banner  banner-{{loop.index}}  flex flex-col items-center justify-center relative md:h-[90vh] h-[70vh] py-16 overflow-hidden">
 			{% if not item.button_text %}
              <a class="w-full h-full absolute inset-0 z-[5]" href="{{item.url}}"></a> 
              {% endif %}
