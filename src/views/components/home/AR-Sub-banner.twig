@@ -1,0 +1,151 @@
+<section class="AR-sub-banner-{{ position }} s-block {% if  component.margin_bottom_rm %} !mb-0 {% endif %}">
+  <div class="container  grid grid-cols-1 lg:grid-cols-2 items-center lg:items-start justify-between gap-6 lg:gap-12">
+    
+
+  <div class="order-2 lg:order-1">
+    <div class="lg:block hidden features-products-head text-start"
+      data-sal-repeat="true"
+      data-sal="fade-up"
+      data-sal-duration="800"
+      data-sal-delay="200">
+    {% if component.subtext %}
+      <span class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};"
+      data-sal-repeat="true"
+      data-sal="fade-up"
+      data-sal-duration="800"
+      data-sal-delay="300"
+      >
+        {{ component.subtext }}
+      </span>
+    {% endif %}
+
+      <h2 class="mt-1 mb-3 lg:mt-3 lg:mb-4 text-[clamp(1.25rem,0.8673rem+1.6327vw,2.5rem)] font-medium leading-[119%]" style="color: {{ component.block_title_color }};"
+      data-sal-repeat="true"
+      data-sal="fade-up"
+      data-sal-duration="900"
+      data-sal-delay="400" >
+       {{ component.block_title }}
+      </h2>
+
+    {% if component.promo_text %}
+      <p class="text-graytext max-w-[690px] lg:mb-8 mb-4 text-[clamp(0.75rem,0.5969rem+0.6531vw,1.25rem)] font-light leading-normal" style="color: {{ component.promo_text_color }};"
+      data-sal-repeat="true"
+      data-sal="fade-up"
+      data-sal-duration="1000"
+      data-sal-delay="300"
+      >
+        {{ component.promo_text }}
+      </p>
+    {% endif %}
+  </div>
+{% if component.enable_slider %}
+<salla-products-slider
+      data-sal-repeat="true"
+      data-sal="fade-up"
+      data-sal-duration="800"
+      data-sal-delay="400"
+      type="carousel"
+      class="product-slider"
+      slider-config='{
+          "slidesPerView": 2,
+          "spaceBetween": 20,
+          "centeredSlides": false,
+          "speed": 1000,
+          "effect": "slide",
+          "breakpoints": {
+            "551": { "slidesPerView": 3, "spaceBetween": 20 },
+            "786": { "slidesPerView": 3, "spaceBetween": 20 },
+            "1024": { "slidesPerView": 2, "spaceBetween": 20 }
+          },
+    "autoplay": {{ component.enable_autoplay ? "{
+      \"delay\": 3000,
+      \"disableOnInteraction\": false,
+      \"pauseOnMouseEnter\": true
+    }" : "false" }},
+    "pagination": {
+      "el": ".products-fixed-slider-{{ position }} .swiper-pagination",
+      "type": "bullets",
+      "clickable": true
+    },
+    "navigation": {
+      "nextEl": ".products-fixed-slider-{{ position }} .salla-slider-next",
+      "prevEl": ".products-fixed-slider-{{ position }} .salla-slider-prev"
+    }
+  }'
+>
+</salla-products-slider>
+{% else %}
+  
+    <div class="flex flex-row "
+        data-sal-repeat="true"
+        data-sal="fade-up"
+        data-sal-duration="800"
+        data-sal-delay="100">
+        <salla-products-list
+        source="{{ component.products_dropdown }}" 
+        limit="2"
+        horizontal-cards="false">
+    </salla-products-list>
+    </div>
+{% endif %}
+
+    </div>  
+    <div class="order-1 lg:order-2">
+      <div class="block lg:hidden features-products-head text-start">
+        {% if component.subtext %}
+      <span class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};"
+      data-sal-repeat="true"
+      data-sal="fade-up"
+        data-sal-duration="800"
+        data-sal-delay="100"
+      >
+        {{ component.subtext }}
+      </span>
+    {% endif %}
+
+      <h2 class="mt-1 mb-3 lg:mt-3 lg:mb-4 text-[clamp(1.25rem,0.8673rem+1.6327vw,2.5rem)] font-medium leading-[119%]" style="color: {{ component.block_title_color }};"
+      data-sal-repeat="true"
+      data-sal="fade-up"
+      data-sal-duration="900"
+      data-sal-delay="200"
+      >
+      {{ component.block_title }}
+      </h2>
+
+    {% if component.promo_text %}
+      <p class="text-graytext max-w-[690px] lg:mb-8 mb-4 text-[clamp(0.75rem,0.5969rem+0.6531vw,1.25rem)] font-light leading-normal" style="color: {{ component.promo_text_color }};"
+       data-sal-repeat="true"
+       data-sal="fade-up"
+        data-sal-duration="1000"
+        data-sal-delay="300"
+      >
+        {{ component.promo_text }}
+      </p>
+    {% endif %}
+      </div>
+
+      <div class="overflow-hidden ">
+        <img src="{{ component.banner_image }}" class="max-w-[326px] mx-auto md:max-w-full h-auto  lg:h-auto" alt="{{ component.block_title }}" 
+        data-sal-repeat="true"
+        data-sal="zoom-in"
+      data-sal-duration="1000"
+      data-sal-delay="400"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+<style>
+@media (min-width: 375px) {
+   .AR-sub-banner-{{ position }} .s-products-list-vertical-cards {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+  .AR-sub-banner-{{ position }} .s-slider-block__title-nav{
+    display: none;
+  }
+  .AR-sub-banner-{{ position }} .salla-slider[type]:not(.hydrated) > div > div, salla-slider[type]:not(.hydrated) .swiper > div > div > div, .carousel-slider .swiper-wrapper > div {
+        padding-left: 0;
+        padding-right: 0;
+    }
+</style>
