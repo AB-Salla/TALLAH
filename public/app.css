@@ -25052,7 +25052,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgb(0, 0, 0);
+  background: rgba(255, 255, 255, 0.35);
+  -webkit-backdrop-filter: saturate(120%) blur(1px);
+          backdrop-filter: saturate(120%) blur(1px);
   opacity: 0.5;
   border-radius: 0;
   border-width: 0;
@@ -25081,7 +25083,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     margin-right: 0;
   }
   .single .s-slider-thumbs {
-    width: 72px;
+    width: 72px !important;
+  }
+  .single .s-slider-thumbs {
     height: 593px;
   }
   .single .s-slider-horizontal .s-slider-thumbs {
