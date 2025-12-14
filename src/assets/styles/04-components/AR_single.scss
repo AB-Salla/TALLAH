@@ -540,7 +540,7 @@
   .s-count-down-item {
     width: 26px;
     height: 26px;
-    background-color: rgba(81, 81, 81, 1);
+    background-color: var(--color-background);
     color: var(--color-font);
     border-radius: 0;
     position: relative;
