@@ -193,9 +193,7 @@
           	</div>
 		</div>
 		
-		<div class="main-content w-full lg:w-2/4 lg:pb-16"
-        id="productMainContent"
-        >
+		<div class="main-content sticky  top-24 w-full lg:w-2/4 lg:pb-16">
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
@@ -527,37 +525,6 @@
 {% endblock %}
 
 {% block scripts %}
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-  const el = document.getElementById('productMainContent');
-  if (!el) return;
-
-  // placeholder بنفس الارتفاع
-  const placeholder = document.createElement('div');
-  placeholder.style.height = el.offsetHeight + 'px';
-  placeholder.style.display = 'none';
-
-  el.parentNode.insertBefore(placeholder, el);
-
-  const start = el.offsetTop;
-
-  window.addEventListener('scroll', () => {
-    if (window.scrollY > start) {
-      placeholder.style.display = 'block';
-      el.classList.add('is-fixed');
-    } else {
-      placeholder.style.display = 'none';
-      el.classList.remove('is-fixed');
-    }
-  });
-
-  // لو الارتفاع اتغير (options / variants)
-  window.addEventListener('resize', () => {
-    placeholder.style.height = el.offsetHeight + 'px';
-  });
-});
-</script>
-
 	<script defer src="{{ 'product.js' | asset }}"></script>
 	{% if product.has_3d_image %}
 		<script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>

@@ -1,18 +1,4 @@
 .single {
-.main-content.is-fixed {
-  position: sticky;
-  top: 96px;
-  width: 50%;
-  z-index: 50;
-}
-
-@media (max-width: 1024px) {
-  .main-content.is-fixed {
-    position: relative;
-    top: auto;
-    width: 100%;
-  }
-}
   .image-slider {
     display: flex;
     gap: 10px;

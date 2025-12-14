@@ -24971,19 +24971,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* Hide empty icon when added */
   /* Hide filled icon when not added */
 }
-.single .main-content.is-fixed {
-  position: sticky;
-  top: 96px;
-  width: 50%;
-  z-index: 50;
-}
-@media (max-width: 1024px) {
-  .single .main-content.is-fixed {
-    position: relative;
-    top: auto;
-    width: 100%;
-  }
-}
 .single .image-slider {
   display: flex;
   gap: 10px;
