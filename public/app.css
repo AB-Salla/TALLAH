@@ -950,6 +950,9 @@ select {
 .top-4 {
     top: 1rem;
 }
+.top-8 {
+    top: 2rem;
+}
 .top-\[11px\] {
     top: 11px;
 }
@@ -24970,6 +24973,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* When wishlist is not added */
   /* Hide empty icon when added */
   /* Hide filled icon when not added */
+}
+.single .s-payments-list-item {
+  filter: grayscale(1);
 }
 .single .image-slider {
   display: flex;

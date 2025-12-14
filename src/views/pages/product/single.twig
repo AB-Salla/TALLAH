@@ -91,8 +91,8 @@
 				<salla-breadcrumb></salla-breadcrumb>
 			</nav>
 
-			<div class="flex flex-col items-center md:items-start lg:flex-row" id="product-{{ product.id }}">
-				<div class="sidebar relative lg:!sticky  !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
+			<div class="flex flex-col items-center md:items-start lg:flex-row overflow-hidden" id="product-{{ product.id }}">
+				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
                         <div class="grid grid-cols-2 gap-2 md:gap-4">
@@ -443,6 +443,9 @@
 							</div>
 						</salla-add-product-button>
 					</div>
+                    <div class="mt-5">
+                        <salla-payments></salla-payments>
+                    </div>
 				</section>
 
 				{% if product.is_giftable %}
