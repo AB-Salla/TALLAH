@@ -1178,6 +1178,9 @@ select {
 .h-24 {
     height: 6rem;
 }
+.h-3 {
+    height: 0.75rem;
+}
 .h-40 {
     height: 10rem;
 }
@@ -1222,9 +1225,6 @@ select {
 }
 .h-px {
     height: 1px;
-}
-.h-3 {
-    height: 0.75rem;
 }
 .max-h-0 {
     max-height: 0px;
@@ -1280,6 +1280,9 @@ select {
 .w-24 {
     width: 6rem;
 }
+.w-3 {
+    width: 0.75rem;
+}
 .w-32 {
     width: 8rem;
 }
@@ -1306,9 +1309,6 @@ select {
 }
 .w-full {
     width: 100%;
-}
-.w-3 {
-    width: 0.75rem;
 }
 .min-w-0 {
     min-width: 0px;
@@ -25908,14 +25908,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:grid {
         display: grid;
     }
+    .sm\:h-5 {
+        height: 1.25rem;
+    }
     .sm\:h-auto {
         height: auto;
     }
     .sm\:h-full {
         height: 100%;
-    }
-    .sm\:h-5 {
-        height: 1.25rem;
     }
     .sm\:\!w-\[220px\] {
         width: 220px !important;
