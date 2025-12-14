@@ -1,72 +1,85 @@
 <section class="AR-hero-section AR-hero-section-{{position}}">
 	<div class="wrapper">
-		<div class="">
+		<div class="relative">
 		{% if component.banner|length > 1 %}
 
         <salla-slider
 			 id="sub-banner-slider-{{position}}" class="subbanner-slider" slider-config='{
-             "effect": "fade",
-				  "fadeEffect": {
-				    "crossFade": true
+			  "pagination": {
+				    "el": ".AR-hero-section-{{position}} .swiper-pagination",
+				    "type": "bullets",
+				    "clickable": true
 				  },
+             
 			"spaceBetween": 20,
 			"lazy": true,
 			"delay": 3000,
-			"speed": 1000,	
-			"loop": {{ component.enable_loop ? "true" : "false" }},
-			"autoplay": true
+			"speed": 300,	
+			"loop": {{ component.enable_loop ? "true" : "false" }}
+			
 			}'
  			show-controls="false" type="thumbs">
 				<div slot="items">
 				{% endif %}
             {% for item in  component.banner %}                                    
-			<div class="banner  banner-{{loop.index}}  flex flex-col items-center justify-center relative md:h-screen h-[70vh] py-5 overflow-hidden">
+			<div class="banner  banner-{{loop.index}}  flex flex-col items-center justify-center relative md:h-screen h-[70vh] py-8 overflow-hidden">
 			{% if not item.button_text %}
              <a class="w-full h-full absolute inset-0 z-[5]" href="{{item.url}}"></a> 
              {% endif %}
     
 
-                <div class="text-wrapper flex flex-col {{component.center_text ?  'items-center text-center' : 'items-start text-start rtl:pr-3 ltr:pl-3' }} justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
+                <div class="text-wrapper h-full flex flex-col {{component.center_text ?  'items-center text-center' : 'items-start text-start rtl:pr-3 ltr:pl-3' }} justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
 					{% if item.block_title %}
-                    	<h1 aria-label="العنوان الرئيسي" class="blocktitle text-[clamp(1rem,0.6939rem+1.3061vw,2rem)] text-font font-normal md:font-semibold">{{item.block_title}}</h1>
+                    	<h1 aria-label="العنوان الرئيسي" class="blocktitle text-[clamp(1rem,0.6939rem+1.3061vw,2rem)] text-background font-normal md:font-semibold">{{item.block_title}}</h1>
 					{% endif %}
 					{% if item.subtext %}
-                    	<p class="subtext text-graytext font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)]">{{item.subtext}}</p>
+                    	<p class="subtext text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)]">{{item.subtext}}</p>
 					{% endif %}
-                    {% if item.button_text %}
-						<a class="button button-{{loop.index}} {{component.button_border_radius == "oblong"  ? 'rounded-3xl' : component.button_border_radius == "smooth" ? 'rounded-lg' : ''}} bg-primary text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
-						transition-all duration-300 ease-in-out hover:bg-background hover:text-primary border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary" href="{{item.url}}">{{item.button_text}}</a>
-					{% endif %}
+                
 				</div>
+				    {% if item.button_text %}
+						<a class="button button-{{loop.index}} self-center {{component.button_border_radius == "oblong"  ? 'rounded-3xl' : component.button_border_radius == "smooth" ? 'rounded-lg' : ''}} bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						transition-all duration-300 ease-in-out hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end" href="{{item.url}}">{{item.button_text}}</a>
+					{% endif %}
         
 			</div>
             {% endfor %}
+
 					{% if component.banner|length > 1 %}
 
             		</div>
 	
 				</salla-slider>
+									<div class="swiper-pagination !bottom-8 justify-center gap-2 !absolute items-center m-0 flex w-1/4 left-1/2 -translate-x-1/2"></div>
+
 								{% endif %}
 
 		</div>
 	</div>
 </section>
 <style>
+.AR-hero-section .swiper-pagination-bullet{
+	margin:0px;
+	background:var(--color-background);
+	height:2px;
+	flex:1 1 0%;
+}
 {% if component.transparent_button %}
-.AR-hero-section -{{position}} .text-wrapper a{
+.AR-hero-section-{{position}}  .button{
 	background-color: transparent;
 }
-.AR-hero-section -{{position}} .text-wrapper a:hover{
+.AR-hero-section-{{position}}  .button:hover{
+	color:var(--color-background);
     background-color:var(--color-primary);
 
 }
 {% elseif component.use_custom_colors  %}
-    .AR-hero-section -{{position}} .text-wrapper a{
+    .AR-hero-section-{{position}}  .button{
 	color:{{component.button_text_color}};
 	background-color:{{component.button_bg}};
     border-color:{{component.button_text_color}};
 }
-.AR-hero-section -{{position}} .text-wrapper a:hover{
+.AR-hero-section-{{position}}  .button:hover{
 	background-color:{{component.button_text_color}};
 	color:{{component.button_bg}};
     border-color:{{component.button_bg}};
@@ -79,12 +92,12 @@
 .AR-hero-section-{{position}} .text-wrapper p{
 	color:{{component.subtext_color}};
 }
-.AR-hero-section-{{position}} .text-wrapper a{
+.AR-hero-section-{{position}}  .button{
 	color:{{component.button_text_color}};
 	background-color:{{component.button_bg}};
     border-color:{{component.button_text_color}};
 }
-.AR-hero-section-{{position}} .text-wrapper a:hover{
+.AR-hero-section-{{position}}  .button:hover{
 	background-color:{{component.button_text_color}};
 	color:{{component.button_bg}};
     border-color:{{component.button_bg}};
@@ -112,46 +125,8 @@
 .AR-hero-section .swiper-slide-visible.swiper-slide-active{
     pointer-events: all;
 }
-
-.AR-hero-section .swiper-slide .left-img-wrapper, .AR-hero-section .swiper-slide .right-img-wrapper  {
-	transition: all .7s ease-out;
-}
-.AR-hero-section .swiper-slide-active .left-img-wrapper, .AR-hero-section .swiper-slide-active .right-img-wrapper  {
-    transform: translateX(0%);
-	opacity: 1;
-}
-.AR-hero-section .swiper-slide-active .text-wrapper h1, .AR-hero-section .swiper-slide-active .text-wrapper h1  {
-    transform: translateX(0%);
-	opacity: 1;
-}
-.AR-hero-section .swiper-slide-next .left-img-wrapper , .AR-hero-section .swiper-slide-prev .left-img-wrapper{
-    transform: translateX(-50%);
-	opacity: 0;
-
-}
-
-.AR-hero-section .swiper-slide-next .right-img-wrapper , .AR-hero-section .swiper-slide-prev .right-img-wrapper{
-    transform: translateX(50%);
-	opacity: 0;
-
-}
-.AR-hero-section .swiper-slide-next .text-wrapper h1 , .AR-hero-section .swiper-slide-prev .text-wrapper h1{
-    transform: translateX(-50%);
-	opacity: 0;
-
-}
-.AR-hero-section .swiper-slide-next .right-img-wrapper , .AR-hero-section .swiper-slide-prev .right-img-wrapper{
-    transform: translateX(50%);
-	opacity: 0;
-
-}
-.AR-hero-section .swiper-slide-next .text-wrapper p , .AR-hero-section .swiper-slide-prev .text-wrapper p{
-    transform: translateX(-50%);
-	opacity: 0;
-
-}
 {% endif %}
 .AR-hero-section .swiper-slide-active{
- transition: all .3s ease-in;
+ transition: all .3s ease-in-out;
 }
 </style>
