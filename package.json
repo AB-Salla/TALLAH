@@ -14,7 +14,11 @@
     "prod": "webpack --mode production",
     "development": "webpack --mode development",
     "watch": "webpack --mode development --watch",
+<<<<<<< HEAD
     "dev": "salla theme p --with-editor --store  Arabian"
+=======
+    "dev": "salla theme p --with-editor --store Arabian"
+>>>>>>> 86fe3d788eda26e9216628e3e45aea723905226b
   },
   "author": "Salla",
   "dependencies": {
