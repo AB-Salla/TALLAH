@@ -79,9 +79,54 @@
         },
         {
             "type": "static",
+            "format": "title",
+            "id": "colors_of_our_theme",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
+            "variant": "h6"
+        },
+         {
+            "id": "grid_or_slider_products_page",
+            "label": "تفعيل عرض صور المنتج علي شكل شبكة في صفحة المنتج",
+            "description": "عند التفعيل سيتم عرض صور المنتج علي شكل شبكة بدلاً من السليدر الافتراضي",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected":false
+        },
+         {
+      "id": "offer_icon",
+      "type": "string",
+      "format": "icon",
+      "label": "اضف ايقونه للعرض",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-user-circle",
+      "value": "sicon-alarm",
+      "required": false
+    },
+    {
+      "id": "offer_text",
+      "type": "string",
+      "format": "text",
+      "label": "اضافة نص للعرض",
+      "description": null,
+      "labelHTML": null,
+      "placeholder": "Placeholder text ..",
+      "icon": "sicon-format-text-alt",
+      "value": "اسرع ينتهي العرض خلال",
+      "multilanguage": true,
+      "required": false,
+      "minLength": "4",
+      "maxLength": 30
+    },
+        {
+            "type": "static",
             "id": "static-line1",
             "format": "line"
         },
+
         {
             "type": "static",
             "format": "title",
