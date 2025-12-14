@@ -1590,37 +1590,26 @@
                     "type": "string",
                     "format": "image",
                     "label": "إضافة صورة",
-                    "description": "أضف صورة ليتم عرضها في الجهة اليسرى.",
+                    "description": "",
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
-                    "value": "https://cdn.salla.sa/form-builder/dOBYsDWYsIXQMybl3S9Y0yYCDHkOAr3qcAAhFzew.png",
+                    "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
                     "required": true
                 },
+                
                 {
-                    "id": "use_custom_colors",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "استخدام ألوان مخصصة",
-                    "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالقسم بدلًا من ألوان الثيم الأساسية.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false
-                },
-                {
-                    "id": "subtext",
+                    "id": "link_text",
                     "type": "string",
                     "format": "text",
-                    "label": "العنوان الفرعي",
-                    "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+                    "label": "نص الرابط",
+                    "description": "",
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "مذاق لا يُنسى",
-                        "en": "Unforgettable Taste"
+                        "ar": "Shop the Look",
+                        "en": "Shop the Look"
                     },
                     "multilanguage": true,
                     "required": false,
@@ -1628,7 +1617,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "subtext_color",
+                    "id": "link_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -1636,7 +1625,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#595959",
+                    "value": "#18181B",
                     "required": false,
                     "conditions": [
                         {
@@ -1656,8 +1645,8 @@
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
                     "value": {
-                        "ar": "شوكولاتة تجمع بين الفن والجودة",
-                        "en": "Chocolate that combines art and quality"
+                        "ar": "Effortless Style, Curated for You",
+                        "en": "Effortless Style, Curated for You"
                     },
                     "multilanguage": true,
                     "required": true,
@@ -1673,7 +1662,7 @@
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
-                    "value": "#000000",
+                    "value": "#18181B",
                     "required": false,
                     "conditions": [
                         {
@@ -1683,43 +1672,7 @@
                         }
                     ]
                 },
-                {
-                    "id": "promo_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الترويجي",
-                    "description": "أدخل نص قصير وجذاب يلفت الانتباه.",
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "كل قطعة مصنوعة بحرفية عالية ومن أجود أنواع الكاكاو لتمنحك تجربة غنية ولذيذة لا مثيل لها",
-                        "en": "Each piece is crafted with high precision from the finest cocoa to give you a rich and unmatched delicious experience"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": 2,
-                    "maxLength": 120
-                },
-                {
-                    "id": "promo_text_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الترويجي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#595959",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
+                
                 {
                     "id": "enable_slider",
                     "type": "boolean",
@@ -1729,7 +1682,7 @@
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",
                     "value": true,
-                    "selected": false,
+                    "selected": true,
                     "required": false
                 },
                 {
