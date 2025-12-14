@@ -24,7 +24,7 @@
         "menu-images",
         "filters"
     ],
-    "settings": [
+"settings": [
         {
             "id": "squar_photo_bg_image_size",
             "type": "items",
@@ -79,9 +79,45 @@
         },
         {
             "type": "static",
+            "id": "static-line1",
+            "format": "line"
+        },
+        {
+            "type": "static",
             "format": "title",
-            "id": "static-label2",
-            "value": "خيارات أعلى الصفحة",
+            "id": "colors_of_our_theme",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >ألـوان الثـيم</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "bg_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الثيم",
+            "description": "اضف لون خلفية الثيم",
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#F4F4F5",
+            "required": false
+        },
+        {
+            "id": "text_color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون النص",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#18181B",
+            "required": false
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "colors_of_our_theme",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات أعـلى الصـفحة</div>",
             "variant": "h6"
         },
         {
@@ -98,17 +134,6 @@
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",
-            "label": "شريط علوي داكن",
-            "description": null,
-            "id": "topnav_is_dark",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": false
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
             "label": "عرض روابط الصفحات الهامة في الشريط العلوي",
             "description": "مثل صفحة الهبوط ، المدونة ،الصفحات التعريفية",
             "id": "important_links",
@@ -116,6 +141,201 @@
             "required": false,
             "value": true,
             "selected": true
+        },
+        {
+            "id": "enable_side_menu",
+            "label": "تفعيل القائمة الجانبية",
+            "description": null,
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "التحكم في حجم اللوجو أعلى الصفحة",
+            "description": null,
+            "id": "logo_size_control",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "logo_size_lg",
+            "type": "number",
+            "format": "slider",
+            "inputType": "range",
+            "label": "حجم الشعار أعلى الصفحة في الديسكتوب",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-pin",
+            "value": "128",
+            "required": false,
+            "step": "1",
+            "minimum": "0",
+            "maximum": "500",
+            "conditions": [
+                {
+                    "id": "logo_size_control",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "logo_size_sm",
+            "type": "number",
+            "format": "slider",
+            "inputType": "range",
+            "label": "حجم الشعار أعلى الصفحة في الموبايل",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-pin",
+            "value": "128",
+            "required": false,
+            "step": "1",
+            "minimum": "0",
+            "maximum": "500",
+            "conditions": [
+                {
+                    "id": "logo_size_control",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "add_header_colors",
+            "label": "استخدام ألوان مخصصة للشريط العلوي",
+            "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالشريط العلوي بدلًا من ألوان الثيم الأساسية.",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "topnav_bg",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الشريط العلوي",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "add_header_colors",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "topnav_text_colors",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "ألوان نصوص الشريط العلوي",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#000000",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "add_header_colors",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "type": "static",
+            "format": "title",
+            "id": "colors_of_our_theme",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات  الشريط السفلي</div>",
+            "variant": "h6"
+        },
+        {
+            "id": "enable_bottom_nav",
+            "type": "boolean",
+            "format": "switch",
+            "label": "تفعيل الشريط السفلي في الموبايل",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": true,
+            "required": false
+        },
+        {
+            "id": "add_bottom_nav_colors",
+            "label": "استخدام ألوان مخصصة للشريط السفلي",
+            "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالشريط السفلي بدلًا من ألوان الثيم الأساسية.",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true,
+            "conditions": [
+                {
+                    "id": "enable_bottom_nav",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "bottom_nav_bg",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الشريط السفلي",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "add_bottom_nav_colors",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "id": "bottom_nav_text_colors",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "ألوان نصوص الشريط السفلي",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#333333",
+            "required": false,
+            "conditions": [
+                {
+                    "id": "add_bottom_nav_colors",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
+        },
+        {
+            "type": "static",
+            "id": "static-line3",
+            "format": "line"
         },
         {
             "type": "static",

@@ -34,7 +34,10 @@ module.exports = {
                 'dark'         : '#1D1F1F',
                 'darker'       : '#0E0F0F',
                 'danger'       : '#AE0A0A',
-                'primary-dark' : 'var(--color-primary-dark)'
+                'primary-dark' : 'var(--color-primary-dark)',
+                'background': "var(--color-background)",
+                'font': "var(--color-font)",
+                'primary': "var(--color-primary)"
             },
             spacing: {
               '3.75': '15px',
@@ -105,9 +108,14 @@ module.exports = {
                 '2': '2',
                 '-1': '-1',
             },
-            screens            : {
-                'xxs': {'min': '380px', 'max': '479px'},
-                'xs': '480px',
+             screens: {
+            'xxs': '380px',
+            'xs': '480px',
+            'sm': '640px',
+            'md': '768px',
+            'lg': '1024px',
+            'xl': '1280px',
+            '2xl': '1536px' 
             },
             backgroundOpacity  : {
                 '05': '0.05',
