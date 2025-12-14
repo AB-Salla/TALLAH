@@ -1,7 +1,7 @@
 {% set source_type = component.source_type %}
 {% set source_value = source_type == 'categories' ? component.categories : (source_type == 'selected' ? component.products : []) %}
 <section class="AR-sub-banner-{{ position }} s-block {% if  component.margin_bottom_rm %} !mb-0 {% endif %}">
-	<div class="container  flex lg:flex-row flex-col items-center lg:items-start justify-between gap-6 lg:gap-12">
+	<div class="container  flex lg:flex-row flex-col items-center justify-between gap-6 lg:gap-12 leading-snug">
 
 		{% if component.component_type == "products" %}
 
@@ -23,17 +23,17 @@
 				{% if component.enable_slider %}
 					<div>
 						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block lg:w-[35vw] w-[90vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
-												          "slidesPerView": 2,
-												          "spaceBetween": 20,
-												          "centeredSlides": false,
-												          "speed": 1000,
-												    "autoplay": {{ component.enable_autoplay ? "{
-												      \"delay\": 3000,
-												      \"disableOnInteraction\": false,
-												      \"pauseOnMouseEnter\": true
-												    }" : "false" }}
+																			          "slidesPerView": 2,
+																			          "spaceBetween": 20,
+																			          "centeredSlides": false,
+																			          "speed": 1000,
+																			    "autoplay": {{ component.enable_autoplay ? "{
+																			      \"delay\": 3000,
+																			      \"disableOnInteraction\": false,
+																			      \"pauseOnMouseEnter\": true
+																			    }" : "false" }}
 							
-												  }'></salla-products-slider>
+																			  }'></salla-products-slider>
 					</div>
 				{% else %}
 
@@ -59,15 +59,32 @@
 
 
 				</div>
-				{% else %}
+			{% else %}
+				<div class="lg:w-2/3 features-products-head text text-font lg:text-start text-center order-2 max-w-[500px] mx-auto flex flex-col gap-4 ">
+
+					<h2 class="font-semibold  text-[clamp(1.5rem,1.2704rem+0.9796vw,2.25rem)]" style="color: {{ component.block_title_color }};">
+						{{ component.block_title }}
+					</h2>
+					<p class="font-medium text-base" style="color: {{ component.block_title_color }};">
+						{{ component.subtext }}
+					</p>
+					{% if component.link_text %}
+						<a href="{{component.link}}" class="text-sm font-semibold underline lg:mt-4 " style="color: {{ component.sub_text_color }};">
+							{{ component.link_text }}
+						</a>
+					{% endif %}
+
+
+				</div>
 			{% endif %}
 
-			<div class="overflow-hidden ">
-				<img src="{{ component.banner_image }}" class="max-w-[326px] mx-auto md:max-w-full h-auto  lg:h-auto" alt="{{ component.block_title }}"/>
+			<div class="overflow-hidden h-[clamp(24.563rem,21.5593rem+12.8157vw,34.375rem)] max-w-[500px]">
+				<img src="{{ component.banner_image }}" class=" h-full w-full object-cover " alt="{{ component.block_title }}"/>
 			</div>
 		</div>
 	</div>
 </section>
+
 
 <style>
 	@media(min-width: 375px) {
