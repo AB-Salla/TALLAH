@@ -405,7 +405,7 @@
 
 					{# Add to cart #}
 					<div class="w-full flex justify-center">
-						<salla-add-product-button quick-buy width="wide" {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
+						<salla-add-product-button  width="wide" {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
 						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="mt-4  sticky-product-bar__btn py-2 " product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
 						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
 							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
