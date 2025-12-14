@@ -11,7 +11,7 @@
 				    "clickable": true
 				  },
              
-			"spaceBetween": 20,
+			"spaceBetween": 0,
 			"lazy": true,
 			"delay": 3000,
 			"speed": 300,	
@@ -28,17 +28,17 @@
              {% endif %}
     
 
-                <div class="text-wrapper h-full flex flex-col {{component.center_text ?  'items-center text-center' : 'items-start text-start rtl:pr-3 ltr:pl-3' }} justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
+                <div  class="text-wrapper h-full flex flex-col {{component.center_text ?  'items-center text-center' : 'items-start text-start rtl:pr-3 ltr:pl-3' }} justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
 					{% if item.block_title %}
-                    	<h1 aria-label="العنوان الرئيسي" class="blocktitle text-[clamp(1rem,0.6939rem+1.3061vw,2rem)] text-background font-normal md:font-semibold">{{item.block_title}}</h1>
+                    	<h1 data-swiper-parallax="500" aria-label="العنوان الرئيسي" class="blocktitle text-[clamp(1rem,0.6939rem+1.3061vw,2rem)] text-background font-normal md:font-semibold">{{item.block_title}}</h1>
 					{% endif %}
 					{% if item.subtext %}
-                    	<p class="subtext text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)]">{{item.subtext}}</p>
+                    	<p data-swiper-parallax="-500" class="subtext text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)]">{{item.subtext}}</p>
 					{% endif %}
                 
 				</div>
 				    {% if item.button_text %}
-						<a class="button button-{{loop.index}} self-center {{component.button_border_radius == "oblong"  ? 'rounded-3xl' : component.button_border_radius == "smooth" ? 'rounded-lg' : ''}} bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						<a data-swiper-parallax="-500" class="button button-{{loop.index}} self-center {{component.button_border_radius == "oblong"  ? 'rounded-3xl' : component.button_border_radius == "smooth" ? 'rounded-lg' : ''}} bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
 						transition-all duration-300 ease-in-out hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end" href="{{item.url}}">{{item.button_text}}</a>
 					{% endif %}
         
@@ -50,7 +50,7 @@
             		</div>
 	
 				</salla-slider>
-									<div class="swiper-pagination !bottom-8 justify-center gap-2 !absolute items-center m-0 flex w-1/4 left-1/2 -translate-x-1/2"></div>
+									<div class="swiper-pagination !bottom-8 justify-center gap-2 !absolute items-center m-0 flex !w-1/4 !left-1/2 -translate-x-1/2"></div>
 
 								{% endif %}
 
@@ -122,7 +122,7 @@
 .AR-hero-section .swiper-slide{
     pointer-events: none;
 }
-.AR-hero-section .swiper-slide-visible.swiper-slide-active{
+.AR-hero-section .swiper-slide.swiper-slide-active{
     pointer-events: all;
 }
 {% endif %}
