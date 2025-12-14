@@ -24,7 +24,7 @@
         "menu-images",
         "filters"
     ],
-"settings": [
+    "settings": [
         {
             "id": "squar_photo_bg_image_size",
             "type": "items",
@@ -1406,7 +1406,6 @@
                     "selected": true,
                     "required": false
                 },
-                
                 {
                     "id": "button_border_radius",
                     "type": "items",
@@ -1456,7 +1455,6 @@
                     "selected": true,
                     "required": false
                 },
-                
                 {
                     "id": "banner",
                     "type": "collection",
@@ -1491,7 +1489,6 @@
                             "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
                             "required": false
                         },
-                        
                         {
                             "id": "banner.block_title",
                             "type": "string",
@@ -1629,7 +1626,281 @@
             },
             "icon": "sicon-store",
             "path": "home.AR-Sub-banner",
-            "fields": []
+            "fields": [
+                {
+                    "id": "banner_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "إضافة صورة",
+                    "description": "",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
+                    "required": true
+                },
+                {
+                    "id": "link_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الرابط",
+                    "description": "",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "Shop the Look",
+                        "en": "Shop the Look"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": 2,
+                    "maxLength": 30
+                },
+                {
+                    "id": "link_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181B",
+                    "required": false
+                },
+                {
+                    "id": "block_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم.",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "Effortless Style, Curated for You",
+                        "en": "Effortless Style, Curated for You"
+                    },
+                    "multilanguage": true,
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 50
+                },
+                {
+                    "id": "block_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181B",
+                    "required": false
+                },
+                {
+                    "id": "subtext",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي",
+                    "description": "",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "Every piece in our collection is carefully selected to bring ease and sophistication into your everyday wardrobe. Effortless layers, versatile textures, and timeless silhouettes come together to create looks that feel as natural as they are refined.",
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "300",
+                    "conditions": [
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "text"
+                        }
+                    ]
+                },
+                {
+                    "id": "subtext_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص الفرعي ",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#FAFAFA",
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "text"
+                        }
+                    ]
+                },
+                {
+                    "id": "component_type",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "طريقة عرض المكون ",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-list",
+                    "selected": [
+                        {
+                            "label": "صورة مع نص",
+                            "value": "text",
+                            "key": "f4adec-6e4c-654b-b978-b2807935ced9"
+                        }
+                    ],
+                    "options": [
+                        {
+                            "label": "صورة مع منتجات",
+                            "value": "products",
+                            "key": "e9c8ef-c5c6-234e-935-3bce269afde4"
+                        },
+                        {
+                            "label": "صورة مع نص",
+                            "value": "text",
+                            "key": "f4adec-6e4c-654b-b978-b2807935ced9"
+                        }
+                    ],
+                    "source": "Manual",
+                    "required": true
+                },
+                {
+                    "id": "enable_slider",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل السلايدر",
+                    "description": "فعِّل هذا الخيار لعرض الأقسام بشكل سلايدر",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "products"
+                        }
+                    ]
+                },
+                {
+                    "id": "enable_autoplay",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "تفعيل التمرير التلقائي",
+                    "description": "فعّل هذا الخيار لعرض المنتجات تلقائيًا داخل السلايدر.",
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": false,
+                    "required": false,
+                    "conditions": [
+                        {
+                            "id": "enable_slider",
+                            "operation": "=",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "id": "source_type",
+                    "icon": "sicon-t-shirt",
+                    "type": "items",
+                    "label": "مصدر عرض المنتجات",
+                    "description": "مصدر عرض المنتجات",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "options": [
+                        {
+                            "key": "categories",
+                            "label": "منتجات من تصنيف",
+                            "value": "categories"
+                        },
+                        {
+                            "key": "sales",
+                            "label": "الأكثر مبيعاً",
+                            "value": "sales"
+                        },
+                        {
+                            "key": "latest",
+                            "label": "أحدث المنتجات",
+                            "value": "latest"
+                        },
+                        {
+                            "key": "selected",
+                            "label": "منتجات مختارة",
+                            "value": "selected"
+                        }
+                    ],
+                    "required": true,
+                    "multichoice": false,
+                    "conditions": [
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "products"
+                        }
+                    ]
+                },
+                {
+                    "id": "categories",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختيار التصنيف",
+                    "description": "اختر التصنيف الذي ترغب بعرض منتجاته.",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "source": "categories",
+                    "multichoice": false,
+                    "searchable": true,
+                    "required": true,
+                    "conditions": [
+                        {
+                            "id": "source_type",
+                            "operation": "=",
+                            "value": "categories"
+                        },
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "products"
+                        }
+                    ],
+                    "value": []
+                },
+                {
+                    "id": "products",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختيار المنتجات يدويًا",
+                    "description": "اختر المنتجات التي تريد عرضها بشكل يدوي.",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "source": "products",
+                    "multichoice": true,
+                    "searchable": true,
+                    "required": true,
+                    "conditions": [
+                        {
+                            "id": "source_type",
+                            "operation": "=",
+                            "value": "selected"
+                        },
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "products"
+                        }
+                    ],
+                    "value": []
+                }
+            ]
         }
     ],
     "support_url": null,
