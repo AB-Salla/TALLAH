@@ -24976,6 +24976,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-payments-list-item {
   filter: grayscale(1);
+  transition: all 0.5s ease-in-out;
+}
+.single .s-payments-list-item:hover {
+  filter: grayscale(0);
 }
 .single .image-slider {
   display: flex;
