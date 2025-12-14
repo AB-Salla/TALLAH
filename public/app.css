@@ -25195,8 +25195,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-add-product-button-main .s-button-primary {
   border-width: 1px solid var(--color-font);
-  background-color: #414042;
-  background-color: var(--color-primary);
+  background-color: var(--color-background);
   border-radius: 2px;
   height: 2.625rem;
   color: var(--color-font);
