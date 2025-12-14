@@ -98,7 +98,7 @@
             "description": "اضف لون خلفية الثيم",
             "labelHTML": null,
             "icon": "sicon-format-fill",
-            "value": "#ffffff",
+            "value": "#F4F4F5",
             "required": false
         },
         {
@@ -110,31 +110,7 @@
             "description": null,
             "labelHTML": null,
             "icon": "sicon-format-fill",
-            "value": "#000000",
-            "required": false
-        },
-        {
-            "id": "secondary_text_color",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "لون النص الثانوي",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#333333",
-            "required": false
-        },
-        {
-            "id": "secondary_color",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "لون ثانوي",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#F8F9F9",
+            "value": "#18181B",
             "required": false
         },
         {
