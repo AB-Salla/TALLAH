@@ -1700,8 +1700,15 @@
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",
                     "value": true,
-                    "selected": true,
-                    "required": false
+                    "selected": false,
+                    "required": false,
+                     "conditions": [
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "products"
+                        }
+                    ]
                 },
                 {
                     "id": "enable_autoplay",
@@ -1753,14 +1760,15 @@
                         }
                     ],
                     "required": true,
-                    "selected": [
+                    
+                    "multichoice": false,
+                     "conditions": [
                         {
-                            "key": "latest",
-                            "label": "أحدث المنتجات",
-                            "value": "latest"
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "products"
                         }
-                    ],
-                    "multichoice": false
+                    ]
                 },
                 {
                     "id": "categories",
