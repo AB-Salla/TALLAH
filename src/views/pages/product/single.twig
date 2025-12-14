@@ -529,30 +529,31 @@
 {% block scripts %}
 <script>
 document.addEventListener('DOMContentLoaded', () => {
-  const content = document.getElementById('productMainContent');
-  if (!content) return;
+  const el = document.getElementById('productMainContent');
+  if (!el) return;
 
-  // عنصر وهمي نراقبه
-  const trigger = document.createElement('div');
-  trigger.style.height = '1px';
-  content.parentNode.insertBefore(trigger, content);
+  // placeholder بنفس الارتفاع
+  const placeholder = document.createElement('div');
+  placeholder.style.height = el.offsetHeight + 'px';
+  placeholder.style.display = 'none';
 
-  const observer = new IntersectionObserver(
-    ([entry]) => {
-      if (window.innerWidth >= 1024) {
-        content.classList.toggle('is-fixed', !entry.isIntersecting);
-      }
-    },
-    { threshold: 0 }
-  );
+  el.parentNode.insertBefore(placeholder, el);
 
-  observer.observe(trigger);
+  const start = el.offsetTop;
 
-  // لو المستخدم عمل resize
-  window.addEventListener('resize', () => {
-    if (window.innerWidth < 1024) {
-      content.classList.remove('is-fixed');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > start) {
+      placeholder.style.display = 'block';
+      el.classList.add('is-fixed');
+    } else {
+      placeholder.style.display = 'none';
+      el.classList.remove('is-fixed');
     }
+  });
+
+  // لو الارتفاع اتغير (options / variants)
+  window.addEventListener('resize', () => {
+    placeholder.style.height = el.offsetHeight + 'px';
   });
 });
 </script>
