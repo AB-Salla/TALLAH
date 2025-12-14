@@ -3,74 +3,64 @@
 <section class="AR-sub-banner-{{ position }} s-block {% if  component.margin_bottom_rm %} !mb-0 {% endif %}">
 	<div class="container  flex lg:flex-row flex-col items-center lg:items-start justify-between gap-6 lg:gap-12">
 
-        {% if component.component_type == "products" %}
+		{% if component.component_type == "products" %}
 
-		<div class="order-2 lg:order-1">
-			<div class="lg:block hidden features-products-head text text-font text-center md:mb-6 mb-4">
-	
+			<div class="order-2 lg:order-1">
+				<div class="lg:block hidden features-products-head text text-font text-center md:mb-6 mb-4">
 
-				<h2 class="text-xl font-semibold pb-1" style="color: {{ component.block_title_color }};">
-					{{ component.block_title }}
-				</h2>
-                {% if component.link_text %}
-					<span class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
-						{{ component.link_text }}
-					</span>
+
+					<h2 class="text-xl font-semibold pb-1" style="color: {{ component.block_title_color }};">
+						{{ component.block_title }}
+					</h2>
+					{% if component.link_text %}
+						<span class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
+							{{ component.link_text }}
+						</span>
+					{% endif %}
+
+				</div>
+
+				{% if component.enable_slider %}
+					<div>
+						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block lg:w-[35vw] w-[90vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
+												          "slidesPerView": 2,
+												          "spaceBetween": 20,
+												          "centeredSlides": false,
+												          "speed": 1000,
+												    "autoplay": {{ component.enable_autoplay ? "{
+												      \"delay\": 3000,
+												      \"disableOnInteraction\": false,
+												      \"pauseOnMouseEnter\": true
+												    }" : "false" }}
+							
+												  }'></salla-products-slider>
+					</div>
+				{% else %}
+
+
+					<salla-products-list source="{{ source_type }}" limit='10' {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %}></salla-products-list>
+
 				{% endif %}
+
 
 			</div>
 
-			{% if component.enable_slider %}
-            <div>
-				<salla-products-slider
-                         source="{{ source_type }}"
-              limit="{{ limit }}"
-              {% if source_type in ['selected', 'categories'] %}
-              source-value="[{{ source_value | map(item => item.id) | join(',') }}]"
-              {% endif %}
-              display-all-url="{{ display_all_url }}"
-                 
-                 class="block lg:w-[35vw] w-[90vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
-					          "slidesPerView": 2,
-					          "spaceBetween": 20,
-					          "centeredSlides": false,
-					          "speed": 1000,
-					    "autoplay": {{ component.enable_autoplay ? "{
-					      \"delay\": 3000,
-					      \"disableOnInteraction\": false,
-					      \"pauseOnMouseEnter\": true
-					    }" : "false" }}
-					    
-					  }'></salla-products-slider>
-                      </div>
-			{% else %}
+			<div class="order-1 lg:order-2">
+				<div class="block lg:hidden features-products-head text text-font text-center md:mb-6 mb-4">
+					{% if component.link_text %}
+						<span class="text-xl font-semibold pb-1" style="color: {{ component.sub_text_color }};">
+							{{ component.link_text }}
+						</span>
+					{% endif %}
 
-				
-<salla-products-list source="{{ source_type }}" limit='10'
- {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" 
- {% endif %}></salla-products-list>
+					<h2 class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.block_title_color }};">
+						{{ component.block_title }}
+					</h2>
 
+
+				</div>
+				{% else %}
 			{% endif %}
-      
-
-		</div>
-
-		<div class="order-1 lg:order-2">
-			<div class="block lg:hidden features-products-head text text-font text-center md:mb-6 mb-4">
-				{% if component.link_text %}
-					<span class="text-xl font-semibold pb-1" style="color: {{ component.sub_text_color }};">
-						{{ component.link_text }}
-					</span>
-				{% endif %}
-
-				<h2 class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.block_title_color }};">
-					{{ component.block_title }}
-				</h2>
-
-
-			</div>
-                  {% else %}
-            {% endif %}
 
 			<div class="overflow-hidden ">
 				<img src="{{ component.banner_image }}" class="max-w-[326px] mx-auto md:max-w-full h-auto  lg:h-auto" alt="{{ component.block_title }}"/>
@@ -78,6 +68,7 @@
 		</div>
 	</div>
 </section>
+
 <style>
 	@media(min-width: 375px) {
 		.AR-sub-banner-{{position}}.s-products-list-vertical-cards {
