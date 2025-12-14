@@ -94,6 +94,25 @@
 			<div class="flex flex-col items-start lg:flex-row" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:sticky  w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16 overflow-hidden shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
+                    {% if theme.settings.get('grid_or_slider_products_page') %}
+                        <div class="grid grid-cols-2">
+                            {% for image in product.images %}
+								{% if image.three_d_image_url %}
+									<model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+								{% else %}
+									<a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
+                                        class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
+										{% if loop.first %}
+											<img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+										{% else %}
+											<img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+										{% endif %}
+									</a>
+								{% endif %}
+							{% endfor %}
+                        </div>
+                    {% else %}
+                        
 					<salla-slider 
 							id="details-slider-{{ product.id }}" 
 							class="image-slider details-slider image-slider" 
@@ -163,6 +182,8 @@
 							</div>
 						{% endif %}
 					</salla-slider>
+                    {% endif %}
+                    
 
 					<div class="flex absolute top-4 rtl:left-4 ltr:right-4 z-2 flex-row-reverse gap-3 lg:gap-[14px]">
                     <div>
@@ -177,8 +198,17 @@
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
 				{# tittle && brand #}
-				<div class="flex align-center justify-between">
-                    <div class="flex justify-between gap-2">
+                {% if product.brand.name %}
+						<div class="product-brand mb-5 w-12">
+							<a class="brand-logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
+								<img width="100%" height="100%" class="max-h-full object-contain" src="{{ product.brand.logo }}" title="{{ product.brand.name }}" alt="{{ product.brand.name }}">
+							</a>
+						</div>
+					{% endif %}
+				<div class="flex align-center justify-between items-center w-full mb-2 lg:mb-5">
+                    <h1 class="text-xl lg:text-[24px] leading-10 font-bold  text-font-color">
+                        {{ product.name }}
+                    </h1>
                         <div class="flex items-center">
                                 <salla-social-share class="inline-flex" aria-label="social share"></salla-social-share>
 
@@ -205,18 +235,8 @@
                                     </span>
                                 </salla-button>
                         </div>
-                        <h1 class="text-xl lg:text-[24px] leading-10 font-bold mb-2 lg:mb-5 text-font-color">
-                            {{ product.name }}
-                        </h1>
-                    </div>
 
-					{# {% if product.brand.name %} #}
-						<div class="product-brand mb-5 w-12">
-							<a class="brand-logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
-								<img width="100%" height="100%" class="max-h-full object-contain" src="{{ product.brand.logo }}" title="{{ product.brand.name }}" alt="{{ product.brand.name }}">
-							</a>
-						</div>
-					{# {% endif %} #}
+					
 				</div>
 
 				{# subtitle #}

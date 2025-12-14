@@ -85,6 +85,17 @@
             "variant": "h6"
         },
          {
+            "id": "grid_or_slider_products_page",
+            "label": "تفعيل عرض صور المنتج علي شكل شبكة في صفحة المنتج",
+            "description": "عند التفعيل سيتم عرض صور المنتج علي شكل شبكة بدلاً من السليدر الافتراضي",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected":false
+        },
+         {
       "id": "offer_icon",
       "type": "string",
       "format": "icon",
