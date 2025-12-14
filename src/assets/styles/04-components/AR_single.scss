@@ -77,10 +77,12 @@
     z-index: 2;
     border-radius: 0;
   }
-  .s-slider-thumbs .s-slider-thumbs-container .swiper-slide:after {
-    border-radius: 0;
-    --tw-ring-shadow: none;
-  }
+.s-slider-thumbs .s-slider-thumbs-container .swiper-slide:after {
+  border-radius: 0;
+  --tw-ring-shadow: none;
+  /* overlay أبيض خفيف */
+  background: rgba(255, 255, 255, 0.5);
+}
   .s-slider-thumbs
     .s-slider-thumbs-container
     .swiper-slide.swiper-slide-thumb-active:after {
