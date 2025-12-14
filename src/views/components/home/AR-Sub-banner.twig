@@ -3,6 +3,7 @@
 <section class="AR-sub-banner-{{ position }} s-block {% if  component.margin_bottom_rm %} !mb-0 {% endif %}">
 	<div class="container  flex lg:flex-row flex-col items-center lg:items-start justify-between gap-6 lg:gap-12">
 
+        {% if component.component_type == "products" %}
 
 		<div class="order-2 lg:order-1">
 			<div class="lg:block hidden features-products-head text text-font text-center md:mb-6 mb-4">
@@ -18,7 +19,6 @@
 				{% endif %}
 
 			</div>
-            {% if component.component_type == "products" %}
 
 			{% if component.enable_slider %}
             <div>
@@ -51,9 +51,7 @@
  {% endif %}></salla-products-list>
 
 			{% endif %}
-            {% else %}
-                <div>text</div>
-            {% endif %}
+      
 
 		</div>
 
@@ -71,6 +69,8 @@
 
 
 			</div>
+                  {% else %}
+            {% endif %}
 
 			<div class="overflow-hidden ">
 				<img src="{{ component.banner_image }}" class="max-w-[326px] mx-auto md:max-w-full h-auto  lg:h-auto" alt="{{ component.block_title }}"/>
