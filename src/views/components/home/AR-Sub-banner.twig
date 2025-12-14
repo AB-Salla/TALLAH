@@ -1,64 +1,66 @@
+{% set source_type = component.source_type %}
+{% set source_value = source_type == 'categories' ? component.categories : (source_type == 'selected' ? component.products : []) %}
 <section class="AR-sub-banner-{{ position }} s-block {% if  component.margin_bottom_rm %} !mb-0 {% endif %}">
-	<div class="container  grid grid-cols-1 lg:grid-cols-2 items-center lg:items-start justify-between gap-6 lg:gap-12">
+	<div class="container  flex lg:flex-row flex-col items-center lg:items-start justify-between gap-6 lg:gap-12">
 
 
 		<div class="order-2 lg:order-1">
-			<div class="lg:block hidden features-products-head text-start text-font">
-				{% if component.link_text %}
+			<div class="lg:block hidden features-products-head text text-font text-center md:mb-6 mb-4">
+	
+
+				<h2 class="text-xl font-semibold pb-1" style="color: {{ component.block_title_color }};">
+					{{ component.block_title }}
+				</h2>
+                {% if component.link_text %}
 					<span class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
 						{{ component.link_text }}
 					</span>
 				{% endif %}
 
-				<h2 class="text-[clamp(1.25rem,0.8673rem+1.6327vw,2.5rem)] font-medium leading-[119%]" style="color: {{ component.block_title_color }};">
-					{{ component.block_title }}
-				</h2>
-
 			</div>
 			{% if component.enable_slider %}
-				<salla-products-slider type="carousel" class="product-slider" slider-config='{
+            <div>
+				<salla-products-slider
+                         source="{{ source_type }}"
+              limit="{{ limit }}"
+              {% if source_type in ['selected', 'categories'] %}
+              source-value="[{{ source_value | map(item => item.id) | join(',') }}]"
+              {% endif %}
+              display-all-url="{{ display_all_url }}"
+                 
+                 class="block lg:w-[35vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
 					          "slidesPerView": 2,
 					          "spaceBetween": 20,
 					          "centeredSlides": false,
 					          "speed": 1000,
-					          "effect": "slide",
-					          "breakpoints": {
-					            "551": { "slidesPerView": 3, "spaceBetween": 20 },
-					            "786": { "slidesPerView": 3, "spaceBetween": 20 },
-					            "1024": { "slidesPerView": 2, "spaceBetween": 20 }
-					          },
 					    "autoplay": {{ component.enable_autoplay ? "{
 					      \"delay\": 3000,
 					      \"disableOnInteraction\": false,
 					      \"pauseOnMouseEnter\": true
-					    }" : "false" }},
-					    "pagination": {
-					      "el": ".products-fixed-slider-{{ position }} .swiper-pagination",
-					      "type": "bullets",
-					      "clickable": true
-					    },
-					    "navigation": {
-					      "nextEl": ".products-fixed-slider-{{ position }} .salla-slider-next",
-					      "prevEl": ".products-fixed-slider-{{ position }} .salla-slider-prev"
-					    }
+					    }" : "false" }}
+					    
 					  }'></salla-products-slider>
+                      </div>
 			{% else %}
 
-				<div class="flex flex-row ">
-					<salla-products-list source="{{ products_dropdown }}" limit="2" horizontal-cards="false"></salla-products-list>
-				</div>
+				
+<salla-products-list source="{{ source_type }}" limit='10'
+ {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" 
+ {% endif %}></salla-products-list>
+
 			{% endif %}
 
 		</div>
+
 		<div class="order-1 lg:order-2">
-			<div class="block lg:hidden features-products-head text-start">
+			<div class="block lg:hidden features-products-head text text-font text-center md:mb-6 mb-4">
 				{% if component.link_text %}
-					<span class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
+					<span class="text-xl font-semibold pb-1" style="color: {{ component.sub_text_color }};">
 						{{ component.link_text }}
 					</span>
 				{% endif %}
 
-				<h2 class="mt-1 mb-3 lg:mt-3 lg:mb-4 text-[clamp(1.25rem,0.8673rem+1.6327vw,2.5rem)] font-medium leading-[119%]" style="color: {{ component.block_title_color }};">
+				<h2 class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.block_title_color }};">
 					{{ component.block_title }}
 				</h2>
 

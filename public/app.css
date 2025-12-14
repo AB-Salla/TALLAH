@@ -980,6 +980,9 @@ select {
 .col-span-2 {
     grid-column: span 2 / span 2;
 }
+.col-span-1 {
+    grid-column: span 1 / span 1;
+}
 .m-0 {
     margin: 0px;
 }
@@ -1105,6 +1108,18 @@ select {
 }
 .mt-auto {
     margin-top: auto;
+}
+.mt-20 {
+    margin-top: 5rem;
+}
+.mt-\[-20\%\] {
+    margin-top: -20%;
+}
+.mt-\[-20\] {
+    margin-top: -20;
+}
+.mt-\[-80px\] {
+    margin-top: -80px;
 }
 .line-clamp-1 {
     overflow: hidden;
@@ -1298,6 +1313,9 @@ select {
 .w-full {
     width: 100%;
 }
+.w-\[35vw\] {
+    width: 35vw;
+}
 .min-w-0 {
     min-width: 0px;
 }
@@ -1312,9 +1330,6 @@ select {
 }
 .max-w-\[326px\] {
     max-width: 326px;
-}
-.max-w-\[690px\] {
-    max-width: 690px;
 }
 .max-w-full {
     max-width: 100%;
@@ -1454,6 +1469,9 @@ select {
 }
 .gap-8 {
     gap: 2rem;
+}
+.gap-0 {
+    gap: 0px;
 }
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
@@ -1919,6 +1937,9 @@ select {
 .pt-8 {
     padding-top: 2rem;
 }
+.pb-2 {
+    padding-bottom: 0.5rem;
+}
 .text-center {
     text-align: center;
 }
@@ -1943,9 +1964,6 @@ select {
 .text-7xl {
     font-size: 4.5rem;
     line-height: 1;
-}
-.text-\[clamp\(0\.75rem\2c 0\.5969rem\+0\.6531vw\2c 1\.25rem\)\] {
-    font-size: clamp(0.75rem,0.5969rem + 0.6531vw,1.25rem);
 }
 .text-\[clamp\(0\.75rem\2c 0\.6447rem\+0\.4493vw\2c 1\.094rem\)\] {
     font-size: clamp(0.75rem,0.6447rem + 0.4493vw,1.094rem);
@@ -2067,6 +2085,9 @@ select {
     color: rgba(29, 31, 31, 1);
     color: rgba(29, 31, 31, var(--tw-text-opacity, 1));
 }
+.text-font {
+    color: var(--color-font);
+}
 .text-gray-400 {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
@@ -2139,9 +2160,6 @@ select {
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
-}
-.text-font {
-    color: var(--color-font);
 }
 .underline {
     text-decoration-line: underline;
@@ -24205,6 +24223,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mt-0 {
         margin-top: 0px;
     }
+    .md\:mb-6 {
+        margin-bottom: 1.5rem;
+    }
     .md\:flex {
         display: flex;
     }
@@ -24391,6 +24412,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:mt-3 {
         margin-top: 0.75rem;
     }
+    .lg\:mt-0 {
+        margin-top: 0px;
+    }
     .lg\:\!block {
         display: block !important;
     }
@@ -24433,6 +24457,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-\[calc\(100\%-384px\)\] {
         width: calc(100% - 384px);
     }
+    .lg\:w-\[35vw\] {
+        width: 35vw;
+    }
     .lg\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
     }
@@ -24444,6 +24471,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-8 {
         grid-template-columns: repeat(8, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-3 {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .lg\:flex-row {
         flex-direction: row;
@@ -24459,6 +24489,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:gap-8 {
         gap: 2rem;
+    }
+    .lg\:gap-32 {
+        gap: 8rem;
+    }
+    .lg\:gap-28 {
+        gap: 7rem;
     }
     .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
         --tw-space-x-reverse: 0;

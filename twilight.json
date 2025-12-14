@@ -1705,19 +1705,85 @@
                     ]
                 },
                 {
-                    "id": "products_dropdown",
+                    "id": "source_type",
+                    "icon": "sicon-t-shirt",
+                    "type": "items",
+                    "label": "مصدر عرض المنتجات",
+                    "description": "مصدر عرض المنتجات",
+                    "format": "dropdown-list",
+                    "source": "Manual",
+                    "options": [
+                        {
+                            "key": "categories",
+                            "label": "منتجات من تصنيف",
+                            "value": "categories"
+                        },
+                        {
+                            "key": "sales",
+                            "label": "الأكثر مبيعاً",
+                            "value": "sales"
+                        },
+                        {
+                            "key": "latest",
+                            "label": "أحدث المنتجات",
+                            "value": "latest"
+                        },
+                        {
+                            "key": "selected",
+                            "label": "منتجات مختارة",
+                            "value": "selected"
+                        }
+                    ],
+                    "required": true,
+                    "selected": [
+                        {
+                            "key": "latest",
+                            "label": "أحدث المنتجات",
+                            "value": "latest"
+                        }
+                    ],
+                    "multichoice": false
+                },
+                {
+                    "id": "categories",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "اختر المنتجات",
-                    "description": null,
-                    "labelHTML": null,
+                    "label": "اختيار التصنيف",
+                    "description": "اختر التصنيف الذي ترغب بعرض منتجاته.",
                     "icon": "sicon-keyboard_arrow_down",
                     "selected": [],
-                    "options": [],
-                    "source": "Products",
+                    "source": "categories",
+                    "multichoice": false,
+                    "searchable": true,
+                    "required": true,
+                    "conditions": [
+                        {
+                            "id": "source_type",
+                            "operation": "=",
+                            "value": "categories"
+                        }
+                    ],
+                    "value": []
+                },
+                {
+                    "id": "products",
+                    "type": "items",
+                    "format": "dropdown-list",
+                    "label": "اختيار المنتجات يدويًا",
+                    "description": "اختر المنتجات التي تريد عرضها بشكل يدوي.",
+                    "icon": "sicon-keyboard_arrow_down",
+                    "selected": [],
+                    "source": "products",
                     "multichoice": true,
                     "searchable": true,
                     "required": true,
+                    "conditions": [
+                        {
+                            "id": "source_type",
+                            "operation": "=",
+                            "value": "selected"
+                        }
+                    ],
                     "value": []
                 }
             ]
