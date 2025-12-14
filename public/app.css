@@ -25106,7 +25106,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin-right: 0 !important;
 }
 .single .sidebar .s-button-light-outline:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-background);
 }
 .single .sidebar .s-button-light-outline,
 .single .sidebar .s-button-light-outline:hover {
@@ -25114,7 +25114,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .sidebar .s-button-light-outline,
 .single .sidebar .s-button-light-outline:hover {
-  background: rgba(255, 255, 255, 0.15);
+  background: var(--color-background);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
@@ -25158,7 +25158,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid gray;
   color: var(--color-font);
   font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
-  border-radius: clamp(1.704rem, 1.6438rem + 0.2569vw, 1.875rem);
+  border-radius: 0;
   padding: clamp(0.438rem, 0.394rem + 0.1878vw, 0.563rem) clamp(1rem, 0.956rem + 0.1878vw, 1.125rem);
   transition: all 0.4s;
   max-height: 32px;
@@ -25167,11 +25167,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   cursor: pointer;
 }
 .single .custom-radio-options .label_active {
-  border-radius: clamp(1.704rem, 1.6438rem + 0.2569vw, 1.875rem);
+  border-radius: 0;
   border: 1px solid var(--color-font);
   background-color: #414042;
   background-color: var(--color-primary);
-  color: var(--color-font);
+  color: var(--color-background);
   font-weight: 500;
   font-size: clamp(0.875rem, 0.831rem + 0.1878vw, 1rem);
   padding: clamp(0.438rem, 0.394rem + 0.1878vw, 0.563rem) clamp(1rem, 0.956rem + 0.1878vw, 1.125rem);
