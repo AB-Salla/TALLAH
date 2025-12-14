@@ -1,5 +1,7 @@
 .single {
     .s-payments-list-item{
+        background-color: transparent;
+        width: 4rem;
         filter: grayscale(1);
         transition: all .5s ease-in-out;
     }
