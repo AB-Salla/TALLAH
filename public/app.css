@@ -1310,6 +1310,9 @@ select {
 .w-full {
     width: 100%;
 }
+.\!w-full {
+    width: 100% !important;
+}
 .min-w-0 {
     min-width: 0px;
 }
@@ -26079,6 +26082,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:gap-8 {
         gap: 2rem;
     }
+    .md\:gap-4 {
+        gap: 1rem;
+    }
     .md\:space-x-12 > :not([hidden]) ~ :not([hidden]) {
         --tw-space-x-reverse: 0;
         margin-right: calc(3rem * 0);
@@ -26155,6 +26161,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:sticky {
         position: sticky;
+    }
+    .lg\:\!sticky {
+        position: sticky !important;
     }
     .lg\:top-20 {
         top: 5rem;
