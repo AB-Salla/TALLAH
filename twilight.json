@@ -1626,14 +1626,8 @@
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
                     "value": "#18181B",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
+                    "required": false
+                   
                 },
                 {
                     "id": "block_title",
@@ -1663,15 +1657,39 @@
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
                     "value": "#18181B",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "use_custom_colors",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
+                    "required": false
+                    
                 },
+                {
+            "id": "component_type",
+            "type": "items",
+            "format": "dropdown-list",
+            "label":"طريقة عرض المكون ",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-list",
+            "selected": [
+                {
+                    "label": "صورة مع نص",
+                    "value": "text",
+                    "key": "f4adec-6e4c-654b-b978-b2807935ced9"
+                }
+            ],
+            "options": [
+                {
+                    "label": "صورة مع منتجات",
+                    "value": "products",
+                    "key": "e9c8ef-c5c6-234e-935-3bce269afde4"
+                },
+                {
+                    "label": "صورة مع نص",
+                    "value": "text",
+                    "key": "f4adec-6e4c-654b-b978-b2807935ced9"
+                }
+            ],
+            "source": "Manual",
+            "required": true
+        },
                 
                 {
                     "id": "enable_slider",
@@ -1698,7 +1716,7 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "is_moving",
+                            "id": "enable_slider",
                             "operation": "=",
                             "value": true
                         }

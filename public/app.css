@@ -980,9 +980,6 @@ select {
 .col-span-2 {
     grid-column: span 2 / span 2;
 }
-.col-span-1 {
-    grid-column: span 1 / span 1;
-}
 .m-0 {
     margin: 0px;
 }
@@ -1106,20 +1103,11 @@ select {
 .mt-8 {
     margin-top: 2rem;
 }
-.mt-auto {
-    margin-top: auto;
-}
-.mt-20 {
-    margin-top: 5rem;
-}
-.mt-\[-20\%\] {
-    margin-top: -20%;
-}
-.mt-\[-20\] {
-    margin-top: -20;
-}
 .mt-\[-80px\] {
     margin-top: -80px;
+}
+.mt-auto {
+    margin-top: auto;
 }
 .line-clamp-1 {
     overflow: hidden;
@@ -1313,8 +1301,8 @@ select {
 .w-full {
     width: 100%;
 }
-.w-\[35vw\] {
-    width: 35vw;
+.w-\[90vw\] {
+    width: 90vw;
 }
 .min-w-0 {
     min-width: 0px;
@@ -1469,9 +1457,6 @@ select {
 }
 .gap-8 {
     gap: 2rem;
-}
-.gap-0 {
-    gap: 0px;
 }
 .space-x-1 > :not([hidden]) ~ :not([hidden]) {
     --tw-space-x-reverse: 0;
@@ -1937,9 +1922,6 @@ select {
 .pt-8 {
     padding-top: 2rem;
 }
-.pb-2 {
-    padding-bottom: 0.5rem;
-}
 .text-center {
     text-align: center;
 }
@@ -1973,9 +1955,6 @@ select {
 }
 .text-\[clamp\(0\.875rem\2c 0\.7985rem\+0\.3265vw\2c 1\.125rem\)\] {
     font-size: clamp(0.875rem,0.7985rem + 0.3265vw,1.125rem);
-}
-.text-\[clamp\(1\.25rem\2c 0\.8673rem\+1\.6327vw\2c 2\.5rem\)\] {
-    font-size: clamp(1.25rem,0.8673rem + 1.6327vw,2.5rem);
 }
 .text-\[clamp\(1rem\2c 0\.6939rem\+1\.3061vw\2c 2rem\)\] {
     font-size: clamp(1rem,0.6939rem + 1.3061vw,2rem);
@@ -2035,9 +2014,6 @@ select {
 }
 .leading-8 {
     line-height: 2rem;
-}
-.leading-\[119\%\] {
-    line-height: 119%;
 }
 .leading-none {
     line-height: 1;
@@ -24214,6 +24190,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-20 {
         margin-bottom: 5rem;
     }
+    .md\:mb-6 {
+        margin-bottom: 1.5rem;
+    }
     .md\:mb-8 {
         margin-bottom: 2rem;
     }
@@ -24222,9 +24201,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:mt-0 {
         margin-top: 0px;
-    }
-    .md\:mb-6 {
-        margin-bottom: 1.5rem;
     }
     .md\:flex {
         display: flex;
@@ -24400,20 +24376,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:mb-24 {
         margin-bottom: 6rem;
     }
-    .lg\:mb-4 {
-        margin-bottom: 1rem;
-    }
     .lg\:mb-8 {
         margin-bottom: 2rem;
     }
-    .lg\:mt-12 {
-        margin-top: 3rem;
-    }
-    .lg\:mt-3 {
-        margin-top: 0.75rem;
-    }
     .lg\:mt-0 {
         margin-top: 0px;
+    }
+    .lg\:mt-12 {
+        margin-top: 3rem;
     }
     .lg\:\!block {
         display: block !important;
@@ -24454,11 +24424,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-96 {
         width: 24rem;
     }
-    .lg\:w-\[calc\(100\%-384px\)\] {
-        width: calc(100% - 384px);
-    }
     .lg\:w-\[35vw\] {
         width: 35vw;
+    }
+    .lg\:w-\[calc\(100\%-384px\)\] {
+        width: calc(100% - 384px);
     }
     .lg\:grid-cols-2 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -24471,9 +24441,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-8 {
         grid-template-columns: repeat(8, minmax(0, 1fr));
-    }
-    .lg\:grid-cols-3 {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .lg\:flex-row {
         flex-direction: row;
@@ -24489,12 +24456,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:gap-8 {
         gap: 2rem;
-    }
-    .lg\:gap-32 {
-        gap: 8rem;
-    }
-    .lg\:gap-28 {
-        gap: 7rem;
     }
     .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]) {
         --tw-space-x-reverse: 0;

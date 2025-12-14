@@ -18,6 +18,8 @@
 				{% endif %}
 
 			</div>
+            {% if component.component_type == "products" %}
+
 			{% if component.enable_slider %}
             <div>
 				<salla-products-slider
@@ -28,7 +30,7 @@
               {% endif %}
               display-all-url="{{ display_all_url }}"
                  
-                 class="block lg:w-[35vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
+                 class="block lg:w-[35vw] w-[90vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
 					          "slidesPerView": 2,
 					          "spaceBetween": 20,
 					          "centeredSlides": false,
@@ -49,6 +51,7 @@
  {% endif %}></salla-products-list>
 
 			{% endif %}
+            {% endif %}
 
 		</div>
 
@@ -88,4 +91,10 @@
 		padding-left: 0;
 		padding-right: 0;
 	}
+    .swiper.s-slider-container{
+        padding:0px !important;
+    }
+    .swiper-wrapper.s-slider-swiper-wrapper{
+        justify-content: space-between;
+    }
 </style>
