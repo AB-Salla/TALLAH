@@ -193,7 +193,9 @@
           	</div>
 		</div>
 		
-		<div class="main-content sticky  top-24 w-full lg:w-2/4 lg:pb-16">
+		<div class="main-content w-full lg:w-2/4 lg:pb-16"
+        id="productMainContent"
+        >
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
@@ -525,6 +527,36 @@
 {% endblock %}
 
 {% block scripts %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const content = document.getElementById('productMainContent');
+  if (!content) return;
+
+  // عنصر وهمي نراقبه
+  const trigger = document.createElement('div');
+  trigger.style.height = '1px';
+  content.parentNode.insertBefore(trigger, content);
+
+  const observer = new IntersectionObserver(
+    ([entry]) => {
+      if (window.innerWidth >= 1024) {
+        content.classList.toggle('is-fixed', !entry.isIntersecting);
+      }
+    },
+    { threshold: 0 }
+  );
+
+  observer.observe(trigger);
+
+  // لو المستخدم عمل resize
+  window.addEventListener('resize', () => {
+    if (window.innerWidth < 1024) {
+      content.classList.remove('is-fixed');
+    }
+  });
+});
+</script>
+
 	<script defer src="{{ 'product.js' | asset }}"></script>
 	{% if product.has_3d_image %}
 		<script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
