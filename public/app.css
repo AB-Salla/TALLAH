@@ -1328,6 +1328,9 @@ select {
 .w-\[90vw\] {
     width: 90vw;
 }
+.w-auto {
+    width: auto;
+}
 .w-full {
     width: 100%;
 }
@@ -1348,6 +1351,9 @@ select {
 }
 .max-w-\[500px\] {
     max-width: 500px;
+}
+.max-w-\[766px\] {
+    max-width: 766px;
 }
 .max-w-full {
     max-width: 100%;
@@ -1718,11 +1724,6 @@ select {
     border-color: #414042;
     border-color: var(--color-primary);
 }
-.bg-\[\#F6F6F6\] {
-    --tw-bg-opacity: 1;
-    background-color: rgba(246, 246, 246, 1);
-    background-color: rgba(246, 246, 246, var(--tw-bg-opacity, 1));
-}
 .bg-background {
     background-color: var(--color-background);
 }
@@ -1893,6 +1894,10 @@ select {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
 }
+.py-6 {
+    padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
+}
 .py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -1990,6 +1995,10 @@ select {
     font-size: 1.875rem;
     line-height: 2.25rem;
 }
+.text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+}
 .text-6xl {
     font-size: 3.75rem;
     line-height: 1;
@@ -2000,6 +2009,9 @@ select {
 }
 .text-\[14px\] {
     font-size: 14px;
+}
+.text-\[16px\] {
+    font-size: 16px;
 }
 .text-\[clamp\(\.8rem\2c 0\.9282rem\+0\.3218vw\2c 1rem\)\] {
     font-size: clamp(.8rem,0.9282rem + 0.3218vw,1rem);
@@ -2092,6 +2104,9 @@ select {
 }
 .leading-8 {
     line-height: 2rem;
+}
+.leading-\[140\%\] {
+    line-height: 140%;
 }
 .leading-\[28px\] {
     line-height: 28px;
@@ -26181,8 +26196,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 1rem;
         padding-bottom: 1rem;
     }
+    .md\:pb-20 {
+        padding-bottom: 5rem;
+    }
     .md\:pb-8 {
         padding-bottom: 2rem;
+    }
+    .md\:pt-14 {
+        padding-top: 3.5rem;
     }
     .md\:text-\[16px\] {
         font-size: 16px;

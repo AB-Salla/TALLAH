@@ -416,6 +416,24 @@
           "required": true,
           "minLength": "2",
           "maxLength": "50"
+        },
+        {
+          "id": "description_feature",
+          "type": "string",
+          "format": "text",
+          "label": "وصف الميزة",
+          "description": "أدخل وصفا واضحًا وجذابًا يعبّر عن محتوى الميزة.",
+          "labelHTML": null,
+          "placeholder": "Placeholder text ..",
+          "icon": "sicon-format-text-alt",
+          "value": {
+            "ar": "شحن مجاني للطلبات التي تزيد عن 100$",
+            "en": "free shipping on orders over $100"
+          },
+          "multilanguage": true,
+          "required": true,
+          "minLength": "2",
+          "maxLength": "50"
         }
       ],
       "value": [],
