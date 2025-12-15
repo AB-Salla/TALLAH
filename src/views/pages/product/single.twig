@@ -459,7 +459,8 @@
                         <div class="grid grid-cols-2 md:flex flex-wrap justify-between gap-8">
                             {% for item in theme.settings.get('rh_features_store_pros') %}
                                 {# احسب عدد الحروف في النص #}
-                                {% set title = item.block_title.ar %}
+                                {% set title = item.block_title %}
+                                {% set description = item.description_feature %}
                                 {% set is_long = title|length > 20 %}
                                 <div class="text-start gap-4 flex items-center w-auto {{ is_long ? 'col-span-2' : '' }}">
                                 <span class="flex items-center justify-center w-6 h-6">
@@ -495,6 +496,9 @@
                                 <h3 class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
                                     {{ title }}
                                 </h3>
+                                <p class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
+                                    {{ description }}
+                                </p>
                                 </div>
                                 {% endfor %}
                             </div>

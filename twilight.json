@@ -413,9 +413,9 @@
             "en": "Outdoor Pool"
           },
           "multilanguage": true,
-          "required": true,
+          "required": false,
           "minLength": "2",
-          "maxLength": "50"
+          "maxLength": "20"
         },
         {
           "id": "description_feature",
@@ -431,7 +431,7 @@
             "en": "free shipping on orders over $100"
           },
           "multilanguage": true,
-          "required": true,
+          "required": false,
           "minLength": "2",
           "maxLength": "50"
         }
