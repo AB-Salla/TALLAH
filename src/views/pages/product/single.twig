@@ -282,7 +282,7 @@
 				</div>
 				
 				{# sale & countdown #}
-				{% if product.is_on_sale %}
+				{# {% if product.is_on_sale %}
 					{% if product.sale_end %}
 						<div class="sale_end flex items-center {{ product.sale_end ? "justify-between" : "justify-center" }} border border-font-color	 mt-4  px-4 ">
 								<div class="flex items-center gap-2 text-font-color">
@@ -292,7 +292,7 @@
 									</p>
 								</div>
 								
-								{# countdown #}
+								{# countdown 
 								<div id="countdown" class="countdown-container pt-3 pb-[7px]" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
 									<salla-count-down
 									style="font-size: 24px;"
@@ -306,7 +306,7 @@
 							</div>
 						</div>
 					{% endif %}
-				{% endif %}
+				{% endif %} #}
 
 				{# feature #}
 				<div class="feature flex items-start justify-between gap-[18px] flex-col pt-3 lg:pt-8">
@@ -387,9 +387,7 @@
 				{% include 'pages.partials.product.options' %}
 				{% hook 'product:single.form.end' %}
 				
-				<section class="rounded-md rounded-b-none bg-background sticky-product-bar">
-					
-
+				<section class="rounded-md rounded-b-none bg-background sticky-product-bar ">
 					<section class="flex rounded-md rounded-b-none">
 						{# total price#}
 						<div class="center-between w-full">
@@ -443,9 +441,7 @@
 							</div>
 						</salla-add-product-button>
 					</div>
-                    <div class="mt-5">
-                        <salla-payments></salla-payments>
-                    </div>
+                    
 				</section>
 
 				{% if product.is_giftable %}
@@ -455,6 +451,64 @@
 
 			{% hook 'product:single.description.end' %}
 			<salla-quick-order class="mt-5 lg:-mb-2 block"></salla-quick-order>
+			<div class="mt-5">
+                        <salla-payments></salla-payments>
+                    </div>
+					 {% if theme.settings.get('features_switch') %}
+                <section class=" py-2">
+                    <div class="">
+                       
+						{% set is_ar = request.locale == 'ar' %}
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-start sm:justify-center  items-start sm:items-center gap-8">
+                            {% for item in theme.settings.get('rh_features_store_pros') %}
+                                {# احسب عدد الحروف في النص #}
+                                {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
+    					{% set description = is_ar ? item.description_feature.ar : item.description_feature.en %}
+                                {% set is_long = title|length > 20 %}
+                                <div class="text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col  w-auto ">
+                                <span class="flex items-center justify-center w-6 h-6">
+                                    {% if item.rh_features_active_select_icons == "image_services" %}
+                                    <img src="{{ item.add_image }}"
+                                        alt="{{ item.block_title.ar }}"
+                                        class="w-full h-full object-contain">
+                                    {% elseif item.rh_features_active_select_icons == "salla_icon" %}
+                                    <i class="{{ item.icon_proudct }} text-primary text-4xl leading-none features__icon"></i>
+                                    {% elseif item.rh_features_active_select_icons == "animated_icon" %}
+                                    <lord-icon 
+                                        id="my-icon"
+                                        src="https://cdn.lordicon.com/{{ item.anmait_icon }}.json"
+                                        trigger="loop"
+                                        style="width:24px;height:24px">
+                                    </lord-icon>
+                              
+
+                                    <script>
+                                    // Wait for the element to load
+                                    document.addEventListener("DOMContentLoaded", () => {
+                                        const icon = document.getElementById("my-icon");
+                                        const color = getComputedStyle(document.documentElement)
+                                        .getPropertyValue("--color-primary")
+                                        .trim();
+                                        // Apply dynamic color using JS
+                                        icon.setAttribute("colors", `primary:${color},secondary:${color}`);
+                                    });
+                                    </script>
+                                    {% endif %}
+                                </span>
+								<div >
+									<h3 class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
+										{{ title }}
+									</h3>
+									<h3 class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
+										{{ description }}
+									</h3>
+								</div>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                </section>
+        {% endif %}
 		</div>
 	</div>
 
@@ -484,8 +538,24 @@
 
 	<salla-offer></salla-offer>
 	{# Comments Area #}
-    {% if store.settings.rating.show_on_product %}
+{% if store.settings.rating.show_on_product %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 container single">
+    <div class="md:col-span-2 order-2 md:order-1 comments">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
+    </div>
+     <div class="col-span-1 order-1 md:order-2 comment-form">
+                     <salla-rating-stars
+                      value="{{ product.rating.stars ?? 0 }}"
+                      reviews="{{ product.rating.count ?? 0 }}">
+                      </salla-rating-stars>
+                      {% if product.rating.count == 0 %}
+                      <div class="text-center mb">({{ trans('pages.product.no_rate') }})</div>
+                      {% endif %}
+                      <div class="mt-4 md:mt-5">
+                          <salla-comment-form></salla-comment-form>
+                    </div>
+                 </div>
+    </div>
     {% endif %}
 
 	{# Similar Products Area #}
