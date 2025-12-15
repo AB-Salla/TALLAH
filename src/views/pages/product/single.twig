@@ -443,7 +443,17 @@
 							</div>
 						</salla-add-product-button>
 					</div>
-                    <div class="mt-5">
+                    
+				</section>
+
+				{% if product.is_giftable %}
+					<salla-gifting class="mt-5" widget-subtitle="{{ gifting_intro }}" product-id="{{ product.id }}" {{ product.is_require_shipping ? 'physical-products' : '' }}></salla-gifting>
+				{% endif %}
+			</form>
+
+			{% hook 'product:single.description.end' %}
+			<salla-quick-order class="mt-5 lg:-mb-2 block"></salla-quick-order>
+			<div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
 					 {% if theme.settings.get('features_switch') %}
@@ -501,15 +511,6 @@
 
                 </section>
         {% endif %}
-				</section>
-
-				{% if product.is_giftable %}
-					<salla-gifting class="mt-5" widget-subtitle="{{ gifting_intro }}" product-id="{{ product.id }}" {{ product.is_require_shipping ? 'physical-products' : '' }}></salla-gifting>
-				{% endif %}
-			</form>
-
-			{% hook 'product:single.description.end' %}
-			<salla-quick-order class="mt-5 lg:-mb-2 block"></salla-quick-order>
 		</div>
 	</div>
 

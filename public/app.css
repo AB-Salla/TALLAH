@@ -1891,10 +1891,6 @@ select {
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
 }
-.py-6 {
-    padding-top: 1.5rem;
-    padding-bottom: 1.5rem;
-}
 .py-8 {
     padding-top: 2rem;
     padding-bottom: 2rem;
@@ -2056,9 +2052,6 @@ select {
 .text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
-}
-.text-\[13px\] {
-    font-size: 13px;
 }
 .font-bold {
     font-weight: 700;
@@ -26102,9 +26095,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:table-row {
         display: table-row;
     }
-    .md\:grid {
-        display: grid;
-    }
     .md\:h-20 {
         height: 5rem;
     }
@@ -26150,17 +26140,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:flex-row {
         flex-direction: row;
     }
-    .md\:flex-col {
-        flex-direction: column;
-    }
     .md\:items-start {
         align-items: flex-start;
     }
     .md\:items-center {
         align-items: center;
-    }
-    .md\:justify-center {
-        justify-content: center;
     }
     .md\:gap-2 {
         gap: 0.5rem;
@@ -26214,17 +26198,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 1rem;
         padding-bottom: 1rem;
     }
-    .md\:pb-20 {
-        padding-bottom: 5rem;
-    }
     .md\:pb-8 {
         padding-bottom: 2rem;
-    }
-    .md\:pt-14 {
-        padding-top: 3.5rem;
-    }
-    .md\:text-center {
-        text-align: center;
     }
     .md\:text-\[16px\] {
         font-size: 16px;
