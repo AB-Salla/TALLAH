@@ -484,7 +484,7 @@
   .s-comments-item {
     margin-bottom: 8px;
     display: block;
-    border: 1px solid #48484a;
+    border: none;
     padding: 16px;
     border-radius: 8px;
   }
@@ -515,7 +515,7 @@
   .s-comments-item-content {
     font-weight: 400;
     font-size: 16px !important;
-    color: var(--color-font);
+    color: var(--color-primary);
   }
 
   .s-comments-item-avatar {

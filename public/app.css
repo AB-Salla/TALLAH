@@ -25446,7 +25446,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .s-comments-item {
   margin-bottom: 8px;
   display: block;
-  border: 1px solid #48484a;
+  border: none;
   padding: 16px;
   border-radius: 8px;
 }
@@ -25478,7 +25478,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-comments-item-content {
   font-weight: 400;
-  color: var(--color-font);
+  color: #414042;
+  color: var(--color-primary);
 }
 .single .s-comments-item-avatar {
   display: none;
