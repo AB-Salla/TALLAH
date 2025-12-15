@@ -96,30 +96,81 @@
             "selected":false
         },
          {
-      "id": "offer_icon",
-      "type": "string",
-      "format": "icon",
-      "label": "اضف ايقونه للعرض",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "ظهور التفاصيل كاملة اسفل المعلومات الاضافية",
       "description": null,
-      "labelHTML": null,
-      "icon": "sicon-user-circle",
-      "value": "sicon-alarm",
-      "required": false
+      "id": "read_more_after_tap",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
     },
     {
-      "id": "offer_text",
-      "type": "string",
-      "format": "text",
-      "label": "اضافة نص للعرض",
+      "id": "product_features",
+      "type": "collection",
+      "format": "collection",
+      "label": "مميزات الكتجر",
       "description": null,
       "labelHTML": null,
-      "placeholder": "Placeholder text ..",
-      "icon": "sicon-format-text-alt",
-      "value": "اسرع ينتهي العرض خلال",
-      "multilanguage": true,
-      "required": false,
-      "minLength": "4",
-      "maxLength": 30
+      "item_label": null,
+      "icon": "sicon-list-add",
+      "fields": [
+        {
+          "id": "product_features.text",
+          "type": "string",
+          "format": "text",
+          "label": "الوصف",
+          "description": null,
+          "labelHTML": null,
+          "placeholder": "Placeholder text ..",
+          "icon": "sicon-format-text-alt",
+          "value": {
+            "ar": "منتج اصلي 100%",
+            "en": "100% Original Product"
+          },
+          "multilanguage": false,
+          "required": false,
+          "minLength": 2,
+          "maxLength": 60
+        },
+        {
+          "id": "product_features.icon",
+          "type": "string",
+          "format": "icon",
+          "label": "ايقونه",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-user-circle",
+          "value": "sicon-store",
+          "required": false
+        }
+      ],
+      "value": [
+        {
+          "product_features.text": {
+            "ar": "منتج اصلي 100%",
+            "en": "100% Original Product"
+          },
+          "product_features.icon": "sicon-store"
+        },
+        {
+          "product_features.text": {
+            "ar": "توصيل سريع",
+            "en": "Fast Delivery"
+          },
+          "product_features.icon": "sicon-shipping-fast"
+        },
+        {
+          "product_features.text": {
+            "ar": "خدمة عملاء مميزة",
+            "en": "Excellent Customer Service"
+          },
+          "product_features.icon": "sicon-headset"
+        }
+      ],
+      "minLength": 1,
+      "maxLength": "3"
     },
         {
             "type": "static",

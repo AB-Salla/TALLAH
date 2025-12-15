@@ -282,7 +282,7 @@
 				</div>
 				
 				{# sale & countdown #}
-				{% if product.is_on_sale %}
+				{# {% if product.is_on_sale %}
 					{% if product.sale_end %}
 						<div class="sale_end flex items-center {{ product.sale_end ? "justify-between" : "justify-center" }} border border-font-color	 mt-4  px-4 ">
 								<div class="flex items-center gap-2 text-font-color">
@@ -292,7 +292,7 @@
 									</p>
 								</div>
 								
-								{# countdown #}
+								{# countdown 
 								<div id="countdown" class="countdown-container pt-3 pb-[7px]" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
 									<salla-count-down
 									style="font-size: 24px;"
@@ -306,7 +306,7 @@
 							</div>
 						</div>
 					{% endif %}
-				{% endif %}
+				{% endif %} #}
 
 				{# feature #}
 				<div class="feature flex items-start justify-between gap-[18px] flex-col pt-3 lg:pt-8">
@@ -446,6 +446,18 @@
                     <div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
+					<div class="bg-[#F6F6F6] py-3">
+					<div class="flex justify-center items-center gap-3 flex-wrap">
+						{% for i in theme.settings.get('product_features') %}
+							<div class="flex items-center gap-2">
+								<span class="">
+									<i class="{{ i.icon }}"></i>
+								</span>
+								<span>{{ i.text }}</span>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
 				</section>
 
 				{% if product.is_giftable %}
