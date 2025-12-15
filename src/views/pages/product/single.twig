@@ -446,18 +446,63 @@
                     <div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
-					<div class="bg-[#F6F6F6] py-3">
-					<div class="flex justify-center items-center gap-3 flex-wrap">
-						{% for i in theme.settings.get('product_features') %}
-							<div class="flex items-center gap-2">
-								<span class="">
-									<i class="{{ i.icon }}"></i>
-								</span>
-								<span>{{ i.text }}</span>
-							</div>
-						{% endfor %}
-					</div>
-				</div>
+					 {% if theme.settings.get('features_switch') %}
+            {% if product.type == "booking" %}
+                <section class=" py-6 md:pt-14 md:pb-20">
+                    <div class="max-w-[766px] ">
+                        <div>
+                            <h1  class="main__title  text-[16px] leading-[140%] font-bold text-font-light dark:text-font-dark mb-6">
+                                {{ theme.settings.get('rh_features_mainTitle') }}
+                            </h1>
+
+                        </div>
+
+                        <div class="grid grid-cols-2 md:flex flex-wrap justify-between gap-8">
+                            {% for item in theme.settings.get('rh_features_store_pros') %}
+                                {# احسب عدد الحروف في النص #}
+                                {% set title = item.block_title.ar %}
+                                {% set is_long = title|length > 20 %}
+                                <div class="text-start gap-4 flex items-center w-auto {{ is_long ? 'col-span-2' : '' }}">
+                                <span class="flex items-center justify-center w-6 h-6">
+                                    {% if item.rh_features_active_select_icons == "image_services" %}
+                                    <img src="{{ item.add_image }}"
+                                        alt="{{ item.block_title.ar }}"
+                                        class="w-full h-full object-contain">
+                                    {% elseif item.rh_features_active_select_icons == "salla_icon" %}
+                                    <i class="{{ item.icon_proudct }} text-primary text-4xl leading-none features__icon"></i>
+                                    {% elseif item.rh_features_active_select_icons == "animated_icon" %}
+                                    <lord-icon 
+                                        id="my-icon"
+                                        src="https://cdn.lordicon.com/{{ item.anmait_icon }}.json"
+                                        trigger="loop"
+                                        style="width:24px;height:24px">
+                                    </lord-icon>
+                              
+
+                                    <script>
+                                    // Wait for the element to load
+                                    document.addEventListener("DOMContentLoaded", () => {
+                                        const icon = document.getElementById("my-icon");
+                                        const color = getComputedStyle(document.documentElement)
+                                        .getPropertyValue("--color-primary")
+                                        .trim();
+                                        // Apply dynamic color using JS
+                                        icon.setAttribute("colors", `primary:${color},secondary:${color}`);
+                                    });
+                                    </script>
+                                    {% endif %}
+                                </span>
+
+                                <h3 class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
+                                    {{ title }}
+                                </h3>
+                                </div>
+                                {% endfor %}
+                            </div>
+
+                </section>
+            {% endif %}
+        {% endif %}
 				</section>
 
 				{% if product.is_giftable %}
