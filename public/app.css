@@ -25163,7 +25163,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .swiper-autoheight .swiper-wrapper,
 .single salla-slider.details-slider .s-slider-container {
-  height: 593px !important;
+  height: 674px !important;
 }
 .single .swiper-autoheight .swiper-wrapper,
 .single salla-slider.details-slider .s-slider-container {
@@ -25239,7 +25239,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 72px !important;
   }
   .single .s-slider-thumbs {
-    height: 593px;
+    height: 674px;
   }
   .single .s-slider-horizontal .s-slider-thumbs {
     margin-top: 0 !important;
