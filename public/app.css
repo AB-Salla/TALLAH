@@ -25055,7 +25055,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: clamp(0.625rem, 0.5485rem + 0.3265vw, 0.875rem);
   line-height: 100%;
   font-weight: 400;
-  color: var(--color-);
+  color: var(--color-font);
 }
 .single .comment-form salla-rating-stars {
   padding-bottom: 10px !important;
@@ -25132,7 +25132,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   height: 100%;
 }
 .single .salla-slider.details-slider .swiper-slide {
-  height: 571px !important;
+  height: 674px !important;
 }
 .single .swiper-slide {
   height: 100%;
