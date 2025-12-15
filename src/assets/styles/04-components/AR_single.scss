@@ -360,7 +360,7 @@
       padding-inline: 20px;
       padding-block: 10px;
       background-color: var(--color-primary);
-      color: var(--color-font-black);
+      color: var(--color-font);
       border-radius: 10px;
       font-size: 18px;
       font-weight: 500;
@@ -408,7 +408,7 @@
           font-size: clamp(0.625rem, 0.5485rem + 0.3265vw, 0.875rem);
           line-height: 100%;
           font-weight: 400;
-          color: var(--color-font-secondary);
+          color: var(--color-background);
         }
       }
 
@@ -420,7 +420,7 @@
   .comment-form {
     salla-rating-stars {
       padding-block: 16px;
-      background-color: var(--color-font-black);
+      background-color: var(--color-background);
       width: 100%;
       display: block;
       border-radius: 10px;
@@ -486,7 +486,7 @@
     display: block;
     border: 1px solid #48484a;
     padding: 16px;
-    border-radius: 0;
+    border-radius: 8px;
   }
   .s-comments-item-time {
     display: none;
@@ -515,7 +515,7 @@
   .s-comments-item-content {
     font-weight: 400;
     font-size: 16px !important;
-    color: #dddddd;
+    color: var(--color-font);
   }
 
   .s-comments-item-avatar {
