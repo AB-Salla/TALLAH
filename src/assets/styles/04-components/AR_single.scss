@@ -1,4 +1,121 @@
 .single {
+  .comments {
+    salla-comment-form {
+      display: none;
+    }
+    .s-comments-count-label {
+      color: var(--color-primary);
+    }
+    .s-comments-title {
+      width: fit-content;
+      padding-inline: 20px;
+      padding-block: 10px;
+      background-color: var(--color-primary);
+      color: var(--color-font-black);
+      border-radius: 10px;
+      font-size: 18px;
+      font-weight: 500;
+    }
+    // ===========================
+    // Salla Comment Item Structure (Empty Skeleton)
+    // ===========================
+
+    .s-comments-item {
+
+      padding-bottom: 3rem;
+      // Wrapper for the whole comment card
+      &-wrapper {
+      }
+
+      // Inner flex container
+      &-inner {
+      }
+
+      // Avatar section
+      &-avatar {
+        &-img {
+        }
+      }
+
+      // User info + timestamp wrapper
+      &-user-wrapper {
+      }
+
+      &-user-info {
+        &-name {
+          font-size: 16px;
+        }
+      }
+
+      // Timestamp area
+      &-timestamp {
+        .s-comments-item-time {
+        }
+      }
+
+      // Comment content (message text)
+      &-content {
+        p {
+          font-size: clamp(0.625rem, 0.5485rem + 0.3265vw, 0.875rem);
+          line-height: 100%;
+          font-weight: 400;
+          color: var(--color-font-secondary);
+        }
+      }
+
+      // Animation class
+      &.animated {
+      }
+    }
+  }
+  .comment-form {
+    salla-rating-stars {
+      padding-block: 16px;
+      background-color: var(--color-font-black);
+      width: 100%;
+      display: block;
+      border-radius: 10px;
+      text-align: center;
+      padding-bottom: 10px !important;
+      @media (min-width: 768px) {
+        margin-top: 50px;
+        margin-bottom: 0px !important;
+      }
+      margin-top: 20px;
+      margin-bottom: 0px !important;
+    }
+    .s-rating-stars-wrapper {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap; /* allows stars and text to break lines */
+      align-items: center;
+      gap: 0.25rem; /* small space between stars */
+    }
+
+    .s-rating-stars-reviews {
+      flex-basis: 100%; /* forces it to the next line */
+      display: block; /* ensure it’s a full-width line */
+      margin-top: 0.25rem; /* optional spacing from stars */
+    }
+    .s-comment-form-action salla-button {
+      flex-basis: 100%;
+      button {
+        width: 100%;
+        height: 56px;
+        border-radius: 10px;
+      }
+    }
+    .s-comment-form-content textarea {
+      border: 1px solid #acbabf80;
+      border-radius: 0;
+    }
+  }
+  .s-comments-product {
+    background-color: var(--color-background-light);
+    margin-bottom: 0;
+    padding-block: 0;
+  }
+
     .s-payments-list-item{
         background-color: transparent;
         width: 4rem;
@@ -348,128 +465,6 @@
     color: var(--color-font);
   }
 
-  .comments {
-    salla-comment-form {
-      display: none;
-    }
-    .s-comments-count-label {
-      color: var(--color-primary);
-    }
-    .s-comments-title {
-      width: fit-content;
-      padding-inline: 20px;
-      padding-block: 10px;
-      background-color: var(--color-primary);
-      color: var(--color-font);
-      border-radius: 10px;
-      font-size: 18px;
-      font-weight: 500;
-    }
-    // ===========================
-    // Salla Comment Item Structure (Empty Skeleton)
-    // ===========================
-
-    .s-comments-item {
-
-      padding-bottom: 3rem;
-      // Wrapper for the whole comment card
-      &-wrapper {
-      }
-
-      // Inner flex container
-      &-inner {
-      }
-
-      // Avatar section
-      &-avatar {
-        &-img {
-        }
-      }
-
-      // User info + timestamp wrapper
-      &-user-wrapper {
-      }
-
-      &-user-info {
-        &-name {
-          font-size: 16px;
-        }
-      }
-
-      // Timestamp area
-      &-timestamp {
-        .s-comments-item-time {
-        }
-      }
-
-      // Comment content (message text)
-      &-content {
-        p {
-          font-size: clamp(0.625rem, 0.5485rem + 0.3265vw, 0.875rem);
-          line-height: 100%;
-          font-weight: 400;
-          color: var(--color-background);
-        }
-      }
-
-      // Animation class
-      &.animated {
-      }
-    }
-  }
-  .comment-form {
-    salla-rating-stars {
-      padding-block: 16px;
-      background-color: var(--color-background);
-      width: 100%;
-      display: block;
-      border-radius: 10px;
-      text-align: center;
-      padding-bottom: 10px !important;
-      @media (min-width: 768px) {
-        margin-top: 50px;
-        margin-bottom: 0px !important;
-      }
-      margin-top: 20px;
-      margin-bottom: 0px !important;
-    }
-    .s-rating-stars-wrapper {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap; /* allows stars and text to break lines */
-      align-items: center;
-      gap: 0.25rem; /* small space between stars */
-    }
-
-    .s-rating-stars-reviews {
-      flex-basis: 100%; /* forces it to the next line */
-      display: block; /* ensure it’s a full-width line */
-      margin-top: 0.25rem; /* optional spacing from stars */
-    }
-    .s-comment-form-action salla-button {
-      flex-basis: 100%;
-      button {
-        width: 100%;
-        height: 56px;
-        border-radius: 10px;
-      }
-    }
-    .s-comment-form-content textarea {
-      border: 1px solid #acbabf80;
-      border-radius: 0;
-    }
-  }
-  .s-comments-product {
-    background-color: var(--color-background-light);
-    margin-bottom: 0;
-    padding-block: 0;
-  }
-  .s-form-control,
-  .s-infinite-scroll-btn {
-    background-color: transparent;
-    border-radius: 0;
-    color: var(--color-font);
-  }
   .s-form-control:focus {
     border-color: var(--color-primary);
   }
@@ -477,91 +472,18 @@
     color: var(--color-font);
     background-color: red;
   }
-  .s-comment-form-input:focus::placeholder {
-    color: transparent; /* hides placeholder on click */
-    transition: all 0.1s;
-  }
-  .s-comments-item {
-    margin-bottom: 8px;
-    display: block;
-    border: none;
-    padding: 16px;
-    border-radius: 8px;
-  }
-  .s-comments-item-time {
-    display: none;
-  }
-  .s-comments-item-timestamp {
-    font-size: 20px;
-    font-weight: 300;
-    color: var(--color-font);
-  }
 
-  .s-comments-item-user-info-name {
-    font-size: 20px;
-    font-weight: 400;
-    color: var(--color-font);
-    margin-bottom: 0px;
-  }
-  .s-comments-item-user-wrapper {
-    margin-bottom: 16px;
-  }
-  .s-comments-item-inner {
-    margin: 0;
-  }
-  .s-comments-flex-1 {
-    margin: 0 !important;
-  }
-  .s-comments-item-content {
-    font-weight: 400;
-    font-size: 16px !important;
-    color: var(--color-primary);
-  }
 
-  .s-comments-item-avatar {
-    display: none;
-  }
-
-  .s-comments-title {
-    font-size: 28px;
-    font-weight: 500;
-    color: var(--color-font);
-    list-style: 1;
-  }
-  @media (min-width: 1024px) {
-    .s-comments-item {
-      padding: 24px;
-      margin-bottom: 20px;
-    }
-    textarea.s-comment-form-input {
-      padding-block: 22px;
-      padding-inline: 18px;
-    }
-  }
   @media (max-width: 1024px) {
-    .s-infinite-scroll-btn {
-      width: 100%;
-    }
-    .s-comments-title {
-      font-size: 22px;
-    }
 
-    .s-comments-count-label {
-      font-size: 20px;
-    }
-    .s-comments-item-user-info-name {
-      font-size: 20px;
-    }
-    .s-comments-item-content {
-      font-size: 12.83px;
-    }
+
+
     .s-add-product-button-main:not(.w-full) > salla-button {
       width: 100% !important;
     }
     .s-add-product-button-main .s-add-product-button-mini-checkout {
       width: 100% !important;
       flex-direction: column;
-      --color-primary: #ffffff;
     }
     .s-add-product-button-main {
       flex-direction: column !important;
@@ -574,10 +496,6 @@
     }
     .slide--one-fourth {
       max-width: unset !important;
-    }
-    .s-comment-form-action salla-button button,
-    .s-comment-form-action salla-button button:hover {
-      width: 100%;
     }
   }
 
@@ -597,10 +515,6 @@
   }
   .form-label {
     color: var(--color-font);
-  }
-
-  .s-add-product-button-mini-checkout {
-    --color-primary: #ffffff;
   }
 
   @media (max-width: 1024px) {
@@ -688,9 +602,6 @@
   }
   .swiper {
     margin-left: 0 !important;
-  }
-  .s-comments-filter-wrapper {
-    display: none;
   }
   .main-content {
     .s-button-wrap svg {
