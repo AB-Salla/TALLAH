@@ -540,8 +540,24 @@
 
 	<salla-offer></salla-offer>
 	{# Comments Area #}
-    {% if store.settings.rating.show_on_product %}
+{% if store.settings.rating.show_on_product %}
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 container single">
+    <div class="md:col-span-2 order-2 md:order-1 comments">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
+    </div>
+     <div class="col-span-1 order-1 md:order-2 comment-form">
+                     <salla-rating-stars
+                      value="{{ product.rating.stars ?? 0 }}"
+                      reviews="{{ product.rating.count ?? 0 }}">
+                      </salla-rating-stars>
+                      {% if product.rating.count == 0 %}
+                      <div class="text-center mb">({{ trans('pages.product.no_rate') }})</div>
+                      {% endif %}
+                      <div class="mt-4 md:mt-5">
+                          <salla-comment-form></salla-comment-form>
+                    </div>
+                 </div>
+    </div>
     {% endif %}
 
 	{# Similar Products Area #}
