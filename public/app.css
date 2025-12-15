@@ -26205,6 +26205,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:pt-14 {
         padding-top: 3.5rem;
     }
+    .md\:text-center {
+        text-align: center;
+    }
     .md\:text-\[16px\] {
         font-size: 16px;
     }
