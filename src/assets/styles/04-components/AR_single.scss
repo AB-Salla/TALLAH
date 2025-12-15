@@ -11,7 +11,7 @@
       padding-inline: 20px;
       padding-block: 10px;
       background-color: var(--color-primary);
-      color: var(--color-font-black);
+      color: var(--color-font);
       border-radius: 10px;
       font-size: 18px;
       font-weight: 500;
@@ -59,7 +59,7 @@
           font-size: clamp(0.625rem, 0.5485rem + 0.3265vw, 0.875rem);
           line-height: 100%;
           font-weight: 400;
-          color: var(--color-font-secondary);
+          color: var(--color-background);
         }
       }
 
@@ -71,7 +71,7 @@
   .comment-form {
     salla-rating-stars {
       padding-block: 16px;
-      background-color: var(--color-font-black);
+      background-color: var(--color-font);
       width: 100%;
       display: block;
       border-radius: 10px;
@@ -111,7 +111,7 @@
     }
   }
   .s-comments-product {
-    background-color: var(--color-background-light);
+    background-color: var(--color-background);
     margin-bottom: 0;
     padding-block: 0;
   }
