@@ -25024,6 +25024,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* Hide empty icon when added */
   /* Hide filled icon when not added */
 }
+.single .s-rating-stars-selected {
+  fill: #806F40 !important;
+}
 .single .comments salla-comment-form {
   display: none;
 }
