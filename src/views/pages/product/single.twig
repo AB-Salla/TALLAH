@@ -447,17 +447,17 @@
                         <salla-payments></salla-payments>
                     </div>
 					 {% if theme.settings.get('features_switch') %}
-                <section class=" py-6 md:pt-14 md:pb-20">
+                <section class=" py-2">
                     <div class="">
                        
 						{% set is_ar = request.locale == 'ar' %}
-                        <div class="grid grid-cols-1 md:grid-cols-3 justify-center  items-center gap-8">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-start sm:justify-center  items-start sm:items-center gap-8">
                             {% for item in theme.settings.get('rh_features_store_pros') %}
                                 {# احسب عدد الحروف في النص #}
                                 {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
     					{% set description = is_ar ? item.description_feature.ar : item.description_feature.en %}
                                 {% set is_long = title|length > 20 %}
-                                <div class="text-start md:text-center gap-4 flex  justify-center items-center  flex-col  w-auto ">
+                                <div class="text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col  w-auto ">
                                 <span class="flex items-center justify-center w-6 h-6">
                                     {% if item.rh_features_active_select_icons == "image_services" %}
                                     <img src="{{ item.add_image }}"

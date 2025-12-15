@@ -1352,9 +1352,6 @@ select {
 .max-w-\[500px\] {
     max-width: 500px;
 }
-.max-w-\[766px\] {
-    max-width: 766px;
-}
 .max-w-full {
     max-width: 100%;
 }
@@ -2010,9 +2007,6 @@ select {
 .text-\[14px\] {
     font-size: 14px;
 }
-.text-\[16px\] {
-    font-size: 16px;
-}
 .text-\[clamp\(\.8rem\2c 0\.9282rem\+0\.3218vw\2c 1rem\)\] {
     font-size: clamp(.8rem,0.9282rem + 0.3218vw,1rem);
 }
@@ -2062,6 +2056,9 @@ select {
 .text-xs {
     font-size: 0.75rem;
     line-height: 1rem;
+}
+.text-\[13px\] {
+    font-size: 13px;
 }
 .font-bold {
     font-weight: 700;
@@ -26023,8 +26020,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:grid-cols-3 {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+    .sm\:flex-col {
+        flex-direction: column;
+    }
     .sm\:items-start {
         align-items: flex-start;
+    }
+    .sm\:items-center {
+        align-items: center;
+    }
+    .sm\:justify-center {
+        justify-content: center;
     }
     .sm\:gap-4 {
         gap: 1rem;
@@ -26057,6 +26063,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .sm\:pt-20 {
         padding-top: 5rem;
+    }
+    .sm\:text-center {
+        text-align: center;
     }
 }
 @media (min-width: 768px) {
@@ -26092,6 +26101,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:table-row {
         display: table-row;
+    }
+    .md\:grid {
+        display: grid;
     }
     .md\:h-20 {
         height: 5rem;
@@ -26138,11 +26150,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:flex-row {
         flex-direction: row;
     }
+    .md\:flex-col {
+        flex-direction: column;
+    }
     .md\:items-start {
         align-items: flex-start;
     }
     .md\:items-center {
         align-items: center;
+    }
+    .md\:justify-center {
+        justify-content: center;
     }
     .md\:gap-2 {
         gap: 0.5rem;
