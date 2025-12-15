@@ -129,7 +129,7 @@
             "ar": "منتج اصلي 100%",
             "en": "100% Original Product"
           },
-          "multilanguage": false,
+          "multilanguage": true,
           "required": false,
           "minLength": 2,
           "maxLength": 60
@@ -1296,7 +1296,7 @@
                             "placeholder": "اسم العميل",
                             "icon": "sicon-format-text-alt",
                             "value": null,
-                            "multilanguage": false,
+                            "multilanguage": true,
                             "required": false
                         },
                         {
