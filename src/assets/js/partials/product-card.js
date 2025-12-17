@@ -608,7 +608,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
     }
    
    
- // ==========================================
+  // ==========================================
 // اختيار اللون والمقاس
 let selectedColor = null;
 let selectedSize = null;
@@ -640,26 +640,18 @@ if (addBtn) {
       return;
     }
 
-    // تصحيح تنسيق الخيارات حسب Salla API
-    const optionsObj = {};
-    optionsObj[selectedColor.id] = selectedColor.valueId || selectedColor.id;
-    optionsObj[selectedSize.id] = selectedSize.valueId || selectedSize.id;
-
     salla.cart.addItem({
       id: this.product.id,
       quantity: 1,
-      options: optionsObj
+      options: [
+        { id: selectedColor.id, value: selectedColor.name },
+        { id: selectedSize.id, value: selectedSize.name }
+      ]
     }).then(res => {
-      if (res.success) {
-        alert("تمت إضافة المنتج للسلة!");
-      } else {
-        console.error(res.error);
-        alert("حدث خطأ أثناء إضافة المنتج للسلة.");
-      }
+      if (res.success) alert("تمت إضافة المنتج للسلة!");
     });
   });
 }
-
   }
 }
 
