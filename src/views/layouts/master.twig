@@ -71,7 +71,10 @@
         window.imageZoom = "{{theme.settings.get('imageZoom')}}"
         window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
     </script>
-    
+         <em><script data-cfasync="false">
+        window.show_singleOption = "{{theme.settings.get('show_singleOption', true)}}"
+        window.show_multipleOption = "{{theme.settings.get('show_multipleOption', true)}}"
+        </script></em>
     {% hook 'head:start' %}
     {% hook head %}
     {% block styles %}{% endblock %}

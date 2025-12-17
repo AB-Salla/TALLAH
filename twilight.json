@@ -56,6 +56,96 @@
             "required": true
         },
         {
+      "type": "static",
+      "format": "title",
+      "id": "static-label2",
+      "value": "<div style='background-color: #333;color: #fff;padding: 10px 15px;font-size: 18px;font-weight: bold;margin: 30px -20px 20px;'>خيارات عامة</div>",
+      "variant": "h6"
+  },
+  {
+      "type": "static",
+      "format": "description",
+      "id": "on_singleOption_images",
+      "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/dJ6zRfpNv1n1MbIAJz7TIuRGI5ZzfZGwH9CeVuTL.jpg'></div>",
+      "conditions": [
+          {
+              "id": "show_singleOption",
+              "operation": "=",
+              "value": true
+          }
+      ]
+  },
+  {
+      "type": "static",
+      "format": "description",
+      "id": "off_singleOption_images",
+      "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/XotK3z69Qk1y6Prz7ip6V27c5MYmujMR7ydLFze8.jpg'></div>",
+      "conditions": [
+          {
+              "id": "show_singleOption",
+              "operation": "=",
+              "value": false
+          }
+      ]
+  },
+  {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "قيم حقل خيارات (اختيار واحد)",
+      "description": "على شكل قائمة منسدلة أو أزرار اختيار",
+      "id": "show_singleOption",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
+  },
+  {
+      "type": "static",
+      "id": "static-line-32",
+      "format": "line"
+  },
+  {
+      "type": "static",
+      "format": "description",
+      "id": "on_multipleOption_images",
+      "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/16ZpLArHfQ2ybP65JKgOjxF9QNL7ZKxddDPDwuG0.jpg'></div>",
+      "conditions": [
+          {
+              "id": "show_multipleOption",
+              "operation": "=",
+              "value": true
+          }
+      ]
+  },
+  {
+      "type": "static",
+      "format": "description",
+      "id": "off_multipleOption_images",
+      "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/qc748qtDkUHDgbWj6QakRx0JMv8FzsZ7c0ZT5SJl.jpg'></div>",
+      "conditions": [
+          {
+              "id": "show_multipleOption",
+              "operation": "=",
+              "value": false
+          }
+      ]
+  },
+  {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "قيم حقل خيارات (عدة اختيارات)",
+      "description": "خيار من متعدد على شكل صندوق اختيار، او أزرار اختيار",
+      "id": "show_multipleOption",
+      "format": "switch",
+      "required": false,
+      "value": false,
+      "selected": false
+  },
+
+
+
+  
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "وضع عمودي للمنتجات في مربع المنتجات الثابتة في الصفحة الرئيسية",

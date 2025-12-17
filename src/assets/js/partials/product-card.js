@@ -495,14 +495,8 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
                 ? `
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
-      <salla-add-product-button
-      shape="icon"
-        fill="outline"
-        product-id="${this.product.id}"
-        product-status="${this.product.status}"
-        product-type="${this.product.type}"
-      >
-        ${
+      <button class="salla-add-product-button">
+       ${
           this.product.status == "sale"
             ? `<i class="text-base sicon-${
                 this.product.type == "booking" ? "calendar-time" : "cart"
@@ -510,7 +504,8 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
             : `<i class="text-base sicon-cart-cancel"
               }"></i>`
         }
-      </salla-add-product-button>
+      </button>
+     
     </div>
   `
                 : `
@@ -607,7 +602,91 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
       this.initCircleBar();
     }
    
-   
+// ==========================================
+// المتغيرات لتخزين الخيارات المختارة
+let selectedColor = null;
+let selectedSize = null;
+let selectedThumbnail = null; // الخيار المخفي (مثل thumbnail)
+
+// ==========================================
+// إعداد الخيار المخفي (thumbnail)
+if (this.options && this.options.length > 0) {
+  const thumbnailOption = this.options.find(o => o.type === "thumbnail");
+  if (thumbnailOption && thumbnailOption.details.length > 0) {
+    selectedThumbnail = thumbnailOption.details[0]; // ناخد أول قيمة تلقائيًا
+  }
+}
+
+// ==========================================
+// اختيار اللون (إذا كان موجود)
+if (this.colors && this.colors.length > 0) {
+  this.querySelectorAll(".colors span").forEach(el => {
+    el.addEventListener("click", () => {
+      selectedColor = this.colors.find(c => c.id == el.dataset.optionId);
+
+      // إزالة التحديد السابق
+      this.querySelectorAll(".colors span").forEach(s => s.classList.remove("ring-2", "ring-blue-500"));
+
+      // تمييز العنصر المختار
+      el.classList.add("ring-2", "ring-blue-500");
+    });
+  });
+}
+
+// ==========================================
+// اختيار المقاس (إذا كان موجود)
+if (this.sizes && this.sizes.length > 0) {
+  this.querySelectorAll(".sizes button").forEach(el => {
+    el.addEventListener("click", () => {
+      selectedSize = this.sizes.find(s => s.id == el.dataset.optionId);
+
+      // إزالة التحديد السابق
+      this.querySelectorAll(".sizes button").forEach(b => b.classList.remove("bg-blue-500", "text-white"));
+
+      // تمييز العنصر المختار
+      el.classList.add("bg-blue-500", "text-white");
+    });
+  });
+}
+
+// ==========================================
+// زر "أضف للسلة"
+const addBtn = this.querySelector(".salla-add-product-button");
+if (addBtn) {
+  addBtn.addEventListener("click", () => {
+    // التحقق من وجود اللون إذا كان هناك خيارات لون
+    if (this.colors && this.colors.length > 0 && !selectedColor) {
+      alert("من فضلك اختر اللون");
+      return;
+    }
+
+    // التحقق من وجود المقاس إذا كان هناك خيارات مقاس
+    if (this.sizes && this.sizes.length > 0 && !selectedSize) {
+      alert("من فضلك اختر المقاس");
+      return;
+    }
+
+    // تجهيز الأوبشنز لإرسالها
+    const options = {};
+    if (selectedColor) options[selectedColor.option_id] = selectedColor.id;
+    if (selectedSize) options[selectedSize.option_id] = selectedSize.id;
+    if (selectedThumbnail) options[selectedThumbnail.option_id] = selectedThumbnail.id; // نضيف الخيار المخفي تلقائيًا
+
+    // إضافة المنتج للسلة
+    salla.cart.addItem({
+      id: this.product.id,
+      quantity: 1,
+      options
+    }).then(res => {
+      if (res.success) {
+        alert("تمت إضافة المنتج للسلة!");
+      } else {
+        console.error(res.error);
+      }
+    });
+  });
+}
+
   }
 }
 
