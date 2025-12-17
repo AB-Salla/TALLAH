@@ -401,7 +401,25 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
           <div class="s-product-card-content-options">
-          
+           <div class="colors flex gap-2 mb-3">
+    ${this.colors.map(color => `
+      <button 
+        class="w-6 h-6 rounded-full border"
+        style="background:${color.color}"
+        title="${color.name}"
+        data-option-id="${color.id}">
+      </button>
+    `).join("")}
+      <div class="sizes flex gap-2">
+    ${this.sizes.map(size => `
+      <button 
+        class="px-3 py-1 border rounded"
+        data-option-id="${size.id}">
+        ${size.name}
+      </button>
+    `).join("")}
+  </div>
+
           </div>
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
               <a class="!leading-[24px]" href="${this.product?.url}">${
