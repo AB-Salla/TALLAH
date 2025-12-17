@@ -63,8 +63,8 @@ class ProductCard extends HTMLElement {
   }
 
   async getProductImage(productId) {
-  const response = await salla.product.getDetails(productId, ["images"]);
-console.log(response);
+  const response = await salla.product.getDetails(productId, ["images","options"]);
+console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
 
   this.images = response?.data?.images || [];
   this.hasSecondImage = this.images.length > 1;
