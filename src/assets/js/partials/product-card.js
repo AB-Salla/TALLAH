@@ -18,11 +18,12 @@ class ProductCard extends HTMLElement {
     }
   }
 
-  onReady() {
+ async onReady() {
     this.fitImageHeight = salla.config.get("store.settings.product.fit_type");
     this.placeholder = salla.url.asset(
       salla.config.get("theme.settings.placeholder")
     );
+    await this.getProductImage(this.product.id);
     this.getProps();
 
     this.source = salla.config.get("page.slug");
@@ -61,6 +62,22 @@ class ProductCard extends HTMLElement {
     return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   }
 
+  async getProductImage(productId) {
+  const response = await salla.product.getDetails(productId, ["images"]);
+console.log(response);
+
+  this.images = response?.data?.images || [];
+  this.hasSecondImage = this.images.length > 1;
+
+  this.mainImage =
+    this.product?.image?.url || this.product?.thumbnail;
+
+  this.secondImage = this.hasSecondImage
+    ? this.images[1]?.url
+    : null;
+    console.log(this.secondImage);
+    
+}
   getProductBadge() {
     if (this.product?.preorder?.label) {
       return `<div class="s-product-card-promotion-title">${this.product.preorder.label}</div>`;
@@ -216,27 +233,35 @@ class ProductCard extends HTMLElement {
         <div class="${
           !this.fullImage ? "s-product-card-image" : "s-product-card-image-full"
         }">
-          <a href="${this.product?.url}" aria-label="${this.escapeHTML(
-      this.product?.image?.alt || this.product.name
-    )}">
-           <img 
-              class="s-product-card-image-${
-                salla.url.is_placeholder(this.product?.image?.url)
-                  ? "contain"
-                  : this.fitImageHeight
-                  ? this.fitImageHeight
-                  : "cover"
-              } lazy"
+         <a href="${this.product?.url}" class="product-flip-wrapper">
+  <div class="product-flip-inner ${this.hasSecondImage ? 'has-flip' : ''}">
+
+            <img
+              class=" product-flip-face !absolute front s-product-card-image-${salla.url.is_placeholder(this.mainImage)
+                ? 'contain'
+                : this.fitImageHeight || 'cover'} lazy"
               src="${this.placeholder}"
-              alt="${this.escapeHTML(
-                this.product?.image?.alt || this.product.name
-              )}"
-              data-src="${
-                this.product?.image?.url || this.product?.thumbnail || ""
-              }"
+              alt="${this.product?.image?.alt || ''}"
+              data-src="${this.mainImage}"
             />
-            ${!this.fullImage && !this.minimal ? this.getProductBadge() : ""}
-          </a>
+
+            ${
+              this.hasSecondImage
+                ? `
+                <img
+                  class="product-flip-face !absolute back lazy"
+                  src="${this.placeholder}"
+                  alt="${this.product?.image?.alt || ''}"
+                  data-src="${this.secondImage}"
+                />
+                `
+                : ''
+            }
+
+          </div>
+
+          ${!this.fullImage && !this.minimal ? this.getProductBadge() : ''}
+        </a>
           ${
             this.fullImage
               ? `<a href="${this.product?.url}" aria-label=${this.product.name} class="s-product-card-overlay"></a>`
