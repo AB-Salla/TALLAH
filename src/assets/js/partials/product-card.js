@@ -18,11 +18,12 @@ class ProductCard extends HTMLElement {
     }
   }
 
-  onReady() {
+ async onReady() {
     this.fitImageHeight = salla.config.get("store.settings.product.fit_type");
     this.placeholder = salla.url.asset(
       salla.config.get("theme.settings.placeholder")
     );
+    await this.getProductImage(this.product.id);
     this.getProps();
 
     this.source = salla.config.get("page.slug");
@@ -60,6 +61,30 @@ class ProductCard extends HTMLElement {
     let d = new Date(date);
     return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   }
+
+  async getProductImage(productId) {
+  const response = await salla.product.getDetails(productId, ["images","options"]);
+console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
+
+  this.images = response?.data?.images || [];
+  this.hasSecondImage = this.images.length > 1;
+    this.options = response?.data?.options || [];
+  this.mainImage =
+    this.product?.image?.url || this.product?.thumbnail;
+
+  this.secondImage = this.hasSecondImage
+    ? this.images[1]?.url
+    : null;
+    console.log(this.secondImage);
+    // 🎨 colors
+  this.colors = this.options.find(opt => opt.type === "color")?.details || [];
+
+  // 📏 sizes
+  this.sizes = this.options.find(opt => opt.type === "single-option")?.details || [];
+
+  console.log("🤡🤡🤡🤡Colors:", this.colors);
+  console.log("🤡🤡🤡🤡Sizes:", this.sizes);
+}
 
   getProductBadge() {
     if (this.product?.preorder?.label) {
@@ -188,6 +213,16 @@ class ProductCard extends HTMLElement {
   }
 
   render() {
+      const MAX_VISIBLE = 3;
+
+  const colors = this.colors || [];
+  const sizes = this.sizes || [];
+
+  const visibleColors = colors.slice(0, MAX_VISIBLE);
+  const remainingColors = colors.length - MAX_VISIBLE;
+
+  const visibleSizes = sizes.slice(0, MAX_VISIBLE);
+  const remainingSizes = sizes.length - MAX_VISIBLE;
     this.classList.add("s-product-card-entry");
     this.setAttribute("id", this.product.id);
     !this.horizontal && !this.fullImage && !this.minimal
@@ -216,27 +251,35 @@ class ProductCard extends HTMLElement {
         <div class="${
           !this.fullImage ? "s-product-card-image" : "s-product-card-image-full"
         }">
-          <a href="${this.product?.url}" aria-label="${this.escapeHTML(
-      this.product?.image?.alt || this.product.name
-    )}">
-           <img 
-              class="s-product-card-image-${
-                salla.url.is_placeholder(this.product?.image?.url)
-                  ? "contain"
-                  : this.fitImageHeight
-                  ? this.fitImageHeight
-                  : "cover"
-              } lazy"
+         <a href="${this.product?.url}" class="product-flip-wrapper">
+  <div class="product-flip-inner ${this.hasSecondImage ? 'has-flip' : ''}">
+
+            <img
+              class=" product-flip-face !absolute front s-product-card-image-${salla.url.is_placeholder(this.mainImage)
+                ? 'contain'
+                : this.fitImageHeight || 'cover'} lazy"
               src="${this.placeholder}"
-              alt="${this.escapeHTML(
-                this.product?.image?.alt || this.product.name
-              )}"
-              data-src="${
-                this.product?.image?.url || this.product?.thumbnail || ""
-              }"
+              alt="${this.product?.image?.alt || ''}"
+              data-src="${this.mainImage}"
             />
-            ${!this.fullImage && !this.minimal ? this.getProductBadge() : ""}
-          </a>
+
+            ${
+              this.hasSecondImage
+                ? `
+                <img
+                  class="product-flip-face !absolute back lazy"
+                  src="${this.placeholder}"
+                  alt="${this.product?.image?.alt || ''}"
+                  data-src="${this.secondImage}"
+                />
+                `
+                : ''
+            }
+
+          </div>
+
+          ${!this.fullImage && !this.minimal ? this.getProductBadge() : ''}
+        </a>
           ${
             this.fullImage
               ? `<a href="${this.product?.url}" aria-label=${this.product.name} class="s-product-card-overlay"></a>`
@@ -368,6 +411,42 @@ class ProductCard extends HTMLElement {
           <div class="s-product-card-content-main ${
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
+          <div class="s-product-card-content-options flex flex-col mb-2">
+          <div class="colors flex gap-2 mb-3">
+  ${visibleColors.map(color => `
+    <span
+      class="w-6 h-6 rounded-full border cursor-pointer inline-block"
+      style="background-color:${color.color}"
+      title="${color.name}"
+      data-option-id="${color.id}">
+    </span>
+  `).join("")}
+
+  ${remainingColors > 0 ? `
+    <span class="w-6 h-6 flex items-center justify-center text-xs border rounded-full bg-gray-100 text-gray-700">
+      +${remainingColors}
+    </span>
+  ` : ""}
+</div>
+
+<div class="sizes flex gap-2">
+  ${visibleSizes.map(size => `
+    <button
+      class="px-3 py-1 border rounded text-sm"
+      data-option-id="${size.id}">
+      ${size.name}
+    </button>
+  `).join("")}
+
+  ${remainingSizes > 0 ? `
+    <span class="px-3 py-1 border rounded text-sm bg-gray-100 text-gray-700">
+      +${remainingSizes}
+    </span>
+  ` : ""}
+</div>
+
+
+          </div>
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
               <a class="!leading-[24px]" href="${this.product?.url}">${
       this.product?.name
