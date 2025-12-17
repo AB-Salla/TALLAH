@@ -165,38 +165,6 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
     // donating
     return salla.lang.get("pages.products.donation_exceed");
   }
-  renderProductOptions() {
-    console.log(this.product?.options,"👹👹👹👹👹👹 options 👹👹👹👹👹👹");
-  if (!this.product?.options?.length) return "";
-    
-  const prodOptions = document.createElement("salla-product-options");
-
-  let config = {};
-
-  if (window.show_singleOption) {
-    config["single-option"] = { type: "button" };
-  }
-
-  if (window.show_multipleOption) {
-    config["multiple-option"] = { type: "button" };
-  }
-
-  prodOptions.setAttribute("product-id", this.product.id);
-  prodOptions.options = this.product.options;
-  prodOptions.config = JSON.stringify(config);
-
-  return prodOptions;
-}
-waitForOptions() {
-  const check = () => {
-    if (this.product?.options?.length) {
-      this.render();
-    } else {
-      requestAnimationFrame(check);
-    }
-  };
-  check();
-}
 
   getProps() {
     /**
@@ -245,10 +213,6 @@ waitForOptions() {
   }
 
   render() {
-
-
-    this.waitForOptions();
-
       const MAX_VISIBLE = 3;
 
   const colors = this.colors || [];
@@ -448,6 +412,40 @@ waitForOptions() {
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
           <div class="s-product-card-content-options flex flex-col mb-2">
+          <div class="colors flex gap-2 mb-3">
+  ${visibleColors.map(color => `
+    <span
+      class="w-6 h-6 rounded-full border cursor-pointer inline-block"
+      style="background-color:${color.color}"
+      title="${color.name}"
+      data-option-id="${color.id}">
+    </span>
+  `).join("")}
+
+  ${remainingColors > 0 ? `
+    <span class="w-6 h-6 flex items-center justify-center text-xs border rounded-full bg-gray-100 text-gray-700">
+      +${remainingColors}
+    </span>
+  ` : ""}
+</div>
+
+<div class="sizes flex gap-2">
+  ${visibleSizes.map(size => `
+    <button
+      class="px-3 py-1 border rounded text-sm"
+      data-option-id="${size.id}">
+      ${size.name}
+    </button>
+  `).join("")}
+
+  ${remainingSizes > 0 ? `
+    <span class="px-3 py-1 border rounded text-sm bg-gray-100 text-gray-700">
+      +${remainingSizes}
+    </span>
+  ` : ""}
+</div>
+
+
           </div>
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
               <a class="!leading-[24px]" href="${this.product?.url}">${
@@ -593,14 +591,6 @@ waitForOptions() {
           }
         </div>
       `;
-        const optionsWrapper = this.querySelector(
-    ".s-product-card-content-options"
-  );
-
-  const optionsEl = this.renderProductOptions();
-  if (optionsEl) {
-    optionsWrapper.appendChild(optionsEl);
-  }
 
     this.querySelectorAll('[name="donating_amount"]').forEach((element) => {
       element.addEventListener("input", (e) => {
