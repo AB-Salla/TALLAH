@@ -495,14 +495,8 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
                 ? `
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
-      <salla-add-product-button
-      shape="icon"
-        fill="outline"
-        product-id="${this.product.id}"
-        product-status="${this.product.status}"
-        product-type="${this.product.type}"
-      >
-        ${
+      <button class="salla-add-product-button">
+       ${
           this.product.status == "sale"
             ? `<i class="text-base sicon-${
                 this.product.type == "booking" ? "calendar-time" : "cart"
@@ -510,7 +504,8 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
             : `<i class="text-base sicon-cart-cancel"
               }"></i>`
         }
-      </salla-add-product-button>
+      </button>
+     
     </div>
   `
                 : `
@@ -631,7 +626,7 @@ this.querySelectorAll(".sizes button").forEach(el => {
 });
 
 // ربط الزر "أضف للسلة" مع الخيارات المختارة
-const addBtn = this.querySelector("salla-add-product-button");
+const addBtn = this.querySelector(".salla-add-product-button");
 if (addBtn) {
   addBtn.addEventListener("click", () => {
     // التحقق من وجود اللون إذا كان هناك خيارات لون
