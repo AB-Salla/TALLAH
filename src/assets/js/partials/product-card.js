@@ -608,7 +608,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
     }
    
    
-  // ==========================================
+ // ==========================================
 // اختيار اللون والمقاس
 let selectedColor = null;
 let selectedSize = null;
@@ -616,7 +616,7 @@ let selectedSize = null;
 // اختيار اللون
 this.querySelectorAll(".colors span").forEach(el => {
   el.addEventListener("click", () => {
-    selectedColor = this.colors.find(c => c.id == el.dataset.optionId);
+    selectedColor = this.colors.find(c => c.id == el.dataset.optionId); // هنا c.id = id القيمة
     this.querySelectorAll(".colors span").forEach(s => s.classList.remove("ring-2", "ring-blue-500"));
     el.classList.add("ring-2", "ring-blue-500"); // تمييز اللون المختار
   });
@@ -635,25 +635,28 @@ this.querySelectorAll(".sizes button").forEach(el => {
 const addBtn = this.querySelector("salla-add-product-button");
 if (addBtn) {
   addBtn.addEventListener("click", () => {
-  if (!selectedColor || !selectedSize) {
-    alert("من فضلك اختر اللون والمقاس");
-    return;
-  }
-
-  salla.cart.addItem({
-    id: this.product.id,
-    quantity: 1,
-    options: {
-      [selectedColor.optionId]: selectedColor.valueId,
-      [selectedSize.optionId]: selectedSize.valueId
+    if (!selectedColor || !selectedSize) {
+      alert("من فضلك اختر اللون والمقاس");
+      return;
     }
-  }).then(res => {
-    if (res.success) alert("تمت إضافة المنتج للسلة!");
-    else console.error(res.error);
-  });
-});
 
+    salla.cart.addItem({
+      id: this.product.id,
+      quantity: 1,
+      options: {
+        [selectedColor.option_id]: selectedColor.id, // option_id هو id الخيار، و id هو id القيمة
+        [selectedSize.option_id]: selectedSize.id
+      }
+    }).then(res => {
+      if (res.success) {
+        alert("تمت إضافة المنتج للسلة!");
+      } else {
+        console.error(res.error);
+      }
+    });
+  });
 }
+
   }
 }
 
