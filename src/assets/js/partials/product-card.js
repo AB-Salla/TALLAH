@@ -608,7 +608,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
     }
    
    
-  // ==========================================
+ // ==========================================
 // اختيار اللون والمقاس
 let selectedColor = null;
 let selectedSize = null;
@@ -633,7 +633,6 @@ this.querySelectorAll(".sizes button").forEach(el => {
 
 // ربط الزر "أضف للسلة" مع الخيارات المختارة
 const addBtn = this.querySelector("salla-add-product-button");
-
 if (addBtn) {
   addBtn.addEventListener("click", () => {
     if (!selectedColor || !selectedSize) {
@@ -641,19 +640,21 @@ if (addBtn) {
       return;
     }
 
+    // تصحيح تنسيق الخيارات حسب Salla API
+    const optionsObj = {};
+    optionsObj[selectedColor.id] = selectedColor.valueId || selectedColor.id;
+    optionsObj[selectedSize.id] = selectedSize.valueId || selectedSize.id;
+
     salla.cart.addItem({
       id: this.product.id,
       quantity: 1,
-      options: {
-        [selectedColor.optionId]: selectedColor.id, // id الخاص بالقيمة
-        [selectedSize.optionId]: selectedSize.id
-      }
+      options: optionsObj
     }).then(res => {
       if (res.success) {
         alert("تمت إضافة المنتج للسلة!");
       } else {
-        console.error(res);
-        alert("حدث خطأ، لم يتم إضافة المنتج.");
+        console.error(res.error);
+        alert("حدث خطأ أثناء إضافة المنتج للسلة.");
       }
     });
   });
