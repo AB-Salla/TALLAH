@@ -2231,11 +2231,6 @@ select{
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
 }
-.text-red-600{
-    --tw-text-opacity: 1;
-    color: rgba(220, 38, 38, 1);
-    color: rgba(220, 38, 38, var(--tw-text-opacity, 1));
-}
 .underline{
     text-decoration-line: underline;
 }
@@ -2265,9 +2260,6 @@ select{
 }
 .opacity-\[70\%\]{
     opacity: 0.7;
-}
-.\!opacity-50{
-    opacity: 0.5 !important;
 }
 .shadow{
     --tw-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px -1px rgba(0, 0, 0, 0.1);
@@ -24882,14 +24874,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical .s-product-card-image {
   position: relative;
-  max-height: 490px;
-  min-height: 490px;
-}
-@media (max-width: 768px) {
-  .s-product-card-vertical .s-product-card-image {
-    max-height: 261px;
-    min-height: 261px;
-  }
 }
 .s-product-card-vertical .s-product-card-image .card-floating-btn {
   width: 90%;
@@ -25931,9 +25915,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:block{
         display: block;
     }
-    .sm\:inline-flex{
-        display: inline-flex;
-    }
     .sm\:grid{
         display: grid;
     }
@@ -26027,9 +26008,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 768px){
-    .md\:sticky{
-        position: sticky;
-    }
     .md\:-right-10{
         right: -2.5rem;
     }
@@ -26069,9 +26047,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mt-5{
         margin-top: 1.25rem;
     }
-    .md\:-mb-2{
-        margin-bottom: -0.5rem;
-    }
     .md\:flex{
         display: flex;
     }
@@ -26086,9 +26061,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:h-\[90vh\]{
         height: 90vh;
-    }
-    .md\:h-24{
-        height: 6rem;
     }
     .md\:w-40{
         width: 10rem;
@@ -26107,15 +26079,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
-    }
-    .md\:\!w-2\/4{
-        width: 50% !important;
-    }
-    .md\:w-2\/4{
-        width: 50%;
-    }
-    .md\:w-24{
-        width: 6rem;
     }
     .md\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -26168,9 +26131,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         margin-bottom: calc(0px * 0);
         margin-bottom: calc(0px * var(--tw-space-y-reverse));
     }
-    .md\:overflow-hidden{
-        overflow: hidden;
-    }
     .md\:border-none{
         border-style: none;
     }
@@ -26199,8 +26159,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:pb-8{
         padding-bottom: 2rem;
     }
-    .md\:pb-16{
-        padding-bottom: 4rem;
+    .md\:pt-3{
+        padding-top: 0.75rem;
     }
     .md\:text-\[16px\]{
         font-size: 16px;
@@ -26208,10 +26168,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:text-base{
         font-size: 1rem;
         line-height: 1.5rem;
-    }
-    .md\:text-2xl{
-        font-size: 1.5rem;
-        line-height: 2rem;
     }
     .md\:font-semibold{
         font-weight: 600;
@@ -26360,9 +26316,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:gap-8{
         gap: 2rem;
     }
-    .lg\:gap-\[14px\]{
-        gap: 14px;
-    }
     .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]){
         --tw-space-x-reverse: 0;
         margin-right: calc(2rem * 0);
@@ -26499,9 +26452,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:mr-auto:where([dir="ltr"], [dir="ltr"] *){
     margin-right: auto;
 }
-.ltr\:mr-8:where([dir="ltr"], [dir="ltr"] *){
-    margin-right: 2rem;
-}
 .ltr\:rounded-l-none:where([dir="ltr"], [dir="ltr"] *){
     border-top-left-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -26635,9 +26585,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:mr-4:where([dir="rtl"], [dir="rtl"] *){
     margin-right: 1rem;
-}
-.rtl\:ml-8:where([dir="rtl"], [dir="rtl"] *){
-    margin-left: 2rem;
 }
 .rtl\:-scale-x-100:where([dir="rtl"], [dir="rtl"] *){
     --tw-scale-x: -1;

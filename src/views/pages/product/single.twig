@@ -85,12 +85,8 @@
 {% extends "layouts.master" %}
 
 {% block content %}
-	<div class="single">
+	<div class="single md:pt-3">
 		<div class="container">
-			<nav class="breadcrumbs w-full py-5">
-				<salla-breadcrumb></salla-breadcrumb>
-			</nav>
-
 			<div class="flex flex-col items-center md:items-start lg:flex-row overflow-hidden" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
@@ -185,11 +181,14 @@
                     {% endif %}
 		</div>
 		
-		<div class="main-content sticky overflow-hidden  top-24 w-full lg:w-2/4 lg:pb-16">
+		<div class="main-content sticky overflow-hidden   w-full lg:w-2/4 lg:pb-16">
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
 				{# tittle && brand #}
+				<nav class="breadcrumbs w-full py-5">
+				<salla-breadcrumb></salla-breadcrumb>
+			</nav>
                 {% if product.brand.name %}
 						<div class="product-brand mb-5 w-12">
 							<a class="brand-logo" href="{{ product.brand.url }}" title="{{ product.brand.name }}">
