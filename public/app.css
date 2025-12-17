@@ -24739,6 +24739,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1;
 }
 .s-product-card-entry {
+  background-color: var(--color-background);
   /* When wishlist is added */
   /* When wishlist is not added */
   /* Hide not_filled version when added */
