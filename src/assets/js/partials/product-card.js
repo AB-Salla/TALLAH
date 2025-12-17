@@ -166,8 +166,8 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
     return salla.lang.get("pages.products.donation_exceed");
   }
   renderProductOptions() {
-  if (!this.product?.options?.length) return "";
     console.log(this.product?.options,"👹👹👹👹👹👹 options 👹👹👹👹👹👹");
+  if (!this.product?.options?.length) return "";
     
   const prodOptions = document.createElement("salla-product-options");
 
@@ -187,7 +187,16 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
 
   return prodOptions;
 }
-
+waitForOptions() {
+  const check = () => {
+    if (this.product?.options?.length) {
+      this.render();
+    } else {
+      requestAnimationFrame(check);
+    }
+  };
+  check();
+}
 
   getProps() {
     /**
@@ -238,7 +247,8 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
   render() {
 
 
-    
+    this.waitForOptions();
+
       const MAX_VISIBLE = 3;
 
   const colors = this.colors || [];
