@@ -167,7 +167,8 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
   }
   renderProductOptions() {
   if (!this.product?.options?.length) return "";
-
+    console.log(this.product?.options,"👹👹👹👹👹👹 options 👹👹👹👹👹👹");
+    
   const prodOptions = document.createElement("salla-product-options");
 
   let config = {};
