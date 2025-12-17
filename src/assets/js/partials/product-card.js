@@ -607,27 +607,26 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
       this.initCircleBar();
     }
    
-   
  // ==========================================
 // اختيار اللون والمقاس
 let selectedColor = null;
 let selectedSize = null;
 
-// اختيار اللون
+// اختيار اللون (إذا كان موجود)
 this.querySelectorAll(".colors span").forEach(el => {
   el.addEventListener("click", () => {
-    selectedColor = this.colors.find(c => c.id == el.dataset.optionId); // هنا c.id = id القيمة
+    selectedColor = this.colors.find(c => c.id == el.dataset.optionId);
     this.querySelectorAll(".colors span").forEach(s => s.classList.remove("ring-2", "ring-blue-500"));
-    el.classList.add("ring-2", "ring-blue-500"); // تمييز اللون المختار
+    el.classList.add("ring-2", "ring-blue-500");
   });
 });
 
-// اختيار المقاس
+// اختيار المقاس (إذا كان موجود)
 this.querySelectorAll(".sizes button").forEach(el => {
   el.addEventListener("click", () => {
     selectedSize = this.sizes.find(s => s.id == el.dataset.optionId);
     this.querySelectorAll(".sizes button").forEach(b => b.classList.remove("bg-blue-500", "text-white"));
-    el.classList.add("bg-blue-500", "text-white"); // تمييز المقاس المختار
+    el.classList.add("bg-blue-500", "text-white");
   });
 });
 
@@ -635,18 +634,27 @@ this.querySelectorAll(".sizes button").forEach(el => {
 const addBtn = this.querySelector("salla-add-product-button");
 if (addBtn) {
   addBtn.addEventListener("click", () => {
-    if (!selectedColor || !selectedSize) {
-      alert("من فضلك اختر اللون والمقاس");
+    // التحقق من وجود اللون إذا كان هناك خيارات لون
+    if (this.colors.length > 0 && !selectedColor) {
+      alert("من فضلك اختر اللون");
       return;
     }
+
+    // التحقق من وجود المقاس إذا كان هناك خيارات مقاس
+    if (this.sizes.length > 0 && !selectedSize) {
+      alert("من فضلك اختر المقاس");
+      return;
+    }
+
+    // تجهيز الأوبشنز لإرسالها
+    const options = {};
+    if (selectedColor) options[selectedColor.option_id] = selectedColor.id;
+    if (selectedSize) options[selectedSize.option_id] = selectedSize.id;
 
     salla.cart.addItem({
       id: this.product.id,
       quantity: 1,
-      options: {
-        [selectedColor.option_id]: selectedColor.id, // option_id هو id الخيار، و id هو id القيمة
-        [selectedSize.option_id]: selectedSize.id
-      }
+      options
     }).then(res => {
       if (res.success) {
         alert("تمت إضافة المنتج للسلة!");
