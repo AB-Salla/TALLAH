@@ -24979,6 +24979,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background-color: white;
   border: black;
 }
+.s-product-card-content {
+  padding: 4px 0px !important;
+}
 .s-product-card-content-pie-svg circle {
   transition: stroke-dashoffset 1s linear;
   -webkit-transition: stroke-dashoffset 1s linear;
