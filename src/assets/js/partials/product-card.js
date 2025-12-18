@@ -625,10 +625,10 @@ if (this.colors && this.colors.length > 0) {
       selectedColor = this.colors.find(c => c.id == el.dataset.optionId);
 
       // إزالة التحديد السابق
-      this.querySelectorAll(".colors span").forEach(s => s.classList.remove("ring-2", "ring-blue-500"));
+      this.querySelectorAll(".colors span").forEach(s => s.classList.remove("ring-2", "ring-primary"));
 
       // تمييز العنصر المختار
-      el.classList.add("ring-2", "ring-blue-500");
+      el.classList.add("ring-2", "ring-primary");
     });
   });
 }
@@ -641,10 +641,10 @@ if (this.sizes && this.sizes.length > 0) {
       selectedSize = this.sizes.find(s => s.id == el.dataset.optionId);
 
       // إزالة التحديد السابق
-      this.querySelectorAll(".sizes button").forEach(b => b.classList.remove("bg-blue-500", "text-white"));
+      this.querySelectorAll(".sizes button").forEach(b => b.classList.remove("bg-primary", "text-background"));
 
       // تمييز العنصر المختار
-      el.classList.add("bg-blue-500", "text-white");
+      el.classList.add("bg-primary", "text-background");
     });
   });
 }
