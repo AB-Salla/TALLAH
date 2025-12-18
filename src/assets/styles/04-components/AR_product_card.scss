@@ -549,4 +549,7 @@
 .salla-add-product-button.loading {
   pointer-events: none;
   opacity: 0.7;
+  .sicon-booking, .sicon-loading, .sicon-spinner {
+    display: none;
+  }
 }

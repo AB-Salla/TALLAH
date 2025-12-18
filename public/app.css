@@ -25160,6 +25160,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   pointer-events: none;
   opacity: 0.7;
 }
+.salla-add-product-button.loading .sicon-booking, .salla-add-product-button.loading .sicon-loading, .salla-add-product-button.loading .sicon-spinner {
+  display: none;
+}
 .single {
   /* NOT ADDED state */
   /* When wishlist is not added */
