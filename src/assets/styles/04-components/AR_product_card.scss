@@ -56,7 +56,7 @@
       }
     }
     .s-product-card-wishlist-btn .s-button-icon {
-      border-radius: 2px !important;
+      border-radius: 50% !important;
       margin: 0 !important;
     }
     /* When wishlist is added */
@@ -273,7 +273,7 @@
             button {
               background-color: var(--color-font);
               color: var(--color-background);
-              border-radius: 2px !important;
+              border-radius: 50% !important;
               border: var(--color-font);
               width: 32px;
               height: 32px;

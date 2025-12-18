@@ -24784,7 +24784,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1 !important;
   border-radius: 50% !important;
   background-color: var(--color-background) !important;
-  border: 1px solid var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-btn button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
@@ -24810,7 +24809,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: var(--color-background) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-btn .s-button-icon {
-  border-radius: 2px !important;
+  border-radius: 50% !important;
   margin: 0 !important;
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg {
@@ -24849,8 +24848,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: none;
 }
 .s-product-card-entry .eye-model-style button {
-  border: 1px solid var(--color-font) !important;
-  border-radius: 2px !important;
+  border-radius: 50% !important;
 }
 .s-product-card-entry .eye-model-style button {
   background-color: var(--color-background);
@@ -24977,7 +24975,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: var(--color-font);
 }
 .s-product-card-horizontal .s-product-card-content .s-product-card-content-sub salla-add-product-button salla-button button {
-  border-radius: 2px !important;
+  border-radius: 50% !important;
 }
 .s-product-card-horizontal .s-product-card-content .s-product-card-content-sub salla-add-product-button salla-button button {
   background-color: var(--color-font);
