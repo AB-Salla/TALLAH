@@ -412,7 +412,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
           <div class="s-product-card-content-options flex flex-col mb-2">
-          <div class="colors flex gap-2 mb-3">
+          <div class="colors flex gap-2 mb-3 flex-wrap">
   ${visibleColors.map(color => `
     <span
       class="w-6 h-6 rounded-full border cursor-pointer inline-block"
@@ -429,7 +429,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
   ` : ""}
 </div>
 
-<div class="sizes flex gap-2">
+<div class="sizes flex gap-2 flex-wrap">
   ${visibleSizes.map(size => `
     <button
       class="px-3 py-1 border rounded text-sm"
