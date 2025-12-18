@@ -63,28 +63,37 @@ class ProductCard extends HTMLElement {
   }
 
   async getProductImage(productId) {
-  const response = await salla.product.getDetails(productId, ["images","options"]);
-console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
+  const response = await salla.product.getDetails(productId, ["images", "options"]);
 
   this.images = response?.data?.images || [];
   this.hasSecondImage = this.images.length > 1;
-    this.options = response?.data?.options || [];
-  this.mainImage =
-    this.product?.image?.url || this.product?.thumbnail;
+  this.options = response?.data?.options || [];
 
-  this.secondImage = this.hasSecondImage
-    ? this.images[1]?.url
-    : null;
-    console.log(this.secondImage);
-    // 🎨 colors
-  this.colors = this.options.find(opt => opt.type === "color")?.details || [];
+  this.mainImage = this.product?.image?.url || this.product?.thumbnail;
+  this.secondImage = this.hasSecondImage ? this.images[1]?.url : null;
 
-  // 📏 sizes
-  this.sizes = this.options.find(opt => opt.type === "single-option")?.details || [];
+  // =============================
+  // تجميع الأوبشنز حسب النوع
+  this.groupedOptions = this.options.reduce((acc, opt) => {
+    if (!acc[opt.type]) acc[opt.type] = [];
+    acc[opt.type].push(opt);
+    return acc;
+  }, {});
 
-  console.log("🤡🤡🤡🤡Colors:", this.colors);
-  console.log("🤡🤡🤡🤡Sizes:", this.sizes);
+  // 🎨 كل color options
+  this.colorOptions = this.groupedOptions["color"] || [];
+
+  // 📏 كل single-option
+  this.singleOptions = this.groupedOptions["single-option"] || [];
+
+  // 🖼 thumbnail
+  this.thumbnailOptions = this.groupedOptions["thumbnail"] || [];
+
+  console.log("🎨 Color Options:", this.colorOptions);
+  console.log("📏 Single Options:", this.singleOptions);
+  console.log("🖼 Thumbnail Options:", this.thumbnailOptions);
 }
+
 
   getProductBadge() {
     if (this.product?.preorder?.label) {
@@ -604,96 +613,84 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
    
 // ==========================================
 // المتغيرات لتخزين الخيارات المختارة
-let selectedColor = null;
-let selectedSize = null;
-let selectedThumbnail = null; // الخيار المخفي (مثل thumbnail)
+const selectedOptions = {};
+
+// الخيار المخفي (مثل thumbnail)
 
 // ==========================================
 // إعداد الخيار المخفي (thumbnail)
-if (this.options && this.options.length > 0) {
-  const thumbnailOption = this.options.find(o => o.type === "thumbnail");
-  if (thumbnailOption && thumbnailOption.details.length > 0) {
-    selectedThumbnail = thumbnailOption.details[0]; // ناخد أول قيمة تلقائيًا
-  }
+if (this.thumbnailOptions.length > 0) {
+  this.thumbnailOptions.forEach(opt => {
+    if (opt.details?.length) {
+      selectedOptions[opt.id] = opt.details[0].id;
+    }
+  });
 }
 
 // ==========================================
 // اختيار اللون (إذا كان موجود)
-if (this.colors && this.colors.length > 0) {
-  this.querySelectorAll(".colors span").forEach(el => {
-    el.addEventListener("click", () => {
-      selectedColor = this.colors.find(c => c.id == el.dataset.optionId);
+this.colorOptions.forEach(option => {
+  this.querySelectorAll(`[data-color-option="${option.id}"] span`)
+    .forEach(el => {
+      el.addEventListener("click", () => {
+        selectedOptions[option.id] = el.dataset.optionId;
 
-      // إزالة التحديد السابق
-      this.querySelectorAll(".colors span").forEach(s => s.classList.remove("ring-2", "ring-primary"));
-
-      // تمييز العنصر المختار
-      el.classList.add("ring-2", "ring-primary");
+        // UI
+        el.parentElement.querySelectorAll("span")
+          .forEach(s => s.classList.remove("ring-2", "ring-primary"));
+        el.classList.add("ring-2", "ring-primary");
+      });
     });
-  });
-}
+});
+
 
 // ==========================================
 // اختيار المقاس (إذا كان موجود)
-if (this.sizes && this.sizes.length > 0) {
-  this.querySelectorAll(".sizes button").forEach(el => {
-    el.addEventListener("click", () => {
-      selectedSize = this.sizes.find(s => s.id == el.dataset.optionId);
+this.singleOptions.forEach(option => {
+  this.querySelectorAll(`[data-single-option="${option.id}"] button`)
+    .forEach(el => {
+      el.addEventListener("click", () => {
+        selectedOptions[option.id] = el.dataset.optionId;
 
-      // إزالة التحديد السابق
-      this.querySelectorAll(".sizes button").forEach(b => b.classList.remove("bg-primary", "text-background"));
-
-      // تمييز العنصر المختار
-      el.classList.add("bg-primary", "text-background");
+        // UI
+        el.parentElement.querySelectorAll("button")
+          .forEach(b => b.classList.remove("bg-primary", "text-background"));
+        el.classList.add("bg-primary", "text-background");
+      });
     });
-  });
-}
+});
+
 
 // =========================================
 // زر "أضف للسلة"
 const addBtn = this.querySelector(".salla-add-product-button");
-if (addBtn) {
-  addBtn.addEventListener("click", () => {
-    // التحقق من وجود اللون إذا كان هناك خيارات لون
-   const isArabic = salla.config.language === 'ar';
 
-// Check color selection
-if (this.colors && this.colors.length > 0 && !selectedColor) {
-  salla.notify.error(
-    isArabic ? "من فضلك اختر اللون" : "Please select a color"
+addBtn?.addEventListener("click", () => {
+  const isArabic = salla.config.language === "ar";
+
+  // التحقق من required options
+  const missing = this.options.find(
+    opt => opt.required && !selectedOptions[opt.id]
   );
-  return;
-}
 
-// Check size selection
-if (this.sizes && this.sizes.length > 0 && !selectedSize) {
-  salla.notify.error(
-    isArabic ? "من فضلك اختر المقاس" : "Please select a size"
-  );
-  return;
-}
+  if (missing) {
+    salla.notify.error(
+      isArabic
+        ? `من فضلك اختر ${missing.name}`
+        : `Please select ${missing.name}`
+    );
+    return;
+  }
 
-
-    // تجهيز الأوبشنز لإرسالها
-    const options = {};
-    if (selectedColor) options[selectedColor.option_id] = selectedColor.id;
-    if (selectedSize) options[selectedSize.option_id] = selectedSize.id;
-    if (selectedThumbnail) options[selectedThumbnail.option_id] = selectedThumbnail.id; // نضيف الخيار المخفي تلقائيًا
-
-    // إضافة المنتج للسلة
-    salla.cart.addItem({
-      id: this.product.id,
-      quantity: 1,
-      options
-    }).then(res => {
-      if (res.success) {
-        console.log("تمت إضافة المنتج للسلة!");
-      } else {
-        console.error(res.error);
-      }
-    });
+  // الإضافة للسلة
+  salla.cart.addItem({
+    id: this.product.id,
+    quantity: 1,
+    options: selectedOptions
+  }).then(res => {
+    if (!res.success) console.error(res.error);
   });
-}
+});
 
   }
 }
