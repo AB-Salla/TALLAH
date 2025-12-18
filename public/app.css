@@ -24782,15 +24782,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   top: 0 !important;
   left: 0 !important;
   opacity: 1 !important;
-  border-radius: 2px !important;
-  background-color: white !important;
-  border: 1px solid black !important;
+  border-radius: 50% !important;
+  background-color: var(--color-background) !important;
+  border: 1px solid var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-btn button {
   box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border: 0;
-  width: 36px;
-  height: 36px;
+  width: 32px;
+  height: 32px;
 }
 @media (max-width: 768px) {
   .s-product-card-entry .s-product-card-wishlist-btn button {
@@ -24799,64 +24799,64 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 .s-product-card-entry .s-product-card-wishlist-btn button svg {
-  fill: black !important;
-  color: black !important;
+  fill: var(--color-font) !important;
+  color: var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-btn button:hover {
-  background-color: black !important;
+  background-color: var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-btn button:hover svg {
-  fill: white !important;
-  color: white !important;
+  fill: var(--color-background) !important;
+  color: var(--color-background) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-btn .s-button-icon {
   border-radius: 2px !important;
   margin: 0 !important;
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg:hover {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg:hover { /* Keep same color or change if needed */
 }
 .s-product-card-entry .not-added span svg {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .not-added span svg:hover {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-added span .not_filled {
   display: none;
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg:hover {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .s-product-card-wishlist-added span .not_filled {
   display: none;
 }
 .s-product-card-entry .not-added span svg {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .not-added span svg:hover {
-  fill: black !important;
+  fill: var(--color-font) !important;
 }
 .s-product-card-entry .not-added span .filled {
   display: none;
 }
 .s-product-card-entry .eye-model-style button {
-  border: 1px solid black !important;
+  border: 1px solid var(--color-font) !important;
   border-radius: 2px !important;
 }
 .s-product-card-entry .eye-model-style button {
-  background-color: white;
-  width: 36px;
+  background-color: var(--color-background);
+  width: 32px;
   margin: 0;
-  height: 36px;
+  height: 32px;
 }
 @media (max-width: 768px) {
   .s-product-card-entry .eye-model-style button {
@@ -24868,14 +24868,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   overflow: visible !important;
 }
 .s-product-card-entry .eye-model-style button .s-button-text i {
-  color: black;
+  color: var(--color-font);
 }
 .s-product-card-entry .eye-model-style button:hover {
-  background-color: black;
-  border-color: black;
+  background-color: var(--color-font);
+  border-color: var(--color-font);
 }
 .s-product-card-entry .eye-model-style button:hover .s-button-text i {
-  color: white;
+  color: var(--color-background);
 }
 .s-product-card-image::before {
   content: "\ec1f" !important;
@@ -24912,8 +24912,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 .s-product-card-vertical .s-product-card-image .card-floating-btn salla-add-product-button salla-button button {
-  background-color: black;
-  color: white;
+  background-color: var(--color-font);
+  color: var(--color-background);
   border-radius: 4px;
   border: none;
 }
@@ -24921,8 +24921,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1 !important;
 }
 .s-product-card-vertical .s-product-card-image .card-floating-btn salla-add-product-button salla-button button:hover {
-  color: black;
-  background-color: white;
+  color: var(--color-font);
+  background-color: var(--color-background);
 }
 @media (min-width: 769px) {
   .s-product-card-vertical:hover .card-floating-btn {
@@ -24932,11 +24932,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 .s-product-card-vertical .s-product-card-content-sub .s-product-card-sale-price span {
-  color: rgba(0, 0, 0, 0.5) !important;
+  color: color-mix(in srgb, var(--color-font) 50%, transparent) !important;
 }
 .s-product-card-vertical .s-product-card-content-sub .s-product-card-sale-price h4 {
   font-size: clamp(1.096875rem, 1.05rem + 0.2vw, 1.25rem) !important;
-  color: black !important;
+  color: var(--color-font) !important;
 }
 .s-product-card-horizontal .eye-model-style button {
   width: 30px !important;
@@ -24969,27 +24969,27 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-horizontal .s-product-card-content .s-product-card-content-sub salla-add-product-button {
   width: 32px;
   height: 32px;
-  border: black;
+  border: var(--color-font);
 }
 .s-product-card-horizontal .s-product-card-content .s-product-card-content-sub salla-add-product-button salla-button {
   width: 32px;
   height: 32px;
-  border: black;
+  border: var(--color-font);
 }
 .s-product-card-horizontal .s-product-card-content .s-product-card-content-sub salla-add-product-button salla-button button {
   border-radius: 2px !important;
 }
 .s-product-card-horizontal .s-product-card-content .s-product-card-content-sub salla-add-product-button salla-button button {
-  background-color: black;
-  color: white;
-  border: black;
+  background-color: var(--color-font);
+  color: var(--color-background);
+  border: var(--color-font);
   width: 32px;
   height: 32px;
 }
 .s-product-card-horizontal .s-product-card-content .s-product-card-content-sub salla-add-product-button salla-button button:hover {
-  color: black;
-  background-color: white;
-  border: black;
+  color: var(--color-font);
+  background-color: var(--color-background);
+  border: var(--color-font);
 }
 .s-product-card-content {
   padding: 4px 0px !important;
@@ -25006,7 +25006,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   fill: none;
 }
 .s-product-card-content-pie-svg-bar {
-  stroke: black !important;
+  stroke: var(--color-font) !important;
 }
 .s-product-card-content-pie-svg-bar {
   stroke-dasharray: 100 100;
@@ -25020,6 +25020,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 0;
   background-color: var(--color-background);
   color: #C70036;
+  font-weight: 400;
+  font-size: 12px;
 }
 .s-product-card-vertical .s-product-card-promotion-title:where([dir=rtl], [dir=rtl] *) {
   left: 0px !important;
