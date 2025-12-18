@@ -535,7 +535,7 @@ function renderOption(option) {
             : `<i class="text-base sicon-cart-cancel"
               }"></i>`
         }
-        <i class="loader hidden animate-spin sicon-loading text-base"></i>
+        <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
       </button>
      
     </div>
