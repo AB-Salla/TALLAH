@@ -415,7 +415,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
           <div class="colors flex gap-2 mb-3 flex-wrap">
   ${visibleColors.map(color => `
     <span
-      class="w-6 h-6 rounded-full border cursor-pointer inline-block"
+      class="w-6 h-6 rounded-full border cursor-pointer inline-block transition-all duration-200"
       style="background-color:${color.color}"
       title="${color.name}"
       data-option-id="${color.id}">
@@ -432,7 +432,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
 <div class="sizes flex gap-2 flex-wrap">
   ${visibleSizes.map(size => `
     <button
-      class="px-3 py-1 border rounded text-sm"
+      class="px-3 py-1 border rounded text-sm transition-all duration-200 cursor-pointer"
       data-option-id="${size.id}">
       ${size.name}
     </button>
