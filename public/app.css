@@ -24991,7 +24991,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: var(--color-font);
 }
 .s-product-card-content {
-  padding: 4px 0px !important;
+  padding: 4px 8px !important;
 }
 .s-product-card-content-pie-svg circle {
   transition: stroke-dashoffset 1s linear;
