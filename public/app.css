@@ -24883,9 +24883,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-image::before {
   font-family: "sallaicons";
 }
-.s-product-card-vertical {
-  height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
-}
 @media (max-width: 768px) {
   .s-product-card-vertical {
     height: 290px !important;
@@ -24893,6 +24890,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical .s-product-card-image {
   position: relative;
+  min-height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
 }
 .s-product-card-vertical .s-product-card-image .card-floating-btn {
   width: 90%;

@@ -154,7 +154,6 @@
     // height: 586px !important;
     // min-height: 586px;
     // max-height: 586px;
-    height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
     @media (max-width: 768px) {
       height: 290px !important;
       //   min-height: 290px;
@@ -166,6 +165,7 @@
       position: relative;
       // max-height: 490px;
       // min-height: 490px;
+    min-height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
 
       @media (max-width: 768px) {
         // max-height: 261px;
