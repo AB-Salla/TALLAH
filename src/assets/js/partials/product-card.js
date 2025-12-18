@@ -649,7 +649,7 @@ if (this.sizes && this.sizes.length > 0) {
   });
 }
 
-// ==========================================
+// =========================================
 // زر "أضف للسلة"
 const addBtn = this.querySelector(".salla-add-product-button");
 if (addBtn) {
@@ -679,7 +679,7 @@ if (addBtn) {
       options
     }).then(res => {
       if (res.success) {
-        alert("تمت إضافة المنتج للسلة!");
+        console.log("تمت إضافة المنتج للسلة!");
       } else {
         console.error(res.error);
       }

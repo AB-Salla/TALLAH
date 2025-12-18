@@ -154,11 +154,11 @@
     // height: 586px !important;
     // min-height: 586px;
     // max-height: 586px;
-
+    height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
     @media (max-width: 768px) {
       height: 290px !important;
-    //   min-height: 290px;
-    //   max-height: 290px;
+      //   min-height: 290px;
+      //   max-height: 290px;
     }
 
     // Image container inside vertical card
@@ -230,8 +230,6 @@
         }
       }
     }
-
-
   }
 
   // ===========================
@@ -411,7 +409,7 @@
   right: auto;
   border-radius: 0 10px 10px 0;
 }
- /*Product flip hover effect */
+/*Product flip hover effect */
 .product-flip-wrapper {
   display: block;
   position: relative;
@@ -464,7 +462,8 @@
 }
 
 /* Optional: Container styles for the image wrapper */
-.s-product-card-image, .s-product-card-image-full {
+.s-product-card-image,
+.s-product-card-image-full {
   position: relative;
   width: 100%;
   aspect-ratio: 1 / 1; /* Maintain square ratio, adjust as needed */
@@ -513,7 +512,7 @@
   .s-product-card-image:hover .product-flip-inner.has-flip {
     transform: none; /* Disable flip on mobile if desired */
   }
-  
+
   /* Alternative: Touch-friendly flip on mobile */
   .product-flip-wrapper.mobile-flip:active .product-flip-inner.has-flip {
     transform: rotateY(180deg);

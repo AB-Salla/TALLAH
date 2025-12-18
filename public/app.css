@@ -24883,6 +24883,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-image::before {
   font-family: "sallaicons";
 }
+.s-product-card-vertical {
+  height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
+}
 @media (max-width: 768px) {
   .s-product-card-vertical {
     height: 290px !important;
@@ -25076,7 +25079,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 8px; /* Adjust as needed */
 }
 /* Optional: Container styles for the image wrapper */
-.s-product-card-image, .s-product-card-image-full {
+.s-product-card-image,
+.s-product-card-image-full {
   position: relative;
   width: 100%;
   aspect-ratio: 1/1; /* Maintain square ratio, adjust as needed */
