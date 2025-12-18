@@ -525,7 +525,7 @@ function renderOption(option) {
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
     <button
-          class="salla-add-product-button"
+          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0 rounded-full text-center bg-[#F4F4F5]"
           ${this.product.status !== "sale" ? "disabled" : ""}>
        ${
           this.product.status == "sale"
