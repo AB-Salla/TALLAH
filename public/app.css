@@ -24851,6 +24851,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 50% !important;
 }
 .s-product-card-entry .eye-model-style button {
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   background-color: var(--color-background);
   width: 32px;
   margin: 0;
