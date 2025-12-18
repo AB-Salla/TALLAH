@@ -25014,10 +25014,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical .s-product-card-promotion-title {
   position: absolute;
-  top: 1rem;
+  top: 0rem;
   left: 0px;
   z-index: 1;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0;
+  background-color: var(--color-background);
+  color: #C70036;
 }
 .s-product-card-vertical .s-product-card-promotion-title:where([dir=rtl], [dir=rtl] *) {
   left: 0px !important;
