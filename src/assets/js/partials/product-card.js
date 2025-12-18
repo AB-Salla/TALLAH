@@ -655,16 +655,24 @@ const addBtn = this.querySelector(".salla-add-product-button");
 if (addBtn) {
   addBtn.addEventListener("click", () => {
     // التحقق من وجود اللون إذا كان هناك خيارات لون
-    if (this.colors && this.colors.length > 0 && !selectedColor) {
-      alert("من فضلك اختر اللون");
-      return;
-    }
+   const isArabic = salla.config.language === 'ar';
 
-    // التحقق من وجود المقاس إذا كان هناك خيارات مقاس
-    if (this.sizes && this.sizes.length > 0 && !selectedSize) {
-      alert("من فضلك اختر المقاس");
-      return;
-    }
+// Check color selection
+if (this.colors && this.colors.length > 0 && !selectedColor) {
+  salla.notify.error(
+    isArabic ? "من فضلك اختر اللون" : "Please select a color"
+  );
+  return;
+}
+
+// Check size selection
+if (this.sizes && this.sizes.length > 0 && !selectedSize) {
+  salla.notify.error(
+    isArabic ? "من فضلك اختر المقاس" : "Please select a size"
+  );
+  return;
+}
+
 
     // تجهيز الأوبشنز لإرسالها
     const options = {};
