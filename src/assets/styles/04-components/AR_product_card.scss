@@ -545,3 +545,8 @@
 .product-flip-wrapper:hover .s-product-card-badge {
   opacity: 0.8; /* Slightly fade badge during flip */
 }
+
+.salla-add-product-button.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}

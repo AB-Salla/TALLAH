@@ -525,7 +525,7 @@ function renderOption(option) {
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
     <button
-          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0 rounded-full text-center bg-[#F4F4F5]"
+          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-brand text-background rounded-full"
           ${this.product.status !== "sale" ? "disabled" : ""}>
        ${
           this.product.status == "sale"
@@ -535,6 +535,7 @@ function renderOption(option) {
             : `<i class="text-base sicon-cart-cancel"
               }"></i>`
         }
+        <i class="loader hidden animate-spin sicon-loading text-base"></i>
       </button>
      
     </div>
@@ -687,10 +688,13 @@ this.singleOptions.forEach(option => {
 // زر "أضف للسلة"
 const addBtn = this.querySelector(".salla-add-product-button");
 
-addBtn?.addEventListener("click", () => {
+addBtn?.addEventListener("click", async () => {
+  if (addBtn.disabled || addBtn.classList.contains("loading")) return;
+
   const isArabic = salla.config.language === "ar";
 
-  // التحقق من required options
+  // =============================
+  // Required validation
   const missing = this.options.find(
     opt => opt.required && !selectedOptions[opt.id]
   );
@@ -704,14 +708,44 @@ addBtn?.addEventListener("click", () => {
     return;
   }
 
-  // الإضافة للسلة
-  salla.cart.addItem({
-    id: this.product.id,
-    quantity: 1,
-    options: selectedOptions
-  }).then(res => {
-    if (!res.success) console.error(res.error);
-  });
+  // =============================
+  // START LOADING
+  addBtn.classList.add("loading");
+  addBtn.disabled = true;
+
+  const icon = addBtn.querySelector(".add-icon");
+  const loader = addBtn.querySelector(".loader");
+
+  if (icon) icon.classList.add("hidden");
+  if (loader) loader.classList.remove("hidden");
+
+  try {
+    const res = await salla.cart.addItem({
+      id: this.product.id,
+      quantity: 1,
+      options: selectedOptions
+    });
+
+    if (!res.success) {
+      throw new Error(res.error || "Add to cart failed");
+    }
+
+  } catch (err) {
+    console.error(err);
+    salla.notify.error(
+      isArabic
+        ? "حدث خطأ أثناء الإضافة"
+        : "Something went wrong"
+    );
+  } finally {
+    // =============================
+    // STOP LOADING
+    addBtn.classList.remove("loading");
+    addBtn.disabled = false;
+
+    if (icon) icon.classList.remove("hidden");
+    if (loader) loader.classList.add("hidden");
+  }
 });
 
   }
