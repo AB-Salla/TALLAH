@@ -63,28 +63,37 @@ class ProductCard extends HTMLElement {
   }
 
   async getProductImage(productId) {
-  const response = await salla.product.getDetails(productId, ["images","options"]);
-console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
+  const response = await salla.product.getDetails(productId, ["images", "options"]);
 
   this.images = response?.data?.images || [];
   this.hasSecondImage = this.images.length > 1;
-    this.options = response?.data?.options || [];
-  this.mainImage =
-    this.product?.image?.url || this.product?.thumbnail;
+  this.options = response?.data?.options || [];
 
-  this.secondImage = this.hasSecondImage
-    ? this.images[1]?.url
-    : null;
-    console.log(this.secondImage);
-    // 🎨 colors
-  this.colors = this.options.find(opt => opt.type === "color")?.details || [];
+  this.mainImage = this.product?.image?.url || this.product?.thumbnail;
+  this.secondImage = this.hasSecondImage ? this.images[1]?.url : null;
 
-  // 📏 sizes
-  this.sizes = this.options.find(opt => opt.type === "single-option")?.details || [];
+  // =============================
+  // تجميع الأوبشنز حسب النوع
+  this.groupedOptions = this.options.reduce((acc, opt) => {
+    if (!acc[opt.type]) acc[opt.type] = [];
+    acc[opt.type].push(opt);
+    return acc;
+  }, {});
 
-  console.log("🤡🤡🤡🤡Colors:", this.colors);
-  console.log("🤡🤡🤡🤡Sizes:", this.sizes);
+  // 🎨 كل color options
+  this.colorOptions = this.groupedOptions["color"] || [];
+
+  // 📏 كل single-option
+  this.singleOptions = this.groupedOptions["single-option"] || [];
+
+  // 🖼 thumbnail
+  this.thumbnailOptions = this.groupedOptions["thumbnail"] || [];
+
+  console.log("🎨 Color Options:", this.colorOptions);
+  console.log("📏 Single Options:", this.singleOptions);
+  console.log("🖼 Thumbnail Options:", this.thumbnailOptions);
 }
+
 
   getProductBadge() {
     if (this.product?.preorder?.label) {
@@ -215,14 +224,67 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
   render() {
       const MAX_VISIBLE = 3;
 
-  const colors = this.colors || [];
-  const sizes = this.sizes || [];
+function renderOption(option) {
+  const items = option.details || [];
 
-  const visibleColors = colors.slice(0, MAX_VISIBLE);
-  const remainingColors = colors.length - MAX_VISIBLE;
+  const visible = items.slice(0, MAX_VISIBLE);
+  const remaining = items.length - MAX_VISIBLE;
 
-  const visibleSizes = sizes.slice(0, MAX_VISIBLE);
-  const remainingSizes = sizes.length - MAX_VISIBLE;
+  // 🎨 COLOR
+  if (option.type === "color") {
+    return `
+      <div class="colors-wrapper mb-3">
+        <div
+          class="colors flex gap-2 flex-wrap"
+          data-color-option="${option.id}"
+        >
+          ${visible.map(item => `
+            <span
+              class="w-6 h-6 rounded-full border cursor-pointer inline-block transition-all duration-200"
+              style="background-color:${item.color}"
+              title="${item.name}"
+              data-option-id="${item.id}">
+            </span>
+          `).join("")}
+
+          ${remaining > 0 ? `
+            <span class="w-6 h-6 flex items-center justify-center text-xs border rounded-full bg-gray-100 text-gray-700">
+              +${remaining}
+            </span>
+          ` : ""}
+        </div>
+      </div>
+    `;
+  }
+
+  // 📏 SINGLE OPTION
+  if (option.type === "single-option") {
+    return `
+      <div class="sizes-wrapper mb-3">
+        <div
+          class="sizes flex gap-2 flex-wrap"
+          data-single-option="${option.id}"
+        >
+          ${visible.map(item => `
+            <button
+              class="px-3 py-1 border rounded text-sm transition-all duration-200 cursor-pointer"
+              data-option-id="${item.id}">
+              ${item.name}
+            </button>
+          `).join("")}
+
+          ${remaining > 0 ? `
+            <span class="px-3 py-1 border rounded text-sm bg-gray-100 text-gray-700">
+              +${remaining}
+            </span>
+          ` : ""}
+        </div>
+      </div>
+    `;
+  }
+
+  return "";
+}
     this.classList.add("s-product-card-entry");
     this.setAttribute("id", this.product.id);
     !this.horizontal && !this.fullImage && !this.minimal
@@ -412,40 +474,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
           <div class="s-product-card-content-options flex flex-col mb-2">
-          <div class="colors flex gap-2 mb-3">
-  ${visibleColors.map(color => `
-    <span
-      class="w-6 h-6 rounded-full border cursor-pointer inline-block"
-      style="background-color:${color.color}"
-      title="${color.name}"
-      data-option-id="${color.id}">
-    </span>
-  `).join("")}
-
-  ${remainingColors > 0 ? `
-    <span class="w-6 h-6 flex items-center justify-center text-xs border rounded-full bg-gray-100 text-gray-700">
-      +${remainingColors}
-    </span>
-  ` : ""}
-</div>
-
-<div class="sizes flex gap-2">
-  ${visibleSizes.map(size => `
-    <button
-      class="px-3 py-1 border rounded text-sm"
-      data-option-id="${size.id}">
-      ${size.name}
-    </button>
-  `).join("")}
-
-  ${remainingSizes > 0 ? `
-    <span class="px-3 py-1 border rounded text-sm bg-gray-100 text-gray-700">
-      +${remainingSizes}
-    </span>
-  ` : ""}
-</div>
-
-
+            ${this.options.map(opt => renderOption(opt)).join("")}
           </div>
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
               <a class="!leading-[24px]" href="${this.product?.url}">${
@@ -495,7 +524,9 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
                 ? `
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
-      <button class="salla-add-product-button">
+    <button
+          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
+          ${this.product.status !== "sale" ? "disabled" : ""}>
        ${
           this.product.status == "sale"
             ? `<i class="text-base sicon-${
@@ -504,6 +535,7 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
             : `<i class="text-base sicon-cart-cancel"
               }"></i>`
         }
+        <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
       </button>
      
     </div>
@@ -604,88 +636,117 @@ console.log(response,"👹👹👹👹👹👹👹👹👹👹👹👹");
    
 // ==========================================
 // المتغيرات لتخزين الخيارات المختارة
-let selectedColor = null;
-let selectedSize = null;
-let selectedThumbnail = null; // الخيار المخفي (مثل thumbnail)
+const selectedOptions = {};
+
+// الخيار المخفي (مثل thumbnail)
 
 // ==========================================
 // إعداد الخيار المخفي (thumbnail)
-if (this.options && this.options.length > 0) {
-  const thumbnailOption = this.options.find(o => o.type === "thumbnail");
-  if (thumbnailOption && thumbnailOption.details.length > 0) {
-    selectedThumbnail = thumbnailOption.details[0]; // ناخد أول قيمة تلقائيًا
-  }
+if (this.thumbnailOptions.length > 0) {
+  this.thumbnailOptions.forEach(opt => {
+    if (opt.details?.length) {
+      selectedOptions[opt.id] = opt.details[0].id;
+    }
+  });
 }
 
 // ==========================================
 // اختيار اللون (إذا كان موجود)
-if (this.colors && this.colors.length > 0) {
-  this.querySelectorAll(".colors span").forEach(el => {
-    el.addEventListener("click", () => {
-      selectedColor = this.colors.find(c => c.id == el.dataset.optionId);
+this.colorOptions.forEach(option => {
+  this.querySelectorAll(`[data-color-option="${option.id}"] span`)
+    .forEach(el => {
+      el.addEventListener("click", () => {
+        selectedOptions[option.id] = el.dataset.optionId;
 
-      // إزالة التحديد السابق
-      this.querySelectorAll(".colors span").forEach(s => s.classList.remove("ring-2", "ring-blue-500"));
-
-      // تمييز العنصر المختار
-      el.classList.add("ring-2", "ring-blue-500");
+        // UI
+        el.parentElement.querySelectorAll("span")
+          .forEach(s => s.classList.remove("ring-2", "ring-primary"));
+        el.classList.add("ring-2", "ring-primary");
+      });
     });
-  });
-}
+});
+
 
 // ==========================================
 // اختيار المقاس (إذا كان موجود)
-if (this.sizes && this.sizes.length > 0) {
-  this.querySelectorAll(".sizes button").forEach(el => {
-    el.addEventListener("click", () => {
-      selectedSize = this.sizes.find(s => s.id == el.dataset.optionId);
+this.singleOptions.forEach(option => {
+  this.querySelectorAll(`[data-single-option="${option.id}"] button`)
+    .forEach(el => {
+      el.addEventListener("click", () => {
+        selectedOptions[option.id] = el.dataset.optionId;
 
-      // إزالة التحديد السابق
-      this.querySelectorAll(".sizes button").forEach(b => b.classList.remove("bg-blue-500", "text-white"));
-
-      // تمييز العنصر المختار
-      el.classList.add("bg-blue-500", "text-white");
+        // UI
+        el.parentElement.querySelectorAll("button")
+          .forEach(b => b.classList.remove("bg-primary", "text-background"));
+        el.classList.add("bg-primary", "text-background");
+      });
     });
-  });
-}
+});
 
-// ==========================================
+
+// =========================================
 // زر "أضف للسلة"
 const addBtn = this.querySelector(".salla-add-product-button");
-if (addBtn) {
-  addBtn.addEventListener("click", () => {
-    // التحقق من وجود اللون إذا كان هناك خيارات لون
-    if (this.colors && this.colors.length > 0 && !selectedColor) {
-      alert("من فضلك اختر اللون");
-      return;
-    }
 
-    // التحقق من وجود المقاس إذا كان هناك خيارات مقاس
-    if (this.sizes && this.sizes.length > 0 && !selectedSize) {
-      alert("من فضلك اختر المقاس");
-      return;
-    }
+addBtn?.addEventListener("click", async () => {
+  if (addBtn.disabled || addBtn.classList.contains("loading")) return;
 
-    // تجهيز الأوبشنز لإرسالها
-    const options = {};
-    if (selectedColor) options[selectedColor.option_id] = selectedColor.id;
-    if (selectedSize) options[selectedSize.option_id] = selectedSize.id;
-    if (selectedThumbnail) options[selectedThumbnail.option_id] = selectedThumbnail.id; // نضيف الخيار المخفي تلقائيًا
+  const isArabic = salla.config.language === "ar";
 
-    // إضافة المنتج للسلة
-    salla.cart.addItem({
+  // =============================
+  // Required validation
+  const missing = this.options.find(
+    opt => opt.required && !selectedOptions[opt.id]
+  );
+
+  if (missing) {
+    salla.notify.error(
+      isArabic
+        ? `من فضلك اختر ${missing.name}`
+        : `Please select ${missing.name}`
+    );
+    return;
+  }
+
+  // =============================
+  // START LOADING
+  addBtn.classList.add("loading");
+  addBtn.disabled = true;
+
+  const icon = addBtn.querySelector(".add-icon");
+  const loader = addBtn.querySelector(".loader");
+
+  if (icon) icon.classList.add("hidden");
+  if (loader) loader.classList.remove("hidden");
+
+  try {
+    const res = await salla.cart.addItem({
       id: this.product.id,
       quantity: 1,
-      options
-    }).then(res => {
-      if (res.success) {
-        alert("تمت إضافة المنتج للسلة!");
-      } else {
-        console.error(res.error);
-      }
+      options: selectedOptions
     });
-  });
-}
+
+    if (!res.success) {
+      throw new Error(res.error || "Add to cart failed");
+    }
+
+  } catch (err) {
+    console.error(err);
+    salla.notify.error(
+      isArabic
+        ? "حدث خطأ أثناء الإضافة"
+        : "Something went wrong"
+    );
+  } finally {
+    // =============================
+    // STOP LOADING
+    addBtn.classList.remove("loading");
+    addBtn.disabled = false;
+
+    if (icon) icon.classList.remove("hidden");
+    if (loader) loader.classList.add("hidden");
+  }
+});
 
   }
 }
