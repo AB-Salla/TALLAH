@@ -315,6 +315,7 @@ const items = cart.items;
                 "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp";
               return `
               <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-${item.id}">
+              <input type="hidden" name="id" value="${item.id}">
                       <section class="cart-item bg-bg-light dark:bg-bg-dark p-3 md:p-5 rounded border border-gray-100 mb-4 relative" data-id="${
                         item.id
                       }">
