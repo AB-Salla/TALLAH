@@ -1968,6 +1968,10 @@ select{
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+.py-10{
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+}
 .\!pt-1{
     padding-top: 0.25rem !important;
 }
@@ -26549,6 +26553,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     color: #414042;
     color: var(--color-primary);
 }
+.hover\:text-red-600:hover{
+    --tw-text-opacity: 1;
+    color: rgba(220, 38, 38, 1);
+    color: rgba(220, 38, 38, var(--tw-text-opacity, 1));
+}
 .hover\:underline:hover{
     text-decoration-line: underline;
 }
@@ -26851,6 +26860,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:p-8{
         padding: 2rem;
+    }
+    .md\:p-5{
+        padding: 1.25rem;
     }
     .md\:px-5{
         padding-left: 1.25rem;
