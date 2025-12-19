@@ -55,50 +55,120 @@
             "source": "Manual",
             "required": true
         },
+
+         {
+      "type": "static",
+      "format": "title",
+      "id": "cart_settings",
+      "value": "<div class='flex-center p-3 text-center font-bold text-lg ' style='background: #1e1e1e;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px;'>خيـارات صفحة سلة المشتريات</div>",
+      "variant": "h6"
+    },
+    {
+      "type": "boolean",
+      "id": "enable_side_cart",
+      "label": "تفعيل السلة الجانبية",
+      "format": "switch",
+      "value": true,
+      "selected": false
+    },
+    {
+      "type": "boolean",
+      "id": "cart_icon_choose",
+      "label": "اختيار ايقون السله بنفسك",
+      "format": "switch",
+      "value": true,
+      "selected": false
+    },
+    {
+      "id": "cart_icon_type",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "ايقون السله",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-list",
+      "selected": [
         {
-            "type": "static",
-            "format": "title",
-            "id": "static-label2",
-            "value": "<div style='background-color: #333;color: #fff;padding: 10px 15px;font-size: 18px;font-weight: bold;margin: 30px -20px 20px;'>خيارات عامة</div>",
-            "variant": "h6"
+          "label": "🛒 السلة الأولى",
+          "value": "cart_1",
+          "key": "86f7d5fc-29a7-4dbf-9496-7d2a9741ac0b"
+        }
+      ],
+      "options": [
+        {
+          "label": "🛒 السلة الأولى",
+          "value": "cart_1",
+          "key": "86f7d5fc-29a7-4dbf-9496-7d2a9741ac0b"
         },
         {
-            "type": "static",
-            "format": "description",
-            "id": "on_singleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/dJ6zRfpNv1n1MbIAJz7TIuRGI5ZzfZGwH9CeVuTL.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_singleOption",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
+          "label": "🧺 السلة الثانية",
+          "value": "cart_2",
+          "key": "efffe36-bf84-50ec-88aa-9120b6ff809e"
         },
         {
-            "type": "static",
-            "format": "description",
-            "id": "off_singleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/XotK3z69Qk1y6Prz7ip6V27c5MYmujMR7ydLFze8.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_singleOption",
-                    "operation": "=",
-                    "value": false
-                }
-            ]
+          "label": "👜 السلة الثالثة",
+          "value": "cart_3",
+          "key": "efgre36-bg84-402c-98aa-9120b6ee809e"
         },
         {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "قيم حقل خيارات (اختيار واحد)",
-            "description": "على شكل قائمة منسدلة أو أزرار اختيار",
-            "id": "show_singleOption",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": true
+          "label": "🚚 السلة الرابعة",
+          "value": "cart_4",
+          "key": "eedfbe36-bf84-402c-98va-9120b6ee809e"
         },
+        {
+          "label": "➕ السلة الخامسة",
+          "value": "cart_5",
+          "key": "easde36-bf84-902c-98aa-9120b6ee809e"
+        }
+      ],
+      "source": "Manual",
+      "required": false,
+      "conditions": [
+        {
+          "id": "cart_icon_choose",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "cart_display_type",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "طريقة عرض السلة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-list",
+      "selected": [
+        {
+          "label": "سلة جانبية (Side Cart)",
+          "value": "side",
+          "key": "86f7c8a-29a7-4dbf-9496-7d2a9741ac0b"
+        }
+      ],
+      "options": [
+        {
+          "label": "سلة جانبية (Side Cart)",
+          "value": "side",
+          "key": "86f7c8a-29a7-4dbf-9496-7d2a9741ac0b"
+        },
+        {
+          "label": "سلة منبثقة (Popup Cart)",
+          "value": "popup",
+          "key": "eeeee36-bf84-402c-98aa-9120b6ee809e"
+        }
+      ],
+      "source": "Manual",
+      "required": false,
+      "conditions": [
+        {
+          "id": "enable_side_cart",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+       
         {
             "type": "static",
             "id": "static-line-32",
