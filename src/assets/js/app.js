@@ -8,6 +8,15 @@ class App extends AppHelpers {
   constructor() {
     super();
     window.app = this;
+    global.openEyeModel = (id) => {
+      import("./partials/eye-model")
+        .then((eye) => {
+          eye.eyeModel(id);
+        })
+        .catch((error) => {
+          console.error("Failed to load eye model:", error);
+        });
+    };
   }
 
   loadTheApp() {
