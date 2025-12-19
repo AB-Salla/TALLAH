@@ -363,7 +363,7 @@ const items = cart.items;
                               
                     <div class="flex-1 border-t border-gray-100 pt-3 md:border-none mt-5 md:mt-0 flex justify-between items-center md:items-start">
                           
-                        <salla-quantity-input cart-item-id="${item.id}" max="${ product.max_quantity }"
+                        <salla-quantity-input cart-item-id="${item.id}" max="${ item.max_quantity }"
                             class="transtion transition-color duration-300" aria-label="Quantity"
                             value="${item.quantity}" name="quantity">
                         </salla-quantity-input>
