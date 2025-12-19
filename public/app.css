@@ -2094,6 +2094,18 @@ select{
     font-size: 0.75rem;
     line-height: 1rem;
 }
+.text-\[clamp\(1\.25rem\2c 1\.0204rem\+0\.9796vw\2c 1\)\]{
+    font-size: clamp(1.25rem,1.0204rem + 0.9796vw,1);
+}
+.text-\[clamp\(\.75rem\2c 1\.0204rem\+0\.9796vw\2c 1\)\]{
+    font-size: clamp(.75rem,1.0204rem + 0.9796vw,1);
+}
+.text-\[clamp\(1\.25rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
+    font-size: clamp(1.25rem,1.0204rem + 0.9796vw,1.25rem);
+}
+.text-\[clamp\(1rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
+    font-size: clamp(1rem,1.0204rem + 0.9796vw,1.25rem);
+}
 .font-bold{
     font-weight: 700;
 }

@@ -11,9 +11,12 @@
            data-sal-easing="ease"
            data-sal-repeat="true"
       >
-        <h1 class="text-[clamp(1.25rem,1.0204rem+0.9796vw,2rem)]  leading-8 md:leading-10 font-normal blocktitle {% if component.center_block_ttitle %} mx-auto {% endif %}">
+        <h1 class="text-[clamp(1rem,1.0204rem+0.9796vw,1.25rem)] font-semibold  leading-8 md:leading-10  blocktitle {% if component.center_block_ttitle %} mx-auto {% endif %}">
           {{ component.section_title }}
         </h1>
+        <p class="text-[clamp(.75rem,1.0204rem+0.9796vw,1)]  leading-8 md:leading-10 font-normal blocktitle {% if component.center_block_ttitle %} mx-auto {% endif %}">
+          {{ component.section_title }}
+        </p>
 
        {% if not component.enable_controls %}
           <a href="{{ component.rh_cat_btn_url }}" class="text-graytext cat-link text-[clamp(1rem,1rem+0vw,1rem)] md:leading-6 font-normal"
