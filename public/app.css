@@ -26054,6 +26054,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 @media (min-width: 768px) {
   #quick-eye-model .s-slider-thumbs {
     max-height: 100px;
+    display: none;
   }
 }
 #quick-eye-model .product-images-slider .s-slider-thumbs-container {

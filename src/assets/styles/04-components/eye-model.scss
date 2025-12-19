@@ -236,6 +236,7 @@
   .s-slider-thumbs {
     @media (min-width:768px) {
       max-height: 100px;
+      display: none;
     }
     max-height: 80px;
   }
