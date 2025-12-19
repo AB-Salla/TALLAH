@@ -310,6 +310,7 @@ const items = cart.items;
       const details = await fetchProductDetails(item.product_id);
       return { ...item, details };
     }));
+        console.log(productCache);
         
         const totalItems = items.length;
         totalItemsEl.forEach(totalel=>{
