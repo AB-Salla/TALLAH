@@ -24785,6 +24785,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1;
 }
 .s-product-card-entry {
+  border-radius: 0 !important;
+}
+.s-product-card-entry {
   background-color: var(--color-background);
   /* When wishlist is added */
   /* When wishlist is not added */
@@ -24912,6 +24915,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-image::before {
   font-family: "sallaicons";
+}
+.s-product-card-vertical {
+  border-radius: 0 !important;
+}
+.s-product-card-vertical .s-product-card-image {
+  border-radius: 0 !important;
 }
 .s-product-card-vertical .s-product-card-image {
   position: relative;
@@ -25058,7 +25067,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical .s-product-card-promotion-title:where([dir=rtl], [dir=rtl] *) {
   right: auto;
-  border-radius: 0 10px 10px 0;
+  border-radius: 0;
 }
 /*Product flip hover effect */
 .product-flip-wrapper {
@@ -25080,6 +25089,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   transform: rotateY(180deg);
 }
 .product-flip-face {
+  border-radius: 0 !important;
+}
+.product-flip-face {
   position: absolute;
   width: 100%;
   height: 100%;
@@ -25089,7 +25101,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
      object-fit: cover;
   top: 0;
   left: 0;
-  border-radius: inherit;
 }
 /* Front image - visible by default */
 .product-flip-face.front {
@@ -25103,8 +25114,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 /* Optional: Add smooth transition for the flip */
 .s-product-card-image {
+  border-radius: 0 !important;
+}
+.s-product-card-image {
   overflow: hidden;
-  border-radius: 8px; /* Adjust as needed */
 }
 /* Optional: Container styles for the image wrapper */
 .s-product-card-image,
