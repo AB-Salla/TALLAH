@@ -426,12 +426,14 @@
     width: 100% !important;
   }
 }
-.s-modal-padding{
-  padding-top: 0 !important;
-}
-[dir='ltr'] .s-modal-padding{
-  padding-left: 0 !important;
-}
-[dir='rtl'] .s-modal-padding{
-  padding-right: 0 !important;
+@media (min-width:640px) {
+  .s-modal-padding{
+    padding-top: 0 !important;
+  }
+  [dir='ltr'] .s-modal-padding{
+    padding-left: 0 !important;
+  }
+  [dir='rtl'] .s-modal-padding{
+    padding-right: 0 !important;
+  }
 }
