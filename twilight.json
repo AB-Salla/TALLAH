@@ -2321,7 +2321,341 @@
             },
             "icon": "sicon-packed-box",
             "path": "home.AR_our_products",
-            "fields": []
+            "fields": [
+        {
+          "type": "static",
+          "format": "title",
+          "id": "static-label1",
+          "value": "<div style='margin-bottom: 20px' > <img class='w-full h-[46px] object-cover' src='https://cdn.files.salla.network/homepage/2070588102/c681a0fa-76c9-4f32-b908-93144f12597f.webp'/> </div>",
+          "variant": "h6"
+        },
+        {
+          "type": "static",
+          "format": "description",
+          "id": "jt_products_section_intro",
+          "value": "<div style='width:100%; padding:12px 16px; margin-bottom:24px; border:1px solid rgba(42,45,67,1); border-radius:10px; box-shadow:0 1px 6px rgba(0,0,0,0.04); background:#CE5A67; color:#ffffff; font-size:14px; font-weight:600; display:flex; flex-direction:column; align-items:flex-start; gap:12px;'> <div> قسم ديناميكي لعرض مجموعة مختارة من المنتجات داخل قسم مميز قابل للتخصيص بالكامل، مما يجذب انتباه العملاء ويزيد فرص التحويل. <br> خيار مثالي للترويج لأهم منتجاتك أو عروضك الحصرية لزيادة المبيعات. </div> </div>"
+        },
+        {
+          "type": "static",
+          "format": "description",
+          "id": "with-bg",
+          "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #CE5A67;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/2070588102/c681a0fa-76c9-4f32-b908-93144f12597f.webp'></div>"
+        },
+        {
+          "id": "use_custom_colors",
+          "type": "boolean",
+          "format": "switch",
+          "label": "استخدام ألوان مخصصة",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": false,
+          "required": false
+        },
+        {
+          "id": "blocktitle_color_light",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الرئيسي في الوضع الفاتح",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-format-fill",
+          "value": "#000000",
+          "required": false,
+          "conditions": [
+            {
+              "id": "use_custom_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "link_color_light",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون رابط التصنيف في الوضع الفاتح",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-format-fill",
+          "value": "#4659ea",
+          "required": false,
+          "conditions": [
+            {
+              "id": "use_custom_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "center_block_ttitle",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إضافة العنوان الرئيسى في المنتصف",
+          "description": "اجعل العنوان يبرز في المنتصف ليجذب الانتباه ويضيف لمسة جمالية إلى التصميم.",
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": false,
+          "required": false
+        },
+        {
+          "id": "section_title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان الرئيسي ",
+          "description": "أدخل عنوانًا رئيسيًا بارزًا يجذب الانتباه ويعكس محتوى القسم.",
+          "labelHTML": null,
+          "placeholder": "Placeholder text ..",
+          "icon": "sicon-format-text-alt",
+          "value": "منتجاتنا الأكثر طلبًا",
+          "multilanguage": true,
+          "required": false,
+          "minLength": "2",
+          "maxLength": "70"
+        },
+        {
+          "id": "link_title",
+          "type": "string",
+          "format": "text",
+          "label": "نص رابط عرض التصنيفات",
+          "description": "",
+          "labelHTML": null,
+          "placeholder": "Placeholder text ..",
+          "icon": "sicon-format-text-alt",
+          "value": "عرض كل المنتجات",
+          "multilanguage": true,
+          "required": false,
+          "minLength": "2",
+          "maxLength": "40",
+          "conditions": [
+            {
+              "id": "is_moving",
+              "operation": "=",
+              "value": false
+            }
+          ]
+        },
+        {
+          "type": "items",
+          "icon": "sicon-link",
+          "label": "رابط الزر",
+          "id": "rh_cat_btn_url",
+          "value": [],
+          "description": "اختر الوجهة التي سيتم الانتقال إليها عند النقر على الرابط",
+          "required": true,
+          "format": "variable-list",
+          "searchable": true,
+          "source": "custom",
+          "sources": [
+            {
+              "label": "تصنيف",
+              "key": "categories",
+              "value": "categories"
+            },
+            {
+              "label": "ماركة تجارية",
+              "key": "brands",
+              "value": "brands"
+            },
+            {
+              "label": "تصنيف ضمن المدونة",
+              "key": "blog_categories",
+              "value": "blog_categories"
+            },
+            {
+              "label": "التخفيضات",
+              "key": "offers_link",
+              "value": "offers_link"
+            },
+            {
+              "label": "الماركات التجارية",
+              "key": "brands_link",
+              "value": "brands_link"
+            },
+            {
+              "label": "رابط خارجي",
+              "key": "custom",
+              "value": "custom"
+            }
+          ],
+          "conditions": [
+            {
+              "id": "is_moving",
+              "operation": "=",
+              "value": false
+            }
+          ]
+        },
+        {
+          "id": "is_moving",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تفعيل السلايدر ",
+          "description": "فعِّل هذا الخيار لعرض المنتجات بشكل سلايدر.",
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": true,
+          "required": false
+        },
+        {
+          "id": "enable_controls",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إضافة أسهم التنقل",
+          "description": "فعّل هذا الخيار لإظهار أسهم تُسهّل على الزائر التنقل بين العناصر داخل السلايدر.",
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": true,
+          "required": false,
+          "conditions": [
+            {
+              "id": "is_moving",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "enable_pagination",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إضافة نقاط التنقل",
+          "description": "فعّل هذا الخيار لإظهار نقاط التمرير أسفل السلايدر، لتسهيل التنقل على الزوار.",
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": true,
+          "required": false,
+          "conditions": [
+            {
+              "id": "is_moving",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "isp_autoPlay",
+          "type": "boolean",
+          "format": "switch",
+          "label": "تفعيل التمرير التلقائي",
+          "description": "فعّل هذا الخيار لعرض المتنجات تلقائيًا داخل السلايدر.",
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": false,
+          "required": false,
+          "conditions": [
+            {
+              "id": "is_moving",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
+          "id": "source_type",
+          "icon": "sicon-t-shirt",
+          "type": "items",
+          "label": "مصدر عرض المنتجات",
+          "description": "اختر الطريقة التي تريد بها جلب المنتجات (من تصنيف، مختارة يدويًا، الأكثر مبيعًا...).",
+          "format": "dropdown-list",
+          "source": "Manual",
+          "options": [
+            {
+              "key": "categories",
+              "label": "منتجات من تصنيف",
+              "value": "categories"
+            },
+            {
+              "key": "sales",
+              "label": "الأكثر مبيعاً",
+              "value": "sales"
+            },
+            {
+              "key": "latest",
+              "label": "أحدث المنتجات",
+              "value": "latest"
+            },
+            {
+              "key": "selected",
+              "label": "منتجات مختارة",
+              "value": "selected"
+            }
+          ],
+          "required": true,
+          "selected": [
+            {
+              "key": "latest",
+              "label": "أحدث المنتجات",
+              "value": "latest"
+            }
+          ],
+          "multichoice": false
+        },
+        {
+          "id": "categories",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "اختيار التصنيف",
+          "description": "اختر التصنيف الذي ترغب بعرض منتجاته.",
+          "icon": "sicon-keyboard_arrow_down",
+          "selected": [],
+          "source": "categories",
+          "multichoice": false,
+          "searchable": true,
+          "required": true,
+          "conditions": [
+            {
+              "id": "source_type",
+              "operation": "=",
+              "value": "categories"
+            }
+          ]
+        },
+        {
+          "id": "grid_cols_number",
+          "type": "number",
+          "format": "integer",
+          "label": "عدد المنتجات المعروضة ",
+          "description": "من 3 إلى 4",
+          "key": "f0caf793-88f8-4178-b1cc-a7ace5c09ff6",
+          "labelHTML": null,
+          "placeholder": "القيمة",
+          "icon": "sicon-pencil-ruler",
+          "value": 4,
+          "required": false,
+          "minimum": 3,
+          "maximum": 4
+        },
+        {
+          "id": "products",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "اختيار المنتجات يدويًا",
+          "description": "اختر المنتجات التي تريد عرضها بشكل يدوي.",
+          "icon": "sicon-keyboard_arrow_down",
+          "selected": [],
+          "source": "products",
+          "multichoice": true,
+          "searchable": true,
+          "required": false,
+          "conditions": [
+            {
+              "id": "source_type",
+              "operation": "=",
+              "value": "selected"
+            }
+          ]
+        }
+      ]
         }
     ],
     "support_url": null,
