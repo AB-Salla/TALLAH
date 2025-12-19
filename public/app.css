@@ -26521,13 +26521,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:bg-background:hover{
     background-color: var(--color-background);
 }
-.hover\:bg-primary:hover{
-    background-color: #414042;
-    background-color: var(--color-primary);
-}
-.hover\:text-background:hover{
-    color: var(--color-background);
-}
 .hover\:text-dark:hover{
     --tw-text-opacity: 1;
     color: rgba(29, 31, 31, 1);
