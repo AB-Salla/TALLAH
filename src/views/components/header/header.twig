@@ -72,9 +72,7 @@
                             <i class="header-btn__icon sicon-user-circle"></i>
                           </button>
                       {% endif %}
-                      <salla-cart-summary class="ml-4 rtl:ml-[unset] rtl:mr-4">
-                        <i slot="icon" class="header-btn__icon icon sicon-shopping-bag"></i>
-                      </salla-cart-summary>
+                     {% include 'pages.partials.cart_options.twig' %}
                   </div>
               </div>
           </div>
