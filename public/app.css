@@ -26054,6 +26054,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 @media (min-width: 768px) {
   #quick-eye-model .s-slider-thumbs {
     max-height: 100px;
+  }
+}
+@media (max-width: 640px) {
+  #quick-eye-model .s-slider-thumbs {
     display: none;
   }
 }
