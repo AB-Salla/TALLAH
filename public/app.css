@@ -26049,11 +26049,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 #quick-eye-model .s-slider-thumbs {
-  max-height: 310px;
+  max-height: 80px;
 }
 @media (min-width: 768px) {
   #quick-eye-model .s-slider-thumbs {
-    max-height: 522px;
+    max-height: 100px;
   }
 }
 #quick-eye-model .product-images-slider .s-slider-thumbs-container {
