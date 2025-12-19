@@ -79,9 +79,9 @@
       </div>
   </div>
 </header>
-<aside id="sidecart-panel" class="side-panel bg-background side-panel--left fixed top-0 h-full bg-bg-light dark:bg-bg-dark  w-full md:w-[420px] z-[999999] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
+<aside id="sidecart-panel" class="side-panel  side-panel--left fixed top-0 h-full bg-background dark:bg-bg-dark  w-full md:w-[420px] z-[999999] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
 	<div class="side-panel__top flex items-center relative z-[2] p-5">
-		<button class="menu-close bg-[var(--color-primary)] text-backbg-background rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="إغلاق">
+		<button class="menu-close bg-primary text-background rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="إغلاق">
 			<i class="sicon-cancel text-xl"></i>
 		</button>
 	</div>
@@ -118,7 +118,7 @@
 			<strong id="sidecart-total" class="total-value text-lg"></strong>
 		</div>
 
-		<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn w-full flex items-center justify-center gap-2 bg-primary text-backbg-background rounded-lg py-3 hover:bg-primary/90 transition">
+		<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn w-full flex items-center justify-center gap-2 bg-primary bg-background rounded-lg py-3 hover:bg-primary/90 transition">
 			<i class="smticon-cart text-lg"></i>
 			<span>{{ trans('pages.cart.goToCartPage') }}</span>
 		</a>
