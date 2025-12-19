@@ -298,7 +298,7 @@ isElementLoaded(selector){
           sub_total: 0,
         };
 const items = cart.items;
-        console.log(items,"items🥳🥳🥳🥳🥳🥳🥳🥳");
+
         
         const totalItems = items.length;
         totalItemsEl.forEach(totalel=>{
@@ -308,6 +308,8 @@ const items = cart.items;
           count.textContent = `(${cart.count} منتج)`;
           itemsWrap.innerHTML = cart.items
             .map((item) => {
+              console.log(item,"itemitems🥳🥳🥳🥳🥳🥳🥳🥳items🥳🥳🥳🥳🥳🥳🥳🥳items🥳🥳🥳🥳🥳🥳🥳🥳");
+              
               const item_url =
                 item.product_url || salla.url.get("*/p" + item.product_id);
               const img =
