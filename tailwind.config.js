@@ -12,7 +12,7 @@ module.exports = {
             center : true,
             padding: '10px',
             screens: {
-                '2xl': "100vw"
+                '2xl': "1280px"
             }
         },
         fontFamily: {

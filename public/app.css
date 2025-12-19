@@ -806,9 +806,9 @@ select{
     padding-right: 10px;
     padding-left: 10px;
 }
-@media (min-width: 100vw){
+@media (min-width: 1280px){
     .container{
-        max-width: 100vw;
+        max-width: 1280px;
     }
 }
 .form-input,.form-textarea,.form-select,.form-multiselect{
@@ -1929,6 +1929,10 @@ select{
 .py-8{
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+.px-\[10px\]{
+    padding-left: 10px;
+    padding-right: 10px;
 }
 .\!pt-1{
     padding-top: 0.25rem !important;
@@ -3238,9 +3242,9 @@ textarea.s-input{
     padding-right: 10px;
     padding-left: 10px;
 }
-@media (min-width: 100vw){
+@media (min-width: 1280px){
     .s-advertisement-content{
-        max-width: 100vw;
+        max-width: 1280px;
     }
 }
 .s-advertisement-content{
@@ -23341,9 +23345,9 @@ model-viewer[style*=width]:before{
     padding-right: 10px;
     padding-left: 10px;
 }
-@media (min-width: 100vw){
+@media (min-width: 1280px){
     .s-comments-product .s-comments-container{
-        max-width: 100vw;
+        max-width: 1280px;
     }
 }
 @media only screen and (min-width: 1024px) {
