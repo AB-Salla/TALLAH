@@ -26062,10 +26062,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 #quick-eye-model .product-images-slider .s-slider-thumbs-container {
-  padding-top: 31px !important;
-  padding-bottom: 31px !important;
-}
-#quick-eye-model .product-images-slider .s-slider-thumbs-container {
   padding: 0;
   width: 100%;
   margin-left: auto;
