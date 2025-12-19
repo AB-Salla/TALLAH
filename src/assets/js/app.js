@@ -270,7 +270,15 @@ isElementLoaded(selector){
         setTimeout(() => (cartPanel.style.visibility = "hidden"), 300);
       }
     };
+const productCache = {};
 
+    async function fetchProductDetails(productId) {
+  if (!productCache[productId]) {
+    const res = await salla.product.getDetails(productId, ["images", "options"]);
+    productCache[productId] = res.data;
+  }
+  return productCache[productId];
+}
     // 📦 تحميل السلة
     async function loadCart() {
       function getLocalizedMessageinner(key) {
@@ -298,7 +306,10 @@ isElementLoaded(selector){
           sub_total: 0,
         };
 const items = cart.items;
-
+  const itemsWithDetails = await Promise.all(items.map(async item => {
+      const details = await fetchProductDetails(item.product_id);
+      return { ...item, details };
+    }));
         
         const totalItems = items.length;
         totalItemsEl.forEach(totalel=>{
