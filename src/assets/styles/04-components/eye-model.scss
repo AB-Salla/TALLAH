@@ -187,9 +187,9 @@
   }
   .swiper-wrapper {
     @media (min-width:768px) {
-      // max-height: 522px;
+      max-height: 522px;
     }
-    // max-height: 310px;
+    max-height: 310px;
 
   }
   .salla-slider {
@@ -228,16 +228,16 @@
   }
   .product-images-slider .s-slider-container {
    @media (min-width:768px) {
-      // max-height: 522px;
+      max-height: 522px;
     }
-    // max-height: 310px;
+    max-height: 310px;
     flex: 1;
   }
   .s-slider-thumbs {
     @media (min-width:768px) {
-      // max-height: 522px;
+      max-height: 522px;
     }
-    // max-height: 310px;
+    max-height: 310px;
   }
   .product-images-slider .s-slider-thumbs-container {
     padding: 0;
