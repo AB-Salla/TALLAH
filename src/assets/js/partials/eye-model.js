@@ -59,7 +59,28 @@ export const eyeModel = (productId) => {
     });
   }
 
+  // دالة مسح الخيارات
+  function clearProductOptions() {
+    const wrapper = document.querySelector('salla-product-options');
+    if (!wrapper) return;
 
+    wrapper.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+      radio.checked = false;
+      radio.closest('label')?.classList.remove('active');
+    });
+
+    wrapper.querySelectorAll('select').forEach(select => {
+      select.selectedIndex = 0;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    wrapper.querySelectorAll('label.go-to-slide').forEach(label => {
+      label.classList.remove('active');
+    });
+
+    wrapper.dispatchEvent(new Event('change', { bubbles: true }));
+    console.log('تم مسح جميع الخيارات');
+  }
 
   // تهيئة الخيارات في الـ modal
   function initProductOptionsInModal() {
@@ -71,6 +92,7 @@ export const eyeModel = (productId) => {
             if (node.nodeType === 1 && node.querySelector && node.querySelector('.s-product-options-option-content select')) {
               setTimeout(() => {
                 convertSelectsToRadioButtons(modelContainer);
+                setupClearButton();
               }, 100);
             }
           });
@@ -84,11 +106,11 @@ export const eyeModel = (productId) => {
     setTimeout(() => {
       if (modelContainer.querySelector('.s-product-options-option-content select')) {
         convertSelectsToRadioButtons(modelContainer);
+        setupClearButton();
       }
     }, 300);
   }
 
-  // إعداد زر المسح
 
 
   const eyeHtml = (product) => {
@@ -160,7 +182,7 @@ export const eyeModel = (productId) => {
 							loading="${index === 0 ? "eager" : "lazy"}"
 							width="100%"
 							height="100%"
-							class="object-cover w-auto sm:w-full h-full"
+							class="object-cover w-full sm:w-full h-full"
 						/>
 					</${wrapper}>
 				`
@@ -170,25 +192,34 @@ export const eyeModel = (productId) => {
       return `
       <div class="flex flex-col gap-1 justify-start h-full">
       
-			<salla-slider
-      id="thumbs"
-      show-controls="false"
-      type="thumbs"
-      show-thumbs-controls="true"
-      class="product-images-slider !h-fit flex items-center gap-1 flex-row-reverse"
-      vertical="true"
-      vertical-thumbs="true"
-      slider-config='{
-        "slidesPerView": 1,
-        "spaceBetween": 0,
-        "breakpoints": {
-          "640": { "spaceBetween": 10 }
-        }
-      }'
-  thumbs-config='{
-    "slidesPerView": 5,
-    "spaceBetween": 10
-  }'
+		<salla-slider
+	id="thumbs"
+	show-controls="false"
+	type="thumbs"
+	show-thumbs-controls="false"
+	class="product-images-slider block flex-grow"
+	slider-config='{
+		"slidesPerView": 2,
+		"spaceBetween": 10,
+    "autoplay": {
+			"delay": 3000,
+			"disableOnInteraction": false
+		},
+		"breakpoints": {
+			"768": {
+				"slidesPerView": 1,
+				"spaceBetween": 10
+			}
+		}
+	}'
+	thumbs-config='{
+		"slidesPerView": 3,
+		"spaceBetween": 0,
+		"direction": "horizontal",
+		"breakpoints": {
+			"551": { "slidesPerView": 3.5, "spaceBetween": 10 }
+		}
+	}'
 >
   <div slot="items">
     ${generateImages(
@@ -201,6 +232,8 @@ export const eyeModel = (productId) => {
     ${generateImages("div", "product-thumbs-image")}
   </div>
 </salla-slider>
+
+      </div>
 
 			`;
     };
@@ -475,7 +508,7 @@ export const eyeModel = (productId) => {
     };
 
     modelContainer.innerHTML = `
-				<div class="grid grid-cols-1 sm:grid-cols-4 gap-10 items-center pt-4" id="product-id-${
+				<div class="grid grid-cols-1 sm:grid-cols-6 gap-10 items-center " id="product-id-${
           product.id
         }">
 
@@ -489,7 +522,7 @@ export const eyeModel = (productId) => {
               : ""
           }
 
-					<div class="product-info sm:col-span-2 flex flex-col gap-3 h-full">
+					<div class="product-info sm:col-span-4 flex flex-col gap-3 h-full">
 						<div class="promotion-and-wishlist flex items-center gap-2">
 							
 							
@@ -526,9 +559,6 @@ export const eyeModel = (productId) => {
 							${
                 getProductOptions()
                   ? `<div class="product-options-container ">${getProductOptions()}</div>
-                   <button type="button" id="clear-product-options" class="text-black rounded-lg flex items-center gap-2">
-                        x ${window.delete}
-                    </button>
                   `
                   : ""
               }
@@ -595,18 +625,14 @@ ${renderWeightBlock()}
       initProductOptionsInModal();
 
       // 5. إعداد event listener للزر بشكل مباشر
-      setTimeout(() => {
-        const clearButton = modelContainer.querySelector('#clear-product-options');
-        if (clearButton) {
-          clearButton.addEventListener('click', clearProductOptions);
-        }
-      }, 500);
+      
 
       // 6. المراقبة المستمرة للعناصر المضافة
       const checkOptionsInterval = setInterval(() => {
         const selects = modelContainer.querySelectorAll('.s-product-options-option-content select');
         if (selects.length > 0) {
           convertSelectsToRadioButtons(modelContainer);
+          setupClearButton();
           clearInterval(checkOptionsInterval);
         }
       }, 100);
