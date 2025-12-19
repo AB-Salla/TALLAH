@@ -26034,14 +26034,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model .product-images-slider .s-slider-container {
   flex: 1;
 }
-#quick-eye-model .s-slider-thumbs {
-  max-height: 310px;
-}
-@media (min-width: 768px) {
-  #quick-eye-model .s-slider-thumbs {
-    max-height: 522px;
-  }
-}
 #quick-eye-model .product-images-slider .s-slider-thumbs-container {
   padding: 0;
   width: 100%;
