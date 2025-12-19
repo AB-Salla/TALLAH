@@ -430,9 +430,9 @@
 .s-modal-padding{
   padding-top: 0 !important;
 }
-.body.ltr .s-modal-padding{
+[dir='ltr'] .s-modal-padding{
   padding-right: 0 !important;
 }
-.body.rtl .s-modal-padding{
+[dir='rtl'] .s-modal-padding{
   padding-left: 0 !important;
 }
