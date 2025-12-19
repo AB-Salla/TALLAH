@@ -14,7 +14,7 @@
     // ===========================
     // WISHLIST BUTTON STYLE
     // ===========================
-
+    border-radius: 0 !important;
     .s-product-card-wishlist-btn {
       cursor: pointer;
       position: static !important;
@@ -150,17 +150,11 @@
   // ===========================
 
   &-vertical {
-    // height: 586px !important;
-    // min-height: 586px;
-    // max-height: 586px;
-    @media (max-width: 768px) {
-      // height: 290px !important;
-      //   min-height: 290px;
-      //   max-height: 290px;
-    }
+    border-radius: 0 !important;
 
     // Image container inside vertical card
     .s-product-card-image {
+      border-radius: 0 !important;
       position: relative;
       // max-height: 490px;
       // min-height: 490px;
@@ -410,7 +404,7 @@
   .s-product-card-promotion-title:where([dir="rtl"], [dir="rtl"] *) {
   left: 0px !important;
   right: auto;
-  border-radius: 0 10px 10px 0;
+  border-radius:0;
 }
 /*Product flip hover effect */
 .product-flip-wrapper {
@@ -443,7 +437,7 @@
   object-fit: cover;
   top: 0;
   left: 0;
-  border-radius: inherit;
+  border-radius: 0 !important;
 }
 
 /* Front image - visible by default */
@@ -461,7 +455,7 @@
 /* Optional: Add smooth transition for the flip */
 .s-product-card-image {
   overflow: hidden;
-  border-radius: 8px; /* Adjust as needed */
+  border-radius: 0 !important;
 }
 
 /* Optional: Container styles for the image wrapper */
