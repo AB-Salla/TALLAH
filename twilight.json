@@ -2321,12 +2321,13 @@
             },
             "icon": "sicon-packed-box",
             "path": "home.AR_our_products",
+            "image":"https://cdn.files.salla.network/homepage/1954265887/18b990f3-09fc-41d0-b3f0-9547fe6c726c.webp",
             "fields": [
         {
           "type": "static",
           "format": "title",
           "id": "static-label1",
-          "value": "<div style='margin-bottom: 20px' > <img class='w-full h-[46px] object-cover' src='https://cdn.files.salla.network/homepage/2070588102/c681a0fa-76c9-4f32-b908-93144f12597f.webp'/> </div>",
+          "value": "<div style='margin-bottom: 20px' > <img class='w-full h-[46px] object-cover' src='https://cdn.files.salla.network/homepage/1954265887/18b990f3-09fc-41d0-b3f0-9547fe6c726c.webp'/> </div>",
           "variant": "h6"
         },
         {
@@ -2339,7 +2340,7 @@
           "type": "static",
           "format": "description",
           "id": "with-bg",
-          "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #CE5A67;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/2070588102/c681a0fa-76c9-4f32-b908-93144f12597f.webp'></div>"
+          "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #CE5A67;border-radius:5px;text-align:center;overflow:hidden'><h6 style='margin-bottom:10px'>معاينة العنصر</h6><img class='w-full' src='https://cdn.files.salla.network/homepage/1954265887/18b990f3-09fc-41d0-b3f0-9547fe6c726c.webp'></div>"
         },
         {
           "id": "use_custom_colors",
