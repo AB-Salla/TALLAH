@@ -193,26 +193,30 @@ export const eyeModel = (productId) => {
       <div class="flex flex-col gap-1 justify-start h-full">
       
 		<salla-slider
-					id="thumbs"
-					show-controls="false"
-					type="thumbs"
-					show-thumbs-controls="false"
-					class="product-images-slider block flex-grow"
-					slider-config='{
-						"slidesPerView": 1,
-						"spaceBetween": 0,
-						"breakpoints": {
-							"640": { "spaceBetween": 10 }
-						}'
-              thumbs-config='{
-						"slidesPerView": 3,
-						"spaceBetween": 0,
-						"direction": "horizontal",
-						"breakpoints": {
-							"551": { "slidesPerView": 3.5 , "spaceBetween": 10}
-						}
-					}'
-				>
+	id="thumbs"
+	show-controls="false"
+	type="thumbs"
+	show-thumbs-controls="false"
+	class="product-images-slider block flex-grow"
+	slider-config='{
+		"slidesPerView": 2,
+		"spaceBetween": 0,
+		"breakpoints": {
+			"768": {
+				"slidesPerView": 1,
+				"spaceBetween": 10
+			}
+		}
+	}'
+	thumbs-config='{
+		"slidesPerView": 3,
+		"spaceBetween": 0,
+		"direction": "horizontal",
+		"breakpoints": {
+			"551": { "slidesPerView": 3.5, "spaceBetween": 10 }
+		}
+	}'
+>
   <div slot="items">
     ${generateImages(
       "a",
