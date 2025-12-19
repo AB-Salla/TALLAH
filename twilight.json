@@ -167,7 +167,7 @@
             "type": "static",
             "format": "title",
             "id": "colors_of_our_theme",
-            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
             "variant": "h6"
         },
         {
@@ -264,7 +264,7 @@
                     "type": "static",
                     "format": "title",
                     "label": "رابط مكتبة الأيقونات المتحركة",
-                    "value": "<span >اختيار الأيقونة</span><a style='font-size:16px; -webkit-background-clip: text; color: #4659EA;' href='https://lordicon.com/icons/wired/gradient?f=free' target='_blank'> : من هنا</a>",
+                    "value": "<span >اختيار الأيقونة</span><a style='font-size:16px; -webkit-background-clip: text; color: #18181B;' href='https://lordicon.com/icons/wired/gradient?f=free' target='_blank'> : من هنا</a>",
                     "variant": "p",
                     "icon": "sicon-format-text",
                     "conditions": [
@@ -427,7 +427,7 @@
                     "type": "static",
                     "format": "title",
                     "label": "رابط مكتبة الأيقونات المتحركة",
-                    "value": "<span >اختيار الأيقونة</span><a style='font-size:16px; -webkit-background-clip: text; color: #4659EA;' href='https://lordicon.com/icons/wired/gradient?f=free' target='_blank'> : من هنا</a>",
+                    "value": "<span >اختيار الأيقونة</span><a style='font-size:16px; -webkit-background-clip: text; color: #18181B;' href='https://lordicon.com/icons/wired/gradient?f=free' target='_blank'> : من هنا</a>",
                     "variant": "p",
                     "icon": "sicon-format-text",
                     "conditions": [
@@ -542,7 +542,7 @@
             "type": "static",
             "format": "title",
             "id": "colors_of_our_theme",
-            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >ألـوان الثـيم</div>",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >ألـوان الثـيم</div>",
             "variant": "h6"
         },
         {
@@ -573,7 +573,7 @@
             "type": "static",
             "format": "title",
             "id": "colors_of_our_theme",
-            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات أعـلى الصـفحة</div>",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات أعـلى الصـفحة</div>",
             "variant": "h6"
         },
         {
@@ -703,7 +703,7 @@
             "description": null,
             "labelHTML": null,
             "icon": "sicon-format-fill",
-            "value": "#000000",
+            "value": "#18181B",
             "required": false,
             "conditions": [
                 {
@@ -717,7 +717,7 @@
             "type": "static",
             "format": "title",
             "id": "colors_of_our_theme",
-            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #000000;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات  الشريط السفلي</div>",
+            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات  الشريط السفلي</div>",
             "variant": "h6"
         },
         {
@@ -2325,13 +2325,6 @@
             "fields": [
         {
           "type": "static",
-          "format": "title",
-          "id": "static-label1",
-          "value": "<div style='margin-bottom: 20px' > <img class='w-full h-[46px] object-cover' src='https://cdn.files.salla.network/homepage/1954265887/18b990f3-09fc-41d0-b3f0-9547fe6c726c.webp'/> </div>",
-          "variant": "h6"
-        },
-        {
-          "type": "static",
           "format": "description",
           "id": "jt_products_section_intro",
           "value": "<div style='width:100%; padding:12px 16px; margin-bottom:24px; border:1px solid rgba(42,45,67,1); border-radius:10px; box-shadow:0 1px 6px rgba(0,0,0,0.04); background:#262626; color:#ffffff; font-size:14px; font-weight:600; display:flex; flex-direction:column; align-items:flex-start; gap:12px;'> <div> قسم ديناميكي لعرض مجموعة مختارة من المنتجات داخل قسم مميز قابل للتخصيص بالكامل، مما يجذب انتباه العملاء ويزيد فرص التحويل. <br> خيار مثالي للترويج لأهم منتجاتك أو عروضك الحصرية لزيادة المبيعات. </div> </div>"
@@ -2359,11 +2352,11 @@
           "type": "string",
           "format": "color",
           "inputType": "color",
-          "label": "لون العنوان الرئيسي في الوضع الفاتح",
+          "label": "لون العنوان الرئيسي ",
           "description": null,
           "labelHTML": null,
           "icon": "sicon-format-fill",
-          "value": "#000000",
+          "value": "#18181B",
           "required": false,
           "conditions": [
             {
@@ -2378,11 +2371,11 @@
           "type": "string",
           "format": "color",
           "inputType": "color",
-          "label": "لون رابط التصنيف في الوضع الفاتح",
+          "label": "لون رابط التصنيف ",
           "description": null,
           "labelHTML": null,
           "icon": "sicon-format-fill",
-          "value": "#4659ea",
+          "value": "#18181B",
           "required": false,
           "conditions": [
             {
