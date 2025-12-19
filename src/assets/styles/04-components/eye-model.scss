@@ -77,11 +77,7 @@
       overflow: scroll;
     }
   }
-  .s-slider-thumbs {
-    @media (max-width: 1024px) {
-      display: none !important;
-    }
-  }
+
   // salla social style
   /* إلغاء الوضع المخفي/المتحرك */
   salla-social-share .s-social-share-wrapper {

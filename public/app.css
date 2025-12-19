@@ -25901,11 +25901,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     overflow: scroll;
   }
 }
-@media (max-width: 1024px) {
-  #quick-eye-model .s-slider-thumbs {
-    display: none !important;
-  }
-}
 #quick-eye-model salla-social-share .s-social-share-wrapper {
   display: flex !important;
 }
@@ -26650,9 +26645,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .sm\:grid-cols-3{
         grid-template-columns: repeat(3, minmax(0, 1fr));
-    }
-    .sm\:grid-cols-4{
-        grid-template-columns: repeat(4, minmax(0, 1fr));
     }
     .sm\:grid-cols-6{
         grid-template-columns: repeat(6, minmax(0, 1fr));
