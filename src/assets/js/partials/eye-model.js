@@ -197,7 +197,7 @@ export const eyeModel = (productId) => {
 					show-controls="false"
 					type="thumbs"
 					show-thumbs-controls="false"
-					class="product-images-slider block"
+					class="product-images-slider block flex-grow"
 					slider-config='{
 						"slidesPerView": 1,
 						"spaceBetween": 0,
