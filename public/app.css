@@ -1237,9 +1237,6 @@ select{
 .h-\[300px\]{
     height: 300px;
 }
-.h-\[32px\]{
-    height: 32px;
-}
 .h-\[34px\]{
     height: 34px;
 }
@@ -1267,6 +1264,9 @@ select{
 }
 .h-px{
     height: 1px;
+}
+.h-\[32px\]{
+    height: 32px;
 }
 .max-h-0{
     max-height: 0px;
@@ -1352,9 +1352,6 @@ select{
 .w-8{
     width: 2rem;
 }
-.w-\[32px\]{
-    width: 32px;
-}
 .w-\[66px\]{
     width: 66px;
 }
@@ -1366,6 +1363,9 @@ select{
 }
 .w-full{
     width: 100%;
+}
+.w-\[32px\]{
+    width: 32px;
 }
 .min-w-0{
     min-width: 0px;
@@ -1713,9 +1713,6 @@ select{
 .rounded-3xl{
     border-radius: 1.5rem;
 }
-.rounded-\[2px\]{
-    border-radius: 2px;
-}
 .rounded-full{
     border-radius: 9999px;
 }
@@ -1730,6 +1727,9 @@ select{
 }
 .rounded-sm{
     border-radius: 0.125rem;
+}
+.rounded-\[2px\]{
+    border-radius: 2px;
 }
 .rounded-b-none{
     border-bottom-right-radius: 0px;
@@ -26784,14 +26784,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-20{
         height: 5rem;
     }
-    .md\:h-\[36px\]{
-        height: 36px;
-    }
     .md\:h-\[400px\]{
         height: 400px;
     }
     .md\:h-\[90vh\]{
         height: 90vh;
+    }
+    .md\:h-\[36px\]{
+        height: 36px;
     }
     .md\:w-40{
         width: 10rem;
@@ -26808,11 +26808,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-96{
         width: 24rem;
     }
-    .md\:w-\[36px\]{
-        width: 36px;
-    }
     .md\:w-auto{
         width: auto;
+    }
+    .md\:w-\[36px\]{
+        width: 36px;
     }
     .md\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -27181,9 +27181,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:ml-3:where([dir="ltr"], [dir="ltr"] *){
     margin-left: 0.75rem;
 }
-.ltr\:ml-auto:where([dir="ltr"], [dir="ltr"] *){
-    margin-left: auto;
-}
 .ltr\:mr-0:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 0px;
 }
@@ -27207,6 +27204,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .ltr\:mr-auto:where([dir="ltr"], [dir="ltr"] *){
     margin-right: auto;
+}
+.ltr\:ml-auto:where([dir="ltr"], [dir="ltr"] *){
+    margin-left: auto;
 }
 .ltr\:-scale-x-100:where([dir="ltr"], [dir="ltr"] *){
     --tw-scale-x: -1;

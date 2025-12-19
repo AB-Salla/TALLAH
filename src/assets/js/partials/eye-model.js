@@ -223,6 +223,10 @@ export const eyeModel = (productId) => {
     ${generateImages("div", "product-thumbs-image")}
   </div>
 </salla-slider>
+<div class="flex items-center gap-1  lg:w-[calc(100%-72px)] ltr:ml-auto rtl:mr-auto ">
+                </div>
+      </div>
+
 			`;
     };
 
