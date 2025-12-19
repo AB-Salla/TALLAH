@@ -209,7 +209,7 @@ export const eyeModel = (productId) => {
 						"spaceBetween": 0,
 						"direction": "horizontal",
 						"breakpoints": {
-							"551": { "slidesPerView": 3 }
+							"551": { "slidesPerView": 3.5 , "spaceBetween": 10}
 						}
 					}'
 				>
