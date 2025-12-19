@@ -806,9 +806,9 @@ select{
     padding-right: 10px;
     padding-left: 10px;
 }
-@media (min-width: 1280px){
+@media (min-width: 100vw){
     .container{
-        max-width: 1280px;
+        max-width: 100vw;
     }
 }
 .form-input,.form-textarea,.form-select,.form-multiselect{
@@ -2038,6 +2038,9 @@ select{
 .text-\[14px\]{
     font-size: 14px;
 }
+.text-\[clamp\(\.75rem\2c 1\.0204rem\+0\.9796vw\2c 1\)\]{
+    font-size: clamp(.75rem,1.0204rem + 0.9796vw,1);
+}
 .text-\[clamp\(\.8rem\2c 0\.9282rem\+0\.3218vw\2c 1rem\)\]{
     font-size: clamp(.8rem,0.9282rem + 0.3218vw,1rem);
 }
@@ -2056,9 +2059,6 @@ select{
 .text-\[clamp\(0\.875rem\2c 0\.8032rem\+0\.3218vw\2c 1\.125rem\)\]{
     font-size: clamp(0.875rem,0.8032rem + 0.3218vw,1.125rem);
 }
-.text-\[clamp\(1\.25rem\2c 1\.0204rem\+0\.9796vw\2c 2rem\)\]{
-    font-size: clamp(1.25rem,1.0204rem + 0.9796vw,2rem);
-}
 .text-\[clamp\(1\.375rem\2c 1\.1216rem\+1\.0811vw\2c 2rem\)\]{
     font-size: clamp(1.375rem,1.1216rem + 1.0811vw,2rem);
 }
@@ -2070,6 +2070,9 @@ select{
 }
 .text-\[clamp\(1rem\2c 0\.9282rem\+0\.3218vw\2c 1\.25rem\)\]{
     font-size: clamp(1rem,0.9282rem + 0.3218vw,1.25rem);
+}
+.text-\[clamp\(1rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
+    font-size: clamp(1rem,1.0204rem + 0.9796vw,1.25rem);
 }
 .text-\[clamp\(1rem\2c 1rem\+0vw\2c 1rem\)\]{
     font-size: clamp(1rem,1rem + 0vw,1rem);
@@ -2093,18 +2096,6 @@ select{
 .text-xs{
     font-size: 0.75rem;
     line-height: 1rem;
-}
-.text-\[clamp\(1\.25rem\2c 1\.0204rem\+0\.9796vw\2c 1\)\]{
-    font-size: clamp(1.25rem,1.0204rem + 0.9796vw,1);
-}
-.text-\[clamp\(\.75rem\2c 1\.0204rem\+0\.9796vw\2c 1\)\]{
-    font-size: clamp(.75rem,1.0204rem + 0.9796vw,1);
-}
-.text-\[clamp\(1\.25rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
-    font-size: clamp(1.25rem,1.0204rem + 0.9796vw,1.25rem);
-}
-.text-\[clamp\(1rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
-    font-size: clamp(1rem,1.0204rem + 0.9796vw,1.25rem);
 }
 .font-bold{
     font-weight: 700;
@@ -2147,6 +2138,9 @@ select{
 }
 .leading-8{
     line-height: 2rem;
+}
+.leading-\[100\%\]{
+    line-height: 100%;
 }
 .leading-\[140\%\]{
     line-height: 140%;
@@ -3244,9 +3238,9 @@ textarea.s-input{
     padding-right: 10px;
     padding-left: 10px;
 }
-@media (min-width: 1280px){
+@media (min-width: 100vw){
     .s-advertisement-content{
-        max-width: 1280px;
+        max-width: 100vw;
     }
 }
 .s-advertisement-content{
@@ -23347,9 +23341,9 @@ model-viewer[style*=width]:before{
     padding-right: 10px;
     padding-left: 10px;
 }
-@media (min-width: 1280px){
+@media (min-width: 100vw){
     .s-comments-product .s-comments-container{
-        max-width: 1280px;
+        max-width: 100vw;
     }
 }
 @media only screen and (min-width: 1024px) {
@@ -26373,9 +26367,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:font-semibold{
         font-weight: 600;
-    }
-    .md\:leading-10{
-        line-height: 2.5rem;
     }
     .md\:leading-6{
         line-height: 1.5rem;
