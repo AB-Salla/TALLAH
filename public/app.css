@@ -25974,14 +25974,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model .s-social-share-list li a:hover svg {
   fill: var(--color-background);
 }
-#quick-eye-model .s-slider-vertical .s-slider-thumbs-container {
-  --tw-translate-y: 0 !important;
-  padding-top: 31px !important;
-  padding-bottom: 31px !important;
-}
-#quick-eye-model .s-slider-vertical .s-slider-thumbs-container {
-  top: 0%;
-}
 @media (min-width: 640px) {
   #quick-eye-model .s-product-options-option {
     display: grid;
