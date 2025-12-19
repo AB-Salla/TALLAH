@@ -500,7 +500,7 @@ export const eyeModel = (productId) => {
     };
 
     modelContainer.innerHTML = `
-				<div class="grid grid-cols-1 sm:grid-cols-4 gap-10 items-center " id="product-id-${
+				<div class="grid grid-cols-1 sm:grid-cols-6 gap-10 items-center " id="product-id-${
           product.id
         }">
 
@@ -514,7 +514,7 @@ export const eyeModel = (productId) => {
               : ""
           }
 
-					<div class="product-info sm:col-span-2 flex flex-col gap-3 h-full">
+					<div class="product-info sm:col-span-4 flex flex-col gap-3 h-full">
 						<div class="promotion-and-wishlist flex items-center gap-2">
 							
 							
