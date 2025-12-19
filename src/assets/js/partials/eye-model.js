@@ -223,49 +223,6 @@ export const eyeModel = (productId) => {
     ${generateImages("div", "product-thumbs-image")}
   </div>
 </salla-slider>
-<div class="flex items-center gap-1  lg:w-[calc(100%-72px)] ltr:ml-auto rtl:mr-auto ">
-<button 
-                  class="compare-button compare-button-${
-                    product.id
-                  } bg-background text-font flex items-center justify-center  w-[32px] h-[32px] md:w-[36px] md:h-[36px] rounded-[2px]  transition-colors duration-300"
-                  aria-label="Add or remove from compare list"
-                  data-id="${product.id}"
-                  data-name="${product.name}"
-                  data-price="${product.price || ""}"
-                  data-weight=${product.weight || "_"}
-                  data-image="${
-                    product.image?.url ||
-                    "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp"
-                  }"
-                  data-url="${product.url || ""}"
-                  data-status="${product.status || ""}"
-                  data-product-type="${product.type || ""}"
-                  data-label-add="${
-                    product.add_to_cart_label
-                      ? product.add_to_cart_label
-                      : getAddButtonLabel()
-                  }"
-                  data-rating="${product.rating?.stars || 0}"
-                  >
-                  <i class="compare-icon sicon-compare"></i>
-                </button>
-                <button 
-                data-id="${product.id}"
-                  class="union-button union-button-${
-                    product.id
-                  } bg-background text-font flex items-center justify-center w-[32px] h-[32px] md:w-[36px] md:h-[36px] rounded-[2px] transition-colors duration-300"
-                  aria-label="Add or remove from union list"
-                  >
-                  <i class="sicon-swap-fill"></i>
-                </button>
-                <div class="social-share-container flex items-center justify-center  gap-2">
-                ${window.share}
-                  <i class="sicon-share-alt"></i>
-                  <salla-social-share></salla-social-share>
-                  </div>
-                </div>
-      </div>
-
 			`;
     };
 

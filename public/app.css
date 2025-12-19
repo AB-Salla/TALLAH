@@ -2249,11 +2249,6 @@ select{
 .text-background{
     color: var(--color-background);
 }
-.text-black{
-    --tw-text-opacity: 1;
-    color: rgba(0, 0, 0, 1);
-    color: rgba(0, 0, 0, var(--tw-text-opacity, 1));
-}
 .text-blue-500{
     --tw-text-opacity: 1;
     color: rgba(59, 130, 246, 1);
