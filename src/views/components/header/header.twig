@@ -79,3 +79,54 @@
       </div>
   </div>
 </header>
+<aside id="sidecart-panel" class="side-panel bg-white side-panel--left fixed top-0 h-full bg-bg-light dark:bg-bg-dark z-[101] w-full md:w-[420px] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
+	<div class="side-panel__top flex items-center relative z-[2] p-5">
+		<button class="menu-close bg-[var(--color-primary)] text-white rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="إغلاق">
+			<i class="sicon-cancel text-xl"></i>
+		</button>
+	</div>
+
+	<div class="side-panel__content grow overflow-auto px-5 pt-5 pb-5 opacity-0 translate-x-10 rtl:-translate-x-10 transition-all duration-500">
+		<h2 class="mb-8 text-xl font-semibold flex items-center gap-2">
+			{{ trans('pages.checkout.cart') }}
+			<span class="sidecart-products-count text-gray-500 text-sm"></span>
+		</h2>
+		<div id="sidecart-items"></div>
+	</div>
+
+	<div class="side-panel__bottom mt-auto p-5 flex flex-col gap-5 border-t border-font-secondary">
+		<div class="flex justify-between text-sm">
+			<span class="text-gray-500">{{ trans('pages.cart.items_total') }}</span>
+			<b id="sidecart-subtotal"></b>
+		</div>
+
+		<div class="flex justify-between text-sm">
+			<span class="text-gray-500">{{ trans('pages.cart.discount') }}</span>
+			<b id="sidecart-total-discount"></b>
+		</div>
+
+		<div class="cart-subtotal flex justify-between items-center border-t border-font-secondary pt-3">
+			<div>
+				<h5 class="font-semibold">{{ trans('pages.cart.final_total') }}</h5>
+				{% if store.settings.tax.taxable_prices_enabled %}
+					<small class="opacity-70">
+						<span class="text-red-600">*</span>
+						{{ trans('pages.products.tax_included') }}
+					</small>
+				{% endif %}
+			</div>
+			<strong id="sidecart-total" class="total-value text-lg"></strong>
+		</div>
+
+		<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn w-full flex items-center justify-center gap-2 bg-primary text-white rounded-lg py-3 hover:bg-primary/90 transition">
+			<i class="smticon-cart text-lg"></i>
+			<span>{{ trans('pages.cart.goToCartPage') }}</span>
+		</a>
+
+		<button class="close-side-panel bg-gray-100 text-center flex items-center justify-center gap-4 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md py-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+			{{ trans('pages.offer.continue_shopping') }}
+		</button>
+	</div>
+</aside>
+
+<div id="sidecart-overlay" class="fixed inset-0 bg-black/50 z-[100] hidden opacity-0 transition-opacity duration-300"></div>
