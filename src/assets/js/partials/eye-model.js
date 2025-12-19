@@ -59,7 +59,28 @@ export const eyeModel = (productId) => {
     });
   }
 
+  // دالة مسح الخيارات
+  function clearProductOptions() {
+    const wrapper = document.querySelector('salla-product-options');
+    if (!wrapper) return;
 
+    wrapper.querySelectorAll('input[type="radio"]:checked').forEach(radio => {
+      radio.checked = false;
+      radio.closest('label')?.classList.remove('active');
+    });
+
+    wrapper.querySelectorAll('select').forEach(select => {
+      select.selectedIndex = 0;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    });
+
+    wrapper.querySelectorAll('label.go-to-slide').forEach(label => {
+      label.classList.remove('active');
+    });
+
+    wrapper.dispatchEvent(new Event('change', { bubbles: true }));
+    console.log('تم مسح جميع الخيارات');
+  }
 
   // تهيئة الخيارات في الـ modal
   function initProductOptionsInModal() {
@@ -71,6 +92,7 @@ export const eyeModel = (productId) => {
             if (node.nodeType === 1 && node.querySelector && node.querySelector('.s-product-options-option-content select')) {
               setTimeout(() => {
                 convertSelectsToRadioButtons(modelContainer);
+                setupClearButton();
               }, 100);
             }
           });
@@ -84,12 +106,26 @@ export const eyeModel = (productId) => {
     setTimeout(() => {
       if (modelContainer.querySelector('.s-product-options-option-content select')) {
         convertSelectsToRadioButtons(modelContainer);
+        setupClearButton();
       }
     }, 300);
   }
 
   // إعداد زر المسح
+  function setupClearButton() {
+    const clearButton = modelContainer.querySelector('#clear-product-options');
+    if (!clearButton) return;
 
+    // إزالة أي event listeners سابقة
+    const newClearButton = clearButton.cloneNode(true);
+    clearButton.parentNode.replaceChild(newClearButton, clearButton);
+
+    // إضافة event listener جديد
+    newClearButton.addEventListener('click', (e) => {
+      e.preventDefault();
+      clearProductOptions();
+    });
+  }
 
   const eyeHtml = (product) => {
 
@@ -201,6 +237,48 @@ export const eyeModel = (productId) => {
     ${generateImages("div", "product-thumbs-image")}
   </div>
 </salla-slider>
+<div class="flex items-center gap-1  lg:w-[calc(100%-72px)] ltr:ml-auto rtl:mr-auto ">
+<button 
+                  class="compare-button compare-button-${
+                    product.id
+                  } bg-background text-font flex items-center justify-center  w-[32px] h-[32px] md:w-[36px] md:h-[36px] rounded-[2px]  transition-colors duration-300"
+                  aria-label="Add or remove from compare list"
+                  data-id="${product.id}"
+                  data-name="${product.name}"
+                  data-price="${product.price || ""}"
+                  data-weight=${product.weight || "_"}
+                  data-image="${
+                    product.image?.url ||
+                    "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp"
+                  }"
+                  data-url="${product.url || ""}"
+                  data-status="${product.status || ""}"
+                  data-product-type="${product.type || ""}"
+                  data-label-add="${
+                    product.add_to_cart_label
+                      ? product.add_to_cart_label
+                      : getAddButtonLabel()
+                  }"
+                  data-rating="${product.rating?.stars || 0}"
+                  >
+                  <i class="compare-icon sicon-compare"></i>
+                </button>
+                <button 
+                data-id="${product.id}"
+                  class="union-button union-button-${
+                    product.id
+                  } bg-background text-font flex items-center justify-center w-[32px] h-[32px] md:w-[36px] md:h-[36px] rounded-[2px] transition-colors duration-300"
+                  aria-label="Add or remove from union list"
+                  >
+                  <i class="sicon-swap-fill"></i>
+                </button>
+                <div class="social-share-container flex items-center justify-center  gap-2">
+                ${window.share}
+                  <i class="sicon-share-alt"></i>
+                  <salla-social-share></salla-social-share>
+                  </div>
+                </div>
+      </div>
 
 			`;
     };
@@ -607,6 +685,7 @@ ${renderWeightBlock()}
         const selects = modelContainer.querySelectorAll('.s-product-options-option-content select');
         if (selects.length > 0) {
           convertSelectsToRadioButtons(modelContainer);
+          setupClearButton();
           clearInterval(checkOptionsInterval);
         }
       }, 100);
