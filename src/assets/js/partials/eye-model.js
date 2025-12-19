@@ -201,6 +201,10 @@ export const eyeModel = (productId) => {
 	slider-config='{
 		"slidesPerView": 2,
 		"spaceBetween": 10,
+    "autoplay": {
+			"delay": 3000,
+			"disableOnInteraction": false
+		},
 		"breakpoints": {
 			"768": {
 				"slidesPerView": 1,
