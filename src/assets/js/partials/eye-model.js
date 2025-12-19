@@ -200,7 +200,7 @@ export const eyeModel = (productId) => {
 	class="product-images-slider block flex-grow"
 	slider-config='{
 		"slidesPerView": 2,
-		"spaceBetween": 0,
+		"spaceBetween": 10,
 		"breakpoints": {
 			"768": {
 				"slidesPerView": 1,
