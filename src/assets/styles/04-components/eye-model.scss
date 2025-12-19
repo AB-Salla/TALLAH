@@ -161,30 +161,11 @@
     }
   }
 
-  .s-slider-thumbs-nav {
-    height: 113%;
-    .s-slider-thumbs-prev,
-    .s-slider-thumbs-next {
-      width: 28px;
-      height: 83px;
-      background-color: #eeeeee;
-      border-radius: 2px;
-
-      .s-slider-button-icon {
-        svg {
-          fill: var(--color-secondary-font);
-        }
-      }
-    }
-  }
+ 
   .s-slider-vertical .s-slider-thumbs-container {
     --tw-translate-y: 0 !important;
     padding-block: 31px !important;
     top: 0%;
-  }
-  .s-slider-thumbs {
-    margin: 0 !important;
-    max-width: 83px;
   }
   @media (min-width: 640px) {
     .s-product-options-option {

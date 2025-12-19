@@ -1176,10 +1176,6 @@ select{
 .\!h-36{
     height: 9rem !important;
 }
-.\!h-fit{
-    height: -moz-fit-content !important;
-    height: fit-content !important;
-}
 .h-0{
     height: 0px;
 }
@@ -25978,20 +25974,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model .s-social-share-list li a:hover svg {
   fill: var(--color-background);
 }
-#quick-eye-model .s-slider-thumbs-nav {
-  height: 113%;
-}
-#quick-eye-model .s-slider-thumbs-nav .s-slider-thumbs-prev,
-#quick-eye-model .s-slider-thumbs-nav .s-slider-thumbs-next {
-  width: 28px;
-  height: 83px;
-  background-color: #eeeeee;
-  border-radius: 2px;
-}
-#quick-eye-model .s-slider-thumbs-nav .s-slider-thumbs-prev .s-slider-button-icon svg,
-#quick-eye-model .s-slider-thumbs-nav .s-slider-thumbs-next .s-slider-button-icon svg {
-  fill: var(--color-secondary-font);
-}
 #quick-eye-model .s-slider-vertical .s-slider-thumbs-container {
   --tw-translate-y: 0 !important;
   padding-top: 31px !important;
@@ -25999,12 +25981,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 #quick-eye-model .s-slider-vertical .s-slider-thumbs-container {
   top: 0%;
-}
-#quick-eye-model .s-slider-thumbs {
-  margin: 0 !important;
-}
-#quick-eye-model .s-slider-thumbs {
-  max-width: 83px;
 }
 @media (min-width: 640px) {
   #quick-eye-model .s-product-options-option {
