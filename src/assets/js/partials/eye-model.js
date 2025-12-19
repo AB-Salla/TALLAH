@@ -111,21 +111,7 @@ export const eyeModel = (productId) => {
     }, 300);
   }
 
-  // إعداد زر المسح
-  function setupClearButton() {
-    const clearButton = modelContainer.querySelector('#clear-product-options');
-    if (!clearButton) return;
 
-    // إزالة أي event listeners سابقة
-    const newClearButton = clearButton.cloneNode(true);
-    clearButton.parentNode.replaceChild(newClearButton, clearButton);
-
-    // إضافة event listener جديد
-    newClearButton.addEventListener('click', (e) => {
-      e.preventDefault();
-      clearProductOptions();
-    });
-  }
 
   const eyeHtml = (product) => {
 
@@ -604,9 +590,6 @@ export const eyeModel = (productId) => {
 							${
                 getProductOptions()
                   ? `<div class="product-options-container ">${getProductOptions()}</div>
-                   <button type="button" id="clear-product-options" class="text-black rounded-lg flex items-center gap-2">
-                        x ${window.delete}
-                    </button>
                   `
                   : ""
               }
@@ -673,12 +656,7 @@ ${renderWeightBlock()}
       initProductOptionsInModal();
 
       // 5. إعداد event listener للزر بشكل مباشر
-      setTimeout(() => {
-        const clearButton = modelContainer.querySelector('#clear-product-options');
-        if (clearButton) {
-          clearButton.addEventListener('click', clearProductOptions);
-        }
-      }, 500);
+      
 
       // 6. المراقبة المستمرة للعناصر المضافة
       const checkOptionsInterval = setInterval(() => {
