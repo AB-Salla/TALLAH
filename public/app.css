@@ -25994,14 +25994,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model .s-modal-close svg {
   fill: var(--color-background);
 }
-#quick-eye-model .swiper-wrapper {
-  max-height: 310px;
-}
-@media (min-width: 768px) {
-  #quick-eye-model .swiper-wrapper {
-    max-height: 522px;
-  }
-}
 #quick-eye-model .salla-slider {
   height: 100%;
 }
