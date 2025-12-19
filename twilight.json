@@ -151,11 +151,6 @@
           "label": "سلة جانبية (Side Cart)",
           "value": "side",
           "key": "86f7c8a-29a7-4dbf-9496-7d2a9741ac0b"
-        },
-        {
-          "label": "سلة منبثقة (Popup Cart)",
-          "value": "popup",
-          "key": "eeeee36-bf84-402c-98aa-9120b6ee809e"
         }
       ],
       "source": "Manual",
@@ -173,43 +168,6 @@
             "type": "static",
             "id": "static-line-32",
             "format": "line"
-        },
-        {
-            "type": "static",
-            "format": "description",
-            "id": "on_multipleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/16ZpLArHfQ2ybP65JKgOjxF9QNL7ZKxddDPDwuG0.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_multipleOption",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "static",
-            "format": "description",
-            "id": "off_multipleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/qc748qtDkUHDgbWj6QakRx0JMv8FzsZ7c0ZT5SJl.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_multipleOption",
-                    "operation": "=",
-                    "value": false
-                }
-            ]
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "قيم حقل خيارات (عدة اختيارات)",
-            "description": "خيار من متعدد على شكل صندوق اختيار، او أزرار اختيار",
-            "id": "show_multipleOption",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false
         },
         {
             "type": "boolean",
