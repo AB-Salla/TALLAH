@@ -26032,13 +26032,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: none;
 }
 #quick-eye-model .product-images-slider .s-slider-container {
-  max-height: 310px;
   flex: 1;
-}
-@media (min-width: 768px) {
-  #quick-eye-model .product-images-slider .s-slider-container {
-    max-height: 522px;
-  }
 }
 #quick-eye-model .s-slider-thumbs {
   max-height: 310px;

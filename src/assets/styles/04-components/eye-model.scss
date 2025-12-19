@@ -228,9 +228,9 @@
   }
   .product-images-slider .s-slider-container {
    @media (min-width:768px) {
-      max-height: 522px;
+      // max-height: 522px;
     }
-    max-height: 310px;
+    // max-height: 310px;
     flex: 1;
   }
   .s-slider-thumbs {
