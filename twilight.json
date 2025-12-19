@@ -2361,6 +2361,25 @@
           ]
         },
         {
+          "id": "subtitle_color",
+          "type": "string",
+          "format": "color",
+          "inputType": "color",
+          "label": "لون العنوان الفرعي",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-format-fill",
+          "value": "#18181B",
+          "required": false,
+          "conditions": [
+            {
+              "id": "use_custom_colors",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
           "id": "link_color_light",
           "type": "string",
           "format": "color",
@@ -2400,7 +2419,22 @@
           "labelHTML": null,
           "placeholder": "Placeholder text ..",
           "icon": "sicon-format-text-alt",
-          "value": "منتجاتنا الأكثر طلبًا",
+          "value": "Most Loved Pieces",
+          "multilanguage": true,
+          "required": false,
+          "minLength": "2",
+          "maxLength": "70"
+        },
+        {
+          "id": "section_sub_title",
+          "type": "string",
+          "format": "text",
+          "label": "العنوان الفرعي ",
+          "description": "أدخل عنوانًا رئيسيًا بارزًا يجذب الانتباه ويعكس محتوى القسم.",
+          "labelHTML": null,
+          "placeholder": "Placeholder text ..",
+          "icon": "sicon-format-text-alt",
+          "value": "Timeless designs chosen by our community—explore what’s trending now",
           "multilanguage": true,
           "required": false,
           "minLength": "2",
