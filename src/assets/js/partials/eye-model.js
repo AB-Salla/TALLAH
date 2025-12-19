@@ -182,7 +182,7 @@ export const eyeModel = (productId) => {
 							loading="${index === 0 ? "eager" : "lazy"}"
 							width="100%"
 							height="100%"
-							class="object-cover w-auto sm:w-full h-full"
+							class="object-cover w-full sm:w-full h-full"
 						/>
 					</${wrapper}>
 				`
