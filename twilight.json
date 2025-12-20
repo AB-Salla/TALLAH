@@ -2881,6 +2881,16 @@
                     "maxLength": "2"
                 }
             ]
+        },
+        {
+            "key": "5be2ceca-952b-4a91-ba6e-585c1f6fce5b",
+            "title": {
+                "en": "Promotional banner - Arabian",
+                "ar": "بانر دعائي - عربي"
+            },
+            "icon": "sicon-store",
+            "path": "home.Ar-Promo-banner",
+            "fields": []
         }
     ],
     "support_url": null,
