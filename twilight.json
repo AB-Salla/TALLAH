@@ -1973,18 +1973,18 @@
         {
             "key": "2c10d0ac-ba70-43da-af40-d4a4c477a074",
             "title": {
-                "en": "Sub-banner - Arabian",
-                "ar": "بانر فرعي - عربي"
+                "en": "Products-banner - Arabian",
+                "ar": "بانر منتجات - عربي"
             },
             "icon": "sicon-store",
-            "path": "home.AR-Sub-banner",
+            "path": "home.AR-Products-banner",
             "fields": [
                 {
                     "id": "banner_image",
                     "type": "string",
                     "format": "image",
                     "label": "إضافة صورة",
-                    "description": "",
+                    "description": null,
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
@@ -1996,7 +1996,7 @@
                     "type": "string",
                     "format": "text",
                     "label": "نص الرابط",
-                    "description": "",
+                    "description": null,
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
@@ -2056,7 +2056,7 @@
                     "type": "string",
                     "format": "text",
                     "label": "العنوان الفرعي",
-                    "description": "",
+                    "description": null,
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
@@ -2078,7 +2078,7 @@
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
-                    "label": "لون النص الفرعي ",
+                    "label": "لون النص الفرعي",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
@@ -2096,7 +2096,7 @@
                     "id": "component_type",
                     "type": "items",
                     "format": "dropdown-list",
-                    "label": "طريقة عرض المكون ",
+                    "label": "طريقة عرض المكون",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-list",
