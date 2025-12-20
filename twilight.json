@@ -2668,6 +2668,16 @@
                     ]
                 }
             ]
+        },
+        {
+            "key": "9dee71dc-db42-4652-afbd-3c81e592a8b0",
+            "title": {
+                "en": "special banner - Arabian",
+                "ar": "بانر مميز - عربي"
+            },
+            "icon": "sicon-store",
+            "path": "home.AR-special-banner",
+            "fields": []
         }
     ],
     "support_url": null,
