@@ -1,0 +1,29 @@
+<section>
+
+<div>
+ {% for item in  component.banner %}                                    
+			<div class="banner  banner-{{loop.index}}  flex flex-col items-center justify-center relative md:h-[90vh] h-[70vh] py-16 overflow-hidden">
+			{% if not item.button_text %}
+             <a class="w-full h-full absolute inset-0 z-[5]" href="{{item.url}}"></a> 
+             {% endif %}
+    
+
+                <div  class="text-wrapper h-full flex flex-col {{component.center_text ?  'items-center text-center' : 'items-start text-start rtl:pr-3 ltr:pl-3' }} justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
+					{% if item.block_title %}
+                    	<h1  aria-label="العنوان الرئيسي" class="blocktitle text-[clamp(1rem,0.6939rem+1.3061vw,2rem)] text-background font-normal md:font-semibold">{{item.block_title}}</h1>
+					{% endif %}
+					{% if item.subtext %}
+                    	<p  class="subtext text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] ">{{item.subtext}}</p>
+					{% endif %}
+                
+				</div>
+				    {% if item.button_text %}
+						<a  class="block button button-{{loop.index}} self-center rounded-md bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						transition-colors duration-300 ease-in-out hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end " href="{{item.url}}">{{item.button_text}}</a>
+					{% endif %}
+        
+			</div>
+            {% endfor %}
+
+</div>
+<section>
