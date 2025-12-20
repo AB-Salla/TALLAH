@@ -5,20 +5,17 @@
 
         <salla-slider
 			 id="sub-banner-slider-{{position}}" class="subbanner-slider" slider-config='{
-			  "pagination": {
-				    "el": ".AR-hero-section-{{position}} .swiper-pagination",
-				    "type": "bullets",
-				    "clickable": true
-				  },
-             
-			"spaceBetween": 0,
-			"lazy": true,
-			"delay": 3000,
-			"speed": 300,	
-			"loop": {{ component.enable_loop ? "true" : "false" }}
-			
-			}'
- 			show-controls="false" type="thumbs">
+    "pagination": {
+      "el": ".AR-hero-section-{{position}} .swiper-pagination",
+      "type": "bullets",
+      "clickable": true
+    },
+    "spaceBetween": 0,
+    "lazy": true,
+    "speed": 300,
+	"loop":false
+  }'
+ 			show-controls="false" type="blog">
 				<div slot="items">
 				{% endif %}
             {% for item in  component.banner %}                                    
@@ -30,16 +27,16 @@
 
                 <div  class="text-wrapper h-full flex flex-col {{component.center_text ?  'items-center text-center' : 'items-start text-start rtl:pr-3 ltr:pl-3' }} justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
 					{% if item.block_title %}
-                    	<h1 data-swiper-parallax="500" aria-label="العنوان الرئيسي" class="blocktitle text-[clamp(1rem,0.6939rem+1.3061vw,2rem)] text-background font-normal md:font-semibold">{{item.block_title}}</h1>
+                    	<h1  aria-label="العنوان الرئيسي" class="blocktitle text-[clamp(1rem,0.6939rem+1.3061vw,2rem)] text-background font-normal md:font-semibold">{{item.block_title}}</h1>
 					{% endif %}
 					{% if item.subtext %}
-                    	<p data-swiper-parallax="-500" class="subtext text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)]">{{item.subtext}}</p>
+                    	<p  class="subtext text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] ">{{item.subtext}}</p>
 					{% endif %}
                 
 				</div>
 				    {% if item.button_text %}
-						<a data-swiper-parallax="-500" class="button button-{{loop.index}} self-center {{component.button_border_radius == "oblong"  ? 'rounded-3xl' : component.button_border_radius == "smooth" ? 'rounded-lg' : ''}} bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
-						transition-all duration-300 ease-in-out hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end" href="{{item.url}}">{{item.button_text}}</a>
+						<a  class="block button button-{{loop.index}} self-center rounded-md bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						transition-colors duration-300 ease-in-out hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end " href="{{item.url}}">{{item.button_text}}</a>
 					{% endif %}
         
 			</div>
@@ -126,7 +123,44 @@
     pointer-events: all;
 }
 {% endif %}
-.AR-hero-section .swiper-slide-active{
- transition: all .3s ease-in-out;
+.AR-hero-section .swiper-slide .text-wrapper > .blocktitle {
+  transform:translateX(-70%);
+  opacity:0;
+
+}
+
+.AR-hero-section .swiper-slide.swiper-slide-active .text-wrapper > .blocktitle {
+	transition: all .8s ease-in-out;
+
+
+  transform:translateX(0%);
+  opacity:1;
+  
+}
+.AR-hero-section .swiper-slide .text-wrapper > .subtext {
+  transform:translateX(70%);
+  opacity:0;
+
+}
+
+.AR-hero-section .swiper-slide.swiper-slide-active .text-wrapper > .subtext {
+	transition: all .8s ease-in-out;
+
+
+  transform:translateX(0%);
+  opacity:1;
+  
+}
+.AR-hero-section .swiper-slide  .button {
+  transform:translateX(-70%);
+  opacity:0;
+
+}
+
+.AR-hero-section .swiper-slide.swiper-slide-active  .button {
+transition: all .8s ease-in-out;
+  transform:translateX(0%);
+  opacity:1;
+  
 }
 </style>

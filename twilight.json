@@ -1817,43 +1817,7 @@
                     "selected": true,
                     "required": false
                 },
-                {
-                    "id": "button_border_radius",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "حواف الزر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-keyboard_arrow_down",
-                    "selected": [
-                        {
-                            "label": "بيضاوي",
-                            "value": "oblong",
-                            "key": "ace559a430-fec1-498e-b529-0ea955adee8a"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "بيضاوي",
-                            "value": "oblong",
-                            "key": "ace559a430-fec1-498e-b529-0ea955adee8a"
-                        },
-                        {
-                            "label": "ناعم",
-                            "value": "smooth",
-                            "key": "bd55d5d3d0-d018-461f-93ec-213f072bb0d"
-                        },
-                        {
-                            "label": "حاد",
-                            "value": "sharp",
-                            "key": "bbe5561139-5b1f-4da0-bdd5-28b58934f6af"
-                        }
-                    ],
-                    "source": "Manual",
-                    "multichoice": false,
-                    "searchable": true,
-                    "required": false
-                },
+                
                 {
                     "id": "center_text",
                     "type": "boolean",
