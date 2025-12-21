@@ -47,33 +47,7 @@
 					<div class="">
 						<salla-contacts></salla-contacts>
 					</div>
-					<div class="">
-						{% set gallery = theme.settings.get('social_gallary') %}
-						<div class="lg:col-span-1 flex flex-col mt-4 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start md:justify-start lg:mt-0 social-gallery">
-							<div class="heading mb-5 flex flex-col">
-							<h3 class="!mb-0 text-font">{{ trans('blocks.gallery.footer_gallery') }}</h3>
-							</div>
-
-							<div class="gallery-footer mb-4 flex flex-wrap justify-start gap-2 w-[226px]">
-							{% for image in gallery %}
-								<a href="{{ image.gallary_url }}" target="_blank" rel="noopener noreferrer" class="gallery-item block w-[70px] h-[60px] overflow-hidden rounded-sm relative">
-								<img 
-									src="{{ 'images/s-empty.png' | cdn }}" 
-									data-src="{{ image.gallary_img | cdn(300,300) }}" 
-									alt="gallery image" 
-									loading="lazy"
-									class="lazy w-full h-full object-cover hover:scale-110 transition-transform duration-300"
-								/>
-								<div class="gallery-overlay">
-									<i class="sicon-instagram"></i>
-								</div>
-								</a>
-							{% endfor %}
-							</div>
-
-						</div>
-
-					</div>
+					
 					<!-- Apps Icons -->
 					<div class="md:col-span-full lg:col-auto flex flex-col gap-4">
 						<salla-apps-icons >
