@@ -2112,10 +2112,6 @@ select{
 .text-end{
     text-align: right;
 }
-.font-sans{
-    font-family: "DINNextLTArabic", -apple-system, BlinkMacSystemFont;
-    font-family: var(--font-main), -apple-system, BlinkMacSystemFont;
-}
 .\!text-base{
     font-size: 1rem !important;
     line-height: 1.5rem !important;
@@ -2232,9 +2228,6 @@ select{
 .uppercase{
     text-transform: uppercase;
 }
-.not-italic{
-    font-style: normal;
-}
 .\!leading-\[19\.93px\]{
     line-height: 19.93px !important;
 }
@@ -2285,9 +2278,6 @@ select{
 }
 .leading-tight{
     line-height: 1.25;
-}
-.tracking-normal{
-    letter-spacing: 0em;
 }
 .\!text-background{
     color: var(--color-background) !important;
@@ -21309,6 +21299,14 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
         margin-top: 4rem;
     }
 }
+.store-footer .store-description p{
+    font-family: "DINNextLTArabic", -apple-system, BlinkMacSystemFont;
+    font-family: var(--font-main), -apple-system, BlinkMacSystemFont;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    letter-spacing: 0em;
+}
 .store-footer .s-menu-footer-item {
   margin-bottom: 12px !important;
   line-height: 1.5rem !important;
@@ -27019,14 +27017,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:grid-cols-6{
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
-    .md\:grid-cols-\[3fr_3fr_3fr_4fr\]{
-        grid-template-columns: 3fr 3fr 3fr 4fr;
+    .md\:grid-cols-\[4fr_3fr_3fr_3fr\]{
+        grid-template-columns: 4fr 3fr 3fr 3fr;
     }
     .md\:grid-cols-\[repeat\(3\2c minmax\(0\2c 1fr\)\)\]{
         grid-template-columns: repeat(3,minmax(0,1fr));
-    }
-    .md\:grid-cols-\[4fr_3fr_3fr_3fr\]{
-        grid-template-columns: 4fr 3fr 3fr 3fr;
     }
     .md\:flex-row{
         flex-direction: row;
@@ -27244,15 +27239,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-8{
         grid-template-columns: repeat(8, minmax(0, 1fr));
-    }
-    .lg\:grid-cols-\[3fr_2fr_2fr_2fr_3fr\]{
-        grid-template-columns: 3fr 2fr 2fr 2fr 3fr;
-    }
-    .lg\:grid-cols-\[3fr_2fr_2fr_2fr\]{
-        grid-template-columns: 3fr 2fr 2fr 2fr;
-    }
-    .lg\:grid-cols-\[3fr_2fr_2fr_3fr\]{
-        grid-template-columns: 3fr 2fr 2fr 3fr;
     }
     .lg\:grid-cols-\[2fr_2fr_2fr_3fr\]{
         grid-template-columns: 2fr 2fr 2fr 3fr;

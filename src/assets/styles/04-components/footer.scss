@@ -1,4 +1,9 @@
 .store-footer {
+  .store-description{
+    p{
+      @apply  font-sans font-normal  text-base leading-6 tracking-normal
+    }
+  }
   .s-menu-footer-item {
     margin-bottom: 12px !important;
     @apply  font-normal not-italic text-base !leading-6 tracking-normal
