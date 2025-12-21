@@ -26,14 +26,7 @@
 
 						<!-- Social Icons (Desktop Only) -->
 						<div class="block">
-							{% if theme.settings.get('use_colored_social_icons') %}
-								<div class="custom-social-links flex gap-3 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start md:justify-start">
-									{% include 'pages.partials.social_icon.twig' %}
-								</div>
-							{% else %}
 								<salla-social class="block mb-6"></salla-social>
-								
-							{% endif %}
 						</div>
 
 						
