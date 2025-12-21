@@ -26613,12 +26613,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
   padding-top: 0 !important;
   padding-bottom: 0 !important;
 }
-.placeholder\:text-background::-moz-placeholder{
-    color: var(--color-background);
-}
-.placeholder\:text-background::placeholder{
-    color: var(--color-background);
-}
 .placeholder\:text-primary::-moz-placeholder{
     color: #414042;
     color: var(--color-primary);
