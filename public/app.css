@@ -21299,11 +21299,17 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
         margin-top: 4rem;
     }
 }
-.store-footer .s-menu-footer-list a {
-  margin-bottom: 10px;
+.store-footer .s-menu-footer-item {
+  margin-bottom: 12px !important;
 }
 .store-footer .s-menu-footer-item {
-  margin-bottom: 8px !important;
+  font-family: "DINNextLTArabic", -apple-system, BlinkMacSystemFont;
+  font-family: var(--font-main), -apple-system, BlinkMacSystemFont;
+  font-size: 1rem;
+  font-weight: 400;
+  font-style: normal;
+  line-height: 1.5rem;
+  letter-spacing: 0em;
 }
 .store-footer .footer-description p{
     font-size: clamp(0.75rem,0.75rem + 0vw,0.75rem);

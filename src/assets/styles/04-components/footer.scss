@@ -1,11 +1,7 @@
 .store-footer {
-  .s-menu-footer-list{
-    a{
-      margin-bottom: 10px;
-    }
-  }
   .s-menu-footer-item {
-    margin-bottom: 8px !important;
+    margin-bottom: 12px !important;
+    @apply font-sans font-normal not-italic text-base leading-6 tracking-normal
   }
   .footer-description {
     p {
