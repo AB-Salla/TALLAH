@@ -21435,6 +21435,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     color: var(--color-background);
 }
 .footer-is-light .store-footer .store-footer__inner{
+  border-bottom-width: 0px !important;
+}
+.footer-is-light .store-footer .store-footer__inner{
     --tw-border-opacity: 1;
     border-bottom-color: rgba(229, 231, 235, 1);
     border-bottom-color: rgba(229, 231, 235, var(--tw-border-opacity, 1));

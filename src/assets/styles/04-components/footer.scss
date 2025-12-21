@@ -75,6 +75,7 @@
 
     .store-footer__inner {
       @apply bg-primary border-b-gray-200;
+      border-bottom-width:0px !important ; 
     }
 
     .social-link {
