@@ -1,12 +1,24 @@
 .store-footer {
-  @apply relative bg-darker text-white mt-8 sm:mt-16;
-  salla-apps-icons {
-    h3 {
-      @apply hidden;
+  .s-menu-footer-item {
+    margin-bottom: 8px !important;
+  }
+  .footer-description {
+    p {
+      @apply text-[clamp(0.75rem,0.75rem+0vw,0.75rem)] font-light leading-5;
     }
   }
+  @apply relative bg-darker text-background mt-8 sm:mt-16;
+
   a {
     @apply transition-opacity hover:opacity-75;
+    color: color-mix(in srgb, var(--color-font) 50%, transparent);
+    line-height: 25px !important;
+    font-weight: 300;
+    font-size: 1rem;
+    transition: all 0.5s ease-in-out;
+    &:hover {
+      color: var(--color-primary);
+    }
   }
 
   &__inner {
@@ -14,13 +26,25 @@
   }
 
   h3 {
-    @apply text-lg font-bold mb-3 lg:mb-5;
+    @apply text-[clamp(1rem,0.9617rem+0.1633vw,1.125rem)] font-medium leading-[25px] mb-3 lg:mb-5;
   }
 
   .social-link {
     @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm;
   }
-
+  .s-social-link a {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background-color: var(--color-secondary);
+    color: var(--color-font);
+    border: none;
+    transition: all 0.3s ease;
+    &:hover {
+      background-color: var(--color-primary);
+      color: var(--color-background);
+    }
+  }
   .contact-social {
     @apply mt-5 pt-5 border-t border-white/10;
 
@@ -30,10 +54,10 @@
   }
 
   .footer-is-light & {
-    @apply bg-gray-50 text-gray-700;
+    @apply bg-background text-font;
 
     .store-footer__inner {
-      @apply bg-gray-100 border-b-gray-200;
+      @apply bg-background border-b-gray-200;
     }
 
     .social-link {
@@ -41,11 +65,17 @@
     }
 
     .contact-social {
-      @apply border-gray-100;
+      @apply border-background;
     }
   }
 }
 
 .copyright-text p {
-  @apply text-gray-700;
+  @apply text-background;
+  a {
+    @apply text-background;
+    &:hover {
+      @apply text-background;
+    }
+  }
 }

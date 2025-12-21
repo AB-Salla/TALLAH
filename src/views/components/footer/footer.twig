@@ -1,73 +1,203 @@
+<!-- Footer Wrapper -->
 <footer class="store-footer">
-	<div aria-label="footer" class="store-footer__inner">
-		<div class="container grid grid-col-1 lg:grid-cols-6 gap-8 lg:gap-6">
-			<div class="lg:col-span-2 rtl:lg:pl-20 ltr:lg:pr-20">
-				<a href="{{ link('/') }}" class="flex items-center m-0">
-					<h3>{{store.name}}</h3>
-				</a>
-				{% if store.description %}
-					<div class="max-w-sm leading-6 mb-6">
-						{{ store.description|raw }}
-          </div>
-				{% endif %}
 
-				<div class="hidden lg:block">
-					<salla-social class="block mb-6"></salla-social>
+    <!-- Footer Inner -->
+    <div aria-label="footer" class="store-footer__inner !pt-11 !pb-9">
+
+        <!-- Main Footer Grid -->
+				<div class="container flex flex-col {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start  md:grid grid-cols-1 md:grid-cols-[4fr_3fr_3fr_3fr] lg:grid-cols-[3fr_2fr_2fr_2fr_3fr] gap-8 md:gap-6">
+
+					<!-- Store Info Column -->
+					<div class="text-center rtl:md:text-right ltr:md:text-left">
+
+						<!-- Store Logo / Name -->
+						<a href="{{ link('/') }}" class="flex  m-0 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:justify-start">
+							<div class="mb-4 footer_logo_size {{ theme.settings.get('footer_logo_size') == 'small' ? 'w-[55px] md:w-[50px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'medium' or not theme.settings.get('footer_logo_size') ? 'w-[74px] md:w-[69px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'large' ? 'w-[100px] md:w-[95px] h-auto' : '' }} ">
+								<img src="{{store.logo}}" class="w-full h-full" alt="{{store.name}}">
+							</div>
+						</a>
+
+						<!-- Store Description -->
+						{% if store.description %}
+							<div class="mb-6  text-graytext footer-description">
+								{{ store.description|raw }}
+							</div>
+						{% endif %}
+
+						<!-- Social Icons (Desktop Only) -->
+						<div class="block">
+							{% if theme.settings.get('use_colored_social_icons') %}
+								<div class="custom-social-links flex gap-3 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start md:justify-start">
+									{% include 'pages.partials.social_icon.twig' %}
+								</div>
+							{% else %}
+								<salla-social class="block mb-6"></salla-social>
+								
+							{% endif %}
+						</div>
+
+						
+
+					</div><!-- END Store Info Column -->
+
+					<!-- Footer Pages Links -->
+						{% if theme.settings.get('newsletter_view') %}
+							{% include 'pages.partials.newslatter.twig' with {
+							class: "CA-newsletter justify-center md:items-start mb-8 md:mb-0 flex flex-col-reverse md:flex-col gap-3 md:hidden"
+							}  %}
+						{% endif %}
+					<div class="">
+						<h3 class="{% if theme.settings.get('footer_is_center') %} text-center  {% else %} text-start {% endif %} rtl:md:text-right ltr:md:text-left">{{ trans('blocks.footer.pages_links') }}</h3>
+						<salla-menu source="footer"></salla-menu>
+					</div>
+					<!-- Contacts Column -->
+					<div class="">
+						<salla-contacts></salla-contacts>
+					</div>
+					<div class="">
+						{% set gallery = theme.settings.get('social_gallary') %}
+						<div class="lg:col-span-1 flex flex-col mt-4 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start md:justify-start lg:mt-0 social-gallery">
+							<div class="heading mb-5 flex flex-col">
+							<h3 class="!mb-0 text-font">{{ trans('blocks.gallery.footer_gallery') }}</h3>
+							</div>
+
+							<div class="gallery-footer mb-4 flex flex-wrap justify-start gap-2 w-[226px]">
+							{% for image in gallery %}
+								<a href="{{ image.gallary_url }}" target="_blank" rel="noopener noreferrer" class="gallery-item block w-[70px] h-[60px] overflow-hidden rounded-sm relative">
+								<img 
+									src="{{ 'images/s-empty.png' | cdn }}" 
+									data-src="{{ image.gallary_img | cdn(300,300) }}" 
+									alt="gallery image" 
+									loading="lazy"
+									class="lazy w-full h-full object-cover hover:scale-110 transition-transform duration-300"
+								/>
+								<div class="gallery-overlay">
+									<i class="sicon-instagram"></i>
+								</div>
+								</a>
+							{% endfor %}
+							</div>
+
+						</div>
+
+					</div>
+					<!-- Apps Icons -->
+					<div class="md:col-span-full lg:col-auto flex flex-col gap-4">
+						<salla-apps-icons >
+						</salla-apps-icons>
+						<div class="flex flex-wrap {% if theme.settings.get('footer_is_center') %} justify-center md:justify-start {% else %} justify-start md:justify-start {% endif %} items-center gap-4">
+
+						{% if theme.settings.get('footer_is_logo') %}
+							<div class="verification">
+								<div class="s-payments-list-item block !w-20 !h-auto !bg-transparent {% if theme.settings.get('footer_is_center') %} mx-auto md:mx-0{% endif %}">
+									<a target="_blank" href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/{{ store.settings.certificate.id }}">
+										<img class="!object-cover w-full h-auto" src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" data-src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" alt="SBC" loading="lazy">
+									</a>
+								</div>
+							</div>
+							{% endif %}
+					<!-- VAT Section -->
+						{% if store.settings.tax.number %}
+
+							<div class="flex rtl:space-x-reverse space-x-2 items-end">
+
+								<!-- VAT Certificate Thumbnail -->
+								{% if store.settings.tax.certificate %}
+									<a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
+										<img width="100%" height="100%" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ 'images/tax.png' | cdn(70,70) }}" class="lazy w-10 rounded-sm hover:opacity-80 transition-opacity" alt="value added tax">
+									</a>
+								{% endif %}
+
+								<!-- VAT Number Text -->
+								<div>
+									<p class="text-sm text-text-grey mb-1">{{ trans('common.elements.tax_number') }}</p>
+									<b class="text-sm">{{ store.settings.tax.number }}</b>
+								</div>
+
+							</div><!-- END VAT Row -->
+
+							<!-- VAT Certificate Modal -->
+							{% if store.settings.tax.certificate %}
+								<salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
+									<div class="flex justify-center max-w-full">
+										<img class="w-full" loading="lazy"
+											src="{{ 'images/s-empty.png' | cdn }}"
+											data-src="{{ store.settings.tax.certificate }}"
+											alt="{{ store.settings.tax.number }}" />
+									</div>
+								</salla-modal>
+							{% endif %}
+
+						{% endif %}
+						<!-- END VAT Section -->
+						</div>
+					</div>
 				</div>
+				<!-- END Footer Grid -->
 
-		<div class="flex gap-4">
-		  {# trust badges #}
-		  <salla-trust-badges {% if theme.settings.get('footer_is_dark') %} dark {% endif %}></salla-trust-badges>
-          {# vat #}
-          {% if store.settings.tax.number %}
-            <div class="flex rtl:space-x-reverse space-x-2 items-end">
-              {% if store.settings.tax.certificate %}
-                <a class="load-img-onclick" data-modal-id="modal-value-tax" href="#/" alt="{{ store.settings.tax.number }}">
-                  <img width="40" height="50" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{'images/tax.png' | cdn(70,70)}}" class="lazy w-10 rounded-sm hover:opacity-80 transition-opacity" alt="value added tax">
-                </a>
-              {% endif %}
-              <div>
-                <p class="text-sm text-text-grey mb-1">{{ trans('common.elements.tax_number') }}</p>
-                <b class="text-sm">{{ store.settings.tax.number }}</b>
-              </div>
-            </div>
+				{#### Start newsLatter ########}
+					{% if theme.settings.get('newsletter_view') %}
+					
+						{% include 'pages.partials.newslatter.twig' with {
+                        class: "CA-newsletter hidden justify-center md:items-start mb-8 md:mb-0 md:flex flex-col-reverse md:flex-col gap-3"
+                    	}  %}
+					{% endif %}
 
-            {% if store.settings.tax.certificate %}
-              <salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
-                <div class="flex justify-center max-w-full">
-                  <img class="w-full" loading="lazy" 
-                  src="{{ 'images/s-empty.png' | cdn }}" 
-                  data-src="{{ store.settings.tax.certificate }}" 
-                  alt="{{ store.settings.tax.number }}"/>
-                </div>
-              </salla-modal>
-            {% endif %}
-          {% endif %}
-        </div>
-        </div>
+				{#### End newsLatter ########}
 
-			<div>
-				<h3>{{ trans('blocks.footer.pages_links') }}</h3>
-				<salla-menu source="footer"></salla-menu>
-			</div>
+    </div>
+	<!-- END Footer Inner -->
 
-			<div>
-				<salla-contacts></salla-contacts>
-
-				<div class="lg:hidden contact-social">
-					<salla-social></salla-social>
-				</div>
-			</div>
-
-			<salla-apps-icons class="lg:col-span-2 rtl:lg:pr-20 ltr:lg:pl-20"></salla-apps-icons>
-
+    <!-- Copyright + Payments -->
+	<div class="bg-primary">
+		<div class="flex items-center justify-between py-4 container text-center bg-transparent">
+			<span class="text-sm copyright-text">{% hook copyright %}</span>
+			<salla-payments></salla-payments>
 		</div>
 	</div>
+    <!-- Decoration Span (Hidden) -->
+    <span class="hidden bottom-2 rtl:pl-24 ltr:pr-24 md:grid-cols-3 opacity-40"></span>
 
-	<div class="md:flex items-center justify-between py-4 container text-center">
-		<span class="text-sm copyright-text">{% hook copyright %}</span>
-		<salla-payments></salla-payments>
-	</div>
-</div>
+</footer><!-- END Footer -->
+<style>
+{% set footer_align = theme.settings.get('footer_is_center') ? 'center' : 'start' %}
+@media (max-width:768px) {
+    .s-contacts-title,.s-menu-footer-list,.footer-description,
+    salla-apps-icons h3 {
+        text-align: {{ footer_align }};
+    }
+	.s-social-list{
+		justify-content: {{footer_align}};
+	}
+}
+{% if theme.settings.get('footer_is_logo') %}
 
-<span class="hidden bottom-2 rtl:pl-24 ltr:pr-24 md:grid-cols-3 opacity-40"></span></footer>
+salla-payments .s-payments-list-item:last-child {
+	display: none !important;
+}
+{% endif %}
+  .gallery-item {
+    position: relative;
+  }
+  .gallery-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .gallery-item:hover .gallery-overlay {
+    opacity: 1;
+  }
+  .gallery-overlay i {
+    color: white;
+    font-size: 24px;
+  }
+</style>
+
