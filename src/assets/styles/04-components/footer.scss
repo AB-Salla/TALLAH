@@ -1,4 +1,9 @@
 .store-footer {
+  salla-apps-icons{
+    h3{
+      display: none;
+    }
+  }
   .store-description{
     p{
       @apply  font-sans font-normal  text-base leading-6 tracking-normal

@@ -21299,6 +21299,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
         margin-top: 4rem;
     }
 }
+.store-footer salla-apps-icons h3 {
+  display: none;
+}
 .store-footer .store-description p{
     font-family: "DINNextLTArabic", -apple-system, BlinkMacSystemFont;
     font-family: var(--font-main), -apple-system, BlinkMacSystemFont;

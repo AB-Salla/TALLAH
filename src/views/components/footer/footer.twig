@@ -10,8 +10,7 @@
 				
 <!-- Apps Icons -->
 					<div class="md:col-span-full lg:col-auto flex flex-col gap-4">
-						<salla-apps-icons >
-						</salla-apps-icons>
+						
 						<div class="flex flex-wrap {% if theme.settings.get('footer_is_center') %} justify-center md:justify-start {% else %} justify-start md:justify-start {% endif %} items-center gap-4">
 
 						{% if theme.settings.get('footer_is_logo') %}
@@ -99,6 +98,8 @@
 		<div class="flex items-center justify-between py-4 container text-center bg-transparent">
 			<span class="text-sm copyright-text">{% hook copyright %}</span>
 			<salla-payments></salla-payments>
+			<salla-apps-icons >
+			</salla-apps-icons>
 		</div>
 	</div>
     <!-- Decoration Span (Hidden) -->
@@ -122,28 +123,6 @@ salla-payments .s-payments-list-item:last-child {
 	display: none !important;
 }
 {% endif %}
-  .gallery-item {
-    position: relative;
-  }
-  .gallery-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  }
-  .gallery-item:hover .gallery-overlay {
-    opacity: 1;
-  }
-  .gallery-overlay i {
-    color: white;
-    font-size: 24px;
-  }
+
 </style>
 
