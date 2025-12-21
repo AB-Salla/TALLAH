@@ -477,7 +477,7 @@ export const eyeModel = (productId) => {
                   <div class="flex-1 flex flex-row items-center justify-center">
                     <a href="${
                       product?.url
-                    }" class="button btn-{{ loop.index }} bg-background transition-all duration-500 hover:bg-primary hover:text-background  text-primary text-center px-3 md:py-4 py-2 text-[clamp(0.75rem,0.7985rem+0.3265vw,1rem)] self-center font-semibold w-full leading-[100%] border border-primary" >${showDetails()}</a>
+                    }" class="button btn-{{ loop.index }} hover:bg-background transition-all duration-500 bg-primary text-background  hover:text-primary text-center px-3 md:py-4 py-2 text-[clamp(0.75rem,0.7985rem+0.3265vw,1rem)] self-center font-semibold w-full leading-[100%] border border-primary" >${showDetails()}</a>
                   </div>
                 </div>
 			`;

@@ -55,91 +55,312 @@
             "source": "Manual",
             "required": true
         },
+
+         {
+      "type": "static",
+      "format": "title",
+      "id": "cart_settings",
+      "value": "<div class='flex-center p-3 text-center font-bold text-lg ' style='background: #1e1e1e;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px;'>خيـارات أسفل الصفحة</div>",
+      "variant": "h6"
+    },
+     {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "وضع المحتوي في المنتصف ",
+      "description": null,
+      "id": "footer_is_center",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": false
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "استخدام اللوجوهات الملونة لمواقع التواصل الاجتماعي",
+      "description": "عند التفعيل، ستظهر أيقونات ملونة احترافية بدلاً من الأيقونات البسيطة",
+      "id": "use_colored_social_icons",
+      "format": "switch",
+      "required": false,
+      "value": false,
+      "selected": false
+    },
+    {
+      "id": "footer_logo_size",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "اختر حجم شعار المتجر أسفل الصفحة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [
         {
-            "type": "static",
-            "format": "title",
-            "id": "static-label2",
-            "value": "<div style='background-color: #333;color: #fff;padding: 10px 15px;font-size: 18px;font-weight: bold;margin: 30px -20px 20px;'>خيارات عامة</div>",
-            "variant": "h6"
+          "label": "متوسط",
+          "value": "medium",
+          "key": "bd55d5d3d0-d018-461f-93ec-213f072bb0ed"
+        }
+      ],
+      "options": [
+        {
+          "label": "كبير",
+          "value": "large",
+          "key": "ace559a430-fec1-498e-b529-0ea955adee8a"
         },
         {
-            "type": "static",
-            "format": "description",
-            "id": "on_singleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/dJ6zRfpNv1n1MbIAJz7TIuRGI5ZzfZGwH9CeVuTL.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_singleOption",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
+          "label": "متوسط",
+          "value": "medium",
+          "key": "bd55d5d3d0-d018-461f-93ec-213f072bb0ed"
         },
         {
-            "type": "static",
-            "format": "description",
-            "id": "off_singleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/XotK3z69Qk1y6Prz7ip6V27c5MYmujMR7ydLFze8.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_singleOption",
-                    "operation": "=",
-                    "value": false
-                }
-            ]
+          "label": "صغير",
+          "value": "small",
+          "key": "bbe5561139-5b1f-4da0-bdd5-28b58934f6af"
+        }
+      ],
+      "source": "Manual",
+      "multichoice": false,
+      "searchable": true,
+      "required": false
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "إظهار لوجو شهادة توثيق منصة الأعمال أسفل تطبيقات الجوال",
+      "description": null,
+      "id": "footer_is_logo",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": false
+    },
+    {
+      "id": "social_gallary",
+      "type": "collection",
+      "format": "collection",
+      "label": "معرض الصور",
+      "description": null,
+      "labelHTML": null,
+      "item_label": null,
+      "icon": "sicon-list-add",
+      "fields": [
+        {
+          "id": "social_gallary.gallary_img",
+          "type": "string",
+          "format": "image",
+          "label": "الصورة",
+          "description": null,
+          "labelHTML": null,
+          "placeholder": "e.g. https://hostname.com/image.png",
+          "icon": "sicon-image",
+          "value": null,
+          "required": false
         },
         {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "قيم حقل خيارات (اختيار واحد)",
-            "description": "على شكل قائمة منسدلة أو أزرار اختيار",
-            "id": "show_singleOption",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": true
+          "id": "social_gallary.gallary_url",
+          "type": "string",
+          "format": "url",
+          "inputType": "url",
+          "label": "رابط الصورة",
+          "description": null,
+          "labelHTML": null,
+          "placeholder": "e.g. https://salla.sa",
+          "icon": "sicon-link",
+          "value": null,
+          "required": false,
+          "minLength": "2",
+          "maxLength": "200"
+        }
+      ],
+      "value": [
+        {
+          "social_gallary.gallary_img": "https://cdn.files.salla.network/homepage/2070588102/27822543-d940-452f-9a83-1494087b9c4f.webp",
+          "social_gallary.gallary_url": "https://twitter.com/SallaApp"
         },
+        {
+          "social_gallary.gallary_img": "https://cdn.files.salla.network/homepage/2070588102/32d3a1c9-db38-4238-8539-68582fea9af7.webp",
+          "social_gallary.gallary_url": "https://twitter.com/SallaApp"
+        },
+        {
+          "social_gallary.gallary_img": "https://cdn.files.salla.network/homepage/2070588102/4837f2c8-5fe2-4431-8e24-9df5eb96de92.webp",
+          "social_gallary.gallary_url": "https://twitter.com/SallaApp"
+        },
+        {
+          "social_gallary.gallary_img": "https://cdn.files.salla.network/homepage/2070588102/39d99ae5-09d5-4d10-bb73-0ad2dff8645b.webp",
+          "social_gallary.gallary_url": "https://twitter.com/SallaApp"
+        },
+        {
+          "social_gallary.gallary_img": "https://cdn.files.salla.network/homepage/2070588102/acb4bbb9-3171-47fc-9dad-d049719fe2e3.webp",
+          "social_gallary.gallary_url": "https://twitter.com/SallaApp"
+        }
+      ],
+      "minLength": 3,
+      "maxLength": "6"
+    },
+    {
+      "id": "newsletter_view",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل النشرة البريدية",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+    {
+      "id": "instagram_url",
+      "type": "string",
+      "format": "url",
+      "inputType": "url",
+      "label": "أضف رابط حسابك على وسائل التواصل الاجتماعي",
+      "description": null,
+      "labelHTML": null,
+      "placeholder": "e.g. https://salla.sa",
+      "icon": "sicon-link",
+      "value": "https://www.instagram.com/sallaapp/#",
+      "minLength": "2",
+      "maxLength": "444"
+    },
+    {
+      "id": "newsletter_url",
+      "type": "string",
+      "format": "url",
+      "inputType": "url",
+      "label": "رابط النشرة البريدية",
+      "description": "أدخل الرابط المباشر للاشتراك في النشرة البريدية (مثل رابط خارجي أو خدمة تسويق بالبريد). يظهر فقط عند التفعيل.",
+      "labelHTML": null,
+      "placeholder": "مثال: https://salla.sa",
+      "icon": "sicon-link",
+      "value": "https://s.salla.sa",
+      "required": true,
+      "minLength": 2,
+      "maxLength": "300000000",
+      "conditions": [
+        {
+          "id": "newsletter_view",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "type": "static",
+      "id": "static-line5",
+      "format": "line"
+    },
+         {
+      "type": "static",
+      "format": "title",
+      "id": "cart_settings",
+      "value": "<div class='flex-center p-3 text-center font-bold text-lg ' style='background: #1e1e1e;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px;'>خيـارات صفحة سلة المشتريات</div>",
+      "variant": "h6"
+    },
+    {
+      "type": "boolean",
+      "id": "enable_side_cart",
+      "label": "تفعيل السلة الجانبية",
+      "format": "switch",
+      "value": true,
+      "selected": false
+    },
+    {
+      "type": "boolean",
+      "id": "cart_icon_choose",
+      "label": "اختيار ايقون السله بنفسك",
+      "format": "switch",
+      "value": true,
+      "selected": false
+    },
+    {
+      "id": "cart_icon_type",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "ايقون السله",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-list",
+      "selected": [
+        {
+          "label": "🛒 السلة الأولى",
+          "value": "cart_1",
+          "key": "86f7d5fc-29a7-4dbf-9496-7d2a9741ac0b"
+        }
+      ],
+      "options": [
+        {
+          "label": "🛒 السلة الأولى",
+          "value": "cart_1",
+          "key": "86f7d5fc-29a7-4dbf-9496-7d2a9741ac0b"
+        },
+        {
+          "label": "🧺 السلة الثانية",
+          "value": "cart_2",
+          "key": "efffe36-bf84-50ec-88aa-9120b6ff809e"
+        },
+        {
+          "label": "👜 السلة الثالثة",
+          "value": "cart_3",
+          "key": "efgre36-bg84-402c-98aa-9120b6ee809e"
+        },
+        {
+          "label": "🚚 السلة الرابعة",
+          "value": "cart_4",
+          "key": "eedfbe36-bf84-402c-98va-9120b6ee809e"
+        },
+        {
+          "label": "➕ السلة الخامسة",
+          "value": "cart_5",
+          "key": "easde36-bf84-902c-98aa-9120b6ee809e"
+        }
+      ],
+      "source": "Manual",
+      "required": false,
+      "conditions": [
+        {
+          "id": "cart_icon_choose",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "cart_display_type",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "طريقة عرض السلة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-list",
+      "selected": [
+        {
+          "label": "سلة جانبية (Side Cart)",
+          "value": "side",
+          "key": "86f7c8a-29a7-4dbf-9496-7d2a9741ac0b"
+        }
+      ],
+      "options": [
+        {
+          "label": "سلة جانبية (Side Cart)",
+          "value": "side",
+          "key": "86f7c8a-29a7-4dbf-9496-7d2a9741ac0b"
+        }
+      ],
+      "source": "Manual",
+      "required": false,
+      "conditions": [
+        {
+          "id": "enable_side_cart",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+       
         {
             "type": "static",
             "id": "static-line-32",
             "format": "line"
-        },
-        {
-            "type": "static",
-            "format": "description",
-            "id": "on_multipleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/16ZpLArHfQ2ybP65JKgOjxF9QNL7ZKxddDPDwuG0.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_multipleOption",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "static",
-            "format": "description",
-            "id": "off_multipleOption_images",
-            "value": "<div style='padding-top:10px;margin-bottom:30px;border:1px solid #EBEBEB;border-radius:5px;text-align:center;overflow:hidden'><img class='w-full' src='https://cdn.salla.sa/ZrBEO/qc748qtDkUHDgbWj6QakRx0JMv8FzsZ7c0ZT5SJl.jpg'></div>",
-            "conditions": [
-                {
-                    "id": "show_multipleOption",
-                    "operation": "=",
-                    "value": false
-                }
-            ]
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "قيم حقل خيارات (عدة اختيارات)",
-            "description": "خيار من متعدد على شكل صندوق اختيار، او أزرار اختيار",
-            "id": "show_multipleOption",
-            "format": "switch",
-            "required": false,
-            "value": false,
-            "selected": false
         },
         {
             "type": "boolean",
