@@ -34,11 +34,6 @@
 					</div><!-- END Store Info Column -->
 
 					<!-- Footer Pages Links -->
-						{% if theme.settings.get('newsletter_view') %}
-							{% include 'pages.partials.newslatter.twig' with {
-							class: "CA-newsletter justify-center md:items-start mb-8 md:mb-0 flex flex-col-reverse md:flex-col gap-3 md:hidden"
-							}  %}
-						{% endif %}
 					<div class="">
 						<h3 class="{% if theme.settings.get('footer_is_center') %} text-center  {% else %} text-start {% endif %} rtl:md:text-right ltr:md:text-left">{{ trans('blocks.footer.pages_links') }}</h3>
 						<salla-menu source="footer"></salla-menu>
@@ -100,18 +95,6 @@
 						</div>
 					</div>
 				</div>
-				<!-- END Footer Grid -->
-
-				{#### Start newsLatter ########}
-					{% if theme.settings.get('newsletter_view') %}
-					
-						{% include 'pages.partials.newslatter.twig' with {
-                        class: "CA-newsletter hidden justify-center md:items-start mb-8 md:mb-0 md:flex flex-col-reverse md:flex-col gap-3"
-                    	}  %}
-					{% endif %}
-
-				{#### End newsLatter ########}
-
     </div>
 	<!-- END Footer Inner -->
 
