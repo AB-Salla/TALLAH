@@ -11,7 +11,7 @@
 
   a {
     @apply transition-opacity hover:opacity-75;
-    color: color-mix(in srgb, var(--color-font) 50%, transparent);
+    color: color-mix(in srgb, var(--color-primary) 10%, white);
     line-height: 25px !important;
     font-weight: 300;
     font-size: 1rem;
@@ -26,7 +26,7 @@
   }
 
   h3 {
-    @apply text-[clamp(1rem,0.9617rem+0.1633vw,1.125rem)] font-medium leading-[25px] mb-3 lg:mb-5;
+    @apply text-[clamp(1rem,0.9617rem+0.1633vw,1.125rem)] font-medium leading-[25px] mb-3 lg:mb-5 ;
   }
 
   .social-link {
