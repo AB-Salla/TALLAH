@@ -11,8 +11,8 @@
 									<div class="flex flex-col justify-center gap-2 md:gap-4 container">
 
 										<div>
-											<h2 class="text-[clamp(0.875rem,0.8391rem+0.1609vw,1rem)]  font-medium text-font
-											{% if theme.settings.get('footer_is_center') %} text-center ltr:md:text-start rtl:md:text-end {% else %} ltr:md:text-start rtl:md:text-end  {% endif %}
+											<h2 class="text-[clamp(0.875rem,0.8391rem+0.1609vw,1rem)]  font-medium text-background
+											text-center ltr:md:text-start rtl:md:text-end 
 											">
 											{{ trans('footer.newsletter_title') }}
 											</h2>
@@ -33,7 +33,7 @@
 													type="email"
 													name="EMAIL"
 													id="mce-EMAIL"
-													class="mce-EMAIL w-full rtl:text-right ltr:text-left text-[clamp(0.75rem,0.7141rem+0.1609vw,0.875rem))] rounded-lg border-0 font-normal outline-none placeholder:text-font placeholder:opacity-[48%] bg-secondary focus:border-primary text-font focus:placeholder-transparent h-[40px] md:h-[52px]"
+													class="mce-EMAIL w-full rtl:text-right ltr:text-left text-[clamp(0.75rem,0.7141rem+0.1609vw,0.875rem))] rounded-lg border-0 font-normal outline-none placeholder:text-background placeholder:opacity-[48%] bg-secondary focus:border-primary text-background focus:placeholder-transparent h-[40px] md:h-[52px]"
 													placeholder="{{ trans('footer.newsletter_input_placeholder') }}"
 												/>
 
@@ -41,9 +41,10 @@
 													name="subscribe"
 													id="mc-embedded-subscribe"
 													type="submit"
-													class="mc-embedded-subscribe text-background bg-primary hover:text-primary border border-primary hover:bg-background rounded-lg flex items-center justify-center px-4 py-2 md:p-5 hover:opacity-90 transition-all h-[40px] md:h-[52px] text-[14px] font-medium leading-[100%]"
+													class="mc-embedded-subscribe text-background   bg-primary hover:text-primary border border-background hover:bg-background rounded-lg flex items-center justify-center px-4 py-2 md:p-5 hover:opacity-90 transition-all h-[40px] md:h-[52px] text-[14px] font-medium leading-[100%]"
 												>
-													أشتراك
+													{{ trans('footer.newsletter_button') }}
+													
 												</button>
 
 											</div>
