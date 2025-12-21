@@ -21322,14 +21322,14 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   line-height: 25px !important;
 }
 .store-footer a {
-  color: rgba(65, 64, 66, 0.1);
+  color: rgb(236, 236, 236);
   font-weight: 300;
   font-size: 1rem;
   transition: all 0.5s ease-in-out;
 }
 @supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
 .store-footer a {
-  color: color-mix(in srgb, var(--color-primary) 10%, transparent);
+  color: color-mix(in srgb, var(--color-primary) 10%, white);
 }
 }
 .store-footer a:hover {
