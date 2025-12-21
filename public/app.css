@@ -1526,6 +1526,9 @@ select{
 .flex-col{
     flex-direction: column;
 }
+.flex-col-reverse{
+    flex-direction: column-reverse;
+}
 .flex-wrap{
     flex-wrap: wrap;
 }
@@ -27038,8 +27041,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:grid-cols-\[repeat\(3\2c minmax\(0\2c 1fr\)\)\]{
         grid-template-columns: repeat(3,minmax(0,1fr));
     }
+    .md\:grid-cols-\[3fr_3fr_3fr\]{
+        grid-template-columns: 3fr 3fr 3fr;
+    }
     .md\:flex-row{
         flex-direction: row;
+    }
+    .md\:flex-col{
+        flex-direction: column;
     }
     .md\:items-start{
         align-items: flex-start;
@@ -27257,6 +27266,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-\[2fr_2fr_2fr_3fr\]{
         grid-template-columns: 2fr 2fr 2fr 3fr;
+    }
+    .lg\:grid-cols-\[22fr_2fr_3fr\]{
+        grid-template-columns: 22fr 2fr 3fr;
+    }
+    .lg\:grid-cols-\[2fr_2fr_3fr\]{
+        grid-template-columns: 2fr 2fr 3fr;
     }
     .lg\:flex-row{
         flex-direction: row;

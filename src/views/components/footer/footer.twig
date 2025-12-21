@@ -5,51 +5,15 @@
     <div aria-label="footer" class="store-footer__inner !pt-11 !pb-9">
 
         <!-- Main Footer Grid -->
-				<div class="container flex flex-col items-center justify-center  md:items-start  md:grid grid-cols-1 md:grid-cols-[4fr_3fr_3fr_3fr] lg:grid-cols-[2fr_2fr_2fr_3fr] gap-8 md:gap-6">
+				<div class="container flex flex-col items-center justify-center  md:items-start  md:grid grid-cols-1 md:grid-cols-[3fr_3fr_3fr] lg:grid-cols-[2fr_2fr_3fr] gap-8 md:gap-6">
 
-				
-<!-- Apps Icons -->
-					<div class="md:col-span-full lg:col-auto flex flex-col gap-4">
-						
-						<div class="flex flex-wrap {% if theme.settings.get('footer_is_center') %} justify-center md:justify-start {% else %} justify-start md:justify-start {% endif %} items-center gap-4">
-
-						{% if theme.settings.get('footer_is_logo') %}
-							<div class="verification">
-								<div class="s-payments-list-item block !w-20 !h-auto !bg-transparent mx-auto md:mx-0">
-									<a target="_blank" href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/{{ store.settings.certificate.id }}">
-										<img class="!object-cover w-full h-auto" src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" data-src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" alt="SBC" loading="lazy">
-									</a>
-								</div>
-							</div>
-							{% endif %}
-					<!-- VAT Section -->
-						{% if store.settings.tax.number %}
-
-							
-
-							<!-- VAT Certificate Modal -->
-							{% if store.settings.tax.certificate %}
-								<salla-modal sub-title-first sub-title="{{ trans('common.elements.tax_number') }}" modal-title="{{ store.settings.tax.number }}" id="modal-value-tax">
-									<div class="flex justify-center max-w-full">
-										<img class="w-full" loading="lazy"
-											src="{{ 'images/s-empty.png' | cdn }}"
-											data-src="{{ store.settings.tax.certificate }}"
-											alt="{{ store.settings.tax.number }}" />
-									</div>
-								</salla-modal>
-							{% endif %}
-
-						{% endif %}
-						<!-- END VAT Section -->
-						</div>
-					</div>
 					<!-- Footer Pages Links -->
-					<div class="">
+					<div class="order-2">
 						<h3 class="{% if theme.settings.get('footer_is_center') %} text-center  {% else %} text-start {% endif %} rtl:md:text-right ltr:md:text-left">{{ trans('blocks.footer.pages_links') }}</h3>
 						<salla-menu source="footer"></salla-menu>
 					</div>
 					<!-- Contacts Column -->
-					<div class="">
+					<div class="order-3">
 						<salla-contacts></salla-contacts>
 					</div>
 					
@@ -117,12 +81,7 @@
 		justify-content:center;
 	}
 }
-{% if theme.settings.get('footer_is_logo') %}
 
-salla-payments .s-payments-list-item:last-child {
-	display: none !important;
-}
-{% endif %}
 
 </style>
 
