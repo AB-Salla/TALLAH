@@ -21299,6 +21299,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
         margin-top: 4rem;
     }
 }
+.store-footer .s-menu-footer-list a {
+  margin-bottom: 10px;
+}
 .store-footer .s-menu-footer-item {
   margin-bottom: 8px !important;
 }
