@@ -5,45 +5,10 @@
     <div aria-label="footer" class="store-footer__inner !pt-11 !pb-9">
 
         <!-- Main Footer Grid -->
-				<div class="container flex flex-col {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start  md:grid grid-cols-1 md:grid-cols-[4fr_3fr_3fr_3fr] lg:grid-cols-[3fr_2fr_2fr_2fr_3fr] gap-8 md:gap-6">
+				<div class="container flex flex-col {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start  md:grid grid-cols-1 md:grid-cols-[3fr_3fr_3fr_4fr] lg:grid-cols-[3fr_2fr_2fr_2fr_3fr] gap-8 md:gap-6">
 
-					<!-- Store Info Column -->
-					<div class="text-center rtl:md:text-right ltr:md:text-left">
-
-						<!-- Store Logo / Name -->
-						<a href="{{ link('/') }}" class="flex  m-0 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:justify-start">
-							<div class="mb-4 footer_logo_size {{ theme.settings.get('footer_logo_size') == 'small' ? 'w-[55px] md:w-[50px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'medium' or not theme.settings.get('footer_logo_size') ? 'w-[74px] md:w-[69px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'large' ? 'w-[100px] md:w-[95px] h-auto' : '' }} ">
-								<img src="{{store.logo}}" class="w-full h-full" alt="{{store.name}}">
-							</div>
-						</a>
-
-						<!-- Store Description -->
-						{% if store.description %}
-							<div class="mb-6  text-graytext footer-description">
-								{{ store.description|raw }}
-							</div>
-						{% endif %}
-
-						<!-- Social Icons (Desktop Only) -->
-						<div class="block">
-								<salla-social class="block mb-6"></salla-social>
-						</div>
-
-						
-
-					</div><!-- END Store Info Column -->
-
-					<!-- Footer Pages Links -->
-					<div class="">
-						<h3 class="{% if theme.settings.get('footer_is_center') %} text-center  {% else %} text-start {% endif %} rtl:md:text-right ltr:md:text-left">{{ trans('blocks.footer.pages_links') }}</h3>
-						<salla-menu source="footer"></salla-menu>
-					</div>
-					<!-- Contacts Column -->
-					<div class="">
-						<salla-contacts></salla-contacts>
-					</div>
-					
-					<!-- Apps Icons -->
+				
+<!-- Apps Icons -->
 					<div class="md:col-span-full lg:col-auto flex flex-col gap-4">
 						<salla-apps-icons >
 						</salla-apps-icons>
@@ -94,6 +59,37 @@
 						<!-- END VAT Section -->
 						</div>
 					</div>
+					<!-- Footer Pages Links -->
+					<div class="">
+						<h3 class="{% if theme.settings.get('footer_is_center') %} text-center  {% else %} text-start {% endif %} rtl:md:text-right ltr:md:text-left">{{ trans('blocks.footer.pages_links') }}</h3>
+						<salla-menu source="footer"></salla-menu>
+					</div>
+					<!-- Contacts Column -->
+					<div class="">
+						<salla-contacts></salla-contacts>
+					</div>
+					
+						<!-- Store Info Column -->
+					<div class="text-center rtl:md:text-right ltr:md:text-left">
+
+						<!-- Store Logo / Name -->
+						<a href="{{ link('/') }}" class="flex  m-0 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:justify-start">
+							<div class="mb-4 footer_logo_size {{ theme.settings.get('footer_logo_size') == 'small' ? 'w-[55px] md:w-[50px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'medium' or not theme.settings.get('footer_logo_size') ? 'w-[74px] md:w-[69px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'large' ? 'w-[100px] md:w-[95px] h-auto' : '' }} ">
+								<img src="{{store.logo}}" class="w-full h-full" alt="{{store.name}}">
+							</div>
+						</a>
+
+						<!-- Store Description -->
+						{% if store.description %}
+							<div class="mb-6  text-graytext footer-description">
+								{{ store.description|raw }}
+							</div>
+						{% endif %}
+						<!-- Social Icons (Desktop Only) -->
+						<div class="block">
+								<salla-social class="block mb-6"></salla-social>
+						</div>
+					</div><!-- END Store Info Column -->
 				</div>
     </div>
 	<!-- END Footer Inner -->
