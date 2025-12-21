@@ -5,7 +5,7 @@
     <div aria-label="footer" class="store-footer__inner !pt-11 !pb-9">
 
         <!-- Main Footer Grid -->
-				<div class="container flex flex-col {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:items-start  md:grid grid-cols-1 md:grid-cols-[4fr_3fr_3fr_3fr] lg:grid-cols-[2fr_2fr_2fr_3fr] gap-8 md:gap-6">
+				<div class="container flex flex-col items-center justify-center  md:items-start  md:grid grid-cols-1 md:grid-cols-[4fr_3fr_3fr_3fr] lg:grid-cols-[2fr_2fr_2fr_3fr] gap-8 md:gap-6">
 
 				
 <!-- Apps Icons -->
@@ -15,7 +15,7 @@
 
 						{% if theme.settings.get('footer_is_logo') %}
 							<div class="verification">
-								<div class="s-payments-list-item block !w-20 !h-auto !bg-transparent {% if theme.settings.get('footer_is_center') %} mx-auto md:mx-0{% endif %}">
+								<div class="s-payments-list-item block !w-20 !h-auto !bg-transparent mx-auto md:mx-0">
 									<a target="_blank" href="https://eauthenticate.saudibusiness.gov.sa/certificate-details/{{ store.settings.certificate.id }}">
 										<img class="!object-cover w-full h-auto" src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" data-src="https://cdn.salla.sa/form-builder/aGDkCniM1nGr1bcy5SpNlLxxqhxc1lLOGwSEXveJ.png" alt="SBC" loading="lazy">
 									</a>
@@ -57,7 +57,7 @@
 					<div class="text-center rtl:md:text-right ltr:md:text-left">
 
 						<!-- Store Logo / Name -->
-						<a href="{{ link('/') }}" class="flex  m-0 {% if theme.settings.get('footer_is_center') %} items-center justify-center {% else %} items-start justify-start {% endif %} md:justify-start">
+						<a href="{{ link('/') }}" class="flex  m-0 items-center justify-center  md:justify-start">
 							<div class="mb-4 footer_logo_size {{ theme.settings.get('footer_logo_size') == 'small' ? 'w-[55px] md:w-[50px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'medium' or not theme.settings.get('footer_logo_size') ? 'w-[74px] md:w-[69px] h-auto' : '' }} {{ theme.settings.get('footer_logo_size') == 'large' ? 'w-[100px] md:w-[95px] h-auto' : '' }} ">
 								<img src="{{store.logo}}" class="w-full h-full" alt="{{store.name}}">
 							</div>
@@ -80,7 +80,7 @@
 
     <!-- Copyright + Payments -->
 	<div class="bg-primary">
-		<div class=" grid grid-cols-1 md:flex flex-col  md:flex-row items-center justify-between py-4 container text-center bg-transparent  justify-items-center">
+		<div class=" grid grid-cols-1 gap-3 md:flex flex-col  md:flex-row items-center justify-between py-4 container text-center bg-transparent  justify-items-center">
 			{# <span class="text-sm copyright-text">{% hook copyright %}</span> #}
 			<salla-payments class="order-3"></salla-payments>
 			<div class="flex rtl:space-x-reverse space-x-2 items-end order-2">
@@ -108,14 +108,13 @@
 
 </footer><!-- END Footer -->
 <style>
-{% set footer_align = theme.settings.get('footer_is_center') ? 'center' : 'start' %}
 @media (max-width:768px) {
     .s-contacts-title,.s-menu-footer-list,.footer-description,
     salla-apps-icons h3 {
-        text-align: {{ footer_align }};
+        text-align: center;
     }
 	.s-social-list{
-		justify-content: {{footer_align}};
+		justify-content:center;
 	}
 }
 {% if theme.settings.get('footer_is_logo') %}
