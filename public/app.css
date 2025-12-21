@@ -1191,9 +1191,6 @@ select{
 .\!h-36{
     height: 9rem !important;
 }
-.\!h-auto{
-    height: auto !important;
-}
 .h-0{
     height: 0px;
 }
@@ -1318,9 +1315,6 @@ select{
 .\!w-1\/4{
     width: 25% !important;
 }
-.\!w-20{
-    width: 5rem !important;
-}
 .\!w-36{
     width: 9rem !important;
 }
@@ -1411,9 +1405,6 @@ select{
 .max-w-fit{
     max-width: -moz-fit-content;
     max-width: fit-content;
-}
-.max-w-full{
-    max-width: 100%;
 }
 .max-w-lg{
     max-width: 32rem;
@@ -1525,9 +1516,6 @@ select{
 }
 .flex-col{
     flex-direction: column;
-}
-.flex-col-reverse{
-    flex-direction: column-reverse;
 }
 .flex-wrap{
     flex-wrap: wrap;
@@ -1828,9 +1816,6 @@ select{
     border-color: #414042;
     border-color: var(--color-primary);
 }
-.\!bg-transparent{
-    background-color: transparent !important;
-}
 .bg-background{
     background-color: var(--color-background);
 }
@@ -1907,10 +1892,6 @@ select{
 .object-contain{
     -o-object-fit: contain;
        object-fit: contain;
-}
-.\!object-cover{
-    -o-object-fit: cover !important;
-       object-fit: cover !important;
 }
 .object-cover{
     -o-object-fit: cover;
@@ -26935,13 +26916,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:col-span-2{
         grid-column: span 2 / span 2;
     }
-    .md\:col-span-full{
-        grid-column: 1 / -1;
-    }
-    .md\:mx-0{
-        margin-left: 0px;
-        margin-right: 0px;
-    }
     .md\:mb-0{
         margin-bottom: 0px;
     }
@@ -27035,20 +27009,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:grid-cols-6{
         grid-template-columns: repeat(6, minmax(0, 1fr));
     }
-    .md\:grid-cols-\[4fr_3fr_3fr_3fr\]{
-        grid-template-columns: 4fr 3fr 3fr 3fr;
+    .md\:grid-cols-\[3fr_3fr_3fr\]{
+        grid-template-columns: 3fr 3fr 3fr;
     }
     .md\:grid-cols-\[repeat\(3\2c minmax\(0\2c 1fr\)\)\]{
         grid-template-columns: repeat(3,minmax(0,1fr));
     }
-    .md\:grid-cols-\[3fr_3fr_3fr\]{
-        grid-template-columns: 3fr 3fr 3fr;
-    }
     .md\:flex-row{
         flex-direction: row;
-    }
-    .md\:flex-col{
-        flex-direction: column;
     }
     .md\:items-start{
         align-items: flex-start;
@@ -27180,9 +27148,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:top-20{
         top: 5rem;
     }
-    .lg\:col-auto{
-        grid-column: auto;
-    }
     .lg\:col-span-6{
         grid-column: span 6 / span 6;
     }
@@ -27263,12 +27228,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-8{
         grid-template-columns: repeat(8, minmax(0, 1fr));
-    }
-    .lg\:grid-cols-\[2fr_2fr_2fr_3fr\]{
-        grid-template-columns: 2fr 2fr 2fr 3fr;
-    }
-    .lg\:grid-cols-\[22fr_2fr_3fr\]{
-        grid-template-columns: 22fr 2fr 3fr;
     }
     .lg\:grid-cols-\[2fr_2fr_3fr\]{
         grid-template-columns: 2fr 2fr 3fr;
