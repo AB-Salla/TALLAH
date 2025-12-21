@@ -1523,9 +1523,6 @@ select{
 .flex-col{
     flex-direction: column;
 }
-.flex-col-reverse{
-    flex-direction: column-reverse;
-}
 .flex-wrap{
     flex-wrap: wrap;
 }
@@ -21386,14 +21383,25 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   height: 32px;
   border-radius: 6px;
   background-color: transparent;
-  color: var(--color-background);
+  color: rgb(160, 159, 161);
   border: none;
   transition: all 0.3s ease;
-  border: 1px solid var(--color-background);
+  border: 1px solid color-mix(in srgb, #414042 50%, white);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.store-footer .s-social-link a {
+  color: color-mix(in srgb, var(--color-primary) 50%, white);
+  border: 1px solid color-mix(in srgb, var(--color-primary) 50%, white);
+}
 }
 .store-footer .s-social-link a:hover {
-  background-color: var(--color-background);
+  background-color: rgb(160, 159, 161);
   color: var(--color-font);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.store-footer .s-social-link a:hover {
+  background-color: color-mix(in srgb, var(--color-primary) 50%, white);
+}
 }
 .store-footer .contact-social{
     margin-top: 1.25rem;
@@ -26931,9 +26939,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:grid{
         display: grid;
     }
-    .md\:hidden{
-        display: none;
-    }
     .md\:h-20{
         height: 5rem;
     }
@@ -27005,9 +27010,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:flex-row{
         flex-direction: row;
-    }
-    .md\:flex-col{
-        flex-direction: column;
     }
     .md\:items-start{
         align-items: flex-start;
