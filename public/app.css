@@ -26926,6 +26926,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:order-2{
         order: 2;
     }
+    .md\:order-4{
+        order: 4;
+    }
     .md\:col-span-2{
         grid-column: span 2 / span 2;
     }
