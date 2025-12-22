@@ -25423,9 +25423,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   cursor: pointer;
 }
 .single .s-metadata-row-name {
-  flex-direction: column !important;
-}
-.single .s-metadata-row-name {
   font-size: clamp(0.875rem, 0.7602rem + 0.4898vw, 1.25rem);
   color: #2d190d;
   font-weight: 500;
