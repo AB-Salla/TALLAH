@@ -1949,6 +1949,10 @@ select{
     padding-left: 0.25rem;
     padding-right: 0.25rem;
 }
+.px-10{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
 .px-2{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
@@ -25416,6 +25420,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background-color: var(--color-background);
   padding-left: 0px;
   padding-right: 0px;
+}
+.single .s-slider-block__title-nav {
+  display: none !important;
 }
 .single .s-metadata-row {
   flex-direction: column !important;

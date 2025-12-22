@@ -2,7 +2,9 @@
   background-color: var(--color-background);
   @apply px-0 ;
 }
-
+.single .s-slider-block__title-nav{
+  display: none !important;
+}
 .single .s-metadata-row {
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
