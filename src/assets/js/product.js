@@ -21,7 +21,79 @@ class Product extends BasePage {
             // listen to screen resizing
             window.addEventListener('resize', () => this.initImagesZooming());
         }
+        this.initproductdetailsFaqs()
     }
+
+     initproductdetailsFaqs() {
+  document.addEventListener("DOMContentLoaded", () => {
+    const metadata = document.querySelector("salla-metadata");
+    if (!metadata) {
+      console.error("❌ <salla-metadata> not found!");
+      return;
+    }
+
+    function initFaqAccordion() {
+      const rows = metadata.querySelectorAll(".s-metadata-row");
+      if (!rows.length) {
+        console.warn("⚠️ No FAQ rows inside <salla-metadata>");
+        return;
+      }
+
+      rows.forEach((row) => {
+        const title = row.querySelector(".s-metadata-row-name");
+        const value = row.querySelector(".s-metadata-row-value");
+        if (!title || !value) return;
+
+        if (title.dataset.bound) return;
+        title.dataset.bound = "true";
+
+        title.addEventListener("click", () => {
+          if (row.classList.contains("open")) {
+            value.style.maxHeight = value.scrollHeight + "px";
+                        requestAnimationFrame(() => {
+              value.style.maxHeight = "0";
+            });
+            row.classList.remove("open");
+            value.classList.remove("open");
+          } else {
+            value.style.maxHeight = value.scrollHeight + "px";
+            row.classList.add("open");
+            value.classList.add("open");
+
+            value.addEventListener(
+              "transitionend",
+              () => {
+                if (row.classList.contains("open")) {
+                  value.style.maxHeight = "none";
+                }
+              },
+              { once: true }
+            );
+          }
+        });
+      });
+    }
+
+    if (metadata.classList.contains("hydrated")) {
+      initFaqAccordion();
+      return;
+    }
+
+    const observer = new MutationObserver((mutations, obs) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class" &&
+          metadata.classList.contains("hydrated")
+        ) {
+          initFaqAccordion();
+          obs.disconnect();
+        }
+      });
+    });
+    observer.observe(metadata, { attributes: true });
+  });
+}
 
     initProductOptionValidations() {
       document.querySelector('.product-form')?.addEventListener('change', function(){

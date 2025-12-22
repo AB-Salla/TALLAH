@@ -25412,6 +25412,56 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .salla-add-product-button.loading .sicon-booking, .salla-add-product-button.loading .sicon-calendar-time, .salla-add-product-button.loading .sicon-cart {
   display: none;
 }
+.s-metadata-box {
+  background-color: var(--color-background);
+  padding-left: 0px;
+  padding-right: 0px;
+}
+.single .s-metadata-row {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+.single .s-metadata-row-name {
+  font-size: clamp(0.875rem, 0.7602rem + 0.4898vw, 1.25rem);
+  color: #2d190d;
+  font-weight: 500;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.single .s-metadata-row-value {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s ease-in-out;
+  padding: 0 14px;
+  color: var(--color-font);
+  line-height: 20px;
+}
+.single .s-metadata-row-value.open {
+  padding: 0 12px 12px;
+}
+.single .s-metadata-row-name::after {
+  content: "\e96e";
+  transition: transform 0.3s ease;
+  font-family: "sallaicons";
+  font-size: 20px;
+  color: #2d190d;
+}
+.single .s-metadata-row.open .s-metadata-row-name::after {
+  transform: rotate(180deg);
+}
+.s-comments.s-comments-product {
+  background: transparent;
+  padding: 20px;
+  border-radius: 8px;
+}
+@media (max-width: 768px) {
+  .s-comments.s-comments-product {
+    padding: 10px;
+  }
+}
 .single {
   /* NOT ADDED state */
   /* When wishlist is not added */
@@ -25770,37 +25820,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .s-add-product-button-main {
   padding: 5px 0;
   gap: 8px;
-}
-.single .s-metadata-box {
-  margin-bottom: 24px;
-  background-color: transparent;
-  padding: 0rem;
-}
-.single .s-metadata-box-header {
-  display: none;
-}
-.single .s-metadata-row {
-  margin-bottom: 18px;
-  display: flex;
-  flex-direction: row;
-  justify-content: start;
-  gap: 0;
-}
-.single .s-metadata-row-name {
-  display: none;
-}
-.single .s-metadata-row-value {
-  font-weight: 400;
-  font-size: 16px;
-  color: var(--color-font);
-}
-@media (max-width: 1024px) {
-  .single .s-metadata-row-value {
-    font-size: 14px;
-  }
-  .single .s-metadata-box {
-    margin-bottom: 16px;
-  }
 }
 .single .s-product-options-option-label b {
   display: block;
