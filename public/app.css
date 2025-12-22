@@ -25418,6 +25418,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-right: 0px;
 }
 .single .s-metadata-row {
+  flex-direction: column !important;
+}
+.single .s-metadata-row {
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
   cursor: pointer;
@@ -26438,18 +26441,19 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 .NG-products .swiper-pagination-bullet-active{
-    background-color: #414042;
-    background-color: var(--color-primary);
+    background-color: var(--color-background);
 }
 .NG-products .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
 .NG-products .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
     margin: 0px !important;
 }
 .NG-products .swiper-button-disabled{
-    border-color: var(--color-font);
+    border-color: #414042;
+    border-color: var(--color-primary);
 }
 .NG-products .swiper-button-disabled i{
-    color: var(--color-font);
+    color: #414042;
+    color: var(--color-primary);
 }
 .NG-products .s-rating-stars-wrapper span,
 .NG-products .s-rating-stars-wrapper svg{

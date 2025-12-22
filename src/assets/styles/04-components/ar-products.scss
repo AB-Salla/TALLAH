@@ -1,6 +1,6 @@
 .NG-products {
   .swiper-pagination-bullet-active {
-    @apply bg-primary;
+    @apply bg-background;
   }
   .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
   .swiper-pagination-horizontal.swiper-pagination-bullets
@@ -8,11 +8,11 @@
     @apply m-0 !important;
   }
   .swiper-button-disabled {
-    @apply border-font;
+    @apply border-primary;
   }
 
   .swiper-button-disabled i {
-    @apply text-font;
+    @apply text-primary;
   }
   .s-rating-stars-wrapper span,
   .s-rating-stars-wrapper svg {
