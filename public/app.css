@@ -26440,6 +26440,25 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     padding-right: 0 !important;
   }
 }
+.NG-products .swiper-pagination-bullet-active{
+    background-color: #414042;
+    background-color: var(--color-primary);
+}
+.NG-products .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
+.NG-products .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
+    margin: 0px !important;
+}
+.NG-products .swiper-button-disabled{
+    border-color: var(--color-font);
+}
+.NG-products .swiper-button-disabled i{
+    color: var(--color-font);
+}
+.NG-products .s-rating-stars-wrapper span,
+.NG-products .s-rating-stars-wrapper svg{
+    height: 1rem;
+    width: 1rem;
+}
 body.mm-ocd-opened,
 body.modal-is-open,
 body.fancybox-open {
