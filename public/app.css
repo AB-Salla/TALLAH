@@ -27046,12 +27046,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:grid{
         display: grid;
     }
-    .md\:\!grid{
-        display: grid !important;
-    }
-    .md\:hidden{
-        display: none;
-    }
     .md\:\!hidden{
         display: none !important;
     }

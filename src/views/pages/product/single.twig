@@ -114,17 +114,31 @@
 							{% endif %}
 						{% endfor %}
 					</div>
-					  <salla-slider 
-                                id="details-slider-{{ product.id }}" 
-                                class="image-slider details-slider image-slider  {% if theme.settings.get('grid_or_slider_in_mobile') %}
+					 	<salla-slider
+	id="thumbs-{{product.id}}"
+	show-controls="false"
+	type="thumbs"
+	show-thumbs-controls="false"
+	class="product-images-slider block flex-grow  {% if theme.settings.get('grid_or_slider_in_mobile') %}
 					 md:!hidden
 					{% else %}
 						!hidden
-					{% endif %} " 
-                                type="thumbs" 
-                                loop="false" 
-                                show-controls="false" 
-                                >
+					{% endif %}"
+	slider-config='{
+		"slidesPerView": 1.2,
+		"spaceBetween": 10,
+    "autoplay": {
+			"delay": 3000,
+			"disableOnInteraction": false
+		},
+		"breakpoints": {
+			"768": {
+				"slidesPerView": 1.2,
+				"spaceBetween": 10
+			}
+		}
+	}'
+>
 
                             {% if product.promotion_title %}
                                 <div class="promotion-title">{{ product.promotion_title }}</div>
