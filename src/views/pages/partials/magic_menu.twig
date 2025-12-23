@@ -1,0 +1,527 @@
+
+<!-- Mega Menu Overlay -->
+<div class="mega-overlay"></div>
+<div id="mega-menu" class="hidden bg-background fixed bottom-0 ltr:left-0 rtl:right-0 w-full max-w-[850px] h-screen overflow-y-auto z-50">
+  
+  <!-- Menu Content -->
+  {% if theme.settings.get('enable_bottom_nav') %}
+  <div class="mega-menu-content w-full h-full overflow-y-auto sm:p-5 p-3 pb-24 ">
+  {% else %}
+  <div class="mega-menu-content w-full h-full overflow-y-auto sm:p-5 p-3 ">
+  {% endif %}
+
+    <div class="w-full flex ltr:justify-start justify-end pb-4">
+      <button class="mega-close-btn text-graytext w-10 h-10 flex items-center rtl:justify-end ltr:justify-start cursor-pointer text-xl transition-all" onclick="closeMegaMenu()"><i class="sicon-cancel"></i></button>
+    </div>
+    
+    {% if theme.settings.get('mega_menu_img') %}
+    <!-- Header Image -->
+    <div class="mega-header-image h-[200px] w-full rounded-xl overflow-hidden mb-2.5 group">
+      <img class="w-full h-full object-cover transition-all duration-300 group-hover:scale-105" id="mega-header-img" src="{{theme.settings.get('mega_menu_img') }}" alt="Mega menu image">
+    </div>
+    {% endif %}
+    
+    <!-- Categories Grid -->
+    <div id="categories-grid" class="categories-grid grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1">
+      <!-- Will be populated by JavaScript -->
+    </div>
+    
+    <div id="categories-grid-2" class="categories-slider-container pb-2">
+      <salla-slider id="categories-image-slider">
+        <div slot="items">
+          <!-- Slides will be inserted here by JavaScript -->
+        </div>
+      </salla-slider>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+// Function to handle accordion toggle with height manipulation
+function setupMegaMenuAccordion() {
+  const accordionToggles = document.querySelectorAll('.accordion-toggle');
+  
+  accordionToggles.forEach(toggle => {
+    // Skip if already has event listener
+    if (toggle.hasAttribute('data-accordion-initialized')) return;
+    toggle.setAttribute('data-accordion-initialized', 'true');
+    
+    const hasSubs = toggle.getAttribute('data-has-subs') === 'true';
+    const url = toggle.getAttribute('data-url');
+    const arrow = toggle.querySelector('.accordion-arrow');
+    
+    toggle.addEventListener('click', function(e) {
+      // If it has subcategories, toggle accordion
+      if (hasSubs) {
+        e.preventDefault();
+        e.stopPropagation();
+        
+        // Get the next sibling (subcategories list)
+        const subList = this.nextElementSibling;
+        
+        if (subList && subList.classList.contains('subcategories-list')) {
+          // Check if it's currently expanded
+          const isExpanded = subList.style.maxHeight && subList.style.maxHeight !== '0px';
+          
+          if (isExpanded) {
+            // Collapse with smooth animation
+            subList.style.maxHeight = '0px';
+            this.classList.remove('active');
+            if (arrow) {
+              arrow.style.transform = 'rotate(0deg)';
+            }
+          } else {            
+            // Expand - calculate actual height
+            subList.style.maxHeight = subList.scrollHeight + 'px';
+            this.classList.add('active');
+            if (arrow) {
+              arrow.style.transform = 'rotate(180deg)';
+            }
+          }
+        }
+      } 
+      // If no subcategories, navigate to URL
+      else if (url && url !== '#') {
+        window.location.href = url;
+        closeMegaMenu();
+      }
+    });
+  });
+}
+
+// Helper function to close other accordions
+function closeOtherAccordions(currentToggle) {
+  const allToggles = document.querySelectorAll('.accordion-toggle.active');
+  
+  allToggles.forEach(toggle => {
+    if (toggle !== currentToggle) {
+      const subList = toggle.nextElementSibling;
+      const arrow = toggle.querySelector('.accordion-arrow');
+      
+      if (subList && subList.classList.contains('subcategories-list')) {
+        // Close with smooth animation
+        subList.style.maxHeight = '0px';
+        toggle.classList.remove('active');
+        if (arrow) {
+          arrow.style.transform = 'rotate(0deg)';
+        }
+      }
+    }
+  });
+}
+
+// Simple initialization function
+async function initMegaMenu() {
+  try {
+    const megaMenu = document.getElementById('mega-menu');
+    const megaOverlay = document.querySelector('.mega-overlay');
+    if (!megaMenu) return;
+    
+    // Fetch menus from Salla
+    const response = await salla.api.component.getMenus();
+    const menus = response?.data || [];
+    
+    const categoriesGrid = document.getElementById('categories-grid');
+    const categoriesGrid2 = document.getElementById('categories-grid-2'); // New container
+    
+    // Reset containers
+    categoriesGrid.innerHTML = '';
+    if (categoriesGrid2) {
+      categoriesGrid2.innerHTML = '';
+    }
+    
+    // Separate menus: with subcategories first, without subcategories last
+    const menusWithSubs = [];
+    const menusWithoutSubs = [];
+    
+    menus.forEach(menu => {
+      if (menu.children && menu.children.length > 0) {
+        menusWithSubs.push(menu);
+      } else {
+        menusWithoutSubs.push(menu);
+      }
+    });
+    
+    // Combine with subcategories first
+    const sortedMenus = [...menusWithSubs, ...menusWithoutSubs];
+    
+    // Create cards for ALL sorted menus
+    sortedMenus.forEach(menu => {
+      const subCategories = menu.children || [];
+      
+      // --- First Container (Original) ---
+      const categoryCard = document.createElement('div');
+      const menuLabel = (document.documentElement.lang || 'ar').startsWith('en') ? 'View Category' : 'عرض التصنيف';  
+      categoryCard.className = 'category-card';
+      
+      categoryCard.innerHTML = `
+        <!-- Parent Category with Accordion Toggle -->
+        <div class="parent-category flex items-center justify-between mb-2 cursor-pointer accordion-toggle" 
+             data-url="${menu.url || '#'}"
+             data-has-subs="${subCategories.length > 0}">
+          <span class="parent-category-title">${menu.title || 'Untitled Category'}</span>
+          ${subCategories.length > 0 ? '<i class="accordion-arrow sicon-caret-down transition-transform duration-300 text-font"></i>' : ''}
+        </div>
+        
+        <!-- Subcategories List (Initially hidden) -->
+        <ul class="subcategories-list transition-all duration-300 ease-in-out overflow-hidden" 
+            style="max-height: 0px;">
+                            <li class="sub-category-item text-graytext block relative transition-all duration-300 overflow-hidden hover:text-primary py-2.5 text-center">
+                            <a href="${menu.url || '#'}">${menuLabel}</a>
+                            </li>
+
+          ${subCategories.length > 0 
+            ? subCategories.map(child => `
+                <li class="sub-category-item text-graytext block relative transition-all duration-300 overflow-hidden hover:text-primary py-2.5">
+                  <a href="${child.url || '#'}" 
+                     class="sub-category-link"
+                     onclick="closeMegaMenu()">
+                    ${child.title || 'Untitled Subcategory'}
+                  </a>
+                </li>
+              `).join('')
+            : ''
+          }
+        </ul>
+      `;
+      
+      categoriesGrid.appendChild(categoryCard);
+      
+      // --- Second Container (Slider) ---
+      if (categoriesGrid2 && menu.image) {
+        const menusWithImages = sortedMenus.filter(menu => menu.image);
+        
+        if (menusWithImages.length > 0) {
+          // Find or create the items slot
+          let itemsSlot = categoriesGrid2.querySelector('[slot="items"]');
+          
+          if (!itemsSlot) {
+            // Create a new salla-slider if it doesn't exist
+            const sallaSlider = document.createElement('salla-slider');
+            sallaSlider.id = 'categories-image-slider';
+            sallaSlider.setAttribute('type', 'carousel');
+            sallaSlider.setAttribute('show-controls', 'false');      
+const sliderConfig = {
+  slidesPerView: 2,
+  spaceBetween: 16,
+  // Enable free mode for scrolling
+  freeMode: true, 
+  breakpoints: {
+    500: {
+      slidesPerView: 3,
+      spaceBetween: 16
+
+      
+    }
+    
+  }
+};
+            sallaSlider.setAttribute('slider-config', JSON.stringify(sliderConfig));
+            
+            itemsSlot = document.createElement('div');
+            itemsSlot.setAttribute('slot', 'items');
+            sallaSlider.appendChild(itemsSlot);
+            categoriesGrid2.appendChild(sallaSlider);
+          }
+          
+          // Clear existing items
+          itemsSlot.innerHTML = '';
+          
+          // Add slides
+          menusWithImages.forEach(menu => {
+            itemsSlot.innerHTML += `
+              <div class="slide-item group">
+                <div class="relative category-image-wrapper flex flex-col gap-2 w-full">
+                  <a class="block h-full w-full absolute z-2" href="${menu.url || ''}"></a>
+                  <div class="image-container w-full h-[clamp(7.5rem,5.9694rem+6.5306vw,12.5rem)] rounded-lg overflow-hidden ">
+                    <img class="h-full w-full object-cover  group-hover:scale-125 transition-all duration-300 ease-out" src="${menu.image}" alt="${menu.title || 'Category'}">
+                  </div>
+                  <p class="category-title text-sm font-medium text-start flex justify-between items-center group-hover:text-primary">
+                    <span>${menu.title || ''}</span>
+                    <i class="sicon-arrow-left group-hover:rotate-45 transition-all duration-300 ease-out"></i>
+                  </p>
+                </div>
+              </div>
+            `;
+          });
+        } else {
+          // Hide the container if no images
+          categoriesGrid2.style.display = 'none';
+        }
+      }
+    });
+    
+    // Setup accordion functionality after all cards are created
+    setTimeout(() => {
+      setupMegaMenuAccordion();
+    }, 100);
+    
+    // Setup trigger button
+    const triggerBtn = document.getElementById('mega-menu-trigger');
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', openMegaMenu);
+    }
+    
+    // Close when clicking on overlay
+    if (megaOverlay) {
+      megaOverlay.addEventListener('click', closeMegaMenu);
+    }
+    
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !megaMenu.classList.contains('hidden')) {
+        closeMegaMenu();
+      }
+    });
+    
+  } catch (error) {
+    console.error('Failed to initialize mega menu:', error);
+    
+    const categoriesGrid = document.getElementById('categories-grid');
+    if (categoriesGrid) {
+      categoriesGrid.innerHTML = `
+        <div class="error-state" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
+          <div style="color: #ef4444; font-size: 1.5rem; margin-bottom: 1rem;">⚠️</div>
+          <p style="color: #64748b; margin-bottom: 1.5rem;">Failed to load categories</p>
+          <button onclick="initMegaMenu()" 
+                  style="background: var(--color-primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer;">
+            Try Again
+          </button>
+        </div>
+      `;
+    }
+  }
+}
+
+// Global open function with RTL/LTR support
+function openMegaMenu() {
+  const megaMenu = document.getElementById('mega-menu');
+  const megaOverlay = document.querySelector('.mega-overlay');
+  
+  if (megaMenu && megaOverlay) {
+    // First: Show overlay
+    megaOverlay.style.display = 'block';
+    
+    // Remove 'hidden' class to make menu visible (still off-screen)
+    megaMenu.classList.remove('hidden');
+    
+    // Small delay to ensure CSS transition works
+    setTimeout(() => {
+      // Check if document is RTL or LTR
+      const isRTL = document.documentElement.dir === 'rtl' || 
+                    document.documentElement.getAttribute('dir') === 'rtl' ||
+                    document.body.dir === 'rtl';
+      
+      // Apply correct transform direction
+      if (isRTL) {
+        megaMenu.style.transform = 'translateX(0)';
+      } else {
+        megaMenu.style.transform = 'translateX(0)';
+      }
+    }, 10);
+  }
+}
+
+// Global close function with RTL/LTR support
+function closeMegaMenu() {
+  const megaMenu = document.getElementById('mega-menu');
+  const megaOverlay = document.querySelector('.mega-overlay');
+  
+  if (megaMenu && megaOverlay) {
+    // Check if document is RTL or LTR
+    const isRTL = document.documentElement.dir === 'rtl' || 
+                  document.documentElement.getAttribute('dir') === 'rtl' ||
+                  document.body.dir === 'rtl';
+    
+    // Apply correct transform direction for closing
+    if (isRTL) {
+      megaMenu.style.transform = 'translateX(100%)';
+    } else {
+      megaMenu.style.transform = 'translateX(-100%)';
+    }
+    
+    // Wait for animation to complete
+    setTimeout(() => {
+      // Hide the menu
+      megaMenu.classList.add('hidden');
+      // Hide the overlay
+      megaOverlay.style.display = 'none';
+    }, 500); // Must match CSS transition duration (0.5s = 500ms)
+  }
+}
+
+// Initialize when Salla is ready
+salla.onReady().then(() => {
+  initMegaMenu();
+});
+</script>
+
+<style>
+.mega-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  display: none;
+}
+
+/* Mega Menu Container */
+#mega-menu {
+  transition: transform 0.5s ease;
+}
+
+/* Mega Menu Container */
+[dir="rtl"] #mega-menu {
+  transform: translateX(100%);
+}
+
+[dir="ltr"] #mega-menu {
+  transform: translateX(-100%);
+}
+
+#mega-menu .swiper.s-slider-container {
+  padding: 0px !important;
+}
+
+/* Mega Menu Content */
+.mega-menu-content {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Header Image */
+.mega-header-image {
+  height: 200px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2.5rem;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.mega-header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease-in-out;
+}
+
+.mega-header-image:hover img {
+  transform: scale(1.05);
+}
+
+
+/* Parent Category Title */
+.parent-category {
+  color: var(--color-font);
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid #e5e7eb;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.parent-category:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+  color: var(--color-primary);
+}
+
+.parent-category.active {
+  border-bottom-color: var(--color-primary);
+  color: var(--color-primary);
+  background-color: rgba(var(--color-primary-rgb, 59, 130, 246), 0.05);
+}
+
+/* Arrow icon */
+.accordion-arrow {
+  font-size: 0.875rem;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* For categories without subcategories */
+.parent-category[data-has-subs="false"] .accordion-arrow {
+  display: none;
+}
+
+.parent-category[data-has-subs="false"]:hover {
+  color: var(--color-primary);
+}
+
+/* Subcategories List */
+.subcategories-list {
+  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+}
+
+/* Subcategory items */
+.sub-category-item {
+  padding-left: 1.5rem;
+  position: relative;
+}
+
+.sub-category-item::before {
+  content: "•";
+  position: absolute;
+  left: 0.75rem;
+  color: var(--color-primary);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sub-category-item:hover::before {
+  opacity: 1;
+}
+
+.sub-category-item::after {
+  content: "";
+  width: 100%;
+  height: 1px;
+  width: 0px;
+  position: absolute;
+  bottom: 0;
+  transition: all .5s ease-in-out;
+  background-color: var(--color-primary);
+  z-index: 2;
+}
+
+[dir=rtl] .sub-category-item::after {
+  right: 0px;
+}
+
+[dir=ltr] .sub-category-item::after {
+  left: 0px;
+}
+.category-card{
+  padding:1px;
+}
+@media (min-width:768px){
+ .category-card{
+  padding:1rem;
+}
+
+}
+.sub-category-item:hover::after {
+  width: 100%;
+}
+
+/* Empty State */
+.empty-subcategories {
+  color: #94a3b8;
+  font-style: italic;
+  font-size: 0.875rem;
+  padding: 0.5rem 0;
+  border-left: 3px solid #e2e8f0;
+  padding-left: 1rem;
+}
+
+#categories-grid-2 .swiper-wrapper.s-slider-swiper-wrapper {
+  padding-block: 10px;
+}
+</style>
