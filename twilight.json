@@ -295,6 +295,17 @@
       "value": true,
       "selected": false
     },
+     {
+      "id": "grid_or_slider_in_mobile",
+      "label": "تفعيل عرض صور المنتج علي شكل سلايدر في شاشة الموبايل",
+      "description": "عند التفعيل سيتم عرض صور المنتج علي شكل سلايدر في شاشة الموبايل بدلاً من الشبكة الافتراضية",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": false
+    },
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
