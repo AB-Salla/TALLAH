@@ -25418,12 +25418,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-products-slider-card {
   max-width: 100% !important;
+  padding: 0px !important;
 }
 .single .s-products-slider-card {
   width: 50%;
-}
-.single .-products-slider-card {
-  padding: 0px !important;
 }
 .s-metadata-box {
   background-color: var(--color-background);
