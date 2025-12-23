@@ -379,22 +379,17 @@ const items = cart.items;
                 <h2 class="text-base font-medium">
                   <a href="${item_url}">${item.product_name}</a>
                 </h2>
-
+                <div class="flex justify-between items-center gap-4">
                 <span class="item-price font-medium">
                   ${salla.money(item.price)}
                 </span>
-
-                <p class="text-primary font-bold text-sm">
-                  <span>${getLocalizedMessageinner("quantity")}:</span>
-                  <span>${item.quantity}</span>
-                </p>
-
                 <salla-quantity-input
                   cart-item-id="${item.id}"
                   max="${item.max_quantity}"
                   value="${item.quantity}"
                   name="quantity">
                 </salla-quantity-input>
+                </div>
 
               </div>
             </div>
