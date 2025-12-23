@@ -26461,7 +26461,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 .NG-products .swiper-pagination-bullet-active{
-    background-color: var(--color-background);
+    background-color: #414042;
+    background-color: var(--color-primary);
 }
 .NG-products .swiper-horizontal > .swiper-pagination-bullets .swiper-pagination-bullet,
 .NG-products .swiper-pagination-horizontal.swiper-pagination-bullets .swiper-pagination-bullet{
