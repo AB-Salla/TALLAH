@@ -1,15 +1,12 @@
 <!-- Mega Menu Overlay -->
 <div class="mega-overlay"></div>
-<div id="mega-menu" class="hidden bg-background fixed bottom-0 ltr:left-0 rtl:right-0 w-full max-w-[850px] h-screen overflow-y-auto z-50">
+<div id="mega-menu" class="hidden bg-background fixed bottom-0 ltr:left-0 rtl:right-0 w-full  h-screen overflow-y-auto z-50">
   
   <!-- Menu Content -->
-  <div class="mega-menu-content w-full h-full overflow-y-auto relative p-4 sm:p-6">
-    <div class="absolute h-full w-[37%] hidden lg:block bg-zinc-100 top-0 rtl:right-0 ltr:left-0 -z-1"></div>
-    <div class="absolute h-full w-[63%] hidden lg:block bg-white top-0 rtl:left-0 ltr:right-0 -z-1"></div>
+  <div class="mega-menu-content w-full h-full overflow-y-auto relative p-5 md:p-7">
 
-    <div class="w-full flex ltr:justify-start justify-end pb-4">
-      <button class="mega-close-btn text-graytext w-10 h-10 flex items-center rtl:justify-end ltr:justify-start cursor-pointer text-xl transition-all" onclick="closeMegaMenu()"><i class="sicon-cancel"></i></button>
-    </div>
+
+      <button class="mega-close-btn flex items-center justify-center text-white bg-red-700 fixed top-4 rtl:left-4 ltr:right-4 w-10 h-10 cursor-pointer text-xl transition-all" onclick="closeMegaMenu()"><i class="sicon-cancel"></i></button>
     
     {% if theme.settings.get('mega_menu_img') %}
     <!-- Header Image -->
@@ -21,12 +18,12 @@
     <!-- Tabs Container -->
     <div class="tabs-container flex flex-col lg:flex-row gap-4">
       <!-- Tab Headers -->
-      <div id="tab-headers" class="lg:w-1/3 rtl:pr-4 ltr:pl:4 overflow-y-auto md:border-none border-b border-black lg:block flex flex-wrap gap-2 justify-between">
+      <div id="tab-headers" class="lg:w-1/4 rtl:pr-4 ltr:pl:4 overflow-y-auto md:border-none border-b border-black lg:block flex flex-wrap gap-2 justify-between">
         <!-- Will be populated by JavaScript -->
       </div>
       
       <!-- Tab Contents -->
-      <div id="tab-contents" class="lg:w-2/3 min-h-[300px]">
+      <div id="tab-contents" class=" py-4 lg:w-3/4">
         <!-- Will be populated by JavaScript -->
       </div>
     </div>
@@ -56,20 +53,20 @@ class SimpleTabs {
     
     // Create header with scaling bottom border
     const header = document.createElement('button');
-    header.className = `tab-header lg-w-full w-[30%] w-full text-start p-3 mb-1 transition-all duration-200 relative
-    text-center lg:text-start 
+    header.className = `tab-header lg-w-full w-[30%] w-full text-end p-3 mb-1 transition-all duration-200 relative
+    
                        overflow-hidden
                        after:absolute after:bottom-0 ltr:after:left-0 rtl:after:right-0 
-                       after:w-full after:h-[1px] after:bg-primary 
-                       ltr:after:origin-left rtl:after:origin-right
-                       after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out
-                       ${hasSubs ? 'hover:text-primary hover:after:scale-x-100' : ''}`;
+                       after:w-full ltr:after:-translate-x-full rtl:after:translate-x-full after:h-[1px] after:bg-primary 
+                       
+                        after:transition-transform after:duration-300 after:ease-in-out
+                       ${hasSubs ? 'hover:after:w-full hover:after:translate-x-0' : ''}`;
     
     header.setAttribute('data-tab-id', tabId);
     header.setAttribute('data-has-subs', hasSubs);
     header.setAttribute('data-url', url);
     header.innerHTML = `
-      <p class="text-center lg:text-start">
+      <p class="text-center lg:rtl:text-right lg:ltr:text-left">
         ${title}
       </p>
     `;
@@ -226,9 +223,9 @@ async function initMegaMenu() {
           <div class="subcategories-container p-2">
             <ul class="subcategories-list space-y-2">
               <!-- Parent category link -->
-              <li class="sub-category-item mb-4">
+              <li class="sub-category-item show-cate mb-4 py-2 px-3">
                 <a href="${menu.url || '#'}" 
-                   class="block w-full font-medium text-primary hover:underline py-2 px-3 text-center"
+                   class="block w-full font-medium text-primary hover:underline  text-center"
                    onclick="closeMegaMenu()">
                   ${menuLabel}
                 </a>
@@ -434,28 +431,32 @@ salla.onReady().then(() => {
 }
 
 /* Subcategory items */
-.sub-category-item a {
+.sub-category-item{
   position: relative;
   transition: all 0.2s ease;
 }
 
-.sub-category-item a::before {
+.sub-category-item::before {
   position: absolute;
+  transform:translateY(50%);
   opacity: 0;
   transition: opacity 0.2s ease;
 }
+.sub-category-item.show-cate::before {
+  transform:none;
+}
 
-[dir="rtl"]  .sub-category-item a::before {
+[dir="rtl"]  .sub-category-item::before {
   content: "←";
   left: 8px;
 }
 
-[dir="ltr"] .sub-category-item a::before {
+[dir="ltr"] .sub-category-item::before {
   content: "→";
   right: 8px;
 }
 
-.sub-category-item a:hover::before {
+.sub-category-item:hover::before {
   opacity: 1;
 }
 
