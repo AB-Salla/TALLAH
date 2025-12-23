@@ -7,89 +7,12 @@
 #}
 {% set important_links = theme.settings.get('important_links') %}
 {% set show_total = theme.settings.get('show_total') %}
-{% set logo_size = theme.settings.get('logo_size_control') %}
-{% set logo_size_sm = theme.settings.get('logo_size_sm') %}
-{% set logo_size_lg = theme.settings.get('logo_size_lg') %}
 {% set side_menu = theme.settings.get('enable_side_menu') %}
 {% set side_layout = theme.settings.get('side_layout') %}
-{% set enable_bottom_nav = theme.settings.get('enable_bottom_nav') %}
-{% set discount = theme.settings.get('discount') %}
-{% set discount_promo = theme.settings.get('discount_promo') %}
-{% set discount_number = theme.settings.get('discount_number') %}
 {% set image = theme.settings.get('image') %}
-{% set discount_code = theme.settings.get('discount_code') %}
-{% set discount_speed = theme.settings.get('discount_speed') %}
-
-
-
-
-
-{% if theme.settings.get('discount_switch') %}
-<div class="head__marquee py-2">
-    <div class="head__marquee py-2 container mask-fade">
-        <salla-slider dir="rtl" loop class="header-marquee" slider-config='{
-            "allowTouchMove":true,
-            "spaceBetween": 0,
-            "loop":true,
-            "slidesPerView":0.6,
-			"breakpoints": {
-			"450": { "slidesPerView": 0.8
-					},
-			"600": { "slidesPerView": 1,
-			            "spaceBetween": 0
-
-					},
-				    "768": { "slidesPerView": 1.25,
-					            "spaceBetween": 0
-
-					},
-				    "1280": { "slidesPerView": 2,
-					            "spaceBetween": 0
-
-				 },
-				 "1400": { "slidesPerView": 2.1,
-				             "spaceBetween": 0
-
-				 }
-				 },
-            "centeredSlides":true,
-            "speed": {{ discount_speed }}00,
-            "autoplay": {"delay": 0, "disableOnInteraction": false, "pauseOnMouseEnter": true },
-            "freeMode":true
-			 
-        }' show-controls="false" type="thumbs">
-            <div slot="items">
-                {% for item in discount %}
-                    <div class="flex items-center slide justify-start">
-                        <div class="flex items-center">
-                            <p>{{ item.discount_promo }}</p>
-                            {% if item.discount_code %}
-                                <p class="discount-code mx-2">{{ item.discount_number }}</p>
-                            {% endif %}
-                        </div>
-                        {% if item.discount_code %}
-                            <button class="bg-white/30 rounded-2xl flex items-center gap-2 py-1 px-2.5 copy-button" onclick="copyDiscountCode(this)">
-                                <i class="sicon-swap-stroke"></i>
-                                <p>نسخ</p>
-                            </button>
-                        {% else %}
-                            <div class="h-8 w-16 mx-2">
-                                <img class="h-full w-full object-cover rounded-2xl" src="{{ item.image }}" alt="">
-                            </div>
-                        {% endif %}
-                    </div>
-                {% endfor %}
-            </div>
-        </salla-slider>
-    </div>
-</div>
-
-{% endif %}
-	
 
 <header
-	class="store-header  AR-header">
-
+	class="store-header AR-header absolute w-full h-fit z-20">
 
 	{# Top Nav #}
 	<div class="top-navbar bg-primary">
@@ -103,9 +26,9 @@
 					{{ store.scope.name }}
 				</button>
 			{% endif %}
-			<salla-contacts is-header class="!flex flex-1 {{important_links ? 'lg:justify-center justify-start' : 'justify-start'}} gap-2 text-background"></salla-contacts>
+			<salla-contacts is-header class="lg:flex hidden flex-1 {{important_links ? 'lg:justify-center justify-start' : 'justify-start'}} gap-2 text-background"></salla-contacts>
 			{% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-				<div class="flex items-center localize  flex-1 justify-end">
+				<div class="flex items-center localize  flex-1 lg:justify-end justify-center">
 					<button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0 !p-0">
 
 						<i class="sicon-world text-background"></i>
@@ -122,20 +45,20 @@
 
 	{# Main Nav #}
 	<div id="mainnav" class="main-nav-container shadow-default relative !h-fit">
-		<div class="inner bg-background text-font ">
+		<div class="inner bg-transparent text-background py-4">
 			<div class="container">
 
 
-				<div class="flex relative h-auto py-2 lg:py-4 items-center gap-4 lg:gap-6 justify-between">
+				<div class="flex rtl:flex-row ltr:flex-row-reverse relative h-auto items-center gap-4 lg:gap-6 justify-between">
 
 					<div class="flex-1 justify-start items-center ">
 						{% if side_menu  %}
 							{% if side_layout == "mega" %}
 								<button id="mega-menu-trigger" class="mega-trigger-btn flex-1 justify-start flex gap-2 items-center mb-2">
 									<p class="flex flex-col gap-1 items-start">
-										<span class="w-5 h-[1px] bg-font "></span>
-										<span class="w-5 h-[1px] bg-font"></span>
-										<span class="w-5 h-[1px] bg-font"></span>
+										<span class="w-5 h-[1px] bg-background "></span>
+										<span class="w-5 h-[1px] bg-background"></span>
+										<span class="w-5 h-[1px] bg-background"></span>
 
 									</p>
 									<span>{{ trans('blocks.header.main_menu') }}</span>
@@ -145,9 +68,9 @@
 
 								<a class="mburger mburger--collapse leading-none justify-start items-center gap-2 {{side_menu ? 'lg:!flex !flex' : 'lg:!hidden flex'}}" href="#mobile-menu" aria-label="Open-menu">
 									<p class="flex flex-col gap-1 items-start">
-										<span class="w-5 h-[1px] bg-font "></span>
-										<span class="w-5 h-[1px] bg-font"></span>
-										<span class="w-5 h-[1px] bg-font"></span>
+										<span class="w-5 h-[1px] bg-background "></span>
+										<span class="w-5 h-[1px] bg-background"></span>
+										<span class="w-5 h-[1px] bg-background"></span>
 									</p>
 									<p>{{ trans('blocks.header.main_menu') }}</p>
 								</a>
@@ -156,8 +79,8 @@
 					{% endif %}
 
 
-					<div class=" flex  justify-center {{ enable_bottom_nav ? 'md:flex-1' : '' }}" href="{{ store.url }}">
-						<div class="the-logo navbar-brand sm:h-16 !w-auto h-10 relative">
+					<div class=" flex  justify-center md:flex-1" href="{{ store.url }}">
+						<div class="the-logo navbar-brand !w-auto h-5 relative">
 							<a class="block absolute h-full w-full" href="{{store.url}}"></a>
 
 
@@ -175,7 +98,7 @@
 					</div>
 
 
-					<div class="md:gap-2.5 gap-1.5 items-center flex-1 justify-end {{ enable_bottom_nav ? 'md:flex hidden' : ' flex'}}">
+					<div class="md:gap-2.5 gap-1.5 items-center flex-1 justify-end md:flex hidden">
 
 
 						<button onclick="salla.event.dispatch('search::open')" class="aspect-square custom-button !w-auto">
@@ -199,9 +122,6 @@
 								{% if cart.items_count > '0'  %}
 									<span class="absolute -top-2 -left-2 md:text-sm text-xs bg-red-600 text-white md:h-5 md:w-5 h-4 w-4 flex items-center justify-center rounded-full">{{cart.items_count }}</span>
 								{% endif %}
-								{% if cart.total != '0' %}
-								<span class="text-sm md:text-lg">{{cart.total|money}}</span>
-								{% endif %}
 							</a>
 						{% endif %}
 						{% if user.type == 'user' %}
@@ -221,7 +141,7 @@
 		</div>
 	</div>
 </header>
-<aside id="sidecart-panel" class="side-panel  side-panel--left fixed top-0 h-full bg-background dark:bg-bg-dark  w-full md:w-[40vw] z-[999999] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
+<aside id="sidecart-panel" class="side-panel  side-panel--left fixed top-0 h-full bg-background  w-full md:w-[40vw] z-[999999] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
 	<div class="side-panel__top flex items-center relative z-[2] p-5">
 		<button class="menu-close bg-primary text-background rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="إغلاق">
 			<i class="sicon-cancel text-xl"></i>
@@ -280,65 +200,12 @@
 {% if store.scope %}
 <salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
 {% endif %}
-{% if theme.settings.get('enable_bottom_nav') %}
-{% include 'pages.partials.bottom_nav.twig' %}
-{% endif %}
+
 
 
 <style>
-{% if logo_size %}
-.the-logo{
-  height: {{logo_size_lg}}px ;
-}
-@media (max-width:1024px){
-.the-logo{
-  height: {{logo_size_sm}}px ;
-}
-}
-{% endif %}
-{% if theme.settings.get('enable_bottom_nav') %}
-@media (max-width: 767px){
-	.already-bot{
-	display: none;
-}
-.the-logo{
-	justify-content: end;
-}
-}
-{% endif %}
-	{% if theme.settings.get('add_header_colors') %}
-		.my-header {
-			.test {
-				color: white;
-			}
-				
-			
 
-			
-			.sub-menu {
-				background-color: {{theme.settings.get('topnav_bg_light')}};
-			}
 
-			.inner * ,.custom-button i {
-				stroke: {{theme.settings.get('topnav_text_colors_light')}};
-				color: {{theme.settings.get('topnav_text_colors_light')}};
-			}
-
-			#mobile-menu a > span {
-				color: {{theme.settings.get('topnav_text_colors_light')}};
-			}
-			.main-menu li > a:hover {
-				opacity: 0.7;
-				color: {{theme.settings.get('topnav_text_colors_light')}};
-			}
-
-			.inner {
-				background: {{theme.settings.get('topnav_bg_light')}}
-				;
-			}
-
-		}
-	{% endif %}
 {% if page.slug != 'index' %}
 .mm-ocd__content{
 	padding: 10px ;
@@ -350,26 +217,9 @@
 [dir = "rtl"].mm-ocd__backdrop::after{
     left:0px;
 }
-[dir = "rtl"] .mm-spn.mm-spn--navbar.mm-spn--main .main-menu.logo{
-   background: url({{store.logo}}) center right / contain no-repeat white;
+.mm-spn.mm-spn--navbar.mm-spn--main .main-menu.logo{
+   background: url({{store.logo}}) center center / contain no-repeat var(--color-background);
    padding:40px 0px;
-}
-[dir = "ltr"] .mm-spn.mm-spn--navbar.mm-spn--main .main-menu.logo{
-	background: url({{store.logo}}) center right / contain no-repeat white;
-   padding:40px 0px;
-   transform: scaleX(-1);
-}
-
-.head__marquee {
-  background-color: {{ theme.settings.get('topslider_color') ?: '#000000' }};
-  color: {{ theme.settings.get('discound_text_color') ?: '#FFFFFF' }};
-}
-.head__marquee .swiper-wrapper{
-	transition-timing-function:linear;
-}
-.head__marquee .mask-fade {
-    -webkit-mask-image: linear-gradient(to right, transparent 0%, {{ theme.settings.get('topslider_color')}} 20%, {{ theme.settings.get('topslider_color')}} 80%, transparent 100%);
-    mask-image: linear-gradient(to right, transparent 0%, {{ theme.settings.get('topslider_color')}} 20%, {{ theme.settings.get('topslider_color')}} 80%, transparent 100%);
 }
 </style>
 
