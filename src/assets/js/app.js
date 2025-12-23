@@ -369,7 +369,7 @@ const items = cart.items;
                      class="w-full h-full rounded object-contain" />
               </a>
 
-              <div class="space-y-1">
+              <div class="space-y-1 flex-grow w-full">
                 ${
                   !item.is_taxable
                     ? `<small>${getLocalizedMessageinner("tax_included")}</small>`
