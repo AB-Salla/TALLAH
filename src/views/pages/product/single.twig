@@ -94,8 +94,8 @@
 					
 					
 						
-					<div class="grid grid-cols-2 gap-2 md:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %}
-					md:grid hidden
+					<div class=" grid-cols-2 gap-2 md:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
+					md:grid 
 					{% else %}
 						grid grid-cols-2
 					{% endif %}">
@@ -117,9 +117,9 @@
 					  <salla-slider 
                                 id="details-slider-{{ product.id }}" 
                                 class="image-slider details-slider image-slider  {% if theme.settings.get('grid_or_slider_in_mobile') %}
-					 md:hidden
+					 md:!hidden
 					{% else %}
-						hidden
+						!hidden
 					{% endif %} " 
                                 type="thumbs" 
                                 loop="false" 
