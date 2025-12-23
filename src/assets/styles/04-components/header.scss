@@ -259,7 +259,7 @@ salla-user-menu{
   }
 
   .custom-button{
-    @apply h-6 w-6 rounded-full flex justify-center items-center;
+    @apply md:w-11 md:h-11 h-8 w-8 rounded-full flex justify-center items-center;
   }
 .navbar-brand.the-logo img{
     max-width: unset;

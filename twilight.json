@@ -59,105 +59,72 @@
             "type": "static",
             "format": "title",
             "id": "header_settings",
-            "value": "<div style='background-color: #333;color: #fff;padding: 10px 15px;font-size: 18px;font-weight: bold;margin: 30px -20px 20px;'>خيارات عامة</div>",
+            "value": "<div style='background-color: #333;color: #fff;padding: 10px 15px;font-size: 18px;font-weight: bold;margin: 30px -20px 20px;'>خيارات أعلى الصفحة</div>",
             "variant": "h6"
         },
-    {
-      "id": "header_is_sticky",
-      "label": "تثبت القائمة الرئيسية أعلى الصفحة عند التمرير لأسفل",
-      "description": "يُنصح بالغاء تفعيلها في حالة وجود عناصر كثيرة في القائمة المنسدلة",
-      "type": "boolean",
-      "icon": "sicon-toggle-off",
-      "format": "switch",
-      "required": false,
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "boolean",
-      "icon": "sicon-toggle-off",
-      "label": "عرض روابط الصفحات الهامة في الشريط العلوي",
-      "description": "مثل صفحة الهبوط ، المدونة ،الصفحات التعريفية",
-      "id": "important_links",
-      "format": "switch",
-      "required": false,
-      "value": true,
-      "selected": true
-    },
-    {
-      "id": "enable_side_menu",
-      "label": "تفعيل القائمة الجانبية",
-      "description": null,
-      "type": "boolean",
-      "icon": "sicon-toggle-off",
-      "format": "switch",
-      "required": false,
-      "value": true,
-      "selected": true
-    },
-    {
-      "id": "side_layout",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": "شكل القائمة الجانبية",
-      "description": null,
-      "labelHTML": null,
-      "icon": "sicon-list",
-      "selected": [
         {
-          "label": "شكل 2",
-          "value": "mega",
-          "key": "86f7d5-29a7-4dbf-9496-7d2741ac0b"
-        }
-      ],
-      "options": [
-        {
-          "label": "شكل 1",
-          "value": "normal",
-          "key": "86f7d5-29a7-4dbf-9496-7d2a9741ac0b"
+            "id": "header_is_sticky",
+            "label": "تثبت القائمة الرئيسية أعلى الصفحة عند التمرير لأسفل",
+            "description": "يُنصح بالغاء تفعيلها في حالة وجود عناصر كثيرة في القائمة المنسدلة",
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
         },
         {
-          "label": "شكل 2",
-          "value": "mega",
-          "key": "86f7d5-29a7-4dbf-9496-7d2741ac0b"
-        }
-      ],
-      "source": "Manual",
-      "required": false
-    },
-            {
-          "type": "static",
-          "format": "title",
-          "id": "side_layout_1",
-          "value": "<div style='margin-bottom: 16px'><img class='w-full object-cover' src='https://cdn.files.salla.network/homepage/2070588102/7f09b223-47ee-412c-b43a-86c393229cfa.webp' style='width:100%;object-fit:cover;'/></div>",
-          "variant": "h6",
-           "conditions": [
-        {
-          "id": "side_layout",
-          "operation": "=",
-          "value": "normal"
-        }
-      ]
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "عرض روابط الصفحات الهامة في الشريط العلوي",
+            "description": "مثل صفحة الهبوط ، المدونة ،الصفحات التعريفية",
+            "id": "important_links",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
         },
+        {
+            "id": "enable_side_menu",
+            "label": "تفعيل القائمة الجانبية",
+            "description": null,
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+            "id": "side_layout",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "شكل القائمة الجانبية",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-list",
+            "selected": [
                 {
-          "type": "static",
-          "format": "title",
-          "id": "side_layout_2",
-          "value": "<div style='margin-bottom: 16px'><img class='w-full object-cover' src='https://cdn.files.salla.network/homepage/2070588102/9fe3794f-6e92-47e3-9c66-240d00ac44c7.webp' style='width:100%;object-fit:cover;'/></div>",
-          "variant": "h6",
-           "conditions": [
-        {
-          "id": "side_layout",
-          "operation": "=",
-          "value": "mega"
-        }
-      ]
+                    "label": "شكل 2",
+                    "value": "mega",
+                    "key": "86f7d5-29a7-4dbf-9496-7d2741ac0b"
+                }
+            ],
+            "options": [
+                {
+                    "label": "شكل 1",
+                    "value": "normal",
+                    "key": "86f7d5-29a7-4dbf-9496-7d2a9741ac0b"
+                },
+                {
+                    "label": "شكل 2",
+                    "value": "mega",
+                    "key": "86f7d5-29a7-4dbf-9496-7d2741ac0b"
+                }
+            ],
+            "source": "Manual",
+            "required": false
         },
-    
-
-    
-    
-    
         {
             "type": "static",
             "format": "title",
@@ -2154,70 +2121,70 @@
                     "minLength": 2,
                     "maxLength": 30
                 },
-                 {
-                            "type": "items",
-                            "icon": "sicon-link",
-                            "label": "رابط الزر",
-                            "id": "url",
-                            "value": null,
-                            "description": null,
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "id": "url",
+                    "value": null,
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        {
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
                         },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ]
+                },
                 {
                     "id": "source_type",
                     "icon": "sicon-t-shirt",
@@ -3031,7 +2998,6 @@
                     "minLength": 2,
                     "maxLength": 30
                 }
-
             ]
         }
     ],

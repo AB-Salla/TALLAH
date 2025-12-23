@@ -1,14 +1,11 @@
-
 <!-- Mega Menu Overlay -->
 <div class="mega-overlay"></div>
 <div id="mega-menu" class="hidden bg-background fixed bottom-0 ltr:left-0 rtl:right-0 w-full max-w-[850px] h-screen overflow-y-auto z-50">
   
   <!-- Menu Content -->
-  {% if theme.settings.get('enable_bottom_nav') %}
-  <div class="mega-menu-content w-full h-full overflow-y-auto sm:p-5 p-3 pb-24 ">
-  {% else %}
-  <div class="mega-menu-content w-full h-full overflow-y-auto sm:p-5 p-3 ">
-  {% endif %}
+  <div class="mega-menu-content w-full h-full overflow-y-auto relative p-4 sm:p-6">
+    <div class="absolute h-full w-[37%] hidden lg:block bg-zinc-100 top-0 rtl:right-0 ltr:left-0 -z-1"></div>
+    <div class="absolute h-full w-[63%] hidden lg:block bg-white top-0 rtl:left-0 ltr:right-0 -z-1"></div>
 
     <div class="w-full flex ltr:justify-start justify-end pb-4">
       <button class="mega-close-btn text-graytext w-10 h-10 flex items-center rtl:justify-end ltr:justify-start cursor-pointer text-xl transition-all" onclick="closeMegaMenu()"><i class="sicon-cancel"></i></button>
@@ -16,100 +13,175 @@
     
     {% if theme.settings.get('mega_menu_img') %}
     <!-- Header Image -->
-    <div class="mega-header-image h-[200px] w-full rounded-xl overflow-hidden mb-2.5 group">
+    <div class="mega-header-image w-full overflow-hidden mb-2.5 group">
       <img class="w-full h-full object-cover transition-all duration-300 group-hover:scale-105" id="mega-header-img" src="{{theme.settings.get('mega_menu_img') }}" alt="Mega menu image">
     </div>
     {% endif %}
     
-    <!-- Categories Grid -->
-    <div id="categories-grid" class="categories-grid grid xl:grid-cols-3 lg:grid-cols-2 grid-cols-1">
-      <!-- Will be populated by JavaScript -->
+    <!-- Tabs Container -->
+    <div class="tabs-container flex flex-col lg:flex-row gap-4">
+      <!-- Tab Headers -->
+      <div id="tab-headers" class="lg:w-1/3 rtl:pr-4 ltr:pl:4 overflow-y-auto md:border-none border-b border-black lg:block flex flex-wrap gap-2 justify-between">
+        <!-- Will be populated by JavaScript -->
+      </div>
+      
+      <!-- Tab Contents -->
+      <div id="tab-contents" class="lg:w-2/3 min-h-[300px]">
+        <!-- Will be populated by JavaScript -->
+      </div>
     </div>
     
-    <div id="categories-grid-2" class="categories-slider-container pb-2">
-      <salla-slider id="categories-image-slider">
-        <div slot="items">
-          <!-- Slides will be inserted here by JavaScript -->
-        </div>
-      </salla-slider>
+    <div id="categories-grid-2" class="categories-slider-container pb-2 mt-8">
+      <div id="image-slider-container">
+        <!-- Will be populated by JavaScript -->
+      </div>
     </div>
     
   </div>
 </div>
 
 <script>
-// Function to handle accordion toggle with height manipulation
-function setupMegaMenuAccordion() {
-  const accordionToggles = document.querySelectorAll('.accordion-toggle');
+// Simple tabs system
+class SimpleTabs {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.headers = [];
+    this.contents = [];
+    this.activeIndex = 0;
+  }
   
-  accordionToggles.forEach(toggle => {
-    // Skip if already has event listener
-    if (toggle.hasAttribute('data-accordion-initialized')) return;
-    toggle.setAttribute('data-accordion-initialized', 'true');
+  addTab(title, content, hasSubs = false, url = '#') {
+    const index = this.headers.length;
+    const tabId = `tab-${index}`;
     
-    const hasSubs = toggle.getAttribute('data-has-subs') === 'true';
-    const url = toggle.getAttribute('data-url');
-    const arrow = toggle.querySelector('.accordion-arrow');
+    // Create header with scaling bottom border
+    const header = document.createElement('button');
+    header.className = `tab-header lg-w-full w-[30%] w-full text-start p-3 mb-1 transition-all duration-200 relative
+    text-center lg:text-start 
+                       overflow-hidden
+                       after:absolute after:bottom-0 ltr:after:left-0 rtl:after:right-0 
+                       after:w-full after:h-[1px] after:bg-primary 
+                       ltr:after:origin-left rtl:after:origin-right
+                       after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out
+                       ${hasSubs ? 'hover:text-primary hover:after:scale-x-100' : ''}`;
     
-    toggle.addEventListener('click', function(e) {
-      // If it has subcategories, toggle accordion
+    header.setAttribute('data-tab-id', tabId);
+    header.setAttribute('data-has-subs', hasSubs);
+    header.setAttribute('data-url', url);
+    header.innerHTML = `
+      <p class="text-center lg:text-start">
+        ${title}
+      </p>
+    `;
+    
+    // Create content
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'tab-content hidden animate-fadeIn';
+    contentDiv.id = tabId;
+    contentDiv.innerHTML = content;
+    
+    // Store references
+    this.headers.push(header);
+    this.contents.push(contentDiv);
+    
+    // Add click event
+    header.addEventListener('click', (e) => {
       if (hasSubs) {
-        e.preventDefault();
-        e.stopPropagation();
-        
-        // Get the next sibling (subcategories list)
-        const subList = this.nextElementSibling;
-        
-        if (subList && subList.classList.contains('subcategories-list')) {
-          // Check if it's currently expanded
-          const isExpanded = subList.style.maxHeight && subList.style.maxHeight !== '0px';
-          
-          if (isExpanded) {
-            // Collapse with smooth animation
-            subList.style.maxHeight = '0px';
-            this.classList.remove('active');
-            if (arrow) {
-              arrow.style.transform = 'rotate(0deg)';
-            }
-          } else {            
-            // Expand - calculate actual height
-            subList.style.maxHeight = subList.scrollHeight + 'px';
-            this.classList.add('active');
-            if (arrow) {
-              arrow.style.transform = 'rotate(180deg)';
-            }
-          }
-        }
-      } 
-      // If no subcategories, navigate to URL
-      else if (url && url !== '#') {
+        this.activateTab(index);
+      } else if (url && url !== '#') {
         window.location.href = url;
         closeMegaMenu();
       }
     });
-  });
+    
+    return { header, content: contentDiv, index };
+  }
+  
+  activateTab(index) {
+    // Deactivate all
+    this.headers.forEach((header, i) => {
+      header.classList.remove('active', 'text-primary', 'after:scale-x-100');      
+      this.contents[i].classList.add('hidden');
+    });
+    
+    // Activate selected - show full border for active tab
+    this.headers[index].classList.add('active', 'text-primary', 'after:scale-x-100');
+    this.contents[index].classList.remove('hidden');
+    
+    this.activeIndex = index;
+  }
+  
+  render(headersContainerId, contentsContainerId) {
+    const headersContainer = document.getElementById(headersContainerId);
+    const contentsContainer = document.getElementById(contentsContainerId);
+    
+    // Clear containers
+    headersContainer.innerHTML = '';
+    contentsContainer.innerHTML = '';
+    
+    // Add elements
+    this.headers.forEach(header => headersContainer.appendChild(header));
+    this.contents.forEach(content => contentsContainer.appendChild(content));
+    
+    // Activate first tab with subs
+    const firstWithSubs = this.headers.findIndex(h => h.getAttribute('data-has-subs') === 'true');
+    if (firstWithSubs !== -1) {
+      this.activateTab(firstWithSubs);
+    } else if (this.headers.length > 0) {
+      this.activateTab(0);
+    }
+  }
 }
 
-// Helper function to close other accordions
-function closeOtherAccordions(currentToggle) {
-  const allToggles = document.querySelectorAll('.accordion-toggle.active');
+// Simple slider system
+class SimpleSlider {
+  constructor(containerId, slides = []) {
+    this.container = document.getElementById(containerId);
+    this.slides = slides;
+    this.currentIndex = 0;
+  }
   
-  allToggles.forEach(toggle => {
-    if (toggle !== currentToggle) {
-      const subList = toggle.nextElementSibling;
-      const arrow = toggle.querySelector('.accordion-arrow');
-      
-      if (subList && subList.classList.contains('subcategories-list')) {
-        // Close with smooth animation
-        subList.style.maxHeight = '0px';
-        toggle.classList.remove('active');
-        if (arrow) {
-          arrow.style.transform = 'rotate(0deg)';
-        }
-      }
+  addSlide(image, title, url) {
+    this.slides.push({ image, title, url });
+  }
+  
+  render() {
+    if (this.slides.length === 0) {
+      this.container.innerHTML = '';
+      return;
     }
-  });
+    
+    let slidesHTML = '';
+    this.slides.forEach(slide => {
+      slidesHTML += `
+        <div class="slide-item group flex-shrink-0 w-1/2 md:w-1/3 px-2">
+          <div class="relative category-image-wrapper flex flex-col gap-2 w-full">
+            <a class="block h-full w-full absolute z-10" href="${slide.url || '#'}"></a>
+            <div class="image-container w-full h-32 md:h-40 overflow-hidden">
+              <img class="h-full w-full object-cover group-hover:scale-125 transition-all duration-300 ease-out" 
+                   src="${slide.image}" 
+                   alt="${slide.title || 'Category'}">
+            </div>
+            <p class="category-title text-sm font-medium text-start flex justify-between items-center group-hover:text-primary mt-2">
+              <span>${slide.title || ''}</span>
+              <i class="sicon-arrow-left text-xs group-hover:rotate-45 transition-all duration-300 ease-out"></i>
+            </p>
+          </div>
+        </div>
+      `;
+    });
+    
+    this.container.innerHTML = `
+      <div class="slider-wrapper flex overflow-x-auto gap-4 pb-4 scrollbar-hide -mx-2 px-2">
+        ${slidesHTML}
+      </div>
+    `;
+  }
 }
+
+// Global variables
+let megaMenuTabs = null;
+let megaMenuSlider = null;
 
 // Simple initialization function
 async function initMegaMenu() {
@@ -118,18 +190,13 @@ async function initMegaMenu() {
     const megaOverlay = document.querySelector('.mega-overlay');
     if (!megaMenu) return;
     
+    // Initialize tabs system
+    megaMenuTabs = new SimpleTabs('tabs-container');
+    megaMenuSlider = new SimpleSlider('image-slider-container');
+    
     // Fetch menus from Salla
     const response = await salla.api.component.getMenus();
     const menus = response?.data || [];
-    
-    const categoriesGrid = document.getElementById('categories-grid');
-    const categoriesGrid2 = document.getElementById('categories-grid-2'); // New container
-    
-    // Reset containers
-    categoriesGrid.innerHTML = '';
-    if (categoriesGrid2) {
-      categoriesGrid2.innerHTML = '';
-    }
     
     // Separate menus: with subcategories first, without subcategories last
     const menusWithSubs = [];
@@ -145,117 +212,84 @@ async function initMegaMenu() {
     
     // Combine with subcategories first
     const sortedMenus = [...menusWithSubs, ...menusWithoutSubs];
+    const menuLabel = (document.documentElement.lang || 'ar').startsWith('en') ? 'View Category' : 'عرض التصنيف';
     
-    // Create cards for ALL sorted menus
-    sortedMenus.forEach(menu => {
+    // Create tabs
+    sortedMenus.forEach((menu, index) => {
       const subCategories = menu.children || [];
+      const hasSubs = subCategories.length > 0;
       
-      // --- First Container (Original) ---
-      const categoryCard = document.createElement('div');
-      const menuLabel = (document.documentElement.lang || 'ar').startsWith('en') ? 'View Category' : 'عرض التصنيف';  
-      categoryCard.className = 'category-card';
+      let contentHTML = '';
       
-      categoryCard.innerHTML = `
-        <!-- Parent Category with Accordion Toggle -->
-        <div class="parent-category flex items-center justify-between mb-2 cursor-pointer accordion-toggle" 
-             data-url="${menu.url || '#'}"
-             data-has-subs="${subCategories.length > 0}">
-          <span class="parent-category-title">${menu.title || 'Untitled Category'}</span>
-          ${subCategories.length > 0 ? '<i class="accordion-arrow sicon-caret-down transition-transform duration-300 text-font"></i>' : ''}
-        </div>
-        
-        <!-- Subcategories List (Initially hidden) -->
-        <ul class="subcategories-list transition-all duration-300 ease-in-out overflow-hidden" 
-            style="max-height: 0px;">
-                            <li class="sub-category-item text-graytext block relative transition-all duration-300 overflow-hidden hover:text-primary py-2.5 text-center">
-                            <a href="${menu.url || '#'}">${menuLabel}</a>
-                            </li>
-
-          ${subCategories.length > 0 
-            ? subCategories.map(child => `
-                <li class="sub-category-item text-graytext block relative transition-all duration-300 overflow-hidden hover:text-primary py-2.5">
+      if (hasSubs) {
+        contentHTML = `
+          <div class="subcategories-container p-2">
+            <ul class="subcategories-list space-y-2">
+              <!-- Parent category link -->
+              <li class="sub-category-item mb-4">
+                <a href="${menu.url || '#'}" 
+                   class="block w-full font-medium text-primary hover:underline py-2 px-3 text-center"
+                   onclick="closeMegaMenu()">
+                  ${menuLabel}
+                </a>
+              </li>
+              
+              <!-- Subcategories with scaling borders -->
+              ${subCategories.map(child => `
+                <li class="sub-category-item">
                   <a href="${child.url || '#'}" 
-                     class="sub-category-link"
+                     class="block py-2.5 px-4 text-gray-700 hover:text-primary transition-colors duration-200
+                            relative overflow-hidden
+                            after:absolute after:bottom-0 ltr:after:left-0 rtl:after:right-0 
+                            after:w-full after:h-[1px] after:bg-primary 
+                            ltr:after:origin-left rtl:after:origin-right
+                            after:scale-x-0 after:transition-transform after:duration-300 after:ease-out
+                            hover:after:scale-x-100"
                      onclick="closeMegaMenu()">
                     ${child.title || 'Untitled Subcategory'}
                   </a>
                 </li>
-              `).join('')
-            : ''
-          }
-        </ul>
-      `;
+              `).join('')}
+            </ul>
+          </div>
+        `;
+      } else {
+        contentHTML = `
+          <div class="no-subcategories text-center p-6">
+            <a href="${menu.url || '#'}" 
+               class="inline-block bg-primary text-white px-8 py-3 transition-all duration-300 font-medium"
+               onclick="closeMegaMenu()">
+              ${menuLabel}
+            </a>
+          </div>
+        `;
+      }
       
-      categoriesGrid.appendChild(categoryCard);
+      // Add tab to system
+      megaMenuTabs.addTab(
+        menu.title || 'Untitled Category',
+        contentHTML,
+        hasSubs,
+        menu.url || '#'
+      );
       
-      // --- Second Container (Slider) ---
-      if (categoriesGrid2 && menu.image) {
-        const menusWithImages = sortedMenus.filter(menu => menu.image);
-        
-        if (menusWithImages.length > 0) {
-          // Find or create the items slot
-          let itemsSlot = categoriesGrid2.querySelector('[slot="items"]');
-          
-          if (!itemsSlot) {
-            // Create a new salla-slider if it doesn't exist
-            const sallaSlider = document.createElement('salla-slider');
-            sallaSlider.id = 'categories-image-slider';
-            sallaSlider.setAttribute('type', 'carousel');
-            sallaSlider.setAttribute('show-controls', 'false');      
-const sliderConfig = {
-  slidesPerView: 2,
-  spaceBetween: 16,
-  // Enable free mode for scrolling
-  freeMode: true, 
-  breakpoints: {
-    500: {
-      slidesPerView: 3,
-      spaceBetween: 16
-
-      
-    }
-    
-  }
-};
-            sallaSlider.setAttribute('slider-config', JSON.stringify(sliderConfig));
-            
-            itemsSlot = document.createElement('div');
-            itemsSlot.setAttribute('slot', 'items');
-            sallaSlider.appendChild(itemsSlot);
-            categoriesGrid2.appendChild(sallaSlider);
-          }
-          
-          // Clear existing items
-          itemsSlot.innerHTML = '';
-          
-          // Add slides
-          menusWithImages.forEach(menu => {
-            itemsSlot.innerHTML += `
-              <div class="slide-item group">
-                <div class="relative category-image-wrapper flex flex-col gap-2 w-full">
-                  <a class="block h-full w-full absolute z-2" href="${menu.url || ''}"></a>
-                  <div class="image-container w-full h-[clamp(7.5rem,5.9694rem+6.5306vw,12.5rem)] rounded-lg overflow-hidden ">
-                    <img class="h-full w-full object-cover  group-hover:scale-125 transition-all duration-300 ease-out" src="${menu.image}" alt="${menu.title || 'Category'}">
-                  </div>
-                  <p class="category-title text-sm font-medium text-start flex justify-between items-center group-hover:text-primary">
-                    <span>${menu.title || ''}</span>
-                    <i class="sicon-arrow-left group-hover:rotate-45 transition-all duration-300 ease-out"></i>
-                  </p>
-                </div>
-              </div>
-            `;
-          });
-        } else {
-          // Hide the container if no images
-          categoriesGrid2.style.display = 'none';
-        }
+      // Add to slider if has image
+      if (menu.image) {
+        megaMenuSlider.addSlide(menu.image, menu.title, menu.url);
       }
     });
     
-    // Setup accordion functionality after all cards are created
-    setTimeout(() => {
-      setupMegaMenuAccordion();
-    }, 100);
+    // Render tabs
+    megaMenuTabs.render('tab-headers', 'tab-contents');
+    
+    // Render slider
+    megaMenuSlider.render();
+    
+    // If no images, hide slider container
+    const categoriesGrid2 = document.getElementById('categories-grid-2');
+    if (megaMenuSlider.slides.length === 0 && categoriesGrid2) {
+      categoriesGrid2.style.display = 'none';
+    }
     
     // Setup trigger button
     const triggerBtn = document.getElementById('mega-menu-trigger');
@@ -278,14 +312,14 @@ const sliderConfig = {
   } catch (error) {
     console.error('Failed to initialize mega menu:', error);
     
-    const categoriesGrid = document.getElementById('categories-grid');
-    if (categoriesGrid) {
-      categoriesGrid.innerHTML = `
-        <div class="error-state" style="grid-column: 1/-1; text-align: center; padding: 3rem;">
-          <div style="color: #ef4444; font-size: 1.5rem; margin-bottom: 1rem;">⚠️</div>
-          <p style="color: #64748b; margin-bottom: 1.5rem;">Failed to load categories</p>
+    const tabsContainer = document.querySelector('.tabs-container');
+    if (tabsContainer) {
+      tabsContainer.innerHTML = `
+        <div class="error-state text-center p-8 w-full">
+          <div class="text-red-500 text-2xl mb-4">⚠️</div>
+          <p class="text-gray-600 mb-6">Failed to load categories</p>
           <button onclick="initMegaMenu()" 
-                  style="background: var(--color-primary); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer;">
+                  class="bg-primary text-white border-none px-6 py-3 cursor-pointer hover:bg-primary-dark transition-colors">
             Try Again
           </button>
         </div>
@@ -294,60 +328,35 @@ const sliderConfig = {
   }
 }
 
-// Global open function with RTL/LTR support
+// Global open function
 function openMegaMenu() {
   const megaMenu = document.getElementById('mega-menu');
   const megaOverlay = document.querySelector('.mega-overlay');
   
   if (megaMenu && megaOverlay) {
-    // First: Show overlay
     megaOverlay.style.display = 'block';
-    
-    // Remove 'hidden' class to make menu visible (still off-screen)
     megaMenu.classList.remove('hidden');
     
-    // Small delay to ensure CSS transition works
     setTimeout(() => {
-      // Check if document is RTL or LTR
-      const isRTL = document.documentElement.dir === 'rtl' || 
-                    document.documentElement.getAttribute('dir') === 'rtl' ||
-                    document.body.dir === 'rtl';
-      
-      // Apply correct transform direction
-      if (isRTL) {
-        megaMenu.style.transform = 'translateX(0)';
-      } else {
-        megaMenu.style.transform = 'translateX(0)';
-      }
+      const isRTL = document.documentElement.dir === 'rtl';
+      megaMenu.style.transform = 'translateX(0)';
     }, 10);
   }
 }
 
-// Global close function with RTL/LTR support
+// Global close function
 function closeMegaMenu() {
   const megaMenu = document.getElementById('mega-menu');
   const megaOverlay = document.querySelector('.mega-overlay');
   
   if (megaMenu && megaOverlay) {
-    // Check if document is RTL or LTR
-    const isRTL = document.documentElement.dir === 'rtl' || 
-                  document.documentElement.getAttribute('dir') === 'rtl' ||
-                  document.body.dir === 'rtl';
+    const isRTL = document.documentElement.dir === 'rtl';
+    megaMenu.style.transform = isRTL ? 'translateX(100%)' : 'translateX(-100%)';
     
-    // Apply correct transform direction for closing
-    if (isRTL) {
-      megaMenu.style.transform = 'translateX(100%)';
-    } else {
-      megaMenu.style.transform = 'translateX(-100%)';
-    }
-    
-    // Wait for animation to complete
     setTimeout(() => {
-      // Hide the menu
       megaMenu.classList.add('hidden');
-      // Hide the overlay
       megaOverlay.style.display = 'none';
-    }, 500); // Must match CSS transition duration (0.5s = 500ms)
+    }, 300);
   }
 }
 
@@ -372,20 +381,15 @@ salla.onReady().then(() => {
 
 /* Mega Menu Container */
 #mega-menu {
-  transition: transform 0.5s ease;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Mega Menu Container */
 [dir="rtl"] #mega-menu {
   transform: translateX(100%);
 }
 
 [dir="ltr"] #mega-menu {
   transform: translateX(-100%);
-}
-
-#mega-menu .swiper.s-slider-container {
-  padding: 0px !important;
 }
 
 /* Mega Menu Content */
@@ -399,129 +403,90 @@ salla.onReady().then(() => {
   width: 100%;
   border-radius: 12px;
   overflow: hidden;
-  margin-bottom: 2.5rem;
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  margin-bottom: 2rem;
 }
 
 .mega-header-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0.3s ease;
 }
 
 .mega-header-image:hover img {
   transform: scale(1.05);
 }
 
-
-/* Parent Category Title */
-.parent-category {
-  color: var(--color-font);
-  padding: 0.75rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  transition: all 0.3s ease;
-  user-select: none;
+/* Tab Contents */
+.tab-content {
+  animation: fadeIn 0.3s ease forwards;
 }
 
-.parent-category:hover {
-  background-color: rgba(0, 0, 0, 0.02);
-  color: var(--color-primary);
-}
-
-.parent-category.active {
-  border-bottom-color: var(--color-primary);
-  color: var(--color-primary);
-  background-color: rgba(var(--color-primary-rgb, 59, 130, 246), 0.05);
-}
-
-/* Arrow icon */
-.accordion-arrow {
-  font-size: 0.875rem;
-  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-/* For categories without subcategories */
-.parent-category[data-has-subs="false"] .accordion-arrow {
-  display: none;
-}
-
-.parent-category[data-has-subs="false"]:hover {
-  color: var(--color-primary);
-}
-
-/* Subcategories List */
-.subcategories-list {
-  transition: max-height 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  overflow: hidden;
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Subcategory items */
-.sub-category-item {
-  padding-left: 1.5rem;
+.sub-category-item a {
   position: relative;
+  transition: all 0.2s ease;
 }
 
-.sub-category-item::before {
-  content: "•";
+.sub-category-item a::before {
   position: absolute;
-  left: 0.75rem;
-  color: var(--color-primary);
   opacity: 0;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.2s ease;
 }
 
-.sub-category-item:hover::before {
+[dir="rtl"]  .sub-category-item a::before {
+  content: "←";
+  left: 8px;
+}
+
+[dir="ltr"] .sub-category-item a::before {
+  content: "→";
+  right: 8px;
+}
+
+.sub-category-item a:hover::before {
   opacity: 1;
 }
 
-.sub-category-item::after {
-  content: "";
-  width: 100%;
-  height: 1px;
-  width: 0px;
-  position: absolute;
-  bottom: 0;
-  transition: all .5s ease-in-out;
-  background-color: var(--color-primary);
-  z-index: 2;
+/* Slider */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
-[dir=rtl] .sub-category-item::after {
-  right: 0px;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-[dir=ltr] .sub-category-item::after {
-  left: 0px;
-}
-.category-card{
-  padding:1px;
-}
-@media (min-width:768px){
- .category-card{
-  padding:1rem;
+.slider-wrapper {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
 }
 
-}
-.sub-category-item:hover::after {
-  width: 100%;
-}
-
-/* Empty State */
-.empty-subcategories {
-  color: #94a3b8;
-  font-style: italic;
-  font-size: 0.875rem;
-  padding: 0.5rem 0;
-  border-left: 3px solid #e2e8f0;
-  padding-left: 1rem;
+.slide-item {
+  scroll-snap-align: start;
 }
 
-#categories-grid-2 .swiper-wrapper.s-slider-swiper-wrapper {
-  padding-block: 10px;
+/* Responsive */
+@media (max-width: 768px) {
+  .tabs-container {
+    flex-direction: column;
+  }
+  
+  #tab-headers {
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
 }
 </style>

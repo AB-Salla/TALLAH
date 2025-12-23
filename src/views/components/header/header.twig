@@ -12,10 +12,10 @@
 {% set image = theme.settings.get('image') %}
 
 <header
-	class="store-header AR-header absolute w-full h-fit z-20">
+	class="store-header AR-header {{page.slug == "index" ? 'absolute w-full h-fit z-20' : ''}} {{page.slug}}">
 
 	{# Top Nav #}
-	<div class="top-navbar bg-primary">
+	<div class="top-navbar bg-transparent">
 		<div class="container flex justify-between">
 			{% if important_links %}
 				<salla-menu source="footer" topnav class="lg:!flex !hidden flex-1 justify-start text-background"></salla-menu>
@@ -77,6 +77,7 @@
 							</div>
 						{% endif %}
 					{% endif %}
+          </div>
 
 
 					<div class=" flex  justify-center md:flex-1" href="{{ store.url }}">
@@ -101,7 +102,7 @@
 					<div class="md:gap-2.5 gap-1.5 items-center flex-1 justify-end md:flex hidden">
 
 
-						<button onclick="salla.event.dispatch('search::open')" class="aspect-square custom-button !w-auto">
+						<button onclick="salla.event.dispatch('search::open')" class="aspect-square custom-button !w-auto !justify-end">
 							<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 21 20" fill="none">
 								<path d="M9.66667 17.5C14.0389 17.5 17.5833 13.9556 17.5833 9.58333C17.5833 5.21108 14.0389 1.66667 9.66667 1.66667C5.29441 1.66667 1.75 5.21108 1.75 9.58333C1.75 13.9556 5.29441 17.5 9.66667 17.5Z" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
 								<path d="M18.4167 18.3333L16.75 16.6667" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"/>
@@ -111,7 +112,6 @@
 							<a class="absolute block h-full w-full" href="{{store.url}}/wishlist"></a>
 							<i class="sicon-heart"></i>
 						</div>
-
 
 						{% if theme.settings.get('enable_side_cart') %}
 
