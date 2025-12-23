@@ -376,7 +376,12 @@ const items = cart.items;
                     : ""
                 }
 
-                <h2 class="text-base font-medium">
+                <h2 class=" font-medium
+                text-sm
+                leading-5
+                tracking-wide
+                md:text-base
+                md:leading-6 line-clamp-2">
                   <a href="${item_url}">${item.product_name}</a>
                 </h2>
                 <div class="flex justify-between items-center gap-4">

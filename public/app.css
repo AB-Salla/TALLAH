@@ -2273,6 +2273,9 @@ select{
 .leading-tight{
     line-height: 1.25;
 }
+.tracking-wide{
+    letter-spacing: 0.025em;
+}
 .\!text-background{
     color: var(--color-background) !important;
 }
@@ -19366,6 +19369,33 @@ input[type=radio].sr-only:checked ~ div.s-wallet-table-tbody-tr a {
   --font-main: "DINNextLTArabic";
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
+}
+salla-quantity-input {
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+@media (max-width: 768px) {
+  salla-quantity-input {
+    width: 110px;
+  }
+}
+.s-quantity-input-container {
+  border-radius: 0 !important;
+  height: 1.9rem !important;
+}
+.s-quantity-input-container {
+  border-radius: 2px;
+  border-width: 0px;
+}
+.s-quantity-input-container .s-quantity-input-button svg{
+    font-size: 9px;
+    font-weight: 700;
+  fill: var(--color-font);
+}
+.s-quantity-input-container .s-quantity-input-input {
+  color: #414042 !important;
+  color: var(--color-primary) !important;
+  background-color: transparent !important;
 }
 body {
   font-size: 15px;
