@@ -26762,11 +26762,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     color: #414042;
     color: var(--color-primary);
 }
-.hover\:text-red-600:hover{
-    --tw-text-opacity: 1;
-    color: rgba(220, 38, 38, 1);
-    color: rgba(220, 38, 38, var(--tw-text-opacity, 1));
-}
 .hover\:underline:hover{
     text-decoration-line: underline;
 }
