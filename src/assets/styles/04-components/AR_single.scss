@@ -64,6 +64,10 @@
   }
 
 .single {
+  .s-product-card-entry{
+    gap: 10px;
+    justify-content: unset !important;
+  }
   .s-rating-stars-selected{
     fill: #806F40 !important;
   }

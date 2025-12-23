@@ -25485,6 +25485,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* Hide empty icon when added */
   /* Hide filled icon when not added */
 }
+.single .s-product-card-entry {
+  justify-content: initial !important;
+}
+.single .s-product-card-entry {
+  gap: 10px;
+}
 .single .s-rating-stars-selected {
   fill: #806F40 !important;
 }
