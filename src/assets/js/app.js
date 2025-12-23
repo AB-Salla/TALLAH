@@ -400,7 +400,7 @@ const items = cart.items;
             </div>
 
             <button type="button"
-              class="delete-btn text-red-500"
+              class="delete-btn text-gray-500 hover:text-red-500"
               data-item-id="${item.id}">
               <i class="sicon-trash-2"></i>
             </button>

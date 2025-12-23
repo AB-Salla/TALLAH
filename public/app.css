@@ -19380,16 +19380,16 @@ salla-quantity-input {
   }
 }
 .s-quantity-input-container {
+  border: 1px solid rgb(103, 102, 104) !important;
   border-radius: 0 !important;
 }
 .s-quantity-input-container {
-  border: 1px solid rgb(103, 102, 104);
   border-radius: 2px;
   border-width: 0px;
 }
 @supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
 .s-quantity-input-container {
-  border: 1px solid color-mix(in srgb, var(--color-primary), white 20%);
+  border: 1px solid color-mix(in srgb, var(--color-primary), white 20%) !important;
 }
 }
 .s-quantity-input-container .s-quantity-input-button svg{
@@ -26796,6 +26796,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .hover\:text-primary:hover{
     color: #414042;
     color: var(--color-primary);
+}
+.hover\:text-red-500:hover{
+    --tw-text-opacity: 1;
+    color: rgba(239, 68, 68, 1);
+    color: rgba(239, 68, 68, var(--tw-text-opacity, 1));
 }
 .hover\:underline:hover{
     text-decoration-line: underline;
