@@ -1,4 +1,73 @@
+    .single .s-products-slider-card {
+        width: 50%;
+        max-width: 100% !important;
+}
+.single .s-products-slider-card{
+    padding: 0px !important;
+}
+.s-metadata-box {
+  background-color: var(--color-background);
+  @apply px-0 ;
+}
+.single .s-slider-block__title-nav{
+  display: none !important;
+}
+.single .s-metadata-row {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+  cursor: pointer;
+  flex-direction: column !important;
+}
+
+
+.single .s-metadata-row-name {
+  font-size: clamp(0.875rem, 0.7602rem + 0.4898vw, 1.25rem);
+  color: #2d190d;
+  font-weight: 500;
+  padding: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.single .s-metadata-row-value {
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.35s ease-in-out;
+  padding: 0 14px;
+  color: var(--color-font);
+  line-height: 20px;
+}
+
+.single .s-metadata-row-value.open {
+  padding: 0 12px 12px;
+}
+
+.single .s-metadata-row-name::after {
+  content: "\e96e";
+  transition: transform 0.3s ease;
+  font-family: "sallaicons";
+  font-size: 20px;
+  color: #2d190d;
+}
+
+.single .s-metadata-row.open .s-metadata-row-name::after {
+  transform: rotate(180deg);
+}
+.s-comments.s-comments-product{
+    background: transparent;
+    padding: 20px;
+    border-radius: 8px;
+    @media (max-width:768px){
+      padding: 10px;
+    }
+  }
+
 .single {
+  .s-product-card-entry{
+    gap: 10px;
+    justify-content: unset !important;
+  }
   .s-rating-stars-selected{
     fill: #806F40 !important;
   }
@@ -416,41 +485,6 @@
     gap: 8px;
   }
 
-  .s-metadata-box {
-    margin-bottom: 24px;
-    background-color: transparent;
-    padding: 0rem;
-  }
-
-  .s-metadata-box-header {
-    display: none;
-  }
-
-  .s-metadata-row {
-    margin-bottom: 18px;
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    gap: 0;
-  }
-
-  .s-metadata-row-name {
-    display: none;
-  }
-  .s-metadata-row-value {
-    font-weight: 400;
-    font-size: 16px;
-    color: var(--color-font);
-  }
-
-  @media (max-width: 1024px) {
-    .s-metadata-row-value {
-      font-size: 14px;
-    }
-    .s-metadata-box {
-      margin-bottom: 16px;
-    }
-  }
   .s-product-options-option-label b {
     display: block;
     color: var(--color-font);

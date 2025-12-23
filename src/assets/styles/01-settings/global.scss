@@ -27,3 +27,25 @@ $main-text-color: var(--main-text-color);
   /* plugins */
   --mm-ocd-width: calc(100% - 51px);
 }
+
+  salla-quantity-input {
+    padding-block: 5px;
+    @media (max-width: 768px) {
+      width: 110px;
+    }
+  }
+  .s-quantity-input-container {
+    border: 1px solid color-mix(in srgb, var(--color-primary), white 20%) !important;
+    border-radius: 0 !important;
+    @apply rounded-[2px] border-0;
+    .s-quantity-input-button {
+      svg {
+        @apply font-bold text-[9px];
+        fill: var(--color-font);
+      }
+    }
+    .s-quantity-input-input {
+      color: var(--color-primary) !important;
+      background-color: transparent !important ;
+    }
+  }

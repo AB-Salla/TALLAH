@@ -86,27 +86,91 @@
 
 {% block content %}
 	<div class="single md:pt-3">
-		<div class="container">
-			<div class="flex flex-col items-center md:items-start lg:flex-row overflow-hidden" id="product-{{ product.id }}">
+		<div class="">
+			<div class="flex flex-col items-center md:items-start lg:flex-row overflow-hidden container" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
-                        <div class="grid grid-cols-2 gap-2 md:gap-4">
-                            {% for image in product.images %}
-								{% if image.three_d_image_url %}
-									<model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
-								{% else %}
-									<a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
-                                        class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
-										{% if loop.first %}
-											<img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
-										{% else %}
-											<img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
-										{% endif %}
-									</a>
-								{% endif %}
-							{% endfor %}
-                        </div>
+					
+					
+						
+					<div class=" grid-cols-2 gap-2 md:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
+					md:grid 
+					{% else %}
+						grid grid-cols-2
+					{% endif %}">
+						{% for image in product.images %}
+							{% if image.three_d_image_url %}
+								<model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+							{% else %}
+								<a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
+									class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
+									{% if loop.first %}
+										<img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+									{% else %}
+										<img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+									{% endif %}
+								</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					 	<salla-slider
+	id="thumbs-{{product.id}}"
+	show-controls="false"
+	type="thumbs"
+	show-thumbs-controls="false"
+	class="product-images-slider block flex-grow  {% if theme.settings.get('grid_or_slider_in_mobile') %}
+					 md:!hidden
+					{% else %}
+						!hidden
+					{% endif %}"
+	slider-config='{
+		"slidesPerView": 1.2,
+		"spaceBetween": 10,
+    "autoplay": {
+			"delay": 3000,
+			"disableOnInteraction": false
+		},
+		"breakpoints": {
+			"768": {
+				"slidesPerView": 1.2,
+				"spaceBetween": 10
+			}
+		}
+	}'
+>
+
+                            {% if product.promotion_title %}
+                                <div class="promotion-title">{{ product.promotion_title }}</div>
+                            {% endif %}
+
+                            {# Calories Badge #}
+                            {% if product.calories %}
+                                <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-background shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 lg:w-24 lg:h-24">
+                                    <span class="text-red-500 text-xl leading-none font-bold">{{ product.calories }}</span>
+                                    <span class="text-xs text-gray-500">{{ trans('pages.products.calories') }}</span>
+                                </div>
+                            {% endif %}
+
+                            <div slot="items">
+                                {% for image in product.images %}
+                                    {% if image.three_d_image_url %}
+                                        <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+                                    {% else %}
+                                        <a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
+                                            class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
+                                            {% if loop.first %}
+                                                <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                            {% else %}
+                                                <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                           
+                        </salla-slider>
                     {% else %}
                         
                         <salla-slider 
@@ -181,7 +245,7 @@
                     {% endif %}
 		</div>
 		
-		 <div class="main-content md:sticky md:overflow-hidden top-24 w-full md:w-2/4 md:pb-16">
+		 <div class="main-content md:sticky md:overflow-hidden w-full md:w-2/4 md:pb-16 ">
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
@@ -425,7 +489,6 @@
 						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
 							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
 							<div class="flex items-center justify-center gap-1">
-									{% include 'components.partials.buy_now_svg' %}
 								<span class="font-medium !text-base">
 									{{ product.add_to_cart_label }}
 								</span>
@@ -505,10 +568,10 @@
 
 	{# description #}
 	{% if product.description %}
-		<h3 class="font-bold text-lg lg:text-2xl text-font-color">
+		<h3 class="font-bold text-lg lg:text-2xl text-font-color container">
 			{{trans ("pages.single.discription")}}
 		</h3>
-		<div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3 text-font-color">
+		<div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3 text-font-color container">
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 			{% if product.has_read_more %}
 				<article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
@@ -540,7 +603,7 @@
                       reviews="{{ product.rating.count ?? 0 }}">
                       </salla-rating-stars>
                       {% if product.rating.count == 0 %}
-                      <div class="text-center mb">({{ trans('pages.product.no_rate') }})</div>
+                      <div class="text-center mb">({{ trans('pages.single.no') }})</div>
                       {% endif %}
                       <div class="mt-4 md:mt-5">
                           <salla-comment-form></salla-comment-form>
@@ -550,18 +613,13 @@
     {% endif %}
 
 	{# Similar Products Area #}
-	<div class="container single-product-slider pb-[60px] lg:pb-[120px]">
-		<div class="w-full flex flex-col justify-center items-center text-center pb-4 md:pb-8">
+	<div class="single-product-slider px-10 pb-[60px] lg:pb-[120px]">
+		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
-				<span class=" w-[66px] h-0.5 bg-primary"></span>
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font-color">
 				{{ trans('pages.single.similar') }}
 				</h1>
-				<span class=" w-[66px] h-0.5 bg-primary"></span>
 			</span>
-			<h3 class="text-[14px] md:text-[16px] font-light leading-[28px] text-font-color opacity-[70%]">
-			{{ trans('pages.single.similar_description') }}
-			</h3>
 		</div>
 		<div class="products-fixed-slider-{{position}} relative">
 			<salla-products-slider
@@ -575,7 +633,7 @@
 				"effect": "slide",
 				"breakpoints": {
 					"786": { "slidesPerView": 3, "spaceBetween": 20 },
-					"1024": { "slidesPerView": 4, "spaceBetween": 20 }
+					"1024": { "slidesPerView": 4.5, "spaceBetween": 10 }
 				}     
 				}'
 				source="related"
@@ -586,6 +644,22 @@
 			</salla-products-slider>
 		</div>
 	</div>
+	{% if is_page('index') %}
+
+<style>
+    .s-product-card-content-category {
+        display: block !important;
+    }
+</style>
+{% else %}
+
+<style>
+    .s-product-card-content-category {
+        display: none !important;
+    }
+</style>
+{% endif %} 
+
 {% endblock %}
 
 {% block scripts %}
