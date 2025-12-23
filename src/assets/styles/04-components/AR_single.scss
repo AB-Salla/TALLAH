@@ -1,3 +1,10 @@
+    .single .s-products-slider-card {
+        width: 50%;
+        max-width: 100% !important;
+}
+.single .-products-slider-card{
+    padding: 0px !important;
+}
 .s-metadata-box {
   background-color: var(--color-background);
   @apply px-0 ;
@@ -11,6 +18,7 @@
   cursor: pointer;
   flex-direction: column !important;
 }
+
 
 .single .s-metadata-row-name {
   font-size: clamp(0.875rem, 0.7602rem + 0.4898vw, 1.25rem);
