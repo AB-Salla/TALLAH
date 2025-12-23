@@ -25416,6 +25416,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .salla-add-product-button.loading .sicon-booking, .salla-add-product-button.loading .sicon-calendar-time, .salla-add-product-button.loading .sicon-cart {
   display: none;
 }
+.single .s-products-slider-card {
+  max-width: 100% !important;
+}
+.single .s-products-slider-card {
+  width: 50%;
+}
+.single .-products-slider-card {
+  padding: 0px !important;
+}
 .s-metadata-box {
   background-color: var(--color-background);
   padding-left: 0px;
