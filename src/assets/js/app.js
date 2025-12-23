@@ -280,6 +280,25 @@ const productCache = {};
   return productCache[productId];
 }
     // 📦 تحميل السلة
+    function buildHiddenOptionsInputs(productDetails) {
+  if (!productDetails?.options?.length) return "";
+
+  return productDetails.options
+    .map(option => {
+      const firstValue = option.details?.[0];
+      if (!firstValue) return "";
+
+      return `
+        <input 
+          type="hidden" 
+          name="options[${option.id}]" 
+          value="${firstValue.id}"
+        >
+      `;
+    })
+    .join("");
+}
+
     async function loadCart() {
       function getLocalizedMessageinner(key) {
         const lang = document.documentElement.lang || "ar";
@@ -308,6 +327,8 @@ const productCache = {};
 const items = cart.items;
   const itemsWithDetails = await Promise.all(items.map(async item => {
       const details = await fetchProductDetails(item.product_id);
+      const hiddenOptions = buildHiddenOptionsInputs(item.details);
+
       return { ...item, details };
     }));
         console.log(productCache,"productCacheproductCacheproductCacheproductCacheitemitems🥳🥳🥳🥳🥳🥳🥳🥳items🥳🥳🥳🥳🥳🥳🥳🥳items🥳🥳🥳🥳🥳🥳🥳🥳");
@@ -318,85 +339,79 @@ const items = cart.items;
         })
         if (cart.items && cart.items.length) {
           count.textContent = `(${cart.count} منتج)`;
-          itemsWrap.innerHTML = cart.items
-            .map((item) => {
-              console.log(item,"itemitems🥳🥳🥳🥳🥳🥳🥳🥳items🥳🥳🥳🥳🥳🥳🥳🥳items🥳🥳🥳🥳🥳🥳🥳🥳");
-              const item_url =
-                item.product_url || salla.url.get("*/p" + item.product_id);
-              const img =
-                item.product_image ||
-                "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp";
-              return `
-              <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-${item.id}" no-validate>
-              <input type="hidden" name="id" value="${item.id}">
-                      <section class="cart-item bg-bg-light dark:bg-bg-dark p-3 md:p-5 rounded border border-gray-100 mb-4 relative" data-id="${
-                        item.id
-                      }">
-                        <div class="md:flex items-start justify-between gap-4">
-                          <div class="flex flex-1 gap-4 rtl:space-x-reverse items-center">
-                            <a href="${item_url}" class="w-24  h-20">
-                              <img src="${img}" alt="${
-                item.product_name
-              }" class="w-full h-full rounded object-contain" loading="lazy" />
-                            </a>
-                            <div class="space-y-1">
-                              ${
-                                !item.is_taxable
-                                  ? `<small class="color-grey">${getLocalizedMessageinner(
-                                      "tax_included"
-                                    )}</small>`
-                                  : ""
-                              }
-                              <h2 class="text- text-base font-medium">
-                                <a href="${item_url}">${item.product_name}</a>
-                              </h2>
-                              <div class="flex items-center gap-1.5">
-                                <span class="text-sm text-gray-500 line-through ${
-                                  item.offer ? "" : "hidden"
-                                }">
-                                  ${salla.money(item.product_price)}
-                                </span>
-                                <span class="item-price font-medium">${salla.money(
-                                  item.price
-                                )}</span>
-                              </div>
-                              ${
-                                item.offer
-                                  ? `
-                                <div class="flex items-center gap-1.5 text-sm text-gray-500">
-                                  <i class="sicon-discount-calculator"></i>
-                                  <span>${item.offer.names}</span>
-                                </div>`
-                                  : ""
-                              }
-                    <p class="text-primary font-bold text-sm ">
-                    <span>${getLocalizedMessageinner("quantity")}:</span>
-                    <span class="inline-block item-quantity">
-                      ${item.quantity}
-                    </span>
-                    </p>
-                              
-                    <div class="flex-1 border-t border-gray-100 pt-3 md:border-none mt-5 md:mt-0 flex justify-between items-center md:items-start">
-                          
-                        <salla-quantity-input cart-item-id="${item.id}" max="${ item.max_quantity }"
-                            class="transtion transition-color duration-300" aria-label="Quantity"
-                            value="${item.quantity}" name="quantity">
-                        </salla-quantity-input>
-                          
-                      </div>
-                            </div>
-                          </div>
-                          <button type="button"
-                            class="delete-btn text-red-500 hover:text-red-600 transition text-sm mt-2"
-                            data-item-id="${item.id}">
-                            <i class="sicon-trash-2"></i>
-                          </button>
-                        </div>
-                      </section>
-                      </form>
-                      `;
-            })
-            .join("");
+        itemsWrap.innerHTML = itemsWithDetails
+  .map((item) => {
+
+    const hiddenOptions = buildHiddenOptionsInputs(item.details);
+
+    const item_url =
+      item.product_url || salla.url.get("*/p" + item.product_id);
+
+    const img =
+      item.product_image ||
+      "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp";
+
+    return `
+      <form onchange="salla.form.onChange('cart.updateItem', event)"
+            id="item-${item.id}" no-validate>
+
+        <input type="hidden" name="id" value="${item.id}">
+        ${hiddenOptions}
+
+        <section class="cart-item bg-bg-light dark:bg-bg-dark p-3 md:p-5 rounded border border-gray-100 mb-4"
+                 data-id="${item.id}">
+
+          <div class="md:flex items-start justify-between gap-4">
+            <div class="flex flex-1 gap-4 items-center">
+
+              <a href="${item_url}" class="w-24 h-20">
+                <img src="${img}" alt="${item.product_name}"
+                     class="w-full h-full rounded object-contain" />
+              </a>
+
+              <div class="space-y-1">
+                ${
+                  !item.is_taxable
+                    ? `<small>${getLocalizedMessageinner("tax_included")}</small>`
+                    : ""
+                }
+
+                <h2 class="text-base font-medium">
+                  <a href="${item_url}">${item.product_name}</a>
+                </h2>
+
+                <span class="item-price font-medium">
+                  ${salla.money(item.price)}
+                </span>
+
+                <p class="text-primary font-bold text-sm">
+                  <span>${getLocalizedMessageinner("quantity")}:</span>
+                  <span>${item.quantity}</span>
+                </p>
+
+                <salla-quantity-input
+                  cart-item-id="${item.id}"
+                  max="${item.max_quantity}"
+                  value="${item.quantity}"
+                  name="quantity">
+                </salla-quantity-input>
+
+              </div>
+            </div>
+
+            <button type="button"
+              class="delete-btn text-red-500"
+              data-item-id="${item.id}">
+              <i class="sicon-trash-2"></i>
+            </button>
+
+          </div>
+        </section>
+      </form>
+    `;
+  })
+  .join("");
+
           total.innerHTML = salla.money(cart.total);
           subTotal.innerHTML = cart.sub_total
             ? salla.money(cart.sub_total)
