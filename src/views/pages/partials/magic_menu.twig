@@ -1,0 +1,493 @@
+<!-- Mega Menu Overlay -->
+<div class="mega-overlay"></div>
+<div id="mega-menu" class="hidden bg-background fixed bottom-0 ltr:left-0 rtl:right-0 w-full  h-screen overflow-y-auto z-50">
+  
+  <!-- Menu Content -->
+  <div class="mega-menu-content w-full h-full overflow-y-auto relative p-5 md:p-7">
+
+
+      <button class="mega-close-btn flex items-center justify-center text-white bg-red-700 fixed top-4 rtl:left-4 ltr:right-4 w-10 h-10 cursor-pointer text-xl transition-all" onclick="closeMegaMenu()"><i class="sicon-cancel"></i></button>
+    
+    {% if theme.settings.get('mega_menu_img') %}
+    <!-- Header Image -->
+    <div class="mega-header-image w-full overflow-hidden mb-2.5 group">
+      <img class="w-full h-full object-cover transition-all duration-300 group-hover:scale-105" id="mega-header-img" src="{{theme.settings.get('mega_menu_img') }}" alt="Mega menu image">
+    </div>
+    {% endif %}
+    
+    <!-- Tabs Container -->
+    <div class="tabs-container flex flex-col lg:flex-row gap-4">
+      <!-- Tab Headers -->
+      <div id="tab-headers" class="lg:w-1/4 rtl:pr-4 ltr:pl:4 overflow-y-auto md:border-none border-b border-black lg:block flex flex-wrap gap-2 justify-between">
+        <!-- Will be populated by JavaScript -->
+      </div>
+      
+      <!-- Tab Contents -->
+      <div id="tab-contents" class=" py-4 lg:w-3/4">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </div>
+    
+    <div id="categories-grid-2" class="categories-slider-container pb-2 mt-8">
+      <div id="image-slider-container">
+        <!-- Will be populated by JavaScript -->
+      </div>
+    </div>
+    
+  </div>
+</div>
+
+<script>
+// Simple tabs system
+class SimpleTabs {
+  constructor(containerId) {
+    this.container = document.getElementById(containerId);
+    this.headers = [];
+    this.contents = [];
+    this.activeIndex = 0;
+  }
+  
+  addTab(title, content, hasSubs = false, url = '#') {
+    const index = this.headers.length;
+    const tabId = `tab-${index}`;
+    
+    // Create header with scaling bottom border
+    const header = document.createElement('button');
+    header.className = `tab-header lg-w-full w-[30%] w-full text-end p-3 mb-1 transition-all duration-200 relative
+    
+                       overflow-hidden
+                       after:absolute after:bottom-0 ltr:after:left-0 rtl:after:right-0 
+                       after:w-full ltr:after:-translate-x-full rtl:after:translate-x-full after:h-[1px] after:bg-primary 
+                       
+                        after:transition-transform after:duration-300 after:ease-in-out
+                       ${hasSubs ? 'hover:after:w-full hover:after:translate-x-0' : ''}`;
+    
+    header.setAttribute('data-tab-id', tabId);
+    header.setAttribute('data-has-subs', hasSubs);
+    header.setAttribute('data-url', url);
+    header.innerHTML = `
+      <p class="text-center lg:rtl:text-right lg:ltr:text-left">
+        ${title}
+      </p>
+    `;
+    
+    // Create content
+    const contentDiv = document.createElement('div');
+    contentDiv.className = 'tab-content hidden animate-fadeIn';
+    contentDiv.id = tabId;
+    contentDiv.innerHTML = content;
+    
+    // Store references
+    this.headers.push(header);
+    this.contents.push(contentDiv);
+    
+    // Add click event
+    header.addEventListener('click', (e) => {
+      if (hasSubs) {
+        this.activateTab(index);
+      } else if (url && url !== '#') {
+        window.location.href = url;
+        closeMegaMenu();
+      }
+    });
+    
+    return { header, content: contentDiv, index };
+  }
+  
+  activateTab(index) {
+    // Deactivate all
+    this.headers.forEach((header, i) => {
+      header.classList.remove('active', 'text-primary', 'after:scale-x-100');      
+      this.contents[i].classList.add('hidden');
+    });
+    
+    // Activate selected - show full border for active tab
+    this.headers[index].classList.add('active', 'text-primary', 'after:scale-x-100');
+    this.contents[index].classList.remove('hidden');
+    
+    this.activeIndex = index;
+  }
+  
+  render(headersContainerId, contentsContainerId) {
+    const headersContainer = document.getElementById(headersContainerId);
+    const contentsContainer = document.getElementById(contentsContainerId);
+    
+    // Clear containers
+    headersContainer.innerHTML = '';
+    contentsContainer.innerHTML = '';
+    
+    // Add elements
+    this.headers.forEach(header => headersContainer.appendChild(header));
+    this.contents.forEach(content => contentsContainer.appendChild(content));
+    
+    // Activate first tab with subs
+    const firstWithSubs = this.headers.findIndex(h => h.getAttribute('data-has-subs') === 'true');
+    if (firstWithSubs !== -1) {
+      this.activateTab(firstWithSubs);
+    } else if (this.headers.length > 0) {
+      this.activateTab(0);
+    }
+  }
+}
+
+// Simple slider system
+class SimpleSlider {
+  constructor(containerId, slides = []) {
+    this.container = document.getElementById(containerId);
+    this.slides = slides;
+    this.currentIndex = 0;
+  }
+  
+  addSlide(image, title, url) {
+    this.slides.push({ image, title, url });
+  }
+  
+  render() {
+    if (this.slides.length === 0) {
+      this.container.innerHTML = '';
+      return;
+    }
+    
+    let slidesHTML = '';
+    this.slides.forEach(slide => {
+      slidesHTML += `
+        <div class="slide-item group flex-shrink-0 w-1/2 md:w-1/3 px-2">
+          <div class="relative category-image-wrapper flex flex-col gap-2 w-full">
+            <a class="block h-full w-full absolute z-10" href="${slide.url || '#'}"></a>
+            <div class="image-container w-full h-32 md:h-40 overflow-hidden">
+              <img class="h-full w-full object-cover group-hover:scale-125 transition-all duration-300 ease-out" 
+                   src="${slide.image}" 
+                   alt="${slide.title || 'Category'}">
+            </div>
+            <p class="category-title text-sm font-medium text-start flex justify-between items-center group-hover:text-primary mt-2">
+              <span>${slide.title || ''}</span>
+              <i class="sicon-arrow-left text-xs group-hover:rotate-45 transition-all duration-300 ease-out"></i>
+            </p>
+          </div>
+        </div>
+      `;
+    });
+    
+    this.container.innerHTML = `
+      <div class="slider-wrapper flex overflow-x-auto gap-4 pb-4 scrollbar-hide -mx-2 px-2">
+        ${slidesHTML}
+      </div>
+    `;
+  }
+}
+
+// Global variables
+let megaMenuTabs = null;
+let megaMenuSlider = null;
+
+// Simple initialization function
+async function initMegaMenu() {
+  try {
+    const megaMenu = document.getElementById('mega-menu');
+    const megaOverlay = document.querySelector('.mega-overlay');
+    if (!megaMenu) return;
+    
+    // Initialize tabs system
+    megaMenuTabs = new SimpleTabs('tabs-container');
+    megaMenuSlider = new SimpleSlider('image-slider-container');
+    
+    // Fetch menus from Salla
+    const response = await salla.api.component.getMenus();
+    const menus = response?.data || [];
+    
+    // Separate menus: with subcategories first, without subcategories last
+    const menusWithSubs = [];
+    const menusWithoutSubs = [];
+    
+    menus.forEach(menu => {
+      if (menu.children && menu.children.length > 0) {
+        menusWithSubs.push(menu);
+      } else {
+        menusWithoutSubs.push(menu);
+      }
+    });
+    
+    // Combine with subcategories first
+    const sortedMenus = [...menusWithSubs, ...menusWithoutSubs];
+    const menuLabel = (document.documentElement.lang || 'ar').startsWith('en') ? 'View Category' : 'عرض التصنيف';
+    
+    // Create tabs
+    sortedMenus.forEach((menu, index) => {
+      const subCategories = menu.children || [];
+      const hasSubs = subCategories.length > 0;
+      
+      let contentHTML = '';
+      
+      if (hasSubs) {
+        contentHTML = `
+          <div class="subcategories-container p-2">
+            <ul class="subcategories-list space-y-2">
+              <!-- Parent category link -->
+              <li class="sub-category-item show-cate mb-4 py-2 px-3">
+                <a href="${menu.url || '#'}" 
+                   class="block w-full font-medium text-primary hover:underline  text-center"
+                   onclick="closeMegaMenu()">
+                  ${menuLabel}
+                </a>
+              </li>
+              
+              <!-- Subcategories with scaling borders -->
+              ${subCategories.map(child => `
+                <li class="sub-category-item">
+                  <a href="${child.url || '#'}" 
+                     class="block py-2.5 px-4 text-gray-700 hover:text-primary transition-colors duration-200
+                            relative overflow-hidden
+                            after:absolute after:bottom-0 ltr:after:left-0 rtl:after:right-0 
+                            after:w-full after:h-[1px] after:bg-primary 
+                            ltr:after:origin-left rtl:after:origin-right
+                            after:scale-x-0 after:transition-transform after:duration-300 after:ease-out
+                            hover:after:scale-x-100"
+                     onclick="closeMegaMenu()">
+                    ${child.title || 'Untitled Subcategory'}
+                  </a>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        `;
+      } else {
+        contentHTML = `
+          <div class="no-subcategories text-center p-6">
+            <a href="${menu.url || '#'}" 
+               class="inline-block bg-primary text-white px-8 py-3 transition-all duration-300 font-medium"
+               onclick="closeMegaMenu()">
+              ${menuLabel}
+            </a>
+          </div>
+        `;
+      }
+      
+      // Add tab to system
+      megaMenuTabs.addTab(
+        menu.title || 'Untitled Category',
+        contentHTML,
+        hasSubs,
+        menu.url || '#'
+      );
+      
+      // Add to slider if has image
+      if (menu.image) {
+        megaMenuSlider.addSlide(menu.image, menu.title, menu.url);
+      }
+    });
+    
+    // Render tabs
+    megaMenuTabs.render('tab-headers', 'tab-contents');
+    
+    // Render slider
+    megaMenuSlider.render();
+    
+    // If no images, hide slider container
+    const categoriesGrid2 = document.getElementById('categories-grid-2');
+    if (megaMenuSlider.slides.length === 0 && categoriesGrid2) {
+      categoriesGrid2.style.display = 'none';
+    }
+    
+    // Setup trigger button
+    const triggerBtn = document.getElementById('mega-menu-trigger');
+    if (triggerBtn) {
+      triggerBtn.addEventListener('click', openMegaMenu);
+    }
+    
+    // Close when clicking on overlay
+    if (megaOverlay) {
+      megaOverlay.addEventListener('click', closeMegaMenu);
+    }
+    
+    // Close with Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && !megaMenu.classList.contains('hidden')) {
+        closeMegaMenu();
+      }
+    });
+    
+  } catch (error) {
+    console.error('Failed to initialize mega menu:', error);
+    
+    const tabsContainer = document.querySelector('.tabs-container');
+    if (tabsContainer) {
+      tabsContainer.innerHTML = `
+        <div class="error-state text-center p-8 w-full">
+          <div class="text-red-500 text-2xl mb-4">⚠️</div>
+          <p class="text-gray-600 mb-6">Failed to load categories</p>
+          <button onclick="initMegaMenu()" 
+                  class="bg-primary text-white border-none px-6 py-3 cursor-pointer hover:bg-primary-dark transition-colors">
+            Try Again
+          </button>
+        </div>
+      `;
+    }
+  }
+}
+
+// Global open function
+function openMegaMenu() {
+  const megaMenu = document.getElementById('mega-menu');
+  const megaOverlay = document.querySelector('.mega-overlay');
+  
+  if (megaMenu && megaOverlay) {
+    megaOverlay.style.display = 'block';
+    megaMenu.classList.remove('hidden');
+    
+    setTimeout(() => {
+      const isRTL = document.documentElement.dir === 'rtl';
+      megaMenu.style.transform = 'translateX(0)';
+    }, 10);
+  }
+}
+
+// Global close function
+function closeMegaMenu() {
+  const megaMenu = document.getElementById('mega-menu');
+  const megaOverlay = document.querySelector('.mega-overlay');
+  
+  if (megaMenu && megaOverlay) {
+    const isRTL = document.documentElement.dir === 'rtl';
+    megaMenu.style.transform = isRTL ? 'translateX(100%)' : 'translateX(-100%)';
+    
+    setTimeout(() => {
+      megaMenu.classList.add('hidden');
+      megaOverlay.style.display = 'none';
+    }, 300);
+  }
+}
+
+// Initialize when Salla is ready
+salla.onReady().then(() => {
+  initMegaMenu();
+});
+</script>
+
+<style>
+.mega-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  z-index: 40;
+  display: none;
+}
+
+/* Mega Menu Container */
+#mega-menu {
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[dir="rtl"] #mega-menu {
+  transform: translateX(100%);
+}
+
+[dir="ltr"] #mega-menu {
+  transform: translateX(-100%);
+}
+
+/* Mega Menu Content */
+.mega-menu-content {
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+/* Header Image */
+.mega-header-image {
+  height: 200px;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 2rem;
+}
+
+.mega-header-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.mega-header-image:hover img {
+  transform: scale(1.05);
+}
+
+/* Tab Contents */
+.tab-content {
+  animation: fadeIn 0.3s ease forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Subcategory items */
+.sub-category-item{
+  position: relative;
+  transition: all 0.2s ease;
+}
+
+.sub-category-item::before {
+  position: absolute;
+  transform:translateY(50%);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.sub-category-item.show-cate::before {
+  transform:none;
+}
+
+[dir="rtl"]  .sub-category-item::before {
+  content: "←";
+  left: 8px;
+}
+
+[dir="ltr"] .sub-category-item::before {
+  content: "→";
+  right: 8px;
+}
+
+.sub-category-item:hover::before {
+  opacity: 1;
+}
+
+/* Slider */
+.scrollbar-hide {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
+.slider-wrapper {
+  scroll-behavior: smooth;
+  scroll-snap-type: x mandatory;
+}
+
+.slide-item {
+  scroll-snap-align: start;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .tabs-container {
+    flex-direction: column;
+  }
+  
+  #tab-headers {
+    padding-right: 0;
+    padding-bottom: 1rem;
+  }
+}
+</style>

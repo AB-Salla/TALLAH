@@ -1,0 +1,95 @@
+{% set source_type = component.source_type %}
+{% set source_value = source_type == 'categories' ? component.categories : (source_type == 'selected' ? component.products : []) %}
+<section class="Ar-products-banner Ar-products-banner-{{ position }} s-block {% if  component.margin_bottom_rm %} !mb-0 {% endif %}">
+	<div class="container  flex lg:flex-row flex-col items-center justify-between gap-6 lg:gap-12 ">
+
+
+			<div class="order-2 lg:order-1">
+				<div class="lg:block hidden features-products-head text text-font text-center md:mb-6 mb-4">
+
+
+					<h2 class="text-xl font-semibold pb-1" style="color: {{ component.block_title_color }};">
+						{{ component.block_title }}
+					</h2>
+					{% if component.link_text %}
+						<a href="component.url" class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
+							{{ component.link_text }}
+						</a>
+					{% endif %}
+
+				</div>
+
+					<div>
+						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block lg:w-[35vw] w-[90vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
+																			          "slidesPerView": 2,
+																			          "spaceBetween": 20,
+																			          "centeredSlides": false,
+																			          "speed": 1000,
+																			    "autoplay": {{ component.enable_autoplay ? "{
+																			      \"delay\": 3000,
+																			      \"disableOnInteraction\": false,
+																			      \"pauseOnMouseEnter\": true
+																			    }" : "false" }}
+							
+																			  }'></salla-products-slider>
+					</div>
+				
+
+
+			</div>
+
+				<div class="block lg:hidden features-products-head text text-font text-center md:mb-6 mb-4">
+					{% if component.link_text %}
+						<a href="{{component.link}}" class="text-xl font-semibold pb-1" style="color: {{ component.sub_text_color }};">
+							{{ component.link_text }}
+						</a>
+					{% endif %}
+
+					<h2 class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.block_title_color }};">
+						{{ component.block_title }}
+					</h2>
+
+
+				</div>
+                
+	
+
+			<div class="overflow-hidden h-[clamp(23.438rem,18.1767rem+22.4483vw,40.625rem)] lg:w-1/3 w-full max-w-132 lg:max-w-1/3">
+				<p></p>
+				<img src="{{ component.banner_image }}" class=" h-full w-full object-cover " alt="{{ component.block_title }}"/>
+			</div>
+		</div>
+	</div>
+</section>
+
+
+<style>
+	@media(min-width: 375px) {
+		.Ar-products-banner-{{position}} .s-products-list-vertical-cards {
+			grid-template-columns: repeat(2, minmax(0, 1fr));
+		}
+	}
+	.Ar-products-banner .s-slider-block__title-nav {
+		display: none;
+	}
+	.Ar-products-banner .salla-slider[type]:not(.hydrated) > div > div,
+	salla-slider[type]:not(.hydrated) .swiper > div > div > div,
+	.carousel-slider .swiper-wrapper > div {
+		padding-left: 0;
+		padding-right: 0;
+	}
+    .Ar-products-banner .swiper.s-slider-container{
+        padding:5px !important;
+    }
+    .Ar-products-banner .swiper-wrapper.s-slider-swiper-wrapper{
+        justify-content: space-between;
+    }
+    .Ar-products-banner .s-product-card-entry{
+        height:clamp(24rem, 21.1906rem + 10.1224vw, 31.313rem) !important;
+    }
+	.Ar-products-banner salla-products-slider .s-product-card-entry.s-product-card-vertical .s-product-card-image{
+		min-height:clamp(16.313rem, 13.6537rem + 11.3463vw, 25rem) !important;
+		max-height:clamp(16.313rem, 13.6537rem + 11.3463vw, 25rem) !important;
+
+	}
+</style>

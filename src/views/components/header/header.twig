@@ -6,80 +6,140 @@
 | cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
 #}
 {% set important_links = theme.settings.get('important_links') %}
-<header class="store-header">
-  {# Top Nav #}
-  <div class="top-navbar">
-    <div class="container flex justify-between">
-      <div class="flex-1 flex items-center gap-2">
-          {# Footer Menu #}
-          {% if important_links %}
-            <salla-menu source="footer" topnav></salla-menu>
-          {% endif %}
+{% set show_total = theme.settings.get('show_total') %}
+{% set side_menu = theme.settings.get('enable_side_menu') %}
+{% set side_layout = theme.settings.get('side_layout') %}
+{% set image = theme.settings.get('image') %}
 
-          {# Language & Currency Component #}
-          <div class="header-buttons">
-              {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-                  <button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0">
-                      <span>{{ user.language.name }}</span>
-                      <span class="mx-1.5">|</span> <span>{{ currency.symbol }}</span>
-                  </button>
-                  <salla-localization-modal></salla-localization-modal>
-              {% endif %}
+<header
+	class="store-header AR-header {{page.slug == "index" ? 'absolute w-full h-fit z-20' : ''}} {{page.slug}}">
+
+	{# Top Nav #}
+	<div class="top-navbar bg-transparent">
+		<div class="container flex justify-between">
+			{% if important_links %}
+				<salla-menu source="footer" topnav class="lg:!flex !hidden flex-1 justify-start text-background"></salla-menu>
+			{% endif %}
+			{% if store.scope %}
+				<button class="btn--rounded-gray" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
+					<i class="sicon-location rtl:ml-1 ltr:mr-1"></i>
+					{{ store.scope.name }}
+				</button>
+			{% endif %}
+			<salla-contacts is-header class="lg:flex hidden flex-1 {{important_links ? 'lg:justify-center justify-start' : 'justify-start'}} gap-2 text-background"></salla-contacts>
+			{% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+				<div class="flex items-center localize  flex-1 lg:justify-end justify-center">
+					<button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0 !p-0">
+
+						<i class="sicon-world text-background"></i>
+						<span class="sm:mx-1.5 mx-1 !text-lg text-background">{{ user.language.name }}</span>
+						<span class="sm:mx-1.5 mx-1 !text-base text-background">-</span>
+						<span class="!text-lg text-background font-[inherit]">{{ currency.symbol }}</span>
+
+					</button>
+					<salla-localization-modal></salla-localization-modal>
+				</div>
+			{% endif %}
+		</div>
+	</div>
+
+	{# Main Nav #}
+	<div id="mainnav" class="main-nav-container shadow-default relative !h-fit">
+		<div class="inner bg-transparent text-background py-4">
+			<div class="container">
+
+
+				<div class="flex rtl:flex-row ltr:flex-row-reverse relative h-auto items-center gap-4 lg:gap-6 justify-between">
+
+					<div class="flex-1 ltr:justify-start rtl:justify-end items-center ">
+						{% if side_menu  %}
+							{% if side_layout == "mega" %}
+								<button id="mega-menu-trigger" class="mega-trigger-btn flex-1 rtl:justify-start justify-end flex gap-2 items-center mb-2 w-full">
+									<p class="flex flex-col gap-1 items-start">
+										<span class="w-5 h-[1px] {{page.slug == "index" ? 'bg-background' : 'bg-font'}} "></span>
+										<span class="w-5 h-[1px] {{page.slug == "index" ? 'bg-background' : 'bg-font'}}"></span>
+										<span class="w-5 h-[1px] {{page.slug == "index" ? 'bg-background' : 'bg-font'}}"></span>
+
+									</p>
+								</button>
+							{% else %}
+
+								<a class="mburger mburger--collapse leading-none justify-start items-center gap-2 {{side_menu ? 'lg:!flex !flex' : 'lg:!hidden flex'}}" href="#mobile-menu" aria-label="Open-menu">
+									<p class="flex flex-col gap-1 items-start">
+										<span class="w-5 h-[1px] bg-background "></span>
+										<span class="w-5 h-[1px] bg-background"></span>
+										<span class="w-5 h-[1px] bg-background"></span>
+									</p>
+									<p>{{ trans('blocks.header.main_menu') }}</p>
+								</a>
+							</div>
+						{% endif %}
+					{% endif %}
           </div>
 
-          {# Scopes | Branches #}
-          {% if store.scope %}
-              <button class="btn--rounded-gray"
-                      onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
-                  <i class="sicon-location rtl:ml-1 ltr:mr-1"></i> {{ store.scope.name }}
-              </button>
-          {% endif %}
 
-          {# Search bar #}
-          <div class="header-search flex-1">
-            <salla-search inline oval height="36"></salla-search>
-          </div>
-      </div>
+					<div class=" flex  justify-center md:flex-1" href="{{ store.url }}">
+						<div class="the-logo navbar-brand !w-auto h-5 relative">
+							<a class="block absolute h-full w-full" href="{{store.url}}"></a>
 
-      <salla-contacts is-header></salla-contacts>
-    </div>
-  </div>
 
-  {# Main Nav #}
-  <div id="mainnav" class="main-nav-container shadow-default bg-background flex items-center">
-      <div class="inner bg-inherit w-full">
-          <div class="container">
-              <div class="flex items-stretch justify-between relative">
-                  <div class="flex items-center">
-                      <a class="lg:hidden mburger mburger--collapse leading-none rtl:ml-4 ltr:mr-4" href="#mobile-menu" aria-label="Open-menu">
-                        <i class="sicon-menu text-primary text-2xl"></i>
-                      </a>
-                      <a class="navbar-brand" href="{{ store.url }}">
-                          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
-                          {% if is_page('index') %}
-                            <h1 class="sr-only">{{ store.name }}</h1>
-                          {% else %}
-                            <h2 class="sr-only">{{ store.name }}</h2>
-                          {% endif %}
-                      </a>
-                      <custom-main-menu></custom-main-menu>
-                  </div>
-                  <div class="flex items-center justify-end my-2.5">
-                      {% if user.type=='user' %}
-                        <salla-user-menu avatar-only show-header></salla-user-menu>
-                      {% else %}
-                          <button class="header-btn" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-                            <i class="header-btn__icon sicon-user-circle"></i>
-                          </button>
-                      {% endif %}
-                     {% include 'pages.partials.cart_options.twig' %}
-                  </div>
-              </div>
-          </div>
-      </div>
-  </div>
+							<img class="h-full w-full object-contain" fetchpriority="high" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
+						</div>
+					</div>
+					{# <div class="header-menu lg:block hidden">
+						<custom-main-menu></custom-main-menu>
+					</div>
+
+					<div class="{{side_menu ? 'lg:hidden' : 'lg:flex'}} hidden desktop-menu items-center justify-center">
+						<div class="active-bold ltr:gap-4 items-center ">
+							<custom-main-menu class="side-menu"></custom-main-menu>
+						</div>
+					</div> #}
+
+
+					<div class="md:gap-2.5 gap-1.5 items-center flex-1 rtl:justify-end ltr:justify-start md:flex hidden">
+
+
+						<button onclick="salla.event.dispatch('search::open')" class="custom-button">
+							<svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg" viewbox="0 0 21 20" fill="none">
+								<path d="M9.66667 17.5C14.0389 17.5 17.5833 13.9556 17.5833 9.58333C17.5833 5.21108 14.0389 1.66667 9.66667 1.66667C5.29441 1.66667 1.75 5.21108 1.75 9.58333C1.75 13.9556 5.29441 17.5 9.66667 17.5Z" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+								<path d="M18.4167 18.3333L16.75 16.6667" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+							</svg>
+						</button>
+						<div class="flex items-center justify-center custom-button relative">
+							<a class="absolute block h-full w-full" href="{{store.url}}/wishlist"></a>
+							<i class="sicon-heart"></i>
+						</div>
+
+						{% if theme.settings.get('enable_side_cart') %}
+
+							{% include 'pages.partials.cart_options.twig' %}
+						{% else %}
+							<a class="!flex gap-.5 md:gap-1 relative" href="{{store.url}}/cart">
+								<i class="sicon-cart lg:text-[26px] text-xl"></i>
+								{% if cart.items_count > '0'  %}
+									<span class="absolute -top-2 -left-2 md:text-sm text-xs bg-red-600 text-white md:h-5 md:w-5 h-4 w-4 flex items-center justify-center rounded-full">{{cart.items_count }}</span>
+								{% endif %}
+							</a>
+						{% endif %}
+						{% if user.type == 'user' %}
+							<salla-user-menu avatar-only show-header></salla-user-menu>
+						{% else %}
+							<button class="header-btn  custom-button" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
+								<i class="sicon-user w-full"></i>
+
+							</button>
+						{% endif %}
+					</div>
+
+				</div>
+
+
+			</div>
+		</div>
+	</div>
 </header>
-<aside id="sidecart-panel" class="side-panel  side-panel--left fixed top-0 h-full bg-background dark:bg-bg-dark  w-full md:w-[40vw] z-[999999] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
+<aside id="sidecart-panel" class="side-panel  side-panel--left fixed top-0 h-full bg-background  w-full md:w-[40vw] z-[999999] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
 	<div class="side-panel__top flex items-center relative z-[2] p-5">
 		<button class="menu-close bg-primary text-background rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="إغلاق">
 			<i class="sicon-cancel text-xl"></i>
@@ -118,7 +178,7 @@
 			<strong id="sidecart-total" class="total-value text-lg"></strong>
 		</div>
 
-		<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn w-full flex items-center justify-center gap-2 bg-primary bg-background rounded-lg py-3 hover:bg-primary/90 transition">
+		<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn w-full flex items-center justify-center gap-2 bg-primary  rounded-lg py-3 hover:bg-primary/90 transition">
 			<i class="smticon-cart text-lg"></i>
 			<span>{{ trans('pages.cart.goToCartPage') }}</span>
 		</a>
@@ -130,3 +190,104 @@
 </aside>
 
 <div id="sidecart-overlay" class="fixed inset-0 bg-black/50  hidden opacity-0 transition-opacity duration-300 z-[999]"></div>
+
+
+
+							{% include 'pages.partials.magic_menu.twig' %}
+
+{% if store.scope %}
+<salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
+{% endif %}
+
+
+
+<style>
+
+
+{% if page.slug != 'index' %}
+.mm-ocd__content{
+	padding: 10px ;
+}
+
+.AR-header  *{
+color:var(--color-font);
+stroke:var(--color-font);
+
+}
+.AR-header .inner .custom-button i{
+  color:var(--color-font);
+
+}
+{% endif %}
+[dir = "ltr"].mm-ocd__backdrop::after{
+    right:0px;
+}
+[dir = "rtl"].mm-ocd__backdrop::after{
+    left:0px;
+}
+.mm-spn.mm-spn--navbar.mm-spn--main .main-menu.logo{
+   background: url({{store.logo}}) center center / contain no-repeat var(--color-background);
+   padding:40px 0px;
+}
+</style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+window.initButton = function () {
+const currencyDisplay = '{{ currency.symbol }}';
+const userLanguage = '{{  user.language.name }}';
+
+return `
+
+	  <button type="button" onclick="salla.event.dispatch('localization::open')" class=" basis-0 p-3 flex items-center justify-center gap-2 w-full">
+						
+						<p class="flex items-center justify-center gap-1">
+						<i class="sicon-world "></i>
+							<span class="sm:mx-1.5 mx-1 !text-base !p-0">${userLanguage}</span>
+						</p>
+						<span class="sm:mx-1.5 mx-1 !text-base !p-0">-</span>
+						<span class="!text-base  font-[inherit] !p-0">${currencyDisplay}</span>
+
+		</button>
+    `;
+};
+});
+
+  document.addEventListener('DOMContentLoaded', function () {
+    const currentPath = window.location.pathname.replace(/\/+$/, ''); // Remove trailing slash
+    const navbarItems = document.querySelectorAll('.bottom-navbar .navbar-item');
+
+    navbarItems.forEach(item => {
+      const itemPath = new URL(item.href).pathname.replace(/\/+$/, '');
+
+      if (currentPath === itemPath) {
+        item.classList.add('active');
+      }
+    });
+  });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('click', e => {
+        if (!e.target.closest('.copy-button')) return;
+        
+        const button = e.target.closest('.copy-button');
+        const code = button.closest('.slide').querySelector('.discount-code')?.textContent.trim();
+        if (!code) return;
+        
+        navigator.clipboard.writeText(code).then(() => {
+            (salla?.notify?.success || alert)('تم نسخ الكود بنجاح');
+        }).catch(() => {
+            const textarea = document.createElement('textarea');
+            textarea.value = code;
+            document.body.appendChild(textarea);
+            textarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textarea);
+            (salla?.notify?.success || alert)('تم نسخ الكود بنجاح');
+        });
+    });
+});
+ 
+</script>
