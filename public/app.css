@@ -27046,6 +27046,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:grid{
         display: grid;
     }
+    .md\:hidden{
+        display: none;
+    }
     .md\:h-20{
         height: 5rem;
     }

@@ -91,22 +91,72 @@
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
-                        <div class="grid grid-cols-2 gap-2 md:gap-4">
-                            {% for image in product.images %}
-								{% if image.three_d_image_url %}
-									<model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
-								{% else %}
-									<a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
-                                        class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
-										{% if loop.first %}
-											<img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
-										{% else %}
-											<img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
-										{% endif %}
-									</a>
-								{% endif %}
-							{% endfor %}
-                        </div>
+					
+					
+						
+					<div class="grid grid-cols-2 gap-2 md:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %}
+					md:grid hidden
+					{% else %}
+						grid grid-cols-2
+					{% endif %}">
+						{% for image in product.images %}
+							{% if image.three_d_image_url %}
+								<model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+							{% else %}
+								<a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
+									class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
+									{% if loop.first %}
+										<img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+									{% else %}
+										<img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+									{% endif %}
+								</a>
+							{% endif %}
+						{% endfor %}
+					</div>
+					  <salla-slider 
+                                id="details-slider-{{ product.id }}" 
+                                class="image-slider details-slider image-slider  {% if theme.settings.get('grid_or_slider_in_mobile') %}
+					 md:hidden
+					{% else %}
+						hidden
+					{% endif %} " 
+                                type="thumbs" 
+                                loop="false" 
+                                show-controls="false" 
+                                >
+
+                            {% if product.promotion_title %}
+                                <div class="promotion-title">{{ product.promotion_title }}</div>
+                            {% endif %}
+
+                            {# Calories Badge #}
+                            {% if product.calories %}
+                                <div class="absolute z-[2] top-4 rtl:left-4 ltr:right-4 bg-background shadow-sm flex flex-col justify-center items-center rounded-full w-20 h-20 lg:w-24 lg:h-24">
+                                    <span class="text-red-500 text-xl leading-none font-bold">{{ product.calories }}</span>
+                                    <span class="text-xs text-gray-500">{{ trans('pages.products.calories') }}</span>
+                                </div>
+                            {% endif %}
+
+                            <div slot="items">
+                                {% for image in product.images %}
+                                    {% if image.three_d_image_url %}
+                                        <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+                                    {% else %}
+                                        <a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
+                                            class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
+                                            {% if loop.first %}
+                                                <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                            {% else %}
+                                                <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
+                                {% endfor %}
+                            </div>
+
+                           
+                        </salla-slider>
                     {% else %}
                         
                         <salla-slider 
