@@ -3139,8 +3139,8 @@
                     "value": "Real stories. Real experiences",
                     "multilanguage": true,
                     "required": false,
-                    "minLength": 6,
-                    "maxLength": 30
+                    "minLength": "2",
+                    "maxLength": "120"
                 },
                 {
                     "id": "subtext_color",
@@ -3261,7 +3261,7 @@
                             "maxLength": "200"
                         },
                         {
-                            "id": "testimonials.lon_ns_rae_alaamel",
+                            "id": "testimonials.testimonial_color",
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
