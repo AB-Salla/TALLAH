@@ -1,7 +1,7 @@
 {% set source_type = component.source_type %}
 {% set source_value = source_type == 'categories' ? component.categories : (source_type == 'selected' ? component.products : []) %}
-<section class="Ar-products-banner Ar-products-banner-{{ position }} s-block {% if  component.margin_bottom_rm %} !mb-0 {% endif %}">
-	<div class="container  flex lg:flex-row flex-col items-center justify-between gap-6 lg:gap-12 ">
+<section class="Ar-products-banner Ar-products-banner-{{ position }} s-block">
+	<div class="container  flex lg:flex-row-reverse flex-col items-center justify-between gap-6 lg:gap-12 ">
 
 
 			<div class="order-2 lg:order-1">
@@ -12,7 +12,7 @@
 						{{ component.block_title }}
 					</h2>
 					{% if component.link_text %}
-						<a href="component.url" class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
+						<a href="{{component.url}}" class="font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
 							{{ component.link_text }}
 						</a>
 					{% endif %}
@@ -84,6 +84,9 @@
     .Ar-products-banner .swiper-wrapper.s-slider-swiper-wrapper{
         justify-content: space-between;
     }
+	.Ar-products-banner .s-products-slider-wrapper{
+		margin-bottom:0px;
+	}
     .Ar-products-banner .s-product-card-entry{
         height:clamp(24rem, 21.1906rem + 10.1224vw, 31.313rem) !important;
     }
