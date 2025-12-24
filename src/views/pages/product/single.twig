@@ -644,6 +644,40 @@
 			</salla-products-slider>
 		</div>
 	</div>
+	{% set images = theme.settings.get('image_collection') %}
+
+{% if images is not empty and theme.settings.get('img_in_single') %}
+    <div class="product-image-gallery  gap-4 container mb-10">
+        <salla-slider
+            id="product-gallery-{{ product.id }}"
+            type="carousel"
+            class="product-slider"
+            slider-config='{
+                "slidesPerView": 1.2,
+                "spaceBetween": 11,
+                "speed": 1000,
+                "effect": "slide",
+                "breakpoints": {
+                    "786": { "slidesPerView": 3, "spaceBetween": 20 },
+                    "1024": { "slidesPerView": 5, "spaceBetween": 10 }
+                }
+            }'
+            slider-id="slider-with-lightbox-{{ product.id }}">
+            <div slot="items">
+                {% for image_item in images %}
+                    {% if image_item['img_single'] is defined and image_item['img_single'] %}
+                        <div class="gallery-item h-[374px]">
+                            <img src="{{ image_item['img_single'] }}" loading="eager" alt="{{ product.name }}" class="w-full h-full rounded-3xl">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </salla-slider>
+    </div>
+{% endif %}
+
+
+
 	{% if is_page('index') %}
 
 <style>

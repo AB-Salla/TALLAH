@@ -1313,6 +1313,9 @@ select{
 .h-screen{
     height: 100vh;
 }
+.h-\[374px\]{
+    height: 374px;
+}
 .max-h-0{
     max-height: 0px;
 }

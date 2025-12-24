@@ -306,10 +306,11 @@
       "value": true,
       "selected": false
     }, 
+    
      {
       "type": "boolean",
       "icon": "sicon-toggle-off",
-      "label": "اضافة صورة في صفحة المنتج",
+      "label": "اضافة معرض صور في صفحة المنتج",
       "description": null,
       "id": "img_in_single",
       "format": "switch",
