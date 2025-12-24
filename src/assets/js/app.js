@@ -448,13 +448,10 @@ const items = cart.items;
     }
 
     // 📢 ربط الأحداث
-    salla.event.cart.onItemAdded(() => {
-      loadCart(); // تحديث السايد كارت فقط
-    });
-
-    salla.event.cart.onItemDeleted(() => {
-      loadCart();
-    });
+    salla.event.cart.onUpdated(loadCart);
+    salla.event.cart.onItemAdded(loadCart);
+    salla.event.cart.onItemDeleted(loadCart);
+    document.addEventListener("salla:cart:updated", loadCart);
 
     // تحميل أول مرة
     await loadCart();
