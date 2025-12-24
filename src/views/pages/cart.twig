@@ -49,247 +49,336 @@
 
 {% extends "layouts.master" %}
 {% block content %}
+{% if theme.settings.get('show_banner') %}
+<div
+  class="cart_banner relative overflow-hidden"
+  style="
+    background-image: url({{ theme.settings.get('banner_bg_img')}});
+    background-size: cover;
+    background-position: center;
+  "
+>
+  <!-- overlay -->
+  <div class="absolute inset-0 bg-black/50"></div>
+
+  <!-- content -->
+  <div class="container relative z-10 text-font-dark min-h-[340px] md:min-h-[489px] py-5 flex flex-col justify-center items-start gap-2  sm:gap-4">
+    <h2 class="text-[clamp(1.2rem,1.3673rem+1.6327vw,3rem)] leading-[140%] font-semibold">
+      {{ theme.settings.get('cart_block_title') }}
+    </h2>
+    <p class="text-[clamp(1rem,1.0102rem+0.4898vw,1.5rem)]">
+      {{ theme.settings.get('cart_block_subtitle') }}
+    </p>
+    <!-- payment logos -->
+    <div class="flex gap-5 items-center mt-4 sm:mt-8 flex-wrap">
+        {# {% for item in theme.settings.get('banner') %} #}
+          <img
+            src="https://cdn.salla.sa/form-builder/wPpSl2eSuIsmdqFEPAjDqbmtYhCNe0ETkHIkwFtw.png"
+            alt="وسيلة دفع تابى"
+            class="h-6 sm:!h-10 object-contain"
+          >
+          <img
+            src="https://cdn.salla.sa/form-builder/rZzajGX8YP620py8KaNAfulm4dQUjKInFNff5vUL.png"
+            alt=" وسيلة دفع تمارا"
+            class="h-6 sm:!h-10 object-contain"
+          >
+        {# {% endfor %} #}
+
+        <span class="hidden md:block w-[335px] h-[4px] rounded-md !bg-bg-light"
+        ></span>
+      </div>
+  </div>
+</div>
+{% endif %}
+
+<div class="bg-bg-light dark:bg-bg-dark">
     <div class="container">
-        {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
-        <nav class="breadcrumbs w-full py-5">
-            <salla-breadcrumb></salla-breadcrumb>
-        </nav>
-        <h1 class="sr-only">{{ trans('blocks.header.cart') }}</h1>
-        <salla-conditional-offer></salla-conditional-offer>
-        <div class="pt-5 flex flex-col items-start lg:flex-row pb-6 lg:pb-20">
-            <div class="main-content w-full lg:w-[calc(100%-384px)]">
-                {% hook 'cart:items.start' %}
+            {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
+            <nav class="breadcrumbs w-full py-5">
+                <salla-breadcrumb></salla-breadcrumb>
+            </nav>
+            <h1 class="sr-only">{{ trans('blocks.header.cart') }}</h1>
+            <salla-conditional-offer></salla-conditional-offer>
+            <div class="pt-5 flex flex-col items-start lg:flex-row pb-6 lg:pb-20">
+                <div class="main-content w-full">
+                    {% hook 'cart:items.start' %}
 
-                {% for item in cart.items %}
-                    <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ item.id }}">
-                        <section class="cart-item bg-white p-5 xs:p-7 rounded-md mb-5 relative">
-                            <input type="hidden" name="id" value="{{ item.id }}">
-                                <!-- product -->
-                                <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between mb-8 last:mb-0">
-                                    <div class="flex flex-1 rtl:space-x-reverse space-x-4">
-                                        <a href="{{ item.url }}" class="relative overflow-hidden shrink-0">
-                                            {% if loop.first %}
-												<img src="{{ item.product_image }}"
-													alt="{{ item.product_name }}"
-													class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
-											{% else %}
-												<img src="{{ 'images/s-empty.png' | cdn }}"
-													data-src="{{ item.product_image }}"
-													alt="{{ item.product_name }}"
-													class="lazy flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
-											{% endif %}
+                    {% for item in cart.items %}
+                        <form onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ item.id }}">
+                            <section class="cart-item bg-bg-light dark:bg-bg-dark p-5 xs:p-7 rounded-md mb-5 relative">
+                                <input type="hidden" name="id" value="{{ item.id }}">
+                                    <!-- product -->
+                                    <div class="xs:flex items-center rtl:space-x-reverse md:space-x-12  justify-between mb-8 last:mb-0">
+                                        <div class="flex flex-1 justify-center xs:justify-start rtl:space-x-reverse space-x-4">
+                                            <a href="{{ item.url }}" class="relative overflow-hidden shrink-0">
+                                              {% if loop.first %}
+                                                <img 
+                                                    src="{{ (item.product_image ? item.product_image : 'https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp') | cdn }}"
+                                                    alt="{{ item.product_name }}"
+                                                    class="flex-none w-[119px] h-auto border border-gray-200 bg-[#E8EAFC] rounded-md object-center object-cover">
+                                                {% else %}
+                                                <img 
+                                                    src="{{ 'https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp' | cdn }}"
+                                                    data-src="{{ (item.product_image ? item.product_image : 'https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp') | cdn }}"
+                                                    alt="{{ item.product_name }}"
+                                                    class="lazy flex-none w-[119px] h-auto border border-gray-200 bg-[#E8EAFC] rounded-md object-center object-cover">
+                                                {% endif %}
 
-                                            <!-- free product ribbon -->
-                                            <div class="free-ribbon absolute top-[11px] right-[-38px] w-32 bg-red-600 text-white text-xs font-bold text-center py-1 rotate-45 shadow-md {{ item.price.getMoney().amount == 0 ? '' : 'hidden' }}">
-                                                {{ trans('pages.loyalty_program.free_product') }}
+
+                                                <!-- free product ribbon -->
+                                                <div class="free-ribbon absolute top-[11px] right-[-38px] w-32 bg-red-600 text-font-light dark:text-font-dark text-xs font-bold text-center py-1 rotate-45 shadow-md {{ item.price.getMoney().amount == 0 ? '' : 'hidden' }}">
+                                                    {{ trans('pages.loyalty_program.free_product') }}
+                                                </div>
+                                                <!-- end free product ribbon -->
+                                                
+                                            </a>
+                                            <div class="space-y-1 ">
+                                                <h1 class="text-font-light dark:text-font-dark leading-[100%] text-[clamp(0.75rem,0.6735rem+0.3265vw,1rem)]">
+                                                    <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
+                                                </h1>
+
+                                               <div class="flex flex-col-reverse ">
+                                                <span class="text-[clamp(0.75rem,0.6735rem+0.3265vw,.9rem)] text-gray-400 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                <span class="item-price {{ item.has_discount ?  'text-primary' : 'text-primary' }} text-[clamp(0.75rem,0.6735rem+0.3265vw,1rem)]" id="has_discount">{{ item.price|money }}</span>
+                                                
+                                                {% if item.weight_label %}
+                                                <p class="text-[clamp(0.75rem,0.6735rem+0.3265vw,.9rem)] text-primary "> {{ trans('pages.products.weight') }}
+                                                <span>{{ item.weight_label }}</span>
+                                                </p>
+                                                {% endif %}
+                                                 <span class="text-[clamp(0.75rem,0.6735rem+0.3265vw,.9rem)] text-font-secondary line-through item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
+                                                <span class="old-offers flex items-center gap-1 mx-1.5  {{ item.detailed_offers ? 'hidden' : '' }}">
+                                                    <i class="sicon-discount-calculator text-primary offer-icon {{ item.offer?'':'hidden' }}"></i>
+                                                    <span class="text-[clamp(0.75rem,0.6735rem+0.3265vw,.9rem)] text-primary offer-name {{ item.offer ?  '' : 'hidden' }}">{{ item.offer.names }}</span>
+                                                </span>
+                                               </div>
+
+                                                {# Cart Item Offers #}
+                                                <salla-cart-item-offers
+                                                    quantity="{{ item.quantity }}"
+                                                    item-id="{{ item.id }}"
+                                                    product-price="{{ item.product_price }}"
+                                                    offers="{{ item.detailed_offers|json_encode }}"></salla-cart-item-offers>
+                                                {# End Cart Item offers #}
+
                                             </div>
-                                            <!-- end free product ribbon -->
-                                            
-                                        </a>
-                                        <div class="space-y-1">
-                                            <h1 class="text-gray-900 leading-6 text-lg">
-                                                <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
-                                            </h1>
+                                        </div>
 
-                                            <span class="text-sm text-gray-500 line-through item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
-                                            <span class="inline-flex gap-1 leading-4 text-sm text-gray-500 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
-                                            <span class="inline-flex gap-1 leading-4 item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
-                                            
-                                            {% if item.weight_label %}
-                                            <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
-                                             <span>{{ item.weight_label }}</span>
-                                            </p>
+                                        <div class=" py-3 md:p-0 md:border-none mt-5 md:mt-0 flex flex-col-reverse gap-8 justify-between items-center md:items-start">
+                                            {% if item.type == 'donating' %}
+                                                <span></span>
+                                            {% elseif item.is_hidden_quantity %}
+                                                <input type="hidden" value="{{ item.quantity }}" name="quantity" aria-label="Quantity"/>
+                                                <span class="w-10 text-center">{{ item.quantity }}</span>
+                                            {% else %}
+                                                <salla-quantity-input cart-item-id="{{ item.id }}"  max="{{ item.max_quantity }}"
+                                                    class="transtion transition-color duration-300"
+                                                    aria-label="Quantity"
+                                                    value="{{ item.quantity }}" name="quantity">
+                                                </salla-quantity-input>
                                             {% endif %}
-                                            <span class="old-offers flex items-center gap-1 mx-1.5  {{ item.detailed_offers ? 'hidden' : '' }}">
-                                                <i class="sicon-discount-calculator text-gray-500 offer-icon {{ item.offer?'':'hidden' }}"></i>
-                                                <span class="text-sm text-gray-500 offer-name {{ item.offer ?  '' : 'hidden' }}">{{ item.offer.names }}</span>
-                                            </span>
-                                            {# Cart Item Offers #}
-                                            <salla-cart-item-offers
-                                                quantity="{{ item.quantity }}"
-                                                item-id="{{ item.id }}"
-                                                product-price="{{ item.product_price }}"
-                                                offers="{{ item.detailed_offers|json_encode }}"></salla-cart-item-offers>
-                                            {# End Cart Item offers #}
-
+                                            {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
+                                            <p class="text-primary flex-none font-bold text-sm rtl:md:pl-12 ltr:md:pr-12">
+                                                <span>{{ trans('pages.cart.total') }}:</span>
+                                                <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
+                                            </p>
                                         </div>
                                     </div>
 
-                                    <div class="border-t border-b border-gray-200 py-3 md:p-0 md:border-none mt-5 md:mt-0 flex gap-8 justify-between items-center md:items-start">
-                                        {% if item.type == 'donating' %}
-                                            <span></span>
-                                        {% elseif item.is_hidden_quantity %}
-                                            <input type="hidden" value="{{ item.quantity }}" name="quantity" aria-label="Quantity"/>
-                                            <span class="w-10 text-center">{{ item.quantity }}</span>
-                                        {% else %}
-                                            <salla-quantity-input cart-item-id="{{ item.id }}"  max="{{ item.max_quantity }}"
-                                                class="transtion transition-color duration-300"
-												aria-label="Quantity"
-                                                value="{{ item.quantity }}" name="quantity">
-                                            </salla-quantity-input>
-                                        {% endif %}
-                                        {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
-                                        <p class="text-primary flex-none font-bold text-sm rtl:md:pl-12 ltr:md:pr-12">
-                                            <span>{{ trans('pages.cart.total') }}:</span>
-                                            <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
-                                        </p>
-                                    </div>
-                                </div>
-
-                                {% include 'pages.partials.product.options' with {product:item} %}
-                            <span class="absolute top-1.5 rtl:left-1.5 ltr:right-1.5 rtl:xs:left-5 ltr:xs:right-5 xs:top-5">
-                                <salla-button type="button" shape="icon" size="small" color="danger" class="btn--delete" aria-label="Remove from the cart"
-                                        onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
-                                    <i class="sicon-cancel"></i>
-                                </salla-button>
-                            </span>
-                        </section>
-                    </form>
-                {% else %}
-                    <div class="no-content-placeholder">
-                        <i class="sicon-shopping-bag icon"></i>
-                        <p>{{ trans('pages.cart.empty_cart') }}</p>
-                        <a href="{{ link('/') }}"
-                           class="btn btn--outline-primary btn--rounded-full">{{ trans('common.elements.back_home') }}</a>
-                    </div>
-                {% endfor %}
-
-                {% if cart.options|length %}
-                  <div class="cart-options">
-                    {% for product_option in cart.options %}
-                      <form class="first:pt-5 relative" onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ product_option.id }}">
-                        <input type="hidden" name="id" value="{{ product_option.id }}">
-                        <input type="hidden" name="quantity" value="{{ product_option.quantity }}">
-                        {% include 'pages.partials.product.options' with { product: product_option } %}
-                      </form>                   
-                    {% endfor %}
-                  </div>
-                {% endif %}
-                    
-                <salla-offer></salla-offer>
-                
-                {% hook 'cart:items.end' %}
-            </div>
-
-            {% hook 'cart:summary.start' %}
-
-            <!-- sidebar -->
-            {% if cart.items|length %}
-                <div class="sticky top-24 w-full lg:w-96 rtl:lg:mr-8 ltr:lg:ml-8">
-                    <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative {{ cart.free_shipping_bar ? '' : 'hidden' }}" id="free-shipping">
-                        <div class="flex rtl:space-x-reverse space-x-3 items-center">
-                            <i class="bg-primary text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
-                            {% set is_free=cart.free_shipping_bar.has_free_shipping %}
-                            <div class="flex-1">
-                                <h4 class="shipping-item font-bold text-sm mb-1.5">{{ trans('pages.cart.free_shipping') }}</h4>
-                                <p class="shipping-item text-sm font- text-gray-500">
-                                        <span id="free-shipping-msg">{{ (is_free
-                                            ?trans('pages.cart.has_free_shipping')
-                                            :trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}))
-                                            | raw }}</span>
-                                    <span class="emoji {{ is_free?'':'hidden' }}" id="free-shipping-applied">🎉</span>
-                                </p>
-                            </div>
-                        </div>
-                        <div class="mt-8 bg-border-color rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
-                            <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end"
-                                 style="width:{{ cart.free_shipping_bar.percent }}%">
-                                <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
-                            </div>
-                        </div>
-                    </div>
-                    {% if loyalty and user.loyalty_points %}
-                        <div class="shadow-default mb-5 rounded-md p-3 xs:p-7 bg-white">
-                            <salla-loyalty customer-points='{{ user.loyalty_points }}'
-                                prize-points='{{ loyalty.prize.points }}'
-                                prize-title='{{ loyalty.prize.title }}'
-                            ></salla-loyalty>
-                        </div>
-                    {% endif %}
-
-                    <div id="cart-gifting" class="shadow-default bg-white xs:p-2 rounded-md mb-5 relative  {{gift.enabled ? '' : 'hidden' }}">
-                        <salla-gifting id="salla-gifting" class="mt-5" widget-title="{{ trans("pages.cart.gift_widget_title") }}"  widget-subtitle="{{ gift.text }}" class="mt-5" {{gift.type}}-products  vertical></salla-gifting>
-                    </div>
-
-                    <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
-                        <h2 class="font-bold text-sm mb-5">{{ trans('pages.cart.summary') }}</h2>
-
-                        <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500"> {{ trans(cart.tax_amount ? "pages.cart.items_total_without_tax" : "pages.cart.items_total") }} </span>
-                            <b id="sub-total">{{ cart.sub_total|money }}</b>
-                        </div>
-
-                        {% if cart.options|length %}
-                          <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500">{{ trans('pages.cart.order_options_total') }}</span>
-                            <b id="cart-options-total">{{ cart.options_total|money }}</b>
-                          </div>
-                        {% endif %}
-
-                        <div id="shipping-cost"
-                             class="flex justify-between text-sm mb-5 {{ cart.has_shipping ? '' : 'hidden' }}">
-                            <span class="text-gray-500">{{ trans('pages.cart.shipping_cost') }}</span>
-                            <b>{{ cart.real_shipping_cost|money }}</b>
-                        </div>
-
-                        {# todo :: use form #}
-                        {% if store.settings.cart.apply_coupon_enabled %}
-                            <div class="border-t border-gray-200 border-b py-5 mb-5">
-                                <label for="coupon"
-                                       class="block text-sm ">{{ trans('pages.cart.have_coupon') }}</label>
-                                <div class="mt-2.5 relative">
-                                    <input placeholder="{{ trans('pages.cart.coupon_placeholder') }}"
-                                            {{ cart.coupon ? 'disabled':'' }}
-                                           class="rtl:pl-24 ltr:pr-24 form-input" value="{{ cart.coupon }}" id="coupon-input"
-                                           name="coupon"
-										   aria-label="Apply coupon"
-                                           type="text">
-
-                                    <salla-button
-                                            class="btn--coupon {{ cart.coupon?'has-coupon btn--danger':'has-not-coupon btn--default' }}"
-                                            loader-position="center" id="coupon-btn">
-                                        <span class="coupon-text">{{ trans('pages.cart.save_coupon') }}</span>
-                                        <i class="sicon-cancel icon text-xl w-8"></i>
+                                    {% include 'pages.partials.product.options' with {product:item} %}
+                                <span class="absolute top-1.5 rtl:left-1.5 ltr:right-1.5 rtl:xs:left-5 ltr:xs:right-5 xs:top-5">
+                                    <salla-button type="button" shape="icon" size="small" color="" class="btn--delete" aria-label="Remove from the cart"
+                                            onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
+                                        <i class="sicon-cancel text-base text-font-light dark:text-font-dark"></i>
                                     </salla-button>
-                                </div>
-                                <span class="text-xs text-red-700" id="coupon-error"></span>
-                            </div>
-                        {% endif %}
-
-                        <!-- coupon discount -->
-                        <div id="total-discount" class="flex justify-between text-sm {{ cart.total_discount ? '' : 'hidden' }}">
-                            <span class="text-gray-500 block  h-10">{{ trans('pages.cart.discount') }}</span>
-                            <b>- {{ cart.total_discount|money }}</b>
+                                </span>
+                            </section>
+                        </form>
+                    {% else %}
+                        <div class="text-center">
+                        <div class="max-w-[245px] md:max-w-[539.5px] mx-auto mb-5 lg:mb-10">
+                         {% include 'pages.partials.emptycarticon.twig' %}
                         </div>
-
-                        {% if cart.tax_amount %}
-                            <div class="flex justify-between text-sm mb-5">
-                                <span class="text-gray-500">{{ trans('pages.cart.VAT_tax_amount') }}</span>
-                                <b id="tax-amount">{{ cart.tax_amount|money }}</b>
-                            </div>
-                        {% endif %}
-
-                        <div class="flex justify-between text-lg mb-5">
-                            <span class="text-gray-500">{{ trans('pages.cart.final_total') }}</span>
-                            <b data-cart-total>{{ cart.total|money }}</b>
+                        <p class="mt-10 text-[clamp(1.25rem,0.8673rem+1.6327vw,2.5rem)]  text-font-light dark:text-font-dark">{{ trans('pages.cart.emptycart') }}</p>
+                        <a href="{{ link('/') }}"
+                           class="mt-8 text-[clamp(0.75rem,0.6735rem+0.3265vw,1rem)] 
+                           text-font-dark py-4 block mx-auto w-fit px-5 min-w-[180px] md:min-w-[328px] bg-primary hover:text-primary hover:bg-font-dark transition-all duration-300 border border-primary rounded-[10px]">{{ trans('pages.cart.emptycarttext') }}</a>
                         </div>
+                    {% endfor %}
 
-                        <div class="cart-submit-wrap">
-                            {% hook 'cart:submit.start' %}
-                            <salla-button id="cart-submit" loader-position="center" width="wide">
-                                {{ trans('pages.cart.complete_order') }}
-                            </salla-button>
-                            {% hook 'cart:submit.end' %}
-                        </div>
-                        {% hook 'cart:summary.end' %}
+                    {% if cart.options|length %}
+                    <div class="cart-options">
+                        {% for product_option in cart.options %}
+                        <form class="first:pt-5 relative" onchange="salla.form.onChange('cart.updateItem', event)" id="item-{{ product_option.id }}">
+                            <input type="hidden" name="id" value="{{ product_option.id }}">
+                            <input type="hidden" name="quantity" value="{{ product_option.quantity }}">
+                            {% include 'pages.partials.product.options' with { product: product_option } %}
+                        </form>                   
+                        {% endfor %}
                     </div>
-
-                     <!-- Tiered Offer Component -->
-                    <salla-tiered-offer></salla-tiered-offer>
+                    {% endif %}
+                        
+                    <salla-offer></salla-offer>
+                    
+                    {% hook 'cart:items.end' %}
                 </div>
-            {% endif %}
+
+                {% hook 'cart:summary.start' %}
+
+                <!-- sidebar -->
+                {% if cart.items|length %}
+                    <div class="sticky top-24 w-full lg:max-w-[489px] rtl:lg:mr-8 ltr:lg:ml-8">
+                        <div class="shadow-default bg-bg-light dark:bg-bg-dark p-5 xs:p-7 rounded-md mb-5 relative {{ cart.free_shipping_bar ? '' : 'hidden' }}" id="free-shipping">
+                            <div class="flex rtl:space-x-reverse space-x-3 items-center">
+                                <i class="bg-primary text-font-light dark:text-font-dark rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
+                                {% set is_free=cart.free_shipping_bar.has_free_shipping %}
+                                <div class="flex-1">
+                                    <h4 class="shipping-item font-bold text-sm mb-1.5">{{ trans('pages.cart.free_shipping') }}</h4>
+                                    <p class="shipping-item text-sm font- text-gray-500">
+                                            <span id="free-shipping-msg">{{ (is_free
+                                                ?trans('pages.cart.has_free_shipping')
+                                                :trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}))
+                                                | raw }}</span>
+                                        <span class="emoji {{ is_free?'':'hidden' }}" id="free-shipping-applied">🎉</span>
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mt-8 bg-border-color rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
+                                <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end"
+                                    style="width:{{ cart.free_shipping_bar.percent }}%">
+                                    <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
+                                </div>
+                            </div>
+                        </div>
+                        {% if loyalty and user.loyalty_points %}
+                            <div class="shadow-default mb-5 rounded-md p-3 xs:p-7 bg-bg-light dark:bg-bg-dark">
+                                <salla-loyalty customer-points='{{ user.loyalty_points }}'
+                                    prize-points='{{ loyalty.prize.points }}'
+                                    prize-title='{{ loyalty.prize.title }}'
+                                ></salla-loyalty>
+                            </div>
+                        {% endif %}
+
+                        <div id="cart-gifting" class="shadow-default bg-bg-light dark:bg-bg-dark xs:p-2 rounded-md mb-5 relative  {{gift.enabled ? '' : 'hidden' }}">
+                            <salla-gifting id="salla-gifting" class="mt-5" widget-title="{{ trans("pages.cart.gift_widget_title") }}"  widget-subtitle="{{ gift.text }}" class="mt-5" {{gift.type}}-products  vertical></salla-gifting>
+                        </div>
+
+                        <div class="bg-bg-light p-5 dark:bg-bg-dark rounded-md mb-5 relative transition-height duration-1000">
+                            <h2 class="text-primary font-bold text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] mb-5">{{ trans('pages.cart.summary') }}</h2>
+
+                            <div class="flex justify-between text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] mb-5">
+                                <span class="text-primary"> {{ trans(cart.tax_amount ? "pages.cart.items_total_without_tax" : "pages.cart.items_total") }} </span>
+                                <b id="sub-total" class="text-primary">{{ cart.sub_total|money }}</b>
+                            </div>
+
+
+                            {% if cart.options|length %}
+                            <div class="flex justify-between text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] mb-5">
+                                <span class="text-primary">{{ trans('pages.cart.order_options_total') }}</span>
+                                <b id="cart-options-total">{{ cart.options_total|money }}</b>
+                            </div>
+                            {% endif %}
+                            <div 
+                                class=" py-3  
+                                    text-[clamp(1rem,0.9235rem+0.3265vw,1.25rem)] 
+                                    leading-[30px] font-normal rounded-[8px] w-full mt-5 block text-center
+                                    transition-all duration-300 bg-primary text-font-dark dark:text-font-light">
+                                {{ trans('pages.cart.total_shipping') }}
+                            </div>
+                            <div id="shipping-cost"
+                                class="flex justify-between text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] mb-5 {{ cart.has_shipping ? '' : 'hidden' }}">
+                                <span class="text-primary">{{ trans('pages.cart.shipping_cost') }}</span>
+                                <b>{{ cart.real_shipping_cost|money }}</b>
+                            </div>
+
+                            {# todo :: use form #}
+                            {# {% if store.settings.cart.apply_coupon_enabled %} #}
+                                <div class="  py-5 mb-5">
+                                    <label for="coupon"
+                                        class="block text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] text-primary">{{ trans('pages.cart.have_coupon') }}</label>
+                                    <div class="mt-2.5 relative">
+                                        <input placeholder="{{ trans('pages.cart.coupon_placeholder') }}"
+                                                {{ cart.coupon ? 'disabled':'' }}
+                                            class="rtl:pl-24 ltr:pr-24 form-input" value="{{ cart.coupon }}" id="coupon-input"
+                                            name="coupon"
+                                            aria-label="Apply coupon"
+                                            type="text">
+
+                                        <salla-button
+                                                class="btn--coupon {{ cart.coupon?'has-coupon btn--danger':'has-not-coupon btn--default' }}"
+                                                loader-position="center" id="coupon-btn">
+                                            <span class="coupon-text">{{ trans('pages.cart.save_coupon') }}</span>
+                                            <i class="sicon-cancel icon text-xl w-8 text-font-light dark:text-font-dark"></i>
+                                        </salla-button>
+                                    </div>
+                                    <span class="text-xs text-red-700" id="coupon-error"></span>
+                                </div>
+                            {# {% endif %} #}
+
+                            <!-- coupon discount -->
+                            <div id="total-discount" class="flex justify-between text-sm {{ cart.total_discount ? '' : 'hidden' }}">
+                                <span class="text-primary block  h-10">{{ trans('pages.cart.discount') }}</span>
+                                <b>- {{ cart.total_discount|money }}</b>
+                            </div>
+
+                            {% if cart.tax_amount %}
+                                <div class="flex justify-between text-sm mb-5">
+                                    <span class="text-primary">{{ trans('pages.cart.VAT_tax_amount') }}</span>
+                                    <b id="tax-amount">{{ cart.tax_amount|money }}</b>
+                                </div>
+                            {% endif %}
+
+                            <div class="flex justify-between text-lg mb-5">
+                                <span class="text-primary">{{ trans('pages.cart.final_total') }}</span>
+                                <b data-cart-total class="font-bold leading-[21px] text-primary text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)]">{{ cart.total|money }}</b>
+                            </div>
+
+                            <div class="cart-submit-wrap">
+                                {% hook 'cart:submit.start' %}
+                                <salla-button id="cart-submit" class="flex items-center justify-center gap-2" loader-position="center" width="wide">
+                                    <i class="sicon-full-wallet"></i> {{ trans('pages.cart.complete_order') }}
+
+                                </salla-button>
+                                {% hook 'cart:submit.end' %}
+                            </div>
+                            <a href="{{ store.url ~ '/offers' }}"
+                                class="cart-icon border border-primary text-primary py-3 bg-transparent 
+                                    text-[clamp(1rem,0.9235rem+0.3265vw,1.25rem)] 
+                                    leading-[30px] font-normal rounded-[8px] w-full mt-5  text-center
+                                    transition-all duration-300 hover:bg-primary hover:text-font-dark  flex items-center justify-center gap-2">
+                                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 1H1.26835C1.74213 1 1.97943 1 2.17267 1.08548C2.34304 1.16084 2.48871 1.28218 2.59375 1.43604C2.71269 1.61026 2.75564 1.8429 2.84137 2.30727L5.00004 14L15.4218 14C15.875 14 16.1023 14 16.29 13.9199C16.4559 13.8492 16.5989 13.7346 16.7051 13.5889C16.8252 13.4242 16.8761 13.2037 16.9777 12.7631L16.9785 12.76L18.5477 5.95996L18.5481 5.95854C18.7023 5.29016 18.7796 4.95515 18.6947 4.69238C18.6202 4.46182 18.4635 4.26634 18.2556 4.14192C18.0184 4 17.6758 4 16.9887 4H3.5M16 19C15.4477 19 15 18.5523 15 18C15 17.4477 15.4477 17 16 17C16.5523 17 17 17.4477 17 18C17 18.5523 16.5523 19 16 19ZM6 19C5.44772 19 5 18.5523 5 18C5 17.4477 5.44772 17 6 17C6.55228 17 7 17.4477 7 18C7 18.5523 6.55228 19 6 19Z" stroke="var(--color-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+
+                                {{ trans('pages.cart.go_shoping') }}
+                            </a>
+
+                            {% hook 'cart:summary.end' %}
+                        </div>
+
+                        <!-- Tiered Offer Component -->
+                        <salla-tiered-offer></salla-tiered-offer>
+                    </div>
+                {% endif %}
         </div>
     </div>
+</div>
+<style>
+  @media (max-width: 768px) {
+    .cart_banner {
+      background: url({{ theme.settings.get("banner_bg_img") }}) center center / 100% 100% no-repeat !important;
+    }
+  }
+  .cart-icon svg path {
+  stroke: var(--color-primary);
+  transition: stroke 0.3s ease;
+}
+
+.cart-icon:hover svg path {
+  stroke: #fff; 
+}
+</style>
+
 {% endblock %}
 
 {% block scripts %}
