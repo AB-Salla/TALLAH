@@ -1,23 +1,16 @@
-
 class WishlistCard extends HTMLElement {
-  constructor() {
-    super();
-  }
-
   connectedCallback() {
     // Parse product data
     this.product = this.product || JSON.parse(this.getAttribute("product"));
-    console.log(this.product);
-    
+
     if (window.app?.status === "ready") {
       this.onReady();
-
     } else {
       document.addEventListener("theme::ready", () => this.onReady());
     }
   }
 
- async onReady() {
+  async onReady() {
     this.fitImageHeight = salla.config.get("store.settings.product.fit_type");
     this.placeholder = salla.url.asset(
       salla.config.get("theme.settings.placeholder")
@@ -55,13 +48,94 @@ class WishlistCard extends HTMLElement {
       strokeDashOffsetValue = 100 - roundPercent;
     bar.style.strokeDashoffset = strokeDashOffsetValue;
   }
-
+  getLocalizedMessage(key) {
+    const lang = document.documentElement.lang || "ar";
+    const messages = {
+      ar: {
+        delete: "حذف",
+        similar_products: "المنتجات المتشابهة",
+      },
+      en: {
+        delete: "Delete",
+        similar_products: "Similar Products",
+      },
+    };
+    return messages[lang]?.[key] || messages["ar"][key] || key;
+  }
   formatDate(date) {
     let d = new Date(date);
     return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   }
 
-  async getProductImage(productId) {
+  getProductBadge() {
+    if (this.product.promotion_title) {
+      return `<div class="s-product-card-promotion-title  ">${this.product.promotion_title}</div>`;
+    }
+    if (this.showQuantity && this.product?.quantity) {
+      return `<div
+        class="s-product-card-quantity">${this.remained} ${salla.helpers.number(
+        this.product?.quantity
+      )}</div>`;
+    }
+    if (this.showQuantity && this.product?.is_out_of_stock) {
+      return `<div class="s-product-card-out-badge">${this.outOfStock}</div>`;
+    }
+    return "";
+  }
+
+  getPriceFormat(price) {
+    if (!price || price == 0) {
+      return salla.config.get("store.settings.product.show_price_as_dash")
+        ? "-"
+        : "";
+    }
+
+    return salla.money(price);
+  }
+
+  getProductPrice() {
+    let price = "";
+    if (this.product.is_on_sale) {
+      price = `<div class="s-product-card-sale-price">
+                <h4>${this.getPriceFormat(this.product.sale_price)}</h4>
+                <span class="hidden">${this.getPriceFormat(
+                  this.product?.regular_price
+                )}</span>
+              </div>`;
+    } else if (this.product.starting_price) {
+      price = `<div class="s-product-card-starting-price">
+                  <p>${this.startingPrice}</p>
+                  <h4> ${this.getPriceFormat(
+                    this.product?.starting_price
+                  )} </h4>
+              </div>`;
+    } else {
+      price = `<h4 class="s-product-card-price">${this.getPriceFormat(
+        this.product?.price
+      )}</h4>`;
+    }
+
+    return price;
+  }
+
+  getAddButtonLabel() {
+    if (this.product.status === "sale" && this.product.type === "booking") {
+      return salla.lang.get("pages.cart.book_now");
+    }
+
+    if (this.product.status === "sale") {
+      return salla.lang.get("pages.cart.add_to_cart");
+    }
+
+    if (this.product.type !== "donating") {
+      return salla.lang.get("pages.products.out_of_stock");
+    }
+
+    // donating
+    return salla.lang.get("pages.products.donation_exceed");
+  }
+
+    async getProductImage(productId) {
   const response = await salla.product.getDetails(productId, ["images", "options"]);
 
   this.images = response?.data?.images || [];
@@ -92,88 +166,6 @@ class WishlistCard extends HTMLElement {
   console.log("📏 Single Options:", this.singleOptions);
   console.log("🖼 Thumbnail Options:", this.thumbnailOptions);
 }
-
-
-  getProductBadge() {
-    if (this.product?.preorder?.label) {
-      return `<div class="s-product-card-promotion-title">${this.product.preorder.label}</div>`;
-    }
-
-    if (this.product.promotion_title) {
-      return `<div class="s-product-card-promotion-title">${this.product.promotion_title}</div>`;
-    }
-    if (this.showQuantity && this.product?.quantity) {
-      return `<div
-        class="s-product-card-quantity">${this.remained} ${salla.helpers.number(
-        this.product?.quantity
-      )}</div>`;
-    }
-    if (this.showQuantity && this.product?.is_out_of_stock) {
-      return `<div class="s-product-card-out-badge">${this.outOfStock}</div>`;
-    }
-    return "";
-  }
-
-  getPriceFormat(price) {
-    if (!price || price == 0) {
-      return salla.config.get("store.settings.product.show_price_as_dash")
-        ? "-"
-        : "";
-    }
-
-    return salla.money(price);
-  }
-
-  getProductPrice() {
-    let price = "";
-    if (this.product.is_on_sale) {
-      price = `<div class="s-product-card-sale-price">
-                <h4 class="text-[clamp(1rem,0.9282rem+0.3218vw,1.25rem)] !text-font">${this.getPriceFormat(
-                  this.product.sale_price
-                )}</h4>
-                <span class=" text-[clamp(.8rem,0.9282rem+0.3218vw,1rem)]] !text-graytext">${this.getPriceFormat(
-                  this.product?.regular_price
-                )}</span>
-              </div>`;
-    } else if (this.product.starting_price) {
-      price = `<div class="s-product-card-starting-price">
-                  <p class="text-[clamp(1rem,0.9282rem+0.3218vw,1.25rem)] !text-font">${
-                    this.startingPrice
-                  }</p>
-                  <h4 class="text-[clamp(1rem,0.9282rem+0.3218vw,1.25rem)] !text-font"> ${this.getPriceFormat(
-                    this.product?.starting_price
-                  )} </h4>
-              </div>`;
-    } else {
-      price = `<h4 class="s-product-card-price text-[clamp(1rem,0.9282rem+0.3218vw,1.25rem)] !text-font">${this.getPriceFormat(
-        this.product?.price
-      )}</h4>`;
-    }
-
-    return price;
-  }
-
-  getAddButtonLabel() {
-    if (this.product.has_preorder_campaign) {
-      return salla.lang.get("pages.products.pre_order_now");
-    }
-
-    if (this.product.status === "sale" && this.product.type === "booking") {
-      return salla.lang.get("pages.cart.book_now");
-    }
-
-    if (this.product.status === "sale") {
-      return salla.lang.get("pages.cart.add_to_cart");
-    }
-
-    if (this.product.type !== "donating") {
-      return salla.lang.get("pages.products.out_of_stock");
-    }
-
-    // donating
-    return salla.lang.get("pages.products.donation_exceed");
-  }
-
   getProps() {
     /**
      *  Horizontal card.
@@ -211,17 +203,8 @@ class WishlistCard extends HTMLElement {
     this.showQuantity = this.hasAttribute("showQuantity");
   }
 
-  escapeHTML(str = "") {
-    return String(str)
-      .replace(/&/g, "&amp;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#39;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;");
-  }
-
   render() {
-      const MAX_VISIBLE = 3;
+     const MAX_VISIBLE = 3;
 
 function renderOption(option) {
   const items = option.details || [];
@@ -285,7 +268,7 @@ function renderOption(option) {
   return "";
 }
     this.classList.add("s-product-card-entry");
-    this.setAttribute("id", this.product.id);
+    this.setAttribute("id", `wishlist-product-${this.product.id}`);
     !this.horizontal && !this.fullImage && !this.minimal
       ? this.classList.add("s-product-card-vertical")
       : "";
@@ -308,7 +291,7 @@ function renderOption(option) {
       salla.storage
         .get("salla::wishlist", [])
         .includes(Number(this.product.id));
-    this.innerHTML = `
+     this.innerHTML = `
         <div class="${
           !this.fullImage ? "s-product-card-image" : "s-product-card-image-full"
         }">
@@ -364,9 +347,31 @@ function renderOption(option) {
                     data-id="${this.product.id}">
                     <i class="sicon-eye"></i>
                 </salla-button>
-                <salla-button loader-position="center" shape="icon" size="small" color="danger" class="btn--delete" onclick="salla.wishlist.remove(${this.product.id})">
-            <i class="sicon-cancel"></i>
-          </salla-button>
+                <salla-button
+                  shape="icon"
+                  fill="outline"
+                  color="light"
+                  name="product-name-${this.product.id}"
+                  aria-label="Add or remove to wishlist"
+                  class="s-product-card-wishlist-btn animated ${
+                    this.isInWishlist
+                      ? "s-product-card-wishlist-added pulse-anime"
+                      : "not-added un-favorited"
+                  }"
+                  onclick="salla.wishlist.toggle(${this.product.id})"
+                  data-id="${this.product.id}">
+                              <span class="relative">
+                      <!-- Filled Heart -->
+                      <svg class="filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                          <path d="M305 151.1L320 171.8L335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1L576 231.7C576 343.9 436.1 474.2 363.1 529.9C350.7 539.3 335.5 544 320 544C304.5 544 289.2 539.4 276.9 529.9C203.9 474.2 64 343.9 64 231.7L64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1z"/>
+                      </svg>
+
+                      <!-- Empty Heart -->
+                      <svg class="not_filled" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 640">
+                          <path d="M442.9 144C415.6 144 389.9 157.1 373.9 179.2L339.5 226.8C335 233 327.8 236.7 320.1 236.7C312.4 236.7 305.2 233 300.7 226.8L266.3 179.2C250.3 157.1 224.6 144 197.3 144C150.3 144 112.2 182.1 112.2 229.1C112.2 279 144.2 327.5 180.3 371.4C221.4 421.4 271.7 465.4 306.2 491.7C309.4 494.1 314.1 495.9 320.2 495.9C326.3 495.9 331 494.1 334.2 491.7C368.7 465.4 419 421.3 460.1 371.4C496.3 327.5 528.2 279 528.2 229.1C528.2 182.1 490.1 144 443.1 144zM335 151.1C360 116.5 400.2 96 442.9 96C516.4 96 576 155.6 576 229.1C576 297.7 533.1 358 496.9 401.9C452.8 455.5 399.6 502 363.1 529.8C350.8 539.2 335.6 543.9 320 543.9C304.4 543.9 289.2 539.2 276.9 529.8C240.4 502 187.2 455.5 143.1 402C106.9 358.1 64 297.7 64 229.1C64 155.6 123.6 96 197.1 96C239.8 96 280 116.5 305 151.1L320 171.8L335 151.1z"/>
+                      </svg>
+                  </span>
+                </salla-button>
 
                
           </div>
@@ -595,7 +600,6 @@ function renderOption(option) {
           }
         </div>
       `;
-
     this.querySelectorAll('[name="donating_amount"]').forEach((element) => {
       element.addEventListener("input", (e) => {
         e.target
@@ -610,7 +614,6 @@ function renderOption(option) {
     if (this.product?.quantity && this.isSpecial) {
       this.initCircleBar();
     }
-   
 // ==========================================
 // المتغيرات لتخزين الخيارات المختارة
 const selectedOptions = {};
@@ -725,7 +728,8 @@ addBtn?.addEventListener("click", async () => {
   }
 });
 
+
   }
 }
 
-customElements.define('custom-wishlist-card', WishlistCard);
+customElements.define("custom-wishlist-card", WishlistCard);
