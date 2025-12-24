@@ -27164,18 +27164,18 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid var(--color-background);
 }
 #wishlist .s-button-danger:hover {
-  background-color: var(--color-background);
+  background-color: #414042;
+  background-color: var(--color-primary);
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
-#wishlist .s-button-danger:hover .s-button-text .filled {
-  color: #414042 !important;
-  color: var(--color-primary) !important;
+#wishlist .s-button-danger:hover .s-button-text i {
+  color: var(--color-background) !important;
 }
 #wishlist .s-button-danger .s-button-text {
   font-size: 16px;
   font-weight: 700;
 }
-#wishlist .s-button-danger .s-button-text .filled {
+#wishlist .s-button-danger .s-button-text i {
   color: #414042 !important;
   color: var(--color-primary) !important;
 }

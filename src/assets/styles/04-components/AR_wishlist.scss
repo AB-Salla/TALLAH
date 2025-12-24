@@ -11,17 +11,17 @@
     border: 1px solid var(--color-background);
     
     &:hover{
-      background-color: var(--color-background);
+      background-color: var(--color-primary);
       box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
       .s-button-text{
-      .filled{
-        color: var(--color-primary) !important;
+      i{
+        color: var(--color-background) !important;
       }}
     }
     .s-button-text{
       font-size: 16px;
       font-weight: 700;
-      .filled{
+      i{
         color: var(--color-primary) !important;
       }
     }
