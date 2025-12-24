@@ -305,7 +305,87 @@
       "required": false,
       "value": true,
       "selected": false
+    }, 
+     {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "اضافة صورة في صفحة المنتج",
+      "description": null,
+      "id": "img_in_single",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
     },
+    {
+      "id": "single_drop",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "أختر المنتج الذي تريد اظهار الصورة بداخلة    ",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [],
+      "options": [],
+      "source": "products",
+      "multichoice": true,
+      "searchable": true,
+      "required": true,
+      "value": [],
+      "minLength": "1",
+      "minimum": "1",
+      "maximum": "4",
+      "maxLength": "4",
+      "conditions": [
+        {
+          "id": "img_in_single",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+      {
+      "id": "image_collection",
+      "type": "collection",
+      "format": "collection",
+      "label": "معرض الصور في صفحة المنتج",
+      "description": null,
+      "labelHTML": null,
+      "item_label": "صورة",
+      "icon": "sicon-list-add",
+      "fields": [
+            {
+      "id": "image_collection.img_single",
+      "type": "string",
+      "format": "image",
+      "label": "صورة",
+      "description": null,
+      "labelHTML": null,
+      "placeholder": "e.g. https://hostname.com/image.png",
+      "icon": "sicon-image",
+      "value": "https://cdn.files.salla.network/homepage/2070588102/1b6ef42c-f853-49f6-a3bf-56f3391a5c08.webp",
+      "required": false,
+       "conditions": [
+        {
+          "id": "img_in_single",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    }
+      ],
+      "value": [],
+      "minLength": 1,
+      "maxLength": "4",
+      "conditions": [
+        {
+          "id": "features_switch",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
