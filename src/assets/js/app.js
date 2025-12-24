@@ -343,7 +343,8 @@ const items = cart.items;
   .map((item) => {
 
     const hiddenOptions = buildHiddenOptionsInputs(item.details);
-
+    console.log(hiddenOptions,"hiddenOptionshiddenOptionshiddenOptionshiddenOptionshiddenOptions");
+    
     const item_url =
       item.product_url || salla.url.get("*/p" + item.product_id);
 
@@ -353,7 +354,7 @@ const items = cart.items;
 
     return `
       <form onchange="salla.form.onChange('cart.updateItem', event)"
-            id="item-${item.id}" no-validate>
+            id="item-${item.id}" novalidate>
 
         <input type="hidden" name="id" value="${item.id}">
         ${hiddenOptions}
