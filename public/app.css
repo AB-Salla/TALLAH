@@ -1971,6 +1971,17 @@ select{
     background-color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
 }
+.bg-gradient-to-b{
+    background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
+}
+.from-black\/70{
+    --tw-gradient-from: rgba(0, 0, 0, 0.7) var(--tw-gradient-from-position);
+    --tw-gradient-to: rgba(0, 0, 0, 0) var(--tw-gradient-to-position);
+    --tw-gradient-stops: var(--tw-gradient-from), var(--tw-gradient-to);
+}
+.to-transparent{
+    --tw-gradient-to: transparent var(--tw-gradient-to-position);
+}
 .bg-cover{
     background-size: cover;
 }
@@ -2112,10 +2123,6 @@ select{
 .py-8{
     padding-top: 2rem;
     padding-bottom: 2rem;
-}
-.px-14{
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
 }
 .\!pb-9{
     padding-bottom: 2.25rem !important;
@@ -21299,6 +21306,9 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   z-index: 29;
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
   transform: translate3d(0, -100%, 0);
+  background: rgba(0, 0, 0, 0.2666666667);
+  -webkit-backdrop-filter: blur(4px);
+          backdrop-filter: blur(4px);
 }
 .main-nav-container.fixed-pinned .navbar-brand img {
   max-height: 40px;
@@ -27964,6 +27974,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 4rem;
         padding-right: 4rem;
     }
+    .md\:px-4{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
     .md\:px-5{
         padding-left: 1.25rem;
         padding-right: 1.25rem;
@@ -27987,10 +28001,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-6{
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
-    }
-    .md\:px-4{
-        padding-left: 1rem;
-        padding-right: 1rem;
     }
     .md\:pb-16{
         padding-bottom: 4rem;

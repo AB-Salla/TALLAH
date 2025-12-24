@@ -1911,10 +1911,10 @@
             "key": "bc3ece68-4c35-44a0-829d-696d08e0e842",
             "title": {
                 "en": "Hero section - Arabian",
-                "ar": "بانر رئيسي - عربي"
+                "ar": "بانر رئيسي (متحرك) - عربي"
             },
             "icon": "sicon-store",
-            "path": "home.AR-Hero-section",
+            "path": "home.AR-Hero-section (Slider)",
             "fields": [
                 {
                     "id": "blocktitle_color",
