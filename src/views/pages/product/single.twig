@@ -647,7 +647,7 @@
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 container mb-10">
+    <div class="product-image-gallery  gap-4 ms-4 md:mx-16  mb-10">
         <salla-slider
             id="product-gallery-{{ product.id }}"
             type="carousel"
@@ -667,7 +667,7 @@
                 {% for image_item in images %}
                     {% if image_item['img_single'] is defined and image_item['img_single'] %}
                         <div class="gallery-item !h-[374px]">
-                            <img src="{{ image_item['img_single'] }}" loading="eager" alt="{{ product.name }}" class="w-full h-full rounded-3xl object-cover">
+                            <img src="{{ image_item['img_single'] }}" loading="eager" alt="{{ product.name }}" class="w-full h-full  object-cover">
                         </div>
                     {% endif %}
                 {% endfor %}

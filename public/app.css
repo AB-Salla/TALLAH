@@ -1056,6 +1056,10 @@ select{
     margin-left: auto;
     margin-right: auto;
 }
+.mx-16{
+    margin-left: 4rem;
+    margin-right: 4rem;
+}
 .\!mb-0{
     margin-bottom: 0px !important;
 }
@@ -1154,6 +1158,9 @@ select{
 }
 .mt-auto{
     margin-top: auto;
+}
+.ms-4{
+    margin-left: 1rem;
 }
 .line-clamp-1{
     overflow: hidden;
@@ -27751,6 +27758,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:col-span-2{
         grid-column: span 2 / span 2;
+    }
+    .md\:mx-16{
+        margin-left: 4rem;
+        margin-right: 4rem;
     }
     .md\:mb-0{
         margin-bottom: 0px;
