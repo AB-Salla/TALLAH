@@ -616,7 +616,7 @@
 	<div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10  pb-[60px] lg:pb-[120px]">
 		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
-				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font-color">
+				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
 				{{ trans('pages.single.similar') }}
 				</h1>
 			</span>
@@ -627,11 +627,12 @@
 				type="carousel"
 				class="product-slider"
 				slider-config='{
-				"slidesPerView": 2,
+				"slidesPerView": 1.2,
 				"spaceBetween": 11	,
 				"speed": 1000,
 				"effect": "slide",
 				"breakpoints": {
+					"551": { "slidesPerView": 2.2, "spaceBetween": 20 },
 					"786": { "slidesPerView": 3, "spaceBetween": 20 },
 					"1024": { "slidesPerView": 4.5, "spaceBetween": 10 }
 				}     
@@ -644,6 +645,42 @@
 			</salla-products-slider>
 		</div>
 	</div>
+	{% set images = theme.settings.get('image_collection') %}
+
+{% if images is not empty and theme.settings.get('img_in_single') %}
+    <div class="product-image-gallery  gap-4 ps-4 md:px-16  mb-10 py-12 bg-[#F4F4F5]
+	">
+		<h2 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] pb-4 font-medium leading-[28px] text-font">{{ trans('pages.single.inspire') }}</h2>
+        <salla-slider
+            id="product-gallery-{{ product.id }}"
+            type="carousel"
+            class="product-slider"
+            slider-config='{
+                "slidesPerView": 1.2,
+                "spaceBetween": 11,
+                "speed": 1000,
+                "effect": "slide",
+                "breakpoints": {
+                    "786": { "slidesPerView": 3, "spaceBetween": 20 },
+                    "1024": { "slidesPerView": 5, "spaceBetween": 10 }
+                }
+            }'
+            slider-id="slider-with-lightbox-{{ product.id }}">
+            <div slot="items">
+                {% for image_item in images %}
+                    {% if image_item['img_single'] is defined and image_item['img_single'] %}
+                        <div class="gallery-item !h-[330px] md:!h-[374px]">
+                            <img src="{{ image_item['img_single'] }}" loading="eager" alt="{{ product.name }}" class="w-full h-full  object-cover">
+                        </div>
+                    {% endif %}
+                {% endfor %}
+            </div>
+        </salla-slider>
+    </div>
+{% endif %}
+
+
+
 	{% if is_page('index') %}
 
 <style>

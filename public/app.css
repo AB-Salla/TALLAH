@@ -1206,6 +1206,9 @@ select{
 .\!h-36{
     height: 9rem !important;
 }
+.\!h-\[330px\]{
+    height: 330px !important;
+}
 .\!h-fit{
     height: -moz-fit-content !important;
     height: fit-content !important;
@@ -1894,6 +1897,11 @@ select{
     border-color: #414042;
     border-color: var(--color-primary);
 }
+.bg-\[\#F4F4F5\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(244, 244, 245, 1);
+    background-color: rgba(244, 244, 245, var(--tw-bg-opacity, 1));
+}
 .bg-background{
     background-color: var(--color-background);
 }
@@ -2066,6 +2074,10 @@ select{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
 }
+.py-12{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
 .py-16{
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -2148,6 +2160,9 @@ select{
 }
 .pr-14{
     padding-right: 3.5rem;
+}
+.ps-4{
+    padding-left: 1rem;
 }
 .pt-0{
     padding-top: 0px;
@@ -27785,6 +27800,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:\!hidden{
         display: none !important;
     }
+    .md\:\!h-\[374px\]{
+        height: 374px !important;
+    }
     .md\:h-20{
         height: 5rem;
     }
@@ -27934,6 +27952,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:p-8{
         padding: 2rem;
+    }
+    .md\:px-16{
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
     .md\:px-5{
         padding-left: 1.25rem;

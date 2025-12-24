@@ -559,7 +559,7 @@ export const eyeModel = (productId) => {
              
 ${renderWeightBlock()}
 
-              <div class="flex gap-3 flex-row-reverse justify-end">
+              <div class="flex gap-3 flex-row-reverse justify-end items-center">
               <div class="custom-add-to-cart-button">
 									${submitButton()}
 								</div>
