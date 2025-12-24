@@ -1,0 +1,30 @@
+#wishlist {
+  .btn--delete{
+    button{
+      width: 32px;
+      height: 32px;
+
+    }
+  }
+  .s-button-danger{
+    background-color: var(--color-primary);
+    border: 1px solid transparent;
+    
+    &:hover{
+      background-color: var(--color-background);
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+      .s-button-text{
+      .filled{
+        color: var(--color-primary) !important;
+      }}
+    }
+    .s-button-text{
+      font-size: 16px;
+      font-weight: 700;
+      .filled{
+        color: var(--color-background) !important;
+      }
+    }
+  } 
+  
+}

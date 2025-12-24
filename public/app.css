@@ -27155,6 +27155,30 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     height: 1rem;
     width: 1rem;
 }
+#wishlist .btn--delete button {
+  width: 32px;
+  height: 32px;
+}
+#wishlist .s-button-danger {
+  background-color: #414042;
+  background-color: var(--color-primary);
+  border: 1px solid transparent;
+}
+#wishlist .s-button-danger:hover {
+  background-color: var(--color-background);
+  box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+}
+#wishlist .s-button-danger:hover .s-button-text .filled {
+  color: #414042 !important;
+  color: var(--color-primary) !important;
+}
+#wishlist .s-button-danger .s-button-text {
+  font-size: 16px;
+  font-weight: 700;
+}
+#wishlist .s-button-danger .s-button-text .filled {
+  color: var(--color-background) !important;
+}
 body.mm-ocd-opened,
 body.modal-is-open,
 body.fancybox-open {
