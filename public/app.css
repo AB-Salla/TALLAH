@@ -2110,6 +2110,10 @@ select{
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
+.px-10{
+    padding-left: 2.5rem;
+    padding-right: 2.5rem;
+}
 .\!pb-9{
     padding-bottom: 2.25rem !important;
 }
@@ -27981,6 +27985,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
     }
+    .md\:px-10{
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
     .md\:pb-16{
         padding-bottom: 4rem;
     }
@@ -28132,6 +28140,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:w-\[calc\(100\%-384px\)\]{
         width: calc(100% - 384px);
+    }
+    .lg\:w-\[419\]{
+        width: 419;
+    }
+    .lg\:w-\[419px\]{
+        width: 419px;
     }
     .lg\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
