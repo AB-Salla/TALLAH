@@ -1,4 +1,39 @@
 .cart {
+     /* NOT ADDED state */
+  .btn--wishlist .is-added span svg {
+    fill: var(--color-font) !important;
+  }
+
+  .btn--wishlist .is-added span svg:hover {
+    fill: var(--color-font) !important;
+  }
+
+  /* When wishlist is not added */
+  .btn--wishlist .not-added span svg {
+    fill: var(--color-font) !important;
+  }
+
+  .btn--wishlist .not-added span svg:hover {
+    fill: var(--color-font) !important;
+  }
+
+  /* Hide empty icon when added */
+  .btn--wishlist .is-added span .not_filled {
+    display: none !important;
+  }
+
+  /* Hide filled icon when not added */
+  .btn--wishlist .not-added span .filled {
+    display: none !important;
+  }
+
+  .s-product-card-wishlist-btn.not-added .filled {
+    display: none;
+  }
+  .s-product-card-wishlist-btn.s-product-card-wishlist-added .not_filled {
+    display: none;
+  }
+
   .s-offer-bank-payment-wrapper{
     padding-inline: 10px !important;
   }

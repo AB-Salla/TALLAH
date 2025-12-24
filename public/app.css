@@ -27169,6 +27169,36 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #414042 !important;
   color: var(--color-primary) !important;
 }
+.cart {
+  /* NOT ADDED state */
+  /* When wishlist is not added */
+  /* Hide empty icon when added */
+  /* Hide filled icon when not added */
+}
+.cart .btn--wishlist .is-added span svg {
+  fill: var(--color-font) !important;
+}
+.cart .btn--wishlist .is-added span svg:hover {
+  fill: var(--color-font) !important;
+}
+.cart .btn--wishlist .not-added span svg {
+  fill: var(--color-font) !important;
+}
+.cart .btn--wishlist .not-added span svg:hover {
+  fill: var(--color-font) !important;
+}
+.cart .btn--wishlist .is-added span .not_filled {
+  display: none !important;
+}
+.cart .btn--wishlist .not-added span .filled {
+  display: none !important;
+}
+.cart .s-product-card-wishlist-btn.not-added .filled {
+  display: none;
+}
+.cart .s-product-card-wishlist-btn.s-product-card-wishlist-added .not_filled {
+  display: none;
+}
 .cart .s-offer-bank-payment-wrapper {
   padding-left: 10px !important;
   padding-right: 10px !important;
@@ -27900,9 +27930,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-9{
         margin-bottom: 2.25rem;
     }
-    .md\:mt-0{
-        margin-top: 0px;
-    }
     .md\:mt-5{
         margin-top: 1.25rem;
     }
@@ -28064,9 +28091,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:border-none{
         border-style: none;
-    }
-    .md\:p-0{
-        padding: 0px;
     }
     .md\:p-5{
         padding: 1.25rem;
