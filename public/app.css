@@ -1206,6 +1206,9 @@ select{
 .\!h-36{
     height: 9rem !important;
 }
+.\!h-\[374px\]{
+    height: 374px !important;
+}
 .\!h-fit{
     height: -moz-fit-content !important;
     height: fit-content !important;
@@ -1282,9 +1285,6 @@ select{
 .h-\[34px\]{
     height: 34px;
 }
-.h-\[374px\]{
-    height: 374px;
-}
 .h-\[40px\]{
     height: 40px;
 }
@@ -1315,9 +1315,6 @@ select{
 }
 .h-screen{
     height: 100vh;
-}
-.\!h-\[374px\]{
-    height: 374px !important;
 }
 .max-h-0{
     max-height: 0px;

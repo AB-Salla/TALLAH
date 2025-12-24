@@ -306,7 +306,7 @@
       "value": true,
       "selected": false
     }, 
-    
+
      {
       "type": "boolean",
       "icon": "sicon-toggle-off",
@@ -377,7 +377,7 @@
       ],
       "value": [],
       "minLength": 1,
-      "maxLength": "4",
+      "maxLength": "5",
       "conditions": [
         {
           "id": "features_switch",
