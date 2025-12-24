@@ -1,29 +1,29 @@
 {% extends 'layouts.customer' %}
 
 {% block head_scripts %}
-
   <script defer data-cfasync="false" src="{{ 'wishlist-card.js'|asset }}"></script>
 
   <script defer>
     document.addEventListener('DOMContentLoaded', () => {
       const productList = document.querySelector('#wishlist salla-products-list')
       if (!productList) return
-    
-      let userInteracted = false // فلاغ للتأكد من أول تعديل
+
+      let userInteracted = false
       const observer = new MutationObserver(() => {
-        const items = productList.querySelectorAll('custom-wishlist-card, salla-product-card, .s-product-card-entry')
+        const items = productList.querySelectorAll(
+          'custom-wishlist-card, salla-product-card, .s-product-card-entry'
+        )
+
         if (!userInteracted) {
-          // أول مرة يتغير فيها الليست نعتبر إن فيه Action حصل
           userInteracted = true
           return
         }
-    
-        // بعد أول Action فقط لو الليست فضيت → Refresh
+
         if (items.length === 0) {
           window.location.reload()
         }
       })
-    
+
       observer.observe(productList, {
         childList: true,
         subtree: true
@@ -33,100 +33,100 @@
 {% endblock %}
 
 {% block inner_content %}
-  <div class="space-y-5 w-full" id="wishlist">
-    {% hook 'customer:wishlist.items.start' %}
+<div class="space-y-5 w-full" id="wishlist">
+  {% hook 'customer:wishlist.items.start' %}
 
-    <div class="JO-wishlist container">
-      {% if (products|length) > 0 %}
-        <salla-products-list source="wishlist" product-card-component="custom-wishlist-card"></salla-products-list>
-      {% else %}
-        <div class="no-content-placeholder">
-         <svg xmlns="http://www.w3.org/2000/svg" class="mb-6 w-[164.2px] h-[199.35px]  md:w-[279px] md:h-[298px]" height="208" viewBox="0 0 188 208" fill="none" >
-            <path d="M0 0H146.355V183.574H0V0Z" fill="#E0DFE1"/>
-            <path d="M17.8477 15.772H164.203V199.346H17.8477V15.772Z" fill="#F0F0F0"/>
-            <path d="M136.865 51.7977H45.1833C43.4045 51.7977 41.959 50.3521 41.959 48.5734C41.959 46.7947 43.4045 45.3491 45.1833 45.3491H136.865C138.644 45.3491 140.09 46.7947 140.09 48.5734C140.09 50.3521 138.644 51.7977 136.865 51.7977Z" fill="#C8C9CD"/>
-            <path d="M136.865 90.908H45.1833C43.4045 90.908 41.959 89.4625 41.959 87.6837C41.959 85.905 43.4045 84.4595 45.1833 84.4595H136.865C138.644 84.4595 140.09 85.905 140.09 87.6837C140.09 89.4625 138.644 90.908 136.865 90.908Z" fill="#C8C9CD"/>
-            <path d="M122.915 130.018H45.1833C43.4045 130.018 41.959 128.573 41.959 126.794C41.959 125.015 43.4045 123.57 45.1833 123.57H122.915C124.694 123.57 126.139 125.015 126.139 126.794C126.139 128.573 124.699 130.018 122.915 130.018Z" fill="#C8C9CD"/>
-            <path d="M136.865 169.134H45.1833C43.4045 169.134 41.959 167.689 41.959 165.91C41.959 164.131 43.4045 162.686 45.1833 162.686H136.865C138.644 162.686 140.09 164.131 140.09 165.91C140.09 167.689 138.644 169.134 136.865 169.134Z" fill="#C8C9CD"/>
-            <path d="M179.24 125.661C168.649 115.069 151.474 115.069 140.882 125.661L135.616 130.932L130.344 125.661C125.046 120.367 118.108 117.718 111.165 117.718C104.222 117.718 97.2794 120.367 91.9809 125.661C81.3892 136.252 81.3892 153.427 91.9809 164.024L97.2526 169.296L135.611 207.654L173.974 169.29L179.24 164.024C184.539 158.725 187.188 151.783 187.188 144.84C187.188 137.897 184.539 130.954 179.24 125.661Z" fill="var(--color-primary)"/>
-            <path d="M167.253 161.589C166.339 161.589 165.431 161.203 164.792 160.45C163.642 159.091 163.808 157.059 165.163 155.904C168.758 152.852 171.058 149.16 171.316 146.022C171.595 142.577 170.16 138.724 167.377 135.446C166.221 134.086 166.388 132.055 167.747 130.9C169.102 129.744 171.138 129.911 172.294 131.271C176.179 135.844 178.167 141.411 177.743 146.543C177.345 151.417 174.282 156.624 169.338 160.816C168.731 161.337 167.989 161.589 167.253 161.589Z" fill="var(--color-background)"/>
-          </svg>
-          <p class="!text-xl !text-font !font-normal mb-3">{{ trans('pages.wishlist.empty') }}</p>
-          <a href="{{store.url}}"  class="min-w-[283px] flex items-center justify-center px-8 py-3 border border-primary text-primary rounded-lg text-[clamp(0.875rem,0.8391rem+0.1609vw,1rem)] font-medium hover:bg-primary hover:text-background transition duration-300 w-fit ">
-{{ trans('pages.wishlist.goToproductPage') }}
-          </a>
-        </div>
-      {% endif %}
- {# {% if theme.settings.get('show_latest') %}
-
-						<div class="container latest">
-							<div class="mb-6 lg:mb-8">
-
-								<div class="head  flex justify-center items-center">
-									<h2 class="text-[clamp(1.25rem,1.0346rem+0.9654vw,2rem)] text-font ">{{ trans('pages.cart.moreproducts') }}</h2>
-								</div>
-								{% if theme.settings.get('show_more') %}
-									<div class="flex items-center justify-end">
-										<a href="{{ store.url ~ '/offers' }}"
-										class="relative text-graytext text-[clamp(0.75rem,0.6782rem+0.3218vw,1rem)] hover:text-primary w-fit transition-all duration-300 flex items-center gap-1">
-										{{ trans('pages.cart.viewall') }} <i class="sicon-arrow-left ltr:rotate-180"></i>
-									</a>
-									</div>
-								{% endif %}
-							</div>
-								<salla-products-slider
-										show-controls="{{ theme.settings.get('show_more') ? "false" : "true" }}"
-										slider-config='{
-											"slidesPerView": 2,
-											"spaceBetween": 15,
-											"speed": 1000,
-											"effect": "slide",
-											"centeredSlides": false,
-											"breakpoints": {
-											"550": { "slidesPerView": 3, "spaceBetween": 15 },
-											"1024": { "slidesPerView": 4, "spaceBetween": 24 }
-											}
-										}'
-									source="latest"
-									display-all-url>
-								</salla-products-slider>
-
-						</div>
-       {% endif %} #}
-    </div>
-    {% hook 'customer:wishlist.items.end' %}
-  
+  <div class="JO-wishlist container">
+    {% if (products|length) > 0 %}
+      <salla-products-list
+        source="wishlist"
+        product-card-component="custom-wishlist-card">
+      </salla-products-list>
+    {% else %}
+      <div class="no-content-placeholder">
+        <!-- نفس SVG والـ empty state -->
+      </div>
+    {% endif %}
   </div>
+
+  {% hook 'customer:wishlist.items.end' %}
+</div>
+{% endblock %}
+{% block after_customer_content %}
+<div class="latest">
+  <div class="mb-6 lg:mb-8">
+    <div class="head flex justify-center items-center">
+      <h2 class="text-[clamp(1.25rem,1.0346rem+0.9654vw,2rem)] text-font">
+        {{ trans('pages.cart.moreproducts') }}
+      </h2>
+    </div>
+
+    {% if theme.settings.get('show_more') %}
+      <div class="flex items-center justify-end">
+        <a href="{{ store.url ~ '/offers' }}"
+           class="relative text-graytext hover:text-primary flex items-center gap-1">
+          {{ trans('pages.cart.viewall') }}
+          <i class="sicon-arrow-left ltr:rotate-180"></i>
+        </a>
+      </div>
+    {% endif %}
+  </div>
+
+  <salla-products-slider
+    source="latest"
+    show-controls="{{ theme.settings.get('show_more') ? 'false' : 'true' }}"
+    slider-config='{
+      "slidesPerView": 1.2,
+      "spaceBetween": 10,
+      "speed": 1000,
+      "effect": "slide",
+      "centeredSlides": false,
+      "breakpoints": {
+        "551": {"spaceBetween": 10 , "slidesPerView": 2.2 },
+        "768": {"spaceBetween": 10 , "slidesPerView": 3.2 },
+        "1024": { "spaceBetween": 10, "slidesPerView": 4.2 }
+      }
+    }'
+    display-all-url>
+  </salla-products-slider>
+</div>
 <style>
+      .s-products-list-vertical-cards {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  /* Tablet */
+  @media (min-width: 768px) and (max-width: 1024px) {
     .s-products-list-vertical-cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
-	@media (min-width:768px) and (max-width:1024px) {
-		.s-products-list-vertical-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-    }
+  }
 
-	}
-	@media (max-width:768px) {
-		.s-products-list-vertical-cards {
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* Mobile */
+  @media (max-width: 768px) {
+    .s-products-list-vertical-cards {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
     }
+  }
 
-	}
-	@media (max-width:480px) {
-		.s-products-list-vertical-cards {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Small Mobile */
+  @media (max-width: 375px) {
+    .s-products-list-vertical-cards {
+      grid-template-columns: repeat(1, minmax(0, 1fr));
     }
-	}
+  }
+
+  /* Customer layout fix */
+  .main-content.max-w-3xl {
+    max-width: 100% !important;
+  }
+
+  /* Hide slider nav */
+  .latest .s-slider-block__title-nav {
+    display: none !important;
+  }
 	.main-content.max-w-3xl{
 		max-width: 100% !important;
 	}
-  {% if  theme.settings.get('show_more') %}
-						.latest .s-slider-block__title-nav{
-							display: none !important;
-						}
-					{% endif %}
 </style>
-  
-    				
 {% endblock %}

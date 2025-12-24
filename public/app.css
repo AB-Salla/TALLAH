@@ -1276,9 +1276,6 @@ select{
 .h-\[100svh\]{
     height: 100svh;
 }
-.h-\[199\.35px\]{
-    height: 199.35px;
-}
 .h-\[1px\]{
     height: 1px;
 }
@@ -1418,9 +1415,6 @@ select{
 .w-\[100px\]{
     width: 100px;
 }
-.w-\[164\.2px\]{
-    width: 164.2px;
-}
 .w-\[30\%\]{
     width: 30%;
 }
@@ -1436,18 +1430,11 @@ select{
 .w-auto{
     width: auto;
 }
-.w-fit{
-    width: -moz-fit-content;
-    width: fit-content;
-}
 .w-full{
     width: 100%;
 }
 .min-w-0{
     min-width: 0px;
-}
-.min-w-\[283px\]{
-    min-width: 283px;
 }
 .min-w-full{
     min-width: 100%;
@@ -2219,10 +2206,6 @@ select{
     font-size: 1.125rem !important;
     line-height: 1.75rem !important;
 }
-.\!text-xl{
-    font-size: 1.25rem !important;
-    line-height: 1.75rem !important;
-}
 .text-2xl{
     font-size: 1.5rem;
     line-height: 2rem;
@@ -2257,9 +2240,6 @@ select{
 }
 .text-\[clamp\(0\.75rem\2c 0\.6447rem\+0\.4493vw\2c 1\.094rem\)\]{
     font-size: clamp(0.75rem,0.6447rem + 0.4493vw,1.094rem);
-}
-.text-\[clamp\(0\.75rem\2c 0\.6782rem\+0\.3218vw\2c 1rem\)\]{
-    font-size: clamp(0.75rem,0.6782rem + 0.3218vw,1rem);
 }
 .text-\[clamp\(0\.75rem\2c 0\.75rem\+0vw\2c 0\.75rem\)\]{
     font-size: clamp(0.75rem,0.75rem + 0vw,0.75rem);
@@ -2328,9 +2308,6 @@ select{
 .text-xs{
     font-size: 0.75rem;
     line-height: 1rem;
-}
-.\!font-normal{
-    font-weight: 400 !important;
 }
 .font-bold{
     font-weight: 700;
@@ -25679,6 +25656,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1;
 }
 .s-product-card-entry {
+  justify-content: initial !important;
   border-radius: 0 !important;
 }
 .s-product-card-entry {
@@ -27511,15 +27489,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     background-color: rgba(229, 231, 235, 1);
     background-color: rgba(229, 231, 235, var(--tw-bg-opacity, 1));
 }
-.hover\:bg-primary:hover{
-    background-color: #414042;
-    background-color: var(--color-primary);
-}
 .hover\:bg-primary-dark:hover{
     background-color: var(--color-primary-dark);
-}
-.hover\:text-background:hover{
-    color: var(--color-background);
 }
 .hover\:text-dark:hover{
     --tw-text-opacity: 1;
@@ -27829,9 +27800,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-5{
         height: 1.25rem;
     }
-    .md\:h-\[298px\]{
-        height: 298px;
-    }
     .md\:h-\[400px\]{
         height: 400px;
     }
@@ -27864,9 +27832,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-96{
         width: 24rem;
-    }
-    .md\:w-\[279px\]{
-        width: 279px;
     }
     .md\:w-\[40vw\]{
         width: 40vw;
