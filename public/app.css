@@ -1056,10 +1056,6 @@ select{
     margin-left: auto;
     margin-right: auto;
 }
-.mx-16{
-    margin-left: 4rem;
-    margin-right: 4rem;
-}
 .\!mb-0{
     margin-bottom: 0px !important;
 }
@@ -1120,6 +1116,9 @@ select{
 .mr-2{
     margin-right: 0.5rem;
 }
+.ms-4{
+    margin-left: 1rem;
+}
 .mt-1{
     margin-top: 0.25rem;
 }
@@ -1158,9 +1157,6 @@ select{
 }
 .mt-auto{
     margin-top: auto;
-}
-.ms-4{
-    margin-left: 1rem;
 }
 .line-clamp-1{
     overflow: hidden;
@@ -2188,6 +2184,9 @@ select{
 }
 .pt-8{
     padding-top: 2rem;
+}
+.ps-4{
+    padding-left: 1rem;
 }
 .text-center{
     text-align: center;
@@ -27949,6 +27948,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:p-8{
         padding: 2rem;
     }
+    .md\:p-16{
+        padding: 4rem;
+    }
     .md\:px-5{
         padding-left: 1.25rem;
         padding-right: 1.25rem;
@@ -27972,6 +27974,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-6{
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
+    }
+    .md\:px-16{
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
     .md\:pb-16{
         padding-bottom: 4rem;
