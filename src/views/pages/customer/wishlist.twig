@@ -53,23 +53,13 @@
 </div>
 {% endblock %}
 {% block after_customer_content %}
-<div class="latest">
-  <div class="mb-6 lg:mb-8">
-    <div class="head flex justify-center items-center">
-      <h2 class="text-[clamp(1.25rem,1.0346rem+0.9654vw,2rem)] text-font">
-        {{ trans('pages.cart.moreproducts') }}
-      </h2>
-    </div>
-
-    {% if theme.settings.get('show_more') %}
-      <div class="flex items-center justify-end">
-        <a href="{{ store.url ~ '/offers' }}"
-           class="relative text-graytext hover:text-primary flex items-center gap-1">
-          {{ trans('pages.cart.viewall') }}
-          <i class="sicon-arrow-left ltr:rotate-180"></i>
-        </a>
-      </div>
-    {% endif %}
+<div class="rtl:ml-5 ltr:mr-5 md:rtl:ml-10 md:ltr:mr-10  latest">
+   <div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
+			<span class=" flex items-center gap-2 overflow-hidden pb-4">
+				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font-color">
+				{{ trans('pages.single.similar') }}
+				</h1>
+			</span>
   </div>
 
   <salla-products-slider
