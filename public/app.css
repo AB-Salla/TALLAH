@@ -28134,9 +28134,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-\[419px\]{
         width: 419px;
     }
-    .lg\:w-\[calc\(100\%-384px\)\]{
-        width: calc(100% - 384px);
-    }
     .lg\:w-\[calc\(100\%-419px\)\]{
         width: calc(100% - 419px);
     }
