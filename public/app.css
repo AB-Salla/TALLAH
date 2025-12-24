@@ -1288,6 +1288,9 @@ select{
 .h-\[40px\]{
     height: 40px;
 }
+.h-\[4px\]{
+    height: 4px;
+}
 .h-\[50vh\]{
     height: 50vh;
 }
@@ -1336,6 +1339,9 @@ select{
 }
 .min-h-\[300px\]{
     min-height: 300px;
+}
+.min-h-\[340px\]{
+    min-height: 340px;
 }
 .min-h-\[34px\]{
     min-height: 34px;
@@ -1415,8 +1421,14 @@ select{
 .w-\[100px\]{
     width: 100px;
 }
+.w-\[119px\]{
+    width: 119px;
+}
 .w-\[30\%\]{
     width: 30%;
+}
+.w-\[335px\]{
+    width: 335px;
 }
 .w-\[55px\]{
     width: 55px;
@@ -1430,11 +1442,18 @@ select{
 .w-auto{
     width: auto;
 }
+.w-fit{
+    width: -moz-fit-content;
+    width: fit-content;
+}
 .w-full{
     width: 100%;
 }
 .min-w-0{
     min-width: 0px;
+}
+.min-w-\[180px\]{
+    min-width: 180px;
 }
 .min-w-full{
     min-width: 100%;
@@ -1450,6 +1469,9 @@ select{
 }
 .max-w-3xl{
     max-width: 48rem;
+}
+.max-w-\[245px\]{
+    max-width: 245px;
 }
 .max-w-\[500px\]{
     max-width: 500px;
@@ -1818,8 +1840,14 @@ select{
 .rounded-3xl{
     border-radius: 1.5rem;
 }
+.rounded-\[10px\]{
+    border-radius: 10px;
+}
 .rounded-\[3\.35px\]{
     border-radius: 3.35px;
+}
+.rounded-\[8px\]{
+    border-radius: 8px;
 }
 .rounded-full{
     border-radius: 9999px;
@@ -1896,6 +1924,11 @@ select{
 .border-primary{
     border-color: #414042;
     border-color: var(--color-primary);
+}
+.bg-\[\#E8EAFC\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(232, 234, 252, 1);
+    background-color: rgba(232, 234, 252, var(--tw-bg-opacity, 1));
 }
 .bg-\[\#F4F4F5\]{
     --tw-bg-opacity: 1;
@@ -2249,6 +2282,12 @@ select{
 .text-\[clamp\(0\.75rem\2c 0\.6447rem\+0\.4493vw\2c 1\.094rem\)\]{
     font-size: clamp(0.75rem,0.6447rem + 0.4493vw,1.094rem);
 }
+.text-\[clamp\(0\.75rem\2c 0\.6735rem\+0\.3265vw\2c \.9rem\)\]{
+    font-size: clamp(0.75rem,0.6735rem + 0.3265vw,.9rem);
+}
+.text-\[clamp\(0\.75rem\2c 0\.6735rem\+0\.3265vw\2c 1rem\)\]{
+    font-size: clamp(0.75rem,0.6735rem + 0.3265vw,1rem);
+}
 .text-\[clamp\(0\.75rem\2c 0\.75rem\+0vw\2c 0\.75rem\)\]{
     font-size: clamp(0.75rem,0.75rem + 0vw,0.75rem);
 }
@@ -2273,6 +2312,12 @@ select{
 .text-\[clamp\(1\.110625rem\2c 0\.8807rem\+0\.981vw\2c 1\.4325rem\)\]{
     font-size: clamp(1.110625rem,0.8807rem + 0.981vw,1.4325rem);
 }
+.text-\[clamp\(1\.25rem\2c 0\.8673rem\+1\.6327vw\2c 2\.5rem\)\]{
+    font-size: clamp(1.25rem,0.8673rem + 1.6327vw,2.5rem);
+}
+.text-\[clamp\(1\.2rem\2c 1\.3673rem\+1\.6327vw\2c 3rem\)\]{
+    font-size: clamp(1.2rem,1.3673rem + 1.6327vw,3rem);
+}
 .text-\[clamp\(1\.375rem\2c 1\.1216rem\+1\.0811vw\2c 2rem\)\]{
     font-size: clamp(1.375rem,1.1216rem + 1.0811vw,2rem);
 }
@@ -2285,8 +2330,14 @@ select{
 .text-\[clamp\(1rem\2c 0\.6939rem\+1\.3061vw\2c 2rem\)\]{
     font-size: clamp(1rem,0.6939rem + 1.3061vw,2rem);
 }
+.text-\[clamp\(1rem\2c 0\.9235rem\+0\.3265vw\2c 1\.25rem\)\]{
+    font-size: clamp(1rem,0.9235rem + 0.3265vw,1.25rem);
+}
 .text-\[clamp\(1rem\2c 0\.9282rem\+0\.3218vw\2c 1\.25rem\)\]{
     font-size: clamp(1rem,0.9282rem + 0.3218vw,1.25rem);
+}
+.text-\[clamp\(1rem\2c 1\.0102rem\+0\.4898vw\2c 1\.5rem\)\]{
+    font-size: clamp(1rem,1.0102rem + 0.4898vw,1.5rem);
 }
 .text-\[clamp\(1rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
     font-size: clamp(1rem,1.0204rem + 0.9796vw,1.25rem);
@@ -2344,9 +2395,6 @@ select{
 .leading-12{
     line-height: 3rem;
 }
-.leading-4{
-    line-height: 1rem;
-}
 .leading-5{
     line-height: 1.25rem;
 }
@@ -2373,6 +2421,9 @@ select{
 }
 .leading-\[28px\]{
     line-height: 28px;
+}
+.leading-\[30px\]{
+    line-height: 30px;
 }
 .leading-none{
     line-height: 1;
@@ -2502,11 +2553,6 @@ select{
     --tw-text-opacity: 1;
     color: rgba(185, 28, 28, 1);
     color: rgba(185, 28, 28, var(--tw-text-opacity, 1));
-}
-.text-red-800{
-    --tw-text-opacity: 1;
-    color: rgba(153, 27, 27, 1);
-    color: rgba(153, 27, 27, var(--tw-text-opacity, 1));
 }
 .text-white{
     --tw-text-opacity: 1;
@@ -27166,6 +27212,140 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #414042 !important;
   color: var(--color-primary) !important;
 }
+.dark .cart .s-offer-wrapper {
+  box-shadow: rgba(16, 16, 16, 0.24) 0px 3px 8px;
+}
+.dark .cart .s-offer-wrapper .s-offer-bank-message p {
+  color: var(--color-font-black);
+}
+.dark .cart .s-conditional-offer-container {
+  background-color: var(--color-background-dark) !important;
+}
+.dark .cart .cart-options {
+  background-color: var(--color-background-dark) !important;
+}
+.dark .cart .cart-options .s-form-control {
+  background-color: var(--color-background-dark) !important;
+  color: var(--color-font-black) !important;
+}
+.dark .cart .cart-options .s-form-control option {
+  color: var(--color-font-black) !important;
+}
+.cart .s-offer-bank-payment-wrapper {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+.cart .s-offer-wrapper {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  background-color: transparent;
+}
+.cart .s-offer-wrapper .s-slider-block__title-nav {
+  display: none;
+}
+.cart .s-offer-wrapper .s-offer-bank-message p {
+  color: var(--color-font-light);
+}
+.cart .cart-options {
+  background-color: var(--color-background-light) !important;
+}
+.cart .cart-options {
+  border-color: #414042;
+  border-color: var(--color-primary);
+}
+.cart .cart-options .s-form-control {
+  background-color: transparent;
+  border: 1px solid #414042;
+  border: 1px solid var(--color-primary);
+  border-radius: 8px;
+  margin-top: 5px;
+  color: var(--color-font-light);
+}
+.cart .cart-options .s-product-options-option-booking .s-product-options-option-content {
+  margin: 0 !important;
+}
+.cart .cart-options .s-product-options-option-label {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.cart .s-conditional-offer-container {
+  background-color: var(--color-background-light) !important;
+}
+.cart .s-product-options-wrapper {
+  background-color: transparent;
+  border: none;
+}
+.cart .cart-item {
+  border-bottom: 1px solid rgba(172, 172, 172, 0.3882352941) !important;
+}
+.cart .cart-item { /* لون خفيف زي Tailwind gray-200 */
+}
+.cart .s-product-options-option-label {
+  color: #414042;
+  color: var(--color-primary);
+}
+.cart .btn--danger {
+  background-color: #414042 !important;
+  background-color: var(--color-primary) !important;
+}
+.cart .s-product-options-option {
+  gap: 10px;
+}
+.cart .s-product-options-option .s-product-options-option-content {
+  width: 70%;
+}
+.cart .sticky .cart-submit-wrap salla-button button {
+  background-color: var(--color-font-secondary);
+  padding-top: 14px;
+  padding-bottom: 14px;
+  font-size: clamp(1rem, 0.9235rem + 0.3265vw, 1.25rem);
+  border: 0;
+  border-radius: 8px;
+}
+.cart .sticky input {
+  background-color: transparent !important;
+  min-height: 50px !important;
+  border: 1px solid #D6DDDF !important;
+}
+.cart .sticky input {
+  padding-top: 14px;
+  padding-bottom: 14px;
+}
+.cart .sticky .btn--coupon {
+  min-height: 50px !important;
+}
+.cart .sticky .btn--coupon {
+  border-radius: 0;
+}
+.cart .s-product-options-option {
+  display: flex;
+}
+.cart salla-quantity-input {
+  background-color: transparent;
+  border-radius: none;
+}
+.cart salla-quantity-input .s-quantity-input-container {
+  border-top: 1px solid #414042;
+  border-top: 1px solid var(--color-primary);
+  border-bottom: 1px solid #414042;
+  border-bottom: 1px solid var(--color-primary);
+  border-right: none;
+  border-left: none;
+  border-radius: 0;
+}
+.cart salla-quantity-input .s-quantity-input-container .s-quantity-input-input {
+  width: 3rem !important;
+}
+.cart salla-quantity-input .s-quantity-input-container .s-quantity-input-input {
+  background-color: transparent;
+  color: var(--color-font-light);
+  border: none;
+}
+.cart salla-quantity-input .s-quantity-input-container .s-quantity-input-button svg {
+  fill: #414042;
+  fill: var(--color-primary);
+}
 body.mm-ocd-opened,
 body.modal-is-open,
 body.fancybox-open {
@@ -27498,6 +27678,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     background-color: rgba(229, 231, 235, 1);
     background-color: rgba(229, 231, 235, var(--tw-bg-opacity, 1));
 }
+.hover\:bg-primary:hover{
+    background-color: #414042;
+    background-color: var(--color-primary);
+}
 .hover\:bg-primary-dark:hover{
     background-color: var(--color-primary-dark);
 }
@@ -27601,6 +27785,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .xs\:top-5{
         top: 1.25rem;
     }
+    .xs\:flex{
+        display: flex;
+    }
+    .xs\:justify-start{
+        justify-content: flex-start;
+    }
     .xs\:p-11{
         padding: 2.75rem;
     }
@@ -27649,6 +27839,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .sm\:grid{
         display: grid;
+    }
+    .sm\:\!h-10{
+        height: 2.5rem !important;
     }
     .sm\:h-5{
         height: 1.25rem;
@@ -27788,6 +27981,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mt-5{
         margin-top: 1.25rem;
     }
+    .md\:block{
+        display: block;
+    }
     .md\:flex{
         display: flex;
     }
@@ -27820,6 +28016,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:h-\[90vh\]{
         height: 90vh;
+    }
+    .md\:min-h-\[489px\]{
+        min-height: 489px;
     }
     .md\:w-1\/2{
         width: 50%;
@@ -27859,6 +28058,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
+    }
+    .md\:min-w-\[328px\]{
+        min-width: 328px;
+    }
+    .md\:max-w-\[539\.5px\]{
+        max-width: 539.5px;
     }
     .md\:flex-1{
         flex: 1 1 0%;
@@ -28046,6 +28251,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:-mt-28{
         margin-top: -7rem;
     }
+    .lg\:mb-10{
+        margin-bottom: 2.5rem;
+    }
     .lg\:mb-24{
         margin-bottom: 6rem;
     }
@@ -28124,14 +28332,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-72{
         width: 18rem;
     }
-    .lg\:w-96{
-        width: 24rem;
-    }
     .lg\:w-\[35vw\]{
         width: 35vw;
     }
-    .lg\:w-\[calc\(100\%-384px\)\]{
-        width: calc(100% - 384px);
+    .lg\:max-w-\[489px\]{
+        max-width: 489px;
     }
     .lg\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
