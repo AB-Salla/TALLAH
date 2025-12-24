@@ -1,50 +1,54 @@
-<section class="AR-testimonials">
-<div class="wrapper">
-<div class="heading">
-<p>{{component.block_title}}</p>
-<p>{{component.subtext}}</p>
-
-</div>
-		<div class="relative testimonials-wrapper">
-
-        <salla-slider
-			 id="testimonials-slider-{{position}}" class="testimonials-slider" slider-config='{
-
-    "spaceBetween": 0,
-    "lazy": true,
-    "speed": 300,
-	"loop":false
-  }'
- 			show-controls="false" type="testimonials">
-				<div slot="items">
-            {% for item in  component.testimonials %}                                    
-			<div class="testimonials  testimonials-{{loop.index}}  flex flex-col items-center justify-center relative md:h-[90vh] h-[100svh] py-16 overflow-hidden">
-                <div class="h-[clamp(15.313rem,12.2518rem+13.0612vw,25.313rem)] w-full">
-                <img src="{{ item.image }}" class=" h-full w-full object-cover" alt="{{ item.product_name }}"/>
-
-                </div>
-                <div class="testimonials-data">
-                          <salla-rating-stars
-          name="rating"
-          size="medium"
-          value="{{ item.review }}"
-          ></salla-rating-stars>
-          <p>{{item.product_name}}<p>
-                    <p>{{item.testimonial}}<p>
-
-                </div>
-    
-
-                
-            {% endfor %}
-
-
-            		</div>
-	
-				</salla-slider>
-
-
+<section class="AR-testimonials AR-testimonials-{{position}}">
+	<div class="wrapper text-font px-4">
+		<div class="heading flex  justify-between gap-4">
+        <div class="titles">
+			<p style="color:{{component.blocktitle_color}}" class="block-title mb-1 text-xl font-semibold">{{component.block_title}}</p>
+			<p style="color:{{component.subtext_color}}" class="subtext mb-4 text-base font-medium">{{component.subtext}}</p>
+            </div>
+            <a class="block underline shrink-0" href="{{component.link}}">{{component.url_text}}</a>
 		</div>
-</div>
-
+		<div class="relative testimonials-wrapper">
+			<salla-slider id="testimonials-slider-{{position}}" class="testimonials-slider" slider-config='{
+                    "slidesPerView":1.5,
+				    "spaceBetween": 4,
+				    "lazy": true,
+				    "speed": 300,
+					"loop":false,
+                    "breakpoints": {
+                     "400": {
+				"slidesPerView": 2
+			},
+                    "540": {
+				"slidesPerView": 3
+			},
+			"768": {
+				"slidesPerView": 4
+			}
+            }
+				  }' show-controls="false" type="thumbs">
+				<div slot="items">
+					{% for item in  component.testimonials %}
+						<div class="testimonials  testimonials-{{loop.index}}  overflow-hidden">                 
+							<div class="h-[clamp(15.313rem,12.2518rem+13.0612vw,25.313rem)]">
+								<img src="{{ item.image }}" class=" h-full w-full object-cover" alt="{{ item.product_name }}"/>
+							</div>
+							<div class="testimonials-data mt-4 flex flex-col md:gap-2 gap-1 px-2 md:px-4">
+								<salla-rating-stars name="rating" size="medium" value="{{ item.review }}"></salla-rating-stars>
+                                {% if item.product_name %}
+								<p class="product-name text-base font-semibold">{{item.product_name}}</p>
+                                {% endif %}
+                                {% if item.testimonial %} 
+								<p class="product-name text-sm font-medium">“{{item.testimonial}}”</p>
+                                {% endif %}
+							</div>
+					</div>
+					{% endfor %}
+				</div>
+			</salla-slider>
+		</div>
+	</div>
 </section>
+<style>
+.AR-testimonials .testimonials-slider .s-rating-stars-selected{
+    fill:#CEB18F;
+}

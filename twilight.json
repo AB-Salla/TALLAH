@@ -3109,7 +3109,10 @@
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
-                    "value": "THE REVIEWS ARE IN",
+                    "value": {
+                        "ar": "آراء العملاء",
+                        "en": "THE REVIEWS ARE IN"
+                    },
                     "multilanguage": true,
                     "required": false,
                     "minLength": "2",
@@ -3136,7 +3139,10 @@
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
-                    "value": "Real stories. Real experiences",
+                    "value": {
+                        "ar": "قصص حقيقية. تجارب حقيقية",
+                        "en": "Real stories. Real experiences"
+                    },
                     "multilanguage": true,
                     "required": false,
                     "minLength": "2",
@@ -3163,7 +3169,10 @@
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
-                    "value": null,
+                    "value": {
+                        "ar": "اكتشف المزيد",
+                        "en": "Explore More Stories"
+                    },
                     "multilanguage": true,
                     "required": false,
                     "minLength": "2",
@@ -3273,7 +3282,88 @@
                             "required": false
                         }
                     ],
-                    "value": [],
+                    "value": [
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "الجينز واسع ومريح جدًا، القماش ثقيل وجودته عالية ويعطي شكل أنيق طوال اليوم.",
+                                "testimonials.product_name": "بنطال جينز واسع"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "These wide leg jeans are incredibly comfortable and stylish. The fabric feels premium and holds its shape all day.",
+                                "testimonials.product_name": "Wide Leg Jeans"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/6e223671-8db8-4371-9979-0c88ace5fc22.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "These wide leg jeans are incredibly comfortable and stylish. The fabric feels premium and holds its shape all day.",
+                            "testimonials.product_name": "Wide Leg Jeans"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "قميص قطني ناعم وخفيف، مناسب للاستخدام اليومي وسهل الغسل بدون أن يفقد شكله.",
+                                "testimonials.product_name": "قميص قطني"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "A soft and breathable cotton shirt that’s perfect for everyday wear. Great quality and easy to care for.",
+                                "testimonials.product_name": "Cotton Shirt"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/760c9830-74fc-4465-b5a8-77d70598313f.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "A soft and breathable cotton shirt that’s perfect for everyday wear. Great quality and easy to care for.",
+                            "testimonials.product_name": "Cotton Shirt"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "الجاكيت أنيق وعملي، يعطي دفء ممتاز ومناسب للارتداء اليومي أو الخروجات.",
+                                "testimonials.product_name": "جاكيت"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This jacket is stylish, warm, and well-made. Perfect for layering and everyday outfits.",
+                                "testimonials.product_name": "Jacket"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/3a49b159-d367-42eb-996f-3155625747d3.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This jacket is stylish, warm, and well-made. Perfect for layering and everyday outfits.",
+                            "testimonials.product_name": "Jacket"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "قميص نسائي أنيق ومريح، القَصّة جميلة ويناسب مختلف الإطلالات.",
+                                "testimonials.product_name": "قميص نسائي"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "A beautifully designed women’s shirt that’s both comfortable and flattering. Easy to dress up or down.",
+                                "testimonials.product_name": "Women’s Shirt"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/bb974961-a6ca-43a0-97f3-86288e5f1237.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "A beautifully designed women’s shirt that’s both comfortable and flattering. Easy to dress up or down.",
+                            "testimonials.product_name": "Women’s Shirt"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "قميص رجالي بخامة ممتازة وقصّة عصرية، مريح جدًا ومناسب للعمل أو الاستخدام اليومي.",
+                                "testimonials.product_name": "قميص رجالي"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This men’s shirt offers excellent fabric quality and a modern fit. Comfortable, durable, and perfect for daily wear.",
+                                "testimonials.product_name": "Men’s Shirt"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/6e223671-8db8-4371-9979-0c88ace5fc22.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This men’s shirt offers excellent fabric quality and a modern fit. Comfortable, durable, and perfect for daily wear.",
+                            "testimonials.product_name": "Men’s Shirt"
+                        }
+                    ],
                     "minLength": "4",
                     "maxLength": "10"
                 }

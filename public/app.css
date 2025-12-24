@@ -1291,6 +1291,9 @@ select{
 .h-\[50vh\]{
     height: 50vh;
 }
+.h-\[clamp\(15\.313rem\2c 12\.2518rem\+13\.0612vw\2c 25\.313rem\)\]{
+    height: clamp(15.313rem,12.2518rem + 13.0612vw,25.313rem);
+}
 .h-\[clamp\(23\.438rem\2c 18\.1767rem\+22\.4483vw\2c 40\.625rem\)\]{
     height: clamp(23.438rem,18.1767rem + 22.4483vw,40.625rem);
 }
@@ -1315,12 +1318,6 @@ select{
 }
 .h-screen{
     height: 100vh;
-}
-.h-\[\]{
-    height: ;
-}
-.h-\[clamp\(15\.313rem\2c 12\.2518rem\+13\.0612vw\2c 25\.313rem\)\]{
-    height: clamp(15.313rem,12.2518rem + 13.0612vw,25.313rem);
 }
 .max-h-0{
     max-height: 0px;
@@ -2115,6 +2112,10 @@ select{
 .py-8{
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+.px-14{
+    padding-left: 3.5rem;
+    padding-right: 3.5rem;
 }
 .\!pb-9{
     padding-bottom: 2.25rem !important;
@@ -27986,6 +27987,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-6{
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
+    }
+    .md\:px-4{
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
     .md\:pb-16{
         padding-bottom: 4rem;
