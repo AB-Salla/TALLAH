@@ -1316,6 +1316,9 @@ select{
 .h-screen{
     height: 100vh;
 }
+.\!h-\[330\]{
+    height: 330 !important;
+}
 .max-h-0{
     max-height: 0px;
 }
@@ -27817,6 +27820,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:h-\[90vh\]{
         height: 90vh;
+    }
+    .md\:\!h-\[374px\]{
+        height: 374px !important;
     }
     .md\:w-1\/2{
         width: 50%;
