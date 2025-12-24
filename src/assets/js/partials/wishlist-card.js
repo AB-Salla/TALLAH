@@ -161,10 +161,6 @@ class WishlistCard extends HTMLElement {
 
   // 🖼 thumbnail
   this.thumbnailOptions = this.groupedOptions["thumbnail"] || [];
-
-  console.log("🎨 Color Options:", this.colorOptions);
-  console.log("📏 Single Options:", this.singleOptions);
-  console.log("🖼 Thumbnail Options:", this.thumbnailOptions);
 }
   getProps() {
     /**

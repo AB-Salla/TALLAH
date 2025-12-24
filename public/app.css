@@ -885,9 +885,6 @@ select{
 .invisible{
     visibility: hidden;
 }
-.\!static{
-    position: static !important;
-}
 .static{
     position: static;
 }
