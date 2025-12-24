@@ -2265,9 +2265,6 @@ select{
 .text-\[clamp\(1\.110625rem\2c 0\.8807rem\+0\.981vw\2c 1\.4325rem\)\]{
     font-size: clamp(1.110625rem,0.8807rem + 0.981vw,1.4325rem);
 }
-.text-\[clamp\(1\.25rem\2c 1\.0346rem\+0\.9654vw\2c 2rem\)\]{
-    font-size: clamp(1.25rem,1.0346rem + 0.9654vw,2rem);
-}
 .text-\[clamp\(1\.375rem\2c 1\.1216rem\+1\.0811vw\2c 2rem\)\]{
     font-size: clamp(1.375rem,1.1216rem + 1.0811vw,2rem);
 }
@@ -28286,22 +28283,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:mr-3:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 0.75rem;
 }
+.ltr\:mr-5:where([dir="ltr"], [dir="ltr"] *){
+    margin-right: 1.25rem;
+}
 .ltr\:mr-\[20px\]:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 20px;
 }
 .ltr\:mr-auto:where([dir="ltr"], [dir="ltr"] *){
     margin-right: auto;
 }
-.ltr\:mr-10:where([dir="ltr"], [dir="ltr"] *){
-    margin-right: 2.5rem;
-}
-.ltr\:mr-5:where([dir="ltr"], [dir="ltr"] *){
-    margin-right: 1.25rem;
-}
-.ltr\:rotate-180:where([dir="ltr"], [dir="ltr"] *){
-    --tw-rotate: 180deg;
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(180deg) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+.ltr\:ml-5:where([dir="ltr"], [dir="ltr"] *){
+    margin-left: 1.25rem;
 }
 .ltr\:-scale-x-100:where([dir="ltr"], [dir="ltr"] *){
     --tw-scale-x: -1;
@@ -28380,6 +28372,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:ltr\:mr-10:where([dir="ltr"], [dir="ltr"] *){
         margin-right: 2.5rem;
     }
+    .md\:ltr\:ml-10:where([dir="ltr"], [dir="ltr"] *){
+        margin-left: 2.5rem;
+    }
     .ltr\:md\:pr-10:where([dir="ltr"], [dir="ltr"] *){
         padding-right: 2.5rem;
     }
@@ -28443,6 +28438,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:ml-3:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0.75rem;
 }
+.rtl\:ml-5:where([dir="rtl"], [dir="rtl"] *){
+    margin-left: 1.25rem;
+}
 .rtl\:ml-\[20px\]:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 20px;
 }
@@ -28455,11 +28453,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:mr-3:where([dir="rtl"], [dir="rtl"] *){
     margin-right: 0.75rem;
 }
-.rtl\:ml-10:where([dir="rtl"], [dir="rtl"] *){
-    margin-left: 2.5rem;
-}
-.rtl\:ml-5:where([dir="rtl"], [dir="rtl"] *){
-    margin-left: 1.25rem;
+.rtl\:mr-5:where([dir="rtl"], [dir="rtl"] *){
+    margin-right: 1.25rem;
 }
 .rtl\:-translate-x-10:where([dir="rtl"], [dir="rtl"] *){
     --tw-translate-x: -2.5rem;
@@ -28553,6 +28548,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 @media (min-width: 768px){
     .md\:rtl\:ml-10:where([dir="rtl"], [dir="rtl"] *){
         margin-left: 2.5rem;
+    }
+    .md\:rtl\:mr-10:where([dir="rtl"], [dir="rtl"] *){
+        margin-right: 2.5rem;
     }
     .rtl\:md\:pl-10:where([dir="rtl"], [dir="rtl"] *){
         padding-left: 2.5rem;
