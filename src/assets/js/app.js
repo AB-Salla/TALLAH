@@ -226,6 +226,10 @@ isElementLoaded(selector){
     });
   }
   async init_SideCart() {
+    if (window.location.pathname.includes('/cart')) {
+    // إذا كنا في صفحة الكارت، لا نحتاج للسايد كارت
+    return;
+}
     const cartBtn = document.querySelector("#sidecart-button");
     const cartPanel = document.querySelector("#sidecart-panel");
     const overlay = document.querySelector("#sidecart-overlay");
