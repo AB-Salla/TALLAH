@@ -27172,8 +27172,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart {
   /* NOT ADDED state */
   /* When wishlist is not added */
-  /* Hide empty icon when added */
-  /* Hide filled icon when not added */
+  /* الحالة الافتراضية */
+  /* لما يكون في wishlist */
+  /* لما يكون مش في wishlist */
 }
 .cart .btn--wishlist .is-added span svg {
   fill: var(--color-font) !important;
@@ -27187,16 +27188,19 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart .btn--wishlist .not-added span svg:hover {
   fill: var(--color-font) !important;
 }
-.cart .btn--wishlist .is-added span .not_filled {
-  display: none !important;
-}
-.cart .btn--wishlist .not-added span .filled {
-  display: none !important;
-}
-.cart .s-product-card-wishlist-btn.not-added .filled {
+.cart .s-product-card-wishlist-btn .filled {
   display: none;
 }
-.cart .s-product-card-wishlist-btn.s-product-card-wishlist-added .not_filled {
+.cart .s-product-card-wishlist-btn.s-product-card-wishlist-added .filled {
+  display: block;
+}
+.cart .s-product-card-wishlist-btn.s-product-card-wishlist-added .not-filled {
+  display: none;
+}
+.cart .s-product-card-wishlist-btn:not(.s-product-card-wishlist-added) .not-filled {
+  display: block;
+}
+.cart .s-product-card-wishlist-btn:not(.s-product-card-wishlist-added) .filled {
   display: none;
 }
 .cart .s-offer-bank-payment-wrapper {
