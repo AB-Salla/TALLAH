@@ -1056,9 +1056,6 @@ select{
     margin-left: auto;
     margin-right: auto;
 }
-.\!mb-0{
-    margin-bottom: 0px !important;
-}
 .-mb-52{
     margin-bottom: -13rem;
 }
@@ -28171,6 +28168,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:flex-row{
         flex-direction: row;
+    }
+    .lg\:flex-row-reverse{
+        flex-direction: row-reverse;
     }
     .lg\:justify-end{
         justify-content: flex-end;
