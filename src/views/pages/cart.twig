@@ -71,12 +71,12 @@
                                             {% if loop.first %}
 												<img src="{{ item.product_image }}"
 													alt="{{ item.product_name }}"
-													class="flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+													class="flex-none w-32 h-36 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
 											{% else %}
 												<img src="{{ 'images/s-empty.png' | cdn }}"
 													data-src="{{ item.product_image }}"
 													alt="{{ item.product_name }}"
-													class="lazy flex-none w-24 h-20 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+													class="lazy flex-none w-32 h-36 border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
 											{% endif %}
 
                                             <!-- free product ribbon -->
@@ -112,10 +112,17 @@
                                                 offers="{{ item.detailed_offers|json_encode }}"></salla-cart-item-offers>
                                             {# End Cart Item offers #}
 
+                                            {% include 'pages.partials.product.options' with {product:item} %}
                                         </div>
                                     </div>
 
-                                    <div class="border-t border-b border-gray-200 py-3 md:p-0 md:border-none mt-5 md:mt-0 flex flex-col-reverse gap-8 justify-between items-center md:items-start">
+                                    <div class="border-t border-b border-gray-200 py-3 md:p-0 md:border-none mt-5 md:mt-0 flex flex-col-reverse gap-8 justify-between items-end">
+                                        <span class="">
+                                            <salla-button type="button" shape="icon" size="small" color="danger" class="btn--delete" aria-label="Remove from the cart"
+                                                    onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
+                                                <i class="sicon-trash-2"></i>
+                                            </salla-button>
+                                        </span>
                                         {% if item.type == 'donating' %}
                                             <span></span>
                                         {% elseif item.is_hidden_quantity %}
@@ -133,16 +140,11 @@
                                             <span>{{ trans('pages.cart.total') }}:</span>
                                             <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
                                         </p>
+                                       
                                     </div>
                                 </div>
 
-                                {% include 'pages.partials.product.options' with {product:item} %}
-                            <span class="absolute top-1.5 rtl:left-1.5 ltr:right-1.5 rtl:xs:left-5 ltr:xs:right-5 xs:top-5">
-                                <salla-button type="button" shape="icon" size="small" color="danger" class="btn--delete" aria-label="Remove from the cart"
-                                        onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
-                                    <i class="sicon-cancel"></i>
-                                </salla-button>
-                            </span>
+                            
                         </section>
                     </form>
                 {% else %}

@@ -951,9 +951,6 @@ select{
 .top-0{
     top: 0px;
 }
-.top-1\.5{
-    top: 0.375rem;
-}
 .top-2{
     top: 0.5rem;
 }
@@ -1242,6 +1239,9 @@ select{
 }
 .h-32{
     height: 8rem;
+}
+.h-36{
+    height: 9rem;
 }
 .h-4{
     height: 1rem;
@@ -27281,6 +27281,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   fill: #414042;
   fill: var(--color-primary);
 }
+.cart .s-product-options-wrapper {
+  padding: 0 !important;
+}
 body.mm-ocd-opened,
 body.modal-is-open,
 body.fancybox-open {
@@ -27713,9 +27716,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     background-color: rgba(55, 65, 81, var(--tw-bg-opacity, 1));
 }
 @media (min-width: 480px){
-    .xs\:top-5{
-        top: 1.25rem;
-    }
     .xs\:p-11{
         padding: 2.75rem;
     }
@@ -28388,9 +28388,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:right-1:where([dir="ltr"], [dir="ltr"] *){
     right: 0.25rem;
 }
-.ltr\:right-1\.5:where([dir="ltr"], [dir="ltr"] *){
-    right: 0.375rem;
-}
 .ltr\:right-2:where([dir="ltr"], [dir="ltr"] *){
     right: 0.5rem;
 }
@@ -28493,11 +28490,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:even\:border-l:nth-child(even):where([dir="ltr"], [dir="ltr"] *){
     border-left-width: 1px;
 }
-@media (min-width: 480px){
-    .ltr\:xs\:right-5:where([dir="ltr"], [dir="ltr"] *){
-        right: 1.25rem;
-    }
-}
 @media (min-width: 640px){
     .sm\:ltr\:text-left:where([dir="ltr"], [dir="ltr"] *){
         text-align: left;
@@ -28536,9 +28528,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:left-1:where([dir="rtl"], [dir="rtl"] *){
     left: 0.25rem;
-}
-.rtl\:left-1\.5:where([dir="rtl"], [dir="rtl"] *){
-    left: 0.375rem;
 }
 .rtl\:left-2:where([dir="rtl"], [dir="rtl"] *){
     left: 0.5rem;
@@ -28660,11 +28649,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:even\:border-r:nth-child(even):where([dir="rtl"], [dir="rtl"] *){
     border-right-width: 1px;
-}
-@media (min-width: 480px){
-    .rtl\:xs\:left-5:where([dir="rtl"], [dir="rtl"] *){
-        left: 1.25rem;
-    }
 }
 @media (min-width: 640px){
     .sm\:rtl\:text-right:where([dir="rtl"], [dir="rtl"] *){
