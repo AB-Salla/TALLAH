@@ -1116,9 +1116,6 @@ select{
 .mr-2{
     margin-right: 0.5rem;
 }
-.ms-4{
-    margin-left: 1rem;
-}
 .mt-1{
     margin-top: 0.25rem;
 }
@@ -1900,6 +1897,11 @@ select{
     border-color: #414042;
     border-color: var(--color-primary);
 }
+.bg-\[\#F4F4F5\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(244, 244, 245, 1);
+    background-color: rgba(244, 244, 245, var(--tw-bg-opacity, 1));
+}
 .bg-background{
     background-color: var(--color-background);
 }
@@ -2072,6 +2074,10 @@ select{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
 }
+.py-12{
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
 .py-16{
     padding-top: 4rem;
     padding-bottom: 4rem;
@@ -2155,6 +2161,9 @@ select{
 .pr-14{
     padding-right: 3.5rem;
 }
+.ps-4{
+    padding-left: 1rem;
+}
 .pt-0{
     padding-top: 0px;
 }
@@ -2184,9 +2193,6 @@ select{
 }
 .pt-8{
     padding-top: 2rem;
-}
-.ps-4{
-    padding-left: 1rem;
 }
 .text-center{
     text-align: center;
@@ -27758,10 +27764,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:col-span-2{
         grid-column: span 2 / span 2;
     }
-    .md\:mx-16{
-        margin-left: 4rem;
-        margin-right: 4rem;
-    }
     .md\:mb-0{
         margin-bottom: 0px;
     }
@@ -27948,8 +27950,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:p-8{
         padding: 2rem;
     }
-    .md\:p-16{
-        padding: 4rem;
+    .md\:px-16{
+        padding-left: 4rem;
+        padding-right: 4rem;
     }
     .md\:px-5{
         padding-left: 1.25rem;
@@ -27974,10 +27977,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-6{
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
-    }
-    .md\:px-16{
-        padding-left: 4rem;
-        padding-right: 4rem;
     }
     .md\:pb-16{
         padding-bottom: 4rem;
