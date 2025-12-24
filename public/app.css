@@ -1316,6 +1316,12 @@ select{
 .h-screen{
     height: 100vh;
 }
+.h-\[\]{
+    height: ;
+}
+.h-\[clamp\(15\.313rem\2c 12\.2518rem\+13\.0612vw\2c 25\.313rem\)\]{
+    height: clamp(15.313rem,12.2518rem + 13.0612vw,25.313rem);
+}
 .max-h-0{
     max-height: 0px;
 }

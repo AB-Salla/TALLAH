@@ -1,0 +1,50 @@
+<section class="AR-testimonials">
+<div class="wrapper">
+<div class="heading">
+<p>{{component.block_title}}</p>
+<p>{{component.subtext}}</p>
+
+</div>
+		<div class="relative testimonials-wrapper">
+
+        <salla-slider
+			 id="testimonials-slider-{{position}}" class="testimonials-slider" slider-config='{
+
+    "spaceBetween": 0,
+    "lazy": true,
+    "speed": 300,
+	"loop":false
+  }'
+ 			show-controls="false" type="testimonials">
+				<div slot="items">
+            {% for item in  component.testimonials %}                                    
+			<div class="testimonials  testimonials-{{loop.index}}  flex flex-col items-center justify-center relative md:h-[90vh] h-[100svh] py-16 overflow-hidden">
+                <div class="h-[clamp(15.313rem,12.2518rem+13.0612vw,25.313rem)] w-full">
+                <img src="{{ item.image }}" class=" h-full w-full object-cover" alt="{{ item.product_name }}"/>
+
+                </div>
+                <div class="testimonials-data">
+                          <salla-rating-stars
+          name="rating"
+          size="medium"
+          value="{{ item.review }}"
+          ></salla-rating-stars>
+          <p>{{item.product_name}}<p>
+                    <p>{{item.testimonial}}<p>
+
+                </div>
+    
+
+                
+            {% endfor %}
+
+
+            		</div>
+	
+				</salla-slider>
+
+
+		</div>
+</div>
+
+</section>
