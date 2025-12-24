@@ -61,11 +61,6 @@
                 \"disableOnInteraction\": false,
                 \"pauseOnMouseEnter\": true
               }" : "false" }},
-              "pagination": {
-                "el": ".products-slider-{{ position }} .swiper-pagination",
-                "type": "bullets",
-                "clickable": true
-              },
               "navigation": {
                 "nextEl": ".products-slider-{{ position }} .salla-slider-next",
                 "prevEl": ".products-slider-{{ position }} .salla-slider-prev"
@@ -90,7 +85,6 @@
 						<button class="salla-slider-prev items-center justify-center border border-primary p-2 rounded-sm {{component.enable_controls ? 'flex' : 'hidden'}}">
 							<i class="sicon-caret-right ltr:-scale-x-100 text-sm text-primary"></i>
 						</button>
-						<div class="swiper-pagination justify-center gap-2 !static items-center m-0 {{component.enable_pagination ? 'flex' : 'hidden'}}"></div>
 						<button class="salla-slider-next items-center justify-center border border-primary p-2 rounded-sm {{component.enable_controls ? 'flex' : 'hidden'}}">
 							<i class="sicon-caret-left ltr:-scale-x-100 text-sm text-primary"></i>
 						</button>

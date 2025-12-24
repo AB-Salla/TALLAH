@@ -5,8 +5,7 @@ export const eyeModel = (productId) => {
   const modelContainer = document.querySelector("#quick-eye-container");
 
   if (!productId || !model || !modelContainer) {
-    console.log(productId, model, modelContainer);
-    console.log(quick_eye_img, "quick_eye_img");
+    
     console.warn("Missing required DOM elements or productId");
     return;
   }
@@ -79,7 +78,6 @@ export const eyeModel = (productId) => {
     });
 
     wrapper.dispatchEvent(new Event('change', { bubbles: true }));
-    console.log('تم مسح جميع الخيارات');
   }
 
   // تهيئة الخيارات في الـ modal
@@ -92,7 +90,6 @@ export const eyeModel = (productId) => {
             if (node.nodeType === 1 && node.querySelector && node.querySelector('.s-product-options-option-content select')) {
               setTimeout(() => {
                 convertSelectsToRadioButtons(modelContainer);
-                setupClearButton();
               }, 100);
             }
           });
@@ -106,7 +103,6 @@ export const eyeModel = (productId) => {
     setTimeout(() => {
       if (modelContainer.querySelector('.s-product-options-option-content select')) {
         convertSelectsToRadioButtons(modelContainer);
-        setupClearButton();
       }
     }, 300);
   }
@@ -158,7 +154,6 @@ export const eyeModel = (productId) => {
       context.querySelectorAll(".union-button").forEach((btn_union) => {
         btn_union.addEventListener("click", () => {
           salla.event.dispatch("modal::close", "quick-eye-model");
-          console.log(salla.event.dispatch("modal::close", "quick-eye-model"));
 
           const productId = btn_union.getAttribute("data-id");
           window.app.related_product_popup(productId);
@@ -281,7 +276,6 @@ export const eyeModel = (productId) => {
 
     const getProductBrand = () => {
       const product_brand = product?.brand?.name || "";
-      console.log(product);
 
       if (!product_brand) return "";
       return `
@@ -598,7 +592,6 @@ ${renderWeightBlock()}
         "images",
         "brand",
       ]);
-      console.log(data, "dataaaaaaaaaaaaaaaaaaa");
 
       eyeHtml(data);
       model.open();
@@ -632,7 +625,6 @@ ${renderWeightBlock()}
         const selects = modelContainer.querySelectorAll('.s-product-options-option-content select');
         if (selects.length > 0) {
           convertSelectsToRadioButtons(modelContainer);
-          setupClearButton();
           clearInterval(checkOptionsInterval);
         }
       }, 100);
