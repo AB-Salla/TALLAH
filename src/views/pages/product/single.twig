@@ -666,8 +666,8 @@
             <div slot="items">
                 {% for image_item in images %}
                     {% if image_item['img_single'] is defined and image_item['img_single'] %}
-                        <div class="gallery-item h-[374px]">
-                            <img src="{{ image_item['img_single'] }}" loading="eager" alt="{{ product.name }}" class="w-full h-full rounded-3xl">
+                        <div class="gallery-item !h-[374px]">
+                            <img src="{{ image_item['img_single'] }}" loading="eager" alt="{{ product.name }}" class="w-full h-full rounded-3xl object-cover">
                         </div>
                     {% endif %}
                 {% endfor %}
