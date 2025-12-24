@@ -27176,6 +27176,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
 }
+.cart .s-product-card-wishlist-btn.s-product-card-wishlist-added svg {
+  fill: #e11d48 !important;
+}
+.cart .s-product-card-wishlist-btn.s-product-card-wishlist-added svg { /* red-600 */
+}
 .cart .btn--wishlist .is-added span svg {
   fill: var(--color-font) !important;
 }

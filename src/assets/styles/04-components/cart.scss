@@ -1,5 +1,8 @@
 .cart {
      /* NOT ADDED state */
+     .s-product-card-wishlist-btn.s-product-card-wishlist-added svg {
+  fill: #e11d48 !important; /* red-600 */
+}
   .btn--wishlist .is-added span svg {
     fill: var(--color-font) !important;
   }
