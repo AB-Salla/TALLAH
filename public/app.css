@@ -1240,9 +1240,6 @@ select{
 .h-32{
     height: 8rem;
 }
-.h-36{
-    height: 9rem;
-}
 .h-4{
     height: 1rem;
 }
@@ -1275,6 +1272,9 @@ select{
 }
 .h-\[100svh\]{
     height: 100svh;
+}
+.h-\[165px\]{
+    height: 165px;
 }
 .h-\[1px\]{
     height: 1px;
@@ -1315,12 +1315,6 @@ select{
 }
 .h-screen{
     height: 100vh;
-}
-.h-\[\]{
-    height: ;
-}
-.h-\[165px\]{
-    height: 165px;
 }
 .max-h-0{
     max-height: 0px;
@@ -1433,17 +1427,14 @@ select{
 .w-\[90vw\]{
     width: 90vw;
 }
+.w-\[95px\]{
+    width: 95px;
+}
 .w-auto{
     width: auto;
 }
 .w-full{
     width: 100%;
-}
-.w-\[\]{
-    width: ;
-}
-.w-\[95px\]{
-    width: 95px;
 }
 .min-w-0{
     min-width: 0px;
@@ -27933,6 +27924,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-20{
         height: 5rem;
     }
+    .md\:h-36{
+        height: 9rem;
+    }
     .md\:h-40{
         height: 10rem;
     }
@@ -27948,9 +27942,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-\[90vh\]{
         height: 90vh;
     }
-    .md\:h-36{
-        height: 9rem;
-    }
     .md\:w-1\/2{
         width: 50%;
     }
@@ -27959,6 +27950,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-2\/4{
         width: 50%;
+    }
+    .md\:w-32{
+        width: 8rem;
     }
     .md\:w-5{
         width: 1.25rem;
@@ -27989,9 +27983,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
-    }
-    .md\:w-32{
-        width: 8rem;
     }
     .md\:flex-1{
         flex: 1 1 0%;
