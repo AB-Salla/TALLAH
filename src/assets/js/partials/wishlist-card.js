@@ -1,4 +1,3 @@
-const PRODUCT_DETAILS_CACHE = new Map();
 class WishlistCard extends HTMLElement {
   connectedCallback() {
     // Parse product data
@@ -136,29 +135,9 @@ class WishlistCard extends HTMLElement {
     return salla.lang.get("pages.products.donation_exceed");
   }
 
-  
-   async getProductImage(productId) {
-  // 🔁 لو البيانات موجودة في الكاش
-  if (PRODUCT_DETAILS_CACHE.has(productId)) {
-    this.applyProductDetails(PRODUCT_DETAILS_CACHE.get(productId));
-    return;
-  }
+    async getProductImage(productId) {
+  const response = await salla.product.getDetails(productId, ["images", "options"]);
 
-  try {
-    const response = await salla.product.getDetails(productId, [
-      "images",
-      "options",
-    ]);
-
-    // خزّنها
-    PRODUCT_DETAILS_CACHE.set(productId, response);
-
-    this.applyProductDetails(response);
-  } catch (err) {
-    console.error("❌ Product details request failed:", err);
-  }
-}
-applyProductDetails(response) {
   this.images = response?.data?.images || [];
   this.hasSecondImage = this.images.length > 1;
   this.options = response?.data?.options || [];
@@ -166,6 +145,7 @@ applyProductDetails(response) {
   this.mainImage = this.product?.image?.url || this.product?.thumbnail;
   this.secondImage = this.hasSecondImage ? this.images[1]?.url : null;
 
+  // =============================
   // تجميع الأوبشنز حسب النوع
   this.groupedOptions = this.options.reduce((acc, opt) => {
     if (!acc[opt.type]) acc[opt.type] = [];
@@ -173,12 +153,19 @@ applyProductDetails(response) {
     return acc;
   }, {});
 
+  // 🎨 كل color options
   this.colorOptions = this.groupedOptions["color"] || [];
+
+  // 📏 كل single-option
   this.singleOptions = this.groupedOptions["single-option"] || [];
+
+  // 🖼 thumbnail
   this.thumbnailOptions = this.groupedOptions["thumbnail"] || [];
+
+  console.log("🎨 Color Options:", this.colorOptions);
+  console.log("📏 Single Options:", this.singleOptions);
+  console.log("🖼 Thumbnail Options:", this.thumbnailOptions);
 }
-
-
   getProps() {
     /**
      *  Horizontal card.
