@@ -27182,10 +27182,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart .s-product-card-wishlist-btn.s-product-card-wishlist-added svg { /* red-600 */
 }
 .cart .btn--wishlist .is-added span svg {
-  fill: var(--color-font) !important;
+  fill: #e11d48 !important;
 }
 .cart .btn--wishlist .is-added span svg:hover {
-  fill: var(--color-font) !important;
+  fill: #e11d48 !important;
 }
 .cart .btn--wishlist .not-added span svg {
   fill: var(--color-font) !important;
