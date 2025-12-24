@@ -1316,6 +1316,12 @@ select{
 .h-screen{
     height: 100vh;
 }
+.h-\[\]{
+    height: ;
+}
+.h-\[165px\]{
+    height: 165px;
+}
 .max-h-0{
     max-height: 0px;
 }
@@ -1432,6 +1438,12 @@ select{
 }
 .w-full{
     width: 100%;
+}
+.w-\[\]{
+    width: ;
+}
+.w-\[95px\]{
+    width: 95px;
 }
 .min-w-0{
     min-width: 0px;
@@ -27936,6 +27948,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-\[90vh\]{
         height: 90vh;
     }
+    .md\:h-36{
+        height: 9rem;
+    }
     .md\:w-1\/2{
         width: 50%;
     }
@@ -27974,6 +27989,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
+    }
+    .md\:w-32{
+        width: 8rem;
     }
     .md\:flex-1{
         flex: 1 1 0%;
