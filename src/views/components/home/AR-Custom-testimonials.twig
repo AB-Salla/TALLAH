@@ -5,7 +5,7 @@
 			<p style="color:{{component.blocktitle_color}}" class="block-title mb-1 text-xl font-semibold">{{component.block_title}}</p>
 			<p style="color:{{component.subtext_color}}" class="subtext mb-4 text-base font-medium">{{component.subtext}}</p>
             </div>
-            <a class="block underline shrink-0" href="{{component.link}}">{{component.url_text}}</a>
+            <a style="color:{{component.url_color}}" class="block underline shrink-0" href="{{component.url}}">{{component.url_text}}</a>
 		</div>
 		<div class="relative testimonials-wrapper">
 			<salla-slider id="testimonials-slider-{{position}}" class="testimonials-slider" slider-config='{
@@ -35,10 +35,10 @@
 							<div class="testimonials-data mt-4 flex flex-col md:gap-2 gap-1 px-2 md:px-4">
 								<salla-rating-stars name="rating" size="medium" value="{{ item.review }}"></salla-rating-stars>
                                 {% if item.product_name %}
-								<p class="product-name text-base font-semibold">{{item.product_name}}</p>
+								<p style="color:{{item.product_name_color}}" class="product-name text-base font-semibold">{{item.product_name}}</p>
                                 {% endif %}
                                 {% if item.testimonial %} 
-								<p class="product-name text-sm font-medium">“{{item.testimonial}}”</p>
+								<p style="color:{{item.testimonial_color}}" class="product-name text-sm font-medium">“{{item.testimonial}}”</p>
                                 {% endif %}
 							</div>
 					</div>
@@ -52,3 +52,4 @@
 .AR-testimonials .testimonials-slider .s-rating-stars-selected{
     fill:#CEB18F;
 }
+</style>
