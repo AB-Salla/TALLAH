@@ -8,7 +8,10 @@
       opacity: 1;
     }
   }
-
+.carousel-slider .swiper-wrapper > div {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+    }
   &-entry {
     justify-content: unset !important;
     background-color: var(--color-background);
