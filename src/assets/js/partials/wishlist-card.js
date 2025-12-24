@@ -136,16 +136,53 @@ class WishlistCard extends HTMLElement {
   }
 
     async getProductImage(productId) {
-  const response = await salla.product.getDetails(productId, ["images", "options"]);
-
-  this.images = response?.data?.images || [];
-  this.hasSecondImage = this.images.length > 1;
-  this.options = response?.data?.options || [];
-
+  // المفتاح للتخزين المؤقت
+  const cacheKey = `product_${productId}_details`;
+  
+  // 1. جرب تجيب البيانات من الكاش أولاً
+  const cachedData = sessionStorage.getItem(cacheKey);
+  
+  if (cachedData) {
+    console.log(`✅ استخدام البيانات المخزنة للمنتج ${productId}`);
+    const parsedData = JSON.parse(cachedData);
+    
+    this.images = parsedData.images || [];
+    this.hasSecondImage = this.images.length > 1;
+    this.options = parsedData.options || [];
+  } 
+  else {
+    // 2. إذا مفيش في الكاش، روح جيب من السيرفر
+    console.log(`🔄 جلب بيانات جديدة للمنتج ${productId}`);
+    
+    try {
+      const response = await salla.product.getDetails(productId, ["images", "options"]);
+      
+      this.images = response?.data?.images || [];
+      this.hasSecondImage = this.images.length > 1;
+      this.options = response?.data?.options || [];
+      
+      // 3. خزن البيانات في الكاش عشان المرة الجاية
+      const dataToCache = {
+        images: this.images,
+        options: this.options,
+        timestamp: new Date().getTime()
+      };
+      
+      sessionStorage.setItem(cacheKey, JSON.stringify(dataToCache));
+      
+    } catch (error) {
+      console.error(`❌ خطأ في جلب بيانات المنتج ${productId}:`, error);
+      // استخدم البيانات الأساسية إذا فشل الطلب
+      this.images = this.product?.images || [];
+      this.hasSecondImage = this.images.length > 1;
+      this.options = this.product?.options || [];
+    }
+  }
+  
+  // 4. باقي الكود كما هو
   this.mainImage = this.product?.image?.url || this.product?.thumbnail;
   this.secondImage = this.hasSecondImage ? this.images[1]?.url : null;
 
-  // =============================
   // تجميع الأوبشنز حسب النوع
   this.groupedOptions = this.options.reduce((acc, opt) => {
     if (!acc[opt.type]) acc[opt.type] = [];
