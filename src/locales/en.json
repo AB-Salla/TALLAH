@@ -10,7 +10,19 @@
   "pages": {
     "cart": {
       "cart_options": "Cart Options",
-      "goToCartPage": "Go to Cart"
+      "goToCartPage": "Go to Cart",
+      "emptycart": "Cart is empty!",
+      "emptycarttext": "Go to browse",
+      "go_shoping": "Continue Shopping",
+      "total_shipping": "Shipping Cost",
+      "sub_total": "Subtotal",
+      "continue_shopping": "Continue Shopping",
+      "quantity": "Quantity",
+      "remove": "Remove",
+      "brand_single": "Original 100%",
+      "brand_details": "Click here for more details",
+      "verification": "Certified by the Business Platform",
+      "options_total": "Total Order Options"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "You can edit or delete your review within",

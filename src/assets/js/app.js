@@ -172,20 +172,56 @@ isElementLoaded(selector){
   });
 
   }
- initAttachWishlistListeners() {
+   initAttachWishlistListeners() {
     let isListenerAttached = false;
-  
+
     function toggleFavoriteIcon(id, isAdded = true) {
-      document.querySelectorAll('.s-product-card-wishlist-btn[data-id="' + id + '"]').forEach(btn => {
-        app.toggleElementClassIf(btn, 's-product-card-wishlist-added', 'not-added', () => isAdded);
-        app.toggleElementClassIf(btn, 'pulse-anime', 'un-favorited', () => isAdded);
-      });
+      document
+        .querySelectorAll('.s-product-card-wishlist-btn[data-id="' + id + '"]')
+        .forEach((btn) => {
+          app.toggleElementClassIf(
+            btn,
+            "s-product-card-wishlist-added",
+            "not-added",
+            () => isAdded
+          );
+          app.toggleElementClassIf(
+            btn,
+            "pulse-anime",
+            "un-favorited",
+            () => isAdded
+          );
+        });
     }
-  
+
+    function getLocalizedMessage(key) {
+      const lang = document.documentElement.lang || "ar";
+      const messages = {
+        ar: {
+          added: "تم اضافة المنتج لقائمة الأمنيات",
+          removed: "تم حذف المنتج من قائمة الأمنيات",
+        },
+        en: {
+          added: "Product added to wishlist",
+          removed: "Product removed from wishlist",
+        },
+      };
+
+      return messages[lang] ? messages[lang][key] : messages["ar"][key];
+    }
+
     if (!isListenerAttached) {
-      salla.wishlist.event.onAdded((event, id) => toggleFavoriteIcon(id));
-      salla.wishlist.event.onRemoved((event, id) => toggleFavoriteIcon(id, false));
-      isListenerAttached = true; // Mark the listener as attached
+      salla.wishlist.event.onAdded((event, id) => {
+        toggleFavoriteIcon(id);
+        salla.notify.success(getLocalizedMessage("added"));
+      });
+
+      salla.wishlist.event.onRemoved((event, id) => {
+        toggleFavoriteIcon(id, false);
+        salla.notify.success(getLocalizedMessage("removed"));
+      });
+
+      isListenerAttached = true;
     }
   }
 
@@ -226,6 +262,10 @@ isElementLoaded(selector){
     });
   }
   async init_SideCart() {
+    if (window.location.pathname.includes('/cart')) {
+    // إذا كنا في صفحة الكارت، لا نحتاج للسايد كارت
+    return;
+}
     const cartBtn = document.querySelector("#sidecart-button");
     const cartPanel = document.querySelector("#sidecart-panel");
     const overlay = document.querySelector("#sidecart-overlay");

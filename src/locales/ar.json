@@ -10,7 +10,19 @@
   "pages": {
     "cart": {
       "cart_options": "خيارات السلة",
-      "goToCartPage": "الانتقال إلى السلة"
+      "goToCartPage": "الانتقال إلى السلة",
+      "emptycart": "السلة فارغة!",
+      "emptycarttext": "إذهب للتصفح",
+      "go_shoping": "استمر في التسوق",
+      "total_shipping": "حساب الشحن",
+      "sub_total": "الإجــمالـي",
+      "continue_shopping": "متابعة التسوق",
+      "verification": "موثّق لدى منصة الأعمال",
+      "quantity": "الكمية",
+      "remove": "إزالة",
+      "brand_single": "اصلي 100%",
+      "brand_details": "اضغط هنا للمزيد من ماركة",
+      "options_total": "مجموع خيارات الطلب"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
