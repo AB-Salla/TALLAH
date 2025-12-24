@@ -92,7 +92,6 @@ export const eyeModel = (productId) => {
             if (node.nodeType === 1 && node.querySelector && node.querySelector('.s-product-options-option-content select')) {
               setTimeout(() => {
                 convertSelectsToRadioButtons(modelContainer);
-                setupClearButton();
               }, 100);
             }
           });
@@ -106,7 +105,6 @@ export const eyeModel = (productId) => {
     setTimeout(() => {
       if (modelContainer.querySelector('.s-product-options-option-content select')) {
         convertSelectsToRadioButtons(modelContainer);
-        setupClearButton();
       }
     }, 300);
   }
@@ -632,7 +630,6 @@ ${renderWeightBlock()}
         const selects = modelContainer.querySelectorAll('.s-product-options-option-content select');
         if (selects.length > 0) {
           convertSelectsToRadioButtons(modelContainer);
-          setupClearButton();
           clearInterval(checkOptionsInterval);
         }
       }, 100);
