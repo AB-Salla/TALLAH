@@ -9,7 +9,8 @@
   },
   "pages": {
     "cart": {
-      "cart_options": "خيارات السلة"
+      "cart_options": "خيارات السلة",
+      "goToCartPage": "الانتقال إلى السلة"
     },
     "order": {
       "can_edit_or_delete_your_review_within": "يمكنك تعديل أو حذف تقييمك خلال",
