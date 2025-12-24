@@ -1091,7 +1091,7 @@
             "selected": false
         }
     ],
-    "components": [
+"components": [
         {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
             "title": {
@@ -1910,8 +1910,8 @@
         {
             "key": "bc3ece68-4c35-44a0-829d-696d08e0e842",
             "title": {
-                "en": "Hero section - Arabian",
-                "ar": "بانر رئيسي - عربي"
+                "en": "Hero section (Slider) - Arabian",
+                "ar": "بانر رئيسي (متحرك) - عربي"
             },
             "icon": "sicon-store",
             "path": "home.AR-Hero-section",
@@ -2190,6 +2190,59 @@
                     "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
                     "required": true
                 },
+                                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "id": "url",
+                    "value": [],
+                    "description": "اختر الوجهة التي سيتم الانتقال إليها عند النقر على الرابط",
+                    "required": true,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
+                        
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
+                        }
+                    ],
+                    "conditions": [
+                        {
+                            "id": "is_moving",
+                            "operation": "=",
+                            "value": false
+                        }
+                    ]
+                },
+
                 {
                     "id": "link_text",
                     "type": "string",
@@ -3089,7 +3142,180 @@
             },
             "icon": "sicon-store",
             "path": "home.Ar-Promo-banner",
-            "fields": []
+            "fields": [
+                {
+                    "id": "banner_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "إضافة صورة",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
+                    "required": true
+                },
+       
+                {
+                    "id": "block_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم.",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "Effortless Style, Curated for You",
+                        "en": "Effortless Style, Curated for You"
+                    },
+                    "multilanguage": true,
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 50
+                },
+                {
+                    "id": "block_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181B",
+                    "required": false
+                },
+                {
+                    "id": "subtext",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "Every piece in our collection is carefully selected to bring ease and sophistication into your everyday wardrobe. Effortless layers, versatile textures, and timeless silhouettes come together to create looks that feel as natural as they are refined.",
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "300",
+                    "conditions": [
+                        {
+                            "id": "component_type",
+                            "operation": "=",
+                            "value": "text"
+                        }
+                    ]
+                },
+                {
+                    "id": "subtext_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون النص الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#FAFAFA",
+                    "required": false
+                },
+                          {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط الزر",
+                            "id": "banner.url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        },
+                {
+                    "id": "link_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الرابط",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "Shop the Look",
+                        "en": "Shop the Look"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": 2,
+                    "maxLength": 30
+                },
+                {
+                    "id": "link_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الفرعي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181B",
+                    "required": false
+                }
+ 
+            ]
         },
         {
             "key": "791c84a3-7e68-4620-982f-0e679bcfde61",
@@ -3109,7 +3335,10 @@
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
-                    "value": "THE REVIEWS ARE IN",
+                    "value": {
+                        "ar": "آراء العملاء",
+                        "en": "THE REVIEWS ARE IN"
+                    },
                     "multilanguage": true,
                     "required": false,
                     "minLength": "2",
@@ -3136,7 +3365,10 @@
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
-                    "value": "Real stories. Real experiences",
+                    "value": {
+                        "ar": "قصص حقيقية. تجارب حقيقية",
+                        "en": "Real stories. Real experiences"
+                    },
                     "multilanguage": true,
                     "required": false,
                     "minLength": "2",
@@ -3154,6 +3386,70 @@
                     "value": "#18181b",
                     "required": false
                 },
+                 {
+                            "type": "items",
+                            "icon": "sicon-link",
+                            "label": "رابط الزر",
+                            "id": "url",
+                            "value": null,
+                            "description": null,
+                            "required": false,
+                            "format": "variable-list",
+                            "searchable": true,
+                            "source": "custom",
+                            "sources": [
+                                {
+                                    "label": "منتج",
+                                    "key": "products",
+                                    "value": "products"
+                                },
+                                {
+                                    "label": "تصنيف",
+                                    "key": "categories",
+                                    "value": "categories"
+                                },
+                                {
+                                    "label": "ماركة تجارية",
+                                    "key": "brands",
+                                    "value": "brands"
+                                },
+                                {
+                                    "label": "صفحة تعريفية",
+                                    "key": "pages",
+                                    "value": "pages"
+                                },
+                                {
+                                    "label": "مقالة",
+                                    "key": "blog_articles",
+                                    "value": "blog_articles"
+                                },
+                                {
+                                    "label": "تصنيف ضمن المدونة",
+                                    "key": "blog_categories",
+                                    "value": "blog_categories"
+                                },
+                                {
+                                    "label": "التخفيضات",
+                                    "key": "offers_link",
+                                    "value": "offers_link"
+                                },
+                                {
+                                    "label": "الماركات التجارية",
+                                    "key": "brands_link",
+                                    "value": "brands_link"
+                                },
+                                {
+                                    "label": "المدونة",
+                                    "key": "blog_link",
+                                    "value": "blog_link"
+                                },
+                                {
+                                    "label": "رابط خارجي",
+                                    "key": "custom",
+                                    "value": "custom"
+                                }
+                            ]
+                        },
                 {
                     "id": "url_text",
                     "type": "string",
@@ -3163,7 +3459,10 @@
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
-                    "value": null,
+                    "value": {
+                        "ar": "اكتشف المزيد",
+                        "en": "Explore More Stories"
+                    },
                     "multilanguage": true,
                     "required": false,
                     "minLength": "2",
@@ -3273,7 +3572,88 @@
                             "required": false
                         }
                     ],
-                    "value": [],
+                    "value": [
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "الجينز واسع ومريح جدًا، القماش ثقيل وجودته عالية ويعطي شكل أنيق طوال اليوم.",
+                                "testimonials.product_name": "بنطال جينز واسع"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "These wide leg jeans are incredibly comfortable and stylish. The fabric feels premium and holds its shape all day.",
+                                "testimonials.product_name": "Wide Leg Jeans"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/6e223671-8db8-4371-9979-0c88ace5fc22.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "These wide leg jeans are incredibly comfortable and stylish. The fabric feels premium and holds its shape all day.",
+                            "testimonials.product_name": "Wide Leg Jeans"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "قميص قطني ناعم وخفيف، مناسب للاستخدام اليومي وسهل الغسل بدون أن يفقد شكله.",
+                                "testimonials.product_name": "قميص قطني"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "A soft and breathable cotton shirt that’s perfect for everyday wear. Great quality and easy to care for.",
+                                "testimonials.product_name": "Cotton Shirt"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/760c9830-74fc-4465-b5a8-77d70598313f.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "A soft and breathable cotton shirt that’s perfect for everyday wear. Great quality and easy to care for.",
+                            "testimonials.product_name": "Cotton Shirt"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "الجاكيت أنيق وعملي، يعطي دفء ممتاز ومناسب للارتداء اليومي أو الخروجات.",
+                                "testimonials.product_name": "جاكيت"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This jacket is stylish, warm, and well-made. Perfect for layering and everyday outfits.",
+                                "testimonials.product_name": "Jacket"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/3a49b159-d367-42eb-996f-3155625747d3.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This jacket is stylish, warm, and well-made. Perfect for layering and everyday outfits.",
+                            "testimonials.product_name": "Jacket"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "قميص نسائي أنيق ومريح، القَصّة جميلة ويناسب مختلف الإطلالات.",
+                                "testimonials.product_name": "قميص نسائي"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "A beautifully designed women’s shirt that’s both comfortable and flattering. Easy to dress up or down.",
+                                "testimonials.product_name": "Women’s Shirt"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/bb974961-a6ca-43a0-97f3-86288e5f1237.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "A beautifully designed women’s shirt that’s both comfortable and flattering. Easy to dress up or down.",
+                            "testimonials.product_name": "Women’s Shirt"
+                        },
+                        {
+                            "ar": {
+                                "testimonials.testimonial": "قميص رجالي بخامة ممتازة وقصّة عصرية، مريح جدًا ومناسب للعمل أو الاستخدام اليومي.",
+                                "testimonials.product_name": "قميص رجالي"
+                            },
+                            "en": {
+                                "testimonials.testimonial": "This men’s shirt offers excellent fabric quality and a modern fit. Comfortable, durable, and perfect for daily wear.",
+                                "testimonials.product_name": "Men’s Shirt"
+                            },
+                            "testimonials.image": "https://cdn.files.salla.network/homepage/1954265887/6e223671-8db8-4371-9979-0c88ace5fc22.webp",
+                            "testimonials.review": 5,
+                            "testimonials.testimonial_color": "#18181b",
+                            "testimonials.product_name_color": "#18181b",
+                            "testimonials.testimonial": "This men’s shirt offers excellent fabric quality and a modern fit. Comfortable, durable, and perfect for daily wear.",
+                            "testimonials.product_name": "Men’s Shirt"
+                        }
+                    ],
                     "minLength": "4",
                     "maxLength": "10"
                 }
