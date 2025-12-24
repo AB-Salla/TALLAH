@@ -1,145 +1,145 @@
-// .fc{
-//   background-color: #E8EAFC;
+// // .fc{
+// //   background-color: #E8EAFC;
+// // }
+// // .fc.fc-theme-standard .fc-scrollgrid>thead{
+// //   background-color: #E8EAFC;
+// // }
+// // .fc.fc-theme-standard .fc-scrollgrid-section .fc-daygrid-day-frame, .fc.fc-theme-standard .fc-scrollgrid-section-body .fc-daygrid-day-frame{
+// //   background-color: #E8EAFC;
+// // }
+// // .fc.fc-theme-standard .fc-scrollgrid-section .fc-daygrid-day.override:after, .fc.fc-theme-standard .fc-scrollgrid-section-body .fc-daygrid-day.override:after{
+// //   background-color: #dddff8;
+// // }
+// // .s-modal-body{
+// //   background-color: #E8EAFC;
+// // }
+// .dark .cart {
+//     .s-offer-wrapper{
+//    box-shadow: rgb(16 16 16 / 24%) 0px 3px 8px;
+//     .s-offer-bank-message p {
+//       color: var(--color-font-black);
+//     }
+//   }
+//   .s-conditional-offer-container{
+//     background-color: var(--color-background-dark) !important;
+//   }
+//   .cart-options{
+//       .s-form-control{
+//         background-color: var(--color-background-dark) !important;
+//         color: var(--color-font-black) !important;
+//       option {
+//         color: var(--color-font-black) !important;
+//       }
+//     }
+//     background-color: var(--color-background-dark) !important;
+//   }
 // }
-// .fc.fc-theme-standard .fc-scrollgrid>thead{
-//   background-color: #E8EAFC;
+
+// .cart {
+//   .s-offer-bank-payment-wrapper{
+//     padding-inline: 10px !important;
+//   }
+//   .s-offer-wrapper{
+//     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+//     margin-block: 20px;
+//     background-color: transparent;
+//     .s-slider-block__title-nav{
+//       display: none;
+//     }
+//     .s-offer-bank-message p {
+//       color: var(--color-font-light);
+//     }
+//   }
+//   .cart-options{
+//     .s-form-control{
+//       background-color: transparent;
+//       border: 1px solid var(--color-primary);
+//       border-radius: 8px;
+//       margin-top: 5px;
+//       color: var(--color-font-light);
+//     }
+//     .s-product-options-option-booking .s-product-options-option-content{
+//       margin: 0 !important;
+//     }
+// border-color: var(--color-primary);
+//     background-color: var(--color-background-light) !important;
+//     .s-product-options-option-label{
+//       margin-block: 5px;
+//     }
+//   }
+//   .s-conditional-offer-container{
+//     background-color: var(--color-background-light) !important;
+//   }
+//     .s-product-options-wrapper {
+//     background-color: transparent;
+//     border: none;
+//   }
+//   .cart-item {
+//   border-bottom: 1px solid #acacac63 !important; /* لون خفيف زي Tailwind gray-200 */
 // }
-// .fc.fc-theme-standard .fc-scrollgrid-section .fc-daygrid-day-frame, .fc.fc-theme-standard .fc-scrollgrid-section-body .fc-daygrid-day-frame{
-//   background-color: #E8EAFC;
+//   .s-product-options-option-label{
+//     color: var(--color-primary);
+//   }
+//   .btn--danger{ 
+//     background-color: var(--color-primary) !important;
+
 // }
-// .fc.fc-theme-standard .fc-scrollgrid-section .fc-daygrid-day.override:after, .fc.fc-theme-standard .fc-scrollgrid-section-body .fc-daygrid-day.override:after{
-//   background-color: #dddff8;
+//   .s-product-options-option{
+//     gap: 10px;
+//     .s-product-options-option-content{
+//       width: 70%;
+//     }
+//   }
+//   .sticky{
+
+//     .cart-submit-wrap {
+//       salla-button button {
+//       background-color: var(--color-font-secondary);
+//       padding-block: 14px;
+//       font-size: clamp(1rem /* 16px */, 0.9235rem /* 14.776px */ + 0.3265vw, 1.25rem /* 20px */);
+//       border: 0;
+//       border-radius: 8px;
+
+//     }
+//   }
+//   input{
+//     background-color: transparent !important;
+//     min-height: 50px !important;
+//     padding-block: 14px;
+//     border: 1px solid #D6DDDF !important;
+
+//   }
+//   .btn--coupon{
+//     border-radius: 0;
+//     min-height: 50px !important;
+//   }
 // }
-// .s-modal-body{
-//   background-color: #E8EAFC;
+//   .s-product-options-option {
+//     display: flex;
+//   }
+//   salla-quantity-input {
+//     background-color: transparent;
+//     border-radius: none;
+//     .s-quantity-input-container {
+//       border-top: 1px solid var(--color-primary);
+//       border-bottom: 1px solid var(--color-primary);
+//       border-right: none;
+//       border-left: none;
+//       border-radius: 0;
+
+//       .s-quantity-input-input {
+//         width: 3rem !important;
+//         background-color: transparent;
+//         color: var(--color-font-light);
+//         border: none;
+//       }
+//       .s-quantity-input-button {
+//         svg {
+//           fill: var(--color-primary);
+//         }
+//       }
+//     }
+//   }
 // }
-.dark .cart {
-    .s-offer-wrapper{
-   box-shadow: rgb(16 16 16 / 24%) 0px 3px 8px;
-    .s-offer-bank-message p {
-      color: var(--color-font-black);
-    }
-  }
-  .s-conditional-offer-container{
-    background-color: var(--color-background-dark) !important;
-  }
-  .cart-options{
-      .s-form-control{
-        background-color: var(--color-background-dark) !important;
-        color: var(--color-font-black) !important;
-      option {
-        color: var(--color-font-black) !important;
-      }
-    }
-    background-color: var(--color-background-dark) !important;
-  }
-}
-
-.cart {
-  .s-offer-bank-payment-wrapper{
-    padding-inline: 10px !important;
-  }
-  .s-offer-wrapper{
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    margin-block: 20px;
-    background-color: transparent;
-    .s-slider-block__title-nav{
-      display: none;
-    }
-    .s-offer-bank-message p {
-      color: var(--color-font-light);
-    }
-  }
-  .cart-options{
-    .s-form-control{
-      background-color: transparent;
-      border: 1px solid var(--color-primary);
-      border-radius: 8px;
-      margin-top: 5px;
-      color: var(--color-font-light);
-    }
-    .s-product-options-option-booking .s-product-options-option-content{
-      margin: 0 !important;
-    }
-border-color: var(--color-primary);
-    background-color: var(--color-background-light) !important;
-    .s-product-options-option-label{
-      margin-block: 5px;
-    }
-  }
-  .s-conditional-offer-container{
-    background-color: var(--color-background-light) !important;
-  }
-    .s-product-options-wrapper {
-    background-color: transparent;
-    border: none;
-  }
-  .cart-item {
-  border-bottom: 1px solid #acacac63 !important; /* لون خفيف زي Tailwind gray-200 */
-}
-  .s-product-options-option-label{
-    color: var(--color-primary);
-  }
-  .btn--danger{ 
-    background-color: var(--color-primary) !important;
-
-}
-  .s-product-options-option{
-    gap: 10px;
-    .s-product-options-option-content{
-      width: 70%;
-    }
-  }
-  .sticky{
-
-    .cart-submit-wrap {
-      salla-button button {
-      background-color: var(--color-font-secondary);
-      padding-block: 14px;
-      font-size: clamp(1rem /* 16px */, 0.9235rem /* 14.776px */ + 0.3265vw, 1.25rem /* 20px */);
-      border: 0;
-      border-radius: 8px;
-
-    }
-  }
-  input{
-    background-color: transparent !important;
-    min-height: 50px !important;
-    padding-block: 14px;
-    border: 1px solid #D6DDDF !important;
-
-  }
-  .btn--coupon{
-    border-radius: 0;
-    min-height: 50px !important;
-  }
-}
-  .s-product-options-option {
-    display: flex;
-  }
-  salla-quantity-input {
-    background-color: transparent;
-    border-radius: none;
-    .s-quantity-input-container {
-      border-top: 1px solid var(--color-primary);
-      border-bottom: 1px solid var(--color-primary);
-      border-right: none;
-      border-left: none;
-      border-radius: 0;
-
-      .s-quantity-input-input {
-        width: 3rem !important;
-        background-color: transparent;
-        color: var(--color-font-light);
-        border: none;
-      }
-      .s-quantity-input-button {
-        svg {
-          fill: var(--color-primary);
-        }
-      }
-    }
-  }
-}
 
 
