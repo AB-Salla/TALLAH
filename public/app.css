@@ -25645,13 +25645,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .landing-page .s-product-card-wishlist-btn {
   display: hidden;
 }
+.carousel-slider .swiper-wrapper > div {
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
 .s-product-card-entry:hover .flex-action {
   top: 5px;
   opacity: 1;
-}
-.s-product-card .carousel-slider .swiper-wrapper > div {
-  padding-left: 0 !important;
-  padding-right: 0 !important;
 }
 .s-product-card-entry {
   justify-content: initial !important;
