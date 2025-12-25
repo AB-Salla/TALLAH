@@ -344,19 +344,14 @@
                             </salla-button>
                             {% hook 'cart:submit.end' %}
                         </div>
-                        {# {% if loyalty and user.loyalty_points %} #}
+                        {% if loyalty and user.loyalty_points %}
                         <div class="  rounded-md my-6 bg-[#F4F0EB]">
-                            {# <salla-loyalty customer-points='{{ user.loyalty_points }}'
+                            <salla-loyalty customer-points='{{ user.loyalty_points }}'
                                 prize-points='{{ loyalty.prize.points }}'
                                 prize-title='{{ loyalty.prize.title }}'
-                            ></salla-loyalty> #}
-                            <salla-loyalty
-                                customer-points="1200"
-                                prize-points="1500"
-                                prize-title="شحن مجاني">
-                            </salla-loyalty>
-
+                            ></salla-loyalty>
                         </div>
+                        {% endif %}
                         <div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
