@@ -1274,6 +1274,9 @@ select{
 .h-80{
     height: 20rem;
 }
+.h-9{
+    height: 2.25rem;
+}
 .h-\[100svh\]{
     height: 100svh;
 }
@@ -1418,6 +1421,9 @@ select{
 }
 .w-8{
     width: 2rem;
+}
+.w-9{
+    width: 2.25rem;
 }
 .w-\[100px\]{
     width: 100px;
@@ -27208,6 +27214,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* الحالة الافتراضية */
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
+}
+.cart .s-payments-list-item {
+  height: 50px !important;
+  width: 50px !important;
 }
 .cart .s-list-tile-item {
   background-color: #F4F0EB !important;

@@ -360,18 +360,24 @@
                         <div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
-					 {% if theme.settings.get('features_switch') %}
+					 {% if theme.settings.get('features_switch_cart') %}
                         <section class=" py-2">
                             <div class="">
                             
                                 {% set is_ar = request.locale == 'ar' %}
-                                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-start sm:justify-center  items-start sm:items-center gap-8">
+
+
+                                <div class="grid {% if theme.settings.get('features_col') %}
+                                grid-cols-1
+                                {% else %}
+                                grid-cols-3
+                                {% endif %}  justify-start sm:justify-center  items-start sm:items-center gap-4">
                                     {% for item in theme.settings.get('rh_features_store_car') %}
                                         {# احسب عدد الحروف في النص #}
                                         {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
                                         {% set is_long = title|length > 20 %}
-                                        <div class="text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col  w-auto ">
-                                        <span class="flex items-center justify-center w-6 h-6">
+                                        <div class="text-start sm:text-center gap-4 flex  justify-center items-center  flex-col  w-auto ">
+                                        <span class="flex items-center justify-center w-9 h-9">
                                             {% if item.rh_features_active_select_icons == "image_services" %}
                                             <img src="{{ item.add_image }}"
                                                 alt="{{ item.block_title.ar }}"
@@ -385,8 +391,6 @@
                                                 trigger="loop"
                                                 style="width:24px;height:24px">
                                             </lord-icon>
-                                    
-
                                             <script>
                                             // Wait for the element to load
                                             document.addEventListener("DOMContentLoaded", () => {
@@ -401,7 +405,7 @@
                                             {% endif %}
                                         </span>
                                         <div >
-                                            <h3 class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
+                                            <h3 class="text-[14px] text-center font-normal text-font leading-[140%]">
                                                 {{ title }}
                                             </h3>
                                         </div>
