@@ -1020,6 +1020,9 @@ select{
 .col-span-2{
     grid-column: span 2 / span 2;
 }
+.\!m-0{
+    margin: 0px !important;
+}
 .m-0{
     margin: 0px;
 }
@@ -1028,9 +1031,6 @@ select{
 }
 .m-auto{
     margin: auto;
-}
-.\!m-0{
-    margin: 0px !important;
 }
 .\!mx-0{
     margin-left: 0px !important;
@@ -27190,10 +27190,21 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: var(--color-primary) !important;
 }
 .cart {
+  /* للشاشات ≤ 480px */
   /* When wishlist is not added */
   /* الحالة الافتراضية */
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
+}
+@media (max-width: 768px) {
+  .cart .s-product-options-thumbnails-wrapper {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media (max-width: 480px) {
+  .cart .s-product-options-thumbnails-wrapper {
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+  }
 }
 .cart .btn--wishlist button {
   border: none;
