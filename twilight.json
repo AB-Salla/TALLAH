@@ -150,7 +150,7 @@
             "icon": "sicon-toggle-off",
             "label": "تفعيل مميزات المتجر ",
             "description": null,
-            "id": "features_switch",
+            "id": "features_switch_cart",
             "format": "switch",
             "required": false,
             "value": true,
