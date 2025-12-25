@@ -268,14 +268,7 @@
                             </div>
                         </div>
                     </div>
-                    {% if loyalty and user.loyalty_points %}
-                        <div class="shadow-default mb-5 rounded-md p-3 xs:p-7 bg-white">
-                            <salla-loyalty customer-points='{{ user.loyalty_points }}'
-                                prize-points='{{ loyalty.prize.points }}'
-                                prize-title='{{ loyalty.prize.title }}'
-                            ></salla-loyalty>
-                        </div>
-                    {% endif %}
+                    
 
                     <div id="cart-gifting" class="shadow-default bg-white xs:p-2 rounded-md mb-5 relative  {{gift.enabled ? '' : 'hidden' }}">
                         <salla-gifting id="salla-gifting" class="mt-5" widget-title="{{ trans("pages.cart.gift_widget_title") }}"  widget-subtitle="{{ gift.text }}" class="mt-5" {{gift.type}}-products  vertical></salla-gifting>
@@ -351,6 +344,20 @@
                             </salla-button>
                             {% hook 'cart:submit.end' %}
                         </div>
+                        {# {% if loyalty and user.loyalty_points %} #}
+                        <div class=" mb-5 rounded-md py-6 bg-[#F4F0EB]">
+                            {# <salla-loyalty customer-points='{{ user.loyalty_points }}'
+                                prize-points='{{ loyalty.prize.points }}'
+                                prize-title='{{ loyalty.prize.title }}'
+                            ></salla-loyalty> #}
+                            <salla-loyalty
+                                customer-points="1200"
+                                prize-points="1500"
+                                prize-title="شحن مجاني">
+                            </salla-loyalty>
+
+                        </div>
+                    {# {% endif %} #}
                         {% hook 'cart:summary.end' %}
                     </div>
 
