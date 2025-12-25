@@ -2328,6 +2328,12 @@ select{
     font-size: 0.75rem;
     line-height: 1rem;
 }
+.text-\[clamp\(0\.875rem\2c 0\.85rem\+0\.3vw\2c 1rem\)\]{
+    font-size: clamp(0.875rem,0.85rem + 0.3vw,1rem);
+}
+.text-\[clamp\(1rem\2c 0\.95rem\+0\.3vw\2c 1\.125rem\)\]{
+    font-size: clamp(1rem,0.95rem + 0.3vw,1.125rem);
+}
 .font-bold{
     font-weight: 700;
 }
@@ -2402,6 +2408,9 @@ select{
 }
 .tracking-wide{
     letter-spacing: 0.025em;
+}
+.tracking-normal{
+    letter-spacing: 0em;
 }
 .\!text-background{
     color: var(--color-background) !important;
@@ -2526,6 +2535,11 @@ select{
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+}
+.text-\[\#9F9FA9\]{
+    --tw-text-opacity: 1;
+    color: rgba(159, 159, 169, 1);
+    color: rgba(159, 159, 169, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
@@ -28187,6 +28201,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:leading-\[32px\]{
         line-height: 32px;
+    }
+    .md\:leading-8{
+        line-height: 2rem;
+    }
+    .md\:tracking-normal{
+        letter-spacing: 0em;
     }
     .md\:first\:pt-24:first-child{
         padding-top: 6rem;

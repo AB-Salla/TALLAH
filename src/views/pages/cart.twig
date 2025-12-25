@@ -89,20 +89,12 @@
                                                 
                                             </a>
                                             <div class="space-y-1">
-                                                <h1 class="text-gray-900 leading-6 text-lg line-clamp-2">
+                                                <h1 class="text-font font-mediumtext-[clamp(0.875rem,0.85rem+0.3vw,1rem)] leading-5 md:leading-6 tracking-wide md:tracking-normal line-clamp-2">
                                                     <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
                                                 </h1>
     
-                                                <span class="text-sm text-gray-500 line-through item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
-                                                <span class="inline-flex gap-1 leading-4 text-sm text-gray-500 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
-                                                <span class="inline-flex gap-1 leading-4 item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
-                                                
-                                                {% if item.weight_label %}
-                                                <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
-                                                 <span>{{ item.weight_label }}</span>
-                                                </p>
-                                                {% endif %}
                                                
+                                               {% include 'pages.partials.product.options' with {product:item} %}
                                                 {# End Cart Item offers #}
     
                                             </div>
@@ -151,11 +143,30 @@
                                                 </salla-quantity-input>
                                             {% endif %}
                                             {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
-                                            <p class="text-primary flex-none font-bold text-sm">
+                                            {# <p class="text-primary flex-none font-bold text-sm">
                                                 <span>{{ trans('pages.cart.total') }}:</span>
                                                 <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
-                                            </p>
-                                           
+                                            </p> #}
+                                            <div class="flex gap-1">
+                                                <span class="  font-medium
+  text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+  leading-5 md:leading-8
+  tracking-normal  item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
+                                                <span class="  font-medium
+  text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+  leading-5 md:leading-8
+  tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                <span class="  font-medium
+  text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+  leading-5 md:leading-8
+  tracking-normal item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                                
+                                                {% if item.weight_label %}
+                                                <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
+                                                 <span>{{ item.weight_label }}</span>
+                                                </p>
+                                                {% endif %}
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -170,7 +181,6 @@
                                                     item-id="{{ item.id }}"
                                                     product-price="{{ item.product_price }}"
                                                     offers="{{ item.detailed_offers|json_encode }}"></salla-cart-item-offers>
-                                {% include 'pages.partials.product.options' with {product:item} %}
 
                             
                         </section>
