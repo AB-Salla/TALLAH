@@ -27297,6 +27297,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-color: #414042;
   border-color: var(--color-primary);
 }
+@media (max-width: 768px) {
+  .cart .s-form-control {
+    width: 110px !important;
+  }
+}
 .cart .s-form-control .s-product-options-option-booking .s-product-options-option-content {
   margin: 0 !important;
 }

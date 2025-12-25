@@ -96,12 +96,6 @@
                                                
                                                {% include 'pages.partials.product.options' with {product:item} %}
                                                <div class="md:hidden flex gap-1 flex-row-reverse items-center justify-end">
-                                                {% if item.has_discount %}
-                                                  
-                                                   <span class="text-sm font-medium text-red-600" id="discountoffer">
-                                                  (30% Off)
-                                                   </span>
-                                               {% endif %}
                                                 <span class="  font-medium
                                                 text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
                                                 leading-5 md:leading-8
