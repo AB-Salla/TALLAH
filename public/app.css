@@ -1903,6 +1903,11 @@ select{
     border-color: #414042;
     border-color: var(--color-primary);
 }
+.bg-\[\#C5992C\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(197, 153, 44, 1);
+    background-color: rgba(197, 153, 44, var(--tw-bg-opacity, 1));
+}
 .bg-\[\#F4F4F5\]{
     --tw-bg-opacity: 1;
     background-color: rgba(244, 244, 245, 1);
@@ -1973,14 +1978,6 @@ select{
     --tw-bg-opacity: 1;
     background-color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
-}
-.bg-\[\]{
-    background-color: ;
-}
-.bg-\[\#C5992C\]{
-    --tw-bg-opacity: 1;
-    background-color: rgba(197, 153, 44, 1);
-    background-color: rgba(197, 153, 44, var(--tw-bg-opacity, 1));
 }
 .bg-gradient-to-b{
     background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
@@ -2540,11 +2537,6 @@ select{
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
-}
-.text-red-800{
-    --tw-text-opacity: 1;
-    color: rgba(153, 27, 27, 1);
-    color: rgba(153, 27, 27, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
@@ -27280,7 +27272,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: var(--color-font);
 }
 .cart .s-form-control {
-  border: 1px solid white !important;
+  background-color: transparent !important;
+  border: 2px solid rgb(218, 218, 218) !important;
   border-radius: 0px !important;
   width: 136px !important;
   margin-top: 5px !important;
@@ -27289,7 +27282,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background-color: var(--color-background) !important;
 }
 .cart .s-form-control {
-  background-color: transparent;
   color: var(--color-font);
   border-color: #414042;
   border-color: var(--color-primary);
@@ -28025,9 +28017,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-20{
         height: 5rem;
     }
-    .md\:h-36{
-        height: 9rem;
-    }
     .md\:h-40{
         height: 10rem;
     }
@@ -28087,9 +28076,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:flex-1{
         flex: 1 1 0%;
-    }
-    .md\:grow{
-        flex-grow: 1;
     }
     .md\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
