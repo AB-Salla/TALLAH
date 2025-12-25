@@ -19524,7 +19524,7 @@ salla-quantity-input {
   }
 }
 .s-quantity-input-container {
-  border: 1px solid rgb(103, 102, 104) !important;
+  border: 1px solid rgb(226, 226, 227) !important;
   border-radius: 0 !important;
 }
 .s-quantity-input-container {
@@ -19533,7 +19533,7 @@ salla-quantity-input {
 }
 @supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
 .s-quantity-input-container {
-  border: 1px solid color-mix(in srgb, var(--color-primary), white 20%) !important;
+  border: 1px solid color-mix(in srgb, var(--color-primary), white 85%) !important;
 }
 }
 .s-quantity-input-container .s-quantity-input-button svg{
