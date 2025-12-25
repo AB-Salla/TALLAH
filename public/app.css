@@ -2535,6 +2535,14 @@ select{
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
 }
+.text-\[\#27272A\]{
+    --tw-text-opacity: 1;
+    color: rgba(39, 39, 42, 1);
+    color: rgba(39, 39, 42, var(--tw-text-opacity, 1));
+}
+.text-\[\#\]{
+    color: #;
+}
 .underline{
     text-decoration-line: underline;
 }
@@ -27995,6 +28003,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:\!hidden{
         display: none !important;
     }
+    .md\:hidden{
+        display: none;
+    }
     .md\:\!h-\[374px\]{
         height: 374px !important;
     }
@@ -28090,6 +28101,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:flex-col{
         flex-direction: column;
+    }
+    .md\:flex-col-reverse{
+        flex-direction: column-reverse;
     }
     .md\:items-start{
         align-items: flex-start;

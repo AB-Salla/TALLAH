@@ -66,7 +66,7 @@
                             <input type="hidden" name="id" value="{{ item.id }}">
                                 <!-- product -->
                                 <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between mb-8 last:mb-0">
-                                    <div class="flex flex-1 rtl:space-x-reverse space-x-4 justify-between">
+                                    <div class="flex flex-col md:flex-row  flex-1 rtl:space-x-reverse space-x-4 justify-between">
                                         <div class="flex gap-2">
 
                                             <a href="{{ item.url }}" class="relative overflow-hidden shrink-0">
@@ -89,23 +89,49 @@
                                                 
                                             </a>
                                             <div class="space-y-1">
-                                                <h1 class="text-font font-mediumtext-[clamp(0.875rem,0.85rem+0.3vw,1rem)] leading-5 md:leading-6 tracking-wide md:tracking-normal line-clamp-2">
+                                                <h1 class="font-mediumtext-[clamp(0.875rem,0.85rem+0.3vw,1rem)] mb-4 text-font leading-5 md:leading-6 tracking-wide md:tracking-normal line-clamp-2">
                                                     <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
                                                 </h1>
     
                                                
                                                {% include 'pages.partials.product.options' with {product:item} %}
+                                               <div class="md:hidden flex gap-1 flex-row-reverse items-center">
+                                                {% if item.has_discount %}
+                                                  
+                                                   <span class="text-sm font-medium text-red-600" id="discountoffer">
+                                                  (30% Off)
+                                                   </span>
+                                               {% endif %}
+                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                text-[#9F9FA9]
+                                                line-through
+                                                tracking-normal  item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
+                                                                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                <span class="  font-medium text-lg leading-8 
+                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                               
+                                                {% if item.weight_label %}
+                                                <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
+                                                 <span>{{ item.weight_label }}</span>
+                                                </p>
+                                                {% endif %}
+                                                
+                                            </div>
                                                 {# End Cart Item offers #}
     
                                             </div>
                                         </div>
-                                        <div class="flex flex-col-reverse gap-3  justify-end items-end">
+                                        <div class="flex flex-row md:flex-col-reverse gap-3  justify-end items-end">
                                             <span class=" flex grow ">
                                                 <salla-button type="button" shape="icon" size="small" color="transparent" class="btn--delete " aria-label="Remove from the cart"
                                                         onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
                                                     <i class="sicon-trash-2"></i>
                                                 </salla-button>
-                                                {# {{item}} #}
                                                  <salla-button
                                     shape="icon"
                                     fill="outline"
@@ -148,30 +174,32 @@
                                                 <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
                                             </p> #}
                                             
-                                            <div class="flex gap-1 flex-row-reverse">
+                                            <div class="hidden md:flex gap-1 flex-row-reverse items-center">
+                                                {% if item.has_discount %}
+                                                  
+                                                   <span class="text-sm font-medium text-red-600" id="discountoffer">
+                                                  (30% Off)
+                                                   </span>
+                                               {% endif %}
                                                 <span class="  font-medium
                                                 text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
                                                 leading-5 md:leading-8
+                                                text-[#9F9FA9]
+                                                line-through
                                                 tracking-normal  item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
                                                                                                 <span class="  font-medium
                                                 text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
                                                 leading-5 md:leading-8
                                                 tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
-                                                                                                <span class="  font-medium
-                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
-                                                leading-5 md:leading-8
-                                                tracking-normal item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
-                                                {% if item.has_discount %}
-                                                   
-                                                    <span class="text-sm font-medium text-red-600" id="discountoffer">
-                                                       
-                                                    </span>
-                                                {% endif %}
+                                                <span class="  font-medium text-lg leading-8 
+                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                               
                                                 {% if item.weight_label %}
                                                 <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
                                                  <span>{{ item.weight_label }}</span>
                                                 </p>
                                                 {% endif %}
+                                                
                                             </div>
                                         </div>
                                     </div>
@@ -372,31 +400,6 @@
 
 {% block scripts %}
     <script defer src="{{ 'checkout.js' | asset }}"></script>
-    <script>
-document.addEventListener("DOMContentLoaded", function () {
-  const originalEl = document.getElementById("original_price");
-  const priceEl = document.getElementById("current_price");
-  const discountEl = document.getElementById("discountoffer");
 
-  if (!originalEl || !priceEl || !discountEl) return;
-
-  // نطلع الأرقام ونشيل أي عملة أو حروف
-  const originalPrice = parseFloat(
-    originalEl.textContent.replace(/[^\d.]/g, "")
-  );
-  const price = parseFloat(
-    priceEl.textContent.replace(/[^\d.]/g, "")
-  );
-
-  // حماية من القسمة على صفر
-  if (!originalPrice || originalPrice <= price) return;
-
-  const discount = Math.round(
-    ((originalPrice - price) / originalPrice) * 100
-  );
-
-  discountEl.textContent = `(${discount}% OFF)`;
-});
-</script>
 
 {% endblock %}
