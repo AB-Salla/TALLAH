@@ -147,20 +147,26 @@
                                                 <span>{{ trans('pages.cart.total') }}:</span>
                                                 <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
                                             </p> #}
+                                            
                                             <div class="flex gap-1 flex-row-reverse">
                                                 <span class="  font-medium
-  text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
-  leading-5 md:leading-8
-  tracking-normal  item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
-                                                <span class="  font-medium
-  text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
-  leading-5 md:leading-8
-  tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
-                                                <span class="  font-medium
-  text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
-  leading-5 md:leading-8
-  tracking-normal item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
-                                                
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                tracking-normal  item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
+                                                                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                tracking-normal item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                                {% if item.has_discount %}
+                                                   
+                                                    <span class="text-sm font-medium text-red-600" id="discountoffer">
+                                                       
+                                                    </span>
+                                                {% endif %}
                                                 {% if item.weight_label %}
                                                 <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
                                                  <span>{{ item.weight_label }}</span>
@@ -366,4 +372,31 @@
 
 {% block scripts %}
     <script defer src="{{ 'checkout.js' | asset }}"></script>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const originalEl = document.getElementById("original_price");
+  const priceEl = document.getElementById("current_price");
+  const discountEl = document.getElementById("discountoffer");
+
+  if (!originalEl || !priceEl || !discountEl) return;
+
+  // نطلع الأرقام ونشيل أي عملة أو حروف
+  const originalPrice = parseFloat(
+    originalEl.textContent.replace(/[^\d.]/g, "")
+  );
+  const price = parseFloat(
+    priceEl.textContent.replace(/[^\d.]/g, "")
+  );
+
+  // حماية من القسمة على صفر
+  if (!originalPrice || originalPrice <= price) return;
+
+  const discount = Math.round(
+    ((originalPrice - price) / originalPrice) * 100
+  );
+
+  discountEl.textContent = `(${discount}% OFF)`;
+});
+</script>
+
 {% endblock %}

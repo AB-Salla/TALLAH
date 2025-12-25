@@ -27267,9 +27267,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .cart .cart-options .s-form-control {
   background-color: transparent;
-  border: 1px solid #414042;
-  border: 1px solid var(--color-primary);
-  border-radius: 8px;
+  border: 1px solid white;
+  border-radius: 0px;
+  width: 136px;
   margin-top: 5px;
   color: var(--color-font);
 }
