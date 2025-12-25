@@ -67,13 +67,13 @@
                                 <!-- product -->
                                 <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between mb-8 last:mb-0">
                                     <div class="flex flex-col md:flex-row  flex-1 rtl:space-x-reverse space-x-4 justify-between">
-                                        <div class="flex gap-2">
+                                        <div class="flex gap-2 mb-3">
 
                                             <a href="{{ item.url }}" class="relative overflow-hidden shrink-0">
                                                 {% if loop.first %}
                                                     <img src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="flex-none w-[95px] md:w-32 h-[165px]  md:h-36  border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="flex-none w-[95px] md:w-32 h-full border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% else %}
                                                     <img src="{{ 'images/s-empty.png' | cdn }}"
                                                         data-src="{{ item.product_image }}"
@@ -127,7 +127,13 @@
                                             </div>
                                         </div>
                                         <div class="flex !m-0 flex-row-reverse md:flex-col-reverse gap-3 items-center justify-between  md:justify-end md:items-end">
-                                            <span class=" flex md:grow ">
+                                            {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
+                                            <p class="text-primary flex-none font-bold text-sm">
+                                                <span>{{ trans('pages.cart.total') }}:</span>
+                                                <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
+                                            </p>
+                                            <span class=" flex">
+                                                
                                                 <salla-button type="button" shape="icon" size="small" color="transparent" class="btn--delete " aria-label="Remove from the cart"
                                                         onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
                                                     <i class="sicon-trash-2"></i>
@@ -168,11 +174,7 @@
                                                     value="{{ item.quantity }}" name="quantity">
                                                 </salla-quantity-input>
                                             {% endif %}
-                                            {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
-                                            {# <p class="text-primary flex-none font-bold text-sm">
-                                                <span>{{ trans('pages.cart.total') }}:</span>
-                                                <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
-                                            </p> #}
+                                            
                                             
                                             <div class="hidden md:flex gap-1 flex-row-reverse items-center">
                                                 {% if item.has_discount %}
@@ -266,7 +268,7 @@
                             </div>
                         </div>
                         <div class="mt-8 bg-border-color rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
-                            <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end"
+                            <div class="progress-bg transition-all duration-500 h-2.5 bg-[#C5992C] relative rounded-full flex justify-end"
                                  style="width:{{ cart.free_shipping_bar.percent }}%">
                                 <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
                             </div>
