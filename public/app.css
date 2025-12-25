@@ -27279,6 +27279,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart .s-form-control .s-product-options-option-label {
   margin-top: 5px;
   margin-bottom: 5px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  line-height: 1.25rem;
+  letter-spacing: 0em;
+}
+.cart .s-product-options-colors-item div{
+    text-align: center;
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1rem;
+    letter-spacing: 0em;
 }
 .cart .s-conditional-offer-container {
   background-color: var(--color-background) !important;

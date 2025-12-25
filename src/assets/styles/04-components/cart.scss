@@ -94,6 +94,12 @@ border-color: var(--color-primary);
     background-color: var(--color-background) !important;
     .s-product-options-option-label{
       margin-block: 5px;
+      @apply font-semibold text-sm leading-5 tracking-normal
+    }
+  }
+  .s-product-options-colors-item{
+    div{
+      @apply font-medium text-xs leading-4 tracking-normal text-center
     }
   }
   .s-conditional-offer-container{
