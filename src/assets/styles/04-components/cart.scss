@@ -77,10 +77,11 @@
     .s-form-control{
 
       background-color: transparent;
-      border: 1px solid white;
-      border-radius: 0px;
-      width: 136px;
-      margin-top: 5px;
+      border: 1px solid white !important;
+      border-radius: 0px !important;
+      width: 136px !important;
+      margin-top: 5px !important;
+      margin-inline: 8px !important;
       color: var(--color-font);
       @media (max-width:768px) {
         

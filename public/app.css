@@ -27266,11 +27266,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-color: var(--color-primary);
 }
 .cart .cart-options .s-form-control {
+  border: 1px solid white !important;
+  border-radius: 0px !important;
+  width: 136px !important;
+  margin-top: 5px !important;
+  margin-left: 8px !important;
+  margin-right: 8px !important;
+}
+.cart .cart-options .s-form-control {
   background-color: transparent;
-  border: 1px solid white;
-  border-radius: 0px;
-  width: 136px;
-  margin-top: 5px;
   color: var(--color-font);
 }
 .cart .cart-options .s-product-options-option-booking .s-product-options-option-content {
