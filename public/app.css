@@ -27200,6 +27200,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
 }
+.cart #cart-submit button {
+  border-radius: 0 !important;
+}
+.cart #cart-submit button {
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  line-height: 1.25rem;
+  letter-spacing: 0.025em;
+}
 @media (max-width: 768px) {
   .cart .s-product-options-thumbnails-wrapper {
     grid-template-columns: repeat(2, minmax(0, 1fr));
