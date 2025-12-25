@@ -6,6 +6,16 @@
       height: 25px;
     }
   }
+  .btn--delete{
+    button{
+      width: 25px;
+      height: 25px;
+      border: none;
+      i{
+        font-size: 20px;
+      }
+    }
+  }
      .s-product-card-wishlist-added.is-added.s-product-card-wishlist-added.is-added  svg {
   fill: #e11d48 !important; /* red-600 */
 }

@@ -27202,6 +27202,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 25px;
   height: 25px;
 }
+.cart .btn--delete button {
+  width: 25px;
+  height: 25px;
+  border: none;
+}
+.cart .btn--delete button i {
+  font-size: 20px;
+}
 .cart .s-product-card-wishlist-added.is-added.s-product-card-wishlist-added.is-added svg {
   fill: #e11d48 !important;
 }
