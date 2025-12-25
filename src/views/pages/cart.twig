@@ -95,7 +95,7 @@
     
                                                
                                                {% include 'pages.partials.product.options' with {product:item} %}
-                                               <div class="md:hidden flex gap-1 flex-row-reverse items-center">
+                                               <div class="md:hidden flex gap-1 flex-row-reverse items-center justify-end">
                                                 {% if item.has_discount %}
                                                   
                                                    <span class="text-sm font-medium text-red-600" id="discountoffer">
@@ -126,8 +126,8 @@
     
                                             </div>
                                         </div>
-                                        <div class="flex flex-row md:flex-col-reverse gap-3  justify-end items-end">
-                                            <span class=" flex grow ">
+                                        <div class="flex !m-0 flex-row-reverse md:flex-col-reverse gap-3 items-center justify-between  md:justify-end md:items-end">
+                                            <span class=" flex md:grow ">
                                                 <salla-button type="button" shape="icon" size="small" color="transparent" class="btn--delete " aria-label="Remove from the cart"
                                                         onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
                                                     <i class="sicon-trash-2"></i>
