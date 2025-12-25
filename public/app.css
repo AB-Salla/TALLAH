@@ -27258,29 +27258,25 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart .s-offer-wrapper .s-offer-bank-message p {
   color: var(--color-font);
 }
-.cart .cart-options {
-  background-color: var(--color-background) !important;
-}
-.cart .cart-options {
-  border-color: #414042;
-  border-color: var(--color-primary);
-}
-.cart .cart-options .s-form-control {
+.cart .s-form-control {
   border: 1px solid white !important;
   border-radius: 0px !important;
   width: 136px !important;
   margin-top: 5px !important;
   margin-left: 8px !important;
   margin-right: 8px !important;
+  background-color: var(--color-background) !important;
 }
-.cart .cart-options .s-form-control {
+.cart .s-form-control {
   background-color: transparent;
   color: var(--color-font);
+  border-color: #414042;
+  border-color: var(--color-primary);
 }
-.cart .cart-options .s-product-options-option-booking .s-product-options-option-content {
+.cart .s-form-control .s-product-options-option-booking .s-product-options-option-content {
   margin: 0 !important;
 }
-.cart .cart-options .s-product-options-option-label {
+.cart .s-form-control .s-product-options-option-label {
   margin-top: 5px;
   margin-bottom: 5px;
 }
