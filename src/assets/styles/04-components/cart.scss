@@ -1,4 +1,11 @@
 .cart {
+  .btn--wishlist{
+    button{
+      border: none;
+      width: 25px;
+      height: 25px;
+    }
+  }
      .s-product-card-wishlist-added.is-added.s-product-card-wishlist-added.is-added  svg {
   fill: #e11d48 !important; /* red-600 */
 }

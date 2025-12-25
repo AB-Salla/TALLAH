@@ -2302,6 +2302,9 @@ select{
 .text-\[clamp\(1rem\2c 0\.9282rem\+0\.3218vw\2c 1\.25rem\)\]{
     font-size: clamp(1rem,0.9282rem + 0.3218vw,1.25rem);
 }
+.text-\[clamp\(1rem\2c 0\.95rem\+0\.3vw\2c 1\.125rem\)\]{
+    font-size: clamp(1rem,0.95rem + 0.3vw,1.125rem);
+}
 .text-\[clamp\(1rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
     font-size: clamp(1rem,1.0204rem + 0.9796vw,1.25rem);
 }
@@ -2327,12 +2330,6 @@ select{
 .text-xs{
     font-size: 0.75rem;
     line-height: 1rem;
-}
-.text-\[clamp\(0\.875rem\2c 0\.85rem\+0\.3vw\2c 1rem\)\]{
-    font-size: clamp(0.875rem,0.85rem + 0.3vw,1rem);
-}
-.text-\[clamp\(1rem\2c 0\.95rem\+0\.3vw\2c 1\.125rem\)\]{
-    font-size: clamp(1rem,0.95rem + 0.3vw,1.125rem);
 }
 .font-bold{
     font-weight: 700;
@@ -2363,9 +2360,6 @@ select{
 }
 .leading-12{
     line-height: 3rem;
-}
-.leading-4{
-    line-height: 1rem;
 }
 .leading-5{
     line-height: 1.25rem;
@@ -2406,11 +2400,11 @@ select{
 .leading-tight{
     line-height: 1.25;
 }
-.tracking-wide{
-    letter-spacing: 0.025em;
-}
 .tracking-normal{
     letter-spacing: 0em;
+}
+.tracking-wide{
+    letter-spacing: 0.025em;
 }
 .\!text-background{
     color: var(--color-background) !important;
@@ -2436,6 +2430,11 @@ select{
     --tw-text-opacity: 1;
     color: rgba(0, 136, 36, 1);
     color: rgba(0, 136, 36, var(--tw-text-opacity, 1));
+}
+.text-\[\#9F9FA9\]{
+    --tw-text-opacity: 1;
+    color: rgba(159, 159, 169, 1);
+    color: rgba(159, 159, 169, var(--tw-text-opacity, 1));
 }
 .text-amber-400{
     --tw-text-opacity: 1;
@@ -2535,11 +2534,6 @@ select{
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
-}
-.text-\[\#9F9FA9\]{
-    --tw-text-opacity: 1;
-    color: rgba(159, 159, 169, 1);
-    color: rgba(159, 159, 169, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
@@ -27203,6 +27197,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
 }
+.cart .btn--wishlist button {
+  border: none;
+  width: 25px;
+  height: 25px;
+}
 .cart .s-product-card-wishlist-added.is-added.s-product-card-wishlist-added.is-added svg {
   fill: #e11d48 !important;
 }
@@ -28196,14 +28195,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:leading-6{
         line-height: 1.5rem;
     }
+    .md\:leading-8{
+        line-height: 2rem;
+    }
     .md\:leading-\[27px\]{
         line-height: 27px;
     }
     .md\:leading-\[32px\]{
         line-height: 32px;
-    }
-    .md\:leading-8{
-        line-height: 2rem;
     }
     .md\:tracking-normal{
         letter-spacing: 0em;
