@@ -97,27 +97,12 @@ class Product extends BasePage {
 }
 
 runningAfter5Seconds() {
-    // احصل على الـ pathname بدون اللغة
-    const normalizeUrl = (url) => {
-      const u = new URL(url);
-      // إزالة أي لغة (مثل /en/ أو /ar/)
-      const cleanPath = u.pathname.replace(/^\/(en|ar)\//, "/");
-      return `${u.origin}${cleanPath}`;
-    };
-    if (normalizeUrl(window.location.href) !== normalizeUrl(url_store)) {
-      
+   
+
+
+    if (!window.newsletter_view_modal) {
       return;
     }
-
-    const storeKey = `newsletter_shown_${url_store}`;
-
-    if (!newsletter_view_modal) {
-      return;
-    }
-    if (sessionStorage.getItem(storeKey)) {
-      return;
-    }
-
     setTimeout(() => {
       // show modal after delay
 
@@ -130,7 +115,7 @@ runningAfter5Seconds() {
     `;
 
       modal.innerHTML = `
-      <div class="bg-bg-light dark:bg-bg-dark dark:bg-gray-900 rounded-2xl p-8 w-[90%] max-w-[961px] relative transform scale-90 transition-transform duration-500 shadow-xl">
+      <div class="bg-background  rounded-2xl p-8 w-[90%] max-w-[961px] relative transform scale-90 transition-transform duration-500 shadow-xl">
       <div class="w-[224px] h-auto mx-auto">
         <img src="${add_image}" class="w-full h-auto"/>
       </div>
@@ -141,7 +126,7 @@ runningAfter5Seconds() {
 
         <div class="text-center mb-6">
           <h2 class="text-2xl font-bold text-primary mb-3">${newslatter_block_title}</h2>
-          <p class="text-gray-600 dark:text-gray-300">${newslatter_sub_title}</p>
+          <p class="text-gray-600 ">${newslatter_sub_title}</p>
         </div>
 
         <form 
@@ -165,7 +150,7 @@ runningAfter5Seconds() {
             id="mc-embedded-subscribe-1"
             class="bg-primary w-11 h-11 flex items-center justify-center rounded-[10px] hover:scale-105 active:scale-95 transition-transform"
           >
-            <i class="sicon-send-mail text-lg text-font-dark  rotate-180 ltr:rotate-0"></i>
+            <i class="sicon-send-mail text-lg text-font  rotate-180 ltr:rotate-0"></i>
           </button>
         </form>
       </div>
