@@ -557,30 +557,40 @@ function renderOption(option) {
                 ? `
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
-      ${window.product_card_options ?`<button
-          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
-          ${this.product.status !== "sale" ? "disabled" : ""}>
-       ${
-          this.product.status == "sale"
-            ? `<i class="text-base sicon-${
-                this.product.type == "booking" ? "calendar-time" : "shopping-bag"
-              }"></i>`
-            : `<i class="text-base sicon-cart-cancel"
-              }"></i>`
-        }
-        <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
-      </button>`:` <salla-add-product-button 
-              fill="none" 
-              shape="icon" 
-              product-id="${this.product.id}"
-              product-status="${this.product.status}"
-              product-type="${this.product.type}">
-              <i class="text-base text-[13px] sicon-${
-                this.product.type == "booking"
-                  ? "calendar-time"
-                  : "shopping-bag"
-              }"></i>
-            </salla-add-product-button>`}
+      <div class="flex items-center justify-center ">
+      ${
+              this.product?.rating?.stars
+                ? `<div class="s-product-card-rating">
+                <i class="sicon-star2 before:text-orange-300"></i>
+                <span>${this.product.rating.stars}</span>
+              </div>`
+                : ``
+            }
+            ${window.product_card_options ?`<button
+                class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
+                ${this.product.status !== "sale" ? "disabled" : ""}>
+             ${
+                this.product.status == "sale"
+                  ? `<i class="text-base sicon-${
+                      this.product.type == "booking" ? "calendar-time" : "shopping-bag"
+                    }"></i>`
+                  : `<i class="text-base sicon-cart-cancel"
+                    }"></i>`
+              }
+              <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
+            </button>`:` <salla-add-product-button 
+                    fill="none" 
+                    shape="icon" 
+                    product-id="${this.product.id}"
+                    product-status="${this.product.status}"
+                    product-type="${this.product.type}">
+                    <i class="text-base text-[13px] sicon-${
+                      this.product.type == "booking"
+                        ? "calendar-time"
+                        : "shopping-bag"
+                    }"></i>
+                  </salla-add-product-button>`}
+      </div>
     
      
     </div>
@@ -590,14 +600,7 @@ function renderOption(option) {
   `
             }
 
-            ${
-              this.product?.rating?.stars
-                ? `<div class="s-product-card-rating">
-                <i class="sicon-star2 before:text-orange-300"></i>
-                <span>${this.product.rating.stars}</span>
-              </div>`
-                : ``
-            }
+            
           </div>
 
           ${
