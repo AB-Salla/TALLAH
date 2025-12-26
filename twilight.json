@@ -880,7 +880,7 @@
     },
 
  {
-      "id": "colliction_sp_view_modal",
+      "id": "collection_sp_view_modal",
       "type": "boolean",
       "format": "switch",
       "label": "إضافة موديل تسويقي في صفحة المنتج ",
@@ -906,14 +906,14 @@
           "required": false,
           "conditions": [
             {
-              "id": "colliction_sp_view_modal",
+              "id": "collection_sp_view_modal",
               "operation": "=",
               "value": true
             }
           ]
         },
     {
-      "id": "collectionn_add_image",
+      "id": "collection_add_image",
       "type": "string",
       "format": "image",
       "label": "إضافة صورة",
@@ -925,7 +925,7 @@
       "required": false,
       "conditions": [
         {
-          "id": "colliction_sp_view_modal",
+          "id": "collection_sp_view_modal",
           "operation": "=",
           "value": true
         }
@@ -933,7 +933,7 @@
     },
     
     {
-      "id": "colliction_sp_block_title",
+      "id": "collection_sp_block_title",
       "type": "string",
       "format": "text",
       "label": "العنوان الرئيسي ",
@@ -945,14 +945,14 @@
       "multilanguage": true,
       "conditions": [
         {
-          "id": "colliction_sp_view_modal",
+          "id": "collection_sp_view_modal",
           "operation": "=",
           "value": true
         }
       ]
     },
     {
-      "id": "colliction_sp_sub_title",
+      "id": "collection_sp_sub_title",
       "type": "string",
       "format": "text",
       "label": "العنوان الفرعي ",
@@ -964,14 +964,14 @@
       "multilanguage": true,
       "conditions": [
         {
-          "id": "colliction_sp_view_modal",
+          "id": "collection_sp_view_modal",
           "operation": "=",
           "value": true
         }
       ]
     },
     {
-      "id": "colliction_sp_promo_title",
+      "id": "collection_sp_promo_title",
       "type": "string",
       "format": "text",
       "label": "العنوان الترويجي",
@@ -983,7 +983,7 @@
       "multilanguage": true,
       "conditions": [
         {
-          "id": "colliction_sp_view_modal",
+          "id": "collection_sp_view_modal",
           "operation": "=",
           "value": true
         }
@@ -1002,7 +1002,7 @@
       "required": false,
       "conditions": [
         {
-          "id": "colliction_sp_view_modal",
+          "id": "collection_sp_view_modal",
           "operation": "=",
           "value": true
         }
