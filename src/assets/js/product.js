@@ -134,18 +134,18 @@ window.status_product
     `;
 
       modal.innerHTML = `
-      <div class="bg-background  rounded-[10px] p-6 w-[90%] max-w-[547px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl">
+      <div class="bg-background  rounded-[10px] p-6 w-[90%] max-w-[580px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl">
       <div class="w-[70px] h-[70px] mx-auto">
         <img src="${add_image}" class="w-full h-auto"/>
       </div>
         <button id="close-modal" 
-          class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px]  text-primary/70 transition">
+          class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px]  text-[#71717B] transition">
           <i class="sicon-cancel text-[16px] font-bold"></i>
         </button>
 
-        <div class="text-center ">
+        <div class="text-center">
           <h2 class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${newsletter_sp_block_title}</h2>
-          <p class="text-primary/60 font-medium text-sm leading-5 tracking-wide text-center align-middle">${newsletter_sp_sub_title}</p>
+          <p class="text-[#71717B] font-medium text-sm leading-5 tracking-wide text-center align-middle">${newsletter_sp_sub_title}</p>
         </div>
 
         <form 
@@ -156,8 +156,8 @@ window.status_product
           target="_blank"
           novalidate
         >
-        <div class="my-8">
-        <label for="mce-EMAIL-1" class="">${this.getLocalizedMessage("email")}</label>
+        <div class="my-8 w-full">
+        <label for="mce-EMAIL-1" class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${this.getLocalizedMessage("email")}</label>
           <input
             type="email"
             name="EMAIL"
