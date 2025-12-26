@@ -2,14 +2,14 @@
 <footer class="store-footer">
 
     <!-- Footer Inner -->
-    <div aria-label="footer" class="store-footer__inner !pt-11 !pb-9">
+    <div aria-label="footer" class="store-footer__inner !pt-11 !pb-0 md:!pb-9">
 
         <!-- Main Footer Grid -->
 				<div class="container flex flex-col items-center justify-center  md:items-start  md:grid grid-cols-1 md:grid-cols-[3fr_3fr_3fr] lg:grid-cols-[2fr_2fr_3fr] gap-4 md:gap-6">
 
 					<!-- Footer Pages Links -->
 					<div class="order-2">
-						<h3 class="{% if theme.settings.get('footer_is_center') %} text-center  {% else %} text-start {% endif %} rtl:md:text-right ltr:md:text-left">{{ trans('blocks.footer.pages_links') }}</h3>
+						<h3 class="text-center rtl:md:text-right ltr:md:text-left">{{ trans('blocks.footer.pages_links') }}</h3>
 						<salla-menu source="footer"></salla-menu>
 					</div>
 					<!-- Contacts Column -->
