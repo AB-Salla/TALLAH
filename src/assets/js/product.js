@@ -115,7 +115,7 @@ window.status_product
     console.log("Newsletter_sp modal check:", window.newsletter_sp_view_modal,window.status_product);
     
 
-    if (!window.newsletter_sp_view_modal) {
+    if (!window.newsletter_sp_view_modal || window.status_product != 'out') {
       return;
     }
     setTimeout(() => {
