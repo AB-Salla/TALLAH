@@ -116,7 +116,6 @@ getLocalizedMessage(key) {
   }
 runningAfter5Seconds() {
    
-window.status_product
     console.log("Newsletter_sp modal check:", window.newsletter_sp_view_modal,window.status_product);
     
 
@@ -265,7 +264,6 @@ window.status_product
   }
 collections_offer() {
    
-window.status_product
     console.log("collection_sp modal check:", window.collection_sp_view_modal,window.status_product);
     
 
