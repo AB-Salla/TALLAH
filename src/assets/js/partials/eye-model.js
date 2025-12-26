@@ -508,7 +508,7 @@ export const eyeModel = (productId) => {
 
 					${
             productImagesHTML
-              ? `<div class="product-images-slider relative col-span-2 h-full">
+              ? `<div class="product-images-slider relative sm:col-span-2 h-full">
               <div class="wishlist-container flex flex-col gap-2 items-center absolute  top-2 ltr:right-2 rtl:left-2 z-2"> ${getWishlistButton()}
 </div>
 							${productImagesHTML}
