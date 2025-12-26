@@ -132,7 +132,7 @@ window.status_product
     `;
 
       modal.innerHTML = `
-      <div class="bg-background  rounded-2xl p-8 w-[90%] max-w-[961px] relative transform scale-90 transition-transform duration-500 shadow-xl">
+      <div class="bg-background  rounded-2xl p-8 w-[90%] max-w-[547px] relative transform scale-90 transition-transform duration-500 shadow-xl">
       <div class="w-[70px] h-[70px] mx-auto mb-2">
         <img src="${add_image}" class="w-full h-auto"/>
       </div>
