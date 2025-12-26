@@ -150,7 +150,7 @@ window.status_product
           action="${newsletter_sp_url}" 
           method="post"
           id="mc-embedded-subscribe-form-1"
-          class="flex items-center justify-center gap-2 rounded-[10px] p-1 w-full max-w-md mx-auto"
+          class="flex flex-col items-center justify-center gap-2 rounded-[10px] p-1 w-full max-w-md mx-auto"
           target="_blank"
           novalidate
         >
