@@ -26789,7 +26789,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #000;
 }
 #quick-eye-model .product-thumbs-image {
-  opacity: 0.8 !important;
+  opacity: 0.5 !important;
 }
 #quick-eye-model .product-thumbs-image {
   transition: opacity 0.3s ease;
