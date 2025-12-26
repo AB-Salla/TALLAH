@@ -1069,6 +1069,10 @@ select{
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
+.my-8{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
 .\!mb-0{
     margin-bottom: 0px !important;
 }
@@ -1878,9 +1882,6 @@ select{
 }
 .rounded{
     border-radius: .75rem;
-}
-.rounded-2xl{
-    border-radius: 1rem;
 }
 .rounded-3xl{
     border-radius: 1.5rem;

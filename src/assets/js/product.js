@@ -134,8 +134,8 @@ window.status_product
     `;
 
       modal.innerHTML = `
-      <div class="bg-background  rounded-[10px] p-8 w-[90%] max-w-[547px] relative transform scale-90 transition-transform duration-500 shadow-xl">
-      <div class="w-[70px] h-[70px] mx-auto mb-2">
+      <div class="bg-background  rounded-[10px] p-6 w-[90%] max-w-[547px] relative transform scale-90 transition-transform duration-500 shadow-xl">
+      <div class="w-[70px] h-[70px] mx-auto">
         <img src="${add_image}" class="w-full h-auto"/>
       </div>
         <button id="close-modal" 
@@ -143,7 +143,7 @@ window.status_product
           <i class="sicon-cancel text-[16px] font-bold"></i>
         </button>
 
-        <div class="text-center mb-8">
+        <div class="text-center my-8">
           <h2 class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${newsletter_sp_block_title}</h2>
           <p class="text-primary/60 font-medium text-sm leading-5 tracking-wide text-center align-middle">${newsletter_sp_sub_title}</p>
         </div>
