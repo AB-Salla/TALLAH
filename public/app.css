@@ -26195,6 +26195,18 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .s-product-options-option-content {
   width: 100%;
 }
+@media (max-width: 768px) {
+  .single .s-product-options-option-content .custom-radio-options {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    gap: 10px;
+  }
+}
+.single .s-product-options-option-content .custom-radio-options .radio-label {
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+}
 .single .s-product-card-entry {
   justify-content: initial !important;
 }

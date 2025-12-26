@@ -71,7 +71,7 @@
     width: 100%;
     .custom-radio-options{
       @media (max-width:768px) {
-          display: grid;
+          display: grid ;
           grid-template-columns: repeat(3, 1fr);
           gap: 10px;
       };
