@@ -26132,6 +26132,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-left: 0px;
   padding-right: 0px;
 }
+.s-metadata-box-header {
+  display: none;
+}
 .single .s-slider-block__title-nav {
   display: none !important;
 }
@@ -26188,6 +26191,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* When wishlist is not added */
   /* Hide empty icon when added */
   /* Hide filled icon when not added */
+}
+.single .s-product-options-option-content {
+  width: 100%;
 }
 .single .s-product-card-entry {
   justify-content: initial !important;
@@ -26278,7 +26284,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 0;
 }
 .single .s-comments-product {
-  background-color: var(--color-background);
+  background-color: var(--color-backfground);
   margin-bottom: 0;
   padding-top: 0;
   padding-bottom: 0;
@@ -26286,9 +26292,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .s-payments-list-item {
   background-color: transparent;
   transition: all 0.5s ease-in-out;
-}
-.single .s-payments-list-item:hover {
-  filter: grayscale(0);
 }
 .single .image-slider {
   display: flex;
