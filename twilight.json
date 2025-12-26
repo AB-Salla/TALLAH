@@ -56,6 +56,19 @@
       "required": true
     },
     {
+      "id": "product_card_options",
+      "type": "boolean",
+      "format": "switch",
+      "label": "تفعيل  خيارات المنتج في كارت المنتج",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+
+    {
       "type": "static",
       "format": "title",
       "id": "cart_settings",
