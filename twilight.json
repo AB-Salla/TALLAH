@@ -868,6 +868,16 @@
       "id": "static-line1",
       "format": "line"
     },
+    {
+      "type": "static",
+      "id": "static-line1",
+      "format": "line"
+    },
+    {
+      "type": "static",
+      "id": "static-line1",
+      "format": "line"
+    },
 
  {
       "id": "colliction_sp_view_modal",
@@ -891,7 +901,7 @@
           "selected": [],
           "options": [],
           "source": "categories",
-          "multichoice": true,
+          "multichoice": false,
           "searchable": true,
           "required": false,
           "conditions": [
