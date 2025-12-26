@@ -826,7 +826,7 @@
     },
    
     {
-      "id": "newslatter_block_title",
+      "id": "newsletter_sp_block_title",
       "type": "string",
       "format": "text",
       "label": "العنوان الرئيسي ",
@@ -845,7 +845,7 @@
       ]
     },
     {
-      "id": "newslatter_sub_title",
+      "id": "newsletter_sp_sub_title",
       "type": "string",
       "format": "text",
       "label": "العنوان الفرعي ",
