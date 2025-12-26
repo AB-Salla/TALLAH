@@ -150,7 +150,7 @@ window.status_product
           action="${newsletter_sp_url}" 
           method="post"
           id="mc-embedded-subscribe-form-1"
-          class="flex flex-col items-center justify-center gap-2 rounded-[10px] p-1 w-full max-w-md mx-auto"
+          class="flex flex-col items-center justify-center gap-2 rounded-[10px] p-1 w-full mx-auto"
           target="_blank"
           novalidate
         >
@@ -159,10 +159,10 @@ window.status_product
             name="EMAIL"
             id="mce-EMAIL-1"
             placeholder="${this.getLocalizedMessage("placeholder")}"
-            class="flex-1 bg-gray-100 px-4 py-3 border-none text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
+            class="flex-1 bg-gray-100 w-full px-4 py-3 border-none text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
             required
           />
-          <div class="flex gap-2">
+          <div class="flex gap-2 w-full">
           <button 
           type="submit"
           id="mc-embedded-subscribe-1"

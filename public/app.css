@@ -1500,8 +1500,8 @@ select{
 .max-w-\[500px\]{
     max-width: 500px;
 }
-.max-w-\[961px\]{
-    max-width: 961px;
+.max-w-\[547px\]{
+    max-width: 547px;
 }
 .max-w-fit{
     max-width: -moz-fit-content;
@@ -1515,9 +1515,6 @@ select{
 }
 .max-w-xs{
     max-width: 20rem;
-}
-.max-w-\[547px\]{
-    max-width: 547px;
 }
 .flex-1{
     flex: 1 1 0%;
