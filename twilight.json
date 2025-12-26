@@ -797,7 +797,7 @@
       "id": "newsletter_sp_view_modal",
       "type": "boolean",
       "format": "switch",
-      "label": "إضافة التواصل عبر البريد الإلكتروني عند تحميل الصفحة",
+      "label": "إضافة التواصل عبر البريد الإلكتروني في صفحة المنتج ",
       "description": "فعّل هذا الخيار لعرض نموذج تواصل بالبريد الإلكتروني فور دخول الزائر للصفحة",
       "labelHTML": null,
       "icon": "sicon-toggle-off",
