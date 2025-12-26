@@ -26973,6 +26973,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin-right: auto;
 }
 #quick-eye-model .product-images-slider .s-slider-thumbs-container .product-thumbs-image {
+  border-radius: 0px !important;
+}
+#quick-eye-model .product-images-slider .s-slider-thumbs-container .product-thumbs-image {
   width: 100%;
   margin: 0 0 0px;
 }
