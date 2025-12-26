@@ -1504,8 +1504,8 @@ select{
 .max-w-\[500px\]{
     max-width: 500px;
 }
-.max-w-\[547px\]{
-    max-width: 547px;
+.max-w-\[580px\]{
+    max-width: 580px;
 }
 .max-w-fit{
     max-width: -moz-fit-content;
@@ -1516,9 +1516,6 @@ select{
 }
 .max-w-xs{
     max-width: 20rem;
-}
-.max-w-\[580px\]{
-    max-width: 580px;
 }
 .flex-1{
     flex: 1 1 0%;
@@ -2527,6 +2524,11 @@ select{
     color: rgba(0, 136, 36, 1);
     color: rgba(0, 136, 36, var(--tw-text-opacity, 1));
 }
+.text-\[\#71717B\]{
+    --tw-text-opacity: 1;
+    color: rgba(113, 113, 123, 1);
+    color: rgba(113, 113, 123, var(--tw-text-opacity, 1));
+}
 .text-\[\#9F9FA9\]{
     --tw-text-opacity: 1;
     color: rgba(159, 159, 169, 1);
@@ -2625,11 +2627,6 @@ select{
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
-}
-.text-\[\#71717B\]{
-    --tw-text-opacity: 1;
-    color: rgba(113, 113, 123, 1);
-    color: rgba(113, 113, 123, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
