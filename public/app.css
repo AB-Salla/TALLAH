@@ -2147,8 +2147,8 @@ select{
     padding-top: 2rem;
     padding-bottom: 2rem;
 }
-.\!pb-9{
-    padding-bottom: 2.25rem !important;
+.\!pb-0{
+    padding-bottom: 0px !important;
 }
 .\!pt-1{
     padding-top: 0.25rem !important;
@@ -2230,12 +2230,6 @@ select{
 }
 .pt-8{
     padding-top: 2rem;
-}
-.pb-0{
-    padding-bottom: 0px;
-}
-.\!pb-0{
-    padding-bottom: 0px !important;
 }
 .text-center{
     text-align: center;
@@ -21847,6 +21841,11 @@ body.ltr .my-header .main-menu {
         margin-top: 4rem;
     }
 }
+@media (max-width: 768px) {
+  .store-footer .s-contacts-item {
+    justify-content: center !important;
+  }
+}
 .store-footer salla-apps-icons h3 {
   display: none;
 }
@@ -21909,12 +21908,10 @@ body.ltr .my-header .main-menu {
     background-color: rgba(29, 31, 31, 1);
     background-color: rgba(29, 31, 31, var(--tw-bg-opacity, 1));
     padding-top: 2rem;
-    padding-bottom: 2rem;
 }
 @media (min-width: 1024px){
     .store-footer__inner{
         padding-top: 4rem;
-        padding-bottom: 4rem;
     }
 }
 .store-footer h3{
@@ -28373,6 +28370,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
     }
+    .md\:\!pb-9{
+        padding-bottom: 2.25rem !important;
+    }
     .md\:pb-16{
         padding-bottom: 4rem;
     }
@@ -28381,9 +28381,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:pt-3{
         padding-top: 0.75rem;
-    }
-    .md\:\!pb-9{
-        padding-bottom: 2.25rem !important;
     }
     .md\:text-base{
         font-size: 1rem;
