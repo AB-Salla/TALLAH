@@ -480,7 +480,7 @@ function renderOption(option) {
              : ``
          }
         </div>
-        <div class="s-product-card-content justify-center">
+        <div class="s-product-card-content justify-center flex-grow">
           ${
             this.isSpecial && this.product?.quantity
               ? `<div class="s-product-card-content-pie">
@@ -546,7 +546,7 @@ function renderOption(option) {
           </div>`
               : ""
           }
-          <div class="s-product-card-content-sub ${
+          <div class="s-product-card-content-sub flex-grow mt-auto ${
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
             ${
