@@ -2277,6 +2277,9 @@ select{
     font-size: 4.5rem;
     line-height: 1;
 }
+.text-\[13px\]{
+    font-size: 13px;
+}
 .text-\[14px\]{
     font-size: 14px;
 }
@@ -2359,9 +2362,6 @@ select{
 .text-xs{
     font-size: 0.75rem;
     line-height: 1rem;
-}
-.text-\[13px\]{
-    font-size: 13px;
 }
 .font-bold{
     font-weight: 700;

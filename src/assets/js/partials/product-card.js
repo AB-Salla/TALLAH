@@ -570,7 +570,7 @@ function renderOption(option) {
         }
         <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
       </button>`:` <salla-add-product-button 
-              fill="solid" 
+              fill="none" 
               shape="icon" 
               product-id="${this.product.id}"
               product-status="${this.product.status}"
