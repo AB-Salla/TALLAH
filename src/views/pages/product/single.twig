@@ -87,7 +87,7 @@
 {% block content %}
 	<div class="single md:pt-3">
 		<div class="">
-			<div class="flex flex-col items-center md:items-start lg:flex-row overflow-hidden container" id="product-{{ product.id }}">
+			<div class="flex flex-col items-center md:items-start lg:flex-row overflow-hidden  md:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
@@ -245,7 +245,7 @@
                     {% endif %}
 		</div>
 		
-		 <div class="main-content md:sticky md:overflow-hidden w-full md:w-2/4 md:pb-16 ">
+		 <div class="main-content md:sticky md:overflow-hidden w-full md:w-2/4 md:pb-16 px-4 md:px-0">
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
@@ -606,10 +606,10 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
 	{# description #}
 	{% if product.description %}
-		<h3 class="font-bold text-lg lg:text-2xl text-font-color container">
+		<h3 class="font-bold text-lg lg:text-2xl text-font-color px-4 md:px-14">
 			{{trans ("pages.single.discription")}}
 		</h3>
-		<div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3 text-font-color container">
+		<div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3 text-font-color px-4 md:px-14">
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 			{% if product.has_read_more %}
 				<article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
