@@ -505,9 +505,10 @@ function renderOption(option) {
           <div class="s-product-card-content-main ${
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
-          <div class="s-product-card-content-options flex flex-col mb-2">
+          ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
-          </div>
+          </div>`:``}
+          
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
               <a class="!leading-[24px]" href="${this.product?.url}">${
       this.product?.name
@@ -556,7 +557,7 @@ function renderOption(option) {
                 ? `
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
-    <button
+      ${window.product_card_options ?`<button
           class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
           ${this.product.status !== "sale" ? "disabled" : ""}>
        ${
@@ -568,7 +569,19 @@ function renderOption(option) {
               }"></i>`
         }
         <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
-      </button>
+      </button>`:` <salla-add-product-button 
+              fill="solid" 
+              shape="icon" 
+              product-id="${this.product.id}"
+              product-status="${this.product.status}"
+              product-type="${this.product.type}">
+              <i class="text-base text-[13px] sicon-${
+                this.product.type == "booking"
+                  ? "calendar-time"
+                  : "cart-add"
+              }"></i>
+            </salla-add-product-button>`}
+    
      
     </div>
   `
