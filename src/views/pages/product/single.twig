@@ -85,17 +85,17 @@
 {% extends "layouts.master" %}
 
 {% block content %}
-	<div class="single md:pt-3 bg-background">
+	<div class="single lg:pt-3 bg-background">
 		<div class="bg-background">
-			<div class="flex flex-col items-center md:items-start lg:flex-row overflow-hidden  md:px-14" id="product-{{ product.id }}">
+			<div class="flex flex-col items-center lg:items-start lg:flex-row overflow-hidden  lg:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
 					
 					
 						
-					<div class=" grid-cols-2 gap-2 md:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
-					md:grid 
+					<div class=" grid-cols-2 gap-2 lg:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
+					lg:grid 
 					{% else %}
 						grid grid-cols-2
 					{% endif %}">
@@ -120,7 +120,7 @@
 	type="thumbs"
 	show-thumbs-controls="false"
 	class="product-images-slider block flex-grow  {% if theme.settings.get('grid_or_slider_in_mobile') %}
-					 md:!hidden
+					 lg:!hidden
 					{% else %}
 						!hidden
 					{% endif %}"
@@ -245,7 +245,7 @@
                     {% endif %}
 		</div>
 		
-		 <div class="main-content md:sticky md:overflow-hidden w-full md:w-2/4 md:pb-16 px-4 md:px-0">
+		 <div class="main-content lg:sticky lg:overflow-hidden w-full lg:w-2/4 lg:pb-16 px-4 lg:px-0">
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
@@ -264,7 +264,7 @@
                     <h1 class="text-xl lg:text-[24px] leading-10 font-bold  text-font-color">
                         {{ product.name }}
                     </h1>
-                        <div class="hidden md:flex items-center ">
+                        <div class="hidden lg:flex items-center ">
                                 <salla-social-share class="inline-flex" aria-label="social share"></salla-social-share>
 
                                 <salla-button
@@ -348,7 +348,7 @@
 								</div>
 								
 								{# countdown 
-								<div id="countdown" class="countdown-px-4 md:px-14 pt-3 pb-[7px]" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+								<div id="countdown" class="countdown-px-4 lg:px-14 pt-3 pb-[7px]" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
 									<salla-count-down
 									style="font-size: 24px;"
 									boxed=true
@@ -497,7 +497,7 @@
 					</div>
                     
 				</section>
-				<div class="md:hidden flex items-center mobile_buttons">
+				<div class="lg:hidden flex items-center mobile_buttons">
                                 <salla-social-share class="inline-flex" aria-label="social share"></salla-social-share>
 
                                 <salla-button
@@ -545,7 +545,7 @@
                         <div class="grid {% if theme.settings.get('features_col_single') %}
 							grid-cols-1 justify-start items-start
 						{% else %}
-							grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-start sm:justify-center items-start sm:items-center
+							grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-start sm:justify-center items-start sm:items-center
 						{% endif %}  gap-8">
                             {% for item in theme.settings.get('rh_features_store_pros') %}
                                 {# احسب عدد الحروف في النص #}
@@ -606,10 +606,10 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
 	{# description #}
 	{% if product.description %}
-		<h3 class="font-bold text-lg lg:text-2xl text-font-color px-4 md:px-14">
+		<h3 class="font-bold text-lg lg:text-2xl text-font-color px-4 lg:px-14">
 			{{trans ("pages.single.discription")}}
 		</h3>
-		<div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 md:px-14">
+		<div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 lg:px-14">
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 			{% if product.has_read_more %}
 				<article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
@@ -631,11 +631,11 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	<salla-offer></salla-offer>
 	{# Comments Area #}
 {% if store.settings.rating.show_on_product %}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 px-4 md:px-14 single">
-    <div class="md:col-span-2 order-2 md:order-1 comments">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 px-4 lg:px-14 single">
+    <div class="lg:col-span-2 order-2 lg:order-1 comments">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     </div>
-     <div class="col-span-1 order-1 md:order-2 comment-form">
+     <div class="col-span-1 order-1 lg:order-2 comment-form">
                      <salla-rating-stars
                       value="{{ product.rating.stars ?? 0 }}"
                       reviews="{{ product.rating.count ?? 0 }}">
@@ -643,7 +643,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                       {% if product.rating.count == 0 %}
                       <div class="text-center mb">({{ trans('pages.single.no') }})</div>
                       {% endif %}
-                      <div class="mt-4 md:mt-5">
+                      <div class="mt-4 lg:mt-5">
                           <salla-comment-form></salla-comment-form>
                     </div>
                  </div>
@@ -651,8 +651,8 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
     {% endif %}
 
 	{# Similar Products Area #}
-	<div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10 ">
-		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
+	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 ">
+		<div class="w-full flex flex-col justify-center items-start text-center pb-4 lg:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
 				{{ trans('pages.single.similar') }}
@@ -686,7 +686,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 ps-4 md:px-16  mb-10 py-12 bg-[#e9e9e9]"
+    <div class="product-image-gallery  gap-4 ps-4 lg:px-16  mb-10 py-12 bg-[#e9e9e9]"
 	{% if theme.settings.get('bg_color') %}  style="background-color: {{theme.settings.get('bg_color_gellary') }};" {% endif %}
 	
 	>
@@ -709,7 +709,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
             <div slot="items">
                 {% for image_item in images %}
                     {% if image_item['img_single'] is defined and image_item['img_single'] %}
-                        <div class="gallery-item !h-[330px] md:!h-[374px]">
+                        <div class="gallery-item !h-[330px] lg:!h-[374px]">
                             <img src="{{ image_item['img_single'] }}" loading="eager" alt="{{ product.name }}" class="w-full h-full  object-cover">
                         </div>
                     {% endif %}
