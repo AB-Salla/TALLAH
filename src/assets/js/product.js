@@ -23,6 +23,7 @@ class Product extends BasePage {
         }
         this.initproductdetailsFaqs()
         this.runningAfter5Seconds();
+        this.collections_offer();
     }
 
      initproductdetailsFaqs() {
@@ -150,6 +151,155 @@ window.status_product
 
         <form 
           action="${newsletter_sp_url}" 
+          method="post"
+          id="mc-embedded-subscribe-form-1"
+          class="flex flex-col items-center justify-center gap-2 rounded-[10px] p-1 w-full mx-auto"
+          target="_blank"
+          novalidate
+        >
+        <div class="my-8 w-full">
+        <label for="mce-EMAIL-1" class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${this.getLocalizedMessage("email")}</label>
+          <input
+            type="email"
+            name="EMAIL"
+            id="mce-EMAIL-1"
+            placeholder="${this.getLocalizedMessage("placeholder")}"
+            class="flex-1 bg-gray-100 w-full px-4 py-3 border-none  text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
+            required
+          />
+          </div>
+          <div class="flex gap-3 w-full">
+          <button 
+          type="submit"
+          id="mc-embedded-subscribe-1"
+          class="flex items-center justify-center rounded-[4px]   hover:scale-105 px-3 py-3 bg-primary text-background active:scale-95 transition-transform w-[50%]"
+          >
+          ${this.getLocalizedMessage("button")}
+          </button>
+          <button 
+          type="button"
+          id="cancel-modal"
+          class="text-primary border border-primary bg-background rounded-[4px] flex items-center justify-center  hover:scale-105 px-3 py-3 active:scale-95 transition-transform w-[50%]"
+          >
+          ${this.getLocalizedMessage("cancel")}
+          </button>
+          </div>
+        </form>
+      </div>
+    `;
+
+      document.body.appendChild(modal);
+
+      requestAnimationFrame(() => {
+        modal.classList.remove("opacity-0");
+        modal.querySelector("div").classList.remove("scale-90");
+        modal.querySelector("div").classList.add("scale-100");
+      });
+
+      const closeModal = () => {
+        modal.classList.add("opacity-0");
+        modal.querySelector("div").classList.add("scale-90");
+        setTimeout(() => modal.remove(), 400);
+      };
+
+      document
+        .getElementById("close-modal")
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("cancel-modal")
+        .addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      const form = document.getElementById("mc-embedded-subscribe-form-1");
+      const emailInput = document.getElementById("mce-EMAIL-1");
+      const submitBtn = document.getElementById("mc-embedded-subscribe-1");
+
+      const isRTL = document.documentElement.dir === "rtl";
+      const messages = {
+        required: isRTL
+          ? "الرجاء إدخال بريد إلكتروني صحيح"
+          : "Please enter a valid email",
+        invalid: isRTL
+          ? "صيغة البريد الإلكتروني غير صحيحة"
+          : "Invalid email format",
+        success: isRTL
+          ? "تم الاشتراك بنجاح! شكراً لك"
+          : "Subscription successful! Thank you",
+        sending: isRTL ? "جاري الإرسال..." : "Sending...",
+      };
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailValue = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(emailValue)) {
+          salla.notify.error(messages.invalid);
+          return;
+        }
+
+        submitBtn.disabled = true;
+
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          mode: "no-cors",
+        })
+          .then(() => {
+            salla.notify.success(messages.success);
+            form.reset();
+            closeModal();
+          })
+          .finally(() => {
+            submitBtn.disabled = false;
+          });
+      });
+
+      sessionStorage.setItem(storeKey, "true");
+    }, 2000);
+  }
+collections_offer() {
+   
+window.status_product
+    console.log("collection_sp modal check:", window.collection_sp_view_modal,window.status_product);
+    
+
+    if (!window.collection_sp_view_modal || window.status_product != 'out') {
+      return;
+    }
+    setTimeout(() => {
+      // show modal after delay
+
+      const modal = document.createElement("div");
+      modal.id = "collection_sp-modal";
+      modal.className = `
+      fixed inset-0 z-[99] flex items-center justify-center 
+      bg-black/40 backdrop-blur-sm opacity-0 
+      transition-all duration-500
+    `;
+
+      modal.innerHTML = `
+      <div class="bg-background  rounded-[10px] p-6 w-[90%] max-w-[580px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl">
+      <div class="w-[70px] h-[70px] mx-auto">
+        <img src="${add_image}" class="w-full h-auto"/>
+      </div>
+        <button id="close-modal" 
+          class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px]  text-[#71717B] transition">
+          <i class="sicon-cancel text-[16px] font-bold"></i>
+        </button>
+
+        <div class="text-center">
+          <h2 class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${collection_sp_block_title}</h2>
+          <p class="text-[#71717B] font-medium text-sm leading-5 tracking-wide text-center align-middle">${collection_sp_sub_title}</p>
+        </div>
+
+        <form 
+          action="${collection_sp_url}" 
           method="post"
           id="mc-embedded-subscribe-form-1"
           class="flex flex-col items-center justify-center gap-2 rounded-[10px] p-1 w-full mx-auto"
