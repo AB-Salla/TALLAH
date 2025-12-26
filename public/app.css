@@ -25881,18 +25881,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 100%;
   }
 }
-.s-product-card-vertical .s-product-card-image .card-floating-btn salla-add-product-button salla-button button {
-  background-color: var(--color-font);
-  color: var(--color-background);
-  border-radius: 4px;
-  border: none;
-}
-.s-product-card-vertical .s-product-card-image .card-floating-btn salla-add-product-button salla-button button:hover {
-  opacity: 1 !important;
-}
-.s-product-card-vertical .s-product-card-image .card-floating-btn salla-add-product-button salla-button button:hover {
+.s-product-card-vertical salla-add-product-button salla-button button {
   color: var(--color-font);
-  background-color: var(--color-background);
+  border: none;
 }
 @media (min-width: 769px) {
   .s-product-card-vertical:hover .card-floating-btn {

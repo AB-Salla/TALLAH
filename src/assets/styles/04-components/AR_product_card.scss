@@ -189,24 +189,17 @@
           width: 100%;
         }
         // Styles for add product button inside floating button
-        salla-add-product-button {
+      
+      }
+    }
+      salla-add-product-button {
           salla-button {
             button {
-              background-color: var(--color-font);
-              color: var(--color-background);
-              border-radius: 4px;
+              color: var(--color-font);
               border: none;
-
-              &:hover {
-                color: var(--color-font);
-                background-color: var(--color-background);
-                opacity: 1 !important;
-              }
             }
           }
         }
-      }
-    }
 
     // Show floating button on hover of the vertical card
     @media (min-width: 769px) {
