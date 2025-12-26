@@ -793,6 +793,7 @@
         }
       ]
     },
+
     {
       "id": "newsletter_sp_view_modal",
       "type": "boolean",
@@ -824,7 +825,6 @@
         }
       ]
     },
-   
     {
       "id": "newsletter_sp_block_title",
       "type": "string",
@@ -863,6 +863,142 @@
         }
       ]
     },
+    {
+      "type": "static",
+      "id": "static-line1",
+      "format": "line"
+    },
+
+ {
+      "id": "colliction_sp_view_modal",
+      "type": "boolean",
+      "format": "switch",
+      "label": "إضافة موديل تسويقي في صفحة المنتج ",
+      "description": "",
+      "labelHTML": null,
+      "icon": "sicon-toggle-off",
+      "value": true,
+      "selected": true,
+      "required": false
+    },
+     {
+          "id": "collection_categories",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "حدد التصنيف الذي سيتم عرض الموديل التسويقي علي منتجاتة في صفحة المنتج",
+          "labelHTML": null,
+          "icon": "sicon-keyboard_arrow_down",
+          "selected": [],
+          "options": [],
+          "source": "categories",
+          "multichoice": true,
+          "searchable": true,
+          "required": false,
+          "conditions": [
+            {
+              "id": "colliction_sp_view_modal",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+    {
+      "id": "collectionn_add_image",
+      "type": "string",
+      "format": "image",
+      "label": "إضافة صورة",
+      "description": "أضف صورة ليتم عرضها في الموديل التسويقي.",
+      "labelHTML": null,
+      "placeholder": "e.g. https://hostname.com/image.png",
+      "icon": "sicon-image",
+      "value": "https://cdn.files.salla.network/homepage/1954265887/a6f371c7-dc63-4d3c-8cbd-23e3eeaf22a3.webp",
+      "required": false,
+      "conditions": [
+        {
+          "id": "colliction_sp_view_modal",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    
+    {
+      "id": "colliction_sp_block_title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الرئيسي ",
+      "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+      "value": {
+        "ar": "احصل على خصم 10٪ على كل هودي",
+        "en": "Get 10% Off on Every Hoodie"
+      },
+      "multilanguage": true,
+      "conditions": [
+        {
+          "id": "colliction_sp_view_modal",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "colliction_sp_sub_title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الفرعي ",
+      "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+      "value": {
+        "ar": "احصل على أي هودي اليوم واستمتع بخصم 10٪ على أي سويتر.",
+        "en": "Grab any hoodie today and enjoy 10% off on any sweater."
+      },
+      "multilanguage": true,
+      "conditions": [
+        {
+          "id": "colliction_sp_view_modal",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "colliction_sp_promo_title",
+      "type": "string",
+      "format": "text",
+      "label": "العنوان الترويجي",
+      "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم.",
+      "value": {
+        "ar": "استمتع بالعرض عبر المجموعة بأكملها!.",
+        "en": "Enjoy the offer across the entire collection!."
+      },
+      "multilanguage": true,
+      "conditions": [
+        {
+          "id": "colliction_sp_view_modal",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+    {
+      "id": "collectionn_footer_image",
+      "type": "string",
+      "format": "image",
+      "label": "إضافة صورة",
+      "description": "أضف صورة ليتم عرضها في ذيل الموديل.",
+      "labelHTML": null,
+      "placeholder": "e.g. https://hostname.com/image.png",
+      "icon": "sicon-image",
+      "value": "https://cdn.files.salla.network/homepage/1954265887/c9cb1753-af2f-4602-945a-aca6a0ee6caf.webp",
+      "required": false,
+      "conditions": [
+        {
+          "id": "colliction_sp_view_modal",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+
     {
       "type": "static",
       "id": "static-line1",
