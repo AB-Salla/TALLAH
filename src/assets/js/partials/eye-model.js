@@ -565,7 +565,7 @@ ${renderWeightBlock()}
               <span>${getQuantity()}</span>
 							</div>
               </div>
-							<div class="custom-add-to-cart-button">
+							<div class="custom-add-to-cart-button mt-auto">
 									${submitButton()}
 								</div>
 						</form>
