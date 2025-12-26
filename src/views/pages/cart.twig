@@ -122,7 +122,7 @@
                                         </div>
                                         <div class="flex !m-0 flex-row-reverse md:flex-col-reverse gap-3 items-center justify-between  md:justify-end md:items-end">
                                             {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
-                                            <p class="text-primary flex-none font-bold text-sm">
+                                            <p class="text-primary flex-none font-bold text-sm hidden">
                                                 <span>{{ trans('pages.cart.total') }}:</span>
                                                 <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
                                             </p>
@@ -171,12 +171,6 @@
                                             
                                             
                                             <div class="hidden md:flex gap-1 flex-row-reverse items-center">
-                                                {% if item.has_discount %}
-                                                  
-                                                   <span class="text-sm font-medium text-red-600" id="discountoffer">
-                                                  (30% Off)
-                                                   </span>
-                                               {% endif %}
                                                 <span class="  font-medium
                                                 text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
                                                 leading-5 md:leading-8
@@ -420,7 +414,7 @@
             {% endif %}
         </div>
     </div>
-    <div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10  pb-[60px] lg:pb-[120px]">
+    <div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10  pb-[60px] lg:pb-[120px] cart_slider">
 		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">

@@ -27324,6 +27324,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #414042 !important;
   color: var(--color-primary) !important;
 }
+.cart_slider .s-product-card-content-category {
+  display: none;
+}
 .s-payments-list-item {
   height: 50px !important;
   width: 50px !important;
