@@ -190,12 +190,7 @@
 
     .s-payments-list-item{
         background-color: transparent;
-        width: 4rem;
-        filter: grayscale(1);
         transition: all .5s ease-in-out;
-    }
-    .s-payments-list-item:hover{
-        filter: grayscale(0);
     }
   .image-slider {
     display: flex;

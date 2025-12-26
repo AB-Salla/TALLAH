@@ -26285,8 +26285,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-payments-list-item {
   background-color: transparent;
-  width: 4rem;
-  filter: grayscale(1);
   transition: all 0.5s ease-in-out;
 }
 .single .s-payments-list-item:hover {
@@ -27231,15 +27229,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #414042 !important;
   color: var(--color-primary) !important;
 }
+.s-payments-list-item {
+  height: 50px !important;
+  width: 50px !important;
+}
 .cart {
   /* When wishlist is not added */
   /* الحالة الافتراضية */
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
-}
-.cart .s-payments-list-item {
-  height: 50px !important;
-  width: 50px !important;
 }
 .cart .s-list-tile-item {
   background-color: #F4F0EB !important;
