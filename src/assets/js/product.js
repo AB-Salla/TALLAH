@@ -176,8 +176,8 @@ window.status_product
           ${this.getLocalizedMessage("button")}
           </button>
           <button 
-          type="submit"
-          id="mc-embedded-subscribe-1"
+          type="button"
+          id="cancel-modal"
           class="text-primary border border-primary bg-background rounded-[4px] flex items-center justify-center  hover:scale-105 px-3 py-3 active:scale-95 transition-transform w-[50%]"
           >
           ${this.getLocalizedMessage("cancel")}
@@ -203,6 +203,9 @@ window.status_product
 
       document
         .getElementById("close-modal")
+        .addEventListener("click", closeModal);
+      document
+        .getElementById("cancel-modal")
         .addEventListener("click", closeModal);
 
       modal.addEventListener("click", (e) => {
