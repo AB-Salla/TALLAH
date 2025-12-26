@@ -26120,10 +26120,43 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .mobile_buttons {
   gap: 8px;
+  /* NOT ADDED state */
+  /* When wishlist is not added */
+  /* Hide empty icon when added */
+  /* Hide filled icon when not added */
 }
 .single .mobile_buttons salla-social-share button {
   border: 1px solid var(--color-font) !important;
   border-radius: 1px !important;
+}
+.single .mobile_buttons salla-button button {
+  background-color: #414042 !important;
+  background-color: var(--color-primary) !important;
+  color: var(--color-background) !important;
+}
+.single .mobile_buttons .btn--wishlist .is-added span svg {
+  fill: rgb(170, 0, 0) !important;
+}
+.single .mobile_buttons .btn--wishlist .is-added span svg:hover {
+  fill: red !important;
+}
+.single .mobile_buttons .btn--wishlist .not-added span svg {
+  fill: var(--color-font) !important;
+}
+.single .mobile_buttons .btn--wishlist .not-added span svg:hover {
+  fill: var(--color-font) !important;
+}
+.single .mobile_buttons .btn--wishlist .is-added span .not_filled {
+  display: none !important;
+}
+.single .mobile_buttons .btn--wishlist .not-added span .filled {
+  display: none !important;
+}
+.single .mobile_buttons .s-product-card-wishlist-btn.not-added .filled {
+  display: none;
+}
+.single .mobile_buttons .s-product-card-wishlist-btn.s-product-card-wishlist-added .not_filled {
+  display: none;
 }
 .single .s-products-slider-card {
   max-width: 100% !important;
