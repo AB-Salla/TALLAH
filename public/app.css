@@ -28070,11 +28070,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     background-color: rgba(31, 41, 55, 1);
     background-color: rgba(31, 41, 55, var(--tw-bg-opacity, 1));
 }
-.dark *.dark\:bg-gray-900{
-    --tw-bg-opacity: 1;
-    background-color: rgba(17, 24, 39, 1);
-    background-color: rgba(17, 24, 39, var(--tw-bg-opacity, 1));
-}
 .dark *.dark\:text-gray-300{
     --tw-text-opacity: 1;
     color: rgba(209, 213, 219, 1);
