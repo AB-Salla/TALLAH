@@ -1060,6 +1060,9 @@ select{
     margin-top: 1.5rem;
     margin-bottom: 1.5rem;
 }
+.\!mb-0{
+    margin-bottom: 0px !important;
+}
 .-mb-52{
     margin-bottom: -13rem;
 }
@@ -1155,12 +1158,6 @@ select{
 }
 .mt-auto{
     margin-top: auto;
-}
-.mb-0{
-    margin-bottom: 0px;
-}
-.\!mb-0{
-    margin-bottom: 0px !important;
 }
 .line-clamp-1{
     overflow: hidden;
@@ -1602,6 +1599,9 @@ select{
 }
 .items-start{
     align-items: flex-start;
+}
+.\!items-end{
+    align-items: flex-end !important;
 }
 .items-end{
     align-items: flex-end;
