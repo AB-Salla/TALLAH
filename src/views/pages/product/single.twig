@@ -515,16 +515,21 @@
 						{% set is_ar = request.locale == 'ar' %}
 						
                         <div class="grid {% if theme.settings.get('features_col_single') %}
-							grid-cols-1
+							grid-cols-1 justify-start items-start
 						{% else %}
-							grid-cols-1 sm:grid-cols-2 md:grid-cols-3
-						{% endif %} justify-start sm:justify-center  items-start sm:items-center gap-8">
+							grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-start sm:justify-center items-start sm:items-center
+						{% endif %}  gap-8">
                             {% for item in theme.settings.get('rh_features_store_pros') %}
                                 {# احسب عدد الحروف في النص #}
                                 {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
     					{% set description = is_ar ? item.description_feature.ar : item.description_feature.en %}
                                 {% set is_long = title|length > 20 %}
-                                <div class="text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col  w-auto ">
+								
+                                <div class="  w-auto  {% if theme.settings.get('features_col_single') %}
+								text-start gap-4 flex justify-start  items-center
+{% else %}
+text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col
+{% endif %} ">
                                 <span class="flex items-center justify-center w-6 h-6">
                                     {% if item.rh_features_active_select_icons == "image_services" %}
                                     <img src="{{ item.add_image }}"
@@ -555,10 +560,10 @@
                                     {% endif %}
                                 </span>
 								<div >
-									<h3 class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
+									<h3 class="text-[14px] font-semibold text-font leading-[140%]">
 										{{ title }}
 									</h3>
-									<h3 class="text-[14px] font-semibold text-font-light dark:text-font-dark leading-[140%]">
+									<h3 class="text-[14px] font-semibold text-font leading-[140%]">
 										{{ description }}
 									</h3>
 								</div>
