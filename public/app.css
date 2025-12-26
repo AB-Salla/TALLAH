@@ -26120,9 +26120,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .mobile_buttons {
   gap: 8px;
-  /* لما الزر يكون في حالة loading */
-  /* إخفاء القلب + النص أثناء اللودينج */
-  /* خلي اللودر ظاهر في النص */
+  /* الزر يكون مرجعية للتمركز */
+  /* أثناء اللودينج */
+  /* إخفاء القلب + النص */
+  /* تمركز اللودر في النص */
+  /* إظهار اللودر أثناء اللودينج */
   /* NOT ADDED state */
   /* When wishlist is not added */
   /* Hide empty icon when added */
@@ -26141,19 +26143,27 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid var(--color-font) !important;
   border-radius: 1px !important;
 }
+.single .mobile_buttons .s-button-element {
+  position: relative;
+}
 .single .mobile_buttons .s-button-element[loading],
-.single .mobile_buttons .s-button-wrap[loading],
-.single .mobile_buttons .s-button-wrap.is-loading {
+.single .mobile_buttons .s-button-wrap.is-loading .s-button-element {
   pointer-events: none;
 }
 .single .mobile_buttons .s-button-element[loading] .s-button-text,
-.single .mobile_buttons .s-button-wrap[loading] .s-button-text,
 .single .mobile_buttons .s-button-wrap.is-loading .s-button-text {
   opacity: 0;
   visibility: hidden;
 }
+.single .mobile_buttons .s-button-element .s-button-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+}
 .single .mobile_buttons .s-button-element[loading] .s-button-loader,
-.single .mobile_buttons .s-button-wrap[loading] .s-button-loader,
 .single .mobile_buttons .s-button-wrap.is-loading .s-button-loader {
   opacity: 1;
   visibility: visible;
