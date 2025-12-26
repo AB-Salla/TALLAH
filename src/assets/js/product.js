@@ -100,11 +100,13 @@ getLocalizedMessage(key) {
     const messages = {
       ar: {
         placeholder: "أدخل بريدك الإلكتروني",
-        button: "اشترك"
+        button: "إرسال",
+        cancel: "إلغاء",
       },
       en: {
         placeholder: "Enter your email address",
-        button: "Subscribe"
+        button: "Send",
+        cancel: "Cancel",
       },
     };
     return messages[lang][key];
@@ -131,17 +133,17 @@ window.status_product
 
       modal.innerHTML = `
       <div class="bg-background  rounded-2xl p-8 w-[90%] max-w-[961px] relative transform scale-90 transition-transform duration-500 shadow-xl">
-      <div class="w-[224px] h-auto mx-auto">
+      <div class="w-[70px] h-[70px] mx-auto mb-2">
         <img src="${add_image}" class="w-full h-auto"/>
       </div>
         <button id="close-modal" 
-          class="absolute top-3 flex items-center justify-center right-3 border-2 border-primary font-bold w-[31px] h-[31px]  text-primary transition">
+          class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px]  text-primary/70 transition">
           <i class="sicon-cancel text-[16px] font-bold"></i>
         </button>
 
         <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold text-primary mb-3">${newsletter_sp_block_title}</h2>
-          <p class="text-gray-600 ">${newsletter_sp_sub_title}</p>
+          <h2 class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${newsletter_sp_block_title}</h2>
+          <p class="text-primary/60 font-medium text-sm leading-5 tracking-wide text-center align-middle">${newsletter_sp_sub_title}</p>
         </div>
 
         <form 
@@ -160,13 +162,22 @@ window.status_product
             class="flex-1 bg-gray-100 px-4 py-3 border-none text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
             required
           />
+          <div class="flex gap-2">
           <button 
-            type="submit"
-            id="mc-embedded-subscribe-1"
-            class="bg-primary w-11 h-11 flex items-center justify-center rounded-[10px] hover:scale-105 active:scale-95 transition-transform"
+          type="submit"
+          id="mc-embedded-subscribe-1"
+          class="flex items-center justify-center rounded-[4px]  hover:scale-105 px-3 py-3 bg-primary text-background active:scale-95 transition-transform w-[50%]"
           >
-            <i class="sicon-send-mail text-lg text-font  rotate-180 ltr:rotate-0"></i>
+          ${this.getLocalizedMessage("button")}
           </button>
+          <button 
+          type="submit"
+          id="mc-embedded-subscribe-1"
+          class="text-primary border border-primary bg-background rounded-[4px] flex items-center justify-center  hover:scale-105 px-3 py-3 active:scale-95 transition-transform w-[50%]"
+          >
+          ${this.getLocalizedMessage("cancel")}
+          </button>
+          </div>
         </form>
       </div>
     `;

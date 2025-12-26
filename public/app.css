@@ -1344,6 +1344,15 @@ select{
 .h-screen{
     height: 100vh;
 }
+.h-\[\]{
+    height: ;
+}
+.h-\[70px\]{
+    height: 70px;
+}
+.h-\[24px\]{
+    height: 24px;
+}
 .max-h-0{
     max-height: 0px;
 }
@@ -1478,6 +1487,21 @@ select{
 }
 .w-full{
     width: 100%;
+}
+.w-\[70px\]{
+    width: 70px;
+}
+.w-\[24px\]{
+    width: 24px;
+}
+.w-0{
+    width: 0px;
+}
+.w-\[\]{
+    width: ;
+}
+.w-\[50\%\]{
+    width: 50%;
 }
 .min-w-0{
     min-width: 0px;
@@ -1914,6 +1938,9 @@ select{
 .rounded-sm{
     border-radius: 0.125rem;
 }
+.rounded-\[4px\]{
+    border-radius: 4px;
+}
 .rounded-b-none{
     border-bottom-right-radius: 0px;
     border-bottom-left-radius: 0px;
@@ -2310,6 +2337,9 @@ select{
 }
 .text-end{
     text-align: right;
+}
+.align-middle{
+    vertical-align: middle;
 }
 .font-\[inherit\]{
     font-family: inherit;
