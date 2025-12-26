@@ -99,15 +99,17 @@ class Product extends BasePage {
 runningAfter5Seconds() {
    
 
+    console.log("Newsletter_sp modal check:", window.newsletter_sp_view_modal);
+    
 
-    if (!window.newsletter_view_modal) {
+    if (!window.newsletter_sp_view_modal) {
       return;
     }
     setTimeout(() => {
       // show modal after delay
 
       const modal = document.createElement("div");
-      modal.id = "newsletter-modal";
+      modal.id = "newsletter_sp-modal";
       modal.className = `
       fixed inset-0 z-[99] flex items-center justify-center 
       bg-black/40 backdrop-blur-sm opacity-0 
@@ -125,12 +127,12 @@ runningAfter5Seconds() {
         </button>
 
         <div class="text-center mb-6">
-          <h2 class="text-2xl font-bold text-primary mb-3">${newslatter_block_title}</h2>
-          <p class="text-gray-600 ">${newslatter_sub_title}</p>
+          <h2 class="text-2xl font-bold text-primary mb-3">${newsletter_sp_block_title}</h2>
+          <p class="text-gray-600 ">${newsletter_sp_sub_title}</p>
         </div>
 
         <form 
-          action="${newsletter_url}" 
+          action="${newsletter_sp_url}" 
           method="post"
           id="mc-embedded-subscribe-form-1"
           class="flex items-center justify-center gap-2 rounded-[10px] p-1 w-full max-w-md mx-auto"
