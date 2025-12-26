@@ -1,4 +1,5 @@
 .single .mobile_buttons{
+
   gap: 8px;
   margin-top: 14px !important;
   salla-social-share{
@@ -16,6 +17,29 @@
       border-radius: 1px !important;
     }
   }
+  /* لما الزر يكون في حالة loading */
+.s-button-element[loading],
+.s-button-wrap[loading],
+.s-button-wrap.is-loading {
+  pointer-events: none;
+}
+
+/* إخفاء القلب + النص أثناء اللودينج */
+.s-button-element[loading] .s-button-text,
+.s-button-wrap[loading] .s-button-text,
+.s-button-wrap.is-loading .s-button-text {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* خلي اللودر ظاهر في النص */
+.s-button-element[loading] .s-button-loader,
+.s-button-wrap[loading] .s-button-loader,
+.s-button-wrap.is-loading .s-button-loader {
+  opacity: 1;
+  visibility: visible;
+}
+
    /* NOT ADDED state */
   .btn--wishlist .is-added span svg {
     fill: rgb(170, 0, 0) !important;

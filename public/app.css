@@ -26120,6 +26120,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .mobile_buttons {
   gap: 8px;
+  /* لما الزر يكون في حالة loading */
+  /* إخفاء القلب + النص أثناء اللودينج */
+  /* خلي اللودر ظاهر في النص */
   /* NOT ADDED state */
   /* When wishlist is not added */
   /* Hide empty icon when added */
@@ -26137,6 +26140,23 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: var(--color-font) !important;
   border: 1px solid var(--color-font) !important;
   border-radius: 1px !important;
+}
+.single .mobile_buttons .s-button-element[loading],
+.single .mobile_buttons .s-button-wrap[loading],
+.single .mobile_buttons .s-button-wrap.is-loading {
+  pointer-events: none;
+}
+.single .mobile_buttons .s-button-element[loading] .s-button-text,
+.single .mobile_buttons .s-button-wrap[loading] .s-button-text,
+.single .mobile_buttons .s-button-wrap.is-loading .s-button-text {
+  opacity: 0;
+  visibility: hidden;
+}
+.single .mobile_buttons .s-button-element[loading] .s-button-loader,
+.single .mobile_buttons .s-button-wrap[loading] .s-button-loader,
+.single .mobile_buttons .s-button-wrap.is-loading .s-button-loader {
+  opacity: 1;
+  visibility: visible;
 }
 .single .mobile_buttons .btn--wishlist .is-added span svg {
   fill: rgb(170, 0, 0) !important;
