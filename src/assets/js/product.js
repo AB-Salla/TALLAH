@@ -22,10 +22,11 @@ class Product extends BasePage {
             window.addEventListener('resize', () => this.initImagesZooming());
         }
         this.initproductdetailsFaqs()
+        this.runningAfter5Seconds();
     }
 
      initproductdetailsFaqs() {
-  document.addEventListener("DOMContentLoaded", () => {
+    document.addEventListener("DOMContentLoaded", () => {
     const metadata = document.querySelector("salla-metadata");
     if (!metadata) {
       console.error("❌ <salla-metadata> not found!");
@@ -94,6 +95,154 @@ class Product extends BasePage {
     observer.observe(metadata, { attributes: true });
   });
 }
+
+runningAfter5Seconds() {
+    // احصل على الـ pathname بدون اللغة
+    const normalizeUrl = (url) => {
+      const u = new URL(url);
+      // إزالة أي لغة (مثل /en/ أو /ar/)
+      const cleanPath = u.pathname.replace(/^\/(en|ar)\//, "/");
+      return `${u.origin}${cleanPath}`;
+    };
+    if (normalizeUrl(window.location.href) !== normalizeUrl(url_store)) {
+      
+      return;
+    }
+
+    const storeKey = `newsletter_shown_${url_store}`;
+
+    if (!newsletter_view_modal) {
+      return;
+    }
+    if (sessionStorage.getItem(storeKey)) {
+      return;
+    }
+
+    setTimeout(() => {
+      // show modal after delay
+
+      const modal = document.createElement("div");
+      modal.id = "newsletter-modal";
+      modal.className = `
+      fixed inset-0 z-[99] flex items-center justify-center 
+      bg-black/40 backdrop-blur-sm opacity-0 
+      transition-all duration-500
+    `;
+
+      modal.innerHTML = `
+      <div class="bg-bg-light dark:bg-bg-dark dark:bg-gray-900 rounded-2xl p-8 w-[90%] max-w-[961px] relative transform scale-90 transition-transform duration-500 shadow-xl">
+      <div class="w-[224px] h-auto mx-auto">
+        <img src="${add_image}" class="w-full h-auto"/>
+      </div>
+        <button id="close-modal" 
+          class="absolute top-3 flex items-center justify-center right-3 border-2 border-primary font-bold w-[31px] h-[31px]  text-primary transition">
+          <i class="sicon-cancel text-[16px] font-bold"></i>
+        </button>
+
+        <div class="text-center mb-6">
+          <h2 class="text-2xl font-bold text-primary mb-3">${newslatter_block_title}</h2>
+          <p class="text-gray-600 dark:text-gray-300">${newslatter_sub_title}</p>
+        </div>
+
+        <form 
+          action="${newsletter_url}" 
+          method="post"
+          id="mc-embedded-subscribe-form-1"
+          class="flex items-center justify-center gap-2 rounded-[10px] p-1 w-full max-w-md mx-auto"
+          target="_blank"
+          novalidate
+        >
+          <input
+            type="email"
+            name="EMAIL"
+            id="mce-EMAIL-1"
+            placeholder="${this.getLocalizedMessage("placeholder")}"
+            class="flex-1 bg-gray-100 px-4 py-3 border-none text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
+            required
+          />
+          <button 
+            type="submit"
+            id="mc-embedded-subscribe-1"
+            class="bg-primary w-11 h-11 flex items-center justify-center rounded-[10px] hover:scale-105 active:scale-95 transition-transform"
+          >
+            <i class="sicon-send-mail text-lg text-font-dark  rotate-180 ltr:rotate-0"></i>
+          </button>
+        </form>
+      </div>
+    `;
+
+      document.body.appendChild(modal);
+
+      requestAnimationFrame(() => {
+        modal.classList.remove("opacity-0");
+        modal.querySelector("div").classList.remove("scale-90");
+        modal.querySelector("div").classList.add("scale-100");
+      });
+
+      const closeModal = () => {
+        modal.classList.add("opacity-0");
+        modal.querySelector("div").classList.add("scale-90");
+        setTimeout(() => modal.remove(), 400);
+      };
+
+      document
+        .getElementById("close-modal")
+        .addEventListener("click", closeModal);
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          closeModal();
+        }
+      });
+
+      const form = document.getElementById("mc-embedded-subscribe-form-1");
+      const emailInput = document.getElementById("mce-EMAIL-1");
+      const submitBtn = document.getElementById("mc-embedded-subscribe-1");
+
+      const isRTL = document.documentElement.dir === "rtl";
+      const messages = {
+        required: isRTL
+          ? "الرجاء إدخال بريد إلكتروني صحيح"
+          : "Please enter a valid email",
+        invalid: isRTL
+          ? "صيغة البريد الإلكتروني غير صحيحة"
+          : "Invalid email format",
+        success: isRTL
+          ? "تم الاشتراك بنجاح! شكراً لك"
+          : "Subscription successful! Thank you",
+        sending: isRTL ? "جاري الإرسال..." : "Sending...",
+      };
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const emailValue = emailInput.value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailRegex.test(emailValue)) {
+          salla.notify.error(messages.invalid);
+          return;
+        }
+
+        submitBtn.disabled = true;
+
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          mode: "no-cors",
+        })
+          .then(() => {
+            salla.notify.success(messages.success);
+            form.reset();
+            closeModal();
+          })
+          .finally(() => {
+            submitBtn.disabled = false;
+          });
+      });
+
+      sessionStorage.setItem(storeKey, "true");
+    }, 2000);
+  }
 
     initProductOptionValidations() {
       document.querySelector('.product-form')?.addEventListener('change', function(){

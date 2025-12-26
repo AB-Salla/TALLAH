@@ -37,7 +37,7 @@ class App extends AppHelpers {
     this.initSizeOptionSingle();
     this.observeSizeOptionSingle();
     this.initHideEndedCountDown();
-    // this.init_SideCart();
+    this.init_SideCart();
     salla.comment.event.onAdded(() => window.location.reload());
 
     this.status = 'ready';
@@ -261,256 +261,256 @@ isElementLoaded(selector){
       });
     });
   }
-//   async init_SideCart() {
-//     if (window.location.pathname.includes('/cart')) {
-//     // إذا كنا في صفحة الكارت، لا نحتاج للسايد كارت
-//     return;
-// }
-//     const cartBtn = document.querySelector("#sidecart-button");
-//     const cartPanel = document.querySelector("#sidecart-panel");
-//     const overlay = document.querySelector("#sidecart-overlay");
-//     const closeBtns = cartPanel.querySelectorAll(
-//       ".menu-close, .close-side-panel"
-//     );
-//     const content = cartPanel.querySelector(".side-panel__content");
-//     const itemsWrap = cartPanel.querySelector("#sidecart-items");
-//     const total = cartPanel.querySelector("#sidecart-total");
-//     const subTotal = cartPanel.querySelector("#sidecart-subtotal");
-//     const totalDiscount = cartPanel.querySelector("#sidecart-total-discount");
-//     const count = cartPanel.querySelector(".sidecart-products-count");
-//     const totalItemsEl = document.querySelectorAll(".cart-total-items");
-//     const isRtl =
-//       document.documentElement.dir === "rtl" || document.body.dir === "rtl";
-//     const offscreenX = isRtl ? "100%" : "-100%";
-//     cartPanel.style.transform = `translateX(${offscreenX})`;
-//     cartPanel.style.visibility = "hidden";
-//     cartPanel.style.pointerEvents = "none";
-//     content.style.opacity = "0";
+  async init_SideCart() {
+    if (window.location.pathname.includes('/cart')) {
+    // إذا كنا في صفحة الكارت، لا نحتاج للسايد كارت
+    return;
+}
+    const cartBtn = document.querySelector("#sidecart-button");
+    const cartPanel = document.querySelector("#sidecart-panel");
+    const overlay = document.querySelector("#sidecart-overlay");
+    const closeBtns = cartPanel.querySelectorAll(
+      ".menu-close, .close-side-panel"
+    );
+    const content = cartPanel.querySelector(".side-panel__content");
+    const itemsWrap = cartPanel.querySelector("#sidecart-items");
+    const total = cartPanel.querySelector("#sidecart-total");
+    const subTotal = cartPanel.querySelector("#sidecart-subtotal");
+    const totalDiscount = cartPanel.querySelector("#sidecart-total-discount");
+    const count = cartPanel.querySelector(".sidecart-products-count");
+    const totalItemsEl = document.querySelectorAll(".cart-total-items");
+    const isRtl =
+      document.documentElement.dir === "rtl" || document.body.dir === "rtl";
+    const offscreenX = isRtl ? "100%" : "-100%";
+    cartPanel.style.transform = `translateX(${offscreenX})`;
+    cartPanel.style.visibility = "hidden";
+    cartPanel.style.pointerEvents = "none";
+    content.style.opacity = "0";
 
-//     // ⚙️ عرض وإخفاء السايد كارت
-//     const toggleCart = (show) => {
-//       if (show) {
-//         cartPanel.style.visibility = "visible";
-//         cartPanel.style.pointerEvents = "auto";
-//         overlay.classList.remove("hidden");
-//         requestAnimationFrame(() => overlay.classList.add("opacity-100"));
+    // ⚙️ عرض وإخفاء السايد كارت
+    const toggleCart = (show) => {
+      if (show) {
+        cartPanel.style.visibility = "visible";
+        cartPanel.style.pointerEvents = "auto";
+        overlay.classList.remove("hidden");
+        requestAnimationFrame(() => overlay.classList.add("opacity-100"));
 
-//         requestAnimationFrame(() => {
-//           cartPanel.style.transform = "translateX(0)";
-//           content.style.opacity = "1";
-//           content.style.transform = "translateX(0)";
-//         });
-//       } else {
-//         overlay.classList.remove("opacity-100");
-//         setTimeout(() => overlay.classList.add("hidden"), 300);
-//         const outX = isRtl ? "100%" : "-100%";
-//         cartPanel.style.transform = `translateX(${outX})`;
-//         content.style.opacity = "0";
-//         cartPanel.style.pointerEvents = "none";
-//         setTimeout(() => (cartPanel.style.visibility = "hidden"), 300);
-//       }
-//     };
-// const productCache = {};
+        requestAnimationFrame(() => {
+          cartPanel.style.transform = "translateX(0)";
+          content.style.opacity = "1";
+          content.style.transform = "translateX(0)";
+        });
+      } else {
+        overlay.classList.remove("opacity-100");
+        setTimeout(() => overlay.classList.add("hidden"), 300);
+        const outX = isRtl ? "100%" : "-100%";
+        cartPanel.style.transform = `translateX(${outX})`;
+        content.style.opacity = "0";
+        cartPanel.style.pointerEvents = "none";
+        setTimeout(() => (cartPanel.style.visibility = "hidden"), 300);
+      }
+    };
+const productCache = {};
 
-//     async function fetchProductDetails(productId) {
-//   if (!productCache[productId]) {
-//     const res = await salla.product.getDetails(productId, ["images", "options"]);
-//     productCache[productId] = res.data;
-//   }
-//   return productCache[productId];
-// }
-//     // 📦 تحميل السلة
-//     function buildHiddenOptionsInputs(productDetails) {
-//   if (!productDetails?.options?.length) return "";
+    async function fetchProductDetails(productId) {
+  if (!productCache[productId]) {
+    const res = await salla.product.getDetails(productId, ["images", "options"]);
+    productCache[productId] = res.data;
+  }
+  return productCache[productId];
+}
+    // 📦 تحميل السلة
+    function buildHiddenOptionsInputs(productDetails) {
+  if (!productDetails?.options?.length) return "";
 
-//   return productDetails.options
-//     .map(option => {
-//       const firstValue = option.details?.[0];
-//       if (!firstValue) return "";
+  return productDetails.options
+    .map(option => {
+      const firstValue = option.details?.[0];
+      if (!firstValue) return "";
 
-//       return `
-//         <input 
-//           type="hidden" 
-//           name="options[${option.id}]" 
-//           value="${firstValue.id}"
-//         >
-//       `;
-//     })
-//     .join("");
-// }
+      return `
+        <input 
+          type="hidden" 
+          name="options[${option.id}]" 
+          value="${firstValue.id}"
+        >
+      `;
+    })
+    .join("");
+}
 
-//     async function loadCart() {
-//       function getLocalizedMessageinner(key) {
-//         const lang = document.documentElement.lang || "ar";
-//         const messages = {
-//           ar: {
-//             remove: "إزالة",
-//             quantity: "الكمية",
-//             tax_included: "الضريبة مشمولة",
-//           },
-//           en: {
-//             remove: "Remove",
-//             quantity: "Quantity",
-//             tax_included: "Tax Included",
-//           },
-//         };
-//         return messages[lang]?.[key] || messages["ar"][key] || key;
-//       }
-//       try {
-//         const res = await salla.api.cart.details();
-//         const cart = res.data.cart || {
-//           items: [],
-//           count: 0,
-//           total: 0,
-//           sub_total: 0,
-//         };
-// const items = cart.items;
-//   const itemsWithDetails = await Promise.all(items.map(async item => {
-//       const details = await fetchProductDetails(item.product_id);
-//       const hiddenOptions = buildHiddenOptionsInputs(item.details);
+    async function loadCart() {
+      function getLocalizedMessageinner(key) {
+        const lang = document.documentElement.lang || "ar";
+        const messages = {
+          ar: {
+            remove: "إزالة",
+            quantity: "الكمية",
+            tax_included: "الضريبة مشمولة",
+          },
+          en: {
+            remove: "Remove",
+            quantity: "Quantity",
+            tax_included: "Tax Included",
+          },
+        };
+        return messages[lang]?.[key] || messages["ar"][key] || key;
+      }
+      try {
+        const res = await salla.api.cart.details();
+        const cart = res.data.cart || {
+          items: [],
+          count: 0,
+          total: 0,
+          sub_total: 0,
+        };
+const items = cart.items;
+  const itemsWithDetails = await Promise.all(items.map(async item => {
+      const details = await fetchProductDetails(item.product_id);
+      const hiddenOptions = buildHiddenOptionsInputs(item.details);
 
-//       return { ...item, details };
-//     }));
+      return { ...item, details };
+    }));
         
-//         const totalItems = items.length;
-//         totalItemsEl.forEach(totalel=>{
-//           totalel.textContent=`${totalItems}`;
-//         })
-//         if (cart.items && cart.items.length) {
-//           count.textContent = `(${cart.count} منتج)`;
-//         itemsWrap.innerHTML = itemsWithDetails
-//   .map((item) => {
+        const totalItems = items.length;
+        totalItemsEl.forEach(totalel=>{
+          totalel.textContent=`${totalItems}`;
+        })
+        if (cart.items && cart.items.length) {
+          count.textContent = `(${cart.count} منتج)`;
+        itemsWrap.innerHTML = itemsWithDetails
+  .map((item) => {
 
-//     const hiddenOptions = buildHiddenOptionsInputs(item.details);
+    const hiddenOptions = buildHiddenOptionsInputs(item.details);
     
-//     const item_url =
-//       item.product_url || salla.url.get("*/p" + item.product_id);
+    const item_url =
+      item.product_url || salla.url.get("*/p" + item.product_id);
 
-//     const img =
-//       item.product_image ||
-//       "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp";
+    const img =
+      item.product_image ||
+      "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp";
 
-//     return `
-//       <form onchange="salla.form.onChange('cart.updateItem', event)"
-//             id="item-${item.id}" novalidate>
+    return `
+      <form onchange="salla.form.onChange('cart.updateItem', event)"
+            id="item-${item.id}" novalidate>
 
-//         <input type="hidden" name="id" value="${item.id}">
-//         ${hiddenOptions}
+        <input type="hidden" name="id" value="${item.id}">
+        ${hiddenOptions}
 
-//         <section class="cart-item bg-bg-light dark:bg-bg-dark p-3 md:p-5 rounded border border-gray-100 mb-4"
-//                  data-id="${item.id}">
+        <section class="cart-item bg-bg-light dark:bg-bg-dark p-3 md:p-5 rounded border border-gray-100 mb-4"
+                 data-id="${item.id}">
 
-//           <div class="md:flex items-start justify-between gap-4">
-//             <div class="flex flex-1 gap-4 items-center">
+          <div class="md:flex items-start justify-between gap-4">
+            <div class="flex flex-1 gap-4 items-center">
 
-//               <a href="${item_url}" class="w-24 h-20">
-//                 <img src="${img}" alt="${item.product_name}"
-//                      class="w-full h-full rounded object-contain" />
-//               </a>
+              <a href="${item_url}" class="w-24 h-20">
+                <img src="${img}" alt="${item.product_name}"
+                     class="w-full h-full rounded object-contain" />
+              </a>
 
-//               <div class="space-y-1 flex-grow w-full">
-//                 ${
-//                   !item.is_taxable
-//                     ? `<small>${getLocalizedMessageinner("tax_included")}</small>`
-//                     : ""
-//                 }
+              <div class="space-y-1 flex-grow w-full">
+                ${
+                  !item.is_taxable
+                    ? `<small>${getLocalizedMessageinner("tax_included")}</small>`
+                    : ""
+                }
 
-//                 <h2 class=" font-medium
-//                 text-sm
-//                 leading-5
-//                 tracking-wide
-//                 md:text-base
-//                 md:leading-6 line-clamp-2">
-//                   <a href="${item_url}">${item.product_name}</a>
-//                 </h2>
-//                 <div class="flex justify-between items-center gap-4">
-//                 <span class="item-price font-medium">
-//                   ${salla.money(item.price)}
-//                 </span>
-//                 <salla-quantity-input
-//                   cart-item-id="${item.id}"
-//                   max="${item.max_quantity}"
-//                   value="${item.quantity}"
-//                   name="quantity">
-//                 </salla-quantity-input>
-//                 </div>
+                <h2 class=" font-medium
+                text-sm
+                leading-5
+                tracking-wide
+                md:text-base
+                md:leading-6 line-clamp-2">
+                  <a href="${item_url}">${item.product_name}</a>
+                </h2>
+                <div class="flex justify-between items-center gap-4">
+                <span class="item-price font-medium">
+                  ${salla.money(item.price)}
+                </span>
+                <salla-quantity-input
+                  cart-item-id="${item.id}"
+                  max="${item.max_quantity}"
+                  value="${item.quantity}"
+                  name="quantity">
+                </salla-quantity-input>
+                </div>
 
-//               </div>
-//             </div>
+              </div>
+            </div>
 
-//             <button type="button"
-//               class="delete-btn text-gray-500 hover:text-red-500"
-//               data-item-id="${item.id}">
-//               <i class="sicon-trash-2"></i>
-//             </button>
+            <button type="button"
+              class="delete-btn text-gray-500 hover:text-red-500"
+              data-item-id="${item.id}">
+              <i class="sicon-trash-2"></i>
+            </button>
 
-//           </div>
-//         </section>
-//       </form>
-//     `;
-//   })
-//   .join("");
+          </div>
+        </section>
+      </form>
+    `;
+  })
+  .join("");
 
-//           total.innerHTML = salla.money(cart.total);
-//           subTotal.innerHTML = cart.sub_total
-//             ? salla.money(cart.sub_total)
-//             : "";
-//           totalDiscount.innerHTML = cart.total_discount
-//             ? salla.money(cart.total_discount)
-//             : salla.money(0);
+          total.innerHTML = salla.money(cart.total);
+          subTotal.innerHTML = cart.sub_total
+            ? salla.money(cart.sub_total)
+            : "";
+          totalDiscount.innerHTML = cart.total_discount
+            ? salla.money(cart.total_discount)
+            : salla.money(0);
 
-//           // 🗑️ زر الحذف
-//           itemsWrap.querySelectorAll(".delete-btn").forEach((btn) => {
-//             btn.addEventListener("click", async () => {
-//               const id = btn.dataset.itemId;
-//               await salla.cart.deleteItem(id);
-//               await loadCart(); // تحديث المحتوى
-//             });
-//           });
-//         } else {
-//           itemsWrap.innerHTML = `
-//                   <div class="text-center py-10 text-gray-500">
-//                     <i class="sicon-shopping-bag text-3xl mb-2 block"></i>
-//                     <p>${salla.lang.get("pages.cart.empty_cart")}</p>
-//                   </div>`;
-//           total.innerHTML = "";
-//           subTotal.innerHTML = "";
-//           totalDiscount.innerHTML = "";
-//           count.textContent = "";
-//            totalItemsEl.forEach(totalel=>{
-//           totalel.textContent=`0`;
-//         })
-//         }
-//       } catch (err) {
-//         console.error("❌ Cart fetch error:", err);
-//         itemsWrap.innerHTML = `<div class="p-4 text-sm text-red-500">حدث خطأ في تحميل السلة</div>`;
-//       }
-//     }
+          // 🗑️ زر الحذف
+          itemsWrap.querySelectorAll(".delete-btn").forEach((btn) => {
+            btn.addEventListener("click", async () => {
+              const id = btn.dataset.itemId;
+              await salla.cart.deleteItem(id);
+              await loadCart(); // تحديث المحتوى
+            });
+          });
+        } else {
+          itemsWrap.innerHTML = `
+                  <div class="text-center py-10 text-gray-500">
+                    <i class="sicon-shopping-bag text-3xl mb-2 block"></i>
+                    <p>${salla.lang.get("pages.cart.empty_cart")}</p>
+                  </div>`;
+          total.innerHTML = "";
+          subTotal.innerHTML = "";
+          totalDiscount.innerHTML = "";
+          count.textContent = "";
+           totalItemsEl.forEach(totalel=>{
+          totalel.textContent=`0`;
+        })
+        }
+      } catch (err) {
+        console.error("❌ Cart fetch error:", err);
+        itemsWrap.innerHTML = `<div class="p-4 text-sm text-red-500">حدث خطأ في تحميل السلة</div>`;
+      }
+    }
 
-//     // 📢 ربط الأحداث
-//     salla.event.cart.onUpdated(loadCart);
-//     salla.event.cart.onItemAdded(loadCart);
-//     salla.event.cart.onItemDeleted(loadCart);
-//     document.addEventListener("salla:cart:updated", loadCart);
+    // 📢 ربط الأحداث
+    salla.event.cart.onUpdated(loadCart);
+    salla.event.cart.onItemAdded(loadCart);
+    salla.event.cart.onItemDeleted(loadCart);
+    document.addEventListener("salla:cart:updated", loadCart);
 
-//     // تحميل أول مرة
-//     await loadCart();
+    // تحميل أول مرة
+    await loadCart();
 
-//     // فتح / غلق السايد كارت
-//     cartBtn?.addEventListener("click", () => {
+    // فتح / غلق السايد كارت
+    cartBtn?.addEventListener("click", () => {
 
-//       const isVisible = cartPanel.style.visibility === "visible";
-//       toggleCart(!isVisible);
-//     });
-//     closeBtns.forEach((btn) =>
-//       btn.addEventListener("click", () => toggleCart(false))
-//     );
-//     overlay?.addEventListener("click", () => toggleCart(false));
+      const isVisible = cartPanel.style.visibility === "visible";
+      toggleCart(!isVisible);
+    });
+    closeBtns.forEach((btn) =>
+      btn.addEventListener("click", () => toggleCart(false))
+    );
+    overlay?.addEventListener("click", () => toggleCart(false));
 
-//     document.addEventListener("keydown", (e) => {
-//       if (e.key === "Escape") toggleCart(false);
-//     });
-//   }
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") toggleCart(false);
+    });
+  }
   initiateModals() {
     this.onClick('[data-modal-trigger]', e => {
       let id = '#' + e.target.dataset.modalTrigger;
