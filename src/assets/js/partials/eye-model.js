@@ -560,23 +560,14 @@ export const eyeModel = (productId) => {
 ${renderWeightBlock()}
 
               <div class="flex gap-3 flex-row-reverse justify-end items-center">
-              <div class="custom-add-to-cart-button">
-									${submitButton()}
-								</div>
+              
 							<div class="product-quantity mt-auto">
               <span>${getQuantity()}</span>
 							</div>
               </div>
-							<div class="flex gap-3 items-center mt-auto">
-
-								${
-                  getSinglePage()
-                    ? `<div class="product-details flex-1 h-full">
-										${getSinglePage()}
-									</div>`
-                    : ""
-                }
-							</div>
+							<div class="custom-add-to-cart-button">
+									${submitButton()}
+								</div>
 						</form>
 					</div>
 				</div>
