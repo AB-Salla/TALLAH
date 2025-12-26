@@ -28223,26 +28223,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 768px){
-    .md\:sticky{
-        position: sticky;
-    }
     .md\:-right-10{
         right: -2.5rem;
     }
     .md\:-top-10{
         top: -2.5rem;
     }
-    .md\:order-1{
-        order: 1;
-    }
-    .md\:order-2{
-        order: 2;
-    }
     .md\:order-4{
         order: 4;
-    }
-    .md\:col-span-2{
-        grid-column: span 2 / span 2;
     }
     .md\:mb-0{
         margin-bottom: 0px;
@@ -28262,9 +28250,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:mb-9{
         margin-bottom: 2.25rem;
     }
-    .md\:mt-5{
-        margin-top: 1.25rem;
-    }
     .md\:flex{
         display: flex;
     }
@@ -28274,14 +28259,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:grid{
         display: grid;
     }
-    .md\:\!hidden{
-        display: none !important;
-    }
     .md\:hidden{
         display: none;
-    }
-    .md\:\!h-\[374px\]{
-        height: 374px !important;
     }
     .md\:h-20{
         height: 5rem;
@@ -28306,9 +28285,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-1\/3{
         width: 33.333333%;
-    }
-    .md\:w-2\/4{
-        width: 50%;
     }
     .md\:w-32{
         width: 8rem;
@@ -28427,9 +28403,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         margin-bottom: calc(0px * 0);
         margin-bottom: calc(0px * var(--tw-space-y-reverse));
     }
-    .md\:overflow-hidden{
-        overflow: hidden;
-    }
     .md\:border-none{
         border-style: none;
     }
@@ -28442,21 +28415,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:p-8{
         padding: 2rem;
     }
-    .md\:px-0{
-        padding-left: 0px;
-        padding-right: 0px;
-    }
     .md\:px-10{
         padding-left: 2.5rem;
         padding-right: 2.5rem;
-    }
-    .md\:px-14{
-        padding-left: 3.5rem;
-        padding-right: 3.5rem;
-    }
-    .md\:px-16{
-        padding-left: 4rem;
-        padding-right: 4rem;
     }
     .md\:px-4{
         padding-left: 1rem;
@@ -28489,14 +28450,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:\!pb-9{
         padding-bottom: 2.25rem !important;
     }
-    .md\:pb-16{
-        padding-bottom: 4rem;
-    }
     .md\:pb-8{
         padding-bottom: 2rem;
-    }
-    .md\:pt-3{
-        padding-top: 0.75rem;
     }
     .md\:text-base{
         font-size: 1rem;
@@ -28554,11 +28509,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:order-2{
         order: 2;
     }
-    .lg\:col-span-6{
-        grid-column: span 6 / span 6;
-    }
     .lg\:col-span-2{
         grid-column: span 2 / span 2;
+    }
+    .lg\:col-span-6{
+        grid-column: span 6 / span 6;
     }
     .lg\:-mb-2{
         margin-bottom: -0.5rem;
@@ -28614,11 +28569,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:hidden{
         display: none;
     }
-    .lg\:h-24{
-        height: 6rem;
-    }
     .lg\:\!h-\[374px\]{
         height: 374px !important;
+    }
+    .lg\:h-24{
+        height: 6rem;
     }
     .lg\:min-h-\[528px\]{
         min-height: 528px;
@@ -28641,6 +28596,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-2\/3{
         width: 66.666667%;
     }
+    .lg\:w-2\/4{
+        width: 50%;
+    }
     .lg\:w-24{
         width: 6rem;
     }
@@ -28662,11 +28620,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-\[calc\(100\%-419px\)\]{
         width: calc(100% - 419px);
     }
-    .lg\:w-2\/4{
-        width: 50%;
-    }
     .lg\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    .lg\:grid-cols-3{
+        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .lg\:grid-cols-4{
         grid-template-columns: repeat(4, minmax(0, 1fr));
@@ -28679,9 +28637,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:grid-cols-\[2fr_2fr_3fr\]{
         grid-template-columns: 2fr 2fr 3fr;
-    }
-    .lg\:grid-cols-3{
-        grid-template-columns: repeat(3, minmax(0, 1fr));
     }
     .lg\:flex-row{
         flex-direction: row;
@@ -28701,14 +28656,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:gap-12{
         gap: 3rem;
     }
+    .lg\:gap-4{
+        gap: 1rem;
+    }
     .lg\:gap-6{
         gap: 1.5rem;
     }
     .lg\:gap-8{
         gap: 2rem;
-    }
-    .lg\:gap-4{
-        gap: 1rem;
     }
     .lg\:space-x-8 > :not([hidden]) ~ :not([hidden]){
         --tw-space-x-reverse: 0;
@@ -28763,20 +28718,20 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:pb-20{
         padding-bottom: 5rem;
     }
+    .lg\:pb-8{
+        padding-bottom: 2rem;
+    }
     .lg\:pb-\[120px\]{
         padding-bottom: 120px;
     }
     .lg\:pt-10{
         padding-top: 2.5rem;
     }
-    .lg\:pt-8{
-        padding-top: 2rem;
-    }
-    .lg\:pb-8{
-        padding-bottom: 2rem;
-    }
     .lg\:pt-3{
         padding-top: 0.75rem;
+    }
+    .lg\:pt-8{
+        padding-top: 2rem;
     }
     .lg\:text-start{
         text-align: left;
@@ -28957,14 +28912,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 1024px){
+    .lg\:ltr\:ml-10:where([dir="ltr"], [dir="ltr"] *){
+        margin-left: 2.5rem;
+    }
     .ltr\:lg\:ml-8:where([dir="ltr"], [dir="ltr"] *){
         margin-left: 2rem;
     }
     .ltr\:lg\:mr-8:where([dir="ltr"], [dir="ltr"] *){
         margin-right: 2rem;
-    }
-    .lg\:ltr\:ml-10:where([dir="ltr"], [dir="ltr"] *){
-        margin-left: 2.5rem;
     }
     .ltr\:lg\:pl-10:where([dir="ltr"], [dir="ltr"] *){
         padding-left: 2.5rem;
@@ -29120,14 +29075,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 1024px){
+    .lg\:rtl\:mr-10:where([dir="rtl"], [dir="rtl"] *){
+        margin-right: 2.5rem;
+    }
     .rtl\:lg\:ml-8:where([dir="rtl"], [dir="rtl"] *){
         margin-left: 2rem;
     }
     .rtl\:lg\:mr-8:where([dir="rtl"], [dir="rtl"] *){
         margin-right: 2rem;
-    }
-    .lg\:rtl\:mr-10:where([dir="rtl"], [dir="rtl"] *){
-        margin-right: 2.5rem;
     }
     .rtl\:lg\:pr-10:where([dir="rtl"], [dir="rtl"] *){
         padding-right: 2.5rem;
