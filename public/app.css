@@ -26129,10 +26129,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid var(--color-font) !important;
   border-radius: 1px !important;
 }
+.single .mobile_buttons salla-social-share button {
+  background-color: var(--color-background);
+}
 .single .mobile_buttons salla-button button {
-  background-color: #414042 !important;
-  background-color: var(--color-primary) !important;
-  color: var(--color-background) !important;
+  background-color: var(--color-background) !important;
+  color: var(--color-font) !important;
+  border: 1px solid var(--color-font) !important;
+  border-radius: 1px !important;
 }
 .single .mobile_buttons .btn--wishlist .is-added span svg {
   fill: rgb(170, 0, 0) !important;
