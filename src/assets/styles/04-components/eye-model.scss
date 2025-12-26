@@ -321,11 +321,18 @@
 
   .custom-add-to-cart-button .s-button-element {
     overflow: hidden;
-    border: 0.7px solid var(--color-font);
+    border: 0.7px solid var(--color-primary);
     background-color: transparent;
-    color: var(--color-font);
+    color: var(--color-background);
+    background-color: var(--color-primary);
     border-radius: 0px;
     box-shadow: 0px 0.54px 1.62px 0px #0000001f;
+    transition: all 0.3s ease;
+    min-height: 42px;
+    & :hover {
+      color: var(--color-primary);
+      background-color: var(--color-background);
+    }
   }
   .custom-add-to-cart-button .s-button-element::after,
   .product-details .product-details-btn::after {
