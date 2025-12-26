@@ -502,27 +502,37 @@
       "selected": true
     },
     {
-      "id": "single_drop",
-      "type": "items",
-      "format": "dropdown-list",
-      "label": "أختر المنتج الذي تريد اظهار الصورة بداخلة    ",
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "اضافة خلفية ملونة لمعرض الصور في صفحة المنتج",
       "description": null,
-      "labelHTML": null,
-      "icon": "sicon-keyboard_arrow_down",
-      "selected": [],
-      "options": [],
-      "source": "products",
-      "multichoice": true,
-      "searchable": true,
-      "required": true,
-      "value": [],
-      "minLength": "1",
-      "minimum": "1",
-      "maximum": "4",
-      "maxLength": "4",
+      "id": "bg_gellary",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": false,
       "conditions": [
         {
           "id": "img_in_single",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+     {
+      "id": "bg_color_gellary",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون خلفية معرض الصور في صفحة المنتج",
+      "description": "اضف لون خلفية لمعرض الصور في صفحة المنتج",
+      "labelHTML": null,
+      "icon": "sicon-format-fill",
+      "value": "#F5F6F7",
+      "required": false,
+      "conditions": [
+        {
+          "id": "bg_gellary",
           "operation": "=",
           "value": true
         }

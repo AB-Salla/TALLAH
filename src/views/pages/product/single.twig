@@ -348,7 +348,7 @@
 								</div>
 								
 								{# countdown 
-								<div id="countdown" class="countdown-container pt-3 pb-[7px]" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
+								<div id="countdown" class="countdown-px-4 md:px-14 pt-3 pb-[7px]" dir="{{ theme.is_rtl ? 'rtl' : 'ltr' }}">
 									<salla-count-down
 									style="font-size: 24px;"
 									boxed=true
@@ -609,7 +609,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 		<h3 class="font-bold text-lg lg:text-2xl text-font-color px-4 md:px-14">
 			{{trans ("pages.single.discription")}}
 		</h3>
-		<div class="product__description p-2 px-5 sm:p-1 leading-7 mb-3 text-font-color px-4 md:px-14">
+		<div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 md:px-14">
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 			{% if product.has_read_more %}
 				<article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
@@ -631,7 +631,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	<salla-offer></salla-offer>
 	{# Comments Area #}
 {% if store.settings.rating.show_on_product %}
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 container single">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-2 px-4 md:px-14 single">
     <div class="md:col-span-2 order-2 md:order-1 comments">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     </div>
@@ -651,7 +651,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
     {% endif %}
 
 	{# Similar Products Area #}
-	<div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10  pb-[60px] lg:pb-[120px]">
+	<div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10 ">
 		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
@@ -686,8 +686,10 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 ps-4 md:px-16  mb-10 py-12 bg-[#F4F4F5]
-	">
+    <div class="product-image-gallery  gap-4 ps-4 md:px-16  mb-10 py-12 bg-[#d4d4d4]"
+	{% if theme.settings.get('bg_color') %}  style="background-color: {{theme.settings.get('bg_color_gellary') }};" {% endif %}
+	
+	>
 		<h2 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] pb-4 font-medium leading-[28px] text-font">{{ trans('pages.single.inspire') }}</h2>
         <salla-slider
             id="product-gallery-{{ product.id }}"
