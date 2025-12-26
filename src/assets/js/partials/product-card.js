@@ -563,7 +563,7 @@ function renderOption(option) {
        ${
           this.product.status == "sale"
             ? `<i class="text-base sicon-${
-                this.product.type == "booking" ? "calendar-time" : "cart"
+                this.product.type == "booking" ? "calendar-time" : "shopping-bag"
               }"></i>`
             : `<i class="text-base sicon-cart-cancel"
               }"></i>`
@@ -578,7 +578,7 @@ function renderOption(option) {
               <i class="text-base text-[13px] sicon-${
                 this.product.type == "booking"
                   ? "calendar-time"
-                  : "cart-add"
+                  : "shopping-bag"
               }"></i>
             </salla-add-product-button>`}
     
