@@ -26727,6 +26727,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   }
 }
 #quick-eye-model {
+  /* الصورة الاكتيف */
   /* الخيار المعطل (اختر) */
   /* عنوان الخيار (الحجم / اللون) */
   /* إلغاء الوضع المخفي/المتحرك */
@@ -26786,7 +26787,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-color: #414042;
   border-color: var(--color-primary);
   color: #000;
-  box-shadow: 0 4px 12px rgba(190, 0, 0, 0.2);
+}
+#quick-eye-model .product-thumbs-image {
+  opacity: 0.8 !important;
+}
+#quick-eye-model .product-thumbs-image {
+  transition: opacity 0.3s ease;
+}
+#quick-eye-model .product-thumbs-image.swiper-slide-thumb-active {
+  opacity: 1 !important;
 }
 #quick-eye-model .radio-placeholder span {
   background: #f3f4f6;

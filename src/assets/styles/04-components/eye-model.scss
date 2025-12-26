@@ -49,10 +49,18 @@
 .radio-option input[type="radio"]:checked + span {
   border-color: var(--color-primary);
   color: #000;
-  box-shadow: 0 4px 12px rgba(190, 0, 0, 0.2);
 }
 
 
+.product-thumbs-image {
+  opacity: 0.8 !important;
+  transition: opacity 0.3s ease;
+}
+
+/* الصورة الاكتيف */
+.product-thumbs-image.swiper-slide-thumb-active {
+  opacity: 1 !important;
+}
 
 /* الخيار المعطل (اختر) */
 .radio-placeholder span {
