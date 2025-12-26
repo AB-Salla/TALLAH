@@ -513,7 +513,12 @@
                     <div class="">
                        
 						{% set is_ar = request.locale == 'ar' %}
-                        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 justify-start sm:justify-center  items-start sm:items-center gap-8">
+						
+                        <div class="grid {% if theme.settings.get('features_col_single') %}
+							grid-cols-1
+						{% else %}
+							grid-cols-1 sm:grid-cols-2 md:grid-cols-3
+						{% endif %} justify-start sm:justify-center  items-start sm:items-center gap-8">
                             {% for item in theme.settings.get('rh_features_store_pros') %}
                                 {# احسب عدد الحروف في النص #}
                                 {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
