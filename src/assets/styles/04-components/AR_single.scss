@@ -17,28 +17,41 @@
       border-radius: 1px !important;
     }
   }
-  /* لما الزر يكون في حالة loading */
+/* الزر يكون مرجعية للتمركز */
+.s-button-element {
+  position: relative;
+}
+
+/* أثناء اللودينج */
 .s-button-element[loading],
-.s-button-wrap[loading],
-.s-button-wrap.is-loading {
+.s-button-wrap.is-loading .s-button-element {
   pointer-events: none;
 }
 
-/* إخفاء القلب + النص أثناء اللودينج */
+/* إخفاء القلب + النص */
 .s-button-element[loading] .s-button-text,
-.s-button-wrap[loading] .s-button-text,
 .s-button-wrap.is-loading .s-button-text {
   opacity: 0;
   visibility: hidden;
 }
 
-/* خلي اللودر ظاهر في النص */
+/* تمركز اللودر في النص */
+.s-button-element .s-button-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* إظهار اللودر أثناء اللودينج */
 .s-button-element[loading] .s-button-loader,
-.s-button-wrap[loading] .s-button-loader,
 .s-button-wrap.is-loading .s-button-loader {
   opacity: 1;
   visibility: visible;
 }
+
 
    /* NOT ADDED state */
   .btn--wishlist .is-added span svg {
