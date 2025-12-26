@@ -546,7 +546,7 @@ function renderOption(option) {
           </div>`
               : ""
           }
-          <div class="s-product-card-content-sub flex-grow mt-auto ${
+          <div class="s-product-card-content-sub flex-grow mt-auto !mb-0 !items-end ${
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
             ${
