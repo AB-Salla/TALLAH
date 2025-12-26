@@ -30,9 +30,6 @@ $main-text-color: var(--main-text-color);
 
   salla-quantity-input {
     padding-block: 5px;
-    @media (max-width: 768px) {
-      width: 110px;
-    }
   }
   .s-quantity-input-container {
     border: 1px solid color-mix(in srgb, var(--color-primary), white 85%) !important;

@@ -19536,11 +19536,6 @@ salla-quantity-input {
   padding-top: 5px;
   padding-bottom: 5px;
 }
-@media (max-width: 768px) {
-  salla-quantity-input {
-    width: 110px;
-  }
-}
 .s-quantity-input-container {
   border: 1px solid rgb(226, 226, 227) !important;
   border-radius: 0 !important;
@@ -26119,6 +26114,16 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .salla-add-product-button.loading .sicon-booking, .salla-add-product-button.loading .sicon-calendar-time, .salla-add-product-button.loading .sicon-cart {
   display: none;
+}
+.single .mobile_buttons {
+  margin-top: 14px !important;
+}
+.single .mobile_buttons {
+  gap: 8px;
+}
+.single .mobile_buttons salla-social-share button {
+  border: 1px solid var(--color-font) !important;
+  border-radius: 1px !important;
 }
 .single .s-products-slider-card {
   max-width: 100% !important;
