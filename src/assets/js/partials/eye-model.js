@@ -371,6 +371,8 @@ export const eyeModel = (productId) => {
     };
 
     const getProductOptions = () => {
+      console.log(product?.options,"product?.options?product?.options?product?.options?");
+      
       if (product?.options?.length == 0) return;
       return `
 				<salla-product-options options="${product.options}" product-id="${product.id}"></salla-product-options>
