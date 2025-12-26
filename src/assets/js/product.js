@@ -95,7 +95,20 @@ class Product extends BasePage {
     observer.observe(metadata, { attributes: true });
   });
 }
-
+getLocalizedMessage(key) {
+    const lang = document.documentElement.lang || "ar";
+    const messages = {
+      ar: {
+        placeholder: "أدخل بريدك الإلكتروني",
+        button: "اشترك"
+      },
+      en: {
+        placeholder: "Enter your email address",
+        button: "Subscribe"
+      },
+    };
+    return messages[lang][key];
+  }
 runningAfter5Seconds() {
    
 
