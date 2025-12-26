@@ -156,20 +156,22 @@ window.status_product
           target="_blank"
           novalidate
         >
-        <label for="mce-EMAIL-1" class="sr-only">${this.getLocalizedMessage("email")}</label>
+        <div class="my-8">
+        <label for="mce-EMAIL-1" class="">${this.getLocalizedMessage("email")}</label>
           <input
             type="email"
             name="EMAIL"
             id="mce-EMAIL-1"
             placeholder="${this.getLocalizedMessage("placeholder")}"
-            class="flex-1 bg-gray-100 w-full px-4 py-3 border-none text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
+            class="flex-1 bg-gray-100 w-full px-4 py-3 border-none  text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
             required
           />
-          <div class="flex gap-2 w-full">
+          </div>
+          <div class="flex gap-3 w-full">
           <button 
           type="submit"
           id="mc-embedded-subscribe-1"
-          class="flex items-center justify-center rounded-[4px]  hover:scale-105 px-3 py-3 bg-primary text-background active:scale-95 transition-transform w-[50%]"
+          class="flex items-center justify-center rounded-[4px]   hover:scale-105 px-3 py-3 bg-primary text-background active:scale-95 transition-transform w-[50%]"
           >
           ${this.getLocalizedMessage("button")}
           </button>
