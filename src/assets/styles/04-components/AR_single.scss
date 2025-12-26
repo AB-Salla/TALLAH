@@ -1,4 +1,16 @@
-    .single .s-products-slider-card {
+.single .mobile_buttons{
+  gap: 8px;
+  margin-top: 14px !important;
+  salla-social-share{
+    button{
+      border: 1px solid var(--color-font) !important;
+      border-radius: 1px !important;
+    }
+  }
+}
+
+
+.single .s-products-slider-card {
         width: 50%;
         max-width: 100% !important;
 }
@@ -70,7 +82,7 @@
   .salla-quantity-input{
     width: fit-content !important;
   }
-  
+
   .s-product-options-option-content{
     width: 100%;
     .custom-radio-options{
