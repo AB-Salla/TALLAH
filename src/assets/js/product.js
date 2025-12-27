@@ -104,12 +104,14 @@ class Product extends BasePage {
         button: "إرسال",
         cancel: "إلغاء",
         email: "البريد الإلكتروني",
+        dont_remind_me_again: "لا تُذكرني مرة أخرى"
       },
       en: {
         placeholder: "Enter your email address",
         button: "Send",
         cancel: "Cancel",
         email: "Email",
+        dont_remind_me_again: "Don’t remind me again"
       },
     };
     return messages[lang][key];
@@ -271,126 +273,102 @@ class Product extends BasePage {
             submitBtn.disabled = false;
           });
       });
-
-      sessionStorage.setItem(storeKey, "true");
     }, 2000);
   }
-  collections_offer() {
-    console.log(
-      "collection_sp modal check:",
-      window.collection_sp_view_modal,
-      window.status_product
-    );
+collections_offer() {
+  const allowedCategories = window.collection_categories.value; // [1343313527]
+  const productCategoryId = window.product_category_id; 
 
-   
-    setTimeout(() => {
-      // show modal after delay
+  // Check localStorage first
+  const dontRemind = localStorage.getItem("collection_sp_modal_dont_remind");
+  if (dontRemind === "true") return; // Exit early
 
-      const modal = document.createElement("div");
-      modal.id = "collection_sp-modal";
-      modal.className = `
+  // Check category
+  if (!allowedCategories.includes(productCategoryId) || !window.collection_sp_view_modal) return;
+
+  let modalShown = false; // Show modal only once
+
+  const showModal = () => {
+    if (modalShown) return;
+    modalShown = true;
+
+    const modal = document.createElement("div");
+    modal.id = "collection_sp-modal";
+    modal.className = `
       fixed inset-0 z-[99] flex items-center justify-center 
-      bg-black/40 backdrop-blur-sm opacity-0 
+      bg-black/0 backdrop-blur-sm opacity-0 
       transition-all duration-500
     `;
 
-      modal.innerHTML = `
-      <div class="bg-background  rounded-[10px] p-6 w-[90%] max-w-[580px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl">
-      <div class="w-[70px] h-[70px] mx-auto">
-        <img src="${collection_add_image}" class="w-full h-auto"/>
-      </div>
+    modal.innerHTML = `
+      <div class="bg-background rounded-[10px] p-6 w-[90%] max-w-[580px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl opacity-0">
+        <div class="w-[70px] h-[70px] mx-auto">
+          <img src="${collection_add_image}" class="w-full h-auto"/>
+        </div>
         <button id="close-collection-modal" 
-          class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px]  text-[#71717B] transition">
+          class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px] text-[#71717B] transition">
           <i class="sicon-cancel text-[16px] font-bold"></i>
         </button>
 
         <div class="text-center mt-2 mb-10">
           <h2 class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${collection_sp_block_title}</h2>
           <p class="text-[#71717B] font-medium text-sm leading-5 tracking-wide text-center align-middle">${collection_sp_sub_title}</p>
+        </div>
+
+        <p class="text-[#52525C] font-medium text-sm leading-5 tracking-wide text-center align-middle mb-4">${collection_sp_promo_title}</p>
+
+        <div class="min-w-[194px] py-6 max-w-[194px] flex flex-col items-center justify-center mx-auto mb-10 rounded-md border-[color-mix(in_srgb,var(--color-primary)_20%,transparent)] bg-[color-mix(in_srgb,var(--color-primary)_5%,transparent)] border">
+          <div class="w-[32px] h-[32px] mx-auto mb-2">
+            <img src="${collectionn_footer_image}" class="w-full h-auto"/>
           </div>
-          <p class="text-[#52525C] font-medium text-sm leading-5 tracking-wide text-center align-middle mb-4">${collection_sp_promo_title}</p>
- <div class="w-[70px] h-[70px] mx-auto">
-        <img src="${collectionn_footer_image}" class="w-full h-auto"/>
-      </div>
-       
+          <span class="font-normal text-sm leading-5 tracking-wide">"${window.collection_title}"</span>
+        </div>
+
+        <div class="flex items-center justify-start gap-2">
+          <input type="checkbox" id="dont-remind-checkbox" class="w-4 h-4 text-primary bg-white border-gray-300 rounded focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]" />
+          <label for="dont-remind-checkbox">${this.getLocalizedMessage("dont_remind_me_again")}</label>
+        </div>
       </div>
     `;
 
-      document.body.appendChild(modal);
+    document.body.appendChild(modal);
 
-      requestAnimationFrame(() => {
-        modal.classList.remove("opacity-0");
-        modal.querySelector("div").classList.remove("scale-90");
-        modal.querySelector("div").classList.add("scale-100");
-      });
+    // Force reflow لتفعيل الانيميشن
+    const modalContent = modal.querySelector("div");
+    void modal.offsetWidth;
 
-      const closeModal = () => {
-        modal.classList.add("opacity-0");
-        modal.querySelector("div").classList.add("scale-90");
-        setTimeout(() => modal.remove(), 400);
-      };
+    // ابدأ الانيميشن للفتح
+    modal.classList.remove("bg-black/0", "opacity-0");
+    modal.classList.add("bg-black/40", "opacity-100");
+    modalContent.classList.remove("scale-90", "opacity-0");
+    modalContent.classList.add("scale-100", "opacity-100");
 
-      document
-        .getElementById("close-collection-modal")
-        .addEventListener("click", closeModal);
-      document
-        .getElementById("cancel-collection-modal")
-        .addEventListener("click", closeModal);
+    const closeModal = () => {
+      const checkbox = document.getElementById("dont-remind-checkbox");
+      if (checkbox.checked) localStorage.setItem("collection_sp_modal_dont_remind", "true");
 
-      modal.addEventListener("click", (e) => {
-        if (e.target === modal) {
-          closeModal();
-        }
-      });
+      modal.classList.remove("bg-black/40", "opacity-100");
+      modal.classList.add("bg-black/0", "opacity-0");
 
-      const form = document.getElementById("mc-embedded-subscribe-form-1");
-      const emailInput = document.getElementById("mce-EMAIL-1");
-      const submitBtn = document.getElementById("mc-embedded-subscribe-1");
+      modalContent.classList.remove("scale-100", "opacity-100");
+      modalContent.classList.add("scale-90", "opacity-0");
 
-      const isRTL = document.documentElement.dir === "rtl";
-      const messages = {
-        required: isRTL
-          ? "الرجاء إدخال بريد إلكتروني صحيح"
-          : "Please enter a valid email",
-        invalid: isRTL
-          ? "صيغة البريد الإلكتروني غير صحيحة"
-          : "Invalid email format",
-        success: isRTL
-          ? "تم الاشتراك بنجاح! شكراً لك"
-          : "Subscription successful! Thank you",
-        sending: isRTL ? "جاري الإرسال..." : "Sending...",
-      };
+      setTimeout(() => modal.remove(), 400);
+    };
 
-      form.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const emailValue = emailInput.value.trim();
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    document.getElementById("close-collection-modal").addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => {
+      if (e.target === modal) closeModal();
+    });
+  };
 
-        if (!emailRegex.test(emailValue)) {
-          salla.notify.error(messages.invalid);
-          return;
-        }
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 600) showModal();
+  });
+}
 
-        submitBtn.disabled = true;
 
-        fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          mode: "no-cors",
-        })
-          .then(() => {
-            salla.notify.success(messages.success);
-            form.reset();
-            closeModal();
-          })
-          .finally(() => {
-            submitBtn.disabled = false;
-          });
-      });
 
-      sessionStorage.setItem(storeKey, "true");
-    }, 2000);
-  }
 
   initProductOptionValidations() {
     document
