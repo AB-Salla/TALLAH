@@ -286,7 +286,7 @@ collections_offer() {
       <div class="w-[70px] h-[70px] mx-auto">
         <img src="${collection_add_image}" class="w-full h-auto"/>
       </div>
-        <button id="close-modal" 
+        <button id="close-collection-modal" 
           class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px]  text-[#71717B] transition">
           <i class="sicon-cancel text-[16px] font-bold"></i>
         </button>
@@ -325,7 +325,7 @@ collections_offer() {
           </button>
           <button 
           type="button"
-          id="cancel-modal"
+          id="cancel-collection-modal"
           class="text-primary border border-primary bg-background rounded-[4px] flex items-center justify-center  hover:scale-105 px-3 py-3 active:scale-95 transition-transform w-[50%]"
           >
           ${this.getLocalizedMessage("cancel")}
@@ -350,10 +350,10 @@ collections_offer() {
       };
 
       document
-        .getElementById("close-modal")
+        .getElementById("close-collection-modal")
         .addEventListener("click", closeModal);
       document
-        .getElementById("cancel-modal")
+        .getElementById("cancel-collection-modal")
         .addEventListener("click", closeModal);
 
       modal.addEventListener("click", (e) => {
