@@ -480,7 +480,7 @@
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
             "variant": "h6"
         },
-         {
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "عرض المنتجات من نفس الفئة في صفحة المنتج",
@@ -2216,6 +2216,7 @@
             },
             "icon": "sicon-store",
             "path": "home.AR-Hero-section",
+            "image": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
             "fields": [
                 {
                     "id": "blocktitle_color",
@@ -2324,7 +2325,7 @@
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
-                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                            "value": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
                             "required": false
                         },
                         {
@@ -2336,7 +2337,7 @@
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
-                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                            "value": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
                             "required": false
                         },
                         {
@@ -2466,8 +2467,8 @@
             },
             "icon": "sicon-store",
             "path": "home.AR-Products-banner",
+            "image": "https://cdn.files.salla.network/homepage/1954265887/9457c3de-2126-44ee-a811-ba431740d0f1.webp",
             "fields": [
-              
                 {
                     "id": "banner_image",
                     "type": "string",
@@ -2510,7 +2511,6 @@
                     "value": "#18181B",
                     "required": false
                 },
-                
                 {
                     "id": "url_text",
                     "type": "string",
@@ -2584,7 +2584,7 @@
                             "value": "custom"
                         }
                     ]
-                }, 
+                },
                 {
                     "id": "source_type",
                     "icon": "sicon-t-shirt",
@@ -2594,7 +2594,6 @@
                     "format": "dropdown-list",
                     "source": "Manual",
                     "options": [
-                        
                         {
                             "key": "latest",
                             "label": "أحدث المنتجات",
@@ -2602,7 +2601,7 @@
                         },
                         {
                             "key": "selected",
-                            "label":"اختيار منتجات يدوياً",
+                            "label": "اختيار منتجات يدوياً",
                             "value": "selected"
                         },
                         {
@@ -2618,7 +2617,6 @@
                     ],
                     "required": true,
                     "multichoice": false
-                    
                 },
                 {
                     "id": "categories",
@@ -2638,7 +2636,6 @@
                             "operation": "=",
                             "value": "categories"
                         }
-                        
                     ],
                     "value": []
                 },
@@ -2660,7 +2657,6 @@
                             "operation": "=",
                             "value": "selected"
                         }
-                       
                     ],
                     "value": []
                 }
@@ -3040,6 +3036,7 @@
             },
             "icon": "sicon-store",
             "path": "home.AR-special-banner",
+            "image": "https://cdn.files.salla.network/homepage/1954265887/6f7b89e0-5031-4110-82db-e328c4edc6fd.webp",
             "fields": [
                 {
                     "id": "blocktitle_color",
@@ -3302,6 +3299,7 @@
             },
             "icon": "sicon-store",
             "path": "home.Ar-Promo-banner",
+            "image": "https://cdn.files.salla.network/homepage/1954265887/0c6b8d77-d7e9-41bf-b8c0-5f2dd0b0489a.webp",
             "fields": [
                 {
                     "id": "banner_image",
@@ -3483,6 +3481,7 @@
             },
             "icon": "sicon-store",
             "path": "home.AR-Custom-testimonials",
+            "image": "https://cdn.files.salla.network/homepage/1954265887/cf14eed5-68cf-4e92-8415-884ad3eb60cb.webp",
             "fields": [
                 {
                     "id": "block_title",
@@ -3825,55 +3824,51 @@
             },
             "icon": "sicon-store",
             "path": "home.AR-Hero-2",
-              "fields": [
-
-
-
-
-
-                        {
-                            "id": "desktop_bg",
-                            "type": "string",
-                            "format": "image",
-                            "label": "خلفية البانر في الشاشات الكبيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
-                            "required": false
-                        },
-                        {
-                            "id": "mobile_bg",
-                            "type": "string",
-                            "format": "image",
-                            "label": "خلفية البانر في الشاشات الصغيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
-                            "required": false
-                        },
-                        {
-                            "id": "block_title",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان الرئيسي",
-                            "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": {
-                                "ar": "Discover Timeless Luxury",
-                                "en": "Discover Timeless Luxury"
-                            },
-                            "multilanguage": true,
-                            "required": true,
-                            "minLength": "2",
-                            "maxLength": "150"
-                        },
-                                        {
+            "image": "https://cdn.files.salla.network/homepage/1954265887/8e891823-d12d-435d-9c94-56e852dfb735.webp",
+            "fields": [
+                {
+                    "id": "desktop_bg",
+                    "type": "string",
+                    "format": "image",
+                    "label": "خلفية البانر في الشاشات الكبيرة",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                    "required": false
+                },
+                {
+                    "id": "mobile_bg",
+                    "type": "string",
+                    "format": "image",
+                    "label": "خلفية البانر في الشاشات الصغيرة",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                    "required": false
+                },
+                {
+                    "id": "block_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "Discover Timeless Luxury",
+                        "en": "Discover Timeless Luxury"
+                    },
+                    "multilanguage": true,
+                    "required": true,
+                    "minLength": "2",
+                    "maxLength": "150"
+                },
+                {
                     "id": "blocktitle_color",
                     "type": "string",
                     "format": "color",
@@ -3892,22 +3887,22 @@
                         }
                     ]
                 },
-                        {
-                            "id": "subtext",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان الفرعي",
-                            "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": "Redefining elegance with curated collections for the modern lifestyle",
-                            "multilanguage": true,
-                            "required": false,
-                            "minLength": "2",
-                            "maxLength": "250"
-                        },
-                                        {
+                {
+                    "id": "subtext",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الفرعي",
+                    "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "Redefining elegance with curated collections for the modern lifestyle",
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "250"
+                },
+                {
                     "id": "subtext_color",
                     "type": "string",
                     "format": "color",
@@ -3926,22 +3921,22 @@
                         }
                     ]
                 },
-                        {
-                            "id": "button_text",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": "Discover More",
-                            "multilanguage": true,
-                            "required": false,
-                            "minLength": "2",
-                            "maxLength": "100"
-                        },
-                                        {
+                {
+                    "id": "button_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الزر",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "Discover More",
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": "100"
+                },
+                {
                     "id": "button_text_color",
                     "type": "string",
                     "format": "color",
@@ -3991,71 +3986,70 @@
                     "selected": true,
                     "required": false
                 },
+                {
+                    "type": "items",
+                    "icon": "sicon-link",
+                    "label": "رابط الزر",
+                    "id": "url",
+                    "value": null,
+                    "description": null,
+                    "required": false,
+                    "format": "variable-list",
+                    "searchable": true,
+                    "source": "custom",
+                    "sources": [
                         {
-                            "type": "items",
-                            "icon": "sicon-link",
-                            "label": "رابط الزر",
-                            "id": "url",
-                            "value": null,
-                            "description": null,
-                            "required": false,
-                            "format": "variable-list",
-                            "searchable": true,
-                            "source": "custom",
-                            "sources": [
-                                {
-                                    "label": "منتج",
-                                    "key": "products",
-                                    "value": "products"
-                                },
-                                {
-                                    "label": "تصنيف",
-                                    "key": "categories",
-                                    "value": "categories"
-                                },
-                                {
-                                    "label": "ماركة تجارية",
-                                    "key": "brands",
-                                    "value": "brands"
-                                },
-                                {
-                                    "label": "صفحة تعريفية",
-                                    "key": "pages",
-                                    "value": "pages"
-                                },
-                                {
-                                    "label": "مقالة",
-                                    "key": "blog_articles",
-                                    "value": "blog_articles"
-                                },
-                                {
-                                    "label": "تصنيف ضمن المدونة",
-                                    "key": "blog_categories",
-                                    "value": "blog_categories"
-                                },
-                                {
-                                    "label": "التخفيضات",
-                                    "key": "offers_link",
-                                    "value": "offers_link"
-                                },
-                                {
-                                    "label": "الماركات التجارية",
-                                    "key": "brands_link",
-                                    "value": "brands_link"
-                                },
-                                {
-                                    "label": "المدونة",
-                                    "key": "blog_link",
-                                    "value": "blog_link"
-                                },
-                                {
-                                    "label": "رابط خارجي",
-                                    "key": "custom",
-                                    "value": "custom"
-                                }
-                            ]
+                            "label": "منتج",
+                            "key": "products",
+                            "value": "products"
+                        },
+                        {
+                            "label": "تصنيف",
+                            "key": "categories",
+                            "value": "categories"
+                        },
+                        {
+                            "label": "ماركة تجارية",
+                            "key": "brands",
+                            "value": "brands"
+                        },
+                        {
+                            "label": "صفحة تعريفية",
+                            "key": "pages",
+                            "value": "pages"
+                        },
+                        {
+                            "label": "مقالة",
+                            "key": "blog_articles",
+                            "value": "blog_articles"
+                        },
+                        {
+                            "label": "تصنيف ضمن المدونة",
+                            "key": "blog_categories",
+                            "value": "blog_categories"
+                        },
+                        {
+                            "label": "التخفيضات",
+                            "key": "offers_link",
+                            "value": "offers_link"
+                        },
+                        {
+                            "label": "الماركات التجارية",
+                            "key": "brands_link",
+                            "value": "brands_link"
+                        },
+                        {
+                            "label": "المدونة",
+                            "key": "blog_link",
+                            "value": "blog_link"
+                        },
+                        {
+                            "label": "رابط خارجي",
+                            "key": "custom",
+                            "value": "custom"
                         }
-                   
+                    ]
+                }
             ]
         }
     ],
