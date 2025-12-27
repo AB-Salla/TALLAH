@@ -744,7 +744,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	<script defer src="{{ 'product.js' | asset }}"></script>
 	<script>
 	window.status_product={{product.status|json_encode|raw}};
-	window.product_category_id = {{ product?.category?.id | json_encode | raw }};
+	window.product_category_id = {{ product.category.id | json_encode | raw }};
 	</script>
 	{% if product.has_3d_image %}
 		<script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
