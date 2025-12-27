@@ -1,59 +1,57 @@
-.single .mobile_buttons{
-
+.single .mobile_buttons {
   gap: 8px;
   margin-top: 14px !important;
-  salla-social-share{
-    button{
+  salla-social-share {
+    button {
       border: 1px solid var(--color-font) !important;
       border-radius: 1px !important;
       background-color: var(--color-background);
     }
   }
-  salla-button{
-    button{
+  salla-button {
+    button {
       background-color: var(--color-background) !important;
       color: var(--color-font) !important;
       border: 1px solid var(--color-font) !important;
       border-radius: 1px !important;
     }
   }
-/* الزر يكون مرجعية للتمركز */
-.s-button-element {
-  position: relative;
-}
+  /* الزر يكون مرجعية للتمركز */
+  .s-button-element {
+    position: relative;
+  }
 
-/* أثناء اللودينج */
-.s-button-element[loading],
-.s-button-wrap.is-loading .s-button-element {
-  pointer-events: none;
-}
+  /* أثناء اللودينج */
+  .s-button-element[loading],
+  .s-button-wrap.is-loading .s-button-element {
+    pointer-events: none;
+  }
 
-/* إخفاء القلب + النص */
-.s-button-element[loading] .s-button-text,
-.s-button-wrap.is-loading .s-button-text {
-  opacity: 0;
-  visibility: hidden;
-}
+  /* إخفاء القلب + النص */
+  .s-button-element[loading] .s-button-text,
+  .s-button-wrap.is-loading .s-button-text {
+    opacity: 0;
+    visibility: hidden;
+  }
 
-/* تمركز اللودر في النص */
-.s-button-element .s-button-loader {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  opacity: 0;
-  visibility: hidden;
-}
+  /* تمركز اللودر في النص */
+  .s-button-element .s-button-loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+  }
 
-/* إظهار اللودر أثناء اللودينج */
-.s-button-element[loading] .s-button-loader,
-.s-button-wrap.is-loading .s-button-loader {
-  opacity: 1;
-  visibility: visible;
-}
+  /* إظهار اللودر أثناء اللودينج */
+  .s-button-element[loading] .s-button-loader,
+  .s-button-wrap.is-loading .s-button-loader {
+    opacity: 1;
+    visibility: visible;
+  }
 
-
-   /* NOT ADDED state */
+  /* NOT ADDED state */
   .btn--wishlist .is-added span svg {
     fill: rgb(170, 0, 0) !important;
   }
@@ -89,22 +87,21 @@
   }
 }
 
-
 .single .s-products-slider-card {
-        width: 50%;
-        max-width: 100% !important;
+  width: 50%;
+  max-width: 100% !important;
 }
-.single .s-products-slider-card{
-    padding: 0px !important;
+.single .s-products-slider-card {
+  padding: 0px !important;
 }
 .s-metadata-box {
   background-color: var(--color-background);
-  @apply px-0 ;
+  @apply px-0;
 }
-.s-metadata-box-header{
+.s-metadata-box-header {
   display: none;
 }
-.single .s-slider-block__title-nav{
+.single .s-slider-block__title-nav {
   display: none !important;
 }
 .single .s-metadata-row {
@@ -113,7 +110,6 @@
   cursor: pointer;
   flex-direction: column !important;
 }
-
 
 .single .s-metadata-row-name {
   font-size: clamp(0.875rem, 0.7602rem + 0.4898vw, 1.25rem);
@@ -149,40 +145,40 @@
 .single .s-metadata-row.open .s-metadata-row-name::after {
   transform: rotate(180deg);
 }
-.s-comments.s-comments-product{
-    background: transparent;
-    padding: 20px;
-    border-radius: 8px;
-    @media (max-width:768px){
-      padding: 10px;
-    }
+.s-comments.s-comments-product {
+  background: transparent;
+  padding: 20px;
+  border-radius: 8px;
+  @media (max-width: 768px) {
+    padding: 10px;
   }
+}
 
 .single {
-  .salla-quantity-input{
+  .salla-quantity-input {
     padding: 0 !important;
     width: fit-content !important;
   }
 
-  .s-product-options-option-content{
+  .s-product-options-option-content {
     width: 100%;
-    .custom-radio-options{
-      @media (max-width:768px) {
-          display: grid ;
-          grid-template-columns: repeat(3, 1fr);
-          gap: 10px;
-      };
-      .radio-label{
+    .custom-radio-options {
+      @media (max-width: 768px) {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      .radio-label {
         max-height: fit-content;
       }
     }
   }
-  .s-product-card-entry{
+  .s-product-card-entry {
     gap: 10px;
     justify-content: unset !important;
   }
-  .s-rating-stars-selected{
-    fill: #806F40 !important;
+  .s-rating-stars-selected {
+    fill: #806f40 !important;
   }
   .comments {
     salla-comment-form {
@@ -206,7 +202,6 @@
     // ===========================
 
     .s-comments-item {
-
       padding-bottom: 3rem;
       // Wrapper for the whole comment card
       &-wrapper {
@@ -301,10 +296,10 @@
     padding-block: 0;
   }
 
-    .s-payments-list-item{
-        background-color: transparent;
-        transition: all .5s ease-in-out;
-    }
+  .s-payments-list-item {
+    background-color: transparent;
+    transition: all 0.5s ease-in-out;
+  }
   .image-slider {
     display: flex;
     gap: 10px;
@@ -618,11 +613,7 @@
     background-color: red;
   }
 
-
   @media (max-width: 1024px) {
-
-
-
     .s-add-product-button-main:not(.w-full) > salla-button {
       width: 100% !important;
     }
@@ -779,16 +770,43 @@
   }
 }
 
-
-.side_products{
-        .card-floating-btn {
-        position: absolute;
-        bottom: 10px;
-        right: 0;
+.side_products {
+  custom-salla-product-card {
+    max-height: 267px !important;
+  }
+  .flex-action {
+    display: none !important;
+  }
+  .s-product-card-content {
+    salla-add-product-button {
+      display: none !important;
+    }
+  }
+  .card-floating-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    transition: all 0.35s ease;
+    opacity: 1;
+    transform: translateY(1px) !important;
+    salla-add-product-button{
+      button {
+        border-radius: 0 !important;
+        width: 32px !important;
+        height: 32px !important;
+        background-color: var(--color-background) !important;
+        border-radius: 50%;
+        background-color: #FFFFFFCC !important;
         display: flex;
+        align-items: center;
         justify-content: center;
-        transition: all 0.35s ease;
-          opacity: 1;
-          transform: translateY(1px) !important;
+        i {
+          font-size: 16px;
+          color: var(--color-primary);
+        }
       }
+    }
+  }
 }

@@ -26438,7 +26438,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   gap: 10px;
 }
 .single .s-rating-stars-selected {
-  fill: #806F40 !important;
+  fill: #806f40 !important;
 }
 .single .comments salla-comment-form {
   display: none;
@@ -26963,6 +26963,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 10px !important;
   }
 }
+.side_products custom-salla-product-card {
+  max-height: 267px !important;
+}
+.side_products .flex-action {
+  display: none !important;
+}
+.side_products .s-product-card-content salla-add-product-button {
+  display: none !important;
+}
 .side_products .card-floating-btn {
   transform: translateY(1px) !important;
 }
@@ -26974,6 +26983,24 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   justify-content: center;
   transition: all 0.35s ease;
   opacity: 1;
+}
+.side_products .card-floating-btn salla-add-product-button button {
+  border-radius: 0 !important;
+  width: 32px !important;
+  height: 32px !important;
+  background-color: var(--color-background) !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+}
+.side_products .card-floating-btn salla-add-product-button button {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.side_products .card-floating-btn salla-add-product-button button i {
+  font-size: 16px;
+  color: #414042;
+  color: var(--color-primary);
 }
 #quick-eye-model {
   /* الصورة الاكتيف */
