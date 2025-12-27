@@ -1,4 +1,4 @@
-<section class="AR-hero-section AR-hero-section-{{position}}">
+<section class="AR-slider-hero-section AR-slider-hero-section-{{position}} s-block-{{position}}">
 	<div class="wrapper">
 		<div class="relative">
 
@@ -6,7 +6,7 @@
 			 id="sub-banner-slider-{{position}}" class="subbanner-slider" slider-config='{
 			 "parallax":true,
     "pagination": {
-      "el": ".AR-hero-section-{{position}} .swiper-pagination",
+      "el": ".AR-slider-hero-section-{{position}} .swiper-pagination",
       "type": "bullets",
       "clickable": true
     },
@@ -52,7 +52,7 @@
 	</div>
 </section>
 <style>
-.AR-hero-section .swiper-pagination-bullet{
+.AR-slider-hero-section .swiper-pagination-bullet{
 	margin:0px;
 	background:var(--color-background);
 	height:2px;
@@ -60,24 +60,28 @@
 	transition:all .5s ease-in-out; 
 }
 {% if component.transparent_button %}
-.AR-hero-section-{{position}}  .button{
+.AR-slider-hero-section-{{position}}  .button{
 	background-color: transparent;
+    color:{{component.button_text_color}};
+    border-color:{{component.button_text_color}};
+
+
 }
-.AR-hero-section-{{position}}  .button:hover{
-	background-color:var(--color-background);
-    color:var(--color-primary);
+.AR-slider-hero-section-{{position}}  .button:hover{
+	background-color:{{component.button_text_color}};
+    color:{{component.button_bg}};
 
 }
 
   {% else %}
-	
+
   
-    .AR-hero-section-{{position}}  .button{
+    .AR-slider-hero-section-{{position}}  .button{
 	color:{{component.button_text_color}};
 	background-color:{{component.button_bg}};
     border-color:{{component.button_text_color}};
 }
-.AR-hero-section-{{position}}  .button:hover{
+.AR-slider-hero-section-{{position}}  .button:hover{
 	background-color:{{component.button_text_color}};
 	color:{{component.button_bg}};
     border-color:{{component.button_bg}};
@@ -85,14 +89,14 @@
   {% endif %}
 
 
-.AR-hero-section .swiper-pagination-bullet{
+.AR-slider-hero-section .swiper-pagination-bullet{
 	color:{{component.blocktitle_color}};
 
 }
-.AR-hero-section-{{position}} .text-wrapper h1{
+.AR-slider-hero-section-{{position}} .text-wrapper h1{
 	color:{{component.blocktitle_color}};
 }
-.AR-hero-section-{{position}} .text-wrapper p{
+.AR-slider-hero-section-{{position}} .text-wrapper p{
 	color:{{component.subtext_color}};
 }
 
@@ -100,58 +104,58 @@
 
 {% for item in component.banner %}
 /* Mobile */
-.AR-hero-section-{{position}} .banner-{{loop.index}}  {
+.AR-slider-hero-section-{{position}} .banner-{{loop.index}}  {
     background: url({{item.mobile_bg}}) center center / cover no-repeat;
 }
 /* Desktop (default) */
 @media (min-width: 768px) {
-    .AR-hero-section-{{position}} .banner-{{loop.index}}  {
+    .AR-slider-hero-section-{{position}} .banner-{{loop.index}}  {
         background: url({{item.desktop_bg}}) center center / cover no-repeat;
     }
 }
 
 {% endfor %}
 {% if component.banner|length > 1 %}
-.AR-hero-section .swiper-slide{
+.AR-slider-hero-section .swiper-slide{
     pointer-events: none;
 }
-.AR-hero-section .swiper-slide.swiper-slide-active{
+.AR-slider-hero-section .swiper-slide.swiper-slide-active{
     pointer-events: all;
 }
 {% endif %}
-.AR-hero-section .swiper-slide .text-wrapper > .blocktitle {
+.AR-slider-hero-section .swiper-slide .text-wrapper > .blocktitle {
   transform:translateX(-70%);
   opacity:0;
 
 }
 
-.AR-hero-section .swiper-slide.swiper-slide-active .text-wrapper > .blocktitle {
+.AR-slider-hero-section .swiper-slide.swiper-slide-active .text-wrapper > .blocktitle {
 
 
   transform:translateX(0%);
   opacity:1;
   
 }
-.AR-hero-section .swiper-slide .text-wrapper > .subtext {
+.AR-slider-hero-section .swiper-slide .text-wrapper > .subtext {
   transform:translateX(70%);
   opacity:0;
 
 }
 
-.AR-hero-section .swiper-slide.swiper-slide-active .text-wrapper > .subtext {
+.AR-slider-hero-section .swiper-slide.swiper-slide-active .text-wrapper > .subtext {
 
 
   transform:translateX(0%);
   opacity:1;
   
 }
-.AR-hero-section .swiper-slide  .button {
+.AR-slider-hero-section .swiper-slide  .button {
   transform:translateX(-70%);
   opacity:0;
 
 }
 
-.AR-hero-section .swiper-slide.swiper-slide-active  .button {
+.AR-slider-hero-section .swiper-slide.swiper-slide-active  .button {
   transform:translateX(0%);
   opacity:1;
   

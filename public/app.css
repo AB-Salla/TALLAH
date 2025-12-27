@@ -22982,6 +22982,9 @@ input[type=radio].sr-only:checked ~ div.dropdown__menu {
 /*
   Block Title
 */
+section.s-block-0{
+    margin-top: 0px !important;
+}
 .s-block__title{
     margin-bottom: 1rem;
     display: flex;

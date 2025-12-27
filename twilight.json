@@ -2547,7 +2547,7 @@
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
-                    "label": "لون العنوان الفرعي",
+                    "label": "لون نص الرابط",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",

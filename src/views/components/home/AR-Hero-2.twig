@@ -1,7 +1,7 @@
-<section class="AR-hero-section AR-hero-section-{{position}}">
+<section class="AR-hero-section AR-hero-section-{{position}} s-block-{{position}}">
 	<div class="wrapper">
                                   
-			<div class="banner   flex flex-col items-center justify-center relative md:h-[90vh] h-[100svh] py-16 overflow-hidden">
+			<div class="banner   flex flex-col items-center justify-center relative md:h-[90vh] h-[100svh] py-6 overflow-hidden">
 			{% if not component.button_text %}
              <a class="w-full h-full absolute inset-0 z-[5]" href="{{component.url}}"></a> 
              {% endif %}
@@ -28,25 +28,23 @@
 	</div>
 </section>
 <style>
-.AR-hero-section .swiper-pagination-bullet{
-	margin:0px;
-	background:var(--color-background);
-	height:2px;
-	flex:1 1 0%;
-	transition:all .5s ease-in-out; 
-}
+
 {% if component.transparent_button %}
 .AR-hero-section-{{position}}  .button{
 	background-color: transparent;
+        color:{{component.button_text_color}};
+            border-color:{{component.button_text_color}};
+
+
 }
 .AR-hero-section-{{position}}  .button:hover{
-	background-color:var(--color-background);
-    color:var(--color-primary);
+	background-color:{{component.button_text_color}};
+    color:{{component.button_bg}};
 
 }
 
   {% else %}
-	
+
   
     .AR-hero-section-{{position}}  .button{
 	color:{{component.button_text_color}};
@@ -61,10 +59,6 @@
   {% endif %}
 
 
-.AR-hero-section .swiper-pagination-bullet{
-	color:{{component.blocktitle_color}};
-
-}
 .AR-hero-section-{{position}} .text-wrapper h1{
 	color:{{component.blocktitle_color}};
 }

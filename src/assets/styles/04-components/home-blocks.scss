@@ -1,6 +1,9 @@
 /*
   Block Title
 */
+section.s-block-0{
+  @apply mt-0 !important ;
+}
 .s-block{
   &__title{
     @apply center-between mb-4 md:mb-8;
