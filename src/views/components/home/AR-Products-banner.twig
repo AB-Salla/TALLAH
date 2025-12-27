@@ -11,9 +11,9 @@
 					<h2 class="text-xl font-semibold pb-1" style="color: {{ component.block_title_color }};">
 						{{ component.block_title }}
 					</h2>
-					{% if component.link_text %}
-						<a href="{{component.url}}" class="underline font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.sub_text_color }};">
-							{{ component.link_text }}
+					{% if component.url_text %}
+						<a href="{{component.url}}" class="underline font-normal text-graytext text-[clamp(0.875rem,0.7985rem+0.3265vw,1.125rem)]" style="color: {{ component.url_color }};">
+							{{ component.url_text }}
 						</a>
 					{% endif %}
 
@@ -56,9 +56,9 @@
 			</div>
 
 				<div class="block lg:hidden features-products-head text text-font text-center md:mb-6 mb-4">
-					{% if component.link_text %}
-						<a href="{{component.link}}" class="underline text-xl font-semibold pb-1" style="color: {{ component.link_color }};">
-							{{ component.link_text }}
+					{% if component.url_text %}
+						<a href="{{component.url}}" class="underline text-xl font-semibold pb-1" style="color: {{ component.url_color }};">
+							{{ component.url_text }}
 						</a>
 					{% endif %}
 
@@ -73,7 +73,7 @@
 
 			<div class="overflow-hidden mx-auto lg:mx-0 h-[clamp(23.438rem,18.1767rem+22.4483vw,40.625rem)] lg:col-span-1 w-full max-w-132 lg:max-w-full relative lg:order-1 order-2">
 					<a href="{{component.url}}" class="hidden md:block absolute bottom-4 ltr:left-4 rtl:right-4 text-sm font-semibold underline" style="color: var(--color-background)">
-							{{ component.link_text }}
+							{{ component.url_text }}
 					</a>
 				<img src="{{ component.banner_image }}" class=" h-full w-full object-cover " alt="{{ component.block_title }}"/>
 			</div>
