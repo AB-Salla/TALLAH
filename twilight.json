@@ -2525,7 +2525,7 @@
                     ]
                 },
                 {
-                    "id": "link_text",
+                    "id": "url_text",
                     "type": "string",
                     "format": "text",
                     "label": "نص الرابط",
@@ -2543,7 +2543,7 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "link_color",
+                    "id": "url_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
@@ -2570,7 +2570,7 @@
                     "multilanguage": true,
                     "required": true,
                     "minLength": 2,
-                    "maxLength": 50
+                    "maxLength": 100
                 },
                 {
                     "id": "block_title_color",
@@ -3385,7 +3385,7 @@
                     "type": "items",
                     "icon": "sicon-link",
                     "label": "رابط الزر",
-                    "id": "banner.url",
+                    "id": "url",
                     "value": null,
                     "description": null,
                     "required": false,
@@ -3446,7 +3446,7 @@
                     ]
                 },
                 {
-                    "id": "link_text",
+                    "id": "url_text",
                     "type": "string",
                     "format": "text",
                     "label": "نص الرابط",
@@ -3464,11 +3464,11 @@
                     "maxLength": 30
                 },
                 {
-                    "id": "link_color",
+                    "id": "url_color",
                     "type": "string",
                     "format": "color",
                     "inputType": "color",
-                    "label": "لون العنوان الفرعي",
+                    "label": "لون نص الرابط",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-format-fill",
