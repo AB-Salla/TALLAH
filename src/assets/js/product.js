@@ -324,8 +324,8 @@ collections_offer() {
           <span class="font-normal text-sm leading-5 tracking-wide">"${window.collection_title}"</span>
         </div>
 
-        <div class="flex items-center justify-start">
-          <input type="checkbox" id="dont-remind-checkbox" />
+        <div class="flex items-center justify-start gap-2">
+          <input type="checkbox" id="dont-remind-checkbox" class="w-4 h-4 text-primary bg-white border-gray-300 rounded focus:ring-2 focus:ring-[color-mix(in_srgb,var(--color-primary)_20%,transparent)]" />
           <label for="dont-remind-checkbox">${this.getLocalizedMessage("dont_remind_me_again")}</label>
         </div>
       </div>
