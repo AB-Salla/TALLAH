@@ -276,7 +276,14 @@ class Product extends BasePage {
     }, 2000);
   }
   collections_offer() {   
+    const allowedCategories = window.collection_categories.value; // [1343313527]
+    const productCategoryId = window.product_category_id; // 798049244
 
+    if (allowedCategories.includes(productCategoryId)) {
+      console.log("Product is in allowed category ✅");
+    } else {
+      console.log("Product is NOT in allowed category ❌");
+    }
     setTimeout(() => {
       // show modal after delay
       console.log("window.collection_categories", window.collection_categories, window.product_category_id);
