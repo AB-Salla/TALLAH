@@ -27493,10 +27493,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart_slider .s-slider-block__title-nav {
   display: none;
 }
-.s-payments-list-item {
-  height: 50px !important;
-  width: 50px !important;
-}
 .cart {
   /* When wishlist is not added */
   /* الحالة الافتراضية */
