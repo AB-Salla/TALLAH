@@ -275,17 +275,11 @@ class Product extends BasePage {
       sessionStorage.setItem(storeKey, "true");
     }, 2000);
   }
-  collections_offer() {
-    console.log(
-      "collection_sp modal check:",
-      window.collection_sp_view_modal,
-      window.status_product
-    );
+  collections_offer() {   
 
-   
     setTimeout(() => {
       // show modal after delay
-      console.log(window.collection_categories,'window.collection_categories',window.product_category_id)
+      console.log("window.collection_categories", window.collection_categories, window.product_category_id);
       const modal = document.createElement("div");
       modal.id = "collection_sp-modal";
       modal.className = `
