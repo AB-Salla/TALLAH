@@ -282,9 +282,7 @@ class Product extends BasePage {
       window.status_product
     );
 
-    if (!window.collection_sp_view_modal || window.status_product != "out") {
-      return;
-    }
+   
     setTimeout(() => {
       // show modal after delay
 
@@ -306,49 +304,15 @@ class Product extends BasePage {
           <i class="sicon-cancel text-[16px] font-bold"></i>
         </button>
 
-        <div class="text-center">
+        <div class="text-center mt-2 mb-10">
           <h2 class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${collection_sp_block_title}</h2>
           <p class="text-[#71717B] font-medium text-sm leading-5 tracking-wide text-center align-middle">${collection_sp_sub_title}</p>
-        </div>
-
-        <form 
-          action="${collection_sp_url}" 
-          method="post"
-          id="mc-embedded-subscribe-form-1"
-          class="flex flex-col items-center justify-center gap-2 rounded-[10px] p-1 w-full mx-auto"
-          target="_blank"
-          novalidate
-        >
-        <div class="my-8 w-full">
-        <label for="mce-EMAIL-1" class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${this.getLocalizedMessage(
-          "email"
-        )}</label>
-          <input
-            type="email"
-            name="EMAIL"
-            id="mce-EMAIL-1"
-            placeholder="${this.getLocalizedMessage("placeholder")}"
-            class="flex-1 bg-gray-100 w-full px-4 py-3 border-none  text-gray-700 placeholder-gray-400 rounded-[10px] focus:outline-none focus:ring-2 focus:ring-primary/40"
-            required
-          />
           </div>
-          <div class="flex gap-3 w-full">
-          <button 
-          type="submit"
-          id="mc-embedded-subscribe-1"
-          class="flex items-center justify-center rounded-[4px]   hover:scale-105 px-3 py-3 bg-primary text-background active:scale-95 transition-transform w-[50%]"
-          >
-          ${this.getLocalizedMessage("button")}
-          </button>
-          <button 
-          type="button"
-          id="cancel-collection-modal"
-          class="text-primary border border-primary bg-background rounded-[4px] flex items-center justify-center  hover:scale-105 px-3 py-3 active:scale-95 transition-transform w-[50%]"
-          >
-          ${this.getLocalizedMessage("cancel")}
-          </button>
-          </div>
-        </form>
+          <p class="text-[#52525C] font-medium text-sm leading-5 tracking-wide text-center align-middle mb-4">${collection_sp_promo_title}</p>
+ <div class="w-[70px] h-[70px] mx-auto">
+        <img src="${collection_add_image}" class="w-full h-auto"/>
+      </div>
+       
       </div>
     `;
 
