@@ -2067,6 +2067,14 @@ select{
     background-color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
 }
+.bg-\[color\:color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c transparent\)\]{
+    background-color: rgba(65, 64, 66, 0.05);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.bg-\[color\:color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c transparent\)\]{
+        background-color: color-mix(in srgb,var(--color-primary) 5%,transparent);
+    }
+}
 .bg-gradient-to-b{
     background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -2219,13 +2227,13 @@ select{
     padding-top: 1.25rem;
     padding-bottom: 1.25rem;
 }
-.py-8{
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-}
 .py-6{
     padding-top: 1.5rem;
     padding-bottom: 1.5rem;
+}
+.py-8{
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 .\!pb-0{
     padding-bottom: 0px !important;

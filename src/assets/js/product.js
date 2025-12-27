@@ -316,7 +316,7 @@ class Product extends BasePage {
           <span class="font-normal text-sm leading-5 tracking-wide">Hoodies Collection</span>
           </div>
           <div>
-          <div class="flex items-center justify-start"></div>
+          <div class="flex items-center justify-start bg-[color:color-mix(in_srgb,var(--color-primary)_5%,transparent)]"></div>
           <input type="checkbox" id="dont-remind-checkbox" />
           <label for="dont-remind-checkbox">Don’t remind me again</label>
           </div>
