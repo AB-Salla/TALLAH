@@ -1,10 +1,10 @@
 {% set source_type = component.source_type %}
 {% set source_value = source_type == 'categories' ? component.categories : (source_type == 'selected' ? component.products : []) %}
-<section class="Ar-products-banner Ar-products-banner-{{ position }} s-block">
-	<div class="container  flex lg:flex-row-reverse flex-col items-center justify-between gap-6 lg:gap-12 ">
+<section class="Ar-products-banner Ar-products-banner-{{position}} s-block">
+	<div class="container  grid lg:grid-cols-3 grid-cols-1 lg:gap-28 ">
 
 
-			<div class="order-2 lg:order-1">
+			<div class="lg:col-span-2 order-3  mx-auto lg:mx-0">
 				<div class="lg:block hidden features-products-head text text-font text-center md:mb-6 mb-4">
 
 
@@ -19,19 +19,40 @@
 
 				</div>
 
-					<div>
-						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block lg:w-[35vw] w-[90vw] mt-[-80px] lg:mt-0" type="carousel" class="product-slider" slider-config='{
-																			          "slidesPerView": 2,
-																			          "spaceBetween": 20,
-																			          "centeredSlides": false,
-																			          "speed": 1000,
-																			    "autoplay": {{ component.enable_autoplay ? "{
-																			      \"delay\": 3000,
-																			      \"disableOnInteraction\": false,
-																			      \"pauseOnMouseEnter\": true
-																			    }" : "false" }}
-							
-																			  }'></salla-products-slider>
+					<div class="relative ">
+					    <div class="gap-2 arrows flex items-center h-fit max-w-fit justify-between lg:hidden absolute -top-4 ltr:left-0 rtl:right-0 -translate-y-full z-2">
+						<button class="salla-slider-next items-center justify-center h-8 w-8 bg-white/50 rounded-full ">
+							<i class="sicon-caret-left  text-sm text-primary"></i>
+						</button>
+						<button class="salla-slider-prev items-center justify-center border h-8 w-8 bg-white/50 rounded-full ">
+							<i class="sicon-caret-right  text-sm text-primary"></i>
+						</button>
+						
+					</div>
+						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block mt-[-80px] sm:max-w-[480px] lg:max-w-full max-w-[90vw] w-full lg:mt-0" type="carousel" class="product-slider" slider-config='{
+													       "slidesPerView": 2,
+													      "spaceBetween": 20,
+													       "centeredSlides": false,
+													       "speed": 1000,
+													"autoplay": {{ component.enable_autoplay ? "{
+														\"delay\": 3000,
+														\"disableOnInteraction\": false,
+														 \"pauseOnMouseEnter\": true
+													 }" : "false" }},
+													  "navigation": {
+                "nextEl": ".Ar-products-banner-{{ position }} .salla-slider-next",
+                "prevEl": ".Ar-products-banner-{{ position }} .salla-slider-prev"
+              }
+
+													}'></salla-products-slider>
+					<div class="gap-2 arrows hidden lg:flex items-center h-fit mx-auto justify-between absolute w-full top-[45%]">
+						<button class="salla-slider-prev items-center justify-center shadow-lg h-8 w-8  flex rounded-full">
+							<i class="sicon-caret-right ltr:-scale-x-100 text-sm text-primary"></i>
+						</button>
+						<button class="salla-slider-next items-center justify-center shadow-lg h-8 w-8  flex rounded-full">
+							<i class="sicon-caret-left ltr:-scale-x-100 text-sm text-primary"></i>
+						</button>
+					</div>
 					</div>
 				
 
@@ -54,8 +75,10 @@
                 
 	
 
-			<div class="overflow-hidden h-[clamp(23.438rem,18.1767rem+22.4483vw,40.625rem)] lg:w-1/3 w-full max-w-132 lg:max-w-1/3">
-				<p></p>
+			<div class="overflow-hidden mx-auto lg:mx-0 h-[clamp(23.438rem,18.1767rem+22.4483vw,40.625rem)] lg:col-span-1 w-full max-w-132 lg:max-w-full relative lg:order-1 order-2">
+					<a href="{{component.url}}" class="hidden md:block absolute bottom-4 ltr:left-4 rtl:right-4 text-sm font-semibold underline" style="color: var(--color-background)">
+							{{ component.link_text }}
+					</a>
 				<img src="{{ component.banner_image }}" class=" h-full w-full object-cover " alt="{{ component.block_title }}"/>
 			</div>
 		</div>
@@ -69,9 +92,8 @@
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 	}
-	.Ar-products-banner .s-slider-block__title-nav {
-		display: none;
-	}
+
+	
 	.Ar-products-banner .salla-slider[type]:not(.hydrated) > div > div,
 	salla-slider[type]:not(.hydrated) .swiper > div > div > div,
 	.carousel-slider .swiper-wrapper > div {
@@ -87,12 +109,17 @@
 	.Ar-products-banner .s-products-slider-wrapper{
 		margin-bottom:0px;
 	}
-    .Ar-products-banner .s-product-card-entry{
-        height:clamp(24rem, 21.1906rem + 10.1224vw, 31.313rem) !important;
-    }
-	.Ar-products-banner salla-products-slider .s-product-card-entry.s-product-card-vertical .s-product-card-image{
-		min-height:clamp(16.313rem, 13.6537rem + 11.3463vw, 25rem) !important;
-		max-height:clamp(16.313rem, 13.6537rem + 11.3463vw, 25rem) !important;
-
+	.Ar-products-banner .s-products-slider-wrapper .s-products-slider-card.swiper-slide
+	{
+		max-width:fit-content;
 	}
+		@media(min-width: 1024px) {
+
+	.Ar-products-banner .s-products-slider-slider{
+		padding:0px 56px;
+	}
+
+		}
+
+
 </style>
