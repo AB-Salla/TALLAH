@@ -608,9 +608,9 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				id="similar-products-slider-{{position}}"
 				type="carousel"
 				class="product-slider"
-				source="related"
-				limit="2"
-				source-value="{{ product.id }}"
+				source="categories"
+                source-value="[{{ product.category.id }}]"
+                limit="4"
 				display-all-url="{{ display_all_url }}"
 				slider-id="slider-with-bg-{{ position }}">
 			</salla-products-list>
