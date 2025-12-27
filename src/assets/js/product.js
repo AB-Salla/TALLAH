@@ -314,7 +314,7 @@ class Product extends BasePage {
           <div class="w-[32px] h-[32px] mx-auto mb-2">
           <img src="${collectionn_footer_image}" class="w-full h-auto"/>
           </div>
-          <span class="font-normal text-sm leading-5 tracking-wide">Hoodies Collection</span>
+          <span class="font-normal text-sm leading-5 tracking-wide">"${window.collection_title}"</span>
           </div>
           <div>
           <div class="flex items-center justify-start"></div>
