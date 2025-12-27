@@ -26966,6 +26966,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .side_products custom-salla-product-card {
   max-height: 267px !important;
 }
+.side_products .s-product-card-vertical .s-product-card-image {
+  position: relative;
+  min-height: 171;
+  max-height: 171;
+}
 .side_products .flex-action {
   display: none !important;
 }

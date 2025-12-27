@@ -774,6 +774,11 @@
   custom-salla-product-card {
     max-height: 267px !important;
   }
+  .s-product-card-vertical .s-product-card-image {
+    position: relative;
+    min-height: 171px;
+    max-height: 171px;
+}
   .flex-action {
     display: none !important;
   }
