@@ -604,25 +604,16 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 			</span>
 		</div>
 		<div class="products-fixed-slider-{{position}} relative">
-			<salla-products-slider
+			<salla-products-list
 				id="similar-products-slider-{{position}}"
 				type="carousel"
 				class="product-slider"
-				slider-config='{
-				"slidesPerView": 2,
-				"spaceBetween": 11	,
-				"speed": 1000,
-				"effect": "slide",
-				"breakpoints": {
-					"551": { "slidesPerView": 2, "spaceBetween": 20 }
-				}     
-				}'
 				source="related"
-				limit="{{ limit }}"
+				limit="2"
 				source-value="{{ product.id }}"
 				display-all-url="{{ display_all_url }}"
 				slider-id="slider-with-bg-{{ position }}">
-			</salla-products-slider>
+			</salla-products-list>
 		</div>
 	</div>
 		<div class="feature flex items-start justify-between gap-[18px] flex-col pt-3 lg:pt-8">
