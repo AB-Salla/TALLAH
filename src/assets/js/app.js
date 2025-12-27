@@ -427,22 +427,24 @@ const items = cart.items;
                 <span class="item-price font-medium">
                   ${salla.money(item.price)}
                 </span>
-                <salla-quantity-input
-                  cart-item-id="${item.id}"
-                  max="${item.max_quantity}"
-                  value="${item.quantity}"
-                  name="quantity">
-                </salla-quantity-input>
                 </div>
-
+                    <div class="flex flex-col items-center justify-between mt-3">
+                    <salla-quantity-input
+                      cart-item-id="${item.id}"
+                      max="${item.max_quantity}"
+                      value="${item.quantity}"
+                      name="quantity">
+                    </salla-quantity-input>
+                    <button type="button"
+                  class="delete-btn text-gray-500 hover:text-red-500"
+                  data-item-id="${item.id}">
+                  <i class="sicon-trash-2"></i>
+                </button>
+              </div>
               </div>
             </div>
 
-            <button type="button"
-              class="delete-btn text-gray-500 hover:text-red-500"
-              data-item-id="${item.id}">
-              <i class="sicon-trash-2"></i>
-            </button>
+            
 
           </div>
         </section>
