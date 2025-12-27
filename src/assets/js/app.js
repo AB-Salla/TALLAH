@@ -399,8 +399,6 @@ class App extends AppHelpers {
           count.textContent = `(${cart.count} منتج)`;
           itemsWrap.innerHTML = itemsWithDetails
             .map((item) => {
-              console.log(item);
-              
               const hiddenOptions = buildHiddenOptionsInputs(item.details);
 
               const item_url =
@@ -460,7 +458,7 @@ class App extends AppHelpers {
             </button>
                 <salla-quantity-input
                   cart-item-id="${item.id}"
-                  max="${item.max_quantity}"
+                  max="500"
                   value="${item.quantity}"
                   name="quantity">
                 </salla-quantity-input>
