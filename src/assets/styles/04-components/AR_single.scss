@@ -776,8 +776,8 @@
   }
   .s-product-card-vertical .s-product-card-image {
     position: relative;
-    min-height: 171px;
-    max-height: 171px;
+    min-height: 171px !important;
+    max-height: 171px !important;
 }
   .flex-action {
     display: none !important;

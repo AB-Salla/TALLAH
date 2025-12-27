@@ -26968,8 +26968,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .side_products .s-product-card-vertical .s-product-card-image {
   position: relative;
-  min-height: 171;
-  max-height: 171;
+  min-height: 171px;
+  max-height: 171px;
 }
 .side_products .flex-action {
   display: none !important;
