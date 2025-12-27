@@ -415,10 +415,10 @@ class App extends AppHelpers {
         <input type="hidden" name="id" value="${item.id}">
         ${hiddenOptions}
 
-        <section class="cart-item bg-bg-light dark:bg-bg-dark p-3 md:p-5 rounded border border-gray-100 mb-4"
+        <section class="cart-item bg-background p-3 lg:p-5 rounded border border-gray-100 mb-4"
                  data-id="${item.id}">
 
-          <div class="grid grid-cols-1 md:grid-cols-2 items-start justify-between gap-4">
+          <div class="grid grid-cols-1 lg:grid-cols-2 items-start justify-between gap-4">
             <div class="flex flex-1 gap-4 items-center">
 
               <a href="${item_url}" class="w-24 h-20">
@@ -439,8 +439,8 @@ class App extends AppHelpers {
                 text-sm
                 leading-5
                 tracking-wide
-                md:text-base
-                md:leading-6 line-clamp-2">
+                lg:text-base
+                lg:leading-6 line-clamp-2">
                   <a href="${item_url}">${item.product_name}</a>
                 </h2>
                 <div class="flex justify-between items-center gap-4">
@@ -450,7 +450,7 @@ class App extends AppHelpers {
                 </div>
                 </div>
                 </div>
-                <div class="flex md:flex-col items-end justify-between mt-3 h-full">
+                <div class="flex lg:flex-col items-end justify-between mt-3 h-full">
                 <button type="button"
               class="delete-btn text-gray-500 hover:text-red-500"
               data-item-id="${item.id}">
