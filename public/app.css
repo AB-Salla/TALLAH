@@ -2030,6 +2030,14 @@ select{
         background-color: color-mix(in srgb,var(--color-primary) 5%,transparent);
     }
 }
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
+    background-color: rgb(245, 245, 246);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
+        background-color: color-mix(in srgb,var(--color-primary) 5%,white);
+    }
+}
 .bg-background{
     background-color: var(--color-background);
 }
@@ -2105,25 +2113,6 @@ select{
 .bg-white\/50{
     background-color: rgba(255, 255, 255, 0.5);
 }
-.bg-\[\]{
-    background-color: ;
-}
-.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c whi\)\]{
-    background-color: color-mix(in srgb,#414042 5%,whi);
-}
-@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
-.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c whi\)\]{
-        background-color: color-mix(in srgb,var(--color-primary) 5%,whi);
-    }
-}
-.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
-    background-color: rgb(245, 245, 246);
-}
-@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
-.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
-        background-color: color-mix(in srgb,var(--color-primary) 5%,white);
-    }
-}
 .bg-gradient-to-b{
     background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -2191,6 +2180,12 @@ select{
 }
 .p-8{
     padding: 2rem;
+}
+.p-\[\]{
+    padding: ;
+}
+.p-\[10x\]{
+    padding: 10x;
 }
 .\!py-1\.5{
     padding-top: 0.375rem !important;
@@ -2283,6 +2278,10 @@ select{
 .py-8{
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+.py-\[20px\]{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .\!pb-0{
     padding-bottom: 0px !important;
