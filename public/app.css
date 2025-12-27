@@ -2007,6 +2007,11 @@ select{
     border-color: #414042;
     border-color: var(--color-primary);
 }
+.border-t-slate-400{
+    --tw-border-opacity: 1;
+    border-top-color: rgba(148, 163, 184, 1);
+    border-top-color: rgba(148, 163, 184, var(--tw-border-opacity, 1));
+}
 .bg-\[\#C5992C\]{
     --tw-bg-opacity: 1;
     background-color: rgba(197, 153, 44, 1);
