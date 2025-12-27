@@ -450,7 +450,7 @@ class App extends AppHelpers {
                 </div>
                 </div>
                 </div>
-                <div class="flex md:flex-col items-end justify-between mt-3">
+                <div class="flex md:flex-col items-end justify-between mt-3 h-full">
                 <button type="button"
               class="delete-btn text-gray-500 hover:text-red-500"
               data-item-id="${item.id}">
