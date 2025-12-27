@@ -118,10 +118,12 @@ runningAfter5Seconds() {
    
     console.log("Newsletter_sp modal check:", window.newsletter_sp_view_modal,window.status_product);
     
+console.log(window.newsletter_sp_view_modal !== null && window.status_product !== 'out');
 
     if (window.newsletter_sp_view_modal !== null && window.status_product !== 'out') {
       return;
     }
+
     setTimeout(() => {
       // show modal after delay
 
