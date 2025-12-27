@@ -1,126 +1,135 @@
-import 'lite-youtube-embed';
-import BasePage from './base-page';
-import Fslightbox from 'fslightbox';
+import "lite-youtube-embed";
+import BasePage from "./base-page";
+import Fslightbox from "fslightbox";
 window.fslightbox = Fslightbox;
-import { zoom } from './partials/image-zoom';
+import { zoom } from "./partials/image-zoom";
 
 class Product extends BasePage {
-    onReady() {
-        app.watchElements({
-            totalPrice: '.total-price',
-            productWeight: '.product-weight',
-            beforePrice: '.before-price',
-            startingPriceTitle: '.starting-price-title',
-        });
+  onReady() {
+    app.watchElements({
+      totalPrice: ".total-price",
+      productWeight: ".product-weight",
+      beforePrice: ".before-price",
+      startingPriceTitle: ".starting-price-title",
+    });
 
-        this.initProductOptionValidations();
+    this.initProductOptionValidations();
 
-        if(imageZoom){
-            // call the function when the page is ready
-            this.initImagesZooming();
-            // listen to screen resizing
-            window.addEventListener('resize', () => this.initImagesZooming());
-        }
-        this.initproductdetailsFaqs()
-        this.runningAfter5Seconds();
-        this.collections_offer();
+    if (imageZoom) {
+      // call the function when the page is ready
+      this.initImagesZooming();
+      // listen to screen resizing
+      window.addEventListener("resize", () => this.initImagesZooming());
     }
+    this.initproductdetailsFaqs();
+    this.runningAfter5Seconds();
+    this.collections_offer();
+  }
 
-     initproductdetailsFaqs() {
+  initproductdetailsFaqs() {
     document.addEventListener("DOMContentLoaded", () => {
-    const metadata = document.querySelector("salla-metadata");
-    if (!metadata) {
-      console.error("❌ <salla-metadata> not found!");
-      return;
-    }
-
-    function initFaqAccordion() {
-      const rows = metadata.querySelectorAll(".s-metadata-row");
-      if (!rows.length) {
-        console.warn("⚠️ No FAQ rows inside <salla-metadata>");
+      const metadata = document.querySelector("salla-metadata");
+      if (!metadata) {
+        console.error("❌ <salla-metadata> not found!");
         return;
       }
 
-      rows.forEach((row) => {
-        const title = row.querySelector(".s-metadata-row-name");
-        const value = row.querySelector(".s-metadata-row-value");
-        if (!title || !value) return;
+      function initFaqAccordion() {
+        const rows = metadata.querySelectorAll(".s-metadata-row");
+        if (!rows.length) {
+          console.warn("⚠️ No FAQ rows inside <salla-metadata>");
+          return;
+        }
 
-        if (title.dataset.bound) return;
-        title.dataset.bound = "true";
+        rows.forEach((row) => {
+          const title = row.querySelector(".s-metadata-row-name");
+          const value = row.querySelector(".s-metadata-row-value");
+          if (!title || !value) return;
 
-        title.addEventListener("click", () => {
-          if (row.classList.contains("open")) {
-            value.style.maxHeight = value.scrollHeight + "px";
-                        requestAnimationFrame(() => {
-              value.style.maxHeight = "0";
-            });
-            row.classList.remove("open");
-            value.classList.remove("open");
-          } else {
-            value.style.maxHeight = value.scrollHeight + "px";
-            row.classList.add("open");
-            value.classList.add("open");
+          if (title.dataset.bound) return;
+          title.dataset.bound = "true";
 
-            value.addEventListener(
-              "transitionend",
-              () => {
-                if (row.classList.contains("open")) {
-                  value.style.maxHeight = "none";
-                }
-              },
-              { once: true }
-            );
+          title.addEventListener("click", () => {
+            if (row.classList.contains("open")) {
+              value.style.maxHeight = value.scrollHeight + "px";
+              requestAnimationFrame(() => {
+                value.style.maxHeight = "0";
+              });
+              row.classList.remove("open");
+              value.classList.remove("open");
+            } else {
+              value.style.maxHeight = value.scrollHeight + "px";
+              row.classList.add("open");
+              value.classList.add("open");
+
+              value.addEventListener(
+                "transitionend",
+                () => {
+                  if (row.classList.contains("open")) {
+                    value.style.maxHeight = "none";
+                  }
+                },
+                { once: true }
+              );
+            }
+          });
+        });
+      }
+
+      if (metadata.classList.contains("hydrated")) {
+        initFaqAccordion();
+        return;
+      }
+
+      const observer = new MutationObserver((mutations, obs) => {
+        mutations.forEach((mutation) => {
+          if (
+            mutation.type === "attributes" &&
+            mutation.attributeName === "class" &&
+            metadata.classList.contains("hydrated")
+          ) {
+            initFaqAccordion();
+            obs.disconnect();
           }
         });
       });
-    }
-
-    if (metadata.classList.contains("hydrated")) {
-      initFaqAccordion();
-      return;
-    }
-
-    const observer = new MutationObserver((mutations, obs) => {
-      mutations.forEach((mutation) => {
-        if (
-          mutation.type === "attributes" &&
-          mutation.attributeName === "class" &&
-          metadata.classList.contains("hydrated")
-        ) {
-          initFaqAccordion();
-          obs.disconnect();
-        }
-      });
+      observer.observe(metadata, { attributes: true });
     });
-    observer.observe(metadata, { attributes: true });
-  });
-}
-getLocalizedMessage(key) {
+  }
+  getLocalizedMessage(key) {
     const lang = document.documentElement.lang || "ar";
     const messages = {
       ar: {
         placeholder: "أدخل بريدك الإلكتروني",
         button: "إرسال",
         cancel: "إلغاء",
-        email: "البريد الإلكتروني"
+        email: "البريد الإلكتروني",
       },
       en: {
         placeholder: "Enter your email address",
         button: "Send",
         cancel: "Cancel",
-        email: "Email"
+        email: "Email",
       },
     };
     return messages[lang][key];
   }
-runningAfter5Seconds() {
-   
-    console.log("Newsletter_sp modal check:", window.newsletter_sp_view_modal,window.status_product);
-    
-console.log(window.newsletter_sp_view_modal !== null && window.status_product !== 'out');
+  runningAfter5Seconds() {
+    console.log(
+      "Newsletter_sp modal check:",
+      window.newsletter_sp_view_modal,
+      window.status_product
+    );
 
-    if (window.newsletter_sp_view_modal !== null && window.status_product !== 'out') {
+    console.log(
+      window.newsletter_sp_view_modal !== null &&
+        window.status_product !== "out"
+    );
+
+    if (
+      window.status_product !== "out" ||
+      window.newsletter_sp_view_modal !== true
+    ) {
       return;
     }
 
@@ -159,7 +168,9 @@ console.log(window.newsletter_sp_view_modal !== null && window.status_product !=
           novalidate
         >
         <div class="my-8 w-full">
-        <label for="mce-EMAIL-1" class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${this.getLocalizedMessage("email")}</label>
+        <label for="mce-EMAIL-1" class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${this.getLocalizedMessage(
+          "email"
+        )}</label>
           <input
             type="email"
             name="EMAIL"
@@ -264,12 +275,14 @@ console.log(window.newsletter_sp_view_modal !== null && window.status_product !=
       sessionStorage.setItem(storeKey, "true");
     }, 2000);
   }
-collections_offer() {
-   
-    console.log("collection_sp modal check:", window.collection_sp_view_modal,window.status_product);
-    
+  collections_offer() {
+    console.log(
+      "collection_sp modal check:",
+      window.collection_sp_view_modal,
+      window.status_product
+    );
 
-    if (!window.collection_sp_view_modal || window.status_product != 'out') {
+    if (!window.collection_sp_view_modal || window.status_product != "out") {
       return;
     }
     setTimeout(() => {
@@ -307,7 +320,9 @@ collections_offer() {
           novalidate
         >
         <div class="my-8 w-full">
-        <label for="mce-EMAIL-1" class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${this.getLocalizedMessage("email")}</label>
+        <label for="mce-EMAIL-1" class="text-primary mb-1 font-semibold text-lg leading-7 tracking-normal text-center align-middle">${this.getLocalizedMessage(
+          "email"
+        )}</label>
           <input
             type="email"
             name="EMAIL"
@@ -413,69 +428,99 @@ collections_offer() {
     }, 2000);
   }
 
-    initProductOptionValidations() {
-      document.querySelector('.product-form')?.addEventListener('change', function(){
+  initProductOptionValidations() {
+    document
+      .querySelector(".product-form")
+      ?.addEventListener("change", function () {
         this.reportValidity() && salla.product.getPrice(new FormData(this));
       });
-    }
+  }
 
-    initImagesZooming() {
-      // skip if the screen is not desktop or if glass magnifier
-      // is already crated for the image before
-      const imageZoom = document.querySelector('.image-slider .magnify-wrapper.swiper-slide-active .img-magnifier-glass');
-      if (window.innerWidth  < 1024 || imageZoom) return;
-      setTimeout(() => {
-          // set delay after the resizing is done, start creating the glass
-          // to create the glass in the proper position
-          const image = document.querySelector('.image-slider .swiper-slide-active img');
+  initImagesZooming() {
+    // skip if the screen is not desktop or if glass magnifier
+    // is already crated for the image before
+    const imageZoom = document.querySelector(
+      ".image-slider .magnify-wrapper.swiper-slide-active .img-magnifier-glass"
+    );
+    if (window.innerWidth < 1024 || imageZoom) return;
+    setTimeout(() => {
+      // set delay after the resizing is done, start creating the glass
+      // to create the glass in the proper position
+      const image = document.querySelector(
+        ".image-slider .swiper-slide-active img"
+      );
+      zoom(image?.id, 2);
+    }, 250);
+
+    document
+      .querySelector("salla-slider.details-slider")
+      .addEventListener("slideChange", (e) => {
+        // set delay till the active class is ready
+        setTimeout(() => {
+          const imageZoom = document.querySelector(
+            ".image-slider .swiper-slide-active .img-magnifier-glass"
+          );
+
+          // if the zoom glass is already created skip
+          if (window.innerWidth < 1024 || imageZoom) return;
+          const image = document.querySelector(
+            ".image-slider .magnify-wrapper.swiper-slide-active img"
+          );
           zoom(image?.id, 2);
-      }, 250);
-  
+        }, 250);
+      });
+  }
 
-      document.querySelector('salla-slider.details-slider').addEventListener('slideChange', (e) => {
-          // set delay till the active class is ready
-          setTimeout(() => {
-              const imageZoom = document.querySelector('.image-slider .swiper-slide-active .img-magnifier-glass');
-    
-              // if the zoom glass is already created skip
-              if (window.innerWidth  < 1024 || imageZoom) return;
-              const image = document.querySelector('.image-slider .magnify-wrapper.swiper-slide-active img');
-              zoom(image?.id, 2);
-          }, 250)
-      })
-    }
+  registerEvents() {
+    salla.event.on("product::price.updated.failed", () => {
+      app.element(".price-wrapper").classList.add("hidden");
+      app.element(".out-of-stock").classList.remove("hidden");
+      app.anime(".out-of-stock", { scale: [0.88, 1] });
+    });
+    salla.product.event.onPriceUpdated((res) => {
+      app.element(".out-of-stock").classList.add("hidden");
+      app.element(".price-wrapper").classList.remove("hidden");
 
-    registerEvents() {
-      salla.event.on('product::price.updated.failed',()=>{
-        app.element('.price-wrapper').classList.add('hidden');
-        app.element('.out-of-stock').classList.remove('hidden')
-        app.anime('.out-of-stock', { scale: [0.88, 1] });
-      })
-      salla.product.event.onPriceUpdated((res) => {
+      let data = res.data,
+        is_on_sale = data.has_sale_price && data.regular_price > data.price;
 
-        app.element('.out-of-stock').classList.add('hidden')
-        app.element('.price-wrapper').classList.remove('hidden')
+      app.startingPriceTitle?.classList.add("hidden");
 
-        let data = res.data,
-            is_on_sale = data.has_sale_price && data.regular_price > data.price;
-
-        app.startingPriceTitle?.classList.add('hidden');
-
-        app.productWeight.forEach((el) => {el.innerHTML = data.weight || ''});
-        app.totalPrice.forEach((el) => {el.innerHTML = salla.money(data.price)});
-        app.beforePrice.forEach((el) => {el.innerHTML = salla.money(data.regular_price)});
-
-        app.toggleClassIf('.price_is_on_sale','showed','hidden', ()=> is_on_sale)
-        app.toggleClassIf('.starting-or-normal-price','hidden','showed', ()=> is_on_sale)
-
-        app.anime('.total-price, .product-weight', { scale: [0.88, 1] });
+      app.productWeight.forEach((el) => {
+        el.innerHTML = data.weight || "";
+      });
+      app.totalPrice.forEach((el) => {
+        el.innerHTML = salla.money(data.price);
+      });
+      app.beforePrice.forEach((el) => {
+        el.innerHTML = salla.money(data.regular_price);
       });
 
-      app.onClick('#btn-show-more', e => app.all('#more-content', div => {
-        e.target.classList.add('is-expanded');
-        div.style = `max-height:${div.scrollHeight}px`;
-      }) || e.target.remove());
-    }
+      app.toggleClassIf(
+        ".price_is_on_sale",
+        "showed",
+        "hidden",
+        () => is_on_sale
+      );
+      app.toggleClassIf(
+        ".starting-or-normal-price",
+        "hidden",
+        "showed",
+        () => is_on_sale
+      );
+
+      app.anime(".total-price, .product-weight", { scale: [0.88, 1] });
+    });
+
+    app.onClick(
+      "#btn-show-more",
+      (e) =>
+        app.all("#more-content", (div) => {
+          e.target.classList.add("is-expanded");
+          div.style = `max-height:${div.scrollHeight}px`;
+        }) || e.target.remove()
+    );
+  }
 }
 
-Product.initiateWhenReady(['product.single']);
+Product.initiateWhenReady(["product.single"]);
