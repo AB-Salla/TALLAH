@@ -104,12 +104,14 @@ class Product extends BasePage {
         button: "إرسال",
         cancel: "إلغاء",
         email: "البريد الإلكتروني",
+        dont_remind_me_again: "لا تُذكرني مرة أخرى"
       },
       en: {
         placeholder: "Enter your email address",
         button: "Send",
         cancel: "Cancel",
         email: "Email",
+        dont_remind_me_again: "Don’t remind me again"
       },
     };
     return messages[lang][key];
@@ -271,8 +273,6 @@ class Product extends BasePage {
             submitBtn.disabled = false;
           });
       });
-
-      sessionStorage.setItem(storeKey, "true");
     }, 2000);
   }
 collections_offer() {
@@ -334,7 +334,7 @@ collections_offer() {
 
         <div class="flex items-center justify-start">
           <input type="checkbox" id="dont-remind-checkbox" />
-          <label for="dont-remind-checkbox">Don’t remind me again</label>
+          <label for="dont-remind-checkbox">${this.getLocalizedMessage("dont_remind_me_again")}</label>
         </div>
       </div>
     `;
