@@ -284,7 +284,7 @@ collections_offer() {
       modal.innerHTML = `
       <div class="bg-background  rounded-[10px] p-6 w-[90%] max-w-[580px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl">
       <div class="w-[70px] h-[70px] mx-auto">
-        <img src="${add_image}" class="w-full h-auto"/>
+        <img src="${collection_add_image}" class="w-full h-auto"/>
       </div>
         <button id="close-modal" 
           class="absolute top-3 flex items-center justify-center right-3 font-bold w-[24px] h-[24px]  text-[#71717B] transition">
