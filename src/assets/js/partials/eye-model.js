@@ -371,6 +371,8 @@ export const eyeModel = (productId) => {
     };
 
     const getProductOptions = () => {
+      console.log(product?.options,"product?.options?product?.options?product?.options?");
+      
       if (product?.options?.length == 0) return;
       return `
 				<salla-product-options options="${product.options}" product-id="${product.id}"></salla-product-options>
@@ -508,7 +510,7 @@ export const eyeModel = (productId) => {
 
 					${
             productImagesHTML
-              ? `<div class="product-images-slider relative col-span-2 h-full">
+              ? `<div class="product-images-slider relative sm:col-span-2 h-full">
               <div class="wishlist-container flex flex-col gap-2 items-center absolute  top-2 ltr:right-2 rtl:left-2 z-2"> ${getWishlistButton()}
 </div>
 							${productImagesHTML}
@@ -560,23 +562,14 @@ export const eyeModel = (productId) => {
 ${renderWeightBlock()}
 
               <div class="flex gap-3 flex-row-reverse justify-end items-center">
-              <div class="custom-add-to-cart-button">
-									${submitButton()}
-								</div>
+              
 							<div class="product-quantity mt-auto">
               <span>${getQuantity()}</span>
 							</div>
               </div>
-							<div class="flex gap-3 items-center mt-auto">
-
-								${
-                  getSinglePage()
-                    ? `<div class="product-details flex-1 h-full">
-										${getSinglePage()}
-									</div>`
-                    : ""
-                }
-							</div>
+							<div class="custom-add-to-cart-button mt-auto">
+									${submitButton()}
+								</div>
 						</form>
 					</div>
 				</div>

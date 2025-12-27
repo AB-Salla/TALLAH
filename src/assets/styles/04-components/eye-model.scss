@@ -49,10 +49,18 @@
 .radio-option input[type="radio"]:checked + span {
   border-color: var(--color-primary);
   color: #000;
-  box-shadow: 0 4px 12px rgba(190, 0, 0, 0.2);
 }
 
 
+.product-thumbs-image {
+  opacity: 0.5 !important;
+  transition: opacity 0.3s ease;
+}
+
+/* الصورة الاكتيف */
+.product-thumbs-image.swiper-slide-thumb-active {
+  opacity: 1 !important;
+}
 
 /* الخيار المعطل (اختر) */
 .radio-placeholder span {
@@ -250,6 +258,7 @@
   .product-images-slider .s-slider-thumbs-container .product-thumbs-image {
     width: 100%;
     margin: 0 0 0px;
+    border-radius: 0px !important;
   }
   .product-thumbs-image {
     margin-left: 0px !important;
@@ -321,11 +330,18 @@
 
   .custom-add-to-cart-button .s-button-element {
     overflow: hidden;
-    border: 0.7px solid var(--color-font);
+    border: 0.7px solid var(--color-primary);
     background-color: transparent;
-    color: var(--color-font);
+    color: var(--color-background);
+    background-color: var(--color-primary);
     border-radius: 0px;
     box-shadow: 0px 0.54px 1.62px 0px #0000001f;
+    transition: all 0.3s ease;
+    min-height: 42px;
+    & :hover {
+      color: var(--color-primary);
+      background-color: var(--color-background);
+    }
   }
   .custom-add-to-cart-button .s-button-element::after,
   .product-details .product-details-btn::after {

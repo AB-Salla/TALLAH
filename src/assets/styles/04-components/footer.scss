@@ -1,4 +1,9 @@
 .store-footer {
+  @media (max-width:768px) {
+    .s-contacts-item{
+      justify-content: center !important;
+    }
+  }
   salla-apps-icons{
     h3{
       display: none;
@@ -38,7 +43,7 @@
   }
 
   &__inner {
-    @apply bg-dark py-8 lg:py-16 border-b border-dashed border-b-white/10;
+    @apply bg-dark pt-8 lg:pt-16 border-b border-dashed border-b-white/10;
   }
 
   h3 {

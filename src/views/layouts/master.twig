@@ -69,11 +69,22 @@
     <script data-cfasync="false">
         window.header_is_sticky = "{{theme.settings.get('header_is_sticky', 'Default Value')}}"
         window.imageZoom = "{{theme.settings.get('imageZoom')}}"
+        window.newsletter_sp_view_modal = "{{ theme.settings.get('newsletter_sp_view_modal') }}"
+		window.newsletter_sp_url = "{{ theme.settings.get('newsletter_sp_url') }}"
+		window.add_image = "{{ theme.settings.get('add_image') }}"
+		window.newsletter_sp_block_title = "{{ theme.settings.get('newsletter_sp_block_title') }}"
+		window.newsletter_sp_sub_title = "{{ theme.settings.get('newsletter_sp_sub_title') }}"
+        window.collection_sp_view_modal = "{{ theme.settings.get('collection_sp_view_modal') }}"
+		window.collection_sp_url = "{{ theme.settings.get('collection_sp_url') }}"
+		window.collection_add_image = "{{ theme.settings.get('collection_add_image') }}"
+		window.collection_sp_block_title = "{{ theme.settings.get('collection_sp_block_title') }}"
+		window.collection_sp_sub_title = "{{ theme.settings.get('collection_sp_sub_title') }}"
+		window.collection_sp_promo_title = "{{ theme.settings.get('collection_sp_promo_title') }}"
+		window.collectionn_footer_image = "{{ theme.settings.get('collectionn_footer_image') }}"
         window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
     </script>
          <em><script data-cfasync="false">
-        window.show_singleOption = "{{theme.settings.get('show_singleOption', true)}}"
-        window.show_multipleOption = "{{theme.settings.get('show_multipleOption', true)}}"
+        window.product_card_options = "{{ theme.settings.get('product_card_options') }}"
         </script></em>
     {% hook 'head:start' %}
     {% hook head %}

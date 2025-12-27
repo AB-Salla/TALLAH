@@ -1,4 +1,96 @@
-    .single .s-products-slider-card {
+.single .mobile_buttons{
+
+  gap: 8px;
+  margin-top: 14px !important;
+  salla-social-share{
+    button{
+      border: 1px solid var(--color-font) !important;
+      border-radius: 1px !important;
+      background-color: var(--color-background);
+    }
+  }
+  salla-button{
+    button{
+      background-color: var(--color-background) !important;
+      color: var(--color-font) !important;
+      border: 1px solid var(--color-font) !important;
+      border-radius: 1px !important;
+    }
+  }
+/* الزر يكون مرجعية للتمركز */
+.s-button-element {
+  position: relative;
+}
+
+/* أثناء اللودينج */
+.s-button-element[loading],
+.s-button-wrap.is-loading .s-button-element {
+  pointer-events: none;
+}
+
+/* إخفاء القلب + النص */
+.s-button-element[loading] .s-button-text,
+.s-button-wrap.is-loading .s-button-text {
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* تمركز اللودر في النص */
+.s-button-element .s-button-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  visibility: hidden;
+}
+
+/* إظهار اللودر أثناء اللودينج */
+.s-button-element[loading] .s-button-loader,
+.s-button-wrap.is-loading .s-button-loader {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+   /* NOT ADDED state */
+  .btn--wishlist .is-added span svg {
+    fill: rgb(170, 0, 0) !important;
+  }
+
+  .btn--wishlist .is-added span svg:hover {
+    fill: red !important;
+  }
+
+  /* When wishlist is not added */
+  .btn--wishlist .not-added span svg {
+    fill: var(--color-font) !important;
+  }
+
+  .btn--wishlist .not-added span svg:hover {
+    fill: var(--color-font) !important;
+  }
+
+  /* Hide empty icon when added */
+  .btn--wishlist .is-added span .not_filled {
+    display: none !important;
+  }
+
+  /* Hide filled icon when not added */
+  .btn--wishlist .not-added span .filled {
+    display: none !important;
+  }
+
+  .s-product-card-wishlist-btn.not-added .filled {
+    display: none;
+  }
+  .s-product-card-wishlist-btn.s-product-card-wishlist-added .not_filled {
+    display: none;
+  }
+}
+
+
+.single .s-products-slider-card {
         width: 50%;
         max-width: 100% !important;
 }
@@ -8,6 +100,9 @@
 .s-metadata-box {
   background-color: var(--color-background);
   @apply px-0 ;
+}
+.s-metadata-box-header{
+  display: none;
 }
 .single .s-slider-block__title-nav{
   display: none !important;
@@ -64,6 +159,24 @@
   }
 
 .single {
+  .salla-quantity-input{
+    padding: 0 !important;
+    width: fit-content !important;
+  }
+
+  .s-product-options-option-content{
+    width: 100%;
+    .custom-radio-options{
+      @media (max-width:768px) {
+          display: grid ;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 10px;
+      };
+      .radio-label{
+        max-height: fit-content;
+      }
+    }
+  }
   .s-product-card-entry{
     gap: 10px;
     justify-content: unset !important;
@@ -183,19 +296,14 @@
     }
   }
   .s-comments-product {
-    background-color: var(--color-background);
+    background-color: var(--color-backfground);
     margin-bottom: 0;
     padding-block: 0;
   }
 
     .s-payments-list-item{
         background-color: transparent;
-        width: 4rem;
-        filter: grayscale(1);
         transition: all .5s ease-in-out;
-    }
-    .s-payments-list-item:hover{
-        filter: grayscale(0);
     }
   .image-slider {
     display: flex;

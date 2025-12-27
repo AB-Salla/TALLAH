@@ -66,14 +66,14 @@
                             <input type="hidden" name="id" value="{{ item.id }}">
                                 <!-- product -->
                                 <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between mb-8 last:mb-0">
-                                    <div class="flex flex-1 rtl:space-x-reverse space-x-4 justify-between">
-                                        <div class="flex gap-2">
+                                    <div class="flex flex-col md:flex-row  flex-1 rtl:space-x-reverse space-x-4 justify-between">
+                                        <div class="flex gap-2 mb-3">
 
                                             <a href="{{ item.url }}" class="relative overflow-hidden shrink-0">
                                                 {% if loop.first %}
                                                     <img src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="flex-none w-[95px] md:w-32 h-[165px]  md:h-36  border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="flex-none w-[95px] md:w-32 h-full border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% else %}
                                                     <img src="{{ 'images/s-empty.png' | cdn }}"
                                                         data-src="{{ item.product_image }}"
@@ -89,31 +89,49 @@
                                                 
                                             </a>
                                             <div class="space-y-1">
-                                                <h1 class="text-gray-900 leading-6 text-lg line-clamp-2">
+                                                <h1 class="font-mediumtext-[clamp(0.875rem,0.85rem+0.3vw,1rem)] mb-4 text-font leading-5 md:leading-6 tracking-wide md:tracking-normal line-clamp-2">
                                                     <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
                                                 </h1>
     
-                                                <span class="text-sm text-gray-500 line-through item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
-                                                <span class="inline-flex gap-1 leading-4 text-sm text-gray-500 line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
-                                                <span class="inline-flex gap-1 leading-4 item-price {{ item.has_discount ?  'text-red-800' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
-                                                
+                                               
+                                               {% include 'pages.partials.product.options' with {product:item} %}
+                                               <div class="md:hidden flex gap-1 flex-row-reverse items-center justify-end">
+                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                text-[#9F9FA9]
+                                                line-through
+                                                tracking-normal  item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
+                                                                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                <span class="  font-medium text-lg leading-8 
+                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                               
                                                 {% if item.weight_label %}
                                                 <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
                                                  <span>{{ item.weight_label }}</span>
                                                 </p>
                                                 {% endif %}
-                                               
+                                                
+                                            </div>
                                                 {# End Cart Item offers #}
     
                                             </div>
                                         </div>
-                                        <div class="flex flex-col-reverse gap-3  justify-end items-end">
-                                            <span class=" flex grow ">
-                                                <salla-button type="button" shape="icon" size="small" color="transparent" class="btn--delete mt-auto" aria-label="Remove from the cart"
+                                        <div class="flex !m-0 flex-row-reverse md:flex-col-reverse gap-3 items-center justify-between  md:justify-end md:items-end">
+                                            {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
+                                            <p class="text-primary flex-none font-bold text-sm hidden">
+                                                <span>{{ trans('pages.cart.total') }}:</span>
+                                                <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
+                                            </p>
+                                            <span class=" flex">
+                                                
+                                                <salla-button type="button" shape="icon" size="small" color="transparent" class="btn--delete " aria-label="Remove from the cart"
                                                         onclick="salla.cart.deleteItem('{{ item.id }}').then(() => document.querySelector('#item-{{ item.id }}').remove())">
                                                     <i class="sicon-trash-2"></i>
                                                 </salla-button>
-                                                {# {{item}} #}
                                                  <salla-button
                                     shape="icon"
                                     fill="outline"
@@ -150,12 +168,29 @@
                                                     value="{{ item.quantity }}" name="quantity">
                                                 </salla-quantity-input>
                                             {% endif %}
-                                            {% set item_total = item.detailed_offers|length > 0 ? item.total_special_price|money : item.total|money%}
-                                            <p class="text-primary flex-none font-bold text-sm">
-                                                <span>{{ trans('pages.cart.total') }}:</span>
-                                                <span class="inline-block item-total">{{ item.is_available?item_total: trans('pages.cart.out_of_stock') }}</span>
-                                            </p>
-                                           
+                                            
+                                            
+                                            <div class="hidden md:flex gap-1 flex-row-reverse items-center">
+                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                text-[#9F9FA9]
+                                                line-through
+                                                tracking-normal  item-regular-price {{ item.offer ? '' : 'hidden' }}" >{{ item.product_price|money }}</span>
+                                                                                                <span class="  font-medium
+                                                text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
+                                                leading-5 md:leading-8
+                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                <span class="  font-medium text-lg leading-8 
+                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                               
+                                                {% if item.weight_label %}
+                                                <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
+                                                 <span>{{ item.weight_label }}</span>
+                                                </p>
+                                                {% endif %}
+                                                
+                                            </div>
                                         </div>
                                     </div>
                                     
@@ -170,7 +205,6 @@
                                                     item-id="{{ item.id }}"
                                                     product-price="{{ item.product_price }}"
                                                     offers="{{ item.detailed_offers|json_encode }}"></salla-cart-item-offers>
-                                {% include 'pages.partials.product.options' with {product:item} %}
 
                             
                         </section>
@@ -208,7 +242,7 @@
                 <div class="sticky top-24 w-full lg:w-[419px] rtl:lg:mr-8 ltr:lg:ml-8">
                     <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative {{ cart.free_shipping_bar ? '' : 'hidden' }}" id="free-shipping">
                         <div class="flex rtl:space-x-reverse space-x-3 items-center">
-                            <i class="bg-primary text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
+                            <i class="bg-primary !hidden text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
                             {% set is_free=cart.free_shipping_bar.has_free_shipping %}
                             <div class="flex-1">
                                 <h4 class="shipping-item font-bold text-sm mb-1.5">{{ trans('pages.cart.free_shipping') }}</h4>
@@ -222,20 +256,13 @@
                             </div>
                         </div>
                         <div class="mt-8 bg-border-color rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
-                            <div class="progress-bg transition-all duration-500 h-2.5 bg-primary relative rounded-full flex justify-end"
+                            <div class="progress-bg transition-all duration-500 h-2.5 bg-[#C5992C] relative rounded-full flex justify-end"
                                  style="width:{{ cart.free_shipping_bar.percent }}%">
                                 <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
                             </div>
                         </div>
                     </div>
-                    {% if loyalty and user.loyalty_points %}
-                        <div class="shadow-default mb-5 rounded-md p-3 xs:p-7 bg-white">
-                            <salla-loyalty customer-points='{{ user.loyalty_points }}'
-                                prize-points='{{ loyalty.prize.points }}'
-                                prize-title='{{ loyalty.prize.title }}'
-                            ></salla-loyalty>
-                        </div>
-                    {% endif %}
+                    
 
                     <div id="cart-gifting" class="shadow-default bg-white xs:p-2 rounded-md mb-5 relative  {{gift.enabled ? '' : 'hidden' }}">
                         <salla-gifting id="salla-gifting" class="mt-5" widget-title="{{ trans("pages.cart.gift_widget_title") }}"  widget-subtitle="{{ gift.text }}" class="mt-5" {{gift.type}}-products  vertical></salla-gifting>
@@ -311,6 +338,73 @@
                             </salla-button>
                             {% hook 'cart:submit.end' %}
                         </div>
+                        {% if loyalty and user.loyalty_points %}
+                        <div class="  rounded-md my-6 bg-[#F4F0EB]">
+                            <salla-loyalty customer-points='{{ user.loyalty_points }}'
+                                prize-points='{{ loyalty.prize.points }}'
+                                prize-title='{{ loyalty.prize.title }}'
+                            ></salla-loyalty>
+                        </div>
+                        {% endif %}
+                        <div class="mt-5">
+                        <salla-payments></salla-payments>
+                    </div>
+					 {% if theme.settings.get('features_switch_cart') %}
+                        <section class=" py-2">
+                            <div class="">
+                            
+                                {% set is_ar = request.locale == 'ar' %}
+
+
+                                <div class="grid {% if theme.settings.get('features_col') %}
+                                grid-cols-1
+                                {% else %}
+                                grid-cols-3
+                                {% endif %}  justify-start sm:justify-center  items-start sm:items-center gap-4">
+                                    {% for item in theme.settings.get('rh_features_store_car') %}
+                                        {# احسب عدد الحروف في النص #}
+                                        {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
+                                        {% set is_long = title|length > 20 %}
+                                        <div class="text-start sm:text-center gap-4 flex  justify-center items-center  flex-col  w-auto ">
+                                        <span class="flex items-center justify-center w-9 h-9">
+                                            {% if item.rh_features_active_select_icons == "image_services" %}
+                                            <img src="{{ item.add_image }}"
+                                                alt="{{ item.block_title.ar }}"
+                                                class="w-full h-full object-contain">
+                                            {% elseif item.rh_features_active_select_icons == "salla_icon" %}
+                                            <i class="{{ item.icon_proudct }} text-primary text-4xl leading-none features__icon"></i>
+                                            {% elseif item.rh_features_active_select_icons == "animated_icon" %}
+                                            <lord-icon 
+                                                id="my-icon"
+                                                src="https://cdn.lordicon.com/{{ item.anmait_icon }}.json"
+                                                trigger="loop"
+                                                style="width:24px;height:24px">
+                                            </lord-icon>
+                                            <script>
+                                            // Wait for the element to load
+                                            document.addEventListener("DOMContentLoaded", () => {
+                                                const icon = document.getElementById("my-icon");
+                                                const color = getComputedStyle(document.documentElement)
+                                                .getPropertyValue("--color-primary")
+                                                .trim();
+                                                // Apply dynamic color using JS
+                                                icon.setAttribute("colors", `primary:${color},secondary:${color}`);
+                                            });
+                                            </script>
+                                            {% endif %}
+                                        </span>
+                                        <div >
+                                            <h3 class="text-[14px] text-center font-normal text-font leading-[140%]">
+                                                {{ title }}
+                                            </h3>
+                                        </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+
+                        </section>
+                {% endif %}
+                    {# {% endif %} #}
                         {% hook 'cart:summary.end' %}
                     </div>
 
@@ -320,7 +414,7 @@
             {% endif %}
         </div>
     </div>
-    <div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10  pb-[60px] lg:pb-[120px]">
+    <div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10  pb-[60px] lg:pb-[120px] cart_slider">
 		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
@@ -356,4 +450,6 @@
 
 {% block scripts %}
     <script defer src="{{ 'checkout.js' | asset }}"></script>
+
+
 {% endblock %}
