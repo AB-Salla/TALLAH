@@ -3827,7 +3827,54 @@
             "icon": "sicon-store",
             "path": "home.AR-Hero-2",
               "fields": [
-                {
+
+
+
+
+
+                        {
+                            "id": "desktop_bg",
+                            "type": "string",
+                            "format": "image",
+                            "label": "خلفية البانر في الشاشات الكبيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                            "required": false
+                        },
+                        {
+                            "id": "mobile_bg",
+                            "type": "string",
+                            "format": "image",
+                            "label": "خلفية البانر في الشاشات الصغيرة",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "e.g. https://hostname.com/image.png",
+                            "icon": "sicon-image",
+                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                            "required": false
+                        },
+                        {
+                            "id": "block_title",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الرئيسي",
+                            "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": {
+                                "ar": "Discover Timeless Luxury",
+                                "en": "Discover Timeless Luxury"
+                            },
+                            "multilanguage": true,
+                            "required": true,
+                            "minLength": "2",
+                            "maxLength": "150"
+                        },
+                                        {
                     "id": "blocktitle_color",
                     "type": "string",
                     "format": "color",
@@ -3846,7 +3893,22 @@
                         }
                     ]
                 },
-                {
+                        {
+                            "id": "subtext",
+                            "type": "string",
+                            "format": "text",
+                            "label": "العنوان الفرعي",
+                            "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": "Redefining elegance with curated collections for the modern lifestyle",
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": "250"
+                        },
+                                        {
                     "id": "subtext_color",
                     "type": "string",
                     "format": "color",
@@ -3865,7 +3927,22 @@
                         }
                     ]
                 },
-                {
+                        {
+                            "id": "button_text",
+                            "type": "string",
+                            "format": "text",
+                            "label": "نص الزر",
+                            "description": null,
+                            "labelHTML": null,
+                            "placeholder": "Placeholder text ..",
+                            "icon": "sicon-format-text-alt",
+                            "value": "Discover More",
+                            "multilanguage": true,
+                            "required": false,
+                            "minLength": "2",
+                            "maxLength": "100"
+                        },
+                                        {
                     "id": "button_text_color",
                     "type": "string",
                     "format": "color",
@@ -3915,91 +3992,6 @@
                     "selected": true,
                     "required": false
                 },
-                {
-                    "id": "center_text",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار النصوص الرئيسية في المنتصف",
-                    "description": "فعل هذا الخيار لعرض العنوان الرئيسي والفرعي في منتصف القسم",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-
-                        {
-                            "id": "desktop_bg",
-                            "type": "string",
-                            "format": "image",
-                            "label": "خلفية البانر في الشاشات الكبيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
-                            "required": false
-                        },
-                        {
-                            "id": "mobile_bg",
-                            "type": "string",
-                            "format": "image",
-                            "label": "خلفية البانر في الشاشات الصغيرة",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "e.g. https://hostname.com/image.png",
-                            "icon": "sicon-image",
-                            "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
-                            "required": false
-                        },
-                        {
-                            "id": "block_title",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان الرئيسي",
-                            "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": {
-                                "ar": "Discover Timeless Luxury",
-                                "en": "Discover Timeless Luxury"
-                            },
-                            "multilanguage": true,
-                            "required": true,
-                            "minLength": "2",
-                            "maxLength": "150"
-                        },
-                        {
-                            "id": "subtext",
-                            "type": "string",
-                            "format": "text",
-                            "label": "العنوان الفرعي",
-                            "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": "Redefining elegance with curated collections for the modern lifestyle",
-                            "multilanguage": true,
-                            "required": false,
-                            "minLength": "2",
-                            "maxLength": "250"
-                        },
-                        {
-                            "id": "button_text",
-                            "type": "string",
-                            "format": "text",
-                            "label": "نص الزر",
-                            "description": null,
-                            "labelHTML": null,
-                            "placeholder": "Placeholder text ..",
-                            "icon": "sicon-format-text-alt",
-                            "value": "Discover More",
-                            "multilanguage": true,
-                            "required": false,
-                            "minLength": "2",
-                            "maxLength": "100"
-                        },
                         {
                             "type": "items",
                             "icon": "sicon-link",
