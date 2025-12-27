@@ -2356,7 +2356,7 @@
                             "multilanguage": true,
                             "required": true,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "150"
                         },
                         {
                             "id": "banner.subtext",
@@ -2371,7 +2371,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "100"
+                            "maxLength": "250"
                         },
                         {
                             "id": "banner.button_text",
@@ -2386,7 +2386,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "100"
                         },
                         {
                             "type": "items",
@@ -3969,7 +3969,7 @@
                             "multilanguage": true,
                             "required": true,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "150"
                         },
                         {
                             "id": "subtext",
@@ -3984,7 +3984,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "100"
+                            "maxLength": "250"
                         },
                         {
                             "id": "button_text",
@@ -3999,7 +3999,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "100"
                         },
                         {
                             "type": "items",
