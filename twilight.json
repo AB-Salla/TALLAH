@@ -2356,7 +2356,7 @@
                             "multilanguage": true,
                             "required": true,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "150"
                         },
                         {
                             "id": "banner.subtext",
@@ -2371,7 +2371,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "100"
+                            "maxLength": "250"
                         },
                         {
                             "id": "banner.button_text",
@@ -2386,7 +2386,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "100"
                         },
                         {
                             "type": "items",
@@ -2487,7 +2487,7 @@
                     "id": "url",
                     "value": [],
                     "description": "اختر الوجهة التي سيتم الانتقال إليها عند النقر على الرابط",
-                    "required": true,
+                    "required": false,
                     "format": "variable-list",
                     "searchable": true,
                     "source": "custom",
@@ -3193,7 +3193,7 @@
                             "multilanguage": true,
                             "required": true,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "100"
                         },
                         {
                             "id": "banner.subtext",
@@ -3208,7 +3208,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "100"
+                            "maxLength": "200"
                         },
                         {
                             "id": "banner.button_text",
@@ -3969,7 +3969,7 @@
                             "multilanguage": true,
                             "required": true,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "150"
                         },
                         {
                             "id": "subtext",
@@ -3984,7 +3984,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "100"
+                            "maxLength": "250"
                         },
                         {
                             "id": "button_text",
@@ -3999,7 +3999,7 @@
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
-                            "maxLength": "50"
+                            "maxLength": "100"
                         },
                         {
                             "type": "items",
