@@ -1495,6 +1495,18 @@ select{
 .w-full{
     width: 100%;
 }
+.w-\[9\]{
+    width: 9;
+}
+.w-\[92\%\]{
+    width: 92%;
+}
+.w-\[\%\]{
+    width: %;
+}
+.w-\[85\%\]{
+    width: 85%;
+}
 .min-w-0{
     min-width: 0px;
 }
@@ -1592,6 +1604,26 @@ select{
 .translate-y-4{
     --tw-translate-y: 1rem;
     transform: translate(var(--tw-translate-x), 1rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-\[2\%\]{
+    --tw-translate-x: 2%;
+    transform: translate(2%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-\[7\.5\%\]{
+    --tw-translate-x: 7.5%;
+    transform: translate(7.5%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-\[7\]{
+    --tw-translate-x: 7;
+    transform: translate(7, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+.translate-x-\[7\%\]{
+    --tw-translate-x: 7%;
+    transform: translate(7%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .rotate-45{
@@ -28712,6 +28744,15 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-\[calc\(100\%-419px\)\]{
         width: calc(100% - 419px);
     }
+    .lg\:w-\[27\.5\%\]{
+        width: 27.5%;
+    }
+    .lg\:w-\[37\.5\%\]{
+        width: 37.5%;
+    }
+    .lg\:w-\[38\%\]{
+        width: 38%;
+    }
     .lg\:max-w-full{
         max-width: 100%;
     }
@@ -28789,6 +28830,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:p-8{
         padding: 2rem;
     }
+    .lg\:p-10{
+        padding: 2.5rem;
+    }
     .lg\:px-0{
         padding-left: 0px;
         padding-right: 0px;
@@ -28800,6 +28844,22 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:px-16{
         padding-left: 4rem;
         padding-right: 4rem;
+    }
+    .lg\:px-4{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    .lg\:px-10{
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
+    }
+    .lg\:px-28{
+        padding-left: 7rem;
+        padding-right: 7rem;
+    }
+    .lg\:px-6{
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
     }
     .lg\:pb-11{
         padding-bottom: 2.75rem;

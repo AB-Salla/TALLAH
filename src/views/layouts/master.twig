@@ -85,15 +85,16 @@
 		window.collection_categories = {{ theme.settings.get('collection_categories') | json_encode | raw }};
         window.can_access_wallet = {{ user.can_access_wallet | json_encode }}
     </script>
-         <em><script data-cfasync="false">
-        window.product_card_options = "{{ theme.settings.get('product_card_options') }}"
-        </script></em>
+        
     {% hook 'head:start' %}
     {% hook head %}
     {% block styles %}{% endblock %}
     <link rel="stylesheet" href="{{ 'app.css' | asset }}">
     <link rel="stylesheet" href="{{ theme.font.path|cdn }}"/>
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
+     <em><script data-cfasync="false">
+        window.product_card_options = "{{ theme.settings.get('product_card_options') }}"
+        </script></em>
     
     <style>
         :root {

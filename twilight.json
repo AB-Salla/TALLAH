@@ -2468,17 +2468,79 @@
             "icon": "sicon-store",
             "path": "home.AR-Products-banner",
             "fields": [
+              
                 {
                     "id": "banner_image",
                     "type": "string",
                     "format": "image",
-                    "label": "إضافة صورة",
+                    "label": "صورة جانبية",
                     "description": null,
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
                     "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
                     "required": true
+                },
+                {
+                    "id": "block_title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "العنوان الرئيسي",
+                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم.",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "Effortless Style, Curated for You",
+                        "en": "Effortless Style, Curated for You"
+                    },
+                    "multilanguage": true,
+                    "required": true,
+                    "minLength": 2,
+                    "maxLength": 100
+                },
+                {
+                    "id": "block_title_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون العنوان الرئيسي",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181B",
+                    "required": false
+                },
+                
+                {
+                    "id": "url_text",
+                    "type": "string",
+                    "format": "text",
+                    "label": "نص الرابط",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": {
+                        "ar": "Shop the Look",
+                        "en": "Shop the Look"
+                    },
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": 2,
+                    "maxLength": 30
+                },
+                {
+                    "id": "url_color",
+                    "type": "string",
+                    "format": "color",
+                    "inputType": "color",
+                    "label": "لون نص الرابط",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-format-fill",
+                    "value": "#18181B",
+                    "required": false
                 },
                 {
                     "type": "items",
@@ -2523,90 +2585,17 @@
                             "value": "custom"
                         }
                     ]
-                },
-                {
-                    "id": "url_text",
-                    "type": "string",
-                    "format": "text",
-                    "label": "نص الرابط",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "Shop the Look",
-                        "en": "Shop the Look"
-                    },
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": 2,
-                    "maxLength": 30
-                },
-                {
-                    "id": "url_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون نص الرابط",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#18181B",
-                    "required": false
-                },
-                {
-                    "id": "block_title",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الرئيسي",
-                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم.",
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "Effortless Style, Curated for You",
-                        "en": "Effortless Style, Curated for You"
-                    },
-                    "multilanguage": true,
-                    "required": true,
-                    "minLength": 2,
-                    "maxLength": 100
-                },
-                {
-                    "id": "block_title_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون العنوان الرئيسي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#18181B",
-                    "required": false
-                },
-
-                
-                
-               
+                }, 
                 {
                     "id": "source_type",
                     "icon": "sicon-t-shirt",
                     "type": "items",
-                    "label": "مصدر عرض المنتجات",
-                    "description": "مصدر عرض المنتجات",
+                    "label": "كيفية عرض المنتجات",
+                    "description": null,
                     "format": "dropdown-list",
                     "source": "Manual",
                     "options": [
-                        {
-                            "key": "categories",
-                            "label": "منتجات من تصنيف",
-                            "value": "categories"
-                        },
-                        {
-                            "key": "sales",
-                            "label": "الأكثر مبيعاً",
-                            "value": "sales"
-                        },
+                        
                         {
                             "key": "latest",
                             "label": "أحدث المنتجات",
@@ -2614,8 +2603,18 @@
                         },
                         {
                             "key": "selected",
-                            "label": "منتجات مختارة",
+                            "label":"اختيار منتجات يدوياً",
                             "value": "selected"
+                        },
+                        {
+                            "key": "categories",
+                            "label": "منتجات داخل تصنيف",
+                            "value": "categories"
+                        },
+                        {
+                            "key": "sales",
+                            "label": "المنتجات الأكثر مبيعاً",
+                            "value": "sales"
                         }
                     ],
                     "required": true,
