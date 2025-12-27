@@ -798,11 +798,10 @@
     transform: translateY(1px) !important;
     salla-add-product-button{
       button {
-        border-radius: 0 !important;
         width: 32px !important;
         height: 32px !important;
         background-color: var(--color-background) !important;
-        border-radius: 50%;
+        border-radius: 50% !important;
         background-color: #FFFFFFCC !important;
         display: flex;
         align-items: center;

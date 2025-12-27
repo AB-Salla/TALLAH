@@ -26967,9 +26967,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   max-height: 267px !important;
 }
 .side_products .s-product-card-vertical .s-product-card-image {
+  min-height: 171px !important;
+  max-height: 171px !important;
+}
+.side_products .s-product-card-vertical .s-product-card-image {
   position: relative;
-  min-height: 171px;
-  max-height: 171px;
 }
 .side_products .flex-action {
   display: none !important;
@@ -26990,14 +26992,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 1;
 }
 .side_products .card-floating-btn salla-add-product-button button {
-  border-radius: 0 !important;
   width: 32px !important;
   height: 32px !important;
   background-color: var(--color-background) !important;
+  border-radius: 50% !important;
   background-color: rgba(255, 255, 255, 0.8) !important;
 }
 .side_products .card-floating-btn salla-add-product-button button {
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
