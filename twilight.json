@@ -891,27 +891,7 @@
       "selected": true,
       "required": false
     },
-     {
-          "id": "collection_categories",
-          "type": "items",
-          "format": "dropdown-list",
-          "label": "حدد التصنيف الذي سيتم عرض الموديل التسويقي علي منتجاتة في صفحة المنتج",
-          "labelHTML": null,
-          "icon": "sicon-keyboard_arrow_down",
-          "selected": [],
-          "options": [],
-          "source": "categories",
-          "multichoice": false,
-          "searchable": true,
-          "required": false,
-          "conditions": [
-            {
-              "id": "collection_sp_view_modal",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
+    
     {
       "id": "collection_add_image",
       "type": "string",
@@ -990,6 +970,27 @@
       ]
     },
     {
+          "id": "collection_categories",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "حدد التصنيف الذي سيتم عرض الموديل التسويقي علي منتجاتة في صفحة المنتج",
+          "labelHTML": null,
+          "icon": "sicon-keyboard_arrow_down",
+          "selected": [],
+          "options": [],
+          "source": "categories",
+          "multichoice": true,
+          "searchable": true,
+          "required": false,
+          "conditions": [
+            {
+              "id": "collection_sp_view_modal",
+              "operation": "=",
+              "value": true
+            }
+          ]
+    },
+    {
       "id": "collectionn_footer_image",
       "type": "string",
       "format": "image",
@@ -1008,6 +1009,26 @@
         }
       ]
     },
+     {
+      "id": "collection_title",
+      "type": "string",
+      "format": "text",
+      "label": "اسم التصنيف",
+      "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى القسم.",
+      "value": {
+        "ar": "Hoodies Collection!",
+        "en": "Hoodies Collection!"
+      },
+      "multilanguage": true,
+      "conditions": [
+        {
+          "id": "collection_sp_view_modal",
+          "operation": "=",
+          "value": true
+        }
+      ]
+    },
+     
 
     {
       "type": "static",
