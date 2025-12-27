@@ -2524,6 +2524,11 @@ select{
     color: rgba(0, 136, 36, 1);
     color: rgba(0, 136, 36, var(--tw-text-opacity, 1));
 }
+.text-\[\#52525C\]{
+    --tw-text-opacity: 1;
+    color: rgba(82, 82, 92, 1);
+    color: rgba(82, 82, 92, var(--tw-text-opacity, 1));
+}
 .text-\[\#71717B\]{
     --tw-text-opacity: 1;
     color: rgba(113, 113, 123, 1);
@@ -2627,14 +2632,6 @@ select{
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
-}
-.text-\[\#\#52525C\]{
-    color: ##52525C;
-}
-.text-\[\#52525C\]{
-    --tw-text-opacity: 1;
-    color: rgba(82, 82, 92, 1);
-    color: rgba(82, 82, 92, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;

@@ -310,7 +310,7 @@ class Product extends BasePage {
           </div>
           <p class="text-[#52525C] font-medium text-sm leading-5 tracking-wide text-center align-middle mb-4">${collection_sp_promo_title}</p>
  <div class="w-[70px] h-[70px] mx-auto">
-        <img src="${collection_add_image}" class="w-full h-auto"/>
+        <img src="${collectionn_footer_image}" class="w-full h-auto"/>
       </div>
        
       </div>
