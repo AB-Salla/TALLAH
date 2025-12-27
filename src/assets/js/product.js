@@ -281,20 +281,12 @@ collections_offer() {
 
   // Check localStorage first
   const dontRemind = localStorage.getItem("collection_sp_modal_dont_remind");
-  if (dontRemind === "true") {
-    console.log("User opted out, modal won't show");
-    return; // Exit early
-  }
+  if (dontRemind === "true") return; // Exit early
 
   // Check category
-  if (!allowedCategories.includes(productCategoryId)) {
-    console.log("Product is NOT in allowed category ❌");
-    return;
-  }
+  if (!allowedCategories.includes(productCategoryId) || !window.collection_sp_view_modal) return;
 
-  console.log("Product is in allowed category ✅");
-
-  let modalShown = false; // علشان نعرض المودال مرة واحدة بس
+  let modalShown = false; // Show modal only once
 
   const showModal = () => {
     if (modalShown) return;
@@ -304,12 +296,12 @@ collections_offer() {
     modal.id = "collection_sp-modal";
     modal.className = `
       fixed inset-0 z-[99] flex items-center justify-center 
-      bg-black/40 backdrop-blur-sm opacity-0 
+      bg-black/0 backdrop-blur-sm opacity-0 
       transition-all duration-500
     `;
 
     modal.innerHTML = `
-      <div class="bg-background rounded-[10px] p-6 w-[90%] max-w-[580px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl">
+      <div class="bg-background rounded-[10px] p-6 w-[90%] max-w-[580px] mb-4 relative transform scale-90 transition-transform duration-500 shadow-xl opacity-0">
         <div class="w-[70px] h-[70px] mx-auto">
           <img src="${collection_add_image}" class="w-full h-auto"/>
         </div>
@@ -341,43 +333,40 @@ collections_offer() {
 
     document.body.appendChild(modal);
 
-    requestAnimationFrame(() => {
-      modal.classList.remove("opacity-0");
-      modal.querySelector("div").classList.remove("scale-90");
-      modal.querySelector("div").classList.add("scale-100");
-    });
+    // Force reflow لتفعيل الانيميشن
+    const modalContent = modal.querySelector("div");
+    void modal.offsetWidth;
+
+    // ابدأ الانيميشن للفتح
+    modal.classList.remove("bg-black/0", "opacity-0");
+    modal.classList.add("bg-black/40", "opacity-100");
+    modalContent.classList.remove("scale-90", "opacity-0");
+    modalContent.classList.add("scale-100", "opacity-100");
 
     const closeModal = () => {
       const checkbox = document.getElementById("dont-remind-checkbox");
-      if (checkbox.checked) {
-        localStorage.setItem("collection_sp_modal_dont_remind", "true");
-      }
+      if (checkbox.checked) localStorage.setItem("collection_sp_modal_dont_remind", "true");
 
-      modal.classList.add("opacity-0");
-      modal.querySelector("div").classList.add("scale-90");
+      modal.classList.remove("bg-black/40", "opacity-100");
+      modal.classList.add("bg-black/0", "opacity-0");
+
+      modalContent.classList.remove("scale-100", "opacity-100");
+      modalContent.classList.add("scale-90", "opacity-0");
+
       setTimeout(() => modal.remove(), 400);
     };
 
-    document
-      .getElementById("close-collection-modal")
-      .addEventListener("click", closeModal);
-
-    document
-      .getElementById("cancel-collection-modal")
-      ?.addEventListener("click", closeModal);
-
+    document.getElementById("close-collection-modal").addEventListener("click", closeModal);
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
   };
 
-  // حدث Scroll
   window.addEventListener("scroll", () => {
-    if (window.scrollY >= 600) {
-      showModal();
-    }
+    if (window.scrollY >= 600) showModal();
   });
 }
+
 
 
 
