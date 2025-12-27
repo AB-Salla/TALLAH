@@ -1223,9 +1223,6 @@ select{
 .grid{
     display: grid;
 }
-.\!grid{
-    display: grid !important;
-}
 .contents{
     display: contents;
 }
