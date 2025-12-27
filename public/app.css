@@ -2030,6 +2030,14 @@ select{
         background-color: color-mix(in srgb,var(--color-primary) 5%,transparent);
     }
 }
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
+    background-color: rgb(245, 245, 246);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
+        background-color: color-mix(in srgb,var(--color-primary) 5%,white);
+    }
+}
 .bg-background{
     background-color: var(--color-background);
 }
@@ -2303,9 +2311,6 @@ select{
 }
 .pb-8{
     padding-bottom: 2rem;
-}
-.pb-\[60px\]{
-    padding-bottom: 60px;
 }
 .pb-\[7px\]{
     padding-bottom: 7px;
@@ -28789,6 +28794,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:p-8{
         padding: 2rem;
     }
+    .lg\:p-5{
+        padding: 1.25rem;
+    }
     .lg\:px-0{
         padding-left: 0px;
         padding-right: 0px;
@@ -28815,9 +28823,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:pb-8{
         padding-bottom: 2rem;
-    }
-    .lg\:pb-\[120px\]{
-        padding-bottom: 120px;
     }
     .lg\:pt-10{
         padding-top: 2.5rem;
@@ -28854,6 +28859,13 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-xl{
         font-size: 1.25rem;
         line-height: 1.75rem;
+    }
+    .lg\:text-base{
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
+    .lg\:leading-6{
+        line-height: 1.5rem;
     }
     .lg\:shadow-default{
         --tw-shadow: 5px 10px 30px #2B2D340D;;

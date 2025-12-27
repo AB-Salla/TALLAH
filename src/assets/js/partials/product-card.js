@@ -571,7 +571,7 @@ function renderOption(option) {
                 ${this.product.status !== "sale" ? "disabled" : ""}>
              ${
                 this.product.status == "sale"
-                  ? `<i class="text-base sicon-${
+                  ? `<i class="text-base add-icon sicon-${
                       this.product.type == "booking" ? "calendar-time" : "shopping-bag"
                     }"></i>`
                   : `<i class="text-base sicon-cart-cancel"
