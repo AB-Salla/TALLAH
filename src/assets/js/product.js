@@ -285,7 +285,7 @@ class Product extends BasePage {
    
     setTimeout(() => {
       // show modal after delay
-
+      console.log(window.collection_categories,'window.collection_categories')
       const modal = document.createElement("div");
       modal.id = "collection_sp-modal";
       modal.className = `
