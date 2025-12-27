@@ -596,24 +596,24 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                 </section>
         {% endif %}
 		 {% if theme.settings.get('show_selected_products') %}
-		<div class="side_products">
+		<div class="side_products pt-4 border-t-slate-400">
 		<div class="w-full flex flex-col justify-center items-start text-center">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="font-semibold text-base leading-6 tracking-normal">
-				{{ trans('pages.single.similar') }}
+				{{ trans('pages.single.selected') }}
 				</h1>
 			</span>
 		</div>
 		<div class="products-fixed-slider-{{position}} relative">
 			<salla-products-list
-				id="similar-products-slider-{{position}}"
+				id="selected-products-slider-{{position}}"
 				type="carousel"
 				class="product-slider"
 				source="categories"
                 source-value="[{{ product.category.id }}]"
                 limit="4"
 				display-all-url="{{ display_all_url }}"
-				slider-id="slider-with-bg-{{ position }}">
+				slider-id="slider-with-{{ position }}">
 			</salla-products-list>
 		</div>
 	</div>
