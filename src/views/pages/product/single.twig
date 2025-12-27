@@ -595,6 +595,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
                 </section>
         {% endif %}
+		 {% if theme.settings.get('show_selected_products') %}
 		<div class="side_products">
 		<div class="w-full flex flex-col justify-center items-start text-center">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
@@ -616,6 +617,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 			</salla-products-list>
 		</div>
 	</div>
+	{% endif %}
 		<div class="feature flex items-start justify-between gap-[18px] flex-col pt-3 lg:pt-8">
 					{% if product.has_metadata %}
 						<div class="flex items-center justify-start gap-2">
