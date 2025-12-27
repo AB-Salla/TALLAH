@@ -30,7 +30,7 @@
 
 						
 					</div>
-						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block mt-[-80px] sm:max-w-[480px] lg:max-w-full max-w-[90vw] w-full lg:mt-0 relative lg:px-6" type="carousel" class="product-slider" slider-config='{
+						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block mt-[-80px] sm:max-w-[480px] lg:max-w-full max-w-[90vw] w-full lg:mt-0 relative lg:px-7" type="carousel" class="product-slider" slider-config='{
 													       "slidesPerView": 2,
 													      "spaceBetween": 20,
 													       "centeredSlides": false,
