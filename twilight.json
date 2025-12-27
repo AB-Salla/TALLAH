@@ -480,6 +480,17 @@
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
             "variant": "h6"
         },
+         {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "عرض المنتجات من نفس الفئة في صفحة المنتج",
+            "description": "عند التفعيل سيتم عرض منتجات من نفس الفئة في الجذء الجانبي  لصفحة المنتج",
+            "id": "show_selected_products",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
         {
             "id": "grid_or_slider_products_page",
             "label": "تفعيل عرض صور المنتج علي شكل شبكة في صفحة المنتج",

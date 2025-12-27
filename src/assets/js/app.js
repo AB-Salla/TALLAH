@@ -458,7 +458,7 @@ class App extends AppHelpers {
             </button>
                 <salla-quantity-input
                   cart-item-id="${item.id}"
-                  max="${item.max_quantity}"
+                  max="500"
                   value="${item.quantity}"
                   name="quantity">
                 </salla-quantity-input>

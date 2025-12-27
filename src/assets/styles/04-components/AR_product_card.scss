@@ -170,27 +170,7 @@
       }
 
       // Floating button inside image
-      .card-floating-btn {
-        width: 90%;
-        margin: auto;
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        display: flex;
-        justify-content: center;
-        opacity: 0;
-        transform: translateY(20px);
-        transition: all 0.35s ease;
-        pointer-events: none;
-        @media (max-width: 768px) {
-          opacity: 1;
-          transform: translateY(1px) !important;
-          width: 100%;
-        }
-        // Styles for add product button inside floating button
-      
-      }
+
     }
       salla-add-product-button {
           salla-button {
@@ -202,13 +182,7 @@
         }
 
     // Show floating button on hover of the vertical card
-    @media (min-width: 769px) {
-      &:hover .card-floating-btn {
-        opacity: 1;
-        transform: translateY(-20px);
-        pointer-events: auto;
-      }
-    }
+   
     .s-product-card-content-sub {
       .s-product-card-sale-price {
         span {
