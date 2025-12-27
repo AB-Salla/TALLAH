@@ -901,7 +901,7 @@
           "selected": [],
           "options": [],
           "source": "categories",
-          "multichoice": false,
+          "multichoice": true,
           "searchable": true,
           "required": false,
           "conditions": [
