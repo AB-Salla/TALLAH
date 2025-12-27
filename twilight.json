@@ -2522,13 +2522,6 @@
                             "key": "custom",
                             "value": "custom"
                         }
-                    ],
-                    "conditions": [
-                        {
-                            "id": "is_moving",
-                            "operation": "=",
-                            "value": false
-                        }
                     ]
                 },
                 {
@@ -2591,115 +2584,10 @@
                     "value": "#18181B",
                     "required": false
                 },
-                {
-                    "id": "subtext",
-                    "type": "string",
-                    "format": "text",
-                    "label": "العنوان الفرعي",
-                    "description": null,
-                    "labelHTML": null,
-                    "placeholder": "Placeholder text ..",
-                    "icon": "sicon-format-text-alt",
-                    "value": "Every piece in our collection is carefully selected to bring ease and sophistication into your everyday wardrobe. Effortless layers, versatile textures, and timeless silhouettes come together to create looks that feel as natural as they are refined.",
-                    "multilanguage": true,
-                    "required": false,
-                    "minLength": "2",
-                    "maxLength": "300",
-                    "conditions": [
-                        {
-                            "id": "component_type",
-                            "operation": "=",
-                            "value": "text"
-                        }
-                    ]
-                },
-                {
-                    "id": "subtext_color",
-                    "type": "string",
-                    "format": "color",
-                    "inputType": "color",
-                    "label": "لون النص الفرعي",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-format-fill",
-                    "value": "#FAFAFA",
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "component_type",
-                            "operation": "=",
-                            "value": "text"
-                        }
-                    ]
-                },
-                {
-                    "id": "component_type",
-                    "type": "items",
-                    "format": "dropdown-list",
-                    "label": "طريقة عرض المكون",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-list",
-                    "selected": [
-                        {
-                            "label": "صورة مع نص",
-                            "value": "text",
-                            "key": "f4adec-6e4c-654b-b978-b2807935ced9"
-                        }
-                    ],
-                    "options": [
-                        {
-                            "label": "صورة مع منتجات",
-                            "value": "products",
-                            "key": "e9c8ef-c5c6-234e-935-3bce269afde4"
-                        },
-                        {
-                            "label": "صورة مع نص",
-                            "value": "text",
-                            "key": "f4adec-6e4c-654b-b978-b2807935ced9"
-                        }
-                    ],
-                    "source": "Manual",
-                    "required": true
-                },
-                {
-                    "id": "enable_slider",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل السلايدر",
-                    "description": "فعِّل هذا الخيار لعرض الأقسام بشكل سلايدر",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "component_type",
-                            "operation": "=",
-                            "value": "products"
-                        }
-                    ]
-                },
-                {
-                    "id": "enable_autoplay",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "تفعيل التمرير التلقائي",
-                    "description": "فعّل هذا الخيار لعرض المنتجات تلقائيًا داخل السلايدر.",
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": false,
-                    "required": false,
-                    "conditions": [
-                        {
-                            "id": "enable_slider",
-                            "operation": "=",
-                            "value": true
-                        }
-                    ]
-                },
+
+                
+                
+               
                 {
                     "id": "source_type",
                     "icon": "sicon-t-shirt",
@@ -2731,14 +2619,8 @@
                         }
                     ],
                     "required": true,
-                    "multichoice": false,
-                    "conditions": [
-                        {
-                            "id": "component_type",
-                            "operation": "=",
-                            "value": "products"
-                        }
-                    ]
+                    "multichoice": false
+                    
                 },
                 {
                     "id": "categories",
@@ -2757,12 +2639,8 @@
                             "id": "source_type",
                             "operation": "=",
                             "value": "categories"
-                        },
-                        {
-                            "id": "component_type",
-                            "operation": "=",
-                            "value": "products"
                         }
+                        
                     ],
                     "value": []
                 },
@@ -2783,12 +2661,8 @@
                             "id": "source_type",
                             "operation": "=",
                             "value": "selected"
-                        },
-                        {
-                            "id": "component_type",
-                            "operation": "=",
-                            "value": "products"
                         }
+                       
                     ],
                     "value": []
                 }
