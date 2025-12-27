@@ -32,21 +32,18 @@
 {% if component.transparent_button %}
 .AR-hero-section-{{position}}  .button{
 	background-color: transparent;
-        color:{{component.button_text_color}};
-            border-color:{{component.button_text_color}};
-
+    color:{{component.button_text_color}};
+    border-color:{{component.button_text_color}};
 
 }
 .AR-hero-section-{{position}}  .button:hover{
 	background-color:{{component.button_text_color}};
     color:{{component.button_bg}};
-
 }
 
-  {% else %}
+{% else %}
 
-  
-    .AR-hero-section-{{position}}  .button{
+.AR-hero-section-{{position}}  .button{
 	color:{{component.button_text_color}};
 	background-color:{{component.button_bg}};
     border-color:{{component.button_text_color}};
@@ -56,17 +53,13 @@
 	color:{{component.button_bg}};
     border-color:{{component.button_bg}};
 }
-  {% endif %}
-
-
+{% endif %}
 .AR-hero-section-{{position}} .text-wrapper h1{
 	color:{{component.blocktitle_color}};
 }
 .AR-hero-section-{{position}} .text-wrapper p{
 	color:{{component.subtext_color}};
 }
-
-
 /* Mobile */
 .AR-hero-section-{{position}} .banner {
     background: url({{component.mobile_bg}}) center center / cover no-repeat;
@@ -77,5 +70,4 @@
         background: url({{component.desktop_bg}}) center center / cover no-repeat;
     }
 }
-
 </style>

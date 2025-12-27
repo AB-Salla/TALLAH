@@ -1495,18 +1495,6 @@ select{
 .w-full{
     width: 100%;
 }
-.w-\[9\]{
-    width: 9;
-}
-.w-\[92\%\]{
-    width: 92%;
-}
-.w-\[\%\]{
-    width: %;
-}
-.w-\[85\%\]{
-    width: 85%;
-}
 .min-w-0{
     min-width: 0px;
 }
@@ -1604,26 +1592,6 @@ select{
 .translate-y-4{
     --tw-translate-y: 1rem;
     transform: translate(var(--tw-translate-x), 1rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-x-\[2\%\]{
-    --tw-translate-x: 2%;
-    transform: translate(2%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-x-\[7\.5\%\]{
-    --tw-translate-x: 7.5%;
-    transform: translate(7.5%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-x-\[7\]{
-    --tw-translate-x: 7;
-    transform: translate(7, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-x-\[7\%\]{
-    --tw-translate-x: 7%;
-    transform: translate(7%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .rotate-45{
@@ -2304,6 +2272,10 @@ select{
 .py-8{
     padding-top: 2rem;
     padding-bottom: 2rem;
+}
+.py-\[20px\]{
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 .\!pb-0{
     padding-bottom: 0px !important;
@@ -21340,6 +21312,14 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
 .radio-images input[type=radio]:disabled + label {
   opacity: 0.45;
 }
+.s-modal-wrapper .s-modal-spacer .s-modal-padding{
+    padding: 1rem !important;
+}
+@media (min-width: 1024px){
+    .s-modal-wrapper .s-modal-spacer .s-modal-padding{
+        padding: 1.5rem !important;
+    }
+}
 /* Top Nav */
 .top-navbar{
     display: flex;
@@ -28647,6 +28627,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         margin-left: 0px;
         margin-right: 0px;
     }
+    .lg\:mx-28{
+        margin-left: 7rem;
+        margin-right: 7rem;
+    }
     .lg\:-mb-2{
         margin-bottom: -0.5rem;
     }
@@ -28716,9 +28700,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-1\/2{
         width: 50%;
     }
-    .lg\:w-1\/3{
-        width: 33.333333%;
-    }
     .lg\:w-1\/4{
         width: 25%;
     }
@@ -28743,20 +28724,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-72{
         width: 18rem;
     }
+    .lg\:w-\[38\%\]{
+        width: 38%;
+    }
     .lg\:w-\[419px\]{
         width: 419px;
     }
     .lg\:w-\[calc\(100\%-419px\)\]{
         width: calc(100% - 419px);
-    }
-    .lg\:w-\[27\.5\%\]{
-        width: 27.5%;
-    }
-    .lg\:w-\[37\.5\%\]{
-        width: 37.5%;
-    }
-    .lg\:w-\[38\%\]{
-        width: 38%;
     }
     .lg\:max-w-full{
         max-width: 100%;
@@ -28782,6 +28757,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:flex-row{
         flex-direction: row;
     }
+    .lg\:flex-col{
+        flex-direction: column;
+    }
     .lg\:items-start{
         align-items: flex-start;
     }
@@ -28793,9 +28771,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:gap-12{
         gap: 3rem;
-    }
-    .lg\:gap-28{
-        gap: 7rem;
     }
     .lg\:gap-4{
         gap: 1rem;
@@ -28832,15 +28807,19 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         background-color: rgba(255, 255, 255, 1);
         background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
     }
+    .lg\:p-5{
+        padding: 1.25rem;
+    }
     .lg\:p-8{
         padding: 2rem;
-    }
-    .lg\:p-10{
-        padding: 2.5rem;
     }
     .lg\:px-0{
         padding-left: 0px;
         padding-right: 0px;
+    }
+    .lg\:px-10{
+        padding-left: 2.5rem;
+        padding-right: 2.5rem;
     }
     .lg\:px-14{
         padding-left: 3.5rem;
@@ -28853,14 +28832,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:px-4{
         padding-left: 1rem;
         padding-right: 1rem;
-    }
-    .lg\:px-10{
-        padding-left: 2.5rem;
-        padding-right: 2.5rem;
-    }
-    .lg\:px-28{
-        padding-left: 7rem;
-        padding-right: 7rem;
     }
     .lg\:px-6{
         padding-left: 1.5rem;
@@ -28906,6 +28877,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-\[28px\]{
         font-size: 28px;
     }
+    .lg\:text-base{
+        font-size: 1rem;
+        line-height: 1.5rem;
+    }
     .lg\:text-lg{
         font-size: 1.125rem;
         line-height: 1.75rem;
@@ -28916,10 +28891,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-xl{
         font-size: 1.25rem;
         line-height: 1.75rem;
-    }
-    .lg\:text-base{
-        font-size: 1rem;
-        line-height: 1.5rem;
     }
     .lg\:leading-6{
         line-height: 1.5rem;
@@ -28960,6 +28931,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .ltr\:right-5:where([dir="ltr"], [dir="ltr"] *){
     right: 1.25rem;
+}
+.ltr\:order-2:where([dir="ltr"], [dir="ltr"] *){
+    order: 2;
 }
 .ltr\:ml-1:where([dir="ltr"], [dir="ltr"] *){
     margin-left: 0.25rem;
