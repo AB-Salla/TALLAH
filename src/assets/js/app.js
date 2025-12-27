@@ -399,6 +399,8 @@ class App extends AppHelpers {
           count.textContent = `(${cart.count} منتج)`;
           itemsWrap.innerHTML = itemsWithDetails
             .map((item) => {
+              console.log(item);
+              
               const hiddenOptions = buildHiddenOptionsInputs(item.details);
 
               const item_url =
