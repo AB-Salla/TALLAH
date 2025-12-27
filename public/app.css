@@ -1982,6 +1982,11 @@ select{
     border-color: rgba(229, 231, 235, 1);
     border-color: rgba(229, 231, 235, var(--tw-border-opacity, 1));
 }
+.border-gray-300{
+    --tw-border-opacity: 1;
+    border-color: rgba(209, 213, 219, 1);
+    border-color: rgba(209, 213, 219, var(--tw-border-opacity, 1));
+}
 .border-green-300{
     --tw-border-opacity: 1;
     border-color: rgba(134, 239, 172, 1);
@@ -1990,11 +1995,6 @@ select{
 .border-primary{
     border-color: #414042;
     border-color: var(--color-primary);
-}
-.border-gray-300{
-    --tw-border-opacity: 1;
-    border-color: rgba(209, 213, 219, 1);
-    border-color: rgba(209, 213, 219, var(--tw-border-opacity, 1));
 }
 .bg-\[\#C5992C\]{
     --tw-bg-opacity: 1;
