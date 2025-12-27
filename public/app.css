@@ -1510,6 +1510,9 @@ select{
 .max-w-3xl{
     max-width: 48rem;
 }
+.max-w-\[194px\]{
+    max-width: 194px;
+}
 .max-w-\[500px\]{
     max-width: 500px;
 }
@@ -1525,12 +1528,6 @@ select{
 }
 .max-w-xs{
     max-width: 20rem;
-}
-.max-w-\[\]{
-    max-width: ;
-}
-.max-w-\[194px\]{
-    max-width: 194px;
 }
 .flex-1{
     flex: 1 1 0%;
