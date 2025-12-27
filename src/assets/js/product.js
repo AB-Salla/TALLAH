@@ -309,9 +309,12 @@ class Product extends BasePage {
           <p class="text-[#71717B] font-medium text-sm leading-5 tracking-wide text-center align-middle">${collection_sp_sub_title}</p>
           </div>
           <p class="text-[#52525C] font-medium text-sm leading-5 tracking-wide text-center align-middle mb-4">${collection_sp_promo_title}</p>
- <div class="w-[70px] h-[70px] mx-auto">
-        <img src="${collectionn_footer_image}" class="w-full h-auto"/>
-      </div>
+          <div class="min-w-[194px] mx-auto mb-6">
+          <div class="w-[32px] h-[32px] mx-auto mb-2">
+          <img src="${collectionn_footer_image}" class="w-full h-auto"/>
+          </div>
+          <span class="font-normal text-sm leading-5 tracking-wide">Hoodies Collection</span>
+          </div>
        
       </div>
     `;
