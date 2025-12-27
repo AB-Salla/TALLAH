@@ -294,13 +294,12 @@ collections_offer() {
 
   console.log("Product is in allowed category ✅");
 
-  setTimeout(() => {
-    // show modal after delay
-    console.log(
-      "window.collection_categories",
-      window.collection_categories,
-      window.product_category_id
-    );
+  let modalShown = false; // علشان نعرض المودال مرة واحدة بس
+
+  const showModal = () => {
+    if (modalShown) return;
+    modalShown = true;
+
     const modal = document.createElement("div");
     modal.id = "collection_sp-modal";
     modal.className = `
@@ -349,7 +348,6 @@ collections_offer() {
     });
 
     const closeModal = () => {
-      // Save checkbox state to localStorage
       const checkbox = document.getElementById("dont-remind-checkbox");
       if (checkbox.checked) {
         localStorage.setItem("collection_sp_modal_dont_remind", "true");
@@ -371,8 +369,16 @@ collections_offer() {
     modal.addEventListener("click", (e) => {
       if (e.target === modal) closeModal();
     });
-  }, 2500);
+  };
+
+  // حدث Scroll
+  window.addEventListener("scroll", () => {
+    if (window.scrollY >= 600) {
+      showModal();
+    }
+  });
 }
+
 
 
   initProductOptionValidations() {
