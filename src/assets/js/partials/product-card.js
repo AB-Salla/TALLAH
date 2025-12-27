@@ -574,7 +574,7 @@ function renderOption(option) {
                   ? `<i class="text-base sicon-${
                       this.product.type == "booking" ? "calendar-time" : "shopping-bag"
                     }"></i>`
-                  : `<i class="text-base sicon-cart-cancel"
+                  : `<i class="text-base sicon-cart-cancel add-icon"
                     }"></i>`
               }
               <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
