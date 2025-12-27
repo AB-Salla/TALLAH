@@ -18,61 +18,125 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
-    <div class="container px-2.5 ms:px-5 mb-10">
-        {# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
-        <nav class="breadcrumbs w-full py-5">
-            <salla-breadcrumb></salla-breadcrumb>
-        </nav>
-        <div class="flex items-start flex-col md:flex-row">
-            {% if filters %}
-                <button class="btn--close-sm close-filters sicon-cancel hidden"></button>
-                <salla-filters class="md:w-72 lg:sticky lg:top-20 flex-none" id="filters-menu"></salla-filters>
-            {% endif %}
+{% set index_promo_text = theme.settings.get('index_promo_text') %}
+{% set below_filter_pic = theme.settings.get('below_filter_pic') %}
+{% set below_filter_pic_url = theme.settings.get('below_filter_pic_url') %}
 
-            <div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
-                <div class="mb-4 sm:mb-6 flex justify-between items-center">
-                    <h1 class="font-bold text-xl rtl:pl-3 ltr:pr-3" id="page-main-title">{{ page.title|raw }}</h1>
-                    <div class="flex items-center space-x-2 rtl:space-x-reverse">
+
+	<div class="AR-index">
+	
+	<div class="container px-2.5 sm:px-5">
+		<nav class="breadcrumbs w-full pt-5 center-between text-2xl !block">
+			<salla-breadcrumb></salla-breadcrumb>
+		</nav>
+	</div>
+
+	
+		<div
+			class="container px-2.5 sm:px-5 mb-10 mt-4 md:mt-10">
+			{# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
+        
+			<div class="flex items-start flex-col md:flex-row">
+				{% if filters %}
+					<button class="btn--close-sm close-filters sicon-cancel lg:hidden"></button>
+					<div class="md:w-72 lg:sticky lg:top-20 flex-none hidden lg:block">
+						<button class="hide-filters mb-4  text-center w-3/4 text-primary   p-1 lg:flex  items-center justify-center gap-2">
+                        							<i class="sicon-tune"></i>
+
+							<span class="button-text">{{ trans('pages.index.filters') }}</span>
+						</button>
+						<salla-filters 
+							id="filters-menu" 
+							class="transition-all duration-300 ease-in-out overflow-hidden"
+							style="max-height: 1000px;">
+						</salla-filters>
+					</div>
+				{% endif %}
+
+				<div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
+					<div class="mb-4 sm:mb-6 flex justify-between items-center">
+						<h1 class="primary-bold md:text-xl text-sm lg:text-center w-full lg:block hidden" id="page-main-title">{{ page.title|raw }}</h1>
+          
+						<div class="flex items-center space-x-2 rtl:space-x-reverse">
+	
+							{% if sort_options|length %}
+									<select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10 min-w-[200px] ">
+										{% for sort in sort_options %}
+											<option value="{{ sort.id }}" {{ sort.is_selected?'selected':'' }}>{{ sort.name }}</option>
+										{% endfor %}
+									</select>
+							{% endif %}
+						</div>
                         {% if filters %}
-                            <a href="#filters-menu"
-                               class="filters-trigger bg-border-color text-primary lg:hidden mt-2">
-                                <i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
-                            </a>
-                        {% endif %}
-                        {% if sort_options|length %}
-                            <div class="flex items-center">
-                                <label class="hidden sm:block rtl:ml-3 ltr:mr-3 whitespace-nowrap"
-                                       for="product-filter">{{ trans('pages.categories.sorting') }}</label>
-                                <select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10">
-                                    {% for sort in sort_options %}
-                                        <option value="{{ sort.id }}" {{ sort.is_selected?'selected':'' }}>{{ sort.name }}</option>
-                                    {% endfor %}
-                                </select>
-                            </div>
-                        {% endif %}
+								<a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2 ">
+									<i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
+								</a>
+						{% endif %}
+  
+
+					</div>
+                    <div class="flex lg:hidden items-center justify-between mb-4">
+                    <div class="flex-1 justify-start flex items-center gap-1.5 text-2xl">
+                     <button class=" two-columns"><i class="sicon-pause"></i></button>
+                      <button class="rotate-90 one-column"><i class="sicon-pause"></i></button>
+                      </div>
+                        <h1 class="primary-bold md:text-xl text-sm lg:text-center flex-1 justify-end text-end" id="page-main-title">{{ page.title|raw }}</h1>
+                       
                     </div>
 
-                </div>
+					{% hook 'product:index.items.start' %}
+					<div class="flex min-h-screen">
+						<salla-products-list class="flex-1 min-w-0" source="{{ page.slug }}" source-value="{{ page.id }}" {{ filters ?'filters-Results':'' }}></salla-products-list>
+					</div>
+					{% hook 'product:index.items.end' %}
+				</div>
+			</div>
+		</div>
+	</div>
 
-                {% hook 'product:index.items.start' %}
-                <div class="flex min-h-screen">
-                    <salla-products-list class="flex-1 min-w-0 overflow-auto "
-                        source="{{ page.slug }}"
-                        source-value="{{ page.id }}"
-                        {{ filters ?'filters-Results':'' }}>
-					          </salla-products-list>
-                </div>
-                {% hook 'product:index.items.end' %}
-            </div>
-        </div>
-    </div>
+	<section class="container">
+	{% if store.settings.category.testimonial_enabled %}
+		{% component 'home.testimonials' %}
+	{% endif %}
+	</section>
+    <script>
+// Add CSS for active states
+const style = document.createElement('style');
+style.textContent = `
+    .one-column.active, .two-columns.active {
+        opacity: 0.6;
+    }
+`;
+document.head.appendChild(style);
+
+// One column button
+document.querySelector('.one-column')?.addEventListener('click', function() {
+    const target = document.querySelector('.s-products-list-filters-results');
+    if (target) {
+        target.style.gridTemplateColumns = 'repeat(1, minmax(0, 1fr))';
+        
+        // Set active state
+        this.classList.add('active');
+        document.querySelector('.two-columns')?.classList.remove('active');
+    }
+});
+// Two columns button
+document.querySelector('.two-columns')?.addEventListener('click', function() {
+    const target = document.querySelector('.s-products-list-filters-results');
+    if (target) {
+            target.style.gridTemplateColumns = 'repeat(2, minmax(0, 1fr))';
+            this.classList.add('active');
+            document.querySelector('.one-column')?.classList.remove('active');  
+    }
+});
+window.addEventListener('load', function() {
+    document.querySelector('.one-column')?.classList.add('active');
+});
+</script>
 
 
-    {% if store.settings.category.testimonial_enabled %}
-        {% component 'home.testimonials' %}
-    {% endif %}
+
 {% endblock %}
-
 {% block scripts %}
-    <script defer src="{{ 'product.js' | asset }}"></script>
+	<script defer src="{{ 'product.js' | asset }}"></script>
 {% endblock %}

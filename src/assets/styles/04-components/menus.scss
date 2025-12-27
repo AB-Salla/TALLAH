@@ -288,7 +288,7 @@ body .side-menu .close-mobile-menu{
 }
 }
 .mm-ocd--open .mm-ocd__backdrop::after{
-  @apply absolute h-10 w-10 bg-red-500 flex items-center justify-center text-white text-2xl cursor-pointer top-0 md:translate-x-full;
+  @apply absolute h-10 w-10  flex items-center justify-center text-primary text-2xl cursor-pointer top-0 rtl:translate-x-full ltr:-translate-x-full;
     content:'\ea47';
     font-family:"sallaicons" !important;
 }

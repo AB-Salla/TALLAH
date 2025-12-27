@@ -41,13 +41,16 @@
       "inspire": "Style Inspiration, Styled By You",
       "similar_description": "استكشف أفضل المنتجات الرقمية المختارة بعناية، واشترِ بسهولة واستمتع بتجربة فورية وآمنة",
       "no": "كن اول من يقيم المنتج"
+    },
+    "index": {
+      "filters": "فلترة"
     }
   },
   "common": {
     "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
     "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة "
   },
-   "footer": {
+  "footer": {
     "newsletter_title": "سجّلي بريدك الإلكتروني واحصلي على آخر الأخبار والعروض الخاصة ",
     "newsletter_input_placeholder": "أدخل بريدك الالكتروني",
     "newsletter_button": "اشتراك"
