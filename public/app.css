@@ -2105,6 +2105,25 @@ select{
 .bg-white\/50{
     background-color: rgba(255, 255, 255, 0.5);
 }
+.bg-\[\]{
+    background-color: ;
+}
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c whi\)\]{
+    background-color: color-mix(in srgb,#414042 5%,whi);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c whi\)\]{
+        background-color: color-mix(in srgb,var(--color-primary) 5%,whi);
+    }
+}
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
+    background-color: rgb(245, 245, 246);
+}
+@supports (color: color-mix(in lch, red, blue)) and (top: var(--f)){
+.bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c white\)\]{
+        background-color: color-mix(in srgb,var(--color-primary) 5%,white);
+    }
+}
 .bg-gradient-to-b{
     background-image: linear-gradient(to bottom, var(--tw-gradient-stops));
 }
@@ -2303,9 +2322,6 @@ select{
 }
 .pb-8{
     padding-bottom: 2rem;
-}
-.pb-\[60px\]{
-    padding-bottom: 60px;
 }
 .pb-\[7px\]{
     padding-bottom: 7px;
@@ -28812,9 +28828,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:pb-8{
         padding-bottom: 2rem;
-    }
-    .lg\:pb-\[120px\]{
-        padding-bottom: 120px;
     }
     .lg\:pt-10{
         padding-top: 2.5rem;
