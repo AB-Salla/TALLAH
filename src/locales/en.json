@@ -42,6 +42,9 @@
       "inspire": "Style Inspiration, Styled By You",
       "similar_description": "Explore the best carefully selected digital products, buy easily, and enjoy an instant and secure experience",
       "no": "Be the first to review the product"
+    },
+    "index": {
+      "filters": "Filter"
     }
   },
   "common": {
@@ -49,7 +52,7 @@
     "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount",
     "wishlist_empty": "Your wishlist is empty"
   },
-   "footer": {
+  "footer": {
     "newsletter_title": "Register your email address and receive the latest news and special offers.",
     "newsletter_input_placeholder": "Enter your email",
     "newsletter_button": "Subscribe"
