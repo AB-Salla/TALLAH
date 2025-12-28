@@ -25,19 +25,73 @@ Global Variables (from Theme)
   window.languageCode = '{{ language.iso_code }}';
 </script>
 
-<header class="store-header {{ header_bg }} w-full fixed top-0 left-0 z-50">
 
+
+<header class="store-header {{ header_bg }} {{page.slug == 'index' ? 'w-full fixed top-0 left-0 z-50' : ''}} ">
+
+  
 
   {# =====================================
   1) TOP NOTIFICATION BAR (Clickable)
   ====================================== #}
 
-  {% if link_url %}
-  <a href="{{ link_url }}" class="block no-underline" style="text-decoration: none;">
+
+
+
+
+  {# =====================================
+  2) HEADER CORE (Hover styles supported)
+  ====================================== #}
+  {% if page.slug == 'index' %}
+  {# Homepage header variables #}
+  {% if header_hover %}
+  {% set initial_bg = 'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)' %}
+  {% set initial_text = 'white' %}
+  {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
+  {% else %}
+  {% set initial_bg = header_bg_color %}
+  {% set initial_text = header_text_color %}
+  {% set hover_vars = '' %}
+  {% endif %}
+  {% else %}
+  {# Other pages header variables #}
+  {% set initial_bg = header_bg_color %}
+  {% set initial_text = header_text_color %}
+  {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
+  {% endif %}
+
+
+  {# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
+  {% if header_hover %}
+<style>
+
+
+  .site-header.header-scrolled {
+    background-color: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
+
+  .site-header.active-overlay {
+    background-color: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
+    .group:hover .hover-box {
+    background-color: var(--hover-bg) !important;
+    color: var(--hover-text) !important;
+  }
+</style>
+
+  {% endif %}
+
+
+  {# 'group' = parent hover trigger for .hover-box #}
+  	<div id="mainnav" class="main-nav-container shadow-default relative !h-fit !min-h-fit">
+    {% if link_url %}
+  <a href="{{ link_url }}" class="block no-underline top-lace" style="text-decoration: none;">
     {% endif %}
 
     <div
-      class="flex w-full h-[38px] p-[7px_21px] justify-center items-center gap-[4px] lg:flex lg:px-[30px] lg:py-[7px] lg:justify-between lg:items-center lg:self-stretch {{ is_rtl ? 'flex-row-reverse' : 'flex-row' }}"
+      class="top-lace flex w-full h-[38px] p-[7px_21px] justify-center items-center gap-[4px] lg:flex lg:px-[30px] lg:py-[7px] lg:justify-between lg:items-center lg:self-stretch {{ is_rtl ? 'flex-row-reverse' : 'flex-row' }}"
       style="background-color: {{ topnav_bg }}; color: {{ topnav_text_color }};">
       <div class="flex justify-center items-center gap-1 flex-[1_0_0]">
 
@@ -115,25 +169,8 @@ Global Variables (from Theme)
             {% endif %}
           </span>
 
-
-
-
         </div>
 
-
-
-
-
-        {# Language & Currency Component #}
-        {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-        <button type="button" onclick="salla.event.dispatch('localization::open')"
-          class="hidden lg:flex items-center gap-[12px] absolute {{ is_rtl ? 'left-[30px]' : 'right-[30px]' }} top-[9px]"
-          style="color: {{ topnav_text_color }};">
-          <span class="flag iti__flag iti__{{ user.language.country_code }} w-[21px] h-[15px]"></span>
-          <span class="font-normal text-[12px] leading-[16px] tracking-[0.2px]">{{ currency.symbol }}</span>
-        </button>
-        <salla-localization-modal></salla-localization-modal>
-        {% endif %}
 
       </div>
     </div>
@@ -141,63 +178,47 @@ Global Variables (from Theme)
     {% if link_url %}
   </a>
   {% endif %}
+    	<div class="top-navbar {{page.slug != 'index' ? 'not-home' : ''}}">
+		<div class="flex justify-between w-full">
+			{% if important_links %}
+				<salla-menu source="footer" topnav class="lg:!flex !hidden flex-1 justify-start text-background"></salla-menu>
+			{% endif %}
+			{% if store.scope %}
+				<button class="btn--rounded-gray" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
+					<i class="sicon-location rtl:ml-1 ltr:mr-1"></i>
+					{{ store.scope.name }}
+				</button>
+			{% endif %}
+			<salla-contacts is-header class="lg:flex hidden flex-1 {{important_links ? 'lg:justify-center justify-start' : 'justify-start'}} gap-2 text-background"></salla-contacts>
+			{% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+				<div class="flex items-center localize  flex-1 lg:justify-end justify-center">
+					<button type="button" onclick="salla.event.dispatch('localization::open')" class="flex items-center justify-start gap-1 basis-0 !p-0">
+
+						<i class="sicon-world text-background"></i>
+						<span class="sm:mx-1.5 mx-1 !text-lg text-background">{{ user.language.name }}</span>
+						<span class="sm:mx-1.5 mx-1 !text-base text-background">-</span>
+						<span class="!text-lg text-background font-[inherit]">{{ currency.symbol }}</span>
+
+					</button>
+					<salla-localization-modal></salla-localization-modal>
+				</div>
+			{% endif %}
+		</div>
+	  </div>
 
 
 
-
-  {# =====================================
-  2) HEADER CORE (Hover styles supported)
-  ====================================== #}
-  {% if page.slug == 'index' %}
-  {# Homepage header variables #}
-  {% if header_hover %}
-  {% set initial_bg = 'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)' %}
-  {% set initial_text = 'white' %}
-  {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
-  {% else %}
-  {% set initial_bg = header_bg_color %}
-  {% set initial_text = header_text_color %}
-  {% set hover_vars = '' %}
-  {% endif %}
-  {% else %}
-  {# Other pages header variables #}
-  {% set initial_bg = header_bg_color %}
-  {% set initial_text = header_text_color %}
-  {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
-  {% endif %}
+  <div class="inner group w-full" style="{{ hover_vars }}">
+          {# Top Nav #}
 
 
-  {# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
-  {% if header_hover %}
-<style>
-  .group:hover .hover-box {
-    background-color: var(--hover-bg) !important;
-    color: var(--hover-text) !important;
-  }
-
-  .site-header.header-scrolled {
-    background-color: {{ header_bg_color }} !important;
-    color: {{ header_text_color }} !important;
-  }
-
-  .site-header.active-overlay {
-    background-color: {{ header_bg_color }} !important;
-    color: {{ header_text_color }} !important;
-  }
-</style>
-
-  {% endif %}
-
-
-  {# 'group' = parent hover trigger for .hover-box #}
-  <div class="group w-full" style="{{ hover_vars }}">
     {# header for pc view #}
     <div class="site-header hover-box w-full h-[60px] px-16  flex flex-row-reverse justify-between items-center
             hidden lg:flex" style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
 
 
       {# ICONS SECTION #}
-      <div class="flex justify-end items-center gap-2">
+      <div class="flex flex-1 justify-end items-center gap-2">
 
 
 
@@ -269,7 +290,7 @@ Global Variables (from Theme)
       </div>
 
       {# LOGO SECTION #}
-      <div class="flex flex-col items-start py-5 px-3 gap-[12px]" style="color: {{ initial_text }};">
+      <div class="flex flex-col py-5 px-3 gap-[12px] flex-1 justify-center items-center" style="color: {{ initial_text }};">
         <a class="navbar-brand" href="{{ store.url }}">
           <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}"
             alt="{{ store.name }} logo">
@@ -284,7 +305,7 @@ Global Variables (from Theme)
 
 
       {# Mega menu wrapper #}
-      <div id="custom-mega-menu-wrapper" class="hidden lg:relative lg:h-full lg:flex lg:items-center">
+      <div id="custom-mega-menu-wrapper" class="hidden lg:relative lg:h-full lg:flex lg:items-center flex-1 justify-start">
         <div id="custom-mega-menu" class="relative h-full">
           <!-- Tabs -->
           <ul id="menu-tabs" class="flex gap-6 h-full items-center">
@@ -301,7 +322,7 @@ Global Variables (from Theme)
 
     {# header for mobile view #}
     <div class="site-header-mobile w-full h-[56px] p-x-[16px] 
-  flex flex-row-reverse justify-between items-center shrink-0 lg:hidden"
+      flex flex-row-reverse justify-between items-center shrink-0 lg:hidden"
       style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
 
       {# ICONS SECTION #}
@@ -411,7 +432,8 @@ Global Variables (from Theme)
         {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
         <button type="button" onclick="salla.event.dispatch('localization::open')"
           class="flex p-3 z-50 relative  items-center justify-center">
-          <span class="flag iti__flag iti__{{ user.language.country_code }} w-[20px] h-[15px] z-50 "></span>
+          						<i class="sicon-world"></i>
+  
         </button>
         {% endif %}
 
@@ -437,6 +459,7 @@ Global Variables (from Theme)
       </div>
 
     </div>
+  </div>
   </div>
 
 
