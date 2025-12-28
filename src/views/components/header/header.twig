@@ -1,295 +1,675 @@
-{#
-| Variable         | Type    | Description                     |
-|------------------|---------|---------------------------------|
-| cart             | object  |                                 |
-| cart.items_count | int     |                                 |
-| cart.total       | string  | Formatted total ex: "١٠٠ ر.س"   |
-#}
-{% set important_links = theme.settings.get('important_links') %}
-{% set show_total = theme.settings.get('show_total') %}
-{% set side_menu = theme.settings.get('enable_side_menu') %}
-{% set side_layout = theme.settings.get('side_layout') %}
-{% set image = theme.settings.get('image') %}
+{# ------------------------------
+Global Variables (from Theme)
+------------------------------- #}
+{% set topnav_bg = theme.settings.get('header-topnav-background') ?? 'var(--600, #000)' %}
+{% set topnav_text_color = theme.settings.get('header-topnav-text-color') ?? '#fff' %}
+{% set topnav_text = theme.settings.get('header-topnav-text') ?? 'Get access on launches and offers.' %}
+{% set topnav_special_text = theme.settings.get('header-topnav-special-text') ?? 'Sign Up For Texts' %}
+{% set topnav_special_text_color = theme.settings.get('header-topnav-special-text-color') ?? '#666666' %}
+{% set link_url = theme.settings.get('header-topnav-link-url') %}
+{% set is_rtl = language.iso_code == 'ar' %}
+{% set countdown_target = theme.settings.get('header-topnav-count-down') %}
+{% set countdown_bg = theme.settings.get('count-down-background') ?? '#3f3f46' %}
+{% set countdown_text = theme.settings.get('count-down-text-color') ?? '#ffffff' %}
+{% set header_hover = theme.settings.get('header-hover') %}
+{% set header_bg_color = theme.settings.get('header-background-color') ?? '#ffffff' %}
+{% set header_text_color = theme.settings.get('header-text-color') ?? '#000000' %}
+{% set advanced_menu = theme.settings.get('advanced-menu') %}
 
-<header
-	class="store-header 
- AR-header {{page.slug == "index" ? 'absolute w-full h-fit z-20 bg-gradient-to-b from-black/70 to-transparent' : ''}} {{page.slug}}">
+{# Expose a couple vars to JS context #}
+<script>
+  window.isAdvancedMenuEnabled = {{ advanced_menu ? 'true' : 'false' }};
+  window.header_bg_color = '{{ header_bg_color }}';
+  window.header_text_color = '{{ header_text_color}}';
+  window.isHomePage = "{{ page.slug|default('') }}" === "index";
+  window.languageCode = '{{ language.iso_code }}';
+</script>
 
-	{# Top Nav #}
-	<div class="top-navbar bg-transparent">
-		<div class="container flex justify-between">
-			{% if important_links %}
-				<salla-menu source="footer" topnav class="lg:!flex !hidden flex-1 justify-start text-background"></salla-menu>
-			{% endif %}
-			{% if store.scope %}
-				<button class="btn--rounded-gray" onclick="salla.event.dispatch('scopes::open', {'mode': 'default'})">
-					<i class="sicon-location rtl:ml-1 ltr:mr-1"></i>
-					{{ store.scope.name }}
-				</button>
-			{% endif %}
-			<salla-contacts is-header class="lg:flex hidden flex-1 {{important_links ? 'lg:justify-center justify-start' : 'justify-start'}} gap-2 text-background"></salla-contacts>
-			{% if store.settings.is_multilingual or store.settings.currencies_enabled %}
-				<div class="flex items-center localize  flex-1 lg:justify-end justify-center">
-					<button type="button" onclick="salla.event.dispatch('localization::open')" class="btn--rounded-gray basis-0 !p-0">
-
-						<i class="sicon-world text-background"></i>
-						<span class="sm:mx-1.5 mx-1 !text-lg text-background">{{ user.language.name }}</span>
-						<span class="sm:mx-1.5 mx-1 !text-base text-background">-</span>
-						<span class="!text-lg text-background font-[inherit]">{{ currency.symbol }}</span>
-
-					</button>
-					<salla-localization-modal></salla-localization-modal>
-				</div>
-			{% endif %}
-		</div>
-	</div>
-
-	{# Main Nav #}
-	<div id="mainnav" class="main-nav-container shadow-default relative !h-fit">
-		<div class="inner bg-transparent text-background py-4">
-			<div class="container">
+<header class="store-header {{ header_bg }} w-full fixed top-0 left-0 z-50">
 
 
-				<div class="flex rtl:flex-row ltr:flex-row-reverse relative h-auto items-center gap-4 lg:gap-6 justify-between">
+  {# =====================================
+  1) TOP NOTIFICATION BAR (Clickable)
+  ====================================== #}
 
-					<div class="flex-1 ltr:justify-start rtl:justify-end items-center ">
-						      {# Mega menu wrapper #}
-							<div id="custom-mega-menu-wrapper" class="hidden lg:relative lg:h-full lg:flex lg:items-center">
-								<div id="custom-mega-menu" class="relative h-full">
-								<!-- Tabs -->
-								<ul id="menu-tabs" class="flex gap-6 h-full items-center">
+  {% if link_url %}
+  <a href="{{ link_url }}" class="block no-underline" style="text-decoration: none;">
+    {% endif %}
 
-								</ul>
+    <div
+      class="flex w-full h-[38px] p-[7px_21px] justify-center items-center gap-[4px] lg:flex lg:px-[30px] lg:py-[7px] lg:justify-between lg:items-center lg:self-stretch {{ is_rtl ? 'flex-row-reverse' : 'flex-row' }}"
+      style="background-color: {{ topnav_bg }}; color: {{ topnav_text_color }};">
+      <div class="flex justify-center items-center gap-1 flex-[1_0_0]">
 
-								</div>
+        <div class="flex flex-row items-center gap-1">
 
 
-							</div>
+
+          {# Countdown Timer #}
+          <div id="countdown" data-countdown-target="{{ countdown_target }}"
+            style="background-color: {{ countdown_bg }}; color: {{ countdown_text }};" class=" flex h-[22px] px-[12px] py-[10px] justify-center items-center gap-[4px] rounded-lg
+     lg:flex lg:h-[22px] lg:py-[4px] lg:px-4 lg:gap-2 ">
+
+            <div class="flex items-baseline gap-0.5">
+              <span id="cd-days" class="text-sm font-bold">0</span>
+              <span class="text-xs">
+                {% if language.iso_code == 'ar' %}يوم{% else %}d{% endif %}
+              </span>
+            </div>
+
+            <span class="text-sm">:</span>
+
+            <div class="flex items-baseline gap-0.5">
+              <span id="cd-hours" class="text-sm font-bold">0</span>
+              <span class="text-xs">
+                {% if language.iso_code == 'ar' %}س{% else %}h{% endif %}
+              </span>
+            </div>
+
+            <span class="text-sm">:</span>
+
+            <div class="flex items-baseline gap-0.5">
+              <span id="cd-minutes" class="text-sm font-bold">0</span>
+              <span class="text-xs">
+                {% if language.iso_code == 'ar' %}د{% else %}m{% endif %}
+              </span>
+            </div>
+
+            <span class="text-sm">:</span>
+
+            <div class="flex items-baseline gap-0.5">
+              <span id="cd-seconds" class="text-sm font-bold">0</span>
+              <span class="text-xs">
+                {% if language.iso_code == 'ar' %}ث{% else %}s{% endif %}
+              </span>
+            </div>
           </div>
 
 
-					<div class=" flex  justify-center md:flex-1" href="{{ store.url }}">
-						<div class="the-logo navbar-brand !w-auto h-5 relative">
-							<a class="block absolute h-full w-full" href="{{store.url}}"></a>
-
-
-							<img class="h-full w-full object-contain" fetchpriority="high" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
-						</div>
-					</div>
-					{# <div class="header-menu lg:block hidden">
-						<custom-main-menu></custom-main-menu>
-					</div>
-
-					<div class="{{side_menu ? 'lg:hidden' : 'lg:flex'}} hidden desktop-menu items-center justify-center">
-						<div class="active-bold ltr:gap-4 items-center ">
-							<custom-main-menu class="side-menu"></custom-main-menu>
-						</div>
-					</div> #}
-
-
-					<div class="md:gap-2.5 gap-1.5 items-center flex-1 rtl:justify-end ltr:justify-start md:flex hidden">
-
-
-						{# Search Toggle Button #}
-						<button id="search-toggle" class="flex p-3 items-center justify-center" aria-label="Open Search">
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
-							<g clip-path="url(#clip0)">
-							<path
-								d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
-								stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-							<path d="M17.5 17.5L13.875 13.875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-								stroke-linejoin="round" />
-							</g>
-							<defs>
-							<clipPath id="clip0">
-								<rect width="20" height="20" fill="white" />
-							</clipPath>
-							</defs>
-						</svg>
-						</button>
-
-						<div class="flex items-center justify-center custom-button relative">
-							<a class="absolute block h-full w-full" href="{{store.url}}/wishlist"></a>
-							<i class="sicon-heart"></i>
-						</div>
-
-						{% if theme.settings.get('enable_side_cart') %}
-
-							{% include 'pages.partials.cart_options.twig' %}
-						{% else %}
-							<a class="!flex gap-.5 md:gap-1 relative" href="{{store.url}}/cart">
-								<i class="sicon-cart lg:text-[26px] text-xl"></i>
-								{% if cart.items_count > '0'  %}
-									<span class="absolute -top-2 -left-2 md:text-sm text-xs bg-red-600 text-white md:h-5 md:w-5 h-4 w-4 flex items-center justify-center rounded-full">{{cart.items_count }}</span>
-								{% endif %}
-							</a>
-						{% endif %}
-						{% if user.type == 'user' %}
-							<salla-user-menu avatar-only show-header></salla-user-menu>
-						{% else %}
-							<button class="header-btn  custom-button" aria-label="user-icon" onclick="salla.event.dispatch('login::open')">
-								<i class="sicon-user w-full"></i>
-
-							</button>
-						{% endif %}
-					</div>
-
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-</header>
-<aside id="sidecart-panel" class="side-panel  side-panel--left fixed top-0 h-full bg-background  w-full md:w-[40vw] z-[999999] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto">
-	<div class="side-panel__top flex items-center relative z-[2] p-5">
-		<button class="menu-close bg-primary text-background rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="إغلاق">
-			<i class="sicon-cancel text-xl"></i>
-		</button>
-	</div>
-
-	<div class="side-panel__content grow overflow-auto px-5 pt-5 pb-5 opacity-0 translate-x-10 rtl:-translate-x-10 transition-all duration-500">
-		<h2 class="mb-8 text-xl font-semibold flex items-center gap-2">
-			{{ trans('pages.checkout.cart') }}
-			<span class="sidecart-products-count text-gray-500 text-sm"></span>
-		</h2>
-		<div id="sidecart-items"></div>
-	</div>
-
-	<div class="side-panel__bottom mt-auto p-5 flex flex-col gap-5 border-t border-font-secondary">
-		<div class="flex justify-between text-sm">
-			<span class="text-gray-500">{{ trans('pages.cart.items_total') }}</span>
-			<b id="sidecart-subtotal"></b>
-		</div>
-
-		<div class="flex justify-between text-sm">
-			<span class="text-gray-500">{{ trans('pages.cart.discount') }}</span>
-			<b id="sidecart-total-discount"></b>
-		</div>
-
-		<div class="cart-subtotal flex justify-between items-center border-t border-font-secondary pt-3">
-			<div>
-				<h5 class="font-semibold">{{ trans('pages.cart.final_total') }}</h5>
-				{% if store.settings.tax.taxable_prices_enabled %}
-					<small class="opacity-70">
-						<span class="text-red-600">*</span>
-						{{ trans('pages.products.tax_included') }}
-					</small>
-				{% endif %}
-			</div>
-			<strong id="sidecart-total" class="total-value text-lg"></strong>
-		</div>
-
-		<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn w-full flex items-center justify-center gap-2 bg-primary text-background rounded-lg py-3 hover:bg-primary/90 transition">
-			<i class="smticon-cart text-lg"></i>
-			<span>{{ trans('pages.cart.goToCartPage') }}</span>
-		</a>
-
-		<button class="close-side-panel bg-gray-100 text-center flex items-center justify-center gap-4 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md py-2 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
-			{{ trans('pages.offer.continue_shopping') }}
-		</button>
-	</div>
-</aside>
-
-<div id="sidecart-overlay" class="fixed inset-0 bg-black/50  hidden opacity-0 transition-opacity duration-300 z-[999]"></div>
 
 
 
-							{% include 'pages.partials.magic_menu.twig' %}
-
-{% if store.scope %}
-<salla-scopes selection="{{ store.scope.display_as == 'popup' ? 'mandatory' : 'optional' }}"></salla-scopes>
-{% endif %}
 
 
 
+          {# First Text #}
+          <span
+            class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block">
+            {{ topnav_text }}
+          </span>
+
+
+          {# Special Text with custom color #}
+          <span
+            class="text-center text-[11px] not-italic font-normal leading-[16px] tracking-normal lg:text-xs lg:leading-5"
+            style="color: {{ topnav_special_text_color }}">
+            {{ topnav_special_text }}
+          </span>
+
+
+          {# Icon - User Image or Default #}
+          <span class="flex justify-center items-center w-[14px] h-[14px] lg:w-4 lg:h-4">
+            {% set icon_url = theme.settings.get('header-topnav-icon-url') %}
+            {% if icon_url %}
+            <img src="{{ icon_url }}" alt="Icon" class="w-[14px] h-[14px] lg:w-4 lg:h-4" />
+            {% endif %}
+          </span>
+
+
+
+
+        </div>
+
+
+
+
+
+        {# Language & Currency Component #}
+        {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+        <button type="button" onclick="salla.event.dispatch('localization::open')"
+          class="hidden lg:flex items-center gap-[12px] absolute {{ is_rtl ? 'left-[30px]' : 'right-[30px]' }} top-[9px]"
+          style="color: {{ topnav_text_color }};">
+          <span class="flag iti__flag iti__{{ user.language.country_code }} w-[21px] h-[15px]"></span>
+          <span class="font-normal text-[12px] leading-[16px] tracking-[0.2px]">{{ currency.symbol }}</span>
+        </button>
+        <salla-localization-modal></salla-localization-modal>
+        {% endif %}
+
+      </div>
+    </div>
+
+    {% if link_url %}
+  </a>
+  {% endif %}
+
+
+
+
+  {# =====================================
+  2) HEADER CORE (Hover styles supported)
+  ====================================== #}
+  {% if page.slug == 'index' %}
+  {# Homepage header variables #}
+  {% if header_hover %}
+  {% set initial_bg = 'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)' %}
+  {% set initial_text = 'white' %}
+  {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
+  {% else %}
+  {% set initial_bg = header_bg_color %}
+  {% set initial_text = header_text_color %}
+  {% set hover_vars = '' %}
+  {% endif %}
+  {% else %}
+  {# Other pages header variables #}
+  {% set initial_bg = header_bg_color %}
+  {% set initial_text = header_text_color %}
+  {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
+  {% endif %}
+
+
+  {# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
+  {% if header_hover %}
 <style>
+  .group:hover .hover-box {
+    background-color: var(--hover-bg) !important;
+    color: var(--hover-text) !important;
+  }
 
+  .site-header.header-scrolled {
+    background-color: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
 
-{% if page.slug != 'index' %}
-.mm-ocd__content{
-	padding: 10px ;
-}
-
-.AR-header  *{
-color:var(--color-font);
-stroke:var(--color-font);
-
-}
-.AR-header .inner .custom-button i{
-  color:var(--color-font);
-
-}
-{% endif %}
-[dir = "ltr"].mm-ocd__backdrop::after{
-    right:0px;
-}
-[dir = "rtl"].mm-ocd__backdrop::after{
-    left:0px;
-}
-.mm-spn.mm-spn--navbar.mm-spn--main .main-menu.logo{
-   background: url({{store.logo}}) center center / contain no-repeat var(--color-background);
-   padding:40px 0px;
-}
+  .site-header.active-overlay {
+    background-color: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
 </style>
 
-
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-window.initButton = function () {
-const currencyDisplay = '{{ currency.symbol }}';
-const userLanguage = '{{  user.language.name }}';
-
-return `
-
-	  <button type="button" onclick="salla.event.dispatch('localization::open')" class=" basis-0 p-3 flex items-center justify-center gap-2 w-full">
-						
-						<p class="flex items-center justify-center gap-1">
-						<i class="sicon-world "></i>
-							<span class="sm:mx-1.5 mx-1 !text-base !p-0">${userLanguage}</span>
-						</p>
-						<span class="sm:mx-1.5 mx-1 !text-base !p-0">-</span>
-						<span class="!text-base  font-[inherit] !p-0">${currencyDisplay}</span>
-
-		</button>
-    `;
-};
-});
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const currentPath = window.location.pathname.replace(/\/+$/, ''); // Remove trailing slash
-    const navbarItems = document.querySelectorAll('.bottom-navbar .navbar-item');
-
-    navbarItems.forEach(item => {
-      const itemPath = new URL(item.href).pathname.replace(/\/+$/, '');
-
-      if (currentPath === itemPath) {
-        item.classList.add('active');
-      }
-    });
-  });
+  {% endif %}
 
 
-document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('click', e => {
-        if (!e.target.closest('.copy-button')) return;
-        
-        const button = e.target.closest('.copy-button');
-        const code = button.closest('.slide').querySelector('.discount-code')?.textContent.trim();
-        if (!code) return;
-        
-        navigator.clipboard.writeText(code).then(() => {
-            (salla?.notify?.success || alert)('تم نسخ الكود بنجاح');
-        }).catch(() => {
-            const textarea = document.createElement('textarea');
-            textarea.value = code;
-            document.body.appendChild(textarea);
-            textarea.select();
-            document.execCommand('copy');
-            document.body.removeChild(textarea);
-            (salla?.notify?.success || alert)('تم نسخ الكود بنجاح');
-        });
-    });
-});
- 
-</script>
+  {# 'group' = parent hover trigger for .hover-box #}
+  <div class="group w-full" style="{{ hover_vars }}">
+    {# header for pc view #}
+    <div class="site-header hover-box w-full h-[60px] px-16  flex flex-row-reverse justify-between items-center
+            hidden lg:flex" style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
+
+
+      {# ICONS SECTION #}
+      <div class="flex justify-end items-center gap-2">
+
+
+
+
+        {# Search Toggle Button #}
+        <button id="search-toggle" class="flex p-3 items-center justify-center" aria-label="Open Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+            <g clip-path="url(#clip0)">
+              <path
+                d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M17.5 17.5L13.875 13.875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+
+
+
+        {# user icon #}
+        <a onclick="salla.event.dispatch('login::open')" class="flex p-3 justify-center items-center cursor-pointer">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <g clip-path="url(#clip0_5899_2043)">
+              <path
+                d="M16.6673 17.5V15.8333C16.6673 14.9493 16.3161 14.1014 15.691 13.4763C15.0659 12.8512 14.218 12.5 13.334 12.5H6.66732C5.78326 12.5 4.93542 12.8512 4.31029 13.4763C3.68517 14.1014 3.33398 14.9493 3.33398 15.8333V17.5"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M9.99935 9.16667C11.8403 9.16667 13.3327 7.67428 13.3327 5.83333C13.3327 3.99238 11.8403 2.5 9.99935 2.5C8.1584 2.5 6.66602 3.99238 6.66602 5.83333C6.66602 7.67428 8.1584 9.16667 9.99935 9.16667Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_5899_2043">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+
+
+
+
+
+        {# Fav icon #}
+        <a href="{{ url('wishlist') }}" class="flex p-3 items-center justify-center z-50 relative"
+          aria-label="Go to wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M16.2796 4.55371C17.9068 6.1809 17.9068 8.81908 16.2796 10.4463L10.7071 16.0188C10.3166 16.4093 9.68341 16.4093 9.29288 16.0188L3.72039 10.4463C2.0932 8.81908 2.0932 6.1809 3.72039 4.55371C5.014 3.2601 6.57547 2.86401 8.15104 3.6328C8.7764 3.93794 9.59634 4.55371 9.99999 5.35806C10.4036 4.55371 11.2236 3.93794 11.8489 3.6328C13.4245 2.86401 14.986 3.2601 16.2796 4.55371Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+
+
+        {# Cart icon #}
+        <a href="{{ url('cart') }}" class="flex p-3 justify-center items-center" aria-label="Go to cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M12.9576 8.76923V5.07692C12.9576 3.37759 11.6334 2 10 2C8.36657 2 7.04241 3.37759 7.04241 5.07692V8.76923M15.9988 7.13414L16.995 16.9803C17.0502 17.5253 16.6394 18 16.1126 18H3.88737C3.36059 18 2.94982 17.5253 3.00497 16.9803L4.00121 7.13414C4.04874 6.66434 4.42954 6.30769 4.88361 6.30769H15.1164C15.5705 6.30769 15.9513 6.66434 15.9988 7.13414ZM7.33817 8.76923C7.33817 8.93916 7.20576 9.07692 7.04241 9.07692C6.87907 9.07692 6.74666 8.93916 6.74666 8.76923C6.74666 8.5993 6.87907 8.46154 7.04241 8.46154C7.20576 8.46154 7.33817 8.5993 7.33817 8.76923ZM13.2533 8.76923C13.2533 8.93916 13.1209 9.07692 12.9576 9.07692C12.7942 9.07692 12.6618 8.93916 12.6618 8.76923C12.6618 8.5993 12.7942 8.46154 12.9576 8.46154C13.1209 8.46154 13.2533 8.5993 13.2533 8.76923Z"
+              stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+      </div>
+
+      {# LOGO SECTION #}
+      <div class="flex flex-col items-start py-5 px-3 gap-[12px]" style="color: {{ initial_text }};">
+        <a class="navbar-brand" href="{{ store.url }}">
+          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}"
+            alt="{{ store.name }} logo">
+          {% if is_page('index') %}
+          <h1 class="sr-only">{{ store.name }}</h1>
+          {% else %}
+          <h2 class="sr-only">{{ store.name }}</h2>
+          {% endif %}
+        </a>
+      </div>
+
+
+
+      {# Mega menu wrapper #}
+      <div id="custom-mega-menu-wrapper" class="hidden lg:relative lg:h-full lg:flex lg:items-center">
+        <div id="custom-mega-menu" class="relative h-full">
+          <!-- Tabs -->
+          <ul id="menu-tabs" class="flex gap-6 h-full items-center">
+
+          </ul>
+
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+    {# header for mobile view #}
+    <div class="site-header-mobile w-full h-[56px] p-x-[16px] 
+  flex flex-row-reverse justify-between items-center shrink-0 lg:hidden"
+      style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
+
+      {# ICONS SECTION #}
+      <div class="flex items-center ">
+
+        {# user icon #}
+        <a onclick="salla.event.dispatch('login::open')" class="flex p-3 justify-center items-center cursor-pointer">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <g clip-path="url(#clip0_5899_2043)">
+              <path
+                d="M16.6673 17.5V15.8333C16.6673 14.9493 16.3161 14.1014 15.691 13.4763C15.0659 12.8512 14.218 12.5 13.334 12.5H6.66732C5.78326 12.5 4.93542 12.8512 4.31029 13.4763C3.68517 14.1014 3.33398 14.9493 3.33398 15.8333V17.5"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path
+                d="M9.99935 9.16667C11.8403 9.16667 13.3327 7.67428 13.3327 5.83333C13.3327 3.99238 11.8403 2.5 9.99935 2.5C8.1584 2.5 6.66602 3.99238 6.66602 5.83333C6.66602 7.67428 8.1584 9.16667 9.99935 9.16667Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_5899_2043">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </a>
+
+
+
+        {# Wishist#}
+        <a href="{{ url('wishlist') }}" class="flex p-3 items-center justify-center z-50 relative"
+          aria-label="Go to wishlist">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M16.2796 4.55371C17.9068 6.1809 17.9068 8.81908 16.2796 10.4463L10.7071 16.0188C10.3166 16.4093 9.68341 16.4093 9.29288 16.0188L3.72039 10.4463C2.0932 8.81908 2.0932 6.1809 3.72039 4.55371C5.014 3.2601 6.57547 2.86401 8.15104 3.6328C8.7764 3.93794 9.59634 4.55371 9.99999 5.35806C10.4036 4.55371 11.2236 3.93794 11.8489 3.6328C13.4245 2.86401 14.986 3.2601 16.2796 4.55371Z"
+              stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+
+        {# Cart icon #}
+        <a href="{{ url('cart') }}" class="flex p-3 items-center justify-center z-50 relative" aria-label="Go to cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path
+              d="M12.9576 8.76923V5.07692C12.9576 3.37759 11.6334 2 10 2C8.36657 2 7.04241 3.37759 7.04241 5.07692V8.76923M15.9988 7.13414L16.995 16.9803C17.0502 17.5253 16.6394 18 16.1126 18H3.88737C3.36059 18 2.94982 17.5253 3.00497 16.9803L4.00121 7.13414C4.04874 6.66434 4.42954 6.30769 4.88361 6.30769H15.1164C15.5705 6.30769 15.9513 6.66434 15.9988 7.13414ZM7.33817 8.76923C7.33817 8.93916 7.20576 9.07692 7.04241 9.07692C6.87907 9.07692 6.74666 8.93916 6.74666 8.76923C6.74666 8.5993 6.87907 8.46154 7.04241 8.46154C7.20576 8.46154 7.33817 8.5993 7.33817 8.76923ZM13.2533 8.76923C13.2533 8.93916 13.1209 9.07692 12.9576 9.07692C12.7942 9.07692 12.6618 8.93916 12.6618 8.76923C12.6618 8.5993 12.7942 8.46154 12.9576 8.46154C13.1209 8.46154 13.2533 8.5993 13.2533 8.76923Z"
+              stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+        </a>
+
+
+      </div>
+
+
+      {# LOGO SECTION #}
+      <div
+        class="flex w-[66px] h-[36px] p-[8px_0px] flex-col justify-center items-center gap-[12px] shrink-0 t py-5 px-3"
+        style="color: {{ initial_text }};">
+        <a class="navbar-brand" href="{{ store.url }}">
+          <img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}"
+            alt="{{ store.name }} logo">
+          {% if is_page('index') %}
+          <h1 class="sr-only">{{ store.name }}</h1>
+          {% else %}
+          <h2 class="sr-only">{{ store.name }}</h2>
+          {% endif %}
+        </a>
+      </div>
+
+
+      {# icons & menu #}
+      <div class="flex items-center justify-between">
+
+        {# mobile nav button #}
+        <button id="mobile-menu-toggle" class="flex p-3 items-center justify-center z-50 relative">
+          {% if language.iso_code == 'ar' %}
+
+          <!-- Arabic icon -->
+          <svg id="icon-open" class="block" xmlns="http://www.w3.org/2000/svg" width="34" height="34"
+            viewBox="0 0 34 34" fill="none">
+            <path d="M23.666 22H17.8327M23.666 12H10.3327H23.666ZM23.666 17H10.3327H23.666Z" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {% else %}
+          <!-- English icon -->
+          <svg id="icon-open" class="block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+            viewBox="0 0 20 20" fill="none">
+            <path d="M3.33398 15H9.16732M3.33398 5H16.6673H3.33398ZM3.33398 10H16.6673H3.33398Z" stroke="currentColor"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
+          {% endif %}
+
+          <!-- Close icon (same for both languages) -->
+          <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
+            <g clip-path="url(#clip0)">
+              <path d="M15.625 4.375L4.375 15.625" stroke="#27272A" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+              <path d="M15.625 15.625L4.375 4.375" stroke="#27272A" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+
+
+        {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
+        <button type="button" onclick="salla.event.dispatch('localization::open')"
+          class="flex p-3 z-50 relative  items-center justify-center">
+          <span class="flag iti__flag iti__{{ user.language.country_code }} w-[20px] h-[15px] z-50 "></span>
+        </button>
+        {% endif %}
+
+
+
+        {# Search Toggle Button #}
+        <button id="search-toggle" class="flex p-3 items-center justify-center" aria-label="Open Search">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+            <g clip-path="url(#clip0)">
+              <path
+                d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M17.5 17.5L13.875 13.875" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+
+</header>
+
+
+
+
+{# =====================================
+3) DESKTOP MEGA MENU LAYER
+===================================== #}{# in pc view #}
+{# Background Overlay #}
+<div id="mega-overlay-background" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden"
+  style="top: var(--header-height);"></div>
+
+{# Mega Content #}
+<div id="mega-content" class="fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 
+            transform scale-y-0 opacity-0 pointer-events-none 
+            origin-top shadow-lg transition-all duration-300 -translate-y-full
+            border-t border-gray-500" style="background-color: {{ header_bg_color }}; top: var(--header-height);">
+
+  {# Left: Child Categories Wrapper #}
+  <div class="flex w-[328px] h-full flex-col items-start gap-[20px] shrink-0 bg-zinc-100">
+
+    <ul id="mega-childs" class="w-full p-[48px_68px_48px_64px] space-y-2" style="color: {{ initial_text }};"></ul>
+  </div>
+
+  {# Right: Subcategories + Images Section #}
+  <div class="flex w-[994px] py-[48px] flex-col gap-[16px]">
+
+    {# Category Title #}
+    <div class="w-full border-b border-gray-500">
+      <span id="mega-category-title"
+        class="w-full self-stretch text-zinc-800 text-sm font-medium leading-4 tracking-wide uppercase"></span>
+    </div>
+
+    {# Subcategories + Images flex row #}
+    <div class="flex items-start w-full justify-between ">
+      {# Subcategories List(s) #}
+      <div id="mega-subcategories" class="flex items-start gap-4" style="color: {{ initial_text }};"></div>
+
+      {# Images #}
+      <div id="mega-images" class="flex gap-2 align-center" style="color: {{ initial_text }};"></div>
+    </div>
+
+  </div>
+</div>
+
+{# =====================================
+4) SIMPLE MENU (Fallback / compact)
+===================================== #}
+<div id="simple-menu" class="w-[242px] h-[375px]  p-[24px_24px_40px_24px] items-start gap-[16px] shrink-0 
+     flex flex-col bg-white shadow-md fixed  z-20 
+            transform scale-y-0 opacity-0 pointer-events-none 
+            origin-top transition-all duration-200" style="top: var(--header-height);">
+  <ul id="simple-menu-list" class="flex flex-col p-4 space-y-2 text-sm text-black"></ul>
+</div>
+
+
+
+{# =====================================
+5) MOBILE MENU (Overlay)
+===================================== #}
+<div id="mobile-menu-overlay"
+  class="fixed inset-0 z-20 lg:hidden bg-black bg-opacity-50 transition-opacity duration-300">
+  <div id="mobile-menu-wrapper" class="fixed inset-0 z-30 bg-white flex flex-col">
+
+    {# menu tabs #}
+    <div class="border-t border-b text-sm font-semibold gap-[12px] py-3 px-4 mt-[var(--header-height)]">
+      <div class="flex flex-col items-center gap-[12px] self-stretch">
+        <div id="mobile-menu-tabs" class="flex justify-around gap-[16px] w-full overflow-x-auto no-scrollbar">
+          <!-- Tabs injected here -->
+        </div>
+      </div>
+    </div>
+
+    {# Scrollable Menu Content #}
+    <div id="mobile-menu-content" class="flex-1 flex flex-col overflow-y-auto p-5 no-scrollbar">
+      <!-- Filled by JS -->
+    </div>
+
+    {# Optional: Subcategory Panel #}
+    <div id="mobile-subcategory-content"
+      class="absolute w-full overflow-y-auto no-scrollbar transition-transform duration-500 ease-in-out"
+      style="background-color: {{ header_bg_color }}; top: var(--header-height); height: calc(100dvh - var(--header-height));">
+    </div>
+
+  </div>
+</div>
+
+
+
+{# =====================================
+6) SEARCH OVERLAY PANEL
+===================================== #}
+<div id="search-overlay-container" class="fixed inset-0 z-20 hidden">
+  <div id="search-overlay-background" class="sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"
+    style="top: var(--header-height);"></div>
+
+  <div id="search-panel-wrapper" class="absolute w-full h-full lg:h-[70vh] overflow-hidden"
+    style="top: var(--header-height);">
+    <div id="search-panel"
+      class="relative z-30 w-full bg-white shadow-lg transition-all duration-300 -translate-y-full">
+      <div
+        class="mx-auto flex flex-col items-start gap-6 lg:gap-[32px] w-full max-w-full px-4 py-4 lg:w-[777px] lg:px-0 lg:py-6">
+        <div class="flex h-[40px] items-center self-stretch">
+
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <g clip-path="url(#clip0_6813_1469)">
+              <path
+                d="M9.16667 15.8333C12.8486 15.8333 15.8333 12.8486 15.8333 9.16667C15.8333 5.48477 12.8486 2.5 9.16667 2.5C5.48477 2.5 2.5 5.48477 2.5 9.16667C2.5 12.8486 5.48477 15.8333 9.16667 15.8333Z"
+                stroke="#9F9FA9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+              <path d="M17.5 17.5L13.875 13.875" stroke="#9F9FA9" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round" />
+            </g>
+            <defs>
+              <clipPath id="clip0_6813_1469">
+                <rect width="20" height="20" fill="white" />
+              </clipPath>
+            </defs>
+          </svg>
+          <div class="relative w-full mx-auto">
+
+            <input id="custom-search-input" type="text"
+              placeholder="{% if language.iso_code == 'ar' %}ابحث{% else %}Search{% endif %}"
+              class="w-full border-0 border-b border-gray-300 focus:outline-none focus:border-b focus:border-gray-500" />
+
+            <!-- Results Dropdown -->
+            <div id="custom-search-results"
+              class="absolute left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-50 hidden">
+              <ul id="custom-search-list" class="divide-y divide-gray-100 max-h-64 overflow-y-auto"></ul>
+              <div id="custom-no-results" class="text-gray-500 px-4 py-2 hidden">لا توجد نتائج</div>
+            </div>
+          </div>
+
+
+        </div>
+        <!-- Search Input -->
+
+
+        <!-- Result container -->
+        <div id="search-results" class="mt-4 hidden"></div>
+        <div id="no-results" class="mt-4 hidden text-red-500">No results found</div>
+
+
+
+
+
+        <div class="flex flex-col items-start gap-8 lg:gap-12 self-stretch">
+
+          {# Trending keywords #}
+          {% set trending_keywords = theme.settings.get('trending-search-keywords') %}
+          {% set trending_keywords_filtered = [] %}
+          {% for item in trending_keywords %}
+          {% set keyword = item['search-keyword'][language.iso_code] | trim %}
+          {% if keyword != '' %}
+          {% set trending_keywords_filtered = trending_keywords_filtered | merge([item]) %}
+          {% endif %}
+          {% endfor %}
+
+
+
+          {% if trending_keywords_filtered | length > 0 %}
+          <div class="flex flex-col sm:flex-row w-full items-start sm:items-center gap-4 lg:gap-[15px]">
+            <h4 class="text-sm font-medium leading-6 tracking-wide">
+              {% if language.iso_code == 'ar' %}
+              كلمات بحث رائجة:
+              {% else %}
+              Trending Searches:
+              {% endif %}
+            </h4>
+
+            <div class="flex flex-wrap items-center gap-x-4 gap-y-2 lg:gap-x-8">
+              {% for item in trending_keywords_filtered %}
+              {% set keyword = item['search-keyword'][language.iso_code] | trim %}
+              <span class="flex items-center gap-1">
+                <svg class="w-4 h-4 stroke-[#9F9FA9]" fill="none" viewBox="0 0 16 16"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path
+                    d="M8 5.33333V8L10 10M14 8C14 8.78793 13.8448 9.56815 13.5433 10.2961C13.2417 11.0241 12.7998 11.6855 12.2426 12.2426C11.6855 12.7998 11.0241 13.2417 10.2961 13.5433C9.56815 13.8448 8.78793 14 8 14C7.21207 14 6.43185 13.8448 5.7039 13.5433C4.97595 13.2417 4.31451 12.7998 3.75736 12.2426C3.20021 11.6855 2.75825 11.0241 2.45672 10.2961C2.15519 9.56815 2 8.78793 2 8C2 6.4087 2.63214 4.88258 3.75736 3.75736C4.88258 2.63214 6.4087 2 8 2C9.5913 2 11.1174 2.63214 12.2426 3.75736C13.3679 4.88258 14 6.4087 14 8Z"
+                    stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+                <button type="button" class="trending-keyword-btn" data-keyword="{{ keyword|e }}">
+                  {{ keyword }}
+                </button>
+              </span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+
+          {# Popular categories #}
+          {% set categories = theme.settings.get('popular-categories') %}
+          {% set valid_categories = [] %}
+          {% for category in categories %}
+          {% set image = category['popular-categories-image'] | trim %}
+          {% if image != '' %}
+          {% set valid_categories = valid_categories | merge([category]) %}
+          {% endif %}
+          {% endfor %}
+
+          {% if valid_categories | length > 0 %}
+          <div class="flex flex-col items-start gap-4 lg:gap-6 self-stretch">
+            <h4 class="text-lg lg:text-xl font-semibold leading-7 lg:leading-8 tracking-wide">
+              {% if language.iso_code == 'ar' %}
+              فئات شائعة
+              {% else %}
+              Popular Categories
+              {% endif %}
+            </h4>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4 w-full">
+              {% for category in valid_categories %}
+              {% set link = category['popular-categories-link'] %}
+              {% set image = category['popular-categories-image'] | trim %}
+              {% if image != '' %}
+              {% if link %}
+              <a href="{{ link }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden ">
+                <img src="{{ image }}" alt="Category" class="object-cover w-full h-full">
+              </a>
+              {% else %}
+              <div class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden">
+                <img src="{{ image }}" alt="Category" class="object-cover w-full h-full">
+              </div>
+              {% endif %}
+              {% endif %}
+              {% endfor %}
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
