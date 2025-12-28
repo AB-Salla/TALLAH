@@ -3,6 +3,12 @@ import Swal from "sweetalert2";
 import Anime from "./partials/anime";
 import initTootTip from "./partials/tooltip";
 import AppHelpers from "./app-helpers";
+import "./partials/custom-search-panel.js";
+import "./partials/custom-menu.js";
+import "./partials/custom-menu-mobile.js";
+import "./partials/custom-top-nav.js";
+
+
 
 class App extends AppHelpers {
   constructor() {

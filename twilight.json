@@ -1069,12 +1069,180 @@
             "value": "#18181B",
             "required": false
         },
-        {
+{
             "type": "static",
             "format": "title",
-            "id": "colors_of_our_theme",
-            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات أعـلى الصـفحة</div>",
+            "id": "static-label2",
+            "value": "خيارات أعلى الصفحة",
             "variant": "h6"
+        },
+        {
+            "id": "header-topnav-count-down",
+            "type": "string",
+            "format": "date",
+            "inputType": "date",
+            "label": "أضافة عد تنازلي",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-calendar-date",
+            "value": null,
+            "required": false
+        },
+        {
+            "id": "count-down-background",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية العد التنازلي",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#3f3f46",
+            "required": false
+        },
+        {
+            "id": "count-down-text-color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص العد التنازلي",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false
+        },
+        {
+            "id": "header-topnav-background",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية أعلى الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#004956",
+            "required": false
+        },
+        {
+            "id": "header-topnav-text-color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص أعلى الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#004956",
+            "required": false
+        },
+        {
+            "id": "header-topnav-text",
+            "type": "string",
+            "format": "text",
+            "label": "نص أعلى الهيدر",
+            "description": "هذا النص لا يظهر في شاشات الجوال",
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": null,
+            "multilanguage": true,
+            "required": false,
+            "minLength": 6,
+            "maxLength": "100"
+        },
+        {
+            "id": "header-topnav-special-text",
+            "type": "string",
+            "format": "text",
+            "label": "نص مميز أعلى الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": null,
+            "multilanguage": true,
+            "required": false,
+            "minLength": 6,
+            "maxLength": "100"
+        },
+        {
+            "id": "header-topnav-special-text-color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص مميز أعلى الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#004956",
+            "required": false
+        },
+        {
+            "id": "header-topnav-icon-url",
+            "type": "string",
+            "format": "text",
+            "label": "أيقونة أعلى الهيدر",
+            "description": "أضف أيقونة لأعلى الهيدر ( يمكنك أضافة أيقونة للعربي وللأنجليزي )",
+            "labelHTML": null,
+            "placeholder": "Placeholder text ..",
+            "icon": "sicon-format-text-alt",
+            "value": null,
+            "multilanguage": true,
+            "required": false,
+            "minLength": 6,
+            "maxLength": "100"
+        },
+        {
+            "id": "header-topnav-link-url",
+            "type": "string",
+            "format": "url",
+            "inputType": "url",
+            "label": "رابط أعلى الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://salla.sa",
+            "icon": "sicon-link",
+            "value": null,
+            "required": false,
+            "minLength": 6,
+            "maxLength": 300
+        },
+        {
+            "id": "header-hover",
+            "type": "boolean",
+            "format": "switch",
+            "label": "هوفر الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": true,
+            "required": false
+        },
+        {
+            "id": "header-background-color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون خلفية الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#ffffff",
+            "required": false
+        },
+        {
+            "id": "header-text-color",
+            "type": "string",
+            "format": "color",
+            "inputType": "color",
+            "label": "لون نص الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-format-fill",
+            "value": "#000000",
+            "required": false
         },
         {
             "id": "header_is_sticky",
@@ -1090,6 +1258,17 @@
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",
+            "label": "شريط علوي داكن",
+            "description": null,
+            "id": "topnav_is_dark",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": false
+        },
+        {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
             "label": "عرض روابط الصفحات الهامة في الشريط العلوي",
             "description": "مثل صفحة الهبوط ، المدونة ،الصفحات التعريفية",
             "id": "important_links",
@@ -1099,199 +1278,109 @@
             "selected": true
         },
         {
-            "id": "enable_side_menu",
-            "label": "تفعيل القائمة الجانبية",
-            "description": null,
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": true
-        },
-        {
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "label": "التحكم في حجم اللوجو أعلى الصفحة",
-            "description": null,
-            "id": "logo_size_control",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": true
-        },
-        {
-            "id": "logo_size_lg",
-            "type": "number",
-            "format": "slider",
-            "inputType": "range",
-            "label": "حجم الشعار أعلى الصفحة في الديسكتوب",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-pin",
-            "value": "128",
-            "required": false,
-            "step": "1",
-            "minimum": "0",
-            "maximum": "500",
-            "conditions": [
-                {
-                    "id": "logo_size_control",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "logo_size_sm",
-            "type": "number",
-            "format": "slider",
-            "inputType": "range",
-            "label": "حجم الشعار أعلى الصفحة في الموبايل",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-pin",
-            "value": "128",
-            "required": false,
-            "step": "1",
-            "minimum": "0",
-            "maximum": "500",
-            "conditions": [
-                {
-                    "id": "logo_size_control",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "add_header_colors",
-            "label": "استخدام ألوان مخصصة للشريط العلوي",
-            "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالشريط العلوي بدلًا من ألوان الثيم الأساسية.",
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": true
-        },
-        {
-            "id": "topnav_bg",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "لون خلفية الشريط العلوي",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#ffffff",
-            "required": false,
-            "conditions": [
-                {
-                    "id": "add_header_colors",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "topnav_text_colors",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "ألوان نصوص الشريط العلوي",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#18181B",
-            "required": false,
-            "conditions": [
-                {
-                    "id": "add_header_colors",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "type": "static",
-            "format": "title",
-            "id": "colors_of_our_theme",
-            "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خـيارات  الشريط السفلي</div>",
-            "variant": "h6"
-        },
-        {
-            "id": "enable_bottom_nav",
+            "id": "advanced-menu",
             "type": "boolean",
             "format": "switch",
-            "label": "تفعيل الشريط السفلي في الموبايل",
+            "label": "تخصيص منيو متقدم",
             "description": null,
             "labelHTML": null,
             "icon": "sicon-toggle-off",
             "value": true,
-            "selected": true,
+            "selected": false,
             "required": false
         },
         {
-            "id": "add_bottom_nav_colors",
-            "label": "استخدام ألوان مخصصة للشريط السفلي",
-            "description": "فعّل هذا الخيار، لإختيار ألوان خاصة بالشريط السفلي بدلًا من ألوان الثيم الأساسية.",
-            "type": "boolean",
-            "icon": "sicon-toggle-off",
-            "format": "switch",
-            "required": false,
-            "value": true,
-            "selected": true,
-            "conditions": [
-                {
-                    "id": "enable_bottom_nav",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "bottom_nav_bg",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "لون خلفية الشريط السفلي",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#ffffff",
-            "required": false,
-            "conditions": [
-                {
-                    "id": "add_bottom_nav_colors",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
-            "id": "bottom_nav_text_colors",
-            "type": "string",
-            "format": "color",
-            "inputType": "color",
-            "label": "ألوان نصوص الشريط السفلي",
-            "description": null,
-            "labelHTML": null,
-            "icon": "sicon-format-fill",
-            "value": "#333333",
-            "required": false,
-            "conditions": [
-                {
-                    "id": "add_bottom_nav_colors",
-                    "operation": "=",
-                    "value": true
-                }
-            ]
-        },
-        {
+            "id": "menu-notes",
             "type": "static",
-            "id": "static-line3",
-            "format": "line"
+            "format": "description",
+            "label": "Description",
+            "value": "يرجي ملاحظة انه عند أختيار المنيو المتقدم يتم أخذ صور أول ثلاث تصنيفات فرعية وعند أختيار المنيو العادي يتم أخذ صورة كل تصنيف أساسي",
+            "variant": "h1",
+            "icon": "sicon-format-size"
+        },
+        {
+            "id": "search-settings",
+            "type": "static",
+            "format": "title",
+            "label": "خيارات قائمة البحث",
+            "value": null,
+            "variant": "h1",
+            "icon": "sicon-format-text"
+        },
+        {
+            "id": "trending-search-keywords",
+            "type": "collection",
+            "format": "collection",
+            "label": "كلمات البحث الرائجة",
+            "description": "أضف كلمات البحث الرائجة",
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "trending-search-keywords.search-keyword",
+                    "type": "string",
+                    "format": "text",
+                    "label": null,
+                    "description": "أكتب كلمة البحث",
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": "2",
+                    "maxLength": 30
+                }
+            ],
+            "value": [],
+            "minLength": "0",
+            "maxLength": "10"
+        },
+        {
+            "id": "popular-categories",
+            "type": "collection",
+            "format": "collection",
+            "label": "فئات شائعة",
+            "description": "أضف فئات شائعة او عروض خاصة",
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "popular-categories.popular-categories-image",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": null,
+                    "description": "أضف رابط الصورة",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "100"
+                },
+                {
+                    "id": "popular-categories.popular-categories-link",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": null,
+                    "description": "أضف رابط الفئة",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "100"
+                }
+            ],
+            "value": [],
+            "minLength": "0",
+            "maxLength": "4"
         },
         {
             "type": "static",
