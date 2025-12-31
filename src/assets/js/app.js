@@ -235,6 +235,10 @@ class App extends AppHelpers {
   initiateStickyMenu() {
     let header = this.element("#mainnav"),
       height = this.element("#mainnav .inner")?.clientHeight;
+    
+    // Declare magicMenu variable
+    let magicMenu = document.getElementById('mega-content');
+
     //when it's landing page, there is no header
     if (!header) {
       return;
@@ -254,6 +258,12 @@ class App extends AppHelpers {
         window.scrollY >= 200
           ? header.classList.add("fixed-header")
           : header.classList.remove("fixed-header", "animated");
+        
+        // Add scrolled class to magicMenu when scrolling
+        if (magicMenu) {
+            if (window.scrollY >= 200) magicMenu.classList.add('scrolled');
+            else magicMenu.classList.remove('scrolled');
+        }
       },
       { passive: true }
     );

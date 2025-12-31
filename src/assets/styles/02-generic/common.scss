@@ -6,6 +6,9 @@ html {
 .cursor-pointer * {
   pointer-events: none;
 }
+.group.relative.cursor-pointer *{
+ @apply pointer-events-auto;
+}
 
 .flip-x{
   transform: scaleX(-1);
