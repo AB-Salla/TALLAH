@@ -1,5 +1,8 @@
 {
-    "name": "عربي",
+    "name": {
+        "ar": "عربي",
+        "en": "arabi"
+    },
     "repository": "https://github.com/nabd-media/arabi",
     "author_email": "monamohamed500600@gmail.com",
     "features": [
@@ -1066,7 +1069,7 @@
             "value": "#18181B",
             "required": false
         },
-        {
+{
             "type": "static",
             "format": "title",
             "id": "static-label2",
