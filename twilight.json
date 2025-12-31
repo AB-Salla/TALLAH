@@ -1484,10 +1484,9 @@
     "components": [
         {
             "key": "186b3f4f-25cf-4d3c-abca-cef7eed6f0ab",
-            "title": {
-                "en": "Enhances Animated Images",
-                "ar": "صور متحركة (محسنة)"
-            },
+            "title": 
+                 "صور متحركة (محسنة)"
+            ,
             "icon": "sicon-image-carousel",
             "path": "home.enhanced-slider",
             "fields": [
@@ -1571,10 +1570,9 @@
         },
         {
             "key": "2b1b130b-5b37-422a-9683-e0fd367460c0",
-            "title": {
-                "en": "Quick Links",
-                "ar": "روابط سريعة"
-            },
+            "title": 
+                 "روابط سريعة"
+            ,
             "icon": "sicon-layout-grid-rearrange",
             "path": "home.main-links",
             "fields": [
@@ -1825,10 +1823,9 @@
         },
         {
             "key": "9a758d20-2ce4-4782-91fe-c04466464588",
-            "title": {
-                "en": "Animated products with a background",
-                "ar": "منتجات متحركة مع خلفية"
-            },
+            "title": 
+                 "منتجات متحركة مع خلفية"
+            ,
             "icon": "sicon-list-play",
             "path": "home.slider-products-with-header",
             "fields": [
@@ -1967,10 +1964,9 @@
         },
         {
             "key": "b89edc4a-ce0b-468f-8323-2da48147bb32",
-            "title": {
-                "en": "Enhanced square images",
-                "ar": "صور مربعة (محسنة)"
-            },
+            "title": 
+                 "صور مربعة (محسنة)"
+            ,
             "icon": "sicon-image",
             "path": "home.enhanced-square-banners",
             "fields": [
@@ -2136,10 +2132,9 @@
         },
         {
             "key": "25f6cf26-a53f-4954-9b32-739b311b32c7",
-            "title": {
-                "en": "Brands",
-                "ar": "الماركات التجارية"
-            },
+            "title": 
+                 "الماركات التجارية"
+            ,
             "icon": "sicon-award-ribbon",
             "path": "home.brands",
             "fields": [
@@ -2184,10 +2179,9 @@
         },
         {
             "key": "541cc423-90c7-4230-8a33-a0342cfde4ad",
-            "title": {
-                "en": "Custom testimonials",
-                "ar": "آراء عملاء مخصصة"
-            },
+            "title": 
+                 "آراء عملاء مخصصة"
+            ,
             "icon": "sicon-chat-bubbles",
             "path": "home.custom-testimonials",
             "fields": [
@@ -2299,10 +2293,9 @@
         },
         {
             "key": "bc3ece68-4c35-44a0-829d-696d08e0e842",
-            "title": {
-                "en": "Hero section (Slider) - Arabian",
-                "ar": "بانر رئيسي (متحرك) - عربي"
-            },
+            "title": 
+                 "بانر رئيسي (متحرك) - عربي"
+            ,
             "icon": "sicon-store",
             "path": "home.AR-Hero-section",
             "image": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
@@ -2550,10 +2543,9 @@
         },
         {
             "key": "2c10d0ac-ba70-43da-af40-d4a4c477a074",
-            "title": {
-                "en": "Products-banner - Arabian",
-                "ar": "بانر منتجات - عربي"
-            },
+            "title": 
+                 "بانر منتجات - عربي"
+            ,
             "icon": "sicon-store",
             "path": "home.AR-Products-banner",
             "image": "https://cdn.files.salla.network/homepage/1954265887/9457c3de-2126-44ee-a811-ba431740d0f1.webp",
@@ -2753,10 +2745,9 @@
         },
         {
             "key": "c2126624-689c-448f-aab2-9e71df0a1334",
-            "title": {
-                "en": "our products - Arabi",
-                "ar": "منتجاتنا - عربي"
-            },
+            "title": 
+                 "منتجاتنا - عربي"
+            ,
             "icon": "sicon-packed-box",
             "path": "home.AR_our_products",
             "image": "https://cdn.files.salla.network/homepage/1954265887/18b990f3-09fc-41d0-b3f0-9547fe6c726c.webp",
@@ -3119,10 +3110,9 @@
         },
         {
             "key": "9dee71dc-db42-4652-afbd-3c81e592a8b0",
-            "title": {
-                "en": "special banner - Arabian",
-                "ar": "بانر مميز - عربي"
-            },
+            "title": 
+                 "بانر مميز - عربي"
+            ,
             "icon": "sicon-store",
             "path": "home.AR-special-banner",
             "image": "https://cdn.files.salla.network/homepage/1954265887/6f7b89e0-5031-4110-82db-e328c4edc6fd.webp",
@@ -3382,10 +3372,9 @@
         },
         {
             "key": "5be2ceca-952b-4a91-ba6e-585c1f6fce5b",
-            "title": {
-                "en": "Promotional banner - Arabian",
-                "ar": "بانر دعائي - عربي"
-            },
+            "title": 
+                 "بانر دعائي - عربي"
+            ,
             "icon": "sicon-store",
             "path": "home.Ar-Promo-banner",
             "image": "https://cdn.files.salla.network/homepage/1954265887/0c6b8d77-d7e9-41bf-b8c0-5f2dd0b0489a.webp",
@@ -3564,10 +3553,9 @@
         },
         {
             "key": "791c84a3-7e68-4620-982f-0e679bcfde61",
-            "title": {
-                "en": "Custom testimonials - Arabian",
-                "ar": "آراء عملاء مخصصة - عربي"
-            },
+            "title": 
+                 "آراء عملاء مخصصة - عربي"
+            ,
             "icon": "sicon-store",
             "path": "home.AR-Custom-testimonials",
             "image": "https://cdn.files.salla.network/homepage/1954265887/cf14eed5-68cf-4e92-8415-884ad3eb60cb.webp",
@@ -3907,10 +3895,9 @@
         },
         {
             "key": "18bfde1b-5c2e-4d4a-bdbb-b7cdf1ea3056",
-            "title": {
-                "en": "Hero section - Arabian",
-                "ar": "بانر رئيسي - عربي"
-            },
+            "title": 
+                 "بانر رئيسي - عربي"
+            ,
             "icon": "sicon-store",
             "path": "home.AR-Hero-2",
             "image": "https://cdn.files.salla.network/homepage/1954265887/8e891823-d12d-435d-9c94-56e852dfb735.webp",

@@ -1157,17 +1157,14 @@ select{
 .mt-\[-80px\]{
     margin-top: -80px;
 }
-.mt-\[calc\(var\(--header-height\)\+38px\)\]{
-    margin-top: calc(var(--header-height) + 38px);
-}
 .mt-\[clamp\(0\.875rem\2c 0\.5306rem\+1\.4694vw\2c 2rem\)\]{
     margin-top: clamp(0.875rem,0.5306rem + 1.4694vw,2rem);
 }
-.mt-auto{
-    margin-top: auto;
-}
 .mt-\[var\(--header-height\)\]{
     margin-top: var(--header-height);
+}
+.mt-auto{
+    margin-top: auto;
 }
 .line-clamp-1{
     overflow: hidden;
@@ -28781,9 +28778,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:mt-5{
         margin-top: 1.25rem;
-    }
-    .lg\:mt-\[var\(--header-height\)\]{
-        margin-top: var(--header-height);
     }
     .lg\:\!block{
         display: block !important;
