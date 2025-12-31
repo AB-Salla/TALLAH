@@ -207,3 +207,6 @@ salla-user-menu{
 .top-navbar.not-home *{
   @apply text-font;
 }
+#mega-content.scrolled{
+  @apply top-[60px] !important;
+}
