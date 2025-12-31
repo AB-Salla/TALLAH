@@ -1162,6 +1162,15 @@ select{
 }
 .mt-\[var\(--header-height\)\]{
     margin-top: var(--header-height);
+<<<<<<< HEAD
+=======
+}
+.mt-auto{
+    margin-top: auto;
+}
+.mt-20{
+    margin-top: 5rem;
+>>>>>>> 8474b626fcaab03069d44f4fd47d7f4a7f71e637
 }
 .mt-auto{
     margin-top: auto;
@@ -28481,6 +28490,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:mt-10{
         margin-top: 2.5rem;
+    }
+    .md\:mt-20{
+        margin-top: 5rem;
+    }
+    .md\:mt-24{
+        margin-top: 6rem;
     }
     .md\:block{
         display: block;
