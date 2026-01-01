@@ -3868,7 +3868,7 @@
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
-                    "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                    "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
                     "required": false
                 },
                 {
@@ -3880,7 +3880,7 @@
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
-                    "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+                    "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
                     "required": false
                 },
                 {
@@ -3888,14 +3888,11 @@
                     "type": "string",
                     "format": "text",
                     "label": "العنوان الرئيسي",
-                    "description": "اكتب عنوانًا جذّابًا يعبّر عن محتوى البانر",
+                    "description": "",
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
-                    "value": {
-                        "ar": "Discover Timeless Luxury",
-                        "en": "Discover Timeless Luxury"
-                    },
+                    "value": null,
                     "multilanguage": true,
                     "required": true,
                     "minLength": "2",
@@ -3925,7 +3922,8 @@
                     "type": "string",
                     "format": "text",
                     "label": "العنوان الفرعي",
-                    "description": "اكتب نصًا توضيحيًا مختصرًا يدعم العنوان الرئيسي.",
+                    "description":  null,
+
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
