@@ -210,3 +210,19 @@ salla-user-menu{
 #mega-content.scrolled{
   @apply top-[60px] !important;
 }
+
+.product-single #mega-content{
+  @apply top-[calc(var(--header-height)+40px)] !important;
+}
+.product-single #mobile-menu-wrapper > .tabs{
+  @apply mt-[calc(var(--header-height)+40px)] !important;
+}
+.product-single #mobile-menu-wrapper.scrolled > .tabs{
+  @apply mt-[60px] !important;
+}
+.product-single #search-overlay-background + #search-panel-wrapper {
+  @apply top-[calc(var(--header-height)+40px)] !important;
+}
+.product-single #search-overlay-background.scrolled + #search-panel-wrapper {
+  @apply top-[56px] !important;
+}

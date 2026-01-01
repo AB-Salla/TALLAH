@@ -1135,9 +1135,6 @@ select{
 .mt-2\.5{
     margin-top: 0.625rem;
 }
-.mt-24{
-    margin-top: 6rem;
-}
 .mt-3{
     margin-top: 0.75rem;
 }
@@ -22244,6 +22241,21 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 #mega-content.scrolled{
     top: 60px !important;
 }
+.product-single #mega-content{
+    top: calc(var(--header-height) + 40px) !important;
+}
+.product-single #mobile-menu-wrapper > .tabs{
+    margin-top: calc(var(--header-height) + 40px) !important;
+}
+.product-single #mobile-menu-wrapper.scrolled > .tabs{
+    margin-top: 60px !important;
+}
+.product-single #search-overlay-background + #search-panel-wrapper{
+    top: calc(var(--header-height) + 40px) !important;
+}
+.product-single #search-overlay-background.scrolled + #search-panel-wrapper{
+    top: 56px !important;
+}
 .store-footer{
     position: relative;
     margin-top: 2rem;
@@ -28036,6 +28048,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart .s-product-options-wrapper {
   padding: 0 !important;
 }
+.AR-index,
+.mm-ocd__content{
+    background-color: var(--color-background);
+}
 .AR-index .s-products-list-wrapper.s-products-list-filters-results,
 .mm-ocd__content .s-products-list-wrapper.s-products-list-filters-results{
     gap: 1.5rem;
@@ -28085,8 +28101,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     padding: 0.25rem;
     color: var(--color-background);
 }
-.AR-index .s-filters-footer:hover .s-button-element .s-button-text,
-.mm-ocd__content .s-filters-footer:hover .s-button-element .s-button-text{
+.AR-index .s-filters-footer .s-button-element:hover .s-button-text,
+.mm-ocd__content .s-filters-footer .s-button-element:hover .s-button-text{
     color: #414042;
     color: var(--color-primary);
 }
@@ -28139,8 +28155,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     padding: 0.25rem;
     color: var(--color-font);
 }
-.AR-index .s-button-primary,
-.mm-ocd__content .s-button-primary{
+.AR-index #filters-menu .s-button-primary,
+.mm-ocd__content #filters-menu .s-button-primary{
     color: var(--color-background);
 }
 .AR-index .s-price-range-number-input,
@@ -28148,7 +28164,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 0;
   border-color: #414042;
   border-color: var(--color-primary);
-  background-color: transparent;
+  background-color: var(--color-background);
 }
 .AR-index .s-price-range-inputs .s-button-element.s-button-icon,
 .mm-ocd__content .s-price-range-inputs .s-button-element.s-button-icon{

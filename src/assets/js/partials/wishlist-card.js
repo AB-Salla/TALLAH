@@ -366,7 +366,7 @@ function renderOption(option) {
            !this.horizontal && !this.fullImage
              ? `
 
-           <div class="flex  gap-1 md:gap-2 absolute top-[5px] opacity-100 z-20 right-2  md:-top-10 flex-action transition-all duration-300">
+           <div class="flex  gap-1 md:gap-2 absolute top-[5px] opacity-100 z-10 right-2  md:-top-10 flex-action transition-all duration-300">
                <salla-button
                     shape="icon"
                     fill="outline"

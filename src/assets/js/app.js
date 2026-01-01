@@ -237,7 +237,12 @@ class App extends AppHelpers {
       height = this.element("#mainnav .inner")?.clientHeight;
     
     // Declare magicMenu variable
+    let mobileMenu = document.getElementById('mobile-menu-wrapper');
+
     let magicMenu = document.getElementById('mega-content');
+    let searchModal = document.getElementById('search-overlay-background');
+
+
 
     //when it's landing page, there is no header
     if (!header) {
@@ -263,6 +268,14 @@ class App extends AppHelpers {
         if (magicMenu) {
             if (window.scrollY >= 200) magicMenu.classList.add('scrolled');
             else magicMenu.classList.remove('scrolled');
+        }
+        if (mobileMenu) {
+            if (window.scrollY >= 200) mobileMenu.classList.add('scrolled');
+            else mobileMenu.classList.remove('scrolled');
+        }
+        if (searchModal) {
+            if (window.scrollY >= 200) searchModal.classList.add('scrolled');
+            else searchModal.classList.remove('scrolled');
         }
       },
       { passive: true }

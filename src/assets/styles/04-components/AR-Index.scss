@@ -1,5 +1,6 @@
 .AR-index,
 .mm-ocd__content {
+  @apply bg-background;
     .s-products-list-wrapper.s-products-list-filters-results{
       @apply gap-6;
    }
@@ -32,7 +33,7 @@
   .s-filters-footer .s-button-element .s-button-text {
     @apply text-background p-1;
   }
-    .s-filters-footer:hover .s-button-element .s-button-text {
+    .s-filters-footer .s-button-element:hover  .s-button-text {
     @apply text-primary;
    }
 
@@ -65,12 +66,12 @@
     @apply text-font p-1;
   }
 
-  .s-button-primary {
+  #filters-menu .s-button-primary {
     @apply text-background;
   }
   .s-price-range-number-input {
     border-radius: 0;
-    @apply border-primary bg-transparent;
+    @apply border-primary bg-background;
   }
   .s-price-range-inputs .s-button-element.s-button-icon {
     @apply text-primary border-primary;
