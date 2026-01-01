@@ -18,9 +18,7 @@
 #}
 {% extends "layouts.master" %}
 {% block content %}
-{% set index_promo_text = theme.settings.get('index_promo_text') %}
-{% set below_filter_pic = theme.settings.get('below_filter_pic') %}
-{% set below_filter_pic_url = theme.settings.get('below_filter_pic_url') %}
+
 
 
 	<div class="AR-index">
@@ -76,10 +74,10 @@
 
 					</div>
                     <div class="flex lg:hidden items-center justify-between mb-4">
-                    <div class="flex-1 justify-start flex items-center gap-1.5 text-2xl">
-                     <button class=" two-columns"><i class="sicon-pause"></i></button>
-                      <button class="rotate-90 one-column"><i class="sicon-pause"></i></button>
-                      </div>
+             	 <div class="flex-1 justify-start flex items-center gap-1.5 text-2xl">
+						<button id="grid-two-columns" class="two-columns transition-all duration-300 ease-in-out"><i class="sicon-pause"></i></button>
+						<button id="grid-one-column" class="rotate-90 one-column transition-all duration-300 ease-in-out"><i class="sicon-pause"></i></button>
+					</div>
                         <h1 class="primary-bold md:text-xl text-sm lg:text-center flex-1 justify-end text-end" id="page-main-title">{{ page.title|raw }}</h1>
                        
                     </div>
@@ -99,42 +97,90 @@
 		{% component 'home.testimonials' %}
 	{% endif %}
 	</section>
-    <script>
-// Add CSS for active states
-const style = document.createElement('style');
-style.textContent = `
-    .one-column.active, .two-columns.active {
-        opacity: 0.6;
-    }
-`;
-document.head.appendChild(style);
+<style>
+@media (max-width:1024px){
+/* Active state for buttons */
+.two-columns.active,
+.one-column.active {
+opacity:.5;
+}
+/* Grid column classes - adjust as needed */
+.s-products-list-wrapper.grid-cols-1 {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
 
-// One column button
-document.querySelector('.one-column')?.addEventListener('click', function() {
-    const target = document.querySelector('.s-products-list-filters-results');
-    if (target) {
-        target.style.gridTemplateColumns = 'repeat(1, minmax(0, 1fr))';
+.s-products-list-wrapper.grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+}
+
+</style>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Use event delegation since buttons exist from the start
+    document.addEventListener('click', function(e) {
+        const twoColumnsBtn = document.querySelector('.two-columns');
+        const oneColumnBtn = document.querySelector('.one-column');
+        const productListWrapper = document.querySelector('.s-products-list-wrapper');
         
-        // Set active state
-        this.classList.add('active');
-        document.querySelector('.two-columns')?.classList.remove('active');
+        if (!productListWrapper) return;
+        
+        // Handle two columns button click
+        if (e.target.closest('.two-columns')) {
+            productListWrapper.classList.remove('grid-cols-1');
+            productListWrapper.classList.add('grid-cols-2');
+            
+            if (twoColumnsBtn) twoColumnsBtn.classList.add('active');
+            if (oneColumnBtn) oneColumnBtn.classList.remove('active');
+            
+            localStorage.setItem('gridView', 'two-columns');
+        }
+        
+        // Handle one column button click
+        if (e.target.closest('.one-column')) {
+            productListWrapper.classList.remove('grid-cols-2');
+            productListWrapper.classList.add('grid-cols-1');
+            
+            if (oneColumnBtn) oneColumnBtn.classList.add('active');
+            if (twoColumnsBtn) twoColumnsBtn.classList.remove('active');
+            
+            localStorage.setItem('gridView', 'one-column');
+        }
+    });
+    
+    // Apply saved view when wrapper appears
+    function applySavedView() {
+        const productListWrapper = document.querySelector('.s-products-list-wrapper');
+        if (!productListWrapper) return;
+        
+        const savedView = localStorage.getItem('gridView');
+        const twoColumnsBtn = document.querySelector('.two-columns');
+        const oneColumnBtn = document.querySelector('.one-column');
+        
+        if (savedView === 'one-column') {
+            productListWrapper.classList.remove('grid-cols-2');
+            productListWrapper.classList.add('grid-cols-1');
+            if (oneColumnBtn) oneColumnBtn.classList.add('active');
+            if (twoColumnsBtn) twoColumnsBtn.classList.remove('active');
+        } else {
+            // Default to two columns
+            productListWrapper.classList.remove('grid-cols-1');
+            productListWrapper.classList.add('grid-cols-2');
+            if (twoColumnsBtn) twoColumnsBtn.classList.add('active');
+            if (oneColumnBtn) oneColumnBtn.classList.remove('active');
+        }
     }
-});
-// Two columns button
-document.querySelector('.two-columns')?.addEventListener('click', function() {
-    const target = document.querySelector('.s-products-list-filters-results');
-    if (target) {
-            target.style.gridTemplateColumns = 'repeat(2, minmax(0, 1fr))';
-            this.classList.add('active');
-            document.querySelector('.one-column')?.classList.remove('active');  
-    }
-});
-window.addEventListener('load', function() {
-    document.querySelector('.one-column')?.classList.add('active');
+    
+    // Check for wrapper periodically
+    const checkWrapper = setInterval(function() {
+        if (document.querySelector('.s-products-list-wrapper')) {
+            applySavedView();
+            clearInterval(checkWrapper);
+        }
+    }, 100);
 });
 </script>
-
-
 
 {% endblock %}
 {% block scripts %}

@@ -132,33 +132,58 @@ async function loadAndRenderMenu(tabsContainer, contentContainer, renderSubcateg
 function renderMenuContent(menu, contentContainer, renderSubcategories) {
   contentContainer.innerHTML = "";
 
-  menu.children?.forEach(child => {
+  // If the menu has no children at all
+  if (!menu.children || menu.children.length === 0) {
+    const emptyBlock = document.createElement("div");
+    emptyBlock.className = "mb-4";
+
+    const link = document.createElement("a");
+    link.href = menu.url || "#";
+    link.className = "flex items-center gap-2 p-[12px_0_12px_8px] cursor-pointer text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
+    
+    if (window.languageCode === "ar") {
+      link.textContent = "عرض الكل";
+    } else {
+      link.textContent = "Show All";
+    }
+
+    emptyBlock.appendChild(link);
+    contentContainer.appendChild(emptyBlock);
+    return;
+  }
+
+  menu.children.forEach(child => {
     const block = document.createElement("div");
     block.className = "mb-4";
 
-    const title = document.createElement("div");
-    title.className = "flex items-center justify-between gap-2 p-[12px_0_12px_8px] cursor-pointer";
+    const titleWrapper = document.createElement("div");
+    titleWrapper.className = "flex items-center justify-between gap-2 p-[12px_0_12px_8px]";
+    
+    // Create the text link that always goes to the category page
+    const titleLink = document.createElement("a");
+    titleLink.href = child.url;
+    titleLink.className = "flex-1 text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
+    titleLink.textContent = child.title;
+    
+    titleWrapper.appendChild(titleLink);
 
-    const titleText = document.createElement("span");
-    titleText.textContent = child.title;
-
-    title.appendChild(titleText);
-
-    if (window.isAdvancedMenuEnabled) {
+    // Add arrow icon if there are subcategories and advanced menu is enabled
+    if (window.isAdvancedMenuEnabled && child.children && child.children.length > 0) {
       const icon = createArrowIcon();
       if (document.dir === "rtl") icon.style.transform = "rotate(180deg)";
-      title.appendChild(icon);
-
-      title.addEventListener("click", () => {
+      
+      // Make the arrow clickable to show subcategories
+      icon.style.cursor = "pointer";
+      icon.addEventListener("click", () => {
         renderSubcategories(child);
       });
-    } else {
-      title.addEventListener("click", () => {
-        window.location.href = child.url;
-      });
+      
+      titleWrapper.appendChild(icon);
     }
+    // If no subcategories, we could optionally add a different indicator or nothing
+    // The titleLink already handles navigation to the category page
 
-    block.appendChild(title);
+    block.appendChild(titleWrapper);
     contentContainer.appendChild(block);
   });
 }
