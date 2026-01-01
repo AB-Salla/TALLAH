@@ -22238,23 +22238,23 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 .top-navbar.not-home *{
     color: var(--color-font);
 }
-#mega-content.scrolled{
-    top: 60px !important;
-}
 .product-single #mega-content{
     top: calc(var(--header-height) + 40px) !important;
+}
+body #mega-content.scrolled{
+    top: 60px !important;
 }
 .product-single #mobile-menu-wrapper > .tabs{
     margin-top: calc(var(--header-height) + 40px) !important;
 }
-.product-single #mobile-menu-wrapper.scrolled > .tabs{
+#mobile-menu-wrapper.scrolled > .tabs{
     margin-top: 60px !important;
 }
 .product-single #search-overlay-background + #search-panel-wrapper{
     top: calc(var(--header-height) + 40px) !important;
 }
-.product-single #search-overlay-background.scrolled + #search-panel-wrapper{
-    top: 56px !important;
+#search-overlay-background.scrolled + #search-panel-wrapper{
+    top: 3.5rem !important;
 }
 .store-footer{
     position: relative;
