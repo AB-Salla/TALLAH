@@ -129,6 +129,20 @@
     </main>
     {% component 'footer.footer' %}
 </div>
+	{% if is_page('index') %}
+
+		<style>
+			.s-product-card-content-category {
+				display: block !important;
+			}
+		</style>
+	{% else %}
+		<style>
+			.s-product-card-content-category {
+				display: none !important;
+			}
+		</style>
+	{% endif %}
 {% hook 'body:end' %}
 <script defer src="{{ 'app.js' | asset }}"></script>
 
