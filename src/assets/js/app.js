@@ -453,8 +453,8 @@ class App extends AppHelpers {
         <section class="cart-item bg-[#fff] p-2  mb-4"
                  data-id="${item.id}">
 
-          <div class="grid grid-cols-1 lg:grid-cols-2 items-start justify-between gap-4">
-            <div class="flex flex-1 gap-4 items-center">
+          <div class="grid grid-cols-1 lg:grid-cols-3 items-start justify-between gap-4">
+            <div class="flex flex-1 gap-4 items-center  lg:col-span-2">
 
               <a href="${item_url}" class="w-24 h-20">
                 <img src="${img}" alt="${item.product_name}"
