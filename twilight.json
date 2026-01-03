@@ -580,7 +580,7 @@
                             "operation": "=",
                             "value": "salla_icon",
                             "value_index": ".",
-                            "collection_id": "rh_features_store_pros"
+                            "collection_id": "rh_features_store_car"
                         }
                     ]
                 },
@@ -598,7 +598,7 @@
                             "operation": "=",
                             "value": "animated_icon",
                             "value_index": ".",
-                            "collection_id": "rh_features_store_pros"
+                            "collection_id": "rh_features_store_car"
                         }
                     ]
                 },
@@ -622,7 +622,7 @@
                             "operation": "=",
                             "value": "animated_icon",
                             "value_index": ".",
-                            "collection_id": "rh_features_store_pros"
+                            "collection_id": "rh_features_store_car"
                         }
                     ]
                 },
@@ -643,7 +643,7 @@
                             "operation": "=",
                             "value": "image_services",
                             "value_index": ".",
-                            "collection_id": "rh_features_store_pros"
+                            "collection_id": "rh_features_store_car"
                         }
                     ]
                 },
