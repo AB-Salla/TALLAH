@@ -26413,6 +26413,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-vertical salla-add-product-button salla-button button {
   color: var(--color-font);
   border: none;
+  background-color: #F4F4F5;
 }
 .s-product-card-vertical .s-product-card-content-sub .s-product-card-sale-price span {
   color: color-mix(in srgb, var(--color-font) 50%, transparent) !important;
