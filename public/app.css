@@ -27901,6 +27901,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
 }
+.cart .s-product-options-colors-wrapper {
+  flex-wrap: nowrap;
+}
+@media (max-width: 374px) {
+  .cart .s-product-options-colors-wrapper {
+    flex-wrap: wrap;
+  }
+}
 .cart .s-payments-list-item {
   height: 50px !important;
   width: 50px !important;
@@ -27921,12 +27929,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 @media (max-width: 768px) {
   .cart .s-product-options-thumbnails-wrapper {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 @media (max-width: 480px) {
   .cart .s-product-options-thumbnails-wrapper {
-    grid-template-columns: repeat(1, minmax(0, 1fr));
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 .cart .btn--wishlist button {
