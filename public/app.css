@@ -28974,6 +28974,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-auto{
         width: auto;
     }
+    .md\:w-\[4px\]{
+        width: 4px;
+    }
+    .md\:w-\[437px\]{
+        width: 437px;
+    }
     .md\:max-w-1\/2{
         max-width: 50%;
     }

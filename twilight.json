@@ -1437,17 +1437,7 @@
                     "value": true
                 }
             ]
-        },
-        {
-            "type": "static",
-            "id": "static-line1",
-            "format": "line"
         }
-
-        
-
-
-
     ],
     "components": [
         {
