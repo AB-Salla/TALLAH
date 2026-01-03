@@ -27901,11 +27901,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
 }
-.cart s-product-options-colors-wrapper {
+.cart .s-product-options-colors-wrapper {
   flex-wrap: nowrap;
 }
 @media (max-width: 374px) {
-  .cart s-product-options-colors-wrapper {
+  .cart .s-product-options-colors-wrapper {
     flex-wrap: wrap;
   }
 }

@@ -8,7 +8,7 @@
 }
 
 .cart {
-  s-product-options-colors-wrapper{
+  .s-product-options-colors-wrapper{
     flex-wrap: nowrap;
     @media (max-width:374px) {
       flex-wrap: wrap;
