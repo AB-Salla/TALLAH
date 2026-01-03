@@ -9,7 +9,7 @@
     {% if theme.settings.get('enable_side_cart') %}
         {% if theme.settings.get('cart_display_type') == 'side' %}
             <!-- ✅ زر السلة -->
-            <button id="sidecart-button" class="custom-button flex items-center gap-2 relative">
+            <button id="sidecart-button" class="custom-button flex items-center gap-2 relative sidecart-button">
                 {% if cart_icon_choose %}
                     {% if cart_icon_type == 'cart_1' %}
                         <i class="sicon-shopping text-xl" style="color: {{ theme.settings.get('header_color_icons') }}"></i>
