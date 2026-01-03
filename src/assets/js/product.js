@@ -117,16 +117,7 @@ class Product extends BasePage {
     return messages[lang][key];
   }
   runningAfter5Seconds() {
-    console.log(
-      "Newsletter_sp modal check:",
-      window.newsletter_sp_view_modal,
-      window.status_product
-    );
-
-    console.log(
-      window.newsletter_sp_view_modal !== null &&
-        window.status_product !== "out"
-    );
+    
 
     if (
       window.status_product !== "out" ||

@@ -69,7 +69,6 @@ class ProductCard extends HTMLElement {
   const cachedData = sessionStorage.getItem(cacheKey);
   
   if (cachedData) {
-    console.log(`✅ استخدام البيانات المخزنة للمنتج ${productId}`);
     const parsedData = JSON.parse(cachedData);
     
     this.images = parsedData.images || [];
@@ -78,7 +77,6 @@ class ProductCard extends HTMLElement {
   } 
   else {
     // 2. إذا مفيش في الكاش، روح جيب من السيرفر
-    console.log(`🔄 جلب بيانات جديدة للمنتج ${productId}`);
     
     try {
       const response = await salla.product.getDetails(productId, ["images", "options"]);
