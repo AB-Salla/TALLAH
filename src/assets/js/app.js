@@ -305,7 +305,7 @@ class App extends AppHelpers {
       // إذا كنا في صفحة الكارت، لا نحتاج للسايد كارت
       return;
     }
-    const cartBtn = document.querySelector("#sidecart-button");
+    const cartBtn = document.querySelectorAll(".sidecart-button");
     const cartPanel = document.querySelector("#sidecart-panel");
     const overlay = document.querySelector("#sidecart-overlay");
     const closeBtns = cartPanel.querySelectorAll(
@@ -557,15 +557,18 @@ class App extends AppHelpers {
     await loadCart();
 
     // فتح / غلق السايد كارت
-    cartBtn?.addEventListener("click", () => {
+
+    cartBtn.forEach(btn=>{
+      btn.addEventListener("click", () => {
       const isVisible = cartPanel.style.visibility === "visible";
       toggleCart(!isVisible);
     });
+    })
+    
     closeBtns.forEach((btn) =>
       btn.addEventListener("click", () => toggleCart(false))
     );
     overlay?.addEventListener("click", () => toggleCart(false));
-
     document.addEventListener("keydown", (e) => {
       if (e.key === "Escape") toggleCart(false);
     });
