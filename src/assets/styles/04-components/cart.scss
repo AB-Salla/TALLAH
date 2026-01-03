@@ -8,6 +8,12 @@
 }
 
 .cart {
+  s-product-options-colors-wrapper{
+    flex-wrap: nowrap;
+    @media (max-width:374px) {
+      flex-wrap: wrap;
+    }
+  }
   .s-payments-list-item {
   height: 50px !important;
   width: 50px !important;

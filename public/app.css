@@ -27901,6 +27901,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
 }
+.cart s-product-options-colors-wrapper {
+  flex-wrap: nowrap;
+}
+@media (max-width: 3774px) {
+  .cart s-product-options-colors-wrapper {
+    flex-wrap: wrap;
+  }
+}
 .cart .s-payments-list-item {
   height: 50px !important;
   width: 50px !important;
