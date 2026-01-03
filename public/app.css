@@ -29385,6 +29385,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:p-8{
         padding: 2rem;
     }
+    .lg\:p-5{
+        padding: 1.25rem;
+    }
     .lg\:px-0{
         padding-left: 0px;
         padding-right: 0px;

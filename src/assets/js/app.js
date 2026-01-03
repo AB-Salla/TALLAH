@@ -421,6 +421,7 @@ class App extends AppHelpers {
           totalel.textContent = `${totalItems}`;
         });
         if (cart.items && cart.items.length) {
+
           function updateCartCount(count, lang) {
             if (lang === "ar") {
               return `(${count} منتج)`;
@@ -428,7 +429,7 @@ class App extends AppHelpers {
               return `(${count} item${count !== 1 ? "s" : ""})`;
             }
           }
-
+          const currentLang = document.documentElement.lang || 'ar';
           count.textContent = updateCartCount(cart.count, currentLang);
 
           itemsWrap.innerHTML = itemsWithDetails
