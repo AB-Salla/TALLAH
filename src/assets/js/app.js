@@ -546,7 +546,10 @@ class App extends AppHelpers {
 
     // 📢 ربط الأحداث
     salla.event.cart.onUpdated(loadCart);
-    salla.event.cart.onItemAdded(loadCart);
+    salla.event.cart.onItemAdded(async () => {
+      await loadCart();
+      toggleCart(true);
+    });
     salla.event.cart.onItemDeleted(loadCart);
     document.addEventListener("salla:cart:updated", loadCart);
 
