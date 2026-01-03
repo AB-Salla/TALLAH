@@ -27904,7 +27904,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart s-product-options-colors-wrapper {
   flex-wrap: nowrap;
 }
-@media (max-width: 3774px) {
+@media (max-width: 374px) {
   .cart s-product-options-colors-wrapper {
     flex-wrap: wrap;
   }
