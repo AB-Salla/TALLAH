@@ -1005,6 +1005,9 @@ select{
 .z-50{
     z-index: 50;
 }
+.z-\[100\]{
+    z-index: 100;
+}
 .z-\[101\]{
     z-index: 101;
 }
@@ -1016,9 +1019,6 @@ select{
 }
 .z-\[99\]{
     z-index: 99;
-}
-.z-\[100\]{
-    z-index: 100;
 }
 .order-1{
     order: 1;
@@ -2188,6 +2188,9 @@ select{
 .bg-black\/40{
     background-color: rgba(0, 0, 0, 0.4);
 }
+.bg-black\/50{
+    background-color: rgba(0, 0, 0, 0.5);
+}
 .bg-blue-50{
     --tw-bg-opacity: 1;
     background-color: rgba(239, 246, 255, 1);
@@ -2248,8 +2251,13 @@ select{
     background-color: rgba(39, 39, 42, 1);
     background-color: rgba(39, 39, 42, var(--tw-bg-opacity, 1));
 }
-.bg-black\/50{
-    background-color: rgba(0, 0, 0, 0.5);
+.bg-\[\]{
+    background-color: ;
+}
+.bg-\[\#fff\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
 }
 .bg-opacity-50{
     --tw-bg-opacity: 0.5;
@@ -29382,6 +29390,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:p-8{
         padding: 2rem;
+    }
+    .lg\:p-2{
+        padding: 0.5rem;
     }
     .lg\:px-0{
         padding-left: 0px;

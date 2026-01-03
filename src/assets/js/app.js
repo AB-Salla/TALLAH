@@ -8,8 +8,6 @@ import "./partials/custom-menu.js";
 import "./partials/custom-menu-mobile.js";
 import "./partials/custom-top-nav.js";
 
-
-
 class App extends AppHelpers {
   constructor() {
     super();
@@ -235,14 +233,12 @@ class App extends AppHelpers {
   initiateStickyMenu() {
     let header = this.element("#mainnav"),
       height = this.element("#mainnav .inner")?.clientHeight;
-    
+
     // Declare magicMenu variable
-    let mobileMenu = document.getElementById('mobile-menu-wrapper');
+    let mobileMenu = document.getElementById("mobile-menu-wrapper");
 
-    let magicMenu = document.getElementById('mega-content');
-    let searchModal = document.getElementById('search-overlay-background');
-
-
+    let magicMenu = document.getElementById("mega-content");
+    let searchModal = document.getElementById("search-overlay-background");
 
     //when it's landing page, there is no header
     if (!header) {
@@ -263,19 +259,19 @@ class App extends AppHelpers {
         window.scrollY >= 200
           ? header.classList.add("fixed-header")
           : header.classList.remove("fixed-header", "animated");
-        
+
         // Add scrolled class to magicMenu when scrolling
         if (magicMenu) {
-            if (window.scrollY >= 200) magicMenu.classList.add('scrolled');
-            else magicMenu.classList.remove('scrolled');
+          if (window.scrollY >= 200) magicMenu.classList.add("scrolled");
+          else magicMenu.classList.remove("scrolled");
         }
         if (mobileMenu) {
-            if (window.scrollY >= 200) mobileMenu.classList.add('scrolled');
-            else mobileMenu.classList.remove('scrolled');
+          if (window.scrollY >= 200) mobileMenu.classList.add("scrolled");
+          else mobileMenu.classList.remove("scrolled");
         }
         if (searchModal) {
-            if (window.scrollY >= 200) searchModal.classList.add('scrolled');
-            else searchModal.classList.remove('scrolled');
+          if (window.scrollY >= 200) searchModal.classList.add("scrolled");
+          else searchModal.classList.remove("scrolled");
         }
       },
       { passive: true }
@@ -425,7 +421,16 @@ class App extends AppHelpers {
           totalel.textContent = `${totalItems}`;
         });
         if (cart.items && cart.items.length) {
-          count.textContent = `(${cart.count} منتج)`;
+          function updateCartCount(count, lang) {
+            if (lang === "ar") {
+              return `(${count} منتج)`;
+            } else {
+              return `(${count} item${count !== 1 ? "s" : ""})`;
+            }
+          }
+
+          count.textContent = updateCartCount(cart.count, currentLang);
+
           itemsWrap.innerHTML = itemsWithDetails
             .map((item) => {
               const hiddenOptions = buildHiddenOptionsInputs(item.details);
@@ -444,7 +449,7 @@ class App extends AppHelpers {
         <input type="hidden" name="id" value="${item.id}">
         ${hiddenOptions}
 
-        <section class="cart-item bg-background p-3 lg:p-5 rounded border border-gray-100 mb-4"
+        <section class="cart-item bg-[#fff] p-2  mb-4"
                  data-id="${item.id}">
 
           <div class="grid grid-cols-1 lg:grid-cols-2 items-start justify-between gap-4">
@@ -452,7 +457,7 @@ class App extends AppHelpers {
 
               <a href="${item_url}" class="w-24 h-20">
                 <img src="${img}" alt="${item.product_name}"
-                     class="w-full h-full rounded object-contain" />
+                     class="w-full h-full  object-contain" />
               </a>
 
               <div class="space-y-1 flex-grow w-full">
