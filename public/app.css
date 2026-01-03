@@ -972,11 +972,11 @@ select{
 .top-8{
     top: 2rem;
 }
-.top-\[-0\.75rem\]{
-    top: -0.75rem;
-}
 .top-\[11px\]{
     top: 11px;
+}
+.top-\[2px\]{
+    top: 2px;
 }
 .top-\[45\%\]{
     top: 45%;
@@ -986,9 +986,6 @@ select{
 }
 .top-full{
     top: 100%;
-}
-.top-\[2px\]{
-    top: 2px;
 }
 .-z-1{
     z-index: -1;
@@ -20352,6 +20349,9 @@ salla-quantity-input {
   color: #414042 !important;
   color: var(--color-primary) !important;
   background-color: transparent !important;
+}
+.s-cart-summary-wrapper {
+  display: none;
 }
 body {
   font-size: 15px;
