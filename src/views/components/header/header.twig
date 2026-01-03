@@ -279,13 +279,32 @@ Global Variables (from Theme)
 
 
         {# Cart icon #}
-        <a href="{{ url('cart') }}" class="flex p-3 justify-center items-center" aria-label="Go to cart">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
-            <path
-              d="M12.9576 8.76923V5.07692C12.9576 3.37759 11.6334 2 10 2C8.36657 2 7.04241 3.37759 7.04241 5.07692V8.76923M15.9988 7.13414L16.995 16.9803C17.0502 17.5253 16.6394 18 16.1126 18H3.88737C3.36059 18 2.94982 17.5253 3.00497 16.9803L4.00121 7.13414C4.04874 6.66434 4.42954 6.30769 4.88361 6.30769H15.1164C15.5705 6.30769 15.9513 6.66434 15.9988 7.13414ZM7.33817 8.76923C7.33817 8.93916 7.20576 9.07692 7.04241 9.07692C6.87907 9.07692 6.74666 8.93916 6.74666 8.76923C6.74666 8.5993 6.87907 8.46154 7.04241 8.46154C7.20576 8.46154 7.33817 8.5993 7.33817 8.76923ZM13.2533 8.76923C13.2533 8.93916 13.1209 9.07692 12.9576 9.07692C12.7942 9.07692 12.6618 8.93916 12.6618 8.76923C12.6618 8.5993 12.7942 8.46154 12.9576 8.46154C13.1209 8.46154 13.2533 8.5993 13.2533 8.76923Z"
-              stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-        </a>
+        {% if theme.settings.get('enable_side_cart') %}
+
+							{% include 'pages.partials.cart_options.twig' %}
+						{% else %}
+							<a class="relative flex items-center !min-h-fit !min-w-fit" href="{{store.url}}/cart">
+								<salla-cart-summary class="my-summary">
+										{% if cart_icon_choose %}
+										{% if cart_icon_type == 'cart_1' %}
+											<i class="sicon-shopping text-xl !block" ></i>
+										{% elseif cart_icon_type == 'cart_2' %}
+											<i class="sicon-shopping-basket text-xl !block" ></i>
+										{% elseif cart_icon_type == 'cart_3' %}
+											<i class="sicon-shopping-bag text-xl !block" ></i>
+										{% elseif cart_icon_type == 'cart_4' %}
+											<i class="sicon-luggage-cart text-xl !block"></i>
+										{% elseif cart_icon_type == 'cart_5' %}
+												<i class="sicon-cart-add text-xl !block"></i>
+										{% else %}
+											<i class="sicon-shopping text-xl !block"></i>
+										{% endif %}
+										{% else %}
+											<i class="sicon-shopping text-xl !block"></i>
+										{% endif %}
+								</salla-cart-summary>
+							</a>
+						{% endif %}
 
       </div>
 

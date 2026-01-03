@@ -1543,6 +1543,10 @@ select{
 .min-w-full{
     min-width: 100%;
 }
+.\!min-w-fit{
+    min-width: -moz-fit-content !important;
+    min-width: fit-content !important;
+}
 .max-w-132{
     max-width: 528px;
 }
