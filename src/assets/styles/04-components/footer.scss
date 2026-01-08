@@ -1,7 +1,7 @@
 .store-footer {
   @media (max-width:768px) {
     .s-contacts-item{
-      justify-content: center !important;
+      justify-content: start !important;
     }
   }
   salla-apps-icons{
@@ -51,7 +51,7 @@
   }
 
   .social-link {
-    @apply border rounded-full w-8 h-8 justify-center flex items-center hover:opacity-75 transition duration-300 text-sm;
+    @apply border rounded-full w-8 h-8  flex  hover:opacity-75 transition duration-300 text-sm;
   }
   .s-social-link a {
     width: 32px;
