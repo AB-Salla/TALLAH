@@ -22330,7 +22330,7 @@ body #mega-content.scrolled{
 }
 @media (max-width: 768px) {
   .store-footer .s-contacts-item {
-    justify-content: center !important;
+    justify-content: start !important;
   }
 }
 .store-footer salla-apps-icons h3 {
@@ -22416,8 +22416,6 @@ body #mega-content.scrolled{
     display: flex;
     height: 2rem;
     width: 2rem;
-    align-items: center;
-    justify-content: center;
     border-radius: 9999px;
     border-width: 1px;
     font-size: 0.875rem;
@@ -28904,9 +28902,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:-top-10{
         top: -2.5rem;
     }
-    .md\:order-4{
-        order: 4;
-    }
     .md\:mb-0{
         margin-bottom: 0px;
     }
@@ -29318,9 +29313,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:grid-cols-8{
         grid-template-columns: repeat(8, minmax(0, 1fr));
     }
-    .lg\:grid-cols-\[2fr_2fr_3fr\]{
-        grid-template-columns: 2fr 2fr 3fr;
-    }
     .lg\:flex-row{
         flex-direction: row;
     }
@@ -29617,6 +29609,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 768px){
+    .ltr\:md\:order-4:where([dir="ltr"], [dir="ltr"] *){
+        order: 4;
+    }
     .md\:ltr\:ml-10:where([dir="ltr"], [dir="ltr"] *){
         margin-left: 2.5rem;
     }
@@ -29639,6 +29634,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .ltr\:lg\:mr-8:where([dir="ltr"], [dir="ltr"] *){
         margin-right: 2rem;
+    }
+    .ltr\:lg\:grid-cols-\[2fr_2fr_3fr\]:where([dir="ltr"], [dir="ltr"] *){
+        grid-template-columns: 2fr 2fr 3fr;
     }
     .ltr\:lg\:pl-10:where([dir="ltr"], [dir="ltr"] *){
         padding-left: 2.5rem;
@@ -29751,6 +29749,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 768px){
+    .rtl\:md\:order-1:where([dir="rtl"], [dir="rtl"] *){
+        order: 1;
+    }
     .md\:rtl\:mr-10:where([dir="rtl"], [dir="rtl"] *){
         margin-right: 2.5rem;
     }
@@ -29773,6 +29774,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .rtl\:lg\:mr-8:where([dir="rtl"], [dir="rtl"] *){
         margin-right: 2rem;
+    }
+    .rtl\:lg\:grid-cols-\[3fr_2fr_2fr\]:where([dir="rtl"], [dir="rtl"] *){
+        grid-template-columns: 3fr 2fr 2fr;
     }
     .rtl\:lg\:pr-10:where([dir="rtl"], [dir="rtl"] *){
         padding-right: 2.5rem;
