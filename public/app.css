@@ -1301,11 +1301,11 @@ select{
 .h-\[100svh\]{
     height: 100svh;
 }
+.h-\[140px\]{
+    height: 140px;
+}
 .h-\[14px\]{
     height: 14px;
-}
-.h-\[165px\]{
-    height: 165px;
 }
 .h-\[22px\]{
     height: 22px;
@@ -1385,12 +1385,6 @@ select{
 }
 .h-px{
     height: 1px;
-}
-.h-\[\]{
-    height: ;
-}
-.h-\[140px\]{
-    height: 140px;
 }
 .max-h-0{
     max-height: 0px;
@@ -27918,7 +27912,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .cart .s-payments-list-item {
   height: 50px !important;
-  width: 50px !important;
+  width: 64px !important;
+  background-color: transparent !important;
 }
 .cart .s-list-tile-item {
   background-color: #F4F0EB !important;
