@@ -73,12 +73,12 @@
                                                 {% if loop.first %}
                                                     <img src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="flex-none w-[95px] md:w-32 h-full border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="flex-none w-[95px] md:w-32 h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% else %}
                                                     <img src="{{ 'images/s-empty.png' | cdn }}"
                                                         data-src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="lazy flex-none w-[95px] md:w-32 h-[165px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="lazy flex-none w-[95px] md:w-32 h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% endif %}
     
                                                 <!-- free product ribbon -->

@@ -1386,6 +1386,12 @@ select{
 .h-px{
     height: 1px;
 }
+.h-\[\]{
+    height: ;
+}
+.h-\[140px\]{
+    height: 140px;
+}
 .max-h-0{
     max-height: 0px;
 }
