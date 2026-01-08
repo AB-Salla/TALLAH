@@ -27912,7 +27912,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .cart .s-payments-list-item {
   height: 50px !important;
-  width: 64px !important;
+  width: 60px !important;
   background-color: transparent !important;
 }
 .cart .s-list-tile-item {
