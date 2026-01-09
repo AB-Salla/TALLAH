@@ -702,6 +702,33 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				display-all-url="{{ display_all_url }}"
 				slider-id="slider-with-bg-{{ position }}">
 			</salla-products-slider>
+			{% set raw_source = theme.settings.get('single_source') %}
+
+{% set source =
+  raw_source == 'categories' ? 'categories' :
+  raw_source == 'selected'   ? 'selected' :
+  raw_source == 'latest'     ? 'latest-products' :
+  raw_source == 'sales'      ? 'best-selling' :
+  'latest-products'
+%}
+
+{% set source_value =
+  raw_source == 'categories'
+    ? theme.settings.get('categories_single')
+    : (raw_source == 'selected'
+        ? theme.settings.get('products_single')
+        : [])
+%}
+
+<salla-products-slider
+  block-title="{{trans('pages.products.similar_products')}}"
+  source="{{ source }}"
+  {% if raw_source in ['selected', 'categories'] and source_value.value is defined and source_value.value|length > 0 %}
+    source-value="[{{ source_value.value | join(',') }}]"
+  {% endif %}
+  display-all-url
+>
+</salla-products-slider>
 		</div>
 	</div>
 	{% set images = theme.settings.get('image_collection') %}
