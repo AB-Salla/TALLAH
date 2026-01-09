@@ -265,7 +265,7 @@ console.log(option,"optionnn");
   if (option.type === "color") {
     return `
     <div class="colors-wrapper mb-3">
-    ${window.image_option?
+    ${window.option_images?
       `<span class="block">
         color : 
       </span>`:``
