@@ -605,7 +605,7 @@ ${window.option_images ? `
                 : ``
             }
             ${this.product.status !== "sale" ? `
-              <button class="bg-primary md:py-[9px] md:px-[20px] notify">Notify Me</button>
+              <button class="bg-primary md:py-[9px] md:px-[20px] notify text-background">Notify Me</button>
               ` : `
               
                ${
