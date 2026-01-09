@@ -304,7 +304,7 @@ function renderOption(option) {
           `).join("")}
 
           ${remaining > 0 ? `
-            <span class="px-3 py-1 border rounded text-sm bg-gray-100 text-gray-700">
+            <span class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 flex items-center justify-center">
               +${remaining}
             </span>
           ` : ""}
@@ -424,7 +424,7 @@ function renderOption(option) {
                
           </div>
 
-            <div class="card-floating-btn absolute bottom-2 w-full bg-background py-3">
+            <div class="card-floating-btn absolute bottom-2 w-full bg-background p-3">
                   ${window.option_images ? `
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
