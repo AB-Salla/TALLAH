@@ -442,6 +442,20 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
             <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">Out of Stock</span>
             `:``
           }
+           <div class="hidden in_single">
+                   <salla-add-product-button 
+                    fill="none" 
+                    shape="icon" 
+                    product-id="${this.product.id}"
+                    product-status="${this.product.status}"
+                    product-type="${this.product.type}">
+                    <i class="text-base text-[13px] sicon-${
+                      this.product.type == "booking"
+                        ? "calendar-time"
+                        : "shopping-bag"
+                    }"></i>
+                  </salla-add-product-button>
+            </div>
 ${window.option_images ? `
             <div class="card-floating-btn opacity-100 bottom-0 md:opacity-0 absolute md:bottom-[-100%] transition-all duration-700 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
                    
