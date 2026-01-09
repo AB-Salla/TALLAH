@@ -437,6 +437,11 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
 
                
           </div>
+          ${this.product.status =='out' ? 
+            `
+            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">Out of Stock</span>
+            `:``
+          }
 ${window.option_images ? `
             <div class="card-floating-btn opacity-100 bottom-0 md:opacity-0 absolute md:bottom-[-100%] transition-all duration-700 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
                    
