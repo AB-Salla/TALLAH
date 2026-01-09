@@ -787,11 +787,11 @@
       display: none !important;
     }
   }
-  .card-in_single {
+  .in_single {
     position: absolute;
     bottom: 10px;
     right: 0;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     transition: all 0.35s ease;
     opacity: 1;

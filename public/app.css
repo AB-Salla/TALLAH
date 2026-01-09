@@ -27412,31 +27412,31 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .side_products .s-product-card-content salla-add-product-button {
   display: none !important;
 }
-.side_products .card-floating-btn {
+.side_products .in_single {
+  display: flex !important;
   transform: translateY(1px) !important;
 }
-.side_products .card-floating-btn {
+.side_products .in_single {
   position: absolute;
   bottom: 10px;
   right: 0;
-  display: flex;
   justify-content: center;
   transition: all 0.35s ease;
   opacity: 1;
 }
-.side_products .card-floating-btn salla-add-product-button button {
+.side_products .in_single salla-add-product-button button {
   width: 32px !important;
   height: 32px !important;
   background-color: var(--color-background) !important;
   border-radius: 50% !important;
   background-color: rgba(255, 255, 255, 0.8) !important;
 }
-.side_products .card-floating-btn salla-add-product-button button {
+.side_products .in_single salla-add-product-button button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.side_products .card-floating-btn salla-add-product-button button i {
+.side_products .in_single salla-add-product-button button i {
   font-size: 16px;
   color: #414042;
   color: var(--color-primary);
