@@ -297,7 +297,7 @@ function renderOption(option) {
         >
           ${visible.map(item => `
             <button
-              class="px-3 py-1 border rounded text-sm transition-all duration-200 cursor-pointer"
+              class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 cursor-pointer"
               data-option-id="${item.id}">
               ${item.name}
             </button>
