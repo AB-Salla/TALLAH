@@ -2164,6 +2164,9 @@ select{
     background-color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
 }
+.bg-\[color-mix\(in_srgb\2c var\(--color-background\)_90\%\2c transparent\)\]{
+    background-color: color-mix(in srgb,var(--color-background) 90%,transparent);
+}
 .bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c transparent\)\]{
     background-color: rgba(65, 64, 66, 0.05);
 }
@@ -2260,12 +2263,6 @@ select{
     --tw-bg-opacity: 1;
     background-color: rgba(39, 39, 42, 1);
     background-color: rgba(39, 39, 42, var(--tw-bg-opacity, 1));
-}
-.bg-\[color-mix\(in_srgb\2c var\(--color-background\)_70\%\2c transparent\)\]{
-    background-color: color-mix(in srgb,var(--color-background) 70%,transparent);
-}
-.bg-\[color-mix\(in_srgb\2c var\(--color-background\)_90\%\2c transparent\)\]{
-    background-color: color-mix(in srgb,var(--color-background) 90%,transparent);
 }
 .bg-opacity-50{
     --tw-bg-opacity: 0.5;
