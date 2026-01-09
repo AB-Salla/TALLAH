@@ -120,9 +120,9 @@ class Product extends BasePage {
     
 
     if (
-      window.status_product !== "out" ||
-      window.newsletter_sp_view_modal !== true
+      window.status_product == "out" 
     ) {
+      lo
       return;
     }
 
