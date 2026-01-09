@@ -120,9 +120,10 @@ class Product extends BasePage {
     
 
     if (
-      window.status_product == "out" 
+      window.status_product !== "out" 
     ) {
-      lo
+      console.log("! equal out");
+      
       return;
     }
 
