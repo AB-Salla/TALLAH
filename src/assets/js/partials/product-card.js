@@ -428,14 +428,10 @@ function renderOption(option) {
                   ${window.option_images ? `
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
-          </div>
-          
-          
-           ${
-              window.option_images ? `${window.product_card_options ?`<button
-                class="salla-add-product-button w-full flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
+            <button
+                class="salla-add-product-button w-full py-3 flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
-               ${
+             ${
               this.product.status == "sale"
                 ? `<i class="text-base sicon-${
                     this.product.type == "booking"
@@ -450,8 +446,9 @@ function renderOption(option) {
                 : this.getAddButtonLabel()
             }</span>
               <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
-            </button>`:``}`:``
-            }
+            </button>
+          </div>
+          
           `:``}
             `:`
             `}
