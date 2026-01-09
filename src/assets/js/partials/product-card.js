@@ -259,10 +259,12 @@ function renderOption(option) {
 
   const visible = items.slice(0, MAX_VISIBLE);
   const remaining = items.length - MAX_VISIBLE;
+console.log(option,"optionnn");
 
   // 🎨 COLOR
   if (option.type === "color") {
     return `
+    
       <div class="colors-wrapper mb-3">
         <div
           class="colors flex gap-2 flex-wrap"
