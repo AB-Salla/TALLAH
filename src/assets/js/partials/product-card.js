@@ -40,10 +40,7 @@ class ProductCard extends HTMLElement {
       this.startingPrice = salla.lang.get("pages.products.starting_price");
       this.addToCart = salla.lang.get("pages.cart.add_to_cart");
       this.outOfStock = salla.lang.get("pages.products.out_of_stock");
-      this.notifyMeText = salla.lang.get("theme.notify_me");
-      this.outOfStockText = salla.lang.get("theme.out_of_stock");
-      this.sizeLabel = salla.lang.get("theme.size");
-      this.colorLabel = salla.lang.get("theme.color");
+      
       // re-render to update translations
       this.render();
     });
@@ -257,10 +254,10 @@ class ProductCard extends HTMLElement {
 
   render() {
       const MAX_VISIBLE = 3;
+      const isArabic = document.documentElement.lang === "ar";
 
 function renderOption(option) {
   const items = option.details || [];
-  const isArabic = document.documentElement.lang === "ar";
 
 const SIZE_LABEL = isArabic ? "المقاس" : "Size";
 const COLOR_LABEL = isArabic ? "اللون" : "Color";
@@ -442,7 +439,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           </div>
           ${this.product.status =='out' ? 
             `
-            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">Out of Stock</span>
+            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">${this.isArabic ? "نفزت الكمية":"Out of Stock" }</span>
             `:``
           }
            <div class="hidden in_single">
@@ -625,7 +622,7 @@ ${window.option_images && window.product_card_options ? `
   this.product.status !== "sale"
     ? `
       <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">
-         ${this.notifyMeText}
+         ${this.isArabic ? "ذكرني  عند توافرة":"Notify Me" }
       </button>
     `
     : (!window.product_card_options && !window.option_images)

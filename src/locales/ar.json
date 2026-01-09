@@ -7,12 +7,6 @@
       "download_now": "حمله الان"
     }
   },
-   "theme": {
-    "notify_me": "أعلمني عند التوفر",
-    "out_of_stock": "غير متوفر",
-    "size": "المقاس",
-    "color": "اللون"
-  },
   "pages": {
     "cart": {
       "cart_options": "خيارات السلة",
@@ -56,7 +50,7 @@
   "common": {
     "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
     "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة ",
-    "wishlist_empty": "قائمة الرغباcardت الخاصة بك فارغة"
+    "wishlist_empty": "قائمة الرغبات الخاصة بك فارغة"
   },
   "footer": {
     "newsletter_title": "سجّلي بريدك الإلكتروني واحصلي على آخر الأخبار والعروض الخاصة ",
