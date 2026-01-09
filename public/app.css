@@ -27412,6 +27412,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .side_products .s-product-card-content salla-add-product-button {
   display: none !important;
 }
+.side_products .card-floating-btn {
+  display: none !important;
+}
 .side_products .in_single {
   display: flex !important;
   transform: translateY(1px) !important;
