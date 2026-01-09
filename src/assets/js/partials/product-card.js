@@ -606,7 +606,7 @@ ${window.option_images ? `
             }
             ${
               !window.option_images ? `${window.product_card_options ?`<button
-                class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
+                class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-[#F4F4F5] text-font rounded-full"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
              ${
                 this.product.status == "sale"
