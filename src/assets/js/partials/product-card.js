@@ -424,19 +424,13 @@ function renderOption(option) {
                
           </div>
 
-            <div class="card-floating-btn">
-                   <salla-add-product-button 
-                    fill="none" 
-                    shape="icon" 
-                    product-id="${this.product.id}"
-                    product-status="${this.product.status}"
-                    product-type="${this.product.type}">
-                    <i class="text-base text-[13px] sicon-${
-                      this.product.type == "booking"
-                        ? "calendar-time"
-                        : "shopping-bag"
-                    }"></i>
-                  </salla-add-product-button>
+            <div class="card-floating-btn absolute bottom-2 w-full">
+                  ${window.option_images ? `
+              ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
+            ${this.options.map(opt => renderOption(opt)).join("")}
+          </div>`:``}
+            `:`
+            `}
             </div>
             `
              : ``
