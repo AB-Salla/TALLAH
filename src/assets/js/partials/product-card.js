@@ -432,9 +432,9 @@ function renderOption(option) {
 
                
           </div>
-
+${window.option_images ? `
             <div class="card-floating-btn absolute bottom-0 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
-                  ${window.option_images ? `
+                   
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
             <button
