@@ -256,7 +256,10 @@ class ProductCard extends HTMLElement {
 
 function renderOption(option) {
   const items = option.details || [];
+  const isArabic = salla.config.language === "ar";
 
+const SIZE_LABEL = isArabic ? "المقاس" : "Size";
+const COLOR_LABEL = isArabic ? "اللون" : "Color";
   const visible = items.slice(0, MAX_VISIBLE);
   const remaining = items.length - MAX_VISIBLE;
   // 🎨 COLOR
@@ -265,7 +268,7 @@ function renderOption(option) {
     <div class="colors-wrapper mb-3">
     ${window.option_images?
       `<span class="block">
-        color : <span class="selected-color font-semibold"></span>
+        ${COLOR_LABEL} : <span class="selected-color font-semibold"></span>
       </span>`:``
     }
         <div
@@ -292,12 +295,13 @@ function renderOption(option) {
   }
 
   // 📏 SINGLE OPTION
+
   if (option.type === "single-option") {
     return `
       <div class="sizes-wrapper mb-3">
        ${window.option_images?
       `<span class="block">
-        size :  <span class="selected-size font-semibold"></span>
+        ${SIZE_LABEL} :  <span class="selected-size font-semibold"></span>
       </span>`:``
     }
         <div
