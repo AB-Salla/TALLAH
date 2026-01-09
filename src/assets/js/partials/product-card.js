@@ -439,7 +439,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           </div>
           ${this.product.status =='out' ? 
             `
-            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">${this.isArabic ? "نفزت الكمية":"Out of Stock" }</span>
+            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">${isArabic ? "نفزت الكمية":"Out of Stock" }</span>
             `:``
           }
            <div class="hidden in_single">
@@ -622,7 +622,7 @@ ${window.option_images && window.product_card_options ? `
   this.product.status !== "sale"
     ? `
       <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">
-         ${this.isArabic ? "ذكرني  عند توافرة":"Notify Me" }
+         ${isArabic ? "ذكرني  عند توافرة":"Notify Me" }
       </button>
     `
     : (!window.product_card_options && !window.option_images)
