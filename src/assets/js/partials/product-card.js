@@ -514,7 +514,7 @@ ${window.option_images ? `
              : ``
          }
         </div>
-        <div class="s-product-card-content justify-center flex-grow ${this.product.status=='out' ? 'opacity-70':''}">
+        <div class="s-product-card-content justify-center flex-grow">
           ${
             this.isSpecial && this.product?.quantity
               ? `<div class="s-product-card-content-pie">
