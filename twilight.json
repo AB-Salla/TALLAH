@@ -867,6 +867,46 @@
       ],
       "multichoice": false
     },
+      {
+      "id": "categories_single",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "اختيار التصنيف",
+      "description": "اختر التصنيف الذي ترغب بعرض منتجاته.",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [],
+      "source": "categories",
+      "multichoice": false,
+      "searchable": true,
+      "required": true,
+      "conditions": [
+        {
+          "id": "single_source",
+          "operation": "=",
+          "value": "categories"
+        }
+      ]
+    },
+    {
+      "id": "products_single",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "اختيار المنتجات يدويًا",
+      "description": "اختر المنتجات التي تريد عرضها بشكل يدوي.",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [],
+      "source": "products",
+      "multichoice": true,
+      "searchable": true,
+      "required": false,
+      "conditions": [
+        {
+          "id": "single_source",
+          "operation": "=",
+          "value": "selected"
+        }
+      ]
+    },
                 {
             "type": "boolean",
             "icon": "sicon-toggle-off",
