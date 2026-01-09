@@ -264,8 +264,12 @@ console.log(option,"optionnn");
   // 🎨 COLOR
   if (option.type === "color") {
     return `
-    
-      <div class="colors-wrapper mb-3">
+    <div class="colors-wrapper mb-3">
+    ${window.image_option?
+      `<span class="block">
+        color : 
+      </span>`:``
+    }
         <div
           class="colors flex gap-2 flex-wrap"
           data-color-option="${option.id}"
@@ -293,6 +297,11 @@ console.log(option,"optionnn");
   if (option.type === "single-option") {
     return `
       <div class="sizes-wrapper mb-3">
+       ${window.image_option?
+      `<span class="block">
+        size : 
+      </span>`:``
+    }
         <div
           class="sizes flex gap-2 flex-wrap"
           data-single-option="${option.id}"
