@@ -28928,6 +28928,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:-top-10{
         top: -2.5rem;
     }
+    .md\:bottom-\[-100\%\]{
+        bottom: -100%;
+    }
     .md\:mb-0{
         margin-bottom: 0px;
     }
@@ -29160,6 +29163,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:tracking-normal{
         letter-spacing: 0em;
+    }
+    .md\:opacity-0{
+        opacity: 0;
     }
     .md\:first\:pt-24:first-child{
         padding-top: 6rem;
