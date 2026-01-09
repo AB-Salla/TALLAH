@@ -456,7 +456,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
                     }"></i>
                   </salla-add-product-button>
             </div>
-${window.option_images ? `
+${window.option_images && window.product_card_options ? `
             <div class="card-floating-btn opacity-100 bottom-0 md:opacity-0 absolute md:bottom-[-100%] transition-all duration-700 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
                    
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
