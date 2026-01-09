@@ -79,7 +79,11 @@
             "icon": "sicon-toggle-off",
             "value": true,
             "selected": true,
-            "required": false
+            "required": false,"conditions":[{
+                    "id": "product_card_options",
+                    "operation": "=",
+                    "value": true
+            }]
         },
                 {
             "type": "static",
