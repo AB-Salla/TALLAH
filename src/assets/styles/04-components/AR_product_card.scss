@@ -154,6 +154,12 @@
   // ===========================
 
   &-vertical {
+    &:hover{
+      .card-floating-btn{
+        bottom: 0 !important;
+        opacity: 1 !important;
+      }
+    }
     border-radius: 0 !important;
 
     // Image container inside vertical card

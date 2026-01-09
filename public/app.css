@@ -933,6 +933,9 @@ select{
 .bottom-4{
     bottom: 1rem;
 }
+.bottom-\[-100\%\]{
+    bottom: -100%;
+}
 .left-0{
     left: 0px;
 }
@@ -26420,6 +26423,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical {
   border-radius: 0 !important;
+}
+.s-product-card-vertical:hover .card-floating-btn {
+  bottom: 0 !important;
+  opacity: 1 !important;
 }
 .s-product-card-vertical .s-product-card-image {
   border-radius: 0 !important;
