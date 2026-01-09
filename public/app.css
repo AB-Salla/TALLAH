@@ -26430,8 +26430,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-vertical .s-product-card-image {
   position: relative;
-  min-height: clamp(16.3125rem, 11.2729rem + 21.5023vw, 30.625rem);
-  max-height: clamp(16.3125rem, 11.2729rem + 21.5023vw, 30.625rem);
+  min-height: clamp(19rem, 15.1268rem + 16.5258vw, 30rem);
+  max-height: clamp(19rem, 15.1268rem + 16.5258vw, 30rem);
 }
 .s-product-card-vertical salla-add-product-button salla-button button {
   background-color: #F4F4F5 !important;
