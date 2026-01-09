@@ -297,7 +297,7 @@ console.log(option,"optionnn");
   if (option.type === "single-option") {
     return `
       <div class="sizes-wrapper mb-3">
-       ${window.image_option?
+       ${window.option_images?
       `<span class="block">
         size : 
       </span>`:``
