@@ -259,15 +259,13 @@ function renderOption(option) {
 
   const visible = items.slice(0, MAX_VISIBLE);
   const remaining = items.length - MAX_VISIBLE;
-console.log(option,"optionnn");
-
   // 🎨 COLOR
   if (option.type === "color") {
     return `
     <div class="colors-wrapper mb-3">
     ${window.option_images?
       `<span class="block">
-        color : 
+        color : <span class="selected-color font-semibold"></span>
       </span>`:``
     }
         <div
@@ -299,7 +297,7 @@ console.log(option,"optionnn");
       <div class="sizes-wrapper mb-3">
        ${window.option_images?
       `<span class="block">
-        size : 
+        size :  <span class="selected-size font-semibold"></span>
       </span>`:``
     }
         <div
@@ -734,18 +732,26 @@ if (this.thumbnailOptions.length > 0) {
 // ==========================================
 // اختيار اللون (إذا كان موجود)
 this.colorOptions.forEach(option => {
-  this.querySelectorAll(`[data-color-option="${option.id}"] span`)
+  this.querySelectorAll(`[data-color-option="${option.id}"] span[data-option-id]`)
     .forEach(el => {
       el.addEventListener("click", () => {
         selectedOptions[option.id] = el.dataset.optionId;
 
-        // UI
-        el.parentElement.querySelectorAll("span")
+        // UI active ring
+        el.parentElement.querySelectorAll("span[data-option-id]")
           .forEach(s => s.classList.remove("ring-2", "ring-primary"));
         el.classList.add("ring-2", "ring-primary");
+
+        // ✅ تحديث النص جنب color
+        const wrapper = el.closest(".colors-wrapper");
+        const label = wrapper.querySelector(".selected-color");
+        if (label) {
+          label.textContent = el.getAttribute("title");
+        }
       });
     });
 });
+
 
 
 // ==========================================
@@ -756,13 +762,21 @@ this.singleOptions.forEach(option => {
       el.addEventListener("click", () => {
         selectedOptions[option.id] = el.dataset.optionId;
 
-        // UI
+        // UI active button
         el.parentElement.querySelectorAll("button")
           .forEach(b => b.classList.remove("bg-primary", "text-background"));
         el.classList.add("bg-primary", "text-background");
+
+        // ✅ تحديث النص جنب size
+        const wrapper = el.closest(".sizes-wrapper");
+        const label = wrapper.querySelector(".selected-size");
+        if (label) {
+          label.textContent = el.textContent.trim();
+        }
       });
     });
 });
+
 
 
 // =========================================
