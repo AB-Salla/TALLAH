@@ -858,6 +858,12 @@ addBtn?.addEventListener("click", async () => {
     if (loader) loader.classList.add("hidden");
   }
 });
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".notify");
+  if (btn) {
+    window.openNewsletterModal();
+  }
+});
 
   }
 }
