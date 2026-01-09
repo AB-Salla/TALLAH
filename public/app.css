@@ -2486,6 +2486,26 @@ select{
     padding-top: 6px;
     padding-bottom: 6px;
 }
+.px-\[\]{
+    padding-left: ;
+    padding-right: ;
+}
+.px-\[6px\]{
+    padding-left: 6px;
+    padding-right: 6px;
+}
+.py-\[\]{
+    padding-top: ;
+    padding-bottom: ;
+}
+.py-\[3\]{
+    padding-top: 3;
+    padding-bottom: 3;
+}
+.py-\[3px\]{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 .\!pb-0{
     padding-bottom: 0px !important;
 }
@@ -2714,6 +2734,9 @@ select{
 .text-xs{
     font-size: 0.75rem;
     line-height: 1rem;
+}
+.text-\[12px\]{
+    font-size: 12px;
 }
 .font-bold{
     font-weight: 700;
@@ -2972,6 +2995,9 @@ select{
     --tw-text-opacity: 1;
     color: rgba(39, 39, 42, 1);
     color: rgba(39, 39, 42, var(--tw-text-opacity, 1));
+}
+.text-\[\]{
+    color: ;
 }
 .underline{
     text-decoration-line: underline;
@@ -27429,6 +27455,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   font-size: 16px;
   color: #414042;
   color: var(--color-primary);
+}
+.side_products .notify {
+  display: none !important;
 }
 .side_products .s-product-card-content-options {
   display: none !important;
