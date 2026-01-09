@@ -431,7 +431,7 @@ function renderOption(option) {
             <button
                 class="salla-add-product-button w-full py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
-            <span class="text-background">${
+            <span class="text-background add-icon">${
               this.product.add_to_cart_label
                 ? this.product.add_to_cart_label
                 : this.getAddButtonLabel()
