@@ -7,6 +7,12 @@
       "download_now": "download now"
     }
   },
+  "theme": {
+    "notify_me": "Notify Me",
+    "out_of_stock": "Out of Stock",
+    "size": "Size",
+    "color": "Color"
+  },
   "pages": {
     "cart": {
       "cart_options": "Cart Options",
