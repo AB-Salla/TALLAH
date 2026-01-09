@@ -256,7 +256,7 @@ class ProductCard extends HTMLElement {
 
 function renderOption(option) {
   const items = option.details || [];
-  const isArabic = salla.config.language === "ar";
+  const isArabic = document.documentElement.lang || "ar";
 
 const SIZE_LABEL = isArabic ? "المقاس" : "Size";
 const COLOR_LABEL = isArabic ? "اللون" : "Color";
