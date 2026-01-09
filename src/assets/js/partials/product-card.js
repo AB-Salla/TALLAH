@@ -8,6 +8,7 @@ class ProductCard extends HTMLElement {
   connectedCallback() {
     // Parse product data
     this.product = this.product || JSON.parse(this.getAttribute("product"));
+    console.log(this.product,"this.productthis.productthis.product");
     
     if (window.app?.status === "ready") {
       this.onReady();
@@ -442,7 +443,7 @@ ${window.option_images ? `
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
             <button
-                class="salla-add-product-button w-full py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
+                class="salla-add-product-button w-full py-[6px] md:py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
             <span class="text-background add-icon">${
               this.product.add_to_cart_label
