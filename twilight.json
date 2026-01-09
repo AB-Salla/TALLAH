@@ -69,6 +69,18 @@
             "selected": true,
             "required": false
         },
+        {
+            "id": "product_card_options_image",
+            "type": "boolean",
+            "format": "switch",
+            "label": "تفعيل  خيارات المنتج عائمة علي صورة كارت المنتج",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": true,
+            "required": false
+        },
                 {
             "type": "static",
             "format": "title",
