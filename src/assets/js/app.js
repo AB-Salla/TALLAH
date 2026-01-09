@@ -12,6 +12,7 @@ class App extends AppHelpers {
   constructor() {
     super();
     window.app = this;
+    window.openNewsletterModal = this.openNewsletterModal;
     global.openEyeModel = (id) => {
       import("./partials/eye-model")
         .then((eye) => {
@@ -300,6 +301,161 @@ class App extends AppHelpers {
       });
     });
   }
+   openNewsletterModal() {
+  // منع فتح أكتر من مودال
+  if (document.getElementById("newsletter_sp-modal")) return;
+
+  const lang = document.documentElement.lang || "ar";
+  const getMessage = (key) => {
+    const messages = {
+      ar: {
+        placeholder: "أدخل بريدك الإلكتروني",
+        button: "إرسال",
+        cancel: "إلغاء",
+        email: "البريد الإلكتروني",
+        invalid: "صيغة البريد الإلكتروني غير صحيحة",
+        success: "تم الاشتراك بنجاح! شكراً لك",
+      },
+      en: {
+        placeholder: "Enter your email address",
+        button: "Send",
+        cancel: "Cancel",
+        email: "Email",
+        invalid: "Invalid email format",
+        success: "Subscription successful! Thank you",
+      },
+    };
+    return messages[lang][key];
+  };
+
+  const modal = document.createElement("div");
+  modal.id = "newsletter_sp-modal";
+  modal.className = `
+    fixed inset-0 z-[99] flex items-center justify-center
+    bg-black/40 backdrop-blur-sm opacity-0
+    transition-all duration-500
+  `;
+
+  modal.innerHTML = `
+    <div class="newsletter-modal bg-background rounded-[10px] p-6 w-[90%] max-w-[580px]
+                relative transform scale-90 transition-transform duration-500 shadow-xl">
+
+      <button id="close-modal"
+        class="absolute top-3 right-3 w-[24px] h-[24px] text-[#71717B]">
+        <i class="sicon-cancel text-[16px]"></i>
+      </button>
+ <div class="w-[70px] h-[70px] mx-auto">
+        <img src="${window.add_image}" class="w-full h-auto"/>
+      </div>
+      <div class="text-center mb-6">
+        <h2 class="text-primary font-semibold text-lg">
+          ${window.newsletter_sp_block_title || ""}
+        </h2>
+        <p class="text-[#71717B] text-sm">
+          ${window.newsletter_sp_sub_title || ""}
+        </p>
+      </div>
+
+      <form id="newsletter-form"
+        action="${window.newsletter_sp_url || "#"}"
+        method="post"
+        target="_blank"
+        novalidate>
+
+        <label class="block mb-2 text-primary font-semibold">
+          ${getMessage("email")}
+        </label>
+
+        <input
+          type="email"
+          name="EMAIL"
+          placeholder="${getMessage("placeholder")}"
+          class="w-full px-4 py-3 mb-6 rounded-[10px]
+                 bg-gray-100 focus:outline-none
+                 focus:ring-2 focus:ring-primary/40"
+          required
+        />
+
+        <div class="flex gap-3">
+          <button type="submit"
+            class="w-1/2 bg-primary text-background py-3 rounded-[4px]
+                   hover:scale-105 active:scale-95 transition">
+            ${getMessage("button")}
+          </button>
+
+          <button type="button" id="cancel-modal"
+            class="w-1/2 border border-primary text-primary py-3 rounded-[4px]
+                   hover:scale-105 active:scale-95 transition">
+            ${getMessage("cancel")}
+          </button>
+        </div>
+      </form>
+    </div>
+  `;
+
+  document.body.appendChild(modal);
+
+  requestAnimationFrame(() => {
+    modal.classList.remove("opacity-0");
+    modal.querySelector(".newsletter-modal").classList.remove("scale-90");
+  });
+
+  // ===============================
+  // Close modal
+  // ===============================
+  const closeModal = () => {
+    modal.classList.add("opacity-0");
+    modal.querySelector(".newsletter-modal").classList.add("scale-90");
+    setTimeout(() => modal.remove(), 400);
+  };
+
+  modal.querySelector("#close-modal").onclick = closeModal;
+  modal.querySelector("#cancel-modal").onclick = closeModal;
+
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // ===============================
+  // Handle form
+  // ===============================
+  const form = modal.querySelector("#newsletter-form");
+  const emailInput = form.querySelector("input");
+  const submitBtn = form.querySelector("button[type='submit']");
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!regex.test(email)) {
+      salla.notify.error(getMessage("invalid"));
+      return;
+    }
+
+    submitBtn.disabled = true;
+
+    fetch(form.action, {
+      method: "POST",
+      body: new FormData(form),
+      mode: "no-cors",
+    })
+      .then(() => {
+        salla.notify.success(getMessage("success"));
+        closeModal();
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+      });
+  });
+}
+
+// ===============================
+// Attach to notify button
+// ===============================
+
+
   async init_SideCart() {
     if (window.location.pathname.includes("/cart")) {
       // إذا كنا في صفحة الكارت، لا نحتاج للسايد كارت

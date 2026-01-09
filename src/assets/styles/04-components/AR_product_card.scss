@@ -154,6 +154,12 @@
   // ===========================
 
   &-vertical {
+    &:hover{
+      .card-floating-btn{
+        bottom: 0 !important;
+        opacity: 1 !important;
+      }
+    }
     border-radius: 0 !important;
 
     // Image container inside vertical card
@@ -162,8 +168,8 @@
       position: relative;
       // max-height: 490px;
       // min-height: 490px;
-      min-height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
-      max-height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
+      min-height: clamp(19rem, 15.1268rem + 16.5258vw, 30rem);
+      max-height: clamp(19rem, 15.1268rem + 16.5258vw, 30rem);
       @media (max-width: 768px) {
         // max-height: 261px;
         // min-height: 261px;

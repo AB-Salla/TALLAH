@@ -8,6 +8,7 @@ class ProductCard extends HTMLElement {
   connectedCallback() {
     // Parse product data
     this.product = this.product || JSON.parse(this.getAttribute("product"));
+    console.log(this.product,"this.productthis.productthis.product");
     
     if (window.app?.status === "ready") {
       this.onReady();
@@ -256,14 +257,21 @@ class ProductCard extends HTMLElement {
 
 function renderOption(option) {
   const items = option.details || [];
+  const isArabic = document.documentElement.lang === "ar";
 
+const SIZE_LABEL = isArabic ? "المقاس" : "Size";
+const COLOR_LABEL = isArabic ? "اللون" : "Color";
   const visible = items.slice(0, MAX_VISIBLE);
   const remaining = items.length - MAX_VISIBLE;
-
   // 🎨 COLOR
   if (option.type === "color") {
     return `
-      <div class="colors-wrapper mb-3">
+    <div class="colors-wrapper mb-3">
+    ${window.option_images?
+      `<span class="block">
+        ${COLOR_LABEL} : <span class="selected-color font-semibold"></span>
+      </span>`:``
+    }
         <div
           class="colors flex gap-2 flex-wrap"
           data-color-option="${option.id}"
@@ -288,23 +296,29 @@ function renderOption(option) {
   }
 
   // 📏 SINGLE OPTION
+
   if (option.type === "single-option") {
     return `
       <div class="sizes-wrapper mb-3">
+       ${window.option_images?
+      `<span class="block">
+        ${SIZE_LABEL} :  <span class="selected-size font-semibold"></span>
+      </span>`:``
+    }
         <div
           class="sizes flex gap-2 flex-wrap"
           data-single-option="${option.id}"
         >
           ${visible.map(item => `
             <button
-              class="px-3 py-1 border rounded text-sm transition-all duration-200 cursor-pointer"
+              class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 cursor-pointer"
               data-option-id="${item.id}">
               ${item.name}
             </button>
           `).join("")}
 
           ${remaining > 0 ? `
-            <span class="px-3 py-1 border rounded text-sm bg-gray-100 text-gray-700">
+            <span class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 flex items-center justify-center">
               +${remaining}
             </span>
           ` : ""}
@@ -423,8 +437,12 @@ function renderOption(option) {
 
                
           </div>
-
-            <div class="card-floating-btn">
+          ${this.product.status =='out' ? 
+            `
+            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">Out of Stock</span>
+            `:``
+          }
+           <div class="hidden in_single">
                    <salla-add-product-button 
                     fill="none" 
                     shape="icon" 
@@ -437,6 +455,27 @@ function renderOption(option) {
                         : "shopping-bag"
                     }"></i>
                   </salla-add-product-button>
+            </div>
+${window.option_images ? `
+            <div class="card-floating-btn opacity-100 bottom-0 md:opacity-0 absolute md:bottom-[-100%] transition-all duration-700 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
+                   
+              ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
+            ${this.options.map(opt => renderOption(opt)).join("")}
+            <button
+                class="salla-add-product-button w-full py-[6px] md:py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
+                ${this.product.status !== "sale" ? "disabled" : ""}>
+            <span class="text-background add-icon">${
+              this.product.add_to_cart_label
+                ? this.product.add_to_cart_label
+                : this.getAddButtonLabel()
+            }</span>
+              <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
+            </button>
+          </div>
+          
+          `:``}
+            `:`
+            `}
             </div>
             `
              : ``
@@ -514,9 +553,13 @@ function renderOption(option) {
           <div class="s-product-card-content-main ${
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
-          ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
+          ${!window.option_images ? `
+              ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
           </div>`:``}
+            `:`
+            `}
+        
           
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
               <a class="!leading-[24px]" href="${this.product?.url}">${
@@ -566,7 +609,7 @@ function renderOption(option) {
                 ? `
     <div class="flex items-center gap-3 justify-between w-full">
       <span class="product-price">${this.getProductPrice()}</span>
-      <div class="flex items-center justify-center ">
+      <div class="flex items-center justify-center  gap-2">
       ${
               this.product?.rating?.stars
                 ? `<div class="s-product-card-rating">
@@ -575,8 +618,13 @@ function renderOption(option) {
               </div>`
                 : ``
             }
-            ${window.product_card_options ?`<button
-                class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-background text-font rounded-full"
+            ${this.product.status !== "sale" ? `
+              <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">Notify Me</button>
+              ` : `
+              
+               ${
+              !window.option_images ? `${window.product_card_options ?`<button
+                class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-[#F4F4F5] text-font rounded-full"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
              ${
                 this.product.status == "sale"
@@ -598,7 +646,11 @@ function renderOption(option) {
                         ? "calendar-time"
                         : "shopping-bag"
                     }"></i>
-                  </salla-add-product-button>`}
+                  </salla-add-product-button>`}`:``
+            }
+              `}
+           
+            
       </div>
     
      
@@ -710,18 +762,26 @@ if (this.thumbnailOptions.length > 0) {
 // ==========================================
 // اختيار اللون (إذا كان موجود)
 this.colorOptions.forEach(option => {
-  this.querySelectorAll(`[data-color-option="${option.id}"] span`)
+  this.querySelectorAll(`[data-color-option="${option.id}"] span[data-option-id]`)
     .forEach(el => {
       el.addEventListener("click", () => {
         selectedOptions[option.id] = el.dataset.optionId;
 
-        // UI
-        el.parentElement.querySelectorAll("span")
+        // UI active ring
+        el.parentElement.querySelectorAll("span[data-option-id]")
           .forEach(s => s.classList.remove("ring-2", "ring-primary"));
         el.classList.add("ring-2", "ring-primary");
+
+        // ✅ تحديث النص جنب color
+        const wrapper = el.closest(".colors-wrapper");
+        const label = wrapper.querySelector(".selected-color");
+        if (label) {
+          label.textContent = el.getAttribute("title");
+        }
       });
     });
 });
+
 
 
 // ==========================================
@@ -732,13 +792,21 @@ this.singleOptions.forEach(option => {
       el.addEventListener("click", () => {
         selectedOptions[option.id] = el.dataset.optionId;
 
-        // UI
+        // UI active button
         el.parentElement.querySelectorAll("button")
           .forEach(b => b.classList.remove("bg-primary", "text-background"));
         el.classList.add("bg-primary", "text-background");
+
+        // ✅ تحديث النص جنب size
+        const wrapper = el.closest(".sizes-wrapper");
+        const label = wrapper.querySelector(".selected-size");
+        if (label) {
+          label.textContent = el.textContent.trim();
+        }
       });
     });
 });
+
 
 
 // =========================================
@@ -802,6 +870,12 @@ addBtn?.addEventListener("click", async () => {
 
     if (icon) icon.classList.remove("hidden");
     if (loader) loader.classList.add("hidden");
+  }
+});
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".notify");
+  if (btn) {
+    window.openNewsletterModal();
   }
 });
 

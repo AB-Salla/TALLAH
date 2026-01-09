@@ -50,7 +50,7 @@
 | theme.settings.get(settingName, default=null)      | mixed    | get theme setting ex `theme.settings.get('my_var', 'fallback')`                                          |
 #}
 <!DOCTYPE html>
-<html class="overflow-x-hidden" lang="{{ user.language.code }}" dir="{{ user.language.dir }}">
+<html class="{% if not is_page('product.single') and not is_page('cart') %} overflow-x-hidden {% endif %}" lang="{{ user.language.code }}" dir="{{ user.language.dir }}">
 <!-- بسم الله الرحمن الرحيم -->
 <head>
     <meta charset="UTF-8">
@@ -94,6 +94,7 @@
     <link rel="stylesheet" href="{{ 'fonts/sallaicons.css'|cdn }}"/>
      <em><script data-cfasync="false">
         window.product_card_options = "{{ theme.settings.get('product_card_options') }}"
+        window.option_images = "{{ theme.settings.get('product_card_options_image') }}"
         </script></em>
     
     <style>
@@ -110,7 +111,7 @@
     {# tracking services, custom css feature. #}
     {% hook 'head:end' %}
 </head>
-<body id="app" class="bg-background overflow-x-hidden {% hook 'body:classes' %}
+<body id="app" class="bg-background {% if not is_page('product.single') and not is_page('cart') %} overflow-x-hidden {% endif %} {% hook 'body:classes' %}
   {{ theme.settings.get('footer_is_dark') ? ' footer-is-dark' : ' footer-is-light' }}
   {{ theme.settings.get('topnav_is_dark') ? ' topnav-is-dark' : '' }}
   {{ theme.settings.get('sticky_add_to_cart') ? ' is-sticky-product-bar' : '' }}

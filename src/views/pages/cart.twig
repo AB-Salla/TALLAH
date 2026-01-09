@@ -73,12 +73,12 @@
                                                 {% if loop.first %}
                                                     <img src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="flex-none w-[95px] md:w-32 h-full border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="flex-none w-[95px] md:w-32 h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% else %}
                                                     <img src="{{ 'images/s-empty.png' | cdn }}"
                                                         data-src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="lazy flex-none w-[95px] md:w-32 h-[165px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="lazy flex-none w-[95px] md:w-32 h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% endif %}
     
                                                 <!-- free product ribbon -->
@@ -290,7 +290,7 @@
                         </div>
 
                         {# todo :: use form #}
-                        {% if store.settings.cart.apply_coupon_enabled %}
+                        {# {% if store.settings.cart.apply_coupon_enabled %} #}
                             <div class="border-t border-gray-200 border-b py-5 mb-5">
                                 <label for="coupon"
                                        class="block text-sm ">{{ trans('pages.cart.have_coupon') }}</label>
@@ -311,7 +311,7 @@
                                 </div>
                                 <span class="text-xs text-red-700" id="coupon-error"></span>
                             </div>
-                        {% endif %}
+                        {# {% endif %} #}
 
                         <!-- coupon discount -->
                         <div id="total-discount" class="flex justify-between text-sm {{ cart.total_discount ? '' : 'hidden' }}">
@@ -414,7 +414,7 @@
             {% endif %}
         </div>
     </div>
-    <div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10 mb-5 md:mb-10 cart_slider">
+    <div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10 mb-5 md:mb-10 cart_slider overflow-x-hidden">
 		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">

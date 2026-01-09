@@ -936,6 +936,9 @@ select{
 .left-0{
     left: 0px;
 }
+.left-1{
+    left: 0.25rem;
+}
 .right-0{
     right: 0px;
 }
@@ -953,6 +956,9 @@ select{
 }
 .top-0{
     top: 0px;
+}
+.top-1{
+    top: 0.25rem;
 }
 .top-2{
     top: 0.5rem;
@@ -1301,11 +1307,11 @@ select{
 .h-\[100svh\]{
     height: 100svh;
 }
+.h-\[140px\]{
+    height: 140px;
+}
 .h-\[14px\]{
     height: 14px;
-}
-.h-\[165px\]{
-    height: 165px;
 }
 .h-\[22px\]{
     height: 22px;
@@ -1437,6 +1443,9 @@ select{
 }
 .w-0{
     width: 0px;
+}
+.w-1\/2{
+    width: 50%;
 }
 .w-10{
     width: 2.5rem;
@@ -2085,6 +2094,11 @@ select{
 .border-none{
     border-style: none;
 }
+.border-\[\#9F9FA9\]{
+    --tw-border-opacity: 1;
+    border-color: rgba(159, 159, 169, 1);
+    border-color: rgba(159, 159, 169, var(--tw-border-opacity, 1));
+}
 .border-\[color-mix\(in_srgb\2c var\(--color-primary\)_20\%\2c transparent\)\]{
     border-color: rgba(65, 64, 66, 0.2);
 }
@@ -2149,6 +2163,11 @@ select{
     background-color: rgba(244, 240, 235, 1);
     background-color: rgba(244, 240, 235, var(--tw-bg-opacity, 1));
 }
+.bg-\[\#F4F4F5\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(244, 244, 245, 1);
+    background-color: rgba(244, 244, 245, var(--tw-bg-opacity, 1));
+}
 .bg-\[\#e9e9e9\]{
     --tw-bg-opacity: 1;
     background-color: rgba(233, 233, 233, 1);
@@ -2158,6 +2177,9 @@ select{
     --tw-bg-opacity: 1;
     background-color: rgba(255, 255, 255, 1);
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
+}
+.bg-\[color-mix\(in_srgb\2c var\(--color-background\)_90\%\2c transparent\)\]{
+    background-color: color-mix(in srgb,var(--color-background) 90%,transparent);
 }
 .bg-\[color-mix\(in_srgb\2c var\(--color-primary\)_5\%\2c transparent\)\]{
     background-color: rgba(65, 64, 66, 0.05);
@@ -2384,6 +2406,10 @@ select{
     padding-left: 12px;
     padding-right: 12px;
 }
+.px-\[6px\]{
+    padding-left: 6px;
+    padding-right: 6px;
+}
 .px-\[8px\]{
     padding-left: 8px;
     padding-right: 8px;
@@ -2448,6 +2474,10 @@ select{
     padding-top: 20px;
     padding-bottom: 20px;
 }
+.py-\[3px\]{
+    padding-top: 3px;
+    padding-bottom: 3px;
+}
 .py-\[48px\]{
     padding-top: 48px;
     padding-bottom: 48px;
@@ -2455,6 +2485,14 @@ select{
 .py-\[4px\]{
     padding-top: 4px;
     padding-bottom: 4px;
+}
+.py-\[5px\]{
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+.py-\[6px\]{
+    padding-top: 6px;
+    padding-bottom: 6px;
 }
 .\!pb-0{
     padding-bottom: 0px !important;
@@ -2595,6 +2633,9 @@ select{
 }
 .text-\[11px\]{
     font-size: 11px;
+}
+.text-\[12px\]{
+    font-size: 12px;
 }
 .text-\[13px\]{
     font-size: 13px;
@@ -3028,6 +3069,12 @@ select{
 }
 .outline{
     outline-style: solid;
+}
+.ring{
+    --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+    --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(3px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+    box-shadow: /*!*/ /*!*/ 0 0 0 0px #fff, var(--tw-ring-shadow), 0 0 rgba(0,0,0,0);
+    box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 rgba(0,0,0,0));
 }
 .ring-2{
     --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
@@ -26403,13 +26450,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-vertical {
   border-radius: 0 !important;
 }
+.s-product-card-vertical:hover .card-floating-btn {
+  bottom: 0 !important;
+  opacity: 1 !important;
+}
 .s-product-card-vertical .s-product-card-image {
   border-radius: 0 !important;
 }
 .s-product-card-vertical .s-product-card-image {
   position: relative;
-  min-height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
-  max-height: clamp(16.3125rem, 10.0909rem + 19.9091vw, 30rem);
+  min-height: clamp(19rem, 15.1268rem + 16.5258vw, 30rem);
+  max-height: clamp(19rem, 15.1268rem + 16.5258vw, 30rem);
 }
 .s-product-card-vertical salla-add-product-button salla-button button {
   background-color: #F4F4F5 !important;
@@ -27362,33 +27413,39 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: none !important;
 }
 .side_products .card-floating-btn {
+  display: none !important;
+}
+.side_products .in_single {
+  display: flex !important;
   transform: translateY(1px) !important;
 }
-.side_products .card-floating-btn {
+.side_products .in_single {
   position: absolute;
   bottom: 10px;
   right: 0;
-  display: flex;
   justify-content: center;
   transition: all 0.35s ease;
   opacity: 1;
 }
-.side_products .card-floating-btn salla-add-product-button button {
+.side_products .in_single salla-add-product-button button {
   width: 32px !important;
   height: 32px !important;
   background-color: var(--color-background) !important;
   border-radius: 50% !important;
   background-color: rgba(255, 255, 255, 0.8) !important;
 }
-.side_products .card-floating-btn salla-add-product-button button {
+.side_products .in_single salla-add-product-button button {
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.side_products .card-floating-btn salla-add-product-button button i {
+.side_products .in_single salla-add-product-button button i {
   font-size: 16px;
   color: #414042;
   color: var(--color-primary);
+}
+.side_products .notify {
+  display: none !important;
 }
 .side_products .s-product-card-content-options {
   display: none !important;
@@ -27912,7 +27969,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .cart .s-payments-list-item {
   height: 50px !important;
-  width: 50px !important;
+  width: 60px !important;
+  background-color: transparent !important;
 }
 .cart .s-list-tile-item {
   background-color: #F4F0EB !important;
@@ -28902,6 +28960,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:-top-10{
         top: -2.5rem;
     }
+    .md\:bottom-\[-100\%\]{
+        bottom: -100%;
+    }
     .md\:mb-0{
         margin-bottom: 0px;
     }
@@ -29083,6 +29144,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+    .md\:px-\[20px\]{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
     .md\:py-0{
         padding-top: 0px;
         padding-bottom: 0px;
@@ -29090,6 +29155,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-10{
         padding-top: 2.5rem;
         padding-bottom: 2.5rem;
+    }
+    .md\:py-3{
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
     }
     .md\:py-4{
         padding-top: 1rem;
@@ -29099,8 +29168,19 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
     }
+    .md\:py-\[10px\]{
+        padding-top: 10px;
+        padding-bottom: 10px;
+    }
+    .md\:py-\[9px\]{
+        padding-top: 9px;
+        padding-bottom: 9px;
+    }
     .md\:\!pb-9{
         padding-bottom: 2.25rem !important;
+    }
+    .md\:pb-6{
+        padding-bottom: 1.5rem;
     }
     .md\:pb-8{
         padding-bottom: 2rem;
@@ -29130,6 +29210,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:tracking-normal{
         letter-spacing: 0em;
+    }
+    .md\:opacity-0{
+        opacity: 0;
     }
     .md\:first\:pt-24:first-child{
         padding-top: 6rem;

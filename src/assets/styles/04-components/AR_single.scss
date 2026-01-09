@@ -787,11 +787,14 @@
       display: none !important;
     }
   }
-  .card-floating-btn {
+  .card-floating-btn{
+    display: none !important;
+  }
+  .in_single {
     position: absolute;
     bottom: 10px;
     right: 0;
-    display: flex;
+    display: flex !important;
     justify-content: center;
     transition: all 0.35s ease;
     opacity: 1;
@@ -812,6 +815,9 @@
         }
       }
     }
+  }
+  .notify{
+    display: none !important;
   }
   .s-product-card-content-options{
     display: none !important;
