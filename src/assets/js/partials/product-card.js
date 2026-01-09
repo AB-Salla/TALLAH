@@ -424,7 +424,7 @@ function renderOption(option) {
                
           </div>
 
-            <div class="card-floating-btn absolute bottom-2 w-full">
+            <div class="card-floating-btn absolute bottom-2 w-full bg-background py-3">
                   ${window.option_images ? `
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
