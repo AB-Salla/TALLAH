@@ -618,37 +618,42 @@ ${window.option_images && window.product_card_options ? `
               </div>`
                 : ``
             }
-            ${this.product.status !== "sale" ? `
-              <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">Notify Me</button>
-              ` : `
-              
-               ${
-              !window.option_images ? `${window.product_card_options ?`<button
-                class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-[#F4F4F5] text-font rounded-full"
-                ${this.product.status !== "sale" ? "disabled" : ""}>
-             ${
-                this.product.status == "sale"
-                  ? `<i class="text-base add-icon sicon-${
-                      this.product.type == "booking" ? "calendar-time" : "shopping-bag"
-                    }"></i>`
-                  : `<i class="text-base sicon-cart-cancel"
-                    }"></i>`
-              }
-              <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
-            </button>`:` <salla-add-product-button 
-                    fill="none" 
-                    shape="icon" 
-                    product-id="${this.product.id}"
-                    product-status="${this.product.status}"
-                    product-type="${this.product.type}">
-                    <i class="text-base text-[13px] sicon-${
-                      this.product.type == "booking"
-                        ? "calendar-time"
-                        : "shopping-bag"
-                    }"></i>
-                  </salla-add-product-button>`}`:``
-            }
-              `}
+           ${
+  this.product.status !== "sale"
+    ? `
+      <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">
+        Notify Me
+      </button>
+    `
+    : (!window.product_card_options && !window.option_images)
+      ? `
+        <salla-add-product-button
+          fill="none"
+          shape="icon"
+          product-id="${this.product.id}"
+          product-status="${this.product.status}"
+          product-type="${this.product.type}">
+          <i class="text-base sicon-${
+            this.product.type === "booking"
+              ? "calendar-time"
+              : "shopping-bag"
+          }"></i>
+        </salla-add-product-button>
+      `
+      : `
+      ${!window.option_images ? ` <button
+          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0 bg-[#F4F4F5] rounded-full">
+          <i class="text-base add-icon sicon-${
+            this.product.type === "booking"
+              ? "calendar-time"
+              : "shopping-bag"
+          }"></i>
+          <i class="loader hidden animate-spin sicon-loading"></i>
+        </button>`:``}
+       
+      `
+}
+
            
             
       </div>
