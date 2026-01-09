@@ -2275,6 +2275,9 @@ select{
     background-color: rgba(39, 39, 42, 1);
     background-color: rgba(39, 39, 42, var(--tw-bg-opacity, 1));
 }
+.bg-\[background\]{
+    background-color: background;
+}
 .bg-opacity-50{
     --tw-bg-opacity: 0.5;
 }
@@ -2482,6 +2485,18 @@ select{
 .py-\[6px\]{
     padding-top: 6px;
     padding-bottom: 6px;
+}
+.px-\[\]{
+    padding-left: ;
+    padding-right: ;
+}
+.py-\[9px\]{
+    padding-top: 9px;
+    padding-bottom: 9px;
+}
+.px-\[20px\]{
+    padding-left: 20px;
+    padding-right: 20px;
 }
 .\!pb-0{
     padding-bottom: 0px !important;
@@ -29147,6 +29162,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-\[10px\]{
         padding-top: 10px;
         padding-bottom: 10px;
+    }
+    .md\:px-\[20px\]{
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+    .md\:py-\[9px\]{
+        padding-top: 9px;
+        padding-bottom: 9px;
     }
     .md\:\!pb-9{
         padding-bottom: 2.25rem !important;

@@ -604,7 +604,11 @@ ${window.option_images ? `
               </div>`
                 : ``
             }
-            ${
+            ${this.product.status !== "sale" ? `
+              <button class="bg-primary md:py-[9px] md:px-[20px] notify">Notify Me</button>
+              ` : `
+              
+               ${
               !window.option_images ? `${window.product_card_options ?`<button
                 class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-[#F4F4F5] text-font rounded-full"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
@@ -630,6 +634,8 @@ ${window.option_images ? `
                     }"></i>
                   </salla-add-product-button>`}`:``
             }
+              `}
+           
             
       </div>
     
