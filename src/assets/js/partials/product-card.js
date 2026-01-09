@@ -514,9 +514,13 @@ function renderOption(option) {
           <div class="s-product-card-content-main ${
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
-          ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
+          ${!window.option_images ? `
+              ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
           </div>`:``}
+            `:`
+            `}
+        
           
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
               <a class="!leading-[24px]" href="${this.product?.url}">${
