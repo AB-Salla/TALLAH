@@ -26844,10 +26844,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* Hide empty icon when added */
   /* Hide filled icon when not added */
 }
-.single .buy_now .salla-add-product-button salla-button {
-  display: none;
+.single .buy_now .salla-add-product-button .s-add-product-button-main salla-button {
+  display: none !important;
 }
-.single .buy_now .salla-add-product-button .s-add-product-button-main .s-add-product-button-mini-checkout {
+.single .buy_now .salla-add-product-button .s-add-product-button-main s-add-product-button-mini-checkout {
   --salla-fast-checkout-button-width: 100%;
 }
 .single .salla-quantity-input {
