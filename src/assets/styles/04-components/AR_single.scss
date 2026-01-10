@@ -783,6 +783,9 @@
   }
   .s-products-list-wrapper{
     gap: 12px !important;
+    @media (max-width:768px) {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
   .s-product-card-vertical .s-product-card-image {
     position: relative;
@@ -871,8 +874,9 @@
   }
   .s-comments-product {
     background-color: var(--color-background);
-    margin-bottom: 0;
-    padding-block: 0;
+    margin-bottom: 0 !important;
+    padding-block: 0 !important;
+    padding-inline: 0 !important;
   }
   .s-tabs-header {
     border: none !important;

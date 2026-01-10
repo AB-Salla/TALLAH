@@ -838,6 +838,17 @@
             "value": true,
             "selected": true
         },
+         {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل سلايدر المنتجات في صفحة المنتج",
+            "description": null,
+            "id": "single_products",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
         {
       "id": "single_source",
       "icon": "sicon-t-shirt",
@@ -876,8 +887,16 @@
           "value": "latest"
         }
       ],
+      "conditions":[
+          {
+          "id": "single_products",
+          "operation": "=",
+          "value": true
+        }
+      ],
       "multichoice": false
     },
+
       {
       "id": "categories_single",
       "type": "items",
