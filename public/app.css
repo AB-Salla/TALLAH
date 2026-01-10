@@ -22310,6 +22310,13 @@ body #mega-content.scrolled{
 #search-overlay-background.scrolled + #search-panel-wrapper{
     top: 3.5rem !important;
 }
+.s-user-menu-trigger{
+    padding: 0px;
+}
+.s-user-menu-trigger img{
+    height: 1.75rem;
+    width: 1.75rem;
+}
 .store-footer {
   margin: 0 !important;
 }

@@ -228,3 +228,10 @@ body #mega-content.scrolled{
   @apply top-14 !important;
 }
 
+.s-user-menu-trigger{
+  @apply p-0;
+}
+
+.s-user-menu-trigger img{
+  @apply h-7 w-7;
+}
