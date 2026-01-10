@@ -911,7 +911,7 @@
       "required": true,
       "conditions": [
         {
-          "id": "single_side_products",
+          "id": "single_side_source",
           "operation": "=",
           "value": "categories"
         }
@@ -931,7 +931,7 @@
       "required": false,
       "conditions": [
         {
-          "id": "single_side_products",
+          "id": "single_side_source",
           "operation": "=",
           "value": "selected"
         }
