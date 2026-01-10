@@ -880,16 +880,33 @@
   .s-tabs-header {
     border: none !important;
     justify-content: center;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #E4E4E7;
   }
   .s-tabs-header-item {
     @apply font-semibold text-xl leading-7 tracking-normal ;
     background-color: transparent;
     color: var(--color-primary);
     opacity: .7;
+     &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 1.5px;
+      background-color: var(--color-primary);
+      transition: all .3s ease-in-out;
+    }
   }
   .s-tabs-active {
     color: var(--color-primary);
     position: relative;
    opacity: 1;
+    &::after {
+      width: 70%; // طول الخط (تقدر تزوده أو تقلله)
+
+    }
   }
   }

@@ -27503,6 +27503,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-tabs-header {
   justify-content: center;
+  padding-bottom: 6px;
+  border-bottom: 1px solid #E4E4E7;
 }
 .single .s-tabs-header-item{
     font-size: 1.25rem;
@@ -27514,11 +27516,26 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: var(--color-primary);
   opacity: 0.7;
 }
+.single .s-tabs-header-item::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 3px;
+  background-color: #414042;
+  background-color: var(--color-primary);
+  transition: all 0.3s ease-in-out;
+}
 .single .s-tabs-active {
   color: #414042;
   color: var(--color-primary);
   position: relative;
   opacity: 1;
+}
+.single .s-tabs-active::after {
+  width: 70%;
 }
 #quick-eye-model {
   /* الصورة الاكتيف */
@@ -29609,10 +29626,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:text-start{
         text-align: left;
-    }
-    .lg\:text-2xl{
-        font-size: 1.5rem;
-        line-height: 2rem;
     }
     .lg\:text-\[24px\]{
         font-size: 24px;
