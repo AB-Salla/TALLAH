@@ -464,8 +464,8 @@ ${window.option_images && window.product_card_options ? `
             ${this.product.status !== "sale" ? `
               
               <button
-                class="salla-add-product-button w-full py-[6px] md:py-3 flex items-center justify-center p-0  notify text-center bg-primary text-font"
-                ${this.product.status !== "sale" ? "disabled" : ""}>
+                class="w-full py-[6px] md:py-3 flex items-center justify-center p-0  notify text-center bg-primary text-background"
+                ${this.product.status !== "sale" ? "" : ""}>
             ${isArabic ? "ذكرني  عند توافرة":"Notify Me" }
             </button>
               `:`<button
