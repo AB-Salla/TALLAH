@@ -26877,9 +26877,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .s-product-card-entry {
   gap: 10px;
 }
-.single .s-rating-stars-selected {
-  fill: #806f40 !important;
-}
 .single .comments salla-comment-form {
   display: none;
 }
