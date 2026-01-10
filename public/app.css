@@ -2131,6 +2131,14 @@ select{
     border-color: #414042;
     border-color: var(--color-primary);
 }
+.border-\[\]{
+    border-color: ;
+}
+.border-\[\#E4E4E7\]{
+    --tw-border-opacity: 1;
+    border-color: rgba(228, 228, 231, 1);
+    border-color: rgba(228, 228, 231, var(--tw-border-opacity, 1));
+}
 .border-t-\[color-mix\(in_srgb\2c var\(--color-primary\)15\%\2c white\)\]{
     border-top-color: color-mix(in srgb,#41404215%,white);
     border-top-color: color-mix(in srgb,var(--color-primary)15%,white);
@@ -2547,6 +2555,9 @@ select{
 }
 .pt-8{
     padding-top: 2rem;
+}
+.pb-2{
+    padding-bottom: 0.5rem;
 }
 .text-center{
     text-align: center;
