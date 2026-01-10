@@ -292,7 +292,7 @@
     }
   }
   .s-comments-product {
-    background-color: var(--color-backfground);
+    background-color: var(--color-background);
     margin-bottom: 0;
     padding-block: 0;
   }
@@ -877,6 +877,13 @@
     margin-bottom: 0 !important;
     padding-block: 0 !important;
     padding-inline: 0 !important;
+  }
+  .s-comments-item-has-order-check-icon{
+    background-color: rgb(62, 156, 245);
+    margin-inline: 6px;
+    svg{
+      fill: var(--color-background);
+    }
   }
   .s-tabs-header {
     border: none !important;
