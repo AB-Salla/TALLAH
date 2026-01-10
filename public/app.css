@@ -27409,6 +27409,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .side_products .out {
   display: none;
 }
+.side_products .s-products-list-wrapper {
+  gap: 12px !important;
+}
 .side_products .s-product-card-vertical .s-product-card-image {
   min-height: 171px !important;
   max-height: 171px !important;
