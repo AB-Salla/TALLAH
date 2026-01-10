@@ -783,6 +783,9 @@
   }
   .s-products-list-wrapper{
     gap: 12px !important;
+    @media (max-width:768px) {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
   }
   .s-product-card-vertical .s-product-card-image {
     position: relative;

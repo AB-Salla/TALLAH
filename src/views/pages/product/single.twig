@@ -650,7 +650,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 		</span></salla-tab-header
                 >
                 <salla-tab-content slot="content" name="tab_one">
-                  <div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 lg:px-14">
+                  <div class="product__description leading-7 mb-3 text-font-color">
 					<p class="flex font-semibold text-base leading-6 tracking-normal text-center lg:text-3xl lg:leading-9">
 						{{trans ("pages.single.discription")}}
 					</p>
@@ -681,7 +681,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                 <salla-tab-header slot="header" name="tab_two"><span>{{ trans('common.rating') }}</span></salla-tab-header>
                 <salla-tab-content slot="content" name="tab_two">
                	{# Comments Area #}
-    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 px-4 lg:px-14 single">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-2  single">
     <div class="lg:col-span-2 order-2 lg:order-1 comments">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     </div>

@@ -879,9 +879,6 @@ select{
 .\!pointer-events-auto{
     pointer-events: auto !important;
 }
-.pointer-events-auto{
-    pointer-events: auto;
-}
 .visible{
     visibility: visible;
 }
@@ -27411,6 +27408,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .side_products .s-products-list-wrapper {
   gap: 12px !important;
 }
+@media (max-width: 768px) {
+  .side_products .s-products-list-wrapper {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
 .side_products .s-product-card-vertical .s-product-card-image {
   min-height: 171px !important;
   max-height: 171px !important;
@@ -28994,9 +28996,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .sm\:gap-8{
         gap: 2rem;
-    }
-    .sm\:p-1{
-        padding: 0.25rem;
     }
     .sm\:px-5{
         padding-left: 1.25rem;
