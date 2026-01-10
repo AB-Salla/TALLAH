@@ -27510,7 +27510,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     line-height: 1.75rem;
     letter-spacing: 0em;
   background-color: transparent;
-  color: var(--color-grayfont);
+  color: #414042;
+  color: var(--color-primary);
+  opacity: 0.7;
 }
 .single .s-tabs-active {
   color: #414042;
