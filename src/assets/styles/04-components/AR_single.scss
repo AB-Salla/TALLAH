@@ -880,7 +880,8 @@
     border-bottom: 1px solid #E4E4E7 !important;
   }
   .s-tabs-header-item {
-    @apply font-semibold text-xl leading-7 tracking-normal ;
+    @apply font-semibold  leading-7 tracking-normal ;
+    font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
     background-color: transparent;
     color: var(--color-primary);
     opacity: .7;

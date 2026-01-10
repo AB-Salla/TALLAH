@@ -27501,10 +27501,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   justify-content: center;
 }
 .single .s-tabs-header-item{
-    font-size: 1.25rem;
     font-weight: 600;
     line-height: 1.75rem;
     letter-spacing: 0em;
+  font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
   background-color: transparent;
   color: #414042;
   color: var(--color-primary);
