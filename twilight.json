@@ -827,6 +827,17 @@
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
             "variant": "h6"
         },
+          {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل زر اتمام الطلب في صفحة المنتج",
+            "description": null,
+            "id": "checkout_enable",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
         {
       "id": "single_source",
       "icon": "sicon-t-shirt",

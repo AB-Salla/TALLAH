@@ -487,7 +487,8 @@
 						</salla-add-product-button>
 						
 					</div>
-					{% if product.status != "out-and-notify" %}
+					{% if theme.settings.get('checkout_enable') %}
+					{% if product.status == "sale" %}
 					<div class="buy_now">
 						<salla-add-product-button quick-buy {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
 						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="sticky-product-bar__btn" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
@@ -500,6 +501,7 @@
 						</div>
 					</salla-add-product-button>
 				</div>
+				{% endif %}
 				{% endif %}
 				</section>
 				<div class="lg:hidden flex items-center mobile_buttons">
