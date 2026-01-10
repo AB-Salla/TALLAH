@@ -87,7 +87,7 @@
 {% block content %}
 	<div class="single lg:pt-3 bg-background">
 		<div class="bg-background">
-			<div class="flex flex-col items-center lg:items-start lg:flex-row overflow-hidden  lg:px-14" id="product-{{ product.id }}">
+			<div class="flex flex-col items-center lg:items-start lg:flex-row   lg:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
@@ -242,7 +242,7 @@
                     {% endif %}
 		</div>
 		
-		 <div class="main-content lg:sticky lg:overflow-hidden w-full lg:w-2/4 lg:pb-16 px-4 lg:px-0">
+		 <div class="main-content lg:sticky  w-full lg:w-2/4 lg:pb-16 px-4 lg:px-0">
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
@@ -710,7 +710,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				"breakpoints": {
 					"551": { "slidesPerView": 2.2, "spaceBetween": 12 },
 					"786": { "slidesPerView": 3, "spaceBetween": 12 },
-					"1024": { "slidesPerView": 4.5, "spaceBetween": 12 }
+					"1024": { "slidesPerView": 4.75, "spaceBetween": 12 }
 				}     
 				}'
   {% if raw_source in ['selected', 'categories'] and source_value.value is defined and source_value.value|length > 0 %}
