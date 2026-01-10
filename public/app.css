@@ -27459,6 +27459,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .buy_now salla-add-product-button .s-add-product-button-main salla-mini-checkout-widget {
   --salla-fast-checkout-button-width: 100%;
 }
+.buy_now salla-add-product-button .s-add-product-button-main .s-add-product-button-mini-checkout {
+  width: 100%;
+}
 #quick-eye-model {
   /* الصورة الاكتيف */
   /* الخيار المعطل (اختر) */
