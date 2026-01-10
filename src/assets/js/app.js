@@ -231,39 +231,77 @@ class App extends AppHelpers {
       isListenerAttached = true;
     }
   }
-  watchAndAdjustHeader() {
-      function adjust() {
-          const ad = document.querySelector('salla-advertisement');
-          const header = document.querySelector('header');
-          
-          if (ad && header) {
-              // Check if ad is hidden (height: 0px)
-              const isHidden = ad.style.height === '0px' || 
-                              window.getComputedStyle(ad).height === '0px';
-              
-              if (isHidden) {
-                  header.style.top = '0px';
-              } else {
-                  header.style.top = (ad.children.length * 46) + 'px';
-              }
-          }
-      }
-      
-      const observer = new MutationObserver(adjust);
-      const ad = document.querySelector('salla-advertisement');
-      
-      if (ad) {
-          // Watch for both children changes and style changes
-          observer.observe(ad, { 
-              childList: true,
-              attributes: true,
-              attributeFilter: ['style']
-          });
-          adjust();
-      }
-      
-      return observer;
-  }
+watchAndAdjustHeader() {
+    function adjust() {
+        const ad = document.querySelector('salla-advertisement');
+        const header = document.querySelector('header');
+        const searchPanelWrapper = document.querySelector('#search-panel-wrapper');
+        const tabs = document.querySelector('.tabs');
+        
+        if (ad) {
+            // Check if ad is hidden (height: 0px)
+            const isHidden = ad.style.height === '0px' || 
+                            window.getComputedStyle(ad).height === '0px' ||
+                            !ad.children.length ||
+                            ad.offsetHeight === 0;
+            
+            const adHeight = isHidden ? 0 : (ad.children.length * 46);
+            
+            // Apply to header
+            if (header) {
+                header.style.top = adHeight + 'px';
+            }
+            
+            // Apply margin-top to #search-panel-wrapper
+            if (searchPanelWrapper) {
+                if (adHeight > 0) {
+                    searchPanelWrapper.style.marginTop = adHeight + 'px';
+                } else {
+                    searchPanelWrapper.style.marginTop = '';
+                }
+            }
+            
+            // Apply margin-top to .tabs
+            if (tabs) {
+                if (adHeight > 0) {
+                    tabs.style.marginTop = adHeight + 'px';
+                } else {
+                    tabs.style.marginTop = '';
+                }
+            }
+        }
+    }
+    
+    const observer = new MutationObserver(adjust);
+    const ad = document.querySelector('salla-advertisement');
+    
+    if (ad) {
+        // Watch for both children changes and style changes
+        observer.observe(ad, { 
+            childList: true,
+            attributes: true,
+            attributeFilter: ['style']
+        });
+        
+        // Also watch for resize events for additional safety
+        window.addEventListener('resize', adjust);
+        
+        // Initial adjustment
+        adjust();
+        
+        // Additional check after a short delay to catch dynamic content
+        setTimeout(adjust, 100);
+    }
+    
+    // Return both observer and cleanup function
+    return {
+        observer: observer,
+        disconnect: () => {
+            observer.disconnect();
+            window.removeEventListener('resize', adjust);
+        }
+    };
+}
 
   initiateStickyMenu() {
     let header = this.element("#mainnav"),
