@@ -652,9 +652,16 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                 >
                 <salla-tab-content slot="content" name="tab_one">
                   <div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 lg:px-14">
+					<p class="flex font-semibold text-base leading-6 tracking-normal text-center lg:text-3xl lg:leading-9">
+						{{trans ("pages.single.discription")}}
+					</p>
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 			{% if product.has_read_more %}
-				<article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
+
+				<article class="article article--main relative 
+				font-normal text-sm leading-5 tracking-wide 
+       lg:font-medium lg:text-base lg:leading-6 lg:tracking-normal
+				overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
 					{{ product_desc|raw }}
 				</article>
 
@@ -663,7 +670,8 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 					{{ trans('pages.products.read_more') }}
 				</a>
 			{% else %}
-				<article class="article--main pb-1">
+				<article class="article--main pb-1 font-normal text-sm leading-5 tracking-wide 
+       lg:font-medium lg:text-base lg:leading-6 lg:tracking-normal">
 					{{ product_desc|raw }}
 				</article>
 			{% endif %}
