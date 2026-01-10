@@ -29621,6 +29621,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-start{
         text-align: left;
     }
+    .lg\:text-3xl{
+        font-size: 1.875rem;
+        line-height: 2.25rem;
+    }
     .lg\:text-\[24px\]{
         font-size: 24px;
     }
@@ -29645,10 +29649,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-xs{
         font-size: 0.75rem;
         line-height: 1rem;
-    }
-    .lg\:text-3xl{
-        font-size: 1.875rem;
-        line-height: 2.25rem;
     }
     .lg\:font-medium{
         font-weight: 500;
