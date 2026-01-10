@@ -487,7 +487,10 @@
 						</salla-add-product-button>
 						
 					</div>
-					{% if product.status != "out" %}
+					{{product}}
+					{% if product.status != "out-and-notify" %}
+
+					
 					<div class="buy_now">
 						<salla-add-product-button quick-buy {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
 						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="sticky-product-bar__btn" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
@@ -813,8 +816,6 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	<script defer src="{{ 'product.js' | asset }}"></script>
 	<script>
 	window.status_product={{product.status|json_encode|raw}};
-	console.log(product.status ,"product.statusproduct.statusproduct.status");
-	
 	window.product_category_id = {{ product.category.id | json_encode | raw }};
 	</script>
 	{% if product.has_3d_image %}
