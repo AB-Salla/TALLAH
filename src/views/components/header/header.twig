@@ -27,7 +27,7 @@ Global Variables (from Theme)
 
 
 
-<header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full fixed top-0 left-0 ' : 'relative'}} z-50 ">
+<header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full absolute top-0 left-0 ' : 'relative'}} z-50 ">
 
   
 
@@ -223,13 +223,13 @@ Global Variables (from Theme)
 
 
       {# ICONS SECTION #}
-      <div class="flex flex-1 justify-end items-center gap-2">
+      <div class="flex flex-1 justify-end items-center md:gap-6 gap-2">
 
 
 
 
         {# Search Toggle Button #}
-        <button id="search-toggle" class="flex p-3 items-center justify-center" aria-label="Open Search">
+        <button id="search-toggle" class="flex items-center justify-center" aria-label="Open Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
             <g clip-path="url(#clip0)">
               <path
@@ -252,7 +252,7 @@ Global Variables (from Theme)
         						{% if user.type == 'user' %}
 							<salla-user-menu avatar-only show-header></salla-user-menu>
 						{% else %}
-        <button onclick="salla.event.dispatch('login::open')" class="flex p-3 justify-center items-center cursor-pointer">
+        <button onclick="salla.event.dispatch('login::open')" class="flex items-center justify-center cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <g clip-path="url(#clip0_5899_2043)">
               <path
@@ -277,7 +277,7 @@ Global Variables (from Theme)
 
 
         {# Fav icon #}
-        <a href="{{ url('wishlist') }}" class="flex p-3 items-center justify-center z-50 relative"
+        <a href="{{ url('wishlist') }}" class="flex items-center justify-center z-50 relative"
           aria-label="Go to wishlist">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
@@ -289,7 +289,7 @@ Global Variables (from Theme)
 
 
         {# Cart icon #}
-        <a href="{{ url('cart') }}" class="flex p-3 justify-center items-center" aria-label="Go to cart">
+        <a href="{{ url('cart') }}" class="flex items-center justify-center" aria-label="Go to cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
               d="M12.9576 8.76923V5.07692C12.9576 3.37759 11.6334 2 10 2C8.36657 2 7.04241 3.37759 7.04241 5.07692V8.76923M15.9988 7.13414L16.995 16.9803C17.0502 17.5253 16.6394 18 16.1126 18H3.88737C3.36059 18 2.94982 17.5253 3.00497 16.9803L4.00121 7.13414C4.04874 6.66434 4.42954 6.30769 4.88361 6.30769H15.1164C15.5705 6.30769 15.9513 6.66434 15.9988 7.13414ZM7.33817 8.76923C7.33817 8.93916 7.20576 9.07692 7.04241 9.07692C6.87907 9.07692 6.74666 8.93916 6.74666 8.76923C6.74666 8.5993 6.87907 8.46154 7.04241 8.46154C7.20576 8.46154 7.33817 8.5993 7.33817 8.76923ZM13.2533 8.76923C13.2533 8.93916 13.1209 9.07692 12.9576 9.07692C12.7942 9.07692 12.6618 8.93916 12.6618 8.76923C12.6618 8.5993 12.7942 8.46154 12.9576 8.46154C13.1209 8.46154 13.2533 8.5993 13.2533 8.76923Z"
@@ -339,7 +339,7 @@ Global Variables (from Theme)
       <div class="flex items-center ">
 
         {# user icon #}
-        <a onclick="salla.event.dispatch('login::open')" class="flex p-3 justify-center items-center cursor-pointer">
+        <a onclick="salla.event.dispatch('login::open')" class="flex items-center justify-center cursor-pointer">
 
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <g clip-path="url(#clip0_5899_2043)">
@@ -361,7 +361,7 @@ Global Variables (from Theme)
 
 
         {# Wishist#}
-        <a href="{{ url('wishlist') }}" class="flex p-3 items-center justify-center z-50 relative"
+        <a href="{{ url('wishlist') }}" class="flex items-center justify-center z-50 relative"
           aria-label="Go to wishlist">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
@@ -372,7 +372,7 @@ Global Variables (from Theme)
 
 
         {# Cart icon #}
-        <a href="{{ url('cart') }}" class="flex p-3 items-center justify-center z-50 relative" aria-label="Go to cart">
+        <a href="{{ url('cart') }}" class="flex items-center justify-center z-50 relative" aria-label="Go to cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
               d="M12.9576 8.76923V5.07692C12.9576 3.37759 11.6334 2 10 2C8.36657 2 7.04241 3.37759 7.04241 5.07692V8.76923M15.9988 7.13414L16.995 16.9803C17.0502 17.5253 16.6394 18 16.1126 18H3.88737C3.36059 18 2.94982 17.5253 3.00497 16.9803L4.00121 7.13414C4.04874 6.66434 4.42954 6.30769 4.88361 6.30769H15.1164C15.5705 6.30769 15.9513 6.66434 15.9988 7.13414ZM7.33817 8.76923C7.33817 8.93916 7.20576 9.07692 7.04241 9.07692C6.87907 9.07692 6.74666 8.93916 6.74666 8.76923C6.74666 8.5993 6.87907 8.46154 7.04241 8.46154C7.20576 8.46154 7.33817 8.5993 7.33817 8.76923ZM13.2533 8.76923C13.2533 8.93916 13.1209 9.07692 12.9576 9.07692C12.7942 9.07692 12.6618 8.93916 12.6618 8.76923C12.6618 8.5993 12.7942 8.46154 12.9576 8.46154C13.1209 8.46154 13.2533 8.5993 13.2533 8.76923Z"
@@ -404,7 +404,7 @@ Global Variables (from Theme)
       <div class="flex items-center justify-between">
 
         {# mobile nav button #}
-        <button id="mobile-menu-toggle" class="flex p-3 items-center justify-center z-50 relative">
+        <button id="mobile-menu-toggle" class="flex items-center justify-center z-50 relative">
           {% if language.iso_code == 'ar' %}
 
           <!-- Arabic icon -->
@@ -450,7 +450,7 @@ Global Variables (from Theme)
 
 
         {# Search Toggle Button #}
-        <button id="search-toggle" class="flex p-3 items-center justify-center" aria-label="Open Search">
+        <button id="search-toggle" class="flex items-center justify-center" aria-label="Open Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
             <g clip-path="url(#clip0)">
               <path

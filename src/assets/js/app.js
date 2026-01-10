@@ -42,6 +42,7 @@ class App extends AppHelpers {
     this.initSizeOptionSingle();
     this.observeSizeOptionSingle();
     this.initHideEndedCountDown();
+    this.watchAndAdjustHeader();
     this.init_SideCart();
     salla.comment.event.onAdded(() => window.location.reload());
 
@@ -229,6 +230,39 @@ class App extends AppHelpers {
 
       isListenerAttached = true;
     }
+  }
+  watchAndAdjustHeader() {
+      function adjust() {
+          const ad = document.querySelector('salla-advertisement');
+          const header = document.querySelector('header');
+          
+          if (ad && header) {
+              // Check if ad is hidden (height: 0px)
+              const isHidden = ad.style.height === '0px' || 
+                              window.getComputedStyle(ad).height === '0px';
+              
+              if (isHidden) {
+                  header.style.top = '0px';
+              } else {
+                  header.style.top = (ad.children.length * 46) + 'px';
+              }
+          }
+      }
+      
+      const observer = new MutationObserver(adjust);
+      const ad = document.querySelector('salla-advertisement');
+      
+      if (ad) {
+          // Watch for both children changes and style changes
+          observer.observe(ad, { 
+              childList: true,
+              attributes: true,
+              attributeFilter: ['style']
+          });
+          adjust();
+      }
+      
+      return observer;
   }
 
   initiateStickyMenu() {

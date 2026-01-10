@@ -2446,10 +2446,6 @@ select{
     padding-top: 6px;
     padding-bottom: 6px;
 }
-.px-16{
-    padding-left: 4rem;
-    padding-right: 4rem;
-}
 .\!pb-0{
     padding-bottom: 0px !important;
 }
@@ -22336,6 +22332,7 @@ body #mega-content.scrolled{
     top: 3.5rem !important;
 }
 .s-user-menu-trigger{
+    border-radius: 0.125rem;
     padding: 0px;
 }
 .s-user-menu-trigger img{
