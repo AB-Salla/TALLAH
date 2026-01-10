@@ -2561,6 +2561,18 @@
       "image": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
       "fields": [
         {
+                    "id": "button_bottom",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار الزر أسفل البانر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+        {
           "id": "blocktitle_color",
           "type": "string",
           "format": "color",
@@ -4150,6 +4162,18 @@
       "path": "home.AR-Hero-2",
       "image": "https://cdn.files.salla.network/homepage/1954265887/8e891823-d12d-435d-9c94-56e852dfb735.webp",
       "fields": [
+        {
+                    "id": "button_bottom",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار الزر أسفل البانر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
         {
           "id": "desktop_bg",
           "type": "string",
