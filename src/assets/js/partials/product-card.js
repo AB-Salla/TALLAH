@@ -439,7 +439,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           </div>
           ${this.product.status =='out' ? 
             `
-            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">${isArabic ? "نفزت الكمية":"Out of Stock" }</span>
+            <span class="absolute top-1 left-1 bg-background px-[10px] out py-[6px]">${isArabic ? "نفزت الكمية":"Out of Stock" }</span>
             `:``
           }
            <div class="hidden in_single">

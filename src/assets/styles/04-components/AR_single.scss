@@ -772,8 +772,14 @@
 }
 
 .side_products {
+  .s-product-card-rating{
+    display: none;
+  }
   custom-salla-product-card {
     max-height: 267px !important;
+  }
+  .out{
+    display: none;
   }
   .s-product-card-vertical .s-product-card-image {
     position: relative;

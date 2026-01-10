@@ -22376,7 +22376,6 @@ body #mega-content.scrolled{
     }
 }
 .store-footer .s-payments-list-item {
-  height: 24px !important;
   width: 50px !important;
   background-color: var(--color-background) !important;
 }
@@ -27401,8 +27400,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 10px !important;
   }
 }
+.side_products .s-product-card-rating {
+  display: none;
+}
 .side_products custom-salla-product-card {
   max-height: 267px !important;
+}
+.side_products .out {
+  display: none;
 }
 .side_products .s-product-card-vertical .s-product-card-image {
   min-height: 171px !important;
