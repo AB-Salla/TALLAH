@@ -27481,8 +27481,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   height: 0;
   overflow: hidden;
   display: block;
-  padding-left: 1.75rem;
-  padding-right: 1.75rem;
 }
 .single .s-tabs-content.s-tabs-content-selected {
   max-height: 1000px;
