@@ -27518,6 +27518,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: #414042;
   color: var(--color-primary);
   position: relative;
+  opacity: 0.7;
 }
 #quick-eye-model {
   /* الصورة الاكتيف */
