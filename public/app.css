@@ -2494,6 +2494,10 @@ select{
     padding-top: 6px;
     padding-bottom: 6px;
 }
+.py-14{
+    padding-top: 3.5rem;
+    padding-bottom: 3.5rem;
+}
 .\!pb-0{
     padding-bottom: 0px !important;
 }
@@ -29253,6 +29257,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-\[9px\]{
         padding-top: 9px;
         padding-bottom: 9px;
+    }
+    .md\:py-14{
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
     }
     .md\:\!pb-9{
         padding-bottom: 2.25rem !important;
