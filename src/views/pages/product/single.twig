@@ -609,15 +609,16 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                 </section>
         {% endif %}
 		 {% if theme.settings.get('single_side_products') %}
-		 			{% set raw_side_source = theme.settings.get('single_side_source') %}
+		 {% set raw_side_source = theme.settings.get('single_side_source') %}
 
-{% set source_side =
+{% set source =
   raw_side_source == 'categories' ? 'categories' :
   raw_side_source == 'selected'   ? 'selected' :
   raw_side_source == 'latest'     ? 'latest-products' :
   raw_side_source == 'sales'      ? 'best-selling' :
   'latest-products'
 %}
+
 {% set source_side_value =
   raw_side_source == 'categories'
     ? theme.settings.get('categories_side_single')
@@ -625,6 +626,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
         ? theme.settings.get('products_side_single')
         : [])
 %}
+
 		<div class="side_products pt-4 border-t border-t-[color-mix(in_srgb,var(--color-primary)15%,white)]">
 		<div class="w-full flex flex-col justify-center items-start text-center">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
@@ -639,9 +641,10 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				type="carousel"
 				class="product-slider"
 				source="categories"
-                source="{{ source_side }}"
+                source="{{ source }}"
 				{% if raw_side_source in ['selected', 'categories'] and source_side_value.value is defined and source_side_value.value|length > 0 %}
 					source-value="[{{ source_side_value.value | join(',') }}]"
+					{% endif %}
                 limit="4"
 				display-all-url="{{ display_all_url }}"
 				slider-id="slider-with-{{ position }}">
