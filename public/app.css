@@ -27484,9 +27484,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-left: 1.75rem;
   padding-right: 1.75rem;
 }
-.single .s-tabs-content-wrapper {
-  padding-top: 24px;
-}
 .single .s-tabs-content.s-tabs-content-selected {
   max-height: 1000px;
   opacity: 1;
@@ -27500,11 +27497,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-tabs-header {
   border: none !important;
+  border-bottom: 1px solid #E4E4E7 !important;
 }
 .single .s-tabs-header {
   justify-content: center;
-  padding-bottom: 6px;
-  border-bottom: 1px solid #E4E4E7;
 }
 .single .s-tabs-header-item{
     font-size: 1.25rem;
@@ -27523,7 +27519,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   left: 50%;
   transform: translateX(-50%);
   width: 0%;
-  height: 3px;
+  height: 1.5px;
   background-color: #414042;
   background-color: var(--color-primary);
   transition: all 0.3s ease-in-out;
