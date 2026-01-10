@@ -879,31 +879,17 @@
   }
   .s-tabs-header {
     border: none !important;
+    justify-content: center;
   }
   .s-tabs-header-item {
     font-size: clamp(1.25rem, 1.1782rem + 0.3218vw, 1.5rem);
     font-weight: 600;
     background-color: transparent;
     color: var(--color-grayfont);
-     &::after {
-      content: "";
-      position: absolute;
-      bottom: -2px; // المسافة من تحت الكلمة
-      left: 50%; // يبدأ من منتصف العنصر
-      transform: translateX(-50%); // نرجعه للنص بالظبط
-      width: 0%; // طول الخط (تقدر تزوده أو تقلله)
-      height: 3px; // السمك
-      background-color: var(--color-primary);
-      transition: all .3s ease-in-out;
-    }
   }
   .s-tabs-active {
     color: var(--color-primary);
     position: relative;
-    &::after {
-      width: 70%; // طول الخط (تقدر تزوده أو تقلله)
-
-    }
    
   }
   }
