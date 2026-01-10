@@ -707,7 +707,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
 
 	{# Similar Products Area #}
-	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 ">
+	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 overflow-x-hidden my-6">
 		<div class="w-full flex flex-col justify-start items-start text-start pb-3">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
@@ -758,7 +758,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 ps-4 lg:px-16  mb-10 py-12 bg-[#e9e9e9]"
+    <div class="product-image-gallery  gap-4 ps-4 lg:px-16  py-12 bg-[#e9e9e9] overflow-x-hidden"
 	{% if theme.settings.get('bg_color') %}  style="background-color: {{theme.settings.get('bg_color_gellary') }};" {% endif %}
 	
 	>

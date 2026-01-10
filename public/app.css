@@ -22359,13 +22359,16 @@ body #mega-content.scrolled{
 #search-overlay-background.scrolled + #search-panel-wrapper{
     top: 3.5rem !important;
 }
-.store-footer{
-    position: relative;
-    margin-top: 2rem;
-    --tw-bg-opacity: 1;
-    background-color: rgba(14, 15, 15, 1);
-    background-color: rgba(14, 15, 15, var(--tw-bg-opacity, 1));
-    color: var(--color-background);
+.store-footer {
+  margin: 0 !important;
+}
+.store-footer {
+  position: relative;
+  margin-top: 2rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(14, 15, 15, 1);
+  background-color: rgba(14, 15, 15, var(--tw-bg-opacity, 1));
+  color: var(--color-background);
 }
 .group.store-footer.cursor-pointer *{
     pointer-events: auto;
