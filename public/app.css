@@ -29213,6 +29213,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
     }
+    .md\:px-14{
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
     .md\:px-4{
         padding-left: 1rem;
         padding-right: 1rem;
@@ -29252,10 +29256,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:py-\[9px\]{
         padding-top: 9px;
         padding-bottom: 9px;
-    }
-    .md\:px-14{
-        padding-left: 3.5rem;
-        padding-right: 3.5rem;
     }
     .md\:\!pb-9{
         padding-bottom: 2.25rem !important;
