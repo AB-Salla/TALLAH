@@ -27489,14 +27489,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   height: auto;
 }
 .single .s-comments-product {
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   padding-left: 0 !important;
   padding-right: 0 !important;
 }
 .single .s-comments-product {
   background-color: var(--color-background);
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
 }
 .single .s-tabs-header {
   border: none !important;

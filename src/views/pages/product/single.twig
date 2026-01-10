@@ -705,6 +705,8 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
 	<salla-offer></salla-offer>
 
+{% if theme.settings.get("single_products") %}
+
 
 	{# Similar Products Area #}
 	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 overflow-x-hidden my-6">
@@ -755,6 +757,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 </salla-products-slider>
 		</div>
 	</div>
+	{% endif %}
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
