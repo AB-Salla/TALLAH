@@ -27438,9 +27438,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .buy_now salla-add-product-button .s-add-product-button-main .s-add-product-button-mini-checkout {
   width: 100%;
 }
-.single {
-  fill: var(--color-background);
-}
 .single .s-tabs-content {
   transition: all 0.5s ease-in-out;
   opacity: 0;
@@ -27465,6 +27462,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .s-comments-item-has-order-check-icon {
   background-color: rgb(62, 156, 245);
+  margin-left: 6px;
+  margin-right: 6px;
 }
 .single .s-comments-item-has-order-check-icon svg {
   fill: var(--color-background);
