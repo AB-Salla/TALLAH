@@ -3,9 +3,12 @@
 .top-navbar.not-home *{
   @apply text-font;
 }
+.s-contacts-topnav-link{
+  @apply ltr:pl-0 rtl:pr-0;
+}
 .top-navbar {
   
-  @apply lg:flex hidden py-2 min-h-[48px] bg-transparent container;
+  @apply lg:flex hidden py-2 min-h-[48px] bg-transparent ;
 
 
   .topnav-has-bg & {

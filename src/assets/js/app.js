@@ -237,14 +237,14 @@ watchAndAdjustHeader() {
         const adHidden = ad && (ad.style.height === '0px' || getComputedStyle(ad).height === '0px');
         
         if (document.querySelector('#mainnav') && document.querySelector('#mainnav').classList.contains('fixed-pinned') || adHidden || !ad || !ad.children.length) {
-            if (document.querySelector('.index header')) document.querySelector('.index header').style.top = '';
+            if (document.querySelector('.index .store-header')) document.querySelector('.index .store-header').style.top = '';
             ['#search-panel-wrapper', '#mega-content', '#mobile-menu-content'].forEach(function(s) {
                 var el = document.querySelector(s);
                 if (el) el.style.marginTop = '';
             });
         } else if (ad) {
             const h = ad.children.length * 46;
-            if (document.querySelector('.index header')) document.querySelector('.index header').style.top = h + 'px';
+            if (document.querySelector('.index .store-header')) document.querySelector('.index .store-header').style.top = h + 'px';
             ['#search-panel-wrapper', '#mega-content', '#mobile-menu-content'].forEach(function(s) {
                 var el = document.querySelector(s);
                 if (el) el.style.marginTop = h + 'px';

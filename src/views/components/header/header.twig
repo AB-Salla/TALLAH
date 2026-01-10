@@ -183,7 +183,7 @@ Global Variables (from Theme)
     {% if link_url %}
   </a>
   {% endif %}
-    	<div class="top-navbar {{page.slug != 'index' ? 'not-home' : ''}}">
+    	<div class="top-navbar px-16 {{page.slug != 'index' ? 'not-home' : ''}}">
 		<div class="flex justify-between w-full">
 			{% if important_links %}
 				<salla-menu source="footer" topnav class="lg:!flex !hidden flex-1 justify-start text-background"></salla-menu>
@@ -218,7 +218,7 @@ Global Variables (from Theme)
 
 
     {# header for pc view #}
-    <div class="site-header hover-box w-full h-[60px] container  flex flex-row-reverse justify-between items-center
+    <div class="site-header hover-box w-full h-[60px] px-16  flex flex-row-reverse justify-between items-center
             hidden lg:flex" style=" color: {{ initial_text }};">
 
 
@@ -289,8 +289,7 @@ Global Variables (from Theme)
 
 
         {# Cart icon #}
-        {# Cart icon #}
-        {% if theme.settings.get('enable_side_cart') %}
+          {% if theme.settings.get('enable_side_cart') %}
 
 							{% include 'pages.partials.cart_options.twig' %}
 						{% else %}
@@ -352,15 +351,18 @@ Global Variables (from Theme)
     </div>
 
     {# header for mobile view #}
-    <div class="site-header-mobile hover-box w-full h-[56px] p-x-[16px] 
+    <div class="site-header-mobile px-4 hover-box w-full h-[56px] p-x-[16px] 
       flex flex-row-reverse justify-between items-center shrink-0 lg:hidden"
       style=" color: {{ initial_text }};">
 
       {# ICONS SECTION #}
-      <div class="flex items-center ">
+      <div class="flex items-center gap-4">
 
         {# user icon #}
-        <a onclick="salla.event.dispatch('login::open')" class="flex items-center justify-center cursor-pointer">
+        	{% if user.type == 'user' %}
+							<salla-user-menu avatar-only show-header></salla-user-menu>
+						{% else %}
+<button onclick="salla.event.dispatch('login::open')" class="flex items-center justify-center cursor-pointer">
 
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <g clip-path="url(#clip0_5899_2043)">
@@ -377,7 +379,9 @@ Global Variables (from Theme)
               </clipPath>
             </defs>
           </svg>
-        </a>
+        </button>
+						{% endif %}
+        
 
 
 
@@ -393,8 +397,7 @@ Global Variables (from Theme)
 
 
         {# Cart icon #}
-        {# Cart icon #}
-         {% if theme.settings.get('enable_side_cart') %}
+       {% if theme.settings.get('enable_side_cart') %}
 
 							{% include 'pages.partials.cart_options.twig' %}
 						{% else %}
@@ -442,7 +445,7 @@ Global Variables (from Theme)
 
 
       {# icons & menu #}
-      <div class="flex items-center justify-between">
+      <div class="flex items-center justify-between gap-4">
 
         {# mobile nav button #}
         <button id="mobile-menu-toggle" class="flex items-center justify-center z-50 relative">
@@ -482,7 +485,7 @@ Global Variables (from Theme)
 
         {% if store.settings.is_multilingual or store.settings.currencies_enabled %}
         <button type="button" onclick="salla.event.dispatch('localization::open')"
-          class="flex p-3 z-50 relative  items-center justify-center">
+          class="flex z-50 relative  items-center justify-center">
           						<i class="sicon-world"></i>
   
         </button>
