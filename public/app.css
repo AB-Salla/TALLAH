@@ -2304,6 +2304,14 @@ select{
     background-color: rgba(39, 39, 42, 1);
     background-color: rgba(39, 39, 42, var(--tw-bg-opacity, 1));
 }
+.bg-\[fafafa\]{
+    background-color: fafafa;
+}
+.bg-\[\#fafafa\]{
+    --tw-bg-opacity: 1;
+    background-color: rgba(250, 250, 250, 1);
+    background-color: rgba(250, 250, 250, var(--tw-bg-opacity, 1));
+}
 .bg-opacity-50{
     --tw-bg-opacity: 0.5;
 }
