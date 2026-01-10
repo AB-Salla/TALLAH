@@ -22375,6 +22375,11 @@ body #mega-content.scrolled{
         margin-top: 4rem;
     }
 }
+.store-footer .s-payments-list-item {
+  height: 24 !important;
+  width: 38px !important;
+  background-color: transparent !important;
+}
 @media (max-width: 768px) {
   .store-footer .s-contacts-item {
     justify-content: start !important;
@@ -27976,11 +27981,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     flex-wrap: wrap;
   }
 }
-.cart .s-payments-list-item {
-  height: 50px !important;
-  width: 60px !important;
-  background-color: transparent !important;
-}
 .cart .s-list-tile-item {
   background-color: #F4F0EB !important;
 }
@@ -28179,6 +28179,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .cart .s-product-options-wrapper {
   padding: 0 !important;
+}
+.s-payments-list-item {
+  height: 50px !important;
+  width: 58px !important;
+  background-color: transparent !important;
 }
 .AR-index,
 .mm-ocd__content{
@@ -29350,6 +29355,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:min-h-\[528px\]{
         min-height: 528px;
     }
+    .lg\:\!w-\[66\%\]{
+        width: 66% !important;
+    }
     .lg\:w-10\/12{
         width: 83.333333%;
     }
@@ -29385,9 +29393,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:w-\[calc\(100\%-419px\)\]{
         width: calc(100% - 419px);
-    }
-    .lg\:\!w-\[66\%\]{
-        width: 66% !important;
     }
     .lg\:max-w-full{
         max-width: 100%;
@@ -29651,9 +29656,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:mr-3:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 0.75rem;
 }
-.ltr\:mr-\[20px\]:where([dir="ltr"], [dir="ltr"] *){
-    margin-right: 20px;
-}
 .ltr\:mr-auto:where([dir="ltr"], [dir="ltr"] *){
     margin-right: auto;
 }
@@ -29768,9 +29770,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:ml-3:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0.75rem;
-}
-.rtl\:ml-\[20px\]:where([dir="rtl"], [dir="rtl"] *){
-    margin-left: 20px;
 }
 .rtl\:ml-auto:where([dir="rtl"], [dir="rtl"] *){
     margin-left: auto;

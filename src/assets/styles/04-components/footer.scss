@@ -1,4 +1,9 @@
 .store-footer {
+    .s-payments-list-item {
+  height: 24px !important;
+  width: 38px !important;
+  background-color: transparent !important;
+}
   @media (max-width:768px) {
     .s-contacts-item{
       justify-content: start !important;
