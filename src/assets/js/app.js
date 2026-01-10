@@ -233,35 +233,36 @@ class App extends AppHelpers {
   }
 watchAndAdjustHeader() {
     function adjust() {
-        const mainnav = document.querySelector('#mainnav');
-        if (mainnav && mainnav.classList.contains('fixed-pinned')) {
-            document.querySelector('header') && (document.querySelector('header').style.top = '');
-            document.querySelector('#search-panel-wrapper') && (document.querySelector('#search-panel-wrapper').style.marginTop = '');
-            document.querySelector('#mega-content') && (document.querySelector('#mega-content').style.marginTop = '');
-            return;
-        }
-        
         const ad = document.querySelector('salla-advertisement');
-        if (!ad) return;
+        const adHidden = ad && (ad.style.height === '0px' || getComputedStyle(ad).height === '0px');
         
-        const h = ad.children.length && window.getComputedStyle(ad).height !== '0px' ? ad.children.length * 46 : 0;
-        
-        document.querySelector('header') && (document.querySelector('header').style.top = h + 'px');
-        document.querySelector('#search-panel-wrapper') && (document.querySelector('#search-panel-wrapper').style.marginTop = h ? h + 'px' : '');
-        document.querySelector('#mega-content') && (document.querySelector('#mega-content').style.marginTop = h ? h + 'px' : '');
+        if (document.querySelector('#mainnav') && document.querySelector('#mainnav').classList.contains('fixed-pinned') || adHidden || !ad || !ad.children.length) {
+            if (document.querySelector('.index header')) document.querySelector('.index header').style.top = '';
+            ['#search-panel-wrapper', '#mega-content', '#mobile-menu-content'].forEach(function(s) {
+                var el = document.querySelector(s);
+                if (el) el.style.marginTop = '';
+            });
+        } else if (ad) {
+            const h = ad.children.length * 46;
+            if (document.querySelector('.index header')) document.querySelector('.index header').style.top = h + 'px';
+            ['#search-panel-wrapper', '#mega-content', '#mobile-menu-content'].forEach(function(s) {
+                var el = document.querySelector(s);
+                if (el) el.style.marginTop = h + 'px';
+            });
+        }
     }
     
     const ad = document.querySelector('salla-advertisement');
-    if (!ad) return { disconnect: () => {} };
+    if (!ad) return { disconnect: function() {} };
     
     const observers = [];
     
     // Watch ad
     const adObserver = new MutationObserver(adjust);
     adObserver.observe(ad, { 
-        childList: true,
+        childList: true, 
         attributes: true,
-        attributeFilter: ['style']
+        attributeFilter: ['style'] 
     });
     observers.push(adObserver);
     
@@ -269,9 +270,9 @@ watchAndAdjustHeader() {
     const mainnav = document.querySelector('#mainnav');
     if (mainnav) {
         const mainnavObserver = new MutationObserver(adjust);
-        mainnavObserver.observe(mainnav, {
-            attributes: true,
-            attributeFilter: ['class']
+        mainnavObserver.observe(mainnav, { 
+            attributes: true, 
+            attributeFilter: ['class'] 
         });
         observers.push(mainnavObserver);
     }
@@ -280,8 +281,10 @@ watchAndAdjustHeader() {
     adjust();
     
     return {
-        disconnect: () => {
-            observers.forEach(o => o.disconnect());
+        disconnect: function() {
+            for (var i = 0; i < observers.length; i++) {
+                observers[i].disconnect();
+            }
             window.removeEventListener('resize', adjust);
         }
     };

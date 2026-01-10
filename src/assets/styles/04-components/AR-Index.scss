@@ -48,7 +48,7 @@
 
   .s-filters-widget-container {
     background-color: transparent;
-    @apply p-4 m-0 rounded-none;
+    @apply lg:px-0 px-2 py-4 m-0 rounded-none;
   }
   .s-filters-widget-more {
     background: var(--color-primary);
@@ -62,10 +62,12 @@
   .s-filters-radio {
     @apply border-primary;
   }
+  .s-filters-radio:checked::after{
+    @apply p-0 h-full w-full inset-0;
+  }
   .s-filters-option-name {
     @apply text-font p-1;
   }
-
   #filters-menu .s-button-primary {
     @apply text-background;
   }
