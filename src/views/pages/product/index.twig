@@ -21,9 +21,9 @@
 
 
 
-	<div class="AR-index">
+	<div class="AR-index mt-12">
 	
-	<div class="container px-2.5 sm:px-5">
+	<div class="container">
 		<nav class="breadcrumbs w-full pt-5 center-between text-2xl !block">
 			<salla-breadcrumb></salla-breadcrumb>
 		</nav>
@@ -31,17 +31,17 @@
 
 	
 		<div
-			class="container px-2.5 sm:px-5 mb-10 mt-4 md:mt-10">
+			class="container mb-10 mt-4 md:mt-10">
 			{# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
         
 			<div class="flex items-start flex-col md:flex-row">
 				{% if filters %}
 					<button class="btn--close-sm close-filters sicon-cancel lg:hidden"></button>
 					<div class="md:w-72 lg:sticky lg:top-20 flex-none hidden lg:block">
-						<button class="hide-filters mb-4  text-center w-3/4 text-primary   p-1 lg:flex  items-center justify-center gap-2">
+						<button class=" mb-4  text-center w-3/4 text-primary p-1 lg:flex  items-center gap-2">
                         							<i class="sicon-tune"></i>
 
-							<span class="button-text">{{ trans('pages.index.filters') }}</span>
+							<span class="button-text tetx-base font-semibold">{{ trans('pages.index.filters') }}</span>
 						</button>
 						<salla-filters 
 							id="filters-menu" 
@@ -76,7 +76,7 @@
                     <div class="flex lg:hidden items-center justify-between mb-4">
              	 <div class="flex-1 justify-start flex items-center gap-1.5 text-2xl">
 						<button id="grid-two-columns" class="two-columns transition-all duration-300 ease-in-out"><i class="sicon-pause"></i></button>
-						<button id="grid-one-column" class="rotate-90 one-column transition-all duration-300 ease-in-out"><i class="sicon-pause"></i></button>
+						<button id="grid-one-column" class="rotate-90 one-column transition-all duration-300 ease-in-out -mt-[5px]"><i class="sicon-pause"></i></button>
 					</div>
                         <h1 class="primary-bold md:text-xl text-sm lg:text-center flex-1 justify-end text-end" id="page-main-title">{{ page.title|raw }}</h1>
                        

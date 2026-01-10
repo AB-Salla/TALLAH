@@ -1096,6 +1096,9 @@ select{
 .-mt-62{
     margin-top: -248px;
 }
+.-mt-\[5px\]{
+    margin-top: -5px;
+}
 .mb-1{
     margin-bottom: 0.25rem;
 }
@@ -1152,6 +1155,9 @@ select{
 }
 .mt-10{
     margin-top: 2.5rem;
+}
+.mt-12{
+    margin-top: 3rem;
 }
 .mt-16{
     margin-top: 4rem;
@@ -2393,10 +2399,6 @@ select{
 .px-2{
     padding-left: 0.5rem;
     padding-right: 0.5rem;
-}
-.px-2\.5{
-    padding-left: 0.625rem;
-    padding-right: 0.625rem;
 }
 .px-3{
     padding-left: 0.75rem;
@@ -23023,6 +23025,14 @@ input[type=radio].sr-only:checked ~ div.mm-ocd--open .mm-ocd__backdrop::after {
 .mm-spn.mm-spn--navbar:before{
     z-index: 20;
 }
+.s-user-menu-dropdown:where([dir="ltr"], [dir="ltr"] *){
+    right: auto;
+    right: initial;
+}
+.s-user-menu-dropdown:where([dir="rtl"], [dir="rtl"] *){
+    left: auto;
+    left: initial;
+}
 .dropdown__trigger{
     height: 2.5rem;
     width: 2.5rem;
@@ -28398,7 +28408,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background-color: transparent;
   margin: 0px;
   border-radius: 0px;
-  padding: 1rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+@media (min-width: 1024px){
+    .AR-index .s-filters-widget-container,
+.mm-ocd__content .s-filters-widget-container{
+        padding-left: 0px;
+        padding-right: 0px;
+    }
 }
 .AR-index .s-filters-widget-more,
 .mm-ocd__content .s-filters-widget-more {
@@ -28425,6 +28445,22 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .mm-ocd__content .s-filters-radio{
     border-color: #414042;
     border-color: var(--color-primary);
+}
+.AR-index .s-filters-radio:checked::after,
+.mm-ocd__content .s-filters-radio:checked::after{
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    height: 100%;
+    width: 100%;
+    padding: 0px;
+}
+@media (max-width: 1024px) {
+  .single .s-add-product-button-main:not(.AR-index .s-filters-radio:checked) > salla-button::after,.single .s-add-product-button-main:not(
+.mm-ocd__content .s-filters-radio:checked) > salla-button::after {
+    width: 100%;
+  }
 }
 .AR-index .s-filters-option-name,
 .mm-ocd__content .s-filters-option-name{
@@ -29070,10 +29106,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .sm\:gap-8{
         gap: 2rem;
-    }
-    .sm\:px-5{
-        padding-left: 1.25rem;
-        padding-right: 1.25rem;
     }
     .sm\:px-7{
         padding-left: 1.75rem;
