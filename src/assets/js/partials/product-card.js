@@ -439,7 +439,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           </div>
           ${this.product.status =='out' ? 
             `
-            <span class="absolute top-1 left-1 bg-background px-[10px] out py-[6px]">${isArabic ? "نفزت الكمية":"Out of Stock" }</span>
+            <span class="absolute top-1 left-1 bg-background px-[10px] out py-[6px]">${isArabic ? "نفذت الكمية":"Out of Stock" }</span>
             `:``
           }
            <div class="hidden in_single">
@@ -461,16 +461,25 @@ ${window.option_images && window.product_card_options ? `
                    
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
-            <button
+            ${this.product.status !== "sale" ? `
+              
+              <button
+                class="w-full py-[6px] md:py-3 flex items-center justify-center p-0  notify text-center bg-primary text-background"
+                ${this.product.status !== "sale" ? "" : ""}>
+            ${isArabic ? "ذكرني  عند توافرة":"Notify Me" }
+            </button>
+              `:`<button
                 class="salla-add-product-button w-full py-[6px] md:py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
+
             <span class="text-background add-icon">${
               this.product.add_to_cart_label
                 ? this.product.add_to_cart_label
                 : this.getAddButtonLabel()
             }</span>
               <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
-            </button>
+            </button>`}
+
           </div>
           
           `:``}
@@ -618,7 +627,8 @@ ${window.option_images && window.product_card_options ? `
               </div>`
                 : ``
             }
-           ${
+            ${window.option_images ?
+              ``: ` ${
   this.product.status !== "sale"
     ? `
       <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">
@@ -652,7 +662,9 @@ ${window.option_images && window.product_card_options ? `
         </button>`:``}
        
       `
-}
+}`
+            }
+          
 
            
             

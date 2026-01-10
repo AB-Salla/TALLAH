@@ -32,7 +32,7 @@ $main-text-color: var(--main-text-color);
     padding-block: 5px;
   }
   .s-quantity-input-container {
-    border: 1px solid color-mix(in srgb, var(--color-primary), white 85%) !important;
+    border: 1px solid var(--color-primary) !important;
     border-radius: 0 !important;
     @apply rounded-[2px] border-0;
     .s-quantity-input-button {
