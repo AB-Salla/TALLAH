@@ -85,7 +85,7 @@
 {% extends "layouts.master" %}
 
 {% block content %}
-	<div class="single lg:pt-3 bg-background">
+	<div class="single pt-8 lg:pt-16 bg-background ">
 		<div class="bg-background">
 			<div class="flex flex-col items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row md:gap-8   lg:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-[66%] pb-8 lg:pb-16  shrink-0">
@@ -257,7 +257,7 @@
 							</a>
 						</div>
 					{% endif %}
-				<div class="flex align-center justify-between items-center w-full mb-2 lg:mb-5">
+				<div class="flex align-center justify-between items-center w-full mb-2">
                     <h1 class="text-xl lg:text-[24px] leading-10 font-bold  text-font-color">
                         {{ product.name }}
                     </h1>
@@ -290,20 +290,11 @@
 
 					
 				</div>
-
-				{# subtitle #}
-				{% if product.subtitle %}
-					<h2 class="product-entry__sub-title text-[14px] lg:text-xl font-normal text-font-color opacity-[0.957] leading-6 mb-2 lg:mb-4">
-						{{ product.subtitle }}
-					</h2>
-				{% endif %}
-				
-				{# rating & tax #}
 				{% if product.rating or product.is_taxable %}
 					<div class="flex items-center justify-between mb-2">
 						{# rating #}
 						{% if product.rating %}
-							<salla-rating-stars value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}"></salla-rating-stars>
+							<salla-rating-stars size="small" value="{{ product.rating.stars }}" reviews="{{ product.rating.count }}"></salla-rating-stars>
 						{% endif %}
 
 						{# tax #}
@@ -312,10 +303,15 @@
 						{% endif %}
 					</div>
 				{% endif %}
+				{# subtitle #}
+				{% if product.subtitle %}
+					<h2 class="product-entry__sub-title text-[14px] lg:text-xl font-normal text-font-color opacity-[0.957] leading-6 mb-2 lg:mb-4">
+						{{ product.subtitle }}
+					</h2>
+				{% endif %}
+				
 
-				{# Price & wishlist #}
-				<div class="flex items-center justify-between">
-					{# wishlist & share #}
+				<div class="flex items-center justify-between pb-2 border-b border-[#E4E4E7] mb-4 ">
 					<div class="flex whitespace-nowrap gap-4 items-center">
 						<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
 							<h4 class="text-primary font-bold text-xl lg:text-[28px] inline-block">{{product.sale_price|money}}</h4>
@@ -548,7 +544,7 @@
                     <div class="">
                        
 						{% set is_ar = request.locale == 'ar' %}
-						
+						{{theme.settings.get('features_col_single')}}
                         <div class="grid {% if theme.settings.get('features_col_single') %}
 							grid-cols-1 justify-start items-start
 						{% else %}
@@ -671,7 +667,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                 >
                 <salla-tab-content slot="content" name="tab_one">
                   <div class="product__description leading-7 mb-3 text-font-color">
-					<p class="flex font-semibold text-base leading-6 tracking-normal text-center lg:text-3xl lg:leading-9">
+					<p class="flex font-semibold text-base leading-6 tracking-normal text-center lg:text-xl lg:leading-9">
 						{{trans ("pages.single.discription")}}
 					</p>
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
