@@ -487,7 +487,7 @@ Global Variables (from Theme)
   style="top: var(--header-height);"></div>
 
 {# Mega Content #}
-<div id="mega-content" class="fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 
+<div id="mega-content" class="not-scrolled fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 
             transform scale-y-0 opacity-0 pointer-events-none 
             origin-top shadow-lg transition-all duration-300 -translate-y-full
             border-t border-gray-500" style="background: {{ header_bg_color }}; top: var(--header-height);">
@@ -536,10 +536,10 @@ Global Variables (from Theme)
 ===================================== #}
 <div id="mobile-menu-overlay"
   class="fixed inset-0 z-30 lg:hidden bg-black bg-opacity-50 transition-opacity duration-300">
-  <div id="mobile-menu-wrapper" class="fixed inset-0 z-30 bg-white flex flex-col">
+  <div id="mobile-menu-wrapper" class="not-scrolled fixed inset-0 z-30 bg-white flex flex-col">
 
     {# menu tabs #}
-    <div class="tabs border-t border-b text-sm font-semibold gap-[12px] py-3 px-4 mt-[var(--header-height)]">
+    <div class="not-scrolled tabs border-t border-b text-sm font-semibold gap-[12px] py-3 px-4 mt-[var(--header-height)]">
       <div class="flex flex-col items-center gap-[12px] self-stretch">
         <div id="mobile-menu-tabs" class="flex justify-around gap-[16px] w-full overflow-x-auto no-scrollbar">
           <!-- Tabs injected here -->
@@ -567,10 +567,10 @@ Global Variables (from Theme)
 6) SEARCH OVERLAY PANEL
 ===================================== #}
 <div id="search-overlay-container" class="fixed inset-0 z-20 hidden">
-  <div id="search-overlay-background" class="sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"
+  <div id="search-overlay-background" class="not-scrolled sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"
     style="top: var(--header-height);"></div>
 
-  <div id="search-panel-wrapper" class="absolute w-full h-full lg:h-[70vh] overflow-hidden"
+  <div id="search-panel-wrapper" class="absolute w-full h-full lg:h-[70vh] overflow-hidden not-scrolled"
     style="top: var(--header-height);">
     <div id="search-panel"
       class="relative z-30 w-full bg-white shadow-lg transition-all duration-300 -translate-y-full">

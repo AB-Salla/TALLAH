@@ -233,76 +233,59 @@ class App extends AppHelpers {
   }
 watchAndAdjustHeader() {
     function adjust() {
-        const ad = document.querySelector('salla-advertisement');
-        const header = document.querySelector('header');
-        const searchPanelWrapper = document.querySelector('#search-panel-wrapper');
-        const tabs = document.querySelector('.tabs');
-        
-        if (ad) {
-            // Check if ad is hidden (height: 0px)
-            const isHidden = ad.style.height === '0px' || 
-                            window.getComputedStyle(ad).height === '0px' ||
-                            !ad.children.length ||
-                            ad.offsetHeight === 0;
-            
-            const adHeight = isHidden ? 0 : (ad.children.length * 46);
-            
-            // Apply to header
-            if (header) {
-                header.style.top = adHeight + 'px';
-            }
-            
-            // Apply margin-top to #search-panel-wrapper
-            if (searchPanelWrapper) {
-                if (adHeight > 0) {
-                    searchPanelWrapper.style.marginTop = adHeight + 'px';
-                } else {
-                    searchPanelWrapper.style.marginTop = '';
-                }
-            }
-            
-            // Apply margin-top to .tabs
-            if (tabs) {
-                if (adHeight > 0) {
-                    tabs.style.marginTop = adHeight + 'px';
-                } else {
-                    tabs.style.marginTop = '';
-                }
-            }
+        const mainnav = document.querySelector('#mainnav');
+        if (mainnav && mainnav.classList.contains('fixed-pinned')) {
+            document.querySelector('header') && (document.querySelector('header').style.top = '');
+            document.querySelector('#search-panel-wrapper') && (document.querySelector('#search-panel-wrapper').style.marginTop = '');
+            document.querySelector('#mega-content') && (document.querySelector('#mega-content').style.marginTop = '');
+            return;
         }
+        
+        const ad = document.querySelector('salla-advertisement');
+        if (!ad) return;
+        
+        const h = ad.children.length && window.getComputedStyle(ad).height !== '0px' ? ad.children.length * 46 : 0;
+        
+        document.querySelector('header') && (document.querySelector('header').style.top = h + 'px');
+        document.querySelector('#search-panel-wrapper') && (document.querySelector('#search-panel-wrapper').style.marginTop = h ? h + 'px' : '');
+        document.querySelector('#mega-content') && (document.querySelector('#mega-content').style.marginTop = h ? h + 'px' : '');
     }
     
-    const observer = new MutationObserver(adjust);
     const ad = document.querySelector('salla-advertisement');
+    if (!ad) return { disconnect: () => {} };
     
-    if (ad) {
-        // Watch for both children changes and style changes
-        observer.observe(ad, { 
-            childList: true,
+    const observers = [];
+    
+    // Watch ad
+    const adObserver = new MutationObserver(adjust);
+    adObserver.observe(ad, { 
+        childList: true,
+        attributes: true,
+        attributeFilter: ['style']
+    });
+    observers.push(adObserver);
+    
+    // Watch mainnav
+    const mainnav = document.querySelector('#mainnav');
+    if (mainnav) {
+        const mainnavObserver = new MutationObserver(adjust);
+        mainnavObserver.observe(mainnav, {
             attributes: true,
-            attributeFilter: ['style']
+            attributeFilter: ['class']
         });
-        
-        // Also watch for resize events for additional safety
-        window.addEventListener('resize', adjust);
-        
-        // Initial adjustment
-        adjust();
-        
-        // Additional check after a short delay to catch dynamic content
-        setTimeout(adjust, 100);
+        observers.push(mainnavObserver);
     }
     
-    // Return both observer and cleanup function
+    window.addEventListener('resize', adjust);
+    adjust();
+    
     return {
-        observer: observer,
         disconnect: () => {
-            observer.disconnect();
+            observers.forEach(o => o.disconnect());
             window.removeEventListener('resize', adjust);
         }
     };
 }
-
   initiateStickyMenu() {
     let header = this.element("#mainnav"),
       height = this.element("#mainnav .inner")?.clientHeight;
@@ -334,18 +317,17 @@ watchAndAdjustHeader() {
           : header.classList.remove("fixed-header", "animated");
 
         // Add scrolled class to magicMenu when scrolling
-        if (magicMenu) {
-          if (window.scrollY >= 200) magicMenu.classList.add("scrolled");
-          else magicMenu.classList.remove("scrolled");
-        }
-        if (mobileMenu) {
-          if (window.scrollY >= 200) mobileMenu.classList.add("scrolled");
-          else mobileMenu.classList.remove("scrolled");
-        }
-        if (searchModal) {
-          if (window.scrollY >= 200) searchModal.classList.add("scrolled");
-          else searchModal.classList.remove("scrolled");
-        }
+        function toggleScrollClass(element) {
+          if (window.scrollY >= 200) {
+              element.classList.replace("not-scrolled", "scrolled");
+          } else {
+              element.classList.replace("scrolled", "not-scrolled");
+          }
+      }
+
+      if (magicMenu) toggleScrollClass(magicMenu);
+      if (mobileMenu) toggleScrollClass(mobileMenu);
+      if (searchModal) toggleScrollClass(searchModal);
       },
       { passive: true }
     );
