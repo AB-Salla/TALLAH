@@ -5,7 +5,7 @@
 }
 .top-navbar {
   
-  @apply lg:flex hidden py-2 min-h-[48px] bg-transparent lg:px-16 lg:py-1.5;
+  @apply lg:flex hidden py-2 min-h-[48px] bg-transparent container;
 
 
   .topnav-has-bg & {
@@ -229,7 +229,7 @@ body #mega-content.scrolled{
 }
 
 .s-user-menu-trigger{
-  @apply p-0;
+  @apply p-0 rounded-sm;
 }
 
 .s-user-menu-trigger img{

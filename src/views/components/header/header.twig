@@ -27,7 +27,7 @@ Global Variables (from Theme)
 
 
 
-<header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full fixed top-0 left-0 ' : 'relative'}} z-50 ">
+<header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full absolute top-0 left-0 ' : 'relative'}} z-50 ">
 
   
 
@@ -45,7 +45,7 @@ Global Variables (from Theme)
   {% if page.slug == 'index' %}
   {# Homepage header variables #}
   {% if header_hover %}
-  {% set initial_bg = 'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)' %}
+  {% set initial_bg = 'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.40) 40%, rgba(0, 0, 0, 0.60) 100%)' %}
   {% set initial_text = 'white' %}
   {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
   {% else %}
@@ -67,16 +67,21 @@ Global Variables (from Theme)
 
 
   .site-header.header-scrolled {
-    background-color: {{ header_bg_color }} !important;
+    background: {{ header_bg_color }} !important;
     color: {{ header_text_color }} !important;
   }
 
   .site-header.active-overlay {
-    background-color: {{ header_bg_color }} !important;
+    background: {{ header_bg_color }} !important;
     color: {{ header_text_color }} !important;
   }
-    .group:hover .hover-box {
-    background-color: var(--hover-bg) !important;
+    .inner.group:hover {
+    background: var(--hover-bg) !important;
+  }
+  .inner.group:hover .hover-box{
+    color: var(--hover-text) !important;
+  }
+    .inner.group:hover .hover-box{
     color: var(--hover-text) !important;
   }
 </style>
@@ -85,14 +90,14 @@ Global Variables (from Theme)
 
 
   {# 'group' = parent hover trigger for .hover-box #}
-  	<div id="mainnav" class="main-nav-container shadow-default relative !h-fit !min-h-fit">
+  	<div style="background: {{ initial_bg }};" id="mainnav" class="main-nav-container shadow-default relative !h-fit !min-h-fit">
     {% if link_url %}
   <a href="{{ link_url }}" class="block no-underline top-lace" style="text-decoration: none;">
     {% endif %}
 
     <div
       class="top-lace flex w-full h-[38px] p-[7px_21px] justify-center items-center gap-[4px] lg:flex lg:px-[30px] lg:py-[7px] lg:justify-between lg:items-center lg:self-stretch {{ is_rtl ? 'flex-row-reverse' : 'flex-row' }}"
-      style="background-color: {{ topnav_bg }}; color: {{ topnav_text_color }};">
+      style="background: {{ topnav_bg }}; color: {{ topnav_text_color }};">
       <div class="flex justify-center items-center gap-1 flex-[1_0_0]">
 
         <div class="flex flex-row items-center gap-1">
@@ -101,7 +106,7 @@ Global Variables (from Theme)
 
           {# Countdown Timer #}
           <div id="countdown" data-countdown-target="{{ countdown_target }}"
-            style="background-color: {{ countdown_bg }}; color: {{ countdown_text }};" class=" flex h-[22px] px-[12px] py-[10px] justify-center items-center gap-[4px] rounded-lg
+            style="background: {{ countdown_bg }}; color: {{ countdown_text }};" class=" flex h-[22px] px-[12px] py-[10px] justify-center items-center gap-[4px] rounded-lg
      lg:flex lg:h-[22px] lg:py-[4px] lg:px-4 lg:gap-2 ">
 
             <div class="flex items-baseline gap-0.5">
@@ -208,23 +213,23 @@ Global Variables (from Theme)
 
 
 
-  <div class="inner group w-full" style="{{ hover_vars }}">
+  <div class="inner group w-full" style="{{ hover_vars }}; ">
           {# Top Nav #}
 
 
     {# header for pc view #}
-    <div class="site-header hover-box w-full h-[60px] px-16  flex flex-row-reverse justify-between items-center
-            hidden lg:flex" style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
+    <div class="site-header hover-box w-full h-[60px] container  flex flex-row-reverse justify-between items-center
+            hidden lg:flex" style=" color: {{ initial_text }};">
 
 
       {# ICONS SECTION #}
-      <div class="flex flex-1 justify-end items-center gap-2">
+      <div class="flex flex-1 justify-end items-center md:gap-6 gap-2">
 
 
 
 
         {# Search Toggle Button #}
-        <button id="search-toggle" class="flex p-3 items-center justify-center" aria-label="Open Search">
+        <button id="search-toggle" class="flex items-center justify-center" aria-label="Open Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
             <g clip-path="url(#clip0)">
               <path
@@ -247,7 +252,7 @@ Global Variables (from Theme)
         						{% if user.type == 'user' %}
 							<salla-user-menu avatar-only show-header></salla-user-menu>
 						{% else %}
-        <button onclick="salla.event.dispatch('login::open')" class="flex p-3 justify-center items-center cursor-pointer">
+        <button onclick="salla.event.dispatch('login::open')" class="flex items-center justify-center cursor-pointer">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <g clip-path="url(#clip0_5899_2043)">
               <path
@@ -272,7 +277,7 @@ Global Variables (from Theme)
 
 
         {# Fav icon #}
-        <a href="{{ url('wishlist') }}" class="flex p-3 items-center justify-center z-50 relative"
+        <a href="{{ url('wishlist') }}" class="flex items-center justify-center z-50 relative"
           aria-label="Go to wishlist">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
@@ -284,7 +289,7 @@ Global Variables (from Theme)
 
 
         {# Cart icon #}
-        <a href="{{ url('cart') }}" class="flex p-3 justify-center items-center" aria-label="Go to cart">
+        <a href="{{ url('cart') }}" class="flex items-center justify-center" aria-label="Go to cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
               d="M12.9576 8.76923V5.07692C12.9576 3.37759 11.6334 2 10 2C8.36657 2 7.04241 3.37759 7.04241 5.07692V8.76923M15.9988 7.13414L16.995 16.9803C17.0502 17.5253 16.6394 18 16.1126 18H3.88737C3.36059 18 2.94982 17.5253 3.00497 16.9803L4.00121 7.13414C4.04874 6.66434 4.42954 6.30769 4.88361 6.30769H15.1164C15.5705 6.30769 15.9513 6.66434 15.9988 7.13414ZM7.33817 8.76923C7.33817 8.93916 7.20576 9.07692 7.04241 9.07692C6.87907 9.07692 6.74666 8.93916 6.74666 8.76923C6.74666 8.5993 6.87907 8.46154 7.04241 8.46154C7.20576 8.46154 7.33817 8.5993 7.33817 8.76923ZM13.2533 8.76923C13.2533 8.93916 13.1209 9.07692 12.9576 9.07692C12.7942 9.07692 12.6618 8.93916 12.6618 8.76923C12.6618 8.5993 12.7942 8.46154 12.9576 8.46154C13.1209 8.46154 13.2533 8.5993 13.2533 8.76923Z"
@@ -326,15 +331,15 @@ Global Variables (from Theme)
     </div>
 
     {# header for mobile view #}
-    <div class="site-header-mobile w-full h-[56px] p-x-[16px] 
+    <div class="site-header-mobile hover-box w-full h-[56px] p-x-[16px] 
       flex flex-row-reverse justify-between items-center shrink-0 lg:hidden"
-      style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
+      style=" color: {{ initial_text }};">
 
       {# ICONS SECTION #}
       <div class="flex items-center ">
 
         {# user icon #}
-        <a onclick="salla.event.dispatch('login::open')" class="flex p-3 justify-center items-center cursor-pointer">
+        <a onclick="salla.event.dispatch('login::open')" class="flex items-center justify-center cursor-pointer">
 
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <g clip-path="url(#clip0_5899_2043)">
@@ -356,7 +361,7 @@ Global Variables (from Theme)
 
 
         {# Wishist#}
-        <a href="{{ url('wishlist') }}" class="flex p-3 items-center justify-center z-50 relative"
+        <a href="{{ url('wishlist') }}" class="flex items-center justify-center z-50 relative"
           aria-label="Go to wishlist">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
@@ -367,7 +372,7 @@ Global Variables (from Theme)
 
 
         {# Cart icon #}
-        <a href="{{ url('cart') }}" class="flex p-3 items-center justify-center z-50 relative" aria-label="Go to cart">
+        <a href="{{ url('cart') }}" class="flex items-center justify-center z-50 relative" aria-label="Go to cart">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path
               d="M12.9576 8.76923V5.07692C12.9576 3.37759 11.6334 2 10 2C8.36657 2 7.04241 3.37759 7.04241 5.07692V8.76923M15.9988 7.13414L16.995 16.9803C17.0502 17.5253 16.6394 18 16.1126 18H3.88737C3.36059 18 2.94982 17.5253 3.00497 16.9803L4.00121 7.13414C4.04874 6.66434 4.42954 6.30769 4.88361 6.30769H15.1164C15.5705 6.30769 15.9513 6.66434 15.9988 7.13414ZM7.33817 8.76923C7.33817 8.93916 7.20576 9.07692 7.04241 9.07692C6.87907 9.07692 6.74666 8.93916 6.74666 8.76923C6.74666 8.5993 6.87907 8.46154 7.04241 8.46154C7.20576 8.46154 7.33817 8.5993 7.33817 8.76923ZM13.2533 8.76923C13.2533 8.93916 13.1209 9.07692 12.9576 9.07692C12.7942 9.07692 12.6618 8.93916 12.6618 8.76923C12.6618 8.5993 12.7942 8.46154 12.9576 8.46154C13.1209 8.46154 13.2533 8.5993 13.2533 8.76923Z"
@@ -399,7 +404,7 @@ Global Variables (from Theme)
       <div class="flex items-center justify-between">
 
         {# mobile nav button #}
-        <button id="mobile-menu-toggle" class="flex p-3 items-center justify-center z-50 relative">
+        <button id="mobile-menu-toggle" class="flex items-center justify-center z-50 relative">
           {% if language.iso_code == 'ar' %}
 
           <!-- Arabic icon -->
@@ -445,7 +450,7 @@ Global Variables (from Theme)
 
 
         {# Search Toggle Button #}
-        <button id="search-toggle" class="flex p-3 items-center justify-center" aria-label="Open Search">
+        <button id="search-toggle" class="flex items-center justify-center" aria-label="Open Search">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
             <g clip-path="url(#clip0)">
               <path
@@ -482,10 +487,10 @@ Global Variables (from Theme)
   style="top: var(--header-height);"></div>
 
 {# Mega Content #}
-<div id="mega-content" class="fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 
+<div id="mega-content" class="not-scrolled fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 
             transform scale-y-0 opacity-0 pointer-events-none 
             origin-top shadow-lg transition-all duration-300 -translate-y-full
-            border-t border-gray-500" style="background-color: {{ header_bg_color }}; top: var(--header-height);">
+            border-t border-gray-500" style="background: {{ header_bg_color }}; top: var(--header-height);">
 
   {# Left: Child Categories Wrapper #}
   <div class="flex w-[328px] h-full flex-col items-start gap-[20px] shrink-0 bg-zinc-100">
@@ -531,10 +536,10 @@ Global Variables (from Theme)
 ===================================== #}
 <div id="mobile-menu-overlay"
   class="fixed inset-0 z-30 lg:hidden bg-black bg-opacity-50 transition-opacity duration-300">
-  <div id="mobile-menu-wrapper" class="fixed inset-0 z-30 bg-white flex flex-col">
+  <div id="mobile-menu-wrapper" class="not-scrolled fixed inset-0 z-30 bg-white flex flex-col">
 
     {# menu tabs #}
-    <div class="tabs border-t border-b text-sm font-semibold gap-[12px] py-3 px-4 mt-[var(--header-height)]">
+    <div class="not-scrolled tabs border-t border-b text-sm font-semibold gap-[12px] py-3 px-4 mt-[var(--header-height)]">
       <div class="flex flex-col items-center gap-[12px] self-stretch">
         <div id="mobile-menu-tabs" class="flex justify-around gap-[16px] w-full overflow-x-auto no-scrollbar">
           <!-- Tabs injected here -->
@@ -550,7 +555,7 @@ Global Variables (from Theme)
     {# Optional: Subcategory Panel #}
     <div id="mobile-subcategory-content"
       class="absolute w-full overflow-y-auto no-scrollbar transition-transform duration-500 ease-in-out"
-      style="background-color: {{ header_bg_color }}; top: var(--header-height); height: calc(100dvh - var(--header-height));">
+      style="background: {{ header_bg_color }}; top: var(--header-height); height: calc(100dvh - var(--header-height));">
     </div>
 
   </div>
@@ -562,10 +567,10 @@ Global Variables (from Theme)
 6) SEARCH OVERLAY PANEL
 ===================================== #}
 <div id="search-overlay-container" class="fixed inset-0 z-20 hidden">
-  <div id="search-overlay-background" class="sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"
+  <div id="search-overlay-background" class="not-scrolled sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"
     style="top: var(--header-height);"></div>
 
-  <div id="search-panel-wrapper" class="absolute w-full h-full lg:h-[70vh] overflow-hidden"
+  <div id="search-panel-wrapper" class="absolute w-full h-full lg:h-[70vh] overflow-hidden not-scrolled"
     style="top: var(--header-height);">
     <div id="search-panel"
       class="relative z-30 w-full bg-white shadow-lg transition-all duration-300 -translate-y-full">

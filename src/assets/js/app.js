@@ -42,6 +42,7 @@ class App extends AppHelpers {
     this.initSizeOptionSingle();
     this.observeSizeOptionSingle();
     this.initHideEndedCountDown();
+    this.watchAndAdjustHeader();
     this.init_SideCart();
     salla.comment.event.onAdded(() => window.location.reload());
 
@@ -230,7 +231,61 @@ class App extends AppHelpers {
       isListenerAttached = true;
     }
   }
-
+watchAndAdjustHeader() {
+    function adjust() {
+        const mainnav = document.querySelector('#mainnav');
+        if (mainnav && mainnav.classList.contains('fixed-pinned')) {
+            document.querySelector('header') && (document.querySelector('header').style.top = '');
+            document.querySelector('#search-panel-wrapper') && (document.querySelector('#search-panel-wrapper').style.marginTop = '');
+            document.querySelector('#mega-content') && (document.querySelector('#mega-content').style.marginTop = '');
+            return;
+        }
+        
+        const ad = document.querySelector('salla-advertisement');
+        if (!ad) return;
+        
+        const h = ad.children.length && window.getComputedStyle(ad).height !== '0px' ? ad.children.length * 46 : 0;
+        
+        document.querySelector('header') && (document.querySelector('header').style.top = h + 'px');
+        document.querySelector('#search-panel-wrapper') && (document.querySelector('#search-panel-wrapper').style.marginTop = h ? h + 'px' : '');
+        document.querySelector('#mega-content') && (document.querySelector('#mega-content').style.marginTop = h ? h + 'px' : '');
+    }
+    
+    const ad = document.querySelector('salla-advertisement');
+    if (!ad) return { disconnect: () => {} };
+    
+    const observers = [];
+    
+    // Watch ad
+    const adObserver = new MutationObserver(adjust);
+    adObserver.observe(ad, { 
+        childList: true,
+        attributes: true,
+        attributeFilter: ['style']
+    });
+    observers.push(adObserver);
+    
+    // Watch mainnav
+    const mainnav = document.querySelector('#mainnav');
+    if (mainnav) {
+        const mainnavObserver = new MutationObserver(adjust);
+        mainnavObserver.observe(mainnav, {
+            attributes: true,
+            attributeFilter: ['class']
+        });
+        observers.push(mainnavObserver);
+    }
+    
+    window.addEventListener('resize', adjust);
+    adjust();
+    
+    return {
+        disconnect: () => {
+            observers.forEach(o => o.disconnect());
+            window.removeEventListener('resize', adjust);
+        }
+    };
+}
   initiateStickyMenu() {
     let header = this.element("#mainnav"),
       height = this.element("#mainnav .inner")?.clientHeight;
@@ -262,18 +317,17 @@ class App extends AppHelpers {
           : header.classList.remove("fixed-header", "animated");
 
         // Add scrolled class to magicMenu when scrolling
-        if (magicMenu) {
-          if (window.scrollY >= 200) magicMenu.classList.add("scrolled");
-          else magicMenu.classList.remove("scrolled");
-        }
-        if (mobileMenu) {
-          if (window.scrollY >= 200) mobileMenu.classList.add("scrolled");
-          else mobileMenu.classList.remove("scrolled");
-        }
-        if (searchModal) {
-          if (window.scrollY >= 200) searchModal.classList.add("scrolled");
-          else searchModal.classList.remove("scrolled");
-        }
+        function toggleScrollClass(element) {
+          if (window.scrollY >= 200) {
+              element.classList.replace("not-scrolled", "scrolled");
+          } else {
+              element.classList.replace("scrolled", "not-scrolled");
+          }
+      }
+
+      if (magicMenu) toggleScrollClass(magicMenu);
+      if (mobileMenu) toggleScrollClass(mobileMenu);
+      if (searchModal) toggleScrollClass(searchModal);
       },
       { passive: true }
     );
