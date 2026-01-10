@@ -9,7 +9,7 @@
     {% if theme.settings.get('enable_side_cart') %}
         {% if theme.settings.get('cart_display_type') == 'side' %}
             <!-- ✅ زر السلة -->
-            <button id="sidecart-button" class="custom-button flex items-center gap-2 relative sidecart-button p-3  justify-center z-50 ">
+            <button id="sidecart-button" class="custom-button flex items-center gap-2 relative sidecart-button justify-center z-50 ">
                 {% if cart_icon_choose %}
                     {% if cart_icon_type == 'cart_1' %}
                         <i class="sicon-shopping text-xl" style="color: {{ theme.settings.get('header_color_icons') }}"></i>
@@ -27,7 +27,7 @@
                 {% else %}
                     <i class="sicon-shopping text-xl" style="color: {{ theme.settings.get('header_color_icons') }}"></i>
                 {% endif %}
-                <span  class="cart-total-items bg-red-500 absolute top-[2px] right-2  text-background text-xs rounded-full w-5 h-5 flex items-center justify-center select-none " title="{{ trans('pages.cart.items_count') }}">{{ cart.items_count }}</span>
+                <span  class="cart-total-items bg-red-500 absolute -top-2.5 right-2  text-background text-xs rounded-full w-5 h-5 flex items-center justify-center select-none " title="{{ trans('pages.cart.items_count') }}">{{ cart.items_count }}</span>
             </button>
         {% endif %}
     {% else %}
