@@ -155,10 +155,21 @@
 }
 
 .single {
-
-  .salla-quantity-input {
+salla-add-product-button{
+  salla-button{
+    button{
+      height: 48px !important;
+    }
+  }
+}
+  salla-quantity-input {
     padding: 0 !important;
+    height: 48px !important;
     width: fit-content !important;
+    .s-quantity-input-container{
+      height: 48px;
+
+    }
   }
 
   .s-product-options-option-content {

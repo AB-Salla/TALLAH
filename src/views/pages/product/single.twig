@@ -85,7 +85,7 @@
 {% extends "layouts.master" %}
 
 {% block content %}
-	<div class="single lg:pt-3 bg-background">
+	<div class="single pt-8 lg:pt-16 bg-background ">
 		<div class="bg-background">
 			<div class="flex flex-col items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row md:gap-8   lg:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-[66%] pb-8 lg:pb-16  shrink-0">
@@ -548,7 +548,7 @@
                     <div class="">
                        
 						{% set is_ar = request.locale == 'ar' %}
-						
+						{{theme.settings.get('features_col_single')}}
                         <div class="grid {% if theme.settings.get('features_col_single') %}
 							grid-cols-1 justify-start items-start
 						{% else %}
