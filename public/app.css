@@ -975,6 +975,9 @@ select{
 .top-4{
     top: 1rem;
 }
+.top-5{
+    top: 1.25rem;
+}
 .top-8{
     top: 2rem;
 }
@@ -992,9 +995,6 @@ select{
 }
 .top-full{
     top: 100%;
-}
-.top-5{
-    top: 1.25rem;
 }
 .-z-1{
     z-index: -1;
@@ -1014,6 +1014,12 @@ select{
 .z-50{
     z-index: 50;
 }
+.z-\[100\]{
+    z-index: 100;
+}
+.z-\[101\]{
+    z-index: 101;
+}
 .z-\[2\]{
     z-index: 2;
 }
@@ -1025,12 +1031,6 @@ select{
 }
 .z-\[99\]{
     z-index: 99;
-}
-.z-\[100\]{
-    z-index: 100;
-}
-.z-\[101\]{
-    z-index: 101;
 }
 .order-1{
     order: 1;
@@ -1567,6 +1567,10 @@ select{
 .w-screen{
     width: 100vw;
 }
+.\!min-w-fit{
+    min-width: -moz-fit-content !important;
+    min-width: fit-content !important;
+}
 .min-w-0{
     min-width: 0px;
 }
@@ -1578,10 +1582,6 @@ select{
 }
 .min-w-full{
     min-width: 100%;
-}
-.\!min-w-fit{
-    min-width: -moz-fit-content !important;
-    min-width: fit-content !important;
 }
 .max-w-132{
     max-width: 528px;
@@ -1659,6 +1659,11 @@ select{
     transform: translate(var(--tw-translate-x), -100%) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
+.translate-x-10{
+    --tw-translate-x: 2.5rem;
+    transform: translate(2.5rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
 .translate-x-full{
     --tw-translate-x: 100%;
     transform: translate(100%, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
@@ -1677,11 +1682,6 @@ select{
 .translate-y-4{
     --tw-translate-y: 1rem;
     transform: translate(var(--tw-translate-x), 1rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
-}
-.translate-x-10{
-    --tw-translate-x: 2.5rem;
-    transform: translate(2.5rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
 .rotate-45{
@@ -1828,6 +1828,9 @@ select{
 .gap-4{
     gap: 1rem;
 }
+.gap-5{
+    gap: 1.25rem;
+}
 .gap-6{
     gap: 1.5rem;
 }
@@ -1857,9 +1860,6 @@ select{
 }
 .gap-\[8px\]{
     gap: 8px;
-}
-.gap-5{
-    gap: 1.25rem;
 }
 .gap-x-4{
     -moz-column-gap: 1rem;
@@ -2217,6 +2217,10 @@ select{
         background-color: color-mix(in srgb,var(--color-primary) 5%,white);
     }
 }
+.bg-\[var\(--color-primary\)\]{
+    background-color: #414042;
+    background-color: var(--color-primary);
+}
 .bg-background{
     background-color: var(--color-background);
 }
@@ -2230,6 +2234,9 @@ select{
 }
 .bg-black\/40{
     background-color: rgba(0, 0, 0, 0.4);
+}
+.bg-black\/50{
+    background-color: rgba(0, 0, 0, 0.5);
 }
 .bg-blue-50{
     --tw-bg-opacity: 1;
@@ -2290,13 +2297,6 @@ select{
     --tw-bg-opacity: 1;
     background-color: rgba(39, 39, 42, 1);
     background-color: rgba(39, 39, 42, var(--tw-bg-opacity, 1));
-}
-.bg-\[var\(--color-primary\)\]{
-    background-color: #414042;
-    background-color: var(--color-primary);
-}
-.bg-black\/50{
-    background-color: rgba(0, 0, 0, 0.5);
 }
 .bg-opacity-50{
     --tw-bg-opacity: 0.5;
@@ -2969,6 +2969,11 @@ select{
     color: rgba(239, 68, 68, 1);
     color: rgba(239, 68, 68, var(--tw-text-opacity, 1));
 }
+.text-red-600{
+    --tw-text-opacity: 1;
+    color: rgba(220, 38, 38, 1);
+    color: rgba(220, 38, 38, var(--tw-text-opacity, 1));
+}
 .text-red-700{
     --tw-text-opacity: 1;
     color: rgba(185, 28, 28, 1);
@@ -2993,11 +2998,6 @@ select{
     --tw-text-opacity: 1;
     color: rgba(39, 39, 42, 1);
     color: rgba(39, 39, 42, var(--tw-text-opacity, 1));
-}
-.text-red-600{
-    --tw-text-opacity: 1;
-    color: rgba(220, 38, 38, 1);
-    color: rgba(220, 38, 38, var(--tw-text-opacity, 1));
 }
 .underline{
     text-decoration-line: underline;
@@ -26951,9 +26951,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   padding-right: 20px;
   padding-top: 10px;
   padding-bottom: 10px;
-  background-color: #414042;
-  background-color: var(--color-primary);
-  color: var(--color-background);
+  color: var(--color-font);
   border-radius: 10px;
   font-size: 18px;
   font-weight: 500;
@@ -29181,6 +29179,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-96{
         width: 24rem;
     }
+    .md\:w-\[437px\]{
+        width: 437px;
+    }
     .md\:w-\[50px\]{
         width: 50px;
     }
@@ -29192,9 +29193,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
-    }
-    .md\:w-\[437px\]{
-        width: 437px;
     }
     .md\:max-w-1\/2{
         max-width: 50%;
@@ -29694,10 +29692,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-start{
         text-align: left;
     }
-    .lg\:text-3xl{
-        font-size: 1.875rem;
-        line-height: 2.25rem;
-    }
     .lg\:text-\[24px\]{
         font-size: 24px;
     }
@@ -29896,14 +29890,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:left-4:where([dir="rtl"], [dir="rtl"] *){
     left: 1rem;
 }
+.rtl\:left-5:where([dir="rtl"], [dir="rtl"] *){
+    left: 1.25rem;
+}
 .rtl\:right-0:where([dir="rtl"], [dir="rtl"] *){
     right: 0px;
 }
 .rtl\:right-4:where([dir="rtl"], [dir="rtl"] *){
     right: 1rem;
-}
-.rtl\:left-5:where([dir="rtl"], [dir="rtl"] *){
-    left: 1.25rem;
 }
 .rtl\:ml-0:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0px;
