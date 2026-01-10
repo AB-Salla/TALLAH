@@ -155,19 +155,7 @@
 }
 
 .single {
-  .buy_now{
-    .salla-add-product-button{
-      .s-add-product-button-main{
-        salla-button {
-          display: none !important;
-        }
 
-        salla-mini-checkout-widget{
-          --salla-fast-checkout-button-width: 100%;
-       }
-      }
-    }
-  }
   .salla-quantity-input {
     padding: 0 !important;
     width: fit-content !important;
@@ -839,3 +827,17 @@
     display: none !important;
   }
 }
+
+  .buy_now{
+    salla-add-product-button{
+      .s-add-product-button-main{
+        salla-button {
+          display: none !important;
+        }
+
+        salla-mini-checkout-widget{
+          --salla-fast-checkout-button-width: 100%;
+       }
+      }
+    }
+  }

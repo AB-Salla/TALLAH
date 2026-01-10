@@ -26844,12 +26844,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* Hide empty icon when added */
   /* Hide filled icon when not added */
 }
-.single .buy_now .salla-add-product-button .s-add-product-button-main salla-button {
-  display: none !important;
-}
-.single .buy_now .salla-add-product-button .s-add-product-button-main s-add-product-button-mini-checkout {
-  --salla-fast-checkout-button-width: 100%;
-}
 .single .salla-quantity-input {
   padding: 0 !important;
   width: -moz-fit-content !important;
@@ -27458,6 +27452,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .side_products .salla-add-product-button {
   display: none !important;
+}
+.buy_now salla-add-product-button .s-add-product-button-main salla-button {
+  display: none !important;
+}
+.buy_now salla-add-product-button .s-add-product-button-main salla-mini-checkout-widget {
+  --salla-fast-checkout-button-width: 100%;
 }
 #quick-eye-model {
   /* الصورة الاكتيف */
