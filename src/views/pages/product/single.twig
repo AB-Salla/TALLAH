@@ -87,8 +87,8 @@
 {% block content %}
 	<div class="single lg:pt-3 bg-background">
 		<div class="bg-background">
-			<div class="flex flex-col items-center lg:items-start lg:flex-row overflow-hidden  lg:px-14" id="product-{{ product.id }}">
-				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-2/4 rtl:ml-[20px] ltr:mr-[20px] pb-8 lg:pb-16  shrink-0">
+			<div class="flex flex-col items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row md:gap-8   lg:px-14" id="product-{{ product.id }}">
+				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-[66%] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
 					<div class=" grid-cols-2 gap-2 lg:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
@@ -242,7 +242,7 @@
                     {% endif %}
 		</div>
 		
-		 <div class="main-content lg:sticky lg:overflow-hidden w-full lg:w-2/4 lg:pb-16 px-4 lg:px-0">
+		 <div class="main-content lg:sticky  w-full lg:w-[34%] lg:pb-16 px-4 lg:px-0 top-8 ">
           
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
@@ -485,8 +485,24 @@
 								</span>
 							</div>
 						</salla-add-product-button>
+						
 					</div>
-                    
+					{% if theme.settings.get('checkout_enable') %}
+					{% if product.status == "sale" %}
+					<div class="buy_now">
+						<salla-add-product-button quick-buy {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
+						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="sticky-product-bar__btn" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
+						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
+						{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
+						<div class="flex items-center justify-center gap-1">
+							<span class="font-medium !text-base">
+								{{ product.add_to_cart_label }}
+							</span>
+						</div>
+					</salla-add-product-button>
+				</div>
+				{% endif %}
+				{% endif %}
 				</section>
 				<div class="lg:hidden flex items-center mobile_buttons">
                                 <salla-social-share class="inline-flex" aria-label="social share"></salla-social-share>
@@ -624,16 +640,27 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				</div>
 		</div>
 	</div>
+	<div class="px-4 md:px-14 ">
 
-	{# description #}
-	{% if product.description %}
-		<h3 class="font-bold text-lg lg:text-2xl text-font-color px-4 lg:px-14">
+	<salla-tabs>
+                <!-- Tab One -->
+                <salla-tab-header slot="header" name="tab_one"
+                    ><span>
 			{{trans ("pages.single.discription")}}
-		</h3>
-		<div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 lg:px-14">
+		</span></salla-tab-header
+                >
+                <salla-tab-content slot="content" name="tab_one">
+                  <div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 lg:px-14">
+					<p class="flex font-semibold text-base leading-6 tracking-normal text-center lg:text-3xl lg:leading-9">
+						{{trans ("pages.single.discription")}}
+					</p>
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 			{% if product.has_read_more %}
-				<article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
+
+				<article class="article article--main relative 
+				font-normal text-sm leading-5 tracking-wide 
+       lg:font-medium lg:text-base lg:leading-6 lg:tracking-normal
+				overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
 					{{ product_desc|raw }}
 				</article>
 
@@ -642,16 +669,18 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 					{{ trans('pages.products.read_more') }}
 				</a>
 			{% else %}
-				<article class="article--main pb-1">
+				<article class="article--main pb-1 font-normal text-sm leading-5 tracking-wide 
+       lg:font-medium lg:text-base lg:leading-6 lg:tracking-normal">
 					{{ product_desc|raw }}
 				</article>
 			{% endif %}
 		</div>
-	{% endif %}
-
-	<salla-offer></salla-offer>
-	{# Comments Area #}
-{% if store.settings.rating.show_on_product %}
+                </salla-tab-content>
+                <!-- Tab Two -->
+                 {% if store.settings.rating.show_on_product and user.type == 'user' %}
+                <salla-tab-header slot="header" name="tab_two"><span>{{ trans('common.rating') }}</span></salla-tab-header>
+                <salla-tab-content slot="content" name="tab_two">
+               	{# Comments Area #}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 px-4 lg:px-14 single">
     <div class="lg:col-span-2 order-2 lg:order-1 comments">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
@@ -669,10 +698,16 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                     </div>
                  </div>
     </div>
-    {% endif %}
+                </salla-tab-content>
+                 {% endif %}  
+    </salla-tabs>
+	</div>
+
+	<salla-offer></salla-offer>
+
 
 	{# Similar Products Area #}
-	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 ">
+	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 overflow-x-hidden my-6">
 		<div class="w-full flex flex-col justify-start items-start text-start pb-3">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
 				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
@@ -681,33 +716,49 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 			</span>
 		</div>
 		<div class="products-fixed-slider-{{position}} relative">
-			<salla-products-slider
-				id="similar-products-slider-{{position}}"
-				type="carousel"
-				class="product-slider"
-				slider-config='{
-				"slidesPerView": 1.2,
-				"spaceBetween": 11	,
+			{% set raw_source = theme.settings.get('single_source') %}
+
+{% set source =
+  raw_source == 'categories' ? 'categories' :
+  raw_source == 'selected'   ? 'selected' :
+  raw_source == 'latest'     ? 'latest-products' :
+  raw_source == 'sales'      ? 'best-selling' :
+  'latest-products'
+%}
+
+{% set source_value =
+  raw_source == 'categories'
+    ? theme.settings.get('categories_single')
+    : (raw_source == 'selected'
+        ? theme.settings.get('products_single')
+        : [])
+%}
+
+<salla-products-slider
+  source="{{ source }}"
+  slider-config='{
+				"slidesPerView": 1.5,
+				"spaceBetween": 12	,
 				"speed": 1000,
 				"effect": "slide",
 				"breakpoints": {
-					"551": { "slidesPerView": 2.2, "spaceBetween": 20 },
-					"786": { "slidesPerView": 3, "spaceBetween": 20 },
-					"1024": { "slidesPerView": 4.5, "spaceBetween": 10 }
+					"551": { "slidesPerView": 2.2, "spaceBetween": 12 },
+					"786": { "slidesPerView": 3, "spaceBetween": 12 },
+					"1024": { "slidesPerView": 4.75, "spaceBetween": 12 }
 				}     
 				}'
-				source="related"
-				limit="{{ limit }}"
-				source-value="{{ product.id }}"
-				display-all-url="{{ display_all_url }}"
-				slider-id="slider-with-bg-{{ position }}">
-			</salla-products-slider>
+  {% if raw_source in ['selected', 'categories'] and source_value.value is defined and source_value.value|length > 0 %}
+    source-value="[{{ source_value.value | join(',') }}]"
+  {% endif %}
+  display-all-url
+>
+</salla-products-slider>
 		</div>
 	</div>
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 ps-4 lg:px-16  mb-10 py-12 bg-[#e9e9e9]"
+    <div class="product-image-gallery  gap-4 ps-4 lg:px-16 py-6  md:py-14 bg-[#e9e9e9] overflow-x-hidden"
 	{% if theme.settings.get('bg_color') %}  style="background-color: {{theme.settings.get('bg_color_gellary') }};" {% endif %}
 	
 	>

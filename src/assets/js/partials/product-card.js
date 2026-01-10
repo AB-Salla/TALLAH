@@ -40,7 +40,7 @@ class ProductCard extends HTMLElement {
       this.startingPrice = salla.lang.get("pages.products.starting_price");
       this.addToCart = salla.lang.get("pages.cart.add_to_cart");
       this.outOfStock = salla.lang.get("pages.products.out_of_stock");
-
+      
       // re-render to update translations
       this.render();
     });
@@ -254,10 +254,10 @@ class ProductCard extends HTMLElement {
 
   render() {
       const MAX_VISIBLE = 3;
+      const isArabic = document.documentElement.lang === "ar";
 
 function renderOption(option) {
   const items = option.details || [];
-  const isArabic = document.documentElement.lang === "ar";
 
 const SIZE_LABEL = isArabic ? "المقاس" : "Size";
 const COLOR_LABEL = isArabic ? "اللون" : "Color";
@@ -439,7 +439,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           </div>
           ${this.product.status =='out' ? 
             `
-            <span class="absolute top-1 left-1 bg-background px-[10px] py-[6px]">Out of Stock</span>
+            <span class="absolute top-1 left-1 bg-background px-[10px] out py-[6px]">${isArabic ? "نفزت الكمية":"Out of Stock" }</span>
             `:``
           }
            <div class="hidden in_single">
@@ -456,7 +456,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
                     }"></i>
                   </salla-add-product-button>
             </div>
-${window.option_images ? `
+${window.option_images && window.product_card_options ? `
             <div class="card-floating-btn opacity-100 bottom-0 md:opacity-0 absolute md:bottom-[-100%] transition-all duration-700 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
                    
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
@@ -618,37 +618,42 @@ ${window.option_images ? `
               </div>`
                 : ``
             }
-            ${this.product.status !== "sale" ? `
-              <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">Notify Me</button>
-              ` : `
-              
-               ${
-              !window.option_images ? `${window.product_card_options ?`<button
-                class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0  text-center bg-[#F4F4F5] text-font rounded-full"
-                ${this.product.status !== "sale" ? "disabled" : ""}>
-             ${
-                this.product.status == "sale"
-                  ? `<i class="text-base add-icon sicon-${
-                      this.product.type == "booking" ? "calendar-time" : "shopping-bag"
-                    }"></i>`
-                  : `<i class="text-base sicon-cart-cancel"
-                    }"></i>`
-              }
-              <i class="loader text-font hidden animate-spin sicon-loading text-base"></i>
-            </button>`:` <salla-add-product-button 
-                    fill="none" 
-                    shape="icon" 
-                    product-id="${this.product.id}"
-                    product-status="${this.product.status}"
-                    product-type="${this.product.type}">
-                    <i class="text-base text-[13px] sicon-${
-                      this.product.type == "booking"
-                        ? "calendar-time"
-                        : "shopping-bag"
-                    }"></i>
-                  </salla-add-product-button>`}`:``
-            }
-              `}
+           ${
+  this.product.status !== "sale"
+    ? `
+      <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">
+         ${isArabic ? "ذكرني  عند توافرة":"Notify Me" }
+      </button>
+    `
+    : (!window.product_card_options && !window.option_images)
+      ? `
+        <salla-add-product-button
+          fill="none"
+          shape="icon"
+          product-id="${this.product.id}"
+          product-status="${this.product.status}"
+          product-type="${this.product.type}">
+          <i class="text-base sicon-${
+            this.product.type === "booking"
+              ? "calendar-time"
+              : "shopping-bag"
+          }"></i>
+        </salla-add-product-button>
+      `
+      : `
+      ${!window.option_images ? ` <button
+          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0 bg-[#F4F4F5] rounded-full">
+          <i class="text-base add-icon sicon-${
+            this.product.type === "booking"
+              ? "calendar-time"
+              : "shopping-bag"
+          }"></i>
+          <i class="loader hidden animate-spin sicon-loading"></i>
+        </button>`:``}
+       
+      `
+}
+
            
             
       </div>

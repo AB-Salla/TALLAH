@@ -36,7 +36,7 @@
       "shipping": "Free shipping to all parts of the Kingdom within 3-5 business days.",
       "gift": "Special Offer: Get a free heart rate smartwatch when you purchase today!",
       "sale": "Hurry, the offer ends in ",
-      "discription": " discription ",
+      "discription": "Description",
       "similar": "You May Also Like",
       "selected": "Shop the Look",
       "inspire": "Style Inspiration, Styled By You",
@@ -50,7 +50,8 @@
   "common": {
     "bank_offer_sub_title_multiple": "Pay for your purchases via one of the following bank cards and get the specified discount",
     "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount",
-    "wishlist_empty": "Your wishlist is empty"
+    "wishlist_empty": "Your wishlist is empty",
+    "rating": "Reviews"
   },
   "footer": {
     "newsletter_title": "Register your email address and receive the latest news and special offers.",

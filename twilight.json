@@ -827,6 +827,97 @@
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
             "variant": "h6"
         },
+          {
+            "type": "boolean",
+            "icon": "sicon-toggle-off",
+            "label": "تفعيل زر اتمام الطلب في صفحة المنتج",
+            "description": null,
+            "id": "checkout_enable",
+            "format": "switch",
+            "required": false,
+            "value": true,
+            "selected": true
+        },
+        {
+      "id": "single_source",
+      "icon": "sicon-t-shirt",
+      "type": "items",
+      "label": "مصدر عرض منتجات الاسلايدر ",
+      "description": "اختر الطريقة التي تريد بها جلب المنتجات (من تصنيف، مختارة يدويًا، الأكثر مبيعًا...).",
+      "format": "dropdown-list",
+      "source": "Manual",
+      "options": [
+        {
+          "key": "categories",
+          "label": "منتجات من تصنيف",
+          "value": "categories"
+        },
+        {
+          "key": "sales",
+          "label": "الأكثر مبيعاً",
+          "value": "sales"
+        },
+        {
+          "key": "latest",
+          "label": "أحدث المنتجات",
+          "value": "latest"
+        },
+        {
+          "key": "selected",
+          "label": "منتجات مختارة",
+          "value": "selected"
+        }
+      ],
+      "required": true,
+      "selected": [
+        {
+          "key": "latest",
+          "label": "أحدث المنتجات",
+          "value": "latest"
+        }
+      ],
+      "multichoice": false
+    },
+      {
+      "id": "categories_single",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "اختيار التصنيف",
+      "description": "اختر التصنيف الذي ترغب بعرض منتجاته.",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [],
+      "source": "categories",
+      "multichoice": false,
+      "searchable": true,
+      "required": true,
+      "conditions": [
+        {
+          "id": "single_source",
+          "operation": "=",
+          "value": "categories"
+        }
+      ]
+    },
+    {
+      "id": "products_single",
+      "type": "items",
+      "format": "dropdown-list",
+      "label": "اختيار المنتجات يدويًا",
+      "description": "اختر المنتجات التي تريد عرضها بشكل يدوي.",
+      "icon": "sicon-keyboard_arrow_down",
+      "selected": [],
+      "source": "products",
+      "multichoice": true,
+      "searchable": true,
+      "required": false,
+      "conditions": [
+        {
+          "id": "single_source",
+          "operation": "=",
+          "value": "selected"
+        }
+      ]
+    },
                 {
             "type": "boolean",
             "icon": "sicon-toggle-off",
@@ -1019,6 +1110,46 @@
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'> مميزات المنتج (صفحة المنتج)</div>",
             "variant": "h6"
         },
+          {
+      "id": "single_source",
+      "icon": "sicon-t-shirt",
+      "type": "items",
+      "label": "مصدر عرض المنتجات",
+      "description": "اختر الطريقة التي تريد بها جلب المنتجات (من تصنيف، مختارة يدويًا، الأكثر مبيعًا...).",
+      "format": "dropdown-list",
+      "source": "Manual",
+      "options": [
+        {
+          "key": "categories",
+          "label": "منتجات من تصنيف",
+          "value": "categories"
+        },
+        {
+          "key": "sales",
+          "label": "الأكثر مبيعاً",
+          "value": "sales"
+        },
+        {
+          "key": "latest",
+          "label": "أحدث المنتجات",
+          "value": "latest"
+        },
+        {
+          "key": "selected",
+          "label": "منتجات مختارة",
+          "value": "selected"
+        }
+      ],
+      "required": true,
+      "selected": [
+        {
+          "key": "latest",
+          "label": "أحدث المنتجات",
+          "value": "latest"
+        }
+      ],
+      "multichoice": false
+    },
         {
             "type": "boolean",
             "icon": "sicon-toggle-off",

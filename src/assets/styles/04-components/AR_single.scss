@@ -155,6 +155,7 @@
 }
 
 .single {
+
   .salla-quantity-input {
     padding: 0 !important;
     width: fit-content !important;
@@ -177,9 +178,9 @@
     gap: 10px;
     justify-content: unset !important;
   }
-  .s-rating-stars-selected {
-    fill: #806f40 !important;
-  }
+  // .s-rating-stars-selected {
+  //   fill: #806f40 !important;
+  // }
   .comments {
     salla-comment-form {
       display: none;
@@ -771,8 +772,17 @@
 }
 
 .side_products {
+  .s-product-card-rating{
+    display: none;
+  }
   custom-salla-product-card {
     max-height: 267px !important;
+  }
+  .out{
+    display: none;
+  }
+  .s-products-list-wrapper{
+    gap: 12px !important;
   }
   .s-product-card-vertical .s-product-card-image {
     position: relative;
@@ -826,3 +836,74 @@
     display: none !important;
   }
 }
+
+  .buy_now{
+    salla-add-product-button{
+      .s-add-product-button-main{
+        salla-button {
+          display: none !important;
+        }
+
+        salla-mini-checkout-widget{
+          --salla-fast-checkout-button-width: 100%;
+       }
+       .s-add-product-button-mini-checkout{
+        width: 100%;
+       }
+      }
+    }
+  }
+  .single{
+     .s-tabs-content {
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
+  }
+  .s-tabs-content-wrapper{
+  }
+  .s-tabs-content.s-tabs-content-selected {
+    opacity: 1;
+    max-height: 1000px;
+    opacity: 1;
+    height: auto;
+  }
+  .s-comments-product {
+    background-color: var(--color-background);
+    margin-bottom: 0;
+    padding-block: 0;
+  }
+  .s-tabs-header {
+    border: none !important;
+    justify-content: center;
+    border-bottom: 1px solid #E4E4E7 !important;
+  }
+  .s-tabs-header-item {
+    @apply font-semibold  leading-7 tracking-normal ;
+    font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
+    background-color: transparent;
+    color: var(--color-primary);
+    opacity: .7;
+     &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0%;
+      height: 3px;
+      background-color: var(--color-primary);
+      transition: all .3s ease-in-out;
+    }
+  }
+  .s-tabs-active {
+    color: var(--color-primary);
+    position: relative;
+   opacity: 1;
+    &::after {
+      width: 70%;
+
+    }
+  }
+  }

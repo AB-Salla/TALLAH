@@ -879,6 +879,9 @@ select{
 .\!pointer-events-auto{
     pointer-events: auto !important;
 }
+.pointer-events-auto{
+    pointer-events: auto;
+}
 .visible{
     visibility: visible;
 }
@@ -2425,10 +2428,6 @@ select{
 .py-10{
     padding-top: 2.5rem;
     padding-bottom: 2.5rem;
-}
-.py-12{
-    padding-top: 3rem;
-    padding-bottom: 3rem;
 }
 .py-16{
     padding-top: 4rem;
@@ -22359,13 +22358,16 @@ body #mega-content.scrolled{
 #search-overlay-background.scrolled + #search-panel-wrapper{
     top: 3.5rem !important;
 }
-.store-footer{
-    position: relative;
-    margin-top: 2rem;
-    --tw-bg-opacity: 1;
-    background-color: rgba(14, 15, 15, 1);
-    background-color: rgba(14, 15, 15, var(--tw-bg-opacity, 1));
-    color: var(--color-background);
+.store-footer {
+  margin: 0 !important;
+}
+.store-footer {
+  position: relative;
+  margin-top: 2rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(14, 15, 15, 1);
+  background-color: rgba(14, 15, 15, var(--tw-bg-opacity, 1));
+  color: var(--color-background);
 }
 .group.store-footer.cursor-pointer *{
     pointer-events: auto;
@@ -22374,6 +22376,10 @@ body #mega-content.scrolled{
     .store-footer{
         margin-top: 4rem;
     }
+}
+.store-footer .s-payments-list-item {
+  width: 50px !important;
+  background-color: var(--color-background) !important;
 }
 @media (max-width: 768px) {
   .store-footer .s-contacts-item {
@@ -26870,9 +26876,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .s-product-card-entry {
   gap: 10px;
 }
-.single .s-rating-stars-selected {
-  fill: #806f40 !important;
-}
 .single .comments salla-comment-form {
   display: none;
 }
@@ -27396,8 +27399,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 10px !important;
   }
 }
+.side_products .s-product-card-rating {
+  display: none;
+}
 .side_products custom-salla-product-card {
   max-height: 267px !important;
+}
+.side_products .out {
+  display: none;
+}
+.side_products .s-products-list-wrapper {
+  gap: 12px !important;
 }
 .side_products .s-product-card-vertical .s-product-card-image {
   min-height: 171px !important;
@@ -27452,6 +27464,71 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .side_products .salla-add-product-button {
   display: none !important;
+}
+.buy_now salla-add-product-button .s-add-product-button-main salla-button {
+  display: none !important;
+}
+.buy_now salla-add-product-button .s-add-product-button-main salla-mini-checkout-widget {
+  --salla-fast-checkout-button-width: 100%;
+}
+.buy_now salla-add-product-button .s-add-product-button-main .s-add-product-button-mini-checkout {
+  width: 100%;
+}
+.single .s-tabs-content {
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  display: block;
+}
+.single .s-tabs-content.s-tabs-content-selected {
+  max-height: 1000px;
+  opacity: 1;
+  height: auto;
+}
+.single .s-comments-product {
+  background-color: var(--color-background);
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.single .s-tabs-header {
+  border: none !important;
+  border-bottom: 1px solid #E4E4E7 !important;
+}
+.single .s-tabs-header {
+  justify-content: center;
+}
+.single .s-tabs-header-item{
+    font-weight: 600;
+    line-height: 1.75rem;
+    letter-spacing: 0em;
+  font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
+  background-color: transparent;
+  color: #414042;
+  color: var(--color-primary);
+  opacity: 0.7;
+}
+.single .s-tabs-header-item::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 3px;
+  background-color: #414042;
+  background-color: var(--color-primary);
+  transition: all 0.3s ease-in-out;
+}
+.single .s-tabs-active {
+  color: #414042;
+  color: var(--color-primary);
+  position: relative;
+  opacity: 1;
+}
+.single .s-tabs-active::after {
+  width: 70%;
 }
 #quick-eye-model {
   /* الصورة الاكتيف */
@@ -27967,11 +28044,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     flex-wrap: wrap;
   }
 }
-.cart .s-payments-list-item {
-  height: 50px !important;
-  width: 60px !important;
-  background-color: transparent !important;
-}
 .cart .s-list-tile-item {
   background-color: #F4F0EB !important;
 }
@@ -28170,6 +28242,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .cart .s-product-options-wrapper {
   padding: 0 !important;
+}
+.s-payments-list-item {
+  height: 50px !important;
+  width: 58px !important;
+  background-color: transparent !important;
 }
 .AR-index,
 .mm-ocd__content{
@@ -29132,6 +29209,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 2.5rem;
         padding-right: 2.5rem;
     }
+    .md\:px-14{
+        padding-left: 3.5rem;
+        padding-right: 3.5rem;
+    }
     .md\:px-4{
         padding-left: 1rem;
         padding-right: 1rem;
@@ -29152,9 +29233,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 0px;
         padding-bottom: 0px;
     }
-    .md\:py-10{
-        padding-top: 2.5rem;
-        padding-bottom: 2.5rem;
+    .md\:py-14{
+        padding-top: 3.5rem;
+        padding-bottom: 3.5rem;
     }
     .md\:py-3{
         padding-top: 0.75rem;
@@ -29179,11 +29260,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:\!pb-9{
         padding-bottom: 2.25rem !important;
     }
+    .md\:pb-12{
+        padding-bottom: 3rem;
+    }
     .md\:pb-6{
         padding-bottom: 1.5rem;
     }
     .md\:pb-8{
         padding-bottom: 2rem;
+    }
+    .md\:pt-8{
+        padding-top: 2rem;
     }
     .md\:text-base{
         font-size: 1rem;
@@ -29339,17 +29426,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:min-h-\[528px\]{
         min-height: 528px;
     }
-    .lg\:\!w-2\/4{
-        width: 50% !important;
+    .lg\:\!w-\[66\%\]{
+        width: 66% !important;
     }
     .lg\:w-10\/12{
         width: 83.333333%;
     }
     .lg\:w-2\/3{
         width: 66.666667%;
-    }
-    .lg\:w-2\/4{
-        width: 50%;
     }
     .lg\:w-24{
         width: 6rem;
@@ -29365,6 +29449,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:w-72{
         width: 18rem;
+    }
+    .lg\:w-\[34\%\]{
+        width: 34%;
     }
     .lg\:w-\[38\%\]{
         width: 38%;
@@ -29463,8 +29550,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:self-stretch{
         align-self: stretch;
     }
-    .lg\:overflow-hidden{
-        overflow: hidden;
+    .lg\:overflow-x-visible{
+        overflow-x: visible;
     }
     .lg\:bg-white{
         --tw-bg-opacity: 1;
@@ -29541,9 +29628,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-start{
         text-align: left;
     }
-    .lg\:text-2xl{
-        font-size: 1.5rem;
-        line-height: 2rem;
+    .lg\:text-3xl{
+        font-size: 1.875rem;
+        line-height: 2.25rem;
     }
     .lg\:text-\[24px\]{
         font-size: 24px;
@@ -29570,6 +29657,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 0.75rem;
         line-height: 1rem;
     }
+    .lg\:font-medium{
+        font-weight: 500;
+    }
     .lg\:leading-5{
         line-height: 1.25rem;
     }
@@ -29578,6 +29668,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:leading-8{
         line-height: 2rem;
+    }
+    .lg\:leading-9{
+        line-height: 2.25rem;
+    }
+    .lg\:tracking-normal{
+        letter-spacing: 0em;
     }
     .lg\:shadow-default{
         --tw-shadow: 5px 10px 30px #2B2D340D;;
@@ -29642,9 +29738,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .ltr\:mr-3:where([dir="ltr"], [dir="ltr"] *){
     margin-right: 0.75rem;
-}
-.ltr\:mr-\[20px\]:where([dir="ltr"], [dir="ltr"] *){
-    margin-right: 20px;
 }
 .ltr\:mr-auto:where([dir="ltr"], [dir="ltr"] *){
     margin-right: auto;
@@ -29760,9 +29853,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:ml-3:where([dir="rtl"], [dir="rtl"] *){
     margin-left: 0.75rem;
-}
-.rtl\:ml-\[20px\]:where([dir="rtl"], [dir="rtl"] *){
-    margin-left: 20px;
 }
 .rtl\:ml-auto:where([dir="rtl"], [dir="rtl"] *){
     margin-left: auto;
