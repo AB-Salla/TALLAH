@@ -29386,6 +29386,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-\[calc\(100\%-419px\)\]{
         width: calc(100% - 419px);
     }
+    .lg\:\!w-\[66\%\]{
+        width: 66% !important;
+    }
     .lg\:max-w-full{
         max-width: 100%;
     }
