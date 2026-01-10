@@ -2513,6 +2513,18 @@
                     "required": false
                 },
                 {
+                    "id": "button_bottom",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار الزر أسفل البانر",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                {
                     "id": "banner",
                     "type": "collection",
                     "format": "collection",
@@ -4177,6 +4189,18 @@
                     "type": "boolean",
                     "format": "switch",
                     "label": "جعل لون خلفية الزر شفافة",
+                    "description": null,
+                    "labelHTML": null,
+                    "icon": "sicon-toggle-off",
+                    "value": true,
+                    "selected": true,
+                    "required": false
+                },
+                                {
+                    "id": "button_bottom",
+                    "type": "boolean",
+                    "format": "switch",
+                    "label": "إظهار الزر أسفل البانر",
                     "description": null,
                     "labelHTML": null,
                     "icon": "sicon-toggle-off",

@@ -45,7 +45,7 @@ Global Variables (from Theme)
   {% if page.slug == 'index' %}
   {# Homepage header variables #}
   {% if header_hover %}
-  {% set initial_bg = 'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, #000 100%)' %}
+  {% set initial_bg = 'linear-gradient(0deg, rgba(0, 0, 0, 0.00) 0%, rgba(0, 0, 0, 0.40) 40%, rgba(0, 0, 0, 0.60) 100%)' %}
   {% set initial_text = 'white' %}
   {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
   {% else %}
@@ -67,16 +67,21 @@ Global Variables (from Theme)
 
 
   .site-header.header-scrolled {
-    background-color: {{ header_bg_color }} !important;
+    background: {{ header_bg_color }} !important;
     color: {{ header_text_color }} !important;
   }
 
   .site-header.active-overlay {
-    background-color: {{ header_bg_color }} !important;
+    background: {{ header_bg_color }} !important;
     color: {{ header_text_color }} !important;
   }
-    .group:hover .hover-box {
-    background-color: var(--hover-bg) !important;
+    .inner.group:hover {
+    background: var(--hover-bg) !important;
+  }
+  .inner.group:hover .hover-box{
+    color: var(--hover-text) !important;
+  }
+    .inner.group:hover .hover-box{
     color: var(--hover-text) !important;
   }
 </style>
@@ -85,14 +90,14 @@ Global Variables (from Theme)
 
 
   {# 'group' = parent hover trigger for .hover-box #}
-  	<div id="mainnav" class="main-nav-container shadow-default relative !h-fit !min-h-fit">
+  	<div style="background: {{ initial_bg }};" id="mainnav" class="main-nav-container shadow-default relative !h-fit !min-h-fit">
     {% if link_url %}
   <a href="{{ link_url }}" class="block no-underline top-lace" style="text-decoration: none;">
     {% endif %}
 
     <div
       class="top-lace flex w-full h-[38px] p-[7px_21px] justify-center items-center gap-[4px] lg:flex lg:px-[30px] lg:py-[7px] lg:justify-between lg:items-center lg:self-stretch {{ is_rtl ? 'flex-row-reverse' : 'flex-row' }}"
-      style="background-color: {{ topnav_bg }}; color: {{ topnav_text_color }};">
+      style="background: {{ topnav_bg }}; color: {{ topnav_text_color }};">
       <div class="flex justify-center items-center gap-1 flex-[1_0_0]">
 
         <div class="flex flex-row items-center gap-1">
@@ -101,7 +106,7 @@ Global Variables (from Theme)
 
           {# Countdown Timer #}
           <div id="countdown" data-countdown-target="{{ countdown_target }}"
-            style="background-color: {{ countdown_bg }}; color: {{ countdown_text }};" class=" flex h-[22px] px-[12px] py-[10px] justify-center items-center gap-[4px] rounded-lg
+            style="background: {{ countdown_bg }}; color: {{ countdown_text }};" class=" flex h-[22px] px-[12px] py-[10px] justify-center items-center gap-[4px] rounded-lg
      lg:flex lg:h-[22px] lg:py-[4px] lg:px-4 lg:gap-2 ">
 
             <div class="flex items-baseline gap-0.5">
@@ -208,13 +213,13 @@ Global Variables (from Theme)
 
 
 
-  <div class="inner group w-full" style="{{ hover_vars }}">
+  <div class="inner group w-full" style="{{ hover_vars }}; ">
           {# Top Nav #}
 
 
     {# header for pc view #}
-    <div class="site-header hover-box w-full h-[60px] px-16  flex flex-row-reverse justify-between items-center
-            hidden lg:flex" style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
+    <div class="site-header hover-box w-full h-[60px] container  flex flex-row-reverse justify-between items-center
+            hidden lg:flex" style=" color: {{ initial_text }};">
 
 
       {# ICONS SECTION #}
@@ -326,9 +331,9 @@ Global Variables (from Theme)
     </div>
 
     {# header for mobile view #}
-    <div class="site-header-mobile w-full h-[56px] p-x-[16px] 
+    <div class="site-header-mobile hover-box w-full h-[56px] p-x-[16px] 
       flex flex-row-reverse justify-between items-center shrink-0 lg:hidden"
-      style="background-color: {{ initial_bg }}; color: {{ initial_text }};">
+      style=" color: {{ initial_text }};">
 
       {# ICONS SECTION #}
       <div class="flex items-center ">
@@ -485,7 +490,7 @@ Global Variables (from Theme)
 <div id="mega-content" class="fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 
             transform scale-y-0 opacity-0 pointer-events-none 
             origin-top shadow-lg transition-all duration-300 -translate-y-full
-            border-t border-gray-500" style="background-color: {{ header_bg_color }}; top: var(--header-height);">
+            border-t border-gray-500" style="background: {{ header_bg_color }}; top: var(--header-height);">
 
   {# Left: Child Categories Wrapper #}
   <div class="flex w-[328px] h-full flex-col items-start gap-[20px] shrink-0 bg-zinc-100">
@@ -550,7 +555,7 @@ Global Variables (from Theme)
     {# Optional: Subcategory Panel #}
     <div id="mobile-subcategory-content"
       class="absolute w-full overflow-y-auto no-scrollbar transition-transform duration-500 ease-in-out"
-      style="background-color: {{ header_bg_color }}; top: var(--header-height); height: calc(100dvh - var(--header-height));">
+      style="background: {{ header_bg_color }}; top: var(--header-height); height: calc(100dvh - var(--header-height));">
     </div>
 
   </div>
