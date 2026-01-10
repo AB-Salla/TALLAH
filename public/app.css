@@ -29350,17 +29350,17 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:min-h-\[528px\]{
         min-height: 528px;
     }
-    .lg\:\!w-2\/4{
-        width: 50% !important;
+    .lg\:\!w-3\/4{
+        width: 75% !important;
+    }
+    .lg\:w-1\/4{
+        width: 25%;
     }
     .lg\:w-10\/12{
         width: 83.333333%;
     }
     .lg\:w-2\/3{
         width: 66.666667%;
-    }
-    .lg\:w-2\/4{
-        width: 50%;
     }
     .lg\:w-24{
         width: 6rem;
@@ -29389,11 +29389,11 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:w-\[calc\(100\%-419px\)\]{
         width: calc(100% - 419px);
     }
-    .lg\:w-1\/4{
-        width: 25%;
+    .lg\:w-\[\]{
+        width: ;
     }
-    .lg\:\!w-3\/4{
-        width: 75% !important;
+    .lg\:w-\[34\%\]{
+        width: 34%;
     }
     .lg\:max-w-full{
         max-width: 100%;
