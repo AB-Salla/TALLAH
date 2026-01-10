@@ -2,7 +2,7 @@
 {% if theme.settings.get('sticky_is_true') and theme.settings.get('product_pro') == 'pro1' %}
   <div class="hidden md:flex">
 	<div id="sticky-product-bar" class="bottom-strip fixed left-0 right-0 shadow-lg bg-background  z-50 hidden transition-all duration-300 ease-in-out">
-		<div class=" md:px-14 py-1">
+		<div class=" md:px-14 pt-2 pb-3">
 			<div class="flex items-center justify-between gap-4">
 				<div class="flex items-center gap-4 flex-1 min-w-0">
 					<img src="{{ product.image.url|default('https://cdn.salla.sa/images/s-empty.png') }}" alt="{{ product.name }}" class="w-14 h-14  rounded-lg object-cover border border-gray-200 flex-shrink-0">
@@ -54,7 +54,13 @@
 /* ===============================
    FLOATING PRODUCT CARD
 ================================ */
-
+#sticky-product-bar{
+    salla-add-product-button{
+        button{
+            height: 56px;
+        }
+    }
+}
 .floating-card-wrapper {
   max-width: 360px;
   border-radius: 18px;
