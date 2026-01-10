@@ -853,3 +853,57 @@
       }
     }
   }
+  .single{
+     .s-tabs-content {
+    transition: all 0.5s ease-in-out;
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    display: block;
+    padding-left: 1.75rem;
+    padding-right: 1.75rem;
+  }
+  .s-tabs-content-wrapper{
+    padding-top: 24px;
+  }
+  .s-tabs-content.s-tabs-content-selected {
+    opacity: 1;
+    max-height: 1000px;
+    opacity: 1;
+    height: auto;
+  }
+  .s-comments-product {
+    background-color: var(--color-background);
+    margin-bottom: 0;
+    padding-block: 0;
+  }
+  .s-tabs-header {
+    border: none !important;
+  }
+  .s-tabs-header-item {
+    font-size: clamp(1.25rem, 1.1782rem + 0.3218vw, 1.5rem);
+    font-weight: 600;
+    background-color: transparent;
+    color: var(--color-grayfont);
+     &::after {
+      content: "";
+      position: absolute;
+      bottom: -2px; // المسافة من تحت الكلمة
+      left: 50%; // يبدأ من منتصف العنصر
+      transform: translateX(-50%); // نرجعه للنص بالظبط
+      width: 0%; // طول الخط (تقدر تزوده أو تقلله)
+      height: 3px; // السمك
+      background-color: var(--color-primary);
+      transition: all .3s ease-in-out;
+    }
+  }
+  .s-tabs-active {
+    color: var(--color-primary);
+    position: relative;
+    &::after {
+      width: 70%; // طول الخط (تقدر تزوده أو تقلله)
+
+    }
+   
+  }
+  }

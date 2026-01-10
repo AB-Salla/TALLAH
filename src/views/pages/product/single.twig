@@ -640,10 +640,18 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
 	{# description #}
 	{% if product.description %}
-		<h3 class="font-bold text-lg lg:text-2xl text-font-color px-4 lg:px-14">
+		
+		
+	{% endif %}
+	<salla-tabs>
+                <!-- Tab One -->
+                <salla-tab-header slot="header" name="tab_one"
+                    ><h3 class="font-bold text-lg lg:text-2xl text-font-color px-4 lg:px-14">
 			{{trans ("pages.single.discription")}}
-		</h3>
-		<div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 lg:px-14">
+		</h3></salla-tab-header
+                >
+                <salla-tab-content slot="content" name="tab_one">
+                  <div class="product__description p-2 sm:p-1 leading-7 mb-3 text-font-color px-4 lg:px-14">
 			{% set product_desc = product.description|replace({"&nbsp;":"\n"}) %}
 			{% if product.has_read_more %}
 				<article class="article article--main relative leading-8 overflow-hidden transition-all max-h-0 duration-300 py-4" id="more-content" style="max-height:5.25rem">
@@ -660,11 +668,12 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				</article>
 			{% endif %}
 		</div>
-	{% endif %}
-
-	<salla-offer></salla-offer>
-	{# Comments Area #}
-{% if store.settings.rating.show_on_product %}
+                </salla-tab-content>
+                <!-- Tab Two -->
+                 {% if store.settings.rating.show_on_product and user.type == 'user' %}
+                <salla-tab-header slot="header" name="tab_two"><span>{{ trans('common.rating') }}</span></salla-tab-header>
+                <salla-tab-content slot="content" name="tab_two">
+               	{# Comments Area #}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-2 px-4 lg:px-14 single">
     <div class="lg:col-span-2 order-2 lg:order-1 comments">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
@@ -682,7 +691,12 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                     </div>
                  </div>
     </div>
-    {% endif %}
+                </salla-tab-content>
+                 {% endif %}  
+    </salla-tabs>
+
+	<salla-offer></salla-offer>
+
 
 	{# Similar Products Area #}
 	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 ">

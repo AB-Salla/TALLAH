@@ -27475,6 +27475,58 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .buy_now salla-add-product-button .s-add-product-button-main .s-add-product-button-mini-checkout {
   width: 100%;
 }
+.single .s-tabs-content {
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+  height: 0;
+  overflow: hidden;
+  display: block;
+  padding-left: 1.75rem;
+  padding-right: 1.75rem;
+}
+.single .s-tabs-content-wrapper {
+  padding-top: 24px;
+}
+.single .s-tabs-content.s-tabs-content-selected {
+  max-height: 1000px;
+  opacity: 1;
+  height: auto;
+}
+.single .s-comments-product {
+  background-color: var(--color-background);
+  margin-bottom: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+.single .s-tabs-header {
+  border: none !important;
+}
+.single .s-tabs-header-item {
+  font-size: clamp(1.25rem, 1.1782rem + 0.3218vw, 1.5rem);
+  font-weight: 600;
+  background-color: transparent;
+  color: var(--color-grayfont);
+}
+.single .s-tabs-header-item::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 3px;
+  background-color: #414042;
+  background-color: var(--color-primary);
+  transition: all 0.3s ease-in-out;
+}
+.single .s-tabs-active {
+  color: #414042;
+  color: var(--color-primary);
+  position: relative;
+}
+.single .s-tabs-active::after {
+  width: 70%;
+}
 #quick-eye-model {
   /* الصورة الاكتيف */
   /* الخيار المعطل (اختر) */
