@@ -155,6 +155,16 @@
 }
 
 .single {
+  .buy_now{
+    .salla-add-product-button{
+      salla-button{
+        display: none;
+      }
+      .s-add-product-button-main .s-add-product-button-mini-checkout{
+         --salla-fast-checkout-button-width: 100%;
+      }
+    }
+  }
   .salla-quantity-input {
     padding: 0 !important;
     width: fit-content !important;

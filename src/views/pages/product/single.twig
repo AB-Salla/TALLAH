@@ -485,8 +485,21 @@
 								</span>
 							</div>
 						</salla-add-product-button>
+						
 					</div>
-                    
+					<div class="buy_now">
+
+						<salla-add-product-button quick-buy  width="wide" {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
+						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="sticky-product-bar__btn" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
+						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
+						{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
+						<div class="flex items-center justify-center gap-1">
+							<span class="font-medium !text-base">
+								{{ product.add_to_cart_label }}
+							</span>
+						</div>
+					</salla-add-product-button>
+				</div>
 				</section>
 				<div class="lg:hidden flex items-center mobile_buttons">
                                 <salla-social-share class="inline-flex" aria-label="social share"></salla-social-share>
@@ -700,7 +713,6 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 %}
 
 <salla-products-slider
-  block-title="{{trans('pages.products.similar_products')}}"
   source="{{ source }}"
   slider-config='{
 				"slidesPerView": 1.5,
