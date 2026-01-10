@@ -2,15 +2,13 @@
 {% if theme.settings.get('sticky_is_true') and theme.settings.get('product_pro') == 'pro1' %}
   <div class="hidden md:flex">
 	<div id="sticky-product-bar" class="bottom-strip fixed left-0 right-0 shadow-lg bg-white  z-50 hidden transition-all duration-300 ease-in-out">
-		<div class="container mx-auto px-4 py-1">
+		<div class=" md:px-14 py-1">
 			<div class="flex items-center justify-between gap-4">
 				<div class="flex items-center gap-4 flex-1 min-w-0">
 					<img src="{{ product.image.url|default('https://cdn.salla.sa/images/s-empty.png') }}" alt="{{ product.name }}" class="w-16 h-16 md:w-20 md:h-20 rounded-lg object-cover border border-gray-200 flex-shrink-0">
 					<div class="min-w-0">
 						<h3 class="font-bold text-sm md:text-base text-gray-900 ">{{ product.name }}</h3>
-					</div>
-				</div>
-				<div class="flex items-center gap-2 mt-1">
+                        <div class="flex items-center gap-2 mt-1">
 					{% if product.is_on_sale %}
 						<span class="text-primary font-bold text-lg">{{ product.sale_price|money }}</span>
 						<span class="text-gray-400 line-through text-sm">{{ product.regular_price|money }}</span>
@@ -20,8 +18,11 @@
 						</span>
 					{% endif %}
 				</div>
+					</div>
+				</div>
 				<div class="flex-shrink-0">
 					<salla-add-product-button
+                    width="wide"
 						type="button"
 						class="w-full sticky-product-bar__btn sticky-proxy-btn"
 						product-id="{{ product.id }}">
