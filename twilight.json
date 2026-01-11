@@ -376,79 +376,32 @@
         {
           "id": "popular-categories.popular-categories-image",
           "type": "string",
-          "format": "image",
+          "format": "url",
           "inputType": "url",
           "label": null,
           "description": "أضف رابط الصورة",
           "labelHTML": null,
-          "placeholder": "e.g. https://hostname.com/image.png",
-          "icon": "sicon-image",
+          "placeholder": "e.g. https://salla.sa",
+          "icon": "sicon-link",
           "value": null,
-          "required": false
+          "required": false,
+          "minLength": 6,
+          "maxLength": "100"
         },
         {
-          "type": "items",
-          "icon": "sicon-link",
-          "label": "رابط الفئة",
           "id": "popular-categories.popular-categories-link",
-          "value": null,
+          "type": "string",
+          "format": "url",
+          "inputType": "url",
+          "label": null,
           "description": "أضف رابط الفئة",
+          "labelHTML": null,
+          "placeholder": "e.g. https://salla.sa",
+          "icon": "sicon-link",
+          "value": null,
           "required": false,
-          "format": "variable-list",
-          "searchable": true,
-          "source": "custom",
-          "sources": [
-            {
-              "label": "منتج",
-              "key": "products",
-              "value": "products"
-            },
-            {
-              "label": "تصنيف",
-              "key": "categories",
-              "value": "categories"
-            },
-            {
-              "label": "ماركة تجارية",
-              "key": "brands",
-              "value": "brands"
-            },
-            {
-              "label": "صفحة تعريفية",
-              "key": "pages",
-              "value": "pages"
-            },
-            {
-              "label": "مقالة",
-              "key": "blog_articles",
-              "value": "blog_articles"
-            },
-            {
-              "label": "تصنيف ضمن المدونة",
-              "key": "blog_categories",
-              "value": "blog_categories"
-            },
-            {
-              "label": "التخفيضات",
-              "key": "offers_link",
-              "value": "offers_link"
-            },
-            {
-              "label": "الماركات التجارية",
-              "key": "brands_link",
-              "value": "brands_link"
-            },
-            {
-              "label": "المدونة",
-              "key": "blog_link",
-              "value": "blog_link"
-            },
-            {
-              "label": "رابط خارجي",
-              "key": "custom",
-              "value": "custom"
-            }
-          ]
+          "minLength": 6,
+          "maxLength": "100"
         }
       ],
       "value": [],
@@ -2696,7 +2649,7 @@
           "selected": true,
           "required": false
         },
-        {
+                {
           "id": "text_position",
           "type": "number",
           "format": "slider",
@@ -4237,7 +4190,7 @@
           "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
           "required": false
         },
-        {
+         {
           "id": "text_position",
           "type": "number",
           "format": "slider",
@@ -4461,6 +4414,7 @@
           "selected": true,
           "required": false
         }
+       
       ]
     }
   ],
