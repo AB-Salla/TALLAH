@@ -27549,6 +27549,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     width: 10px !important;
   }
 }
+.single-product-slider salla-add-product-button salla-button button {
+  height: 40px !important;
+}
 .side_products .s-product-card-rating {
   display: none;
 }
