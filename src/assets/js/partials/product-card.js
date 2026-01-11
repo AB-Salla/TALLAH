@@ -8,8 +8,6 @@ class ProductCard extends HTMLElement {
   connectedCallback() {
     // Parse product data
     this.product = this.product || JSON.parse(this.getAttribute("product"));
-    console.log(this.product,"this.productthis.productthis.product");
-    
     if (window.app?.status === "ready") {
       this.onReady();
 
