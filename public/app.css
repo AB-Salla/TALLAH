@@ -27620,6 +27620,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .side_products .salla-add-product-button {
   display: none !important;
 }
+@media (max-width: 640px) {
+  .buy_now {
+    width: 100% !important;
+  }
+}
 .buy_now salla-add-product-button .s-add-product-button-main salla-button {
   display: none !important;
 }

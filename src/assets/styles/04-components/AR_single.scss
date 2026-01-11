@@ -850,6 +850,11 @@ salla-add-product-button{
   }
 }
 
+.buy_now{
+  @media (max-width:640px) {
+    width: 100% !important;
+  }
+}
   .buy_now{
     salla-add-product-button{
       .s-add-product-button-main{
