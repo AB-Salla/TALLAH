@@ -873,6 +873,24 @@
       "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
       "variant": "h6"
     },
+     {
+      "id": "newsletter_url",
+      "type": "string",
+      "format": "url",
+      "inputType": "url",
+      "label": "رابط التذكير بإتاحة المنتج",
+      "description": "أدخل الرابط المباشر للاشتراك في التذكير بإتاحة المنتج  يظهر فقط عند التفعيل.",
+      "labelHTML": null,
+      "placeholder": "مثال: https://salla.sa",
+      "icon": "sicon-link",
+      "value": "https://s.salla.sa",
+      "required": true,
+      "minLength": 2,
+      "maxLength": "300000000",
+      "conditions": [
+       
+      ]
+    },
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
