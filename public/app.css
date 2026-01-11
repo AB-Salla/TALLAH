@@ -1573,6 +1573,18 @@ select{
 .w-screen{
     width: 100vw;
 }
+.w-\[50vw\]{
+    width: 50vw;
+}
+.w-\[screen\]{
+    width: screen;
+}
+.w-\[95vw\]{
+    width: 95vw;
+}
+.w-\[96vw\]{
+    width: 96vw;
+}
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
     min-width: fit-content !important;

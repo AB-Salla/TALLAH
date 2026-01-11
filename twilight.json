@@ -364,7 +364,7 @@
       "maxLength": "10"
     },
     {
-      "id": "popular-categories",
+      "id": "popular_categories",
       "type": "collection",
       "format": "collection",
       "label": "فئات شائعة",
@@ -374,7 +374,7 @@
       "icon": "sicon-list-add",
       "fields": [
         {
-          "id": "popular-categories.popular-categories-image",
+          "id": "popular_categories.popular_categories_image",
           "type": "string",
           "format": "image",
           "inputType": "url",
@@ -390,7 +390,7 @@
           "type": "items",
           "icon": "sicon-link",
           "label": "رابط الفئة",
-          "id": "popular-categories.popular-categories-link",
+          "id": "popular_categories.popular_categories_link",
           "value": null,
           "description": "أضف رابط الفئة",
           "required": false,
