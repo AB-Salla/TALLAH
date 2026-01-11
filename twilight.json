@@ -55,7 +55,6 @@
       "source": "Manual",
       "required": true
     },
-
     {
       "id": "product_card_options",
       "type": "boolean",
@@ -304,7 +303,6 @@
       "value": true,
       "selected": true
     },
-
     {
       "id": "advanced-menu",
       "type": "boolean",
@@ -897,7 +895,6 @@
       ],
       "multichoice": false
     },
-
     {
       "id": "categories_side_single",
       "type": "items",
@@ -938,7 +935,6 @@
         }
       ]
     },
-
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
@@ -997,7 +993,6 @@
       ],
       "multichoice": false
     },
-
     {
       "id": "categories_single",
       "type": "items",
@@ -1188,7 +1183,6 @@
         }
       ]
     },
-
     {
       "type": "static",
       "format": "title",
@@ -2556,18 +2550,6 @@
       "image": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
       "fields": [
         {
-                    "id": "button_bottom",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار الزر أسفل البانر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-        {
           "id": "blocktitle_color",
           "type": "string",
           "format": "color",
@@ -2648,6 +2630,18 @@
           "type": "boolean",
           "format": "switch",
           "label": "جعل لون خلفية الزر شفافة",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": true,
+          "required": false
+        },
+        {
+          "id": "button_bottom",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إظهار الزر أسفل البانر",
           "description": null,
           "labelHTML": null,
           "icon": "sicon-toggle-off",
@@ -2805,6 +2799,21 @@
           "value": [],
           "minLength": 2,
           "maxLength": "5"
+        },
+        {
+          "id": "text_position",
+          "type": "number",
+          "format": "integer",
+          "label": "موقع نصوص البانر أفقياُ",
+          "description": "اذا اخترت 0 سيكون النص في المنتصف",
+          "key": "f0caf793-88f8-4178-b1cc-a7ace5c09ff6",
+          "labelHTML": null,
+          "placeholder": "القيمة",
+          "icon": "sicon-pencil-ruler",
+          "value": 0,
+          "required": false,
+          "minimum": -100,
+          "maximum": 100
         }
       ]
     },
@@ -4158,18 +4167,6 @@
       "image": "https://cdn.files.salla.network/homepage/1954265887/8e891823-d12d-435d-9c94-56e852dfb735.webp",
       "fields": [
         {
-                    "id": "button_bottom",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار الزر أسفل البانر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-        {
           "id": "desktop_bg",
           "type": "string",
           "format": "image",
@@ -4233,7 +4230,6 @@
           "format": "text",
           "label": "العنوان الفرعي",
           "description": null,
-
           "labelHTML": null,
           "placeholder": "Placeholder text ..",
           "icon": "sicon-format-text-alt",
@@ -4390,6 +4386,33 @@
               "value": "custom"
             }
           ]
+        },
+        {
+          "id": "button_bottom",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إظهار الزر أسفل البانر",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": true,
+          "required": false
+        },
+        {
+          "id": "text_position",
+          "type": "number",
+          "format": "integer",
+          "label": "موقع نصوص البانر أفقياُ",
+          "description": "اذا اخترت 0 سيكون النص في المنتصف",
+          "key": "f0caf793-88f8-4178-b1cc-a7ace5c09ff6",
+          "labelHTML": null,
+          "placeholder": "القيمة",
+          "icon": "sicon-pencil-ruler",
+          "value": 0,
+          "required": false,
+          "minimum": -100,
+          "maximum": 100
         }
       ]
     }
