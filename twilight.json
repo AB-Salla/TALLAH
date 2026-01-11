@@ -1190,17 +1190,6 @@
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
-      "label": "اضافة معرض صور في صفحة المنتج",
-      "description": null,
-      "id": "img_in_single",
-      "format": "switch",
-      "required": false,
-      "value": true,
-      "selected": true
-    },
-    {
-      "type": "boolean",
-      "icon": "sicon-toggle-off",
       "label": " تفعيل شريط المنتج المتحرك  ",
       "description": null,
       "id": "sticky_is_true",
@@ -1247,6 +1236,17 @@
       "id": "colors_of_our_theme",
       "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'> خيارات معرض الصور (صفحة المنتج)</div>",
       "variant": "h6"
+    },
+     {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
+      "label": "اضافة معرض صور في صفحة المنتج",
+      "description": null,
+      "id": "img_in_single",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
     },
     {
       "type": "boolean",
