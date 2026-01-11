@@ -1327,46 +1327,6 @@
       "variant": "h6"
     },
     {
-      "id": "single_source",
-      "icon": "sicon-t-shirt",
-      "type": "items",
-      "label": "مصدر عرض المنتجات",
-      "description": "اختر الطريقة التي تريد بها جلب المنتجات (من تصنيف، مختارة يدويًا، الأكثر مبيعًا...).",
-      "format": "dropdown-list",
-      "source": "Manual",
-      "options": [
-        {
-          "key": "categories",
-          "label": "منتجات من تصنيف",
-          "value": "categories"
-        },
-        {
-          "key": "sales",
-          "label": "الأكثر مبيعاً",
-          "value": "sales"
-        },
-        {
-          "key": "latest",
-          "label": "أحدث المنتجات",
-          "value": "latest"
-        },
-        {
-          "key": "selected",
-          "label": "منتجات مختارة",
-          "value": "selected"
-        }
-      ],
-      "required": true,
-      "selected": [
-        {
-          "key": "latest",
-          "label": "أحدث المنتجات",
-          "value": "latest"
-        }
-      ],
-      "multichoice": false
-    },
-    {
       "type": "boolean",
       "icon": "sicon-toggle-off",
       "label": "تفعيل مميزات المنتج ",
