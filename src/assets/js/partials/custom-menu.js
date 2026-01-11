@@ -225,7 +225,7 @@ function hideMenu() {
     menus.forEach((menu, index) => {
       const tab = document.createElement("li");
       tab.className =
-        "group relative cursor-pointer px-2 h-full flex items-center";
+        "group relative cursor-pointer h-full flex items-center";
       tab.dataset.index = index;
 
       const link = document.createElement("a");

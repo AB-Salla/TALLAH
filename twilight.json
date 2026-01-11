@@ -55,7 +55,6 @@
       "source": "Manual",
       "required": true
     },
-
     {
       "id": "product_card_options",
       "type": "boolean",
@@ -304,7 +303,6 @@
       "value": true,
       "selected": true
     },
-
     {
       "id": "advanced-menu",
       "type": "boolean",
@@ -897,7 +895,6 @@
       ],
       "multichoice": false
     },
-
     {
       "id": "categories_side_single",
       "type": "items",
@@ -938,7 +935,6 @@
         }
       ]
     },
-
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
@@ -997,7 +993,6 @@
       ],
       "multichoice": false
     },
-
     {
       "id": "categories_single",
       "type": "items",
@@ -1188,7 +1183,6 @@
         }
       ]
     },
-
     {
       "type": "static",
       "format": "title",
@@ -2556,18 +2550,6 @@
       "image": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
       "fields": [
         {
-                    "id": "button_bottom",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار الزر أسفل البانر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-        {
           "id": "blocktitle_color",
           "type": "string",
           "format": "color",
@@ -2654,6 +2636,33 @@
           "value": true,
           "selected": true,
           "required": false
+        },
+        {
+          "id": "button_bottom",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إظهار الزر أسفل البانر",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": true,
+          "required": false
+        },
+                {
+          "id": "text_position",
+          "type": "number",
+          "format": "slider",
+          "inputType": "range",
+          "label": "موقع نصوص البانر أفقياُ",
+          "description": "اذا اخترت 0 سيكون النص في المنتصف",
+          "labelHTML": null,
+          "icon": "sicon-pin",
+          "value": "0",
+          "required": false,
+          "step": "1",
+          "minimum": "-100",
+          "maximum": "100"
         },
         {
           "id": "banner",
@@ -4158,18 +4167,6 @@
       "image": "https://cdn.files.salla.network/homepage/1954265887/8e891823-d12d-435d-9c94-56e852dfb735.webp",
       "fields": [
         {
-                    "id": "button_bottom",
-                    "type": "boolean",
-                    "format": "switch",
-                    "label": "إظهار الزر أسفل البانر",
-                    "description": null,
-                    "labelHTML": null,
-                    "icon": "sicon-toggle-off",
-                    "value": true,
-                    "selected": true,
-                    "required": false
-                },
-        {
           "id": "desktop_bg",
           "type": "string",
           "format": "image",
@@ -4192,6 +4189,21 @@
           "icon": "sicon-image",
           "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
           "required": false
+        },
+         {
+          "id": "text_position",
+          "type": "number",
+          "format": "slider",
+          "inputType": "range",
+          "label": "موقع نصوص البانر أفقياُ",
+          "description": "اذا اخترت 0 سيكون النص في المنتصف",
+          "labelHTML": null,
+          "icon": "sicon-pin",
+          "value": "0",
+          "required": false,
+          "step": "1",
+          "minimum": "-100",
+          "maximum": "100"
         },
         {
           "id": "block_title",
@@ -4233,7 +4245,6 @@
           "format": "text",
           "label": "العنوان الفرعي",
           "description": null,
-
           "labelHTML": null,
           "placeholder": "Placeholder text ..",
           "icon": "sicon-format-text-alt",
@@ -4390,7 +4401,20 @@
               "value": "custom"
             }
           ]
+        },
+        {
+          "id": "button_bottom",
+          "type": "boolean",
+          "format": "switch",
+          "label": "إظهار الزر أسفل البانر",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-toggle-off",
+          "value": true,
+          "selected": true,
+          "required": false
         }
+       
       ]
     }
   ],
