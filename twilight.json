@@ -826,7 +826,7 @@
       "variant": "h6"
     },
      {
-      "id": "newsletter_url",
+      "id": "newsletter_url_product",
       "type": "string",
       "format": "url",
       "inputType": "url",
@@ -836,12 +836,9 @@
       "placeholder": "مثال: https://salla.sa",
       "icon": "sicon-link",
       "value": "https://s.salla.sa",
-      "required": true,
+      "required": false,
       "minLength": 2,
-      "maxLength": "300000000",
-      "conditions": [
-       
-      ]
+      "maxLength": "300000000"
     },
     {
       "type": "boolean",
