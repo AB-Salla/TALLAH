@@ -707,7 +707,7 @@ Global Variables (from Theme)
           {% endif %}
 
           {# Popular categories #}
-          {% set categories = theme.settings.get('popular_categories') %}
+          {% set categories = theme.settings.get('popular-categories') %}
           {% set valid_categories = [] %}
           {% for category in categories %}
           {% set image = category['popular_categories_image'] | trim %}
@@ -726,7 +726,7 @@ Global Variables (from Theme)
               {% endif %}
             </h4>
             
-			<salla-slider id="search-slider" class="search-slider lg:w-[777px] w-[96vw]" slider-config='{
+			<salla-slider id="search-slider" class="search-slider lg:w-[777px] w-[95vw]" slider-config='{
                     "slidesPerView":2,
 				    "spaceBetween": 4,
 				    "lazy": true,
@@ -747,15 +747,18 @@ Global Variables (from Theme)
 				<div slot="items">
               {% for category in valid_categories %}
               <div>
-
+              {% set link = category['popular_categories_link'] %}
+              {% set image = category['popular_categories_image'] | trim %}
+              {% if image != '' %}
+              {% if link %}
               
               
-              <a href="{{ category.popular_categories_link[0]  }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden ">
-                <img src="{{ category.popular_categories_image }}" alt="Category" class="object-cover w-full h-full">
+              <a href="{{ link[0] }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden ">
+                <img src="{{ image }}" alt="Category" class="object-cover w-full h-full">
               </a>
               {% else %}
               <div class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden">
-                <img src="{{ category.popular_categories_image }}" alt="Category" class="object-cover w-full h-full">
+                <img src="{{ image }}" alt="Category" class="object-cover w-full h-full">
               </div>
               
               {% endif %}
