@@ -707,10 +707,10 @@ Global Variables (from Theme)
           {% endif %}
 
           {# Popular categories #}
-          {% set categories = theme.settings.get('popular-categories') %}
+          {% set categories = theme.settings.get('popular_categories') %}
           {% set valid_categories = [] %}
           {% for category in categories %}
-          {% set image = category['popular-categories-image'] | trim %}
+          {% set image = category['popular_categories_image'] | trim %}
           {% if image != '' %}
           {% set valid_categories = valid_categories | merge([category]) %}
           {% endif %}
@@ -725,24 +725,48 @@ Global Variables (from Theme)
               Popular Categories
               {% endif %}
             </h4>
-
-            <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 lg:gap-4 w-full">
+            
+			<salla-slider id="search-slider" class="search-slider lg:w-[777px] w-[95vw]" slider-config='{
+                    "slidesPerView":2,
+				    "spaceBetween": 4,
+				    "lazy": true,
+				    "speed": 300,
+					"loop":false,
+                    "breakpoints": {
+                     "400": {
+				"slidesPerView": 2.5
+			},
+                    "640": {
+				"slidesPerView": 3
+			},
+			"860": {
+				"slidesPerView": 4
+			}
+            }
+				  }' show-controls="false" type="thumbs">
+				<div slot="items">
               {% for category in valid_categories %}
-              {% set link = category['popular-categories-link'] %}
-              {% set image = category['popular-categories-image'] | trim %}
+              <div>
+              {% set link = category['popular_categories_link'] %}
+              {% set image = category['popular_categories_image'] | trim %}
               {% if image != '' %}
               {% if link %}
-              <a href="{{ link }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden ">
+              
+              
+              <a href="{{ category[0].popular_categories_link }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden ">
                 <img src="{{ image }}" alt="Category" class="object-cover w-full h-full">
               </a>
               {% else %}
               <div class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden">
                 <img src="{{ image }}" alt="Category" class="object-cover w-full h-full">
               </div>
+              
               {% endif %}
               {% endif %}
+              </div>
               {% endfor %}
-            </div>
+				</div>
+			</salla-slider>
           </div>
           {% endif %}
         </div>
