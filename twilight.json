@@ -2803,17 +2803,17 @@
         {
           "id": "text_position",
           "type": "number",
-          "format": "integer",
+          "format": "slider",
+          "inputType": "range",
           "label": "موقع نصوص البانر أفقياُ",
           "description": "اذا اخترت 0 سيكون النص في المنتصف",
-          "key": "f0caf793-88f8-4178-b1cc-a7ace5c09ff6",
           "labelHTML": null,
-          "placeholder": "القيمة",
-          "icon": "sicon-pencil-ruler",
-          "value": 0,
+          "icon": "sicon-pin",
+          "value": "0",
           "required": false,
-          "minimum": -100,
-          "maximum": 100
+          "step": "1",
+          "minimum": "-100",
+          "maximum": "100"
         }
       ]
     },
@@ -4402,17 +4402,17 @@
         {
           "id": "text_position",
           "type": "number",
-          "format": "integer",
+          "format": "slider",
+          "inputType": "range",
           "label": "موقع نصوص البانر أفقياُ",
           "description": "اذا اخترت 0 سيكون النص في المنتصف",
-          "key": "f0caf793-88f8-4178-b1cc-a7ace5c09ff6",
           "labelHTML": null,
-          "placeholder": "القيمة",
-          "icon": "sicon-pencil-ruler",
-          "value": 0,
+          "icon": "sicon-pin",
+          "value": "0",
           "required": false,
-          "minimum": -100,
-          "maximum": 100
+          "step": "1",
+          "minimum": "-100",
+          "maximum": "100"
         }
       ]
     }
