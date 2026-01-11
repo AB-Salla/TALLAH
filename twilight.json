@@ -2649,6 +2649,21 @@
           "selected": true,
           "required": false
         },
+                {
+          "id": "text_position",
+          "type": "number",
+          "format": "slider",
+          "inputType": "range",
+          "label": "موقع نصوص البانر أفقياُ",
+          "description": "اذا اخترت 0 سيكون النص في المنتصف",
+          "labelHTML": null,
+          "icon": "sicon-pin",
+          "value": "0",
+          "required": false,
+          "step": "1",
+          "minimum": "-100",
+          "maximum": "100"
+        },
         {
           "id": "banner",
           "type": "collection",
@@ -2799,21 +2814,6 @@
           "value": [],
           "minLength": 2,
           "maxLength": "5"
-        },
-        {
-          "id": "text_position",
-          "type": "number",
-          "format": "slider",
-          "inputType": "range",
-          "label": "موقع نصوص البانر أفقياُ",
-          "description": "اذا اخترت 0 سيكون النص في المنتصف",
-          "labelHTML": null,
-          "icon": "sicon-pin",
-          "value": "0",
-          "required": false,
-          "step": "1",
-          "minimum": "-100",
-          "maximum": "100"
         }
       ]
     },
@@ -4190,6 +4190,21 @@
           "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
           "required": false
         },
+         {
+          "id": "text_position",
+          "type": "number",
+          "format": "slider",
+          "inputType": "range",
+          "label": "موقع نصوص البانر أفقياُ",
+          "description": "اذا اخترت 0 سيكون النص في المنتصف",
+          "labelHTML": null,
+          "icon": "sicon-pin",
+          "value": "0",
+          "required": false,
+          "step": "1",
+          "minimum": "-100",
+          "maximum": "100"
+        },
         {
           "id": "block_title",
           "type": "string",
@@ -4398,22 +4413,8 @@
           "value": true,
           "selected": true,
           "required": false
-        },
-        {
-          "id": "text_position",
-          "type": "number",
-          "format": "slider",
-          "inputType": "range",
-          "label": "موقع نصوص البانر أفقياُ",
-          "description": "اذا اخترت 0 سيكون النص في المنتصف",
-          "labelHTML": null,
-          "icon": "sicon-pin",
-          "value": "0",
-          "required": false,
-          "step": "1",
-          "minimum": "-100",
-          "maximum": "100"
         }
+       
       ]
     }
   ],
