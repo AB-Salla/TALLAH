@@ -753,7 +753,7 @@ Global Variables (from Theme)
               {% if link %}
               
               
-              <a href="{{ category[0].popular_categories_link }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden ">
+              <a href="{{ category.popular_categories_link.value }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden ">
                 <img src="{{ image }}" alt="Category" class="object-cover w-full h-full">
               </a>
               {% else %}
