@@ -1099,6 +1099,17 @@
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
+      "label": "تفعيل التمرير التلقائي في الاسلايدر",
+      "description": null,
+      "id": "enable_autoplay",
+      "format": "switch",
+      "required": false,
+      "value": true,
+      "selected": true
+    },
+    {
+      "type": "boolean",
+      "icon": "sicon-toggle-off",
       "label": "عرض المنتجات من نفس الفئة في صفحة المنتج",
       "description": "عند التفعيل سيتم عرض منتجات من نفس الفئة في الجذء الجانبي  لصفحة المنتج",
       "id": "show_selected_products",
