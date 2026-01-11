@@ -58,7 +58,7 @@
 						<div class="flex items-center space-x-2 rtl:space-x-reverse">
 	
 							{% if sort_options|length %}
-									<select id="product-filter" class="form-input pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10 min-w-[200px] ">
+									<select id="product-filter" class="form-input h-fit pt-0 pb-1 rtl:md:pl-10 ltr:md:pr-10 px-0 min-w-[200px] ">
 										{% for sort in sort_options %}
 											<option value="{{ sort.id }}" {{ sort.is_selected?'selected':'' }}>{{ sort.name }}</option>
 										{% endfor %}
