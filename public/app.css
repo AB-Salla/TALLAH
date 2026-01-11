@@ -1561,8 +1561,8 @@ select{
 .w-\[95px\]{
     width: 95px;
 }
-.w-\[96vw\]{
-    width: 96vw;
+.w-\[95vw\]{
+    width: 95vw;
 }
 .w-\[994px\]{
     width: 994px;
@@ -1575,9 +1575,6 @@ select{
 }
 .w-screen{
     width: 100vw;
-}
-.w-\[95vw\]{
-    width: 95vw;
 }
 .\!min-w-fit{
     min-width: -moz-fit-content !important;
