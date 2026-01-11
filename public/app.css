@@ -2903,6 +2903,9 @@ select{
     color: rgba(159, 159, 169, 1);
     color: rgba(159, 159, 169, var(--tw-text-opacity, 1));
 }
+.text-\[start\]{
+    color: start;
+}
 .text-amber-400{
     --tw-text-opacity: 1;
     color: rgba(251, 191, 36, 1);
@@ -3016,9 +3019,6 @@ select{
     --tw-text-opacity: 1;
     color: rgba(39, 39, 42, 1);
     color: rgba(39, 39, 42, var(--tw-text-opacity, 1));
-}
-.text-\[start\]{
-    color: start;
 }
 .underline{
     text-decoration-line: underline;
@@ -29802,9 +29802,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-center{
         text-align: center;
     }
-    .lg\:text-start{
-        text-align: left;
-    }
     .lg\:text-\[24px\]{
         font-size: 24px;
     }
@@ -29847,9 +29844,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:tracking-normal{
         letter-spacing: 0em;
-    }
-    .lg\:text-\[start\]{
-        color: start;
     }
     .lg\:shadow-default{
         --tw-shadow: 5px 10px 30px #2B2D340D;;
