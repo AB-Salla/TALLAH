@@ -162,6 +162,7 @@ salla-add-product-button{
     }
   }
 }
+
   salla-quantity-input {
     padding: 0 !important;
     height: 48px !important;
@@ -781,6 +782,16 @@ salla-add-product-button{
   }
 }
 
+.single-product-slider{
+
+  salla-add-product-button{
+    salla-button{
+      button{
+        height: 40px !important;
+      }
+    }
+  }
+}
 .side_products {
   .s-product-card-rating{
     display: none;
