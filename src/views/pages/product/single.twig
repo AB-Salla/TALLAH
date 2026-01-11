@@ -112,30 +112,30 @@
 						{% endfor %}
 					</div>
 					 	<salla-slider
-	id="thumbs-{{product.id}}"
-	show-controls="false"
-	type="thumbs"
-	show-thumbs-controls="false"
-	class="product-images-slider block flex-grow  {% if theme.settings.get('grid_or_slider_in_mobile') %}
-					 lg:!hidden
-					{% else %}
-						!hidden
-					{% endif %}"
-	slider-config='{
-		"slidesPerView": 1.2,
-		"spaceBetween": 10,
-    "autoplay": {
-			"delay": 3000,
-			"disableOnInteraction": false
-		},
-		"breakpoints": {
-			"768": {
-				"slidesPerView": 1.2,
-				"spaceBetween": 10
-			}
-		}
-	}'
->
+							id="thumbs-{{product.id}}"
+							show-controls="false"
+							type="thumbs"
+							show-thumbs-controls="false"
+							class="product-images-slider block flex-grow  {% if theme.settings.get('grid_or_slider_in_mobile') %}
+											lg:!hidden
+											{% else %}
+												!hidden
+											{% endif %}"
+							slider-config='{
+								"slidesPerView": 1.2,
+								"spaceBetween": 10,
+							"autoplay": {
+									"delay": 3000,
+									"disableOnInteraction": false
+								},
+								"breakpoints": {
+									"768": {
+										"slidesPerView": 1.2,
+										"spaceBetween": 10
+									}
+								}
+							}'
+						>
 
                             {% if product.promotion_title %}
                                 <div class="promotion-title">{{ product.promotion_title }}</div>
@@ -176,9 +176,17 @@
                                 type="thumbs" 
                                 loop="false" 
                                 grid-thumbs="false"
+								slider-config='{
+							"autoplay": {{ theme.settings.get("enable_autoplay") ? "{
+                \"delay\": 3000,
+                \"disableOnInteraction\": false,
+                \"pauseOnMouseEnter\": true
+              }" : "false" }},
+							}'
                                 thumbs-config='{
                                     "spaceBetween": 8,
                                     "slidesPerView": 4,
+									
                                     "breakpoints": {
                                         "640": {
                                             "slidesPerView": 6
