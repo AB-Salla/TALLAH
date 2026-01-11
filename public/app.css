@@ -1561,6 +1561,9 @@ select{
 .w-\[95px\]{
     width: 95px;
 }
+.w-\[95vw\]{
+    width: 95vw;
+}
 .w-\[994px\]{
     width: 994px;
 }
