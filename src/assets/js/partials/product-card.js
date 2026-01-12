@@ -125,11 +125,11 @@ class ProductCard extends HTMLElement {
 
 
   getProductBadge() {
-    if (this.product?.preorder?.label && ! this.product.status =='out') {
+    if (this.product?.preorder?.label && !this.product.status =='out') {
       return `<div class="s-product-card-promotion-title">${this.product.preorder.label}</div>`;
     }
 
-    if (this.product.promotion_title && ! this.product.status =='out') {
+    if (this.product.promotion_title && !this.product.status =='out') {
       return `<div class="s-product-card-promotion-title">${this.product.promotion_title}</div>`;
     }
     if (this.showQuantity && this.product?.quantity ) {
