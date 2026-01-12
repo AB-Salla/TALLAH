@@ -59,17 +59,35 @@ Global Variables (from Theme)
   {% set initial_text = header_text_color %}
   {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
   {% endif %}
-
-
-  {# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
-  {% if header_hover %}
-<style>
+  <style>
+    .fixed-pinned.site-header {
+    background: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
+    .fixed-pinned.site-header-mobile {
+    background: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
 
 
   .site-header.header-scrolled {
     background: {{ header_bg_color }} !important;
     color: {{ header_text_color }} !important;
   }
+    .site-header-mobile.header-scrolled {
+    background: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
+  .site-header-mobile.header-scrolled{
+   
+  }
+  </style>
+
+
+  {# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
+  {% if header_hover %}
+<style>
+
 
   .site-header.active-overlay {
     background: {{ header_bg_color }} !important;
@@ -87,6 +105,8 @@ Global Variables (from Theme)
 </style>
 
   {% endif %}
+
+
 
 
   {# 'group' = parent hover trigger for .hover-box #}
