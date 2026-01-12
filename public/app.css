@@ -1626,6 +1626,15 @@ select{
 .max-w-xs{
     max-width: 20rem;
 }
+.max-w-\[9vw\]{
+    max-width: 9vw;
+}
+.max-w-\[94vw\]{
+    max-width: 94vw;
+}
+.max-w-\[92vw\]{
+    max-width: 92vw;
+}
 .flex-1{
     flex: 1 1 0%;
 }
