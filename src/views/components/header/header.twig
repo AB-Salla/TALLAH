@@ -189,8 +189,9 @@ Global Variables (from Theme)
           {# Icon - User Image or Default #}
           <span class="flex justify-center items-center w-[14px] h-[14px] lg:w-4 lg:h-4">
             {% set icon = theme.settings.get('header_topnav_icon_url') %}
+            {% set icon_color = theme.settings.get('icon_color') %}
             {% if icon %}
-           <i class="{{pro.salla_icon}} text-primary bg-transparent md:text-5xl text-sm"></i>
+           <i style="color:{{icon_color}}" class="{{pro.salla_icon}} text-primary text-sm"></i>
             {% endif %}
           </span>
 
