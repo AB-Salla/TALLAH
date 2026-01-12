@@ -1319,11 +1319,11 @@ select{
 .h-\[100svh\]{
     height: 100svh;
 }
-.h-\[140px\]{
-    height: 140px;
-}
 .h-\[14px\]{
     height: 14px;
+}
+.h-\[195px\]{
+    height: 195px;
 }
 .h-\[22px\]{
     height: 22px;
@@ -1403,15 +1403,6 @@ select{
 }
 .h-px{
     height: 1px;
-}
-.h-\[\]{
-    height: ;
-}
-.h-\[195\]{
-    height: 195;
-}
-.h-\[195px\]{
-    height: 195px;
 }
 .max-h-0{
     max-height: 0px;
@@ -28224,6 +28215,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
 }
+.cart .s-products-slider-card {
+  max-width: 100% !important;
+}
 .cart .s-product-options-colors-wrapper {
   flex-wrap: nowrap;
 }
@@ -29286,6 +29280,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-20{
         height: 5rem;
     }
+    .md\:h-\[140px\]{
+        height: 140px;
+    }
     .md\:h-\[400px\]{
         height: 400px;
     }
@@ -29295,14 +29292,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-\[90vh\]{
         height: 90vh;
     }
-    .md\:h-\[140px\]{
-        height: 140px;
-    }
     .md\:w-1\/2{
         width: 50%;
-    }
-    .md\:w-32{
-        width: 8rem;
     }
     .md\:w-5\/6{
         width: 83.333333%;
@@ -29315,6 +29306,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-96{
         width: 24rem;
+    }
+    .md\:w-\[120px\]{
+        width: 120px;
     }
     .md\:w-\[437px\]{
         width: 437px;
@@ -29330,15 +29324,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
-    }
-    .md\:w-\[\]{
-        width: ;
-    }
-    .md\:w-\[120px140px\]{
-        width: 120px140px;
-    }
-    .md\:w-\[120px\]{
-        width: 120px;
     }
     .md\:max-w-1\/2{
         max-width: 50%;

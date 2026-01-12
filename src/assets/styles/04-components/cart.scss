@@ -8,6 +8,9 @@
 }
 
 .cart {
+  .s-products-slider-card{
+    max-width: 100% !important;
+  }
   .s-product-options-colors-wrapper{
     flex-wrap: nowrap;
     @media (max-width:374px) {
