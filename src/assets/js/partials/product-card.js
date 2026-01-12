@@ -761,6 +761,23 @@ ${window.option_images && window.product_card_options ? `
 // ==========================================
 // المتغيرات لتخزين الخيارات المختارة
 const selectedOptions = {};
+const checkOptionsCompletion = () => {
+  if (!addBtn) return;
+
+  // كل الاوبشنز المطلوبة
+  const requiredOptions = this.options.filter(opt => opt.required);
+
+  // هل كلها متختارة؟
+  const allSelected = requiredOptions.every(
+    opt => selectedOptions[opt.id]
+  );
+
+  if (allSelected) {
+    addBtn.classList.add("btn-ready");
+  } else {
+    addBtn.classList.remove("btn-ready");
+  }
+};
 
 // الخيار المخفي (مثل thumbnail)
 
@@ -793,6 +810,7 @@ this.colorOptions.forEach(option => {
         if (label) {
           label.textContent = el.getAttribute("title");
         }
+        checkOptionsCompletion();
       });
     });
 });
@@ -818,6 +836,7 @@ this.singleOptions.forEach(option => {
         if (label) {
           label.textContent = el.textContent.trim();
         }
+      checkOptionsCompletion();
       });
     });
 });

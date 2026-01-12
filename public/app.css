@@ -26457,6 +26457,16 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .landing-page .s-product-card-wishlist-btn {
   display: hidden;
 }
+.btn-ready {
+  background-color: #000 !important;
+}
+.btn-ready { /* أسود */
+}
+.btn-ready .add-icon {
+  color: #9ca3af !important;
+}
+.btn-ready .add-icon { /* رصاصي */
+}
 .carousel-slider .swiper-wrapper > div {
   padding-left: 0 !important;
   padding-right: 0 !important;
