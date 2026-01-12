@@ -6,7 +6,7 @@ Global Variables (from Theme)
 {% set topnav_text = theme.settings.get('header-topnav-text') ?? 'Get access on launches and offers.' %}
 {% set topnav_special_text = theme.settings.get('header-topnav-special-text') ?? 'Sign Up For Texts' %}
 {% set topnav_special_text_color = theme.settings.get('header-topnav-special-text-color') ?? '#666666' %}
-{% set link_url = theme.settings.get('header-topnav-link-url') %}
+{% set link_url = theme.settings.get('header_topnav_link_url') %}
 {% set is_rtl = language.iso_code == 'ar' %}
 {% set countdown_target = theme.settings.get('header-topnav-count-down') %}
 {% set countdown_bg = theme.settings.get('count-down-background') ?? '#3f3f46' %}
@@ -188,9 +188,9 @@ Global Variables (from Theme)
 
           {# Icon - User Image or Default #}
           <span class="flex justify-center items-center w-[14px] h-[14px] lg:w-4 lg:h-4">
-            {% set icon_url = theme.settings.get('header-topnav-icon-url') %}
-            {% if icon_url %}
-            <img src="{{ icon_url }}" alt="Icon" class="w-[14px] h-[14px] lg:w-4 lg:h-4" />
+            {% set icon = theme.settings.get('header_topnav_icon_url') %}
+            {% if icon %}
+           <i class="{{pro.salla_icon}} text-primary bg-transparent md:text-5xl text-sm"></i>
             {% endif %}
           </span>
 

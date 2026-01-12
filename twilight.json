@@ -227,22 +227,18 @@
       "required": false
     },
     {
-      "id": "header-topnav-icon-url",
+      "id": "header_topnav_icon_url",
       "type": "string",
-      "format": "text",
+      "format": "icon",
       "label": "أيقونة أعلى الهيدر",
-      "description": "أضف أيقونة لأعلى الهيدر ( يمكنك أضافة أيقونة للعربي وللأنجليزي )",
+      "description": null,
       "labelHTML": null,
-      "placeholder": "Placeholder text ..",
-      "icon": "sicon-format-text-alt",
-      "value": null,
-      "multilanguage": true,
-      "required": false,
-      "minLength": 6,
-      "maxLength": "100"
+      "icon": "sicon-user-circle",
+      "value": "sicon-store",
+      "required": true
     },
     {
-      "id": "header-topnav-link-url",
+      "id": "header_topnav_link_url",
       "type": "string",
       "format": "url",
       "inputType": "url",
@@ -255,6 +251,18 @@
       "required": false,
       "minLength": 6,
       "maxLength": 300
+    },
+    {
+      "id": "icon_color",
+      "type": "string",
+      "format": "color",
+      "inputType": "color",
+      "label": "لون الأيقونة",
+      "description": null,
+      "labelHTML": null,
+      "icon": "sicon-format-fill",
+      "value": "#ffffff",
+      "required": false
     },
     {
       "id": "header-hover",

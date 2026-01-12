@@ -29478,6 +29478,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         font-size: 1.25rem;
         line-height: 1.75rem;
     }
+    .md\:text-5xl{
+        font-size: 3rem;
+        line-height: 1;
+    }
     .md\:leading-6{
         line-height: 1.5rem;
     }

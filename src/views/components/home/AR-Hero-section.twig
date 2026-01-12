@@ -42,7 +42,7 @@
 				</div>
 				{% if item.button_bottom %}
 				    {% if item.button_text %}
-						<a data-swiper-parallax="-300"  class="block text-center button button-{{loop.index}} self-center rounded-md bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						<a data-swiper-parallax="-300"  class="block z-2 text-center button button-{{loop.index}} self-center rounded-md bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
 						transition-all hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end " href="{{item.url}}">{{item.button_text}}</a>
 					{% endif %}
 					{% endif %}
@@ -83,20 +83,17 @@
 .AR-slider-hero-section-{{position}} .text-wrapper .subtext-{{loop.index}}{
 	color:{{item.subtext_color}};
 }
-.AR-slider-hero-section-{{position}} .text-wrapper-{{loop.index}} {
-	transform:translate({{item.text_position_vertical}}%, {{item.text_position_horizontal}}%);
-}
 /* Mobile */
 .AR-slider-hero-section-{{position}} .banner-{{loop.index}}  {
     background: url({{item.mobile_bg}}) center center / cover no-repeat;
 }
 {% if item.transparent_button %}
-.AR-slider-hero-section-{{position}}  .button-{{loop.index}}.button{
+.AR-slider-hero-section-{{position}}  .button-{{loop.index}}{
 	background-color: transparent;
     color:{{item.button_text_color}};
     border-color:{{item.button_text_color}};
 }
-.AR-slider-hero-section-{{position}} .button-{{loop.index}}.button:hover{
+.AR-slider-hero-section-{{position}} .button-{{loop.index}}:hover{
 	background-color:{{item.button_text_color}};
     color:{{item.button_bg}};
 
@@ -107,7 +104,7 @@
 	background-color:{{item.button_bg}};
     border-color:{{item.button_text_color}};
 }
-.AR-slider-hero-section-{{position}}  ..button-{{loop.index}}.button:hover{
+.AR-slider-hero-section-{{position}}  .button-{{loop.index}}:hover{
 	background-color:{{item.button_text_color}};
 	color:{{item.button_bg}};
     border-color:{{item.button_bg}};
