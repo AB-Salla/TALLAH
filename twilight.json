@@ -2646,8 +2646,8 @@
           "value": "0",
           "required": false,
           "step": "1",
-          "minimum": "-100",
-          "maximum": "100"
+          "minimum": "-50",
+          "maximum": "50"
         },
         {
           "id": "banner",
@@ -4032,8 +4032,8 @@
           "value": "0",
           "required": false,
           "step": "1",
-          "minimum": "-100",
-          "maximum": "100"
+          "minimum": "-50",
+          "maximum": "50"
         },
         {
           "id": "block_title",
