@@ -3,10 +3,10 @@
 		<div class="heading flex  justify-between gap-4">
         <div class="titles">
 			<p style="color:{{component.blocktitle_color}}" class="block-title mb-1 text-xl font-semibold">{{component.block_title}}</p>
-			<p style="color:{{component.subtext_color}}" class="subtext mb-4 text-base font-medium">{{component.subtext}}</p>
             </div>
             <a style="color:{{component.url_color}}" class="block underline shrink-0" href="{{component.url}}">{{component.url_text}}</a>
 		</div>
+		<p style="color:{{component.subtext_color}}" class="subtext mb-4 text-base font-medium">{{component.subtext}}</p>
 		<div class="relative testimonials-wrapper">
 			<salla-slider id="testimonials-slider-{{position}}" class="testimonials-slider" slider-config='{
                     "slidesPerView":1.5,

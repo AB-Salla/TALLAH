@@ -24,25 +24,27 @@
              {% endif %}
     
 
-                <div  class="text-wrapper h-full flex flex-col text-center items-center justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
+                <div  class="text-wrapper text-wrapper-{{loop.index}} h-full flex flex-col {{item.items_alignment == ["center"] ? 'text-center items-center' : item.items_alignment == ["start"] ? 'text-start items-start' : 'text-end items-end' }}  justify-center  mx-auto relative z-2 container">
+				<div class="position {{item.items_alignment == ["center"] ? 'text-center items-center' : item.items_alignment == ["start"] ? 'text-start items-start' : 'text-end items-end' }} flex flex-col justify-center sm:gap-4 gap-2">
 					{% if item.block_title %}
-                    	<h1 data-swiper-parallax="-700"  aria-label="Block title" class="leading-snug	blocktitle text-[clamp(1.5rem,1.0408rem+1.9592vw,3rem)] text-background font-medium transition-all duration-700 ease-in-out">{{item.block_title}}</h1>
+                    	<h1 data-swiper-parallax="-700"  aria-label="Block title" class="leading-snug blocktitle blocktitle-{{loop.index}} text-[clamp(1.5rem,1.0408rem+1.9592vw,3rem)] text-background font-medium transition-all duration-700 ease-in-out">{{item.block_title}}</h1>
 					{% endif %}
 					{% if item.subtext %}
-                    	<p data-swiper-parallax="-500" class="subtext text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] transition-all duration-700 ease-in-out">{{item.subtext}}</p>
+                    	<p data-swiper-parallax="-500" class="subtext subtext-{{loop.index}} text-background font-light text-[clamp(0.875rem,0.7602rem+0.4898vw,1.25rem)] transition-all duration-700 ease-in-out">{{item.subtext}}</p>
 					{% endif %}
-					{% if not component.button_bottom %}
+					{% if not item.button_bottom %}
 
 					{% if item.button_text %}
-						<a data-swiper-parallax="-300"  class="block text-center button button-{{loop.index}} self-center rounded-md bg-primary text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						<a data-swiper-parallax="-300"  class="block text-center button button-{{loop.index}} mt-2 rounded-md bg-primary text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
 						transition-all hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end " href="{{item.url}}">{{item.button_text}}</a>
 					{% endif %}
 					{% endif %}
+					</div>
                 
 				</div>
-				{% if component.button_bottom %}
+				{% if item.button_bottom %}
 				    {% if item.button_text %}
-						<a data-swiper-parallax="-300"  class="block text-center button button-{{loop.index}} self-center rounded-md bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						<a data-swiper-parallax="-300"  class="block z-2 text-center button button-{{loop.index}} self-center rounded-md bg-primary  mt-auto text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
 						transition-all hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end " href="{{item.url}}">{{item.button_text}}</a>
 					{% endif %}
 					{% endif %}
@@ -68,46 +70,51 @@
 	flex:1 1 0%;
 	transition:all .5s ease-in-out; 
 }
-{% if component.transparent_button %}
-.AR-slider-hero-section-{{position}}  .button{
-	background-color: transparent;
-    color:{{component.button_text_color}};
-    border-color:{{component.button_text_color}};
-}
-.AR-slider-hero-section-{{position}}  .button:hover{
-	background-color:{{component.button_text_color}};
-    color:{{component.button_bg}};
 
-}
-  {% else %}
-    .AR-slider-hero-section-{{position}}  .button{
-	color:{{component.button_text_color}};
-	background-color:{{component.button_bg}};
-    border-color:{{component.button_text_color}};
-}
-.AR-slider-hero-section-{{position}}  .button:hover{
-	background-color:{{component.button_text_color}};
-	color:{{component.button_bg}};
-    border-color:{{component.button_bg}};
-}
-  {% endif %}
 
 .AR-slider-hero-section .swiper-pagination-bullet{
-	color:{{component.blocktitle_color}};
+	color:var(--color-background);
 
 }
-.AR-slider-hero-section-{{position}} .text-wrapper h1{
-	color:{{component.blocktitle_color}};
-}
-.AR-slider-hero-section-{{position}} .text-wrapper p{
-	color:{{component.subtext_color}};
-}
+
 
 {% for item in component.banner %}
+.AR-slider-hero-section-{{position}} .text-wrapper-{{loop.index}} .position {
+	transform:translate({{item.text_position_horizontal}}%, {{item.text_position_vertical}}%);
+}
+.AR-slider-hero-section-{{position}} .text-wrapper .block-title-{{loop.index}}{
+	color:{{item.blocktitle_color}};
+}
+.AR-slider-hero-section-{{position}} .text-wrapper .subtext-{{loop.index}}{
+	color:{{item.subtext_color}};
+}
 /* Mobile */
 .AR-slider-hero-section-{{position}} .banner-{{loop.index}}  {
     background: url({{item.mobile_bg}}) center center / cover no-repeat;
 }
+{% if item.transparent_button %}
+.AR-slider-hero-section-{{position}}  .button-{{loop.index}}{
+	background-color: transparent;
+    color:{{item.button_text_color}};
+    border-color:{{item.button_text_color}};
+}
+.AR-slider-hero-section-{{position}} .button-{{loop.index}}:hover{
+	background-color:{{item.button_text_color}};
+    color:{{item.button_bg}};
+
+}
+  {% else %}
+    .AR-slider-hero-section-{{position}} .button-{{loop.index}}{
+	color:{{item.button_text_color}};
+	background-color:{{item.button_bg}};
+    border-color:{{item.button_text_color}};
+}
+.AR-slider-hero-section-{{position}}  .button-{{loop.index}}:hover{
+	background-color:{{item.button_text_color}};
+	color:{{item.button_bg}};
+    border-color:{{item.button_bg}};
+}
+  {% endif %}
 /* Desktop (default) */
 @media (min-width: 768px) {
     .AR-slider-hero-section-{{position}} .banner-{{loop.index}}  {
@@ -123,7 +130,5 @@
     pointer-events: all;
 }
 {% endif %}
-.AR-slider-hero-section-{{position}} .text-wrapper {
-	transform:translateY({{component.text_position}}%);
-}
+
 </style>

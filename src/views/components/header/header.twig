@@ -6,7 +6,7 @@ Global Variables (from Theme)
 {% set topnav_text = theme.settings.get('header-topnav-text') ?? 'Get access on launches and offers.' %}
 {% set topnav_special_text = theme.settings.get('header-topnav-special-text') ?? 'Sign Up For Texts' %}
 {% set topnav_special_text_color = theme.settings.get('header-topnav-special-text-color') ?? '#666666' %}
-{% set link_url = theme.settings.get('header-topnav-link-url') %}
+{% set link_url = theme.settings.get('header_topnav_link_url') %}
 {% set is_rtl = language.iso_code == 'ar' %}
 {% set countdown_target = theme.settings.get('header-topnav-count-down') %}
 {% set countdown_bg = theme.settings.get('count-down-background') ?? '#3f3f46' %}
@@ -59,17 +59,35 @@ Global Variables (from Theme)
   {% set initial_text = header_text_color %}
   {% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
   {% endif %}
-
-
-  {# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
-  {% if header_hover %}
-<style>
+  <style>
+    .fixed-pinned.site-header {
+    background: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
+    .fixed-pinned.site-header-mobile {
+    background: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
 
 
   .site-header.header-scrolled {
     background: {{ header_bg_color }} !important;
     color: {{ header_text_color }} !important;
   }
+    .site-header-mobile.header-scrolled {
+    background: {{ header_bg_color }} !important;
+    color: {{ header_text_color }} !important;
+  }
+  .site-header-mobile.header-scrolled{
+   
+  }
+  </style>
+
+
+  {# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
+  {% if header_hover %}
+<style>
+
 
   .site-header.active-overlay {
     background: {{ header_bg_color }} !important;
@@ -87,6 +105,8 @@ Global Variables (from Theme)
 </style>
 
   {% endif %}
+
+
 
 
   {# 'group' = parent hover trigger for .hover-box #}
@@ -168,9 +188,10 @@ Global Variables (from Theme)
 
           {# Icon - User Image or Default #}
           <span class="flex justify-center items-center w-[14px] h-[14px] lg:w-4 lg:h-4">
-            {% set icon_url = theme.settings.get('header-topnav-icon-url') %}
-            {% if icon_url %}
-            <img src="{{ icon_url }}" alt="Icon" class="w-[14px] h-[14px] lg:w-4 lg:h-4" />
+            {% set icon = theme.settings.get('header_topnav_icon_url') %}
+            {% set icon_color = theme.settings.get('icon_color') %}
+            {% if icon %}
+           <i style="color:{{icon_color}}" class="{{pro.salla_icon}} text-primary text-sm"></i>
             {% endif %}
           </span>
 
@@ -449,22 +470,13 @@ Global Variables (from Theme)
 
         {# mobile nav button #}
         <button id="mobile-menu-toggle" class="flex items-center justify-center z-50 relative">
-          {% if language.iso_code == 'ar' %}
-
-          <!-- Arabic icon -->
-          <svg id="icon-open" class="block" xmlns="http://www.w3.org/2000/svg" width="34" height="34"
-            viewBox="0 0 34 34" fill="none">
-            <path d="M23.666 22H17.8327M23.666 12H10.3327H23.666ZM23.666 17H10.3327H23.666Z" stroke="currentColor"
-              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
-          </svg>
-          {% else %}
           <!-- English icon -->
-          <svg id="icon-open" class="block" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
+          <svg id="icon-open" class="block rtl:-scale-x-100" xmlns="http://www.w3.org/2000/svg" width="20" height="20"
             viewBox="0 0 20 20" fill="none">
             <path d="M3.33398 15H9.16732M3.33398 5H16.6673H3.33398ZM3.33398 10H16.6673H3.33398Z" stroke="currentColor"
               stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
-          {% endif %}
+          
 
           <!-- Close icon (same for both languages) -->
           <svg id="icon-close" class="hidden" xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none">
