@@ -125,7 +125,7 @@ class ProductCard extends HTMLElement {
 
 
   getProductBadge() {
-    if (this.product?.preorder?.label) {
+    if (this.product?.preorder?.label ) {
       return `<div class="s-product-card-promotion-title">${this.product.preorder.label}</div>`;
     }
 
@@ -437,7 +437,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           </div>
           ${this.product.status =='out' ? 
             `
-            <span class="absolute top-1 left-1 bg-background px-[10px] out py-[6px]">${isArabic ? "نفذت الكمية":"Out of Stock" }</span>
+            <span class="absolute top-0 left-0 bg-background px-[10px] out py-[6px]">${isArabic ? "نفذت الكمية":"Out of Stock" }</span>
             `:``
           }
            <div class="hidden in_single">
@@ -467,7 +467,7 @@ ${window.option_images && window.product_card_options ? `
             ${isArabic ? "ذكرني  عند توافرة":"Notify Me" }
             </button>
               `:`<button
-                class="salla-add-product-button w-full py-[6px] md:py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
+                class="salla-add-product-button transition-all duration-300 w-full py-[6px] md:py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
                 ${this.product.status !== "sale" ? "disabled" : ""}>
 
             <span class="text-background add-icon">${
@@ -761,6 +761,23 @@ ${window.option_images && window.product_card_options ? `
 // ==========================================
 // المتغيرات لتخزين الخيارات المختارة
 const selectedOptions = {};
+const checkOptionsCompletion = () => {
+  if (!addBtn) return;
+
+  // كل الاوبشنز المطلوبة
+  const requiredOptions = this.options.filter(opt => opt.required);
+
+  // هل كلها متختارة؟
+  const allSelected = requiredOptions.every(
+    opt => selectedOptions[opt.id]
+  );
+
+  if (allSelected) {
+    addBtn.classList.add("btn-ready");
+  } else {
+    addBtn.classList.remove("btn-ready");
+  }
+};
 
 // الخيار المخفي (مثل thumbnail)
 
@@ -793,6 +810,7 @@ this.colorOptions.forEach(option => {
         if (label) {
           label.textContent = el.getAttribute("title");
         }
+        checkOptionsCompletion();
       });
     });
 });
@@ -818,6 +836,7 @@ this.singleOptions.forEach(option => {
         if (label) {
           label.textContent = el.textContent.trim();
         }
+      checkOptionsCompletion();
       });
     });
 });
