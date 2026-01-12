@@ -1319,11 +1319,11 @@ select{
 .h-\[100svh\]{
     height: 100svh;
 }
-.h-\[140px\]{
-    height: 140px;
-}
 .h-\[14px\]{
     height: 14px;
+}
+.h-\[195px\]{
+    height: 195px;
 }
 .h-\[22px\]{
     height: 22px;
@@ -2592,9 +2592,6 @@ select{
 }
 .pr-\[16px\]{
     padding-right: 16px;
-}
-.ps-4{
-    padding-left: 1rem;
 }
 .pt-0{
     padding-top: 0px;
@@ -27649,6 +27646,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .buy_now salla-add-product-button .s-add-product-button-main .s-add-product-button-mini-checkout {
   width: 100%;
 }
+.single .swiper.s-slider-container {
+  padding: 16px 12px !important;
+}
 .single .s-tabs-content {
   transition: all 0.5s ease-in-out;
   opacity: 0;
@@ -28223,6 +28223,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   /* الحالة الافتراضية */
   /* لما يكون في wishlist */
   /* لما يكون مش في wishlist */
+}
+.cart .s-products-slider-card {
+  max-width: 100% !important;
 }
 .cart .s-product-options-colors-wrapper {
   flex-wrap: nowrap;
@@ -29286,6 +29289,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-20{
         height: 5rem;
     }
+    .md\:h-\[140px\]{
+        height: 140px;
+    }
     .md\:h-\[400px\]{
         height: 400px;
     }
@@ -29298,9 +29304,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:w-1\/2{
         width: 50%;
     }
-    .md\:w-32{
-        width: 8rem;
-    }
     .md\:w-5\/6{
         width: 83.333333%;
     }
@@ -29312,6 +29315,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-96{
         width: 24rem;
+    }
+    .md\:w-\[120px\]{
+        width: 120px;
     }
     .md\:w-\[437px\]{
         width: 437px;
@@ -29946,6 +29952,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:border-r-0:where([dir="ltr"], [dir="ltr"] *){
     border-right-width: 0px;
 }
+.ltr\:pl-4:where([dir="ltr"], [dir="ltr"] *){
+    padding-left: 1rem;
+}
 .ltr\:pr-10:where([dir="ltr"], [dir="ltr"] *){
     padding-right: 2.5rem;
 }
@@ -30094,6 +30103,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .rtl\:pl-px:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 1px;
+}
+.rtl\:pr-4:where([dir="rtl"], [dir="rtl"] *){
+    padding-right: 1rem;
 }
 .rtl\:text-left:where([dir="rtl"], [dir="rtl"] *){
     text-align: left;

@@ -73,12 +73,12 @@
                                                 {% if loop.first %}
                                                     <img src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="flex-none w-[95px] md:w-32 h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="flex-none w-[95px] md:w-[120px] h-[195px] md:h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% else %}
                                                     <img src="{{ 'images/s-empty.png' | cdn }}"
                                                         data-src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="lazy flex-none w-[95px] md:w-32 h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="lazy flex-none w-[95px] md:w-[120px] h-[195px] md:h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
                                                 {% endif %}
     
                                                 <!-- free product ribbon -->
@@ -427,17 +427,25 @@
 				id="similar-products-slider-{{position}}"
 				type="carousel"
 				class="product-slider"
-				slider-config='{
-				"slidesPerView": 1.2,
-				"spaceBetween": 11	,
-				"speed": 1000,
-				"effect": "slide",
-				"breakpoints": {
-					"551": { "slidesPerView": 2.2, "spaceBetween": 20 },
-					"786": { "slidesPerView": 3, "spaceBetween": 20 },
-					"1024": { "slidesPerView": 4.5, "spaceBetween": 10 }
-				}     
-				}'
+				 type="carousel"
+            class="product-slider"
+            slider-config='{
+                    "slidesPerView": 1.5,
+                    "spaceBetween": 12,
+                    "speed": 1000,
+                    "effect": "slide",
+                    "lazy": true,
+                    "breakpoints": {
+                    "480": { "slidesPerView": 2, "spaceBetween": 12 },
+                    "768": { "slidesPerView": 3, "spaceBetween": 12 },
+                    "1280": { "slidesPerView": 4.5, "spaceBetween": 12 }
+                    },
+                    "autoplay": {
+                    "delay": 3000,
+                    "disableOnInteraction": false,
+                    "pauseOnMouseEnter": true
+                    }
+                }'
 				source="related"
 				limit="{{ limit }}"
 				source-value="{{ product.id }}"
