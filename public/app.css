@@ -27640,6 +27640,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .buy_now salla-add-product-button .s-add-product-button-main .s-add-product-button-mini-checkout {
   width: 100%;
 }
+.single .swiper.s-slider-container {
+  padding: 16px 6px !important;
+}
 .single .s-tabs-content {
   transition: all 0.5s ease-in-out;
   opacity: 0;

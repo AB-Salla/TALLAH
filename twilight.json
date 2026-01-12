@@ -479,7 +479,7 @@
       "placeholder": "مثال: https://salla.sa",
       "icon": "sicon-link",
       "value": "https://s.salla.sa",
-      "required": true,
+      "required": false,
       "minLength": 2,
       "maxLength": "300000000",
       "conditions": [
@@ -675,7 +675,7 @@
             "en": ""
           },
           "multilanguage": true,
-          "required": true,
+          "required": false,
           "minLength": "2",
           "maxLength": "50"
         }
@@ -892,7 +892,7 @@
           "value": "selected"
         }
       ],
-      "required": true,
+      "required": false,
       "selected": [
         {
           "key": "latest",
@@ -990,7 +990,7 @@
           "value": "selected"
         }
       ],
-      "required": true,
+      "required": false,
       "selected": [
         {
           "key": "latest",
