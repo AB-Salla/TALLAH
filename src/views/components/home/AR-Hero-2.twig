@@ -8,7 +8,7 @@
     
 
                 <div  class="text-wrapper h-full flex flex-col {{component.items_alignment == "center" ? 'text-center items-center' : component.items_alignment == "start" ? 'text-start items-start' : 'text-end items-end' }} text-center items-center justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
-				<div class="position {{component.items_alignment == "center" ? 'text-center items-center' : component.items_alignment == "start" ? 'text-start items-start' : 'text-end items-end' }} flex flex-col items-center justify-center">
+				<div class="position {{component.items_alignment == "center" ? 'text-center items-center' : component.items_alignment == "start" ? 'text-start items-start' : 'text-end items-end' }} flex flex-col justify-center">
 
 					{% if component.block_title %}
                     	<h1 data-swiper-parallax="-500"  aria-label="Block title" class="blocktitle leading-snug text-[clamp(1.5rem,1.0408rem+1.9592vw,3rem)] text-background font-medium transition-all duration-700 ease-in-out">{{component.block_title}}</h1>
@@ -19,7 +19,7 @@
 					{% if not component.button_bottom %}
 
 					{% if component.button_text %}
-						<a data-swiper-parallax="-300"  class="block text-center mt-2 button button-{{loop.index}} self-center rounded-md bg-primary text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
+						<a data-swiper-parallax="-300"  class="block text-center mt-2 button button-{{loop.index}} rounded-md bg-primary text-background px-4 sm:px-7 py-2 text-[clamp(0.75rem,0.6447rem+0.4493vw,1.094rem)] 
 						transition-all hover:bg-background hover:text-primary  border border-[color-mix(in srgb,var(--color-primary)15%,white)] hover:border-primary justify-self-end " href="{{component.url}}">{{component.button_text}}</a>
 					{% endif %}
 					{% endif %}
