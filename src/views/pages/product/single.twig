@@ -786,7 +786,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 ps-4 lg:px-16 py-6  md:py-14 bg-[#e9e9e9] overflow-x-hidden"
+    <div class="product-image-gallery  gap-4 ltr:pl-4 rtl:pr-4 lg:px-16 py-6  md:py-14 bg-[#e9e9e9] overflow-x-hidden"
 	{% if theme.settings.get('bg_color') %}  style="background-color: {{theme.settings.get('bg_color_gellary') }};" {% endif %}
 	
 	>
@@ -796,15 +796,16 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
             type="carousel"
             class="product-slider"
             slider-config='{
-                "slidesPerView": 1.2,
-                "spaceBetween": 11,
-                "speed": 1000,
-                "effect": "slide",
-                "breakpoints": {
-                    "786": { "slidesPerView": 3, "spaceBetween": 20 },
-                    "1024": { "slidesPerView": 5, "spaceBetween": 10 }
-                }
-            }'
+              "slidesPerView": 1.5,
+				"spaceBetween": 8	,
+				"speed": 1000,
+				"effect": "slide",
+				"breakpoints": {
+					"551": { "slidesPerView": 2, "spaceBetween": 8 },
+					"786": { "slidesPerView": 3, "spaceBetween": 16 },
+					"1024": { "slidesPerView": 5, "spaceBetween": 16 }
+				}     
+				}'
             slider-id="slider-with-lightbox-{{ product.id }}">
             <div slot="items">
                 {% for image_item in images %}

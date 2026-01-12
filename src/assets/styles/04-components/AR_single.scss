@@ -883,6 +883,9 @@ salla-add-product-button{
     }
   }
   .single{
+    .swiper.s-slider-container {
+  padding: 16px 12px !important;
+}
      .s-tabs-content {
     transition: all 0.5s ease-in-out;
     opacity: 0;
