@@ -30092,9 +30092,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:pl-24:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 6rem;
 }
-.rtl\:pl-4:where([dir="rtl"], [dir="rtl"] *){
-    padding-left: 1rem;
-}
 .rtl\:pl-px:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 1px;
 }
