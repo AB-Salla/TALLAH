@@ -2648,8 +2648,8 @@
               "value": "0",
               "required": false,
               "step": "1",
-              "minimum": "-50",
-              "maximum": "50"
+              "minimum": "-25",
+              "maximum": "25"
             },
             {
               "id": "banner.text_position_vertical",
@@ -4086,8 +4086,8 @@
           "value": "0",
           "required": false,
           "step": "1",
-          "minimum": "-50",
-          "maximum": "50"
+          "minimum": "-25",
+          "maximum": "25"
         },
         {
           "id": "block_title",
