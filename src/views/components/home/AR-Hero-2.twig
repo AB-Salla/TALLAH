@@ -7,7 +7,7 @@
              {% endif %}
     
 
-                <div  class="text-wrapper h-full flex flex-col text-center items-center justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
+                <div  class="text-wrapper h-full flex flex-col {{component.text_alignment == "center" ? 'text-center items-center' : component.text_alignment == "start" ? 'text-start items-start' : 'text-end items-end' }} text-center items-center justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
 				<div class="position flex flex-col items-center justify-center">
 
 					{% if component.block_title %}

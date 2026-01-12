@@ -24,7 +24,7 @@
              {% endif %}
     
 
-                <div  class="text-wrapper text-wrapper-{{loop.index}} h-full flex flex-col text-center items-center justify-center  mx-auto relative z-2 container">
+                <div  class="text-wrapper text-wrapper-{{loop.index}} h-full flex flex-col {{item.text_alignment == ["center"] ? 'text-center items-center' : item.text_alignment == ["start"] ? 'text-start items-start' : 'text-end items-end' }}  justify-center  mx-auto relative z-2 container">
 				<div class="position flex flex-col items-center justify-center sm:gap-4 gap-2">
 					{% if item.block_title %}
                     	<h1 data-swiper-parallax="-700"  aria-label="Block title" class="leading-snug blocktitle blocktitle-{{loop.index}} text-[clamp(1.5rem,1.0408rem+1.9592vw,3rem)] text-background font-medium transition-all duration-700 ease-in-out">{{item.block_title}}</h1>
