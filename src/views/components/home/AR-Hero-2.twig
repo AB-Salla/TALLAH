@@ -7,8 +7,8 @@
              {% endif %}
     
 
-                <div  class="text-wrapper h-full flex flex-col {{component.text_alignment == "center" ? 'text-center items-center' : component.text_alignment == "start" ? 'text-start items-start' : 'text-end items-end' }} text-center items-center justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
-				<div class="position flex flex-col items-center justify-center">
+                <div  class="text-wrapper h-full flex flex-col {{component.items_alignment == "center" ? 'text-center items-center' : component.items_alignment == "start" ? 'text-start items-start' : 'text-end items-end' }} text-center items-center justify-center sm:gap-4 gap-2 mx-auto relative z-2 container">
+				<div class="position {{component.items_alignment == "center" ? 'text-center items-center' : component.items_alignment == "start" ? 'text-start items-start' : 'text-end items-end' }} flex flex-col items-center justify-center">
 
 					{% if component.block_title %}
                     	<h1 data-swiper-parallax="-500"  aria-label="Block title" class="blocktitle leading-snug text-[clamp(1.5rem,1.0408rem+1.9592vw,3rem)] text-background font-medium transition-all duration-700 ease-in-out">{{component.block_title}}</h1>
