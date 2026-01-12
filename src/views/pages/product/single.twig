@@ -786,7 +786,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 ltr:pl-4 rtl:pl-4 lg:px-16 py-6  md:py-14 bg-[#e9e9e9] overflow-x-hidden"
+    <div class="product-image-gallery  gap-4 ltr:pl-4 rtl:pr-4 lg:px-16 py-6  md:py-14 bg-[#e9e9e9] overflow-x-hidden"
 	{% if theme.settings.get('bg_color') %}  style="background-color: {{theme.settings.get('bg_color_gellary') }};" {% endif %}
 	
 	>

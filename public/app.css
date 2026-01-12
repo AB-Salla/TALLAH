@@ -2584,9 +2584,6 @@ select{
 .pr-\[16px\]{
     padding-right: 16px;
 }
-.ps-4{
-    padding-left: 1rem;
-}
 .pt-0{
     padding-top: 0px;
 }
@@ -29946,6 +29943,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .ltr\:border-r-0:where([dir="ltr"], [dir="ltr"] *){
     border-right-width: 0px;
 }
+.ltr\:pl-4:where([dir="ltr"], [dir="ltr"] *){
+    padding-left: 1rem;
+}
 .ltr\:pr-10:where([dir="ltr"], [dir="ltr"] *){
     padding-right: 2.5rem;
 }
@@ -29954,12 +29954,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 }
 .ltr\:pr-px:where([dir="ltr"], [dir="ltr"] *){
     padding-right: 1px;
-}
-.ltr\:ps-4:where([dir="ltr"], [dir="ltr"] *){
-    padding-left: 1rem;
-}
-.ltr\:pl-4:where([dir="ltr"], [dir="ltr"] *){
-    padding-left: 1rem;
 }
 .ltr\:text-left:where([dir="ltr"], [dir="ltr"] *){
     text-align: left;
@@ -30010,9 +30004,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .ltr\:lg\:pl-10:where([dir="ltr"], [dir="ltr"] *){
         padding-left: 2.5rem;
-    }
-    .ltr\:lg\:pl-4:where([dir="ltr"], [dir="ltr"] *){
-        padding-left: 1rem;
     }
     .ltr\:lg\:text-left:where([dir="ltr"], [dir="ltr"] *){
         text-align: left;
@@ -30101,11 +30092,14 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
 .rtl\:pl-24:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 6rem;
 }
+.rtl\:pl-4:where([dir="rtl"], [dir="rtl"] *){
+    padding-left: 1rem;
+}
 .rtl\:pl-px:where([dir="rtl"], [dir="rtl"] *){
     padding-left: 1px;
 }
-.rtl\:pl-4:where([dir="rtl"], [dir="rtl"] *){
-    padding-left: 1rem;
+.rtl\:pr-4:where([dir="rtl"], [dir="rtl"] *){
+    padding-right: 1rem;
 }
 .rtl\:text-left:where([dir="rtl"], [dir="rtl"] *){
     text-align: left;
@@ -30154,15 +30148,8 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .rtl\:lg\:grid-cols-\[3fr_2fr_2fr\]:where([dir="rtl"], [dir="rtl"] *){
         grid-template-columns: 3fr 2fr 2fr;
     }
-    .rtl\:lg\:px-16:where([dir="rtl"], [dir="rtl"] *){
-        padding-left: 4rem;
-        padding-right: 4rem;
-    }
     .rtl\:lg\:pr-10:where([dir="rtl"], [dir="rtl"] *){
         padding-right: 2.5rem;
-    }
-    .rtl\:lg\:pr-16:where([dir="rtl"], [dir="rtl"] *){
-        padding-right: 4rem;
     }
     .rtl\:lg\:text-right:where([dir="rtl"], [dir="rtl"] *){
         text-align: right;
