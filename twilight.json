@@ -3069,7 +3069,7 @@
           "id": "rh_cat_btn_url",
           "value": [],
           "description": "اختر الوجهة التي سيتم الانتقال إليها عند النقر على الرابط",
-          "required": true,
+          "required": false,
           "format": "variable-list",
           "searchable": true,
           "source": "custom",
