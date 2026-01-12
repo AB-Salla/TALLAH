@@ -2600,6 +2600,43 @@
               "required": false
             },
             {
+              "id": "banner.items_alignment",
+              "type": "items",
+              "format": "dropdown-list",
+              "label": "محاذاة الزر والنصوص",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-keyboard_arrow_down",
+              "selected": [
+                {
+                  "label": "منتصف",
+                  "value": "center",
+                  "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                }
+              ],
+              "options": [
+                {
+                  "label": "بداية",
+                  "value": "start",
+                  "key": "ace55430-fec1-498e-529-0ea955adee8a"
+                },
+                {
+                  "label": "منتصف",
+                  "value": "center",
+                  "key": "bd553d0-d018-461f-93ec-213f072bb0ed"
+                },
+                {
+                  "label": "نهاية",
+                  "value": "end",
+                  "key": "bbe61139-5b1f-4da0-dd5-28b58934f6af"
+                }
+              ],
+              "source": "Manual",
+              "multichoice": false,
+              "searchable": true,
+              "required": false
+            },
+            {
               "id": "banner.text_position_horizontal",
               "type": "number",
               "format": "slider",
@@ -3983,6 +4020,43 @@
           "placeholder": "e.g. https://hostname.com/image.png",
           "icon": "sicon-image",
           "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
+          "required": false
+        },
+        {
+          "id": "items_alignment",
+          "type": "items",
+          "format": "dropdown-list",
+          "label": "محاذاة الزر والنصوص",
+          "description": null,
+          "labelHTML": null,
+          "icon": "sicon-keyboard_arrow_down",
+          "selected": [
+            {
+              "label": "منتصف",
+              "value": "center",
+              "key": "bd55d3d0-d018-461f-93ec-213f072bb0ed"
+            }
+          ],
+          "options": [
+            {
+              "label": "بداية",
+              "value": "start",
+              "key": "ace55430-fec1-498e-b529-0ea955adee8a"
+            },
+            {
+              "label": "منتصف",
+              "value": "center",
+              "key": "bd55d3d0-d018-461f-93ec-213f072bb0ed"
+            },
+            {
+              "label": "نهاية",
+              "value": "end",
+              "key": "bbe61139-5b1f-4da0-bdd5-28b58934f6af"
+            }
+          ],
+          "source": "Manual",
+          "multichoice": false,
+          "searchable": true,
           "required": false
         },
         {
