@@ -1404,6 +1404,15 @@ select{
 .h-px{
     height: 1px;
 }
+.h-\[\]{
+    height: ;
+}
+.h-\[195\]{
+    height: 195;
+}
+.h-\[195px\]{
+    height: 195px;
+}
 .max-h-0{
     max-height: 0px;
 }
@@ -29286,6 +29295,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-\[90vh\]{
         height: 90vh;
     }
+    .md\:h-\[140px\]{
+        height: 140px;
+    }
     .md\:w-1\/2{
         width: 50%;
     }
@@ -29318,6 +29330,15 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
+    }
+    .md\:w-\[\]{
+        width: ;
+    }
+    .md\:w-\[120px140px\]{
+        width: 120px140px;
+    }
+    .md\:w-\[120px\]{
+        width: 120px;
     }
     .md\:max-w-1\/2{
         max-width: 50%;
