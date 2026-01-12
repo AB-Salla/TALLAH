@@ -401,7 +401,6 @@
           "minLength": 6,
           "maxLength": 300
         }
-        
       ],
       "value": [],
       "minLength": "0",
@@ -825,7 +824,7 @@
       "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
       "variant": "h6"
     },
-     {
+    {
       "id": "newsletter_url_product",
       "type": "string",
       "format": "url",
@@ -2535,121 +2534,6 @@
       "image": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
       "fields": [
         {
-          "id": "blocktitle_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون العنوان الرئيسي",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#ffffff",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "subtext_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون النص الفرعي ",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#FAFAFA",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "button_text_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون نص الزر",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#FAFAFA",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "button_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية الزر",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#262626",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "transparent_button",
-          "type": "boolean",
-          "format": "switch",
-          "label": "جعل لون خلفية الزر شفافة",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-toggle-off",
-          "value": true,
-          "selected": true,
-          "required": false
-        },
-        {
-          "id": "button_bottom",
-          "type": "boolean",
-          "format": "switch",
-          "label": "إظهار الزر أسفل البانر",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-toggle-off",
-          "value": true,
-          "selected": true,
-          "required": false
-        },
-        {
-          "id": "text_position",
-          "type": "number",
-          "format": "slider",
-          "inputType": "range",
-          "label": "موقع نصوص البانر أفقياُ",
-          "description": "اذا اخترت 0 سيكون النص في المنتصف",
-          "labelHTML": null,
-          "icon": "sicon-pin",
-          "value": "0",
-          "required": false,
-          "step": "1",
-          "minimum": "-50",
-          "maximum": "50"
-        },
-        {
           "id": "banner",
           "type": "collection",
           "format": "collection",
@@ -2684,6 +2568,60 @@
               "required": false
             },
             {
+              "id": "banner.transparent_button",
+              "type": "boolean",
+              "format": "switch",
+              "label": "جعل لون خلفية الزر شفافة",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-toggle-off",
+              "value": true,
+              "selected": true,
+              "required": false
+            },
+            {
+              "id": "banner.button_bottom",
+              "type": "boolean",
+              "format": "switch",
+              "label": "إظهار الزر أسفل البانر",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-toggle-off",
+              "value": true,
+              "selected": true,
+              "required": false
+            },
+            {
+              "id": "banner.text_position_horizontal",
+              "type": "number",
+              "format": "slider",
+              "inputType": "range",
+              "label": "موقع نصوص البانر أفقياُ",
+              "description": "اذا اخترت 0 سيكون النص في المنتصف",
+              "labelHTML": null,
+              "icon": "sicon-pin",
+              "value": "0",
+              "required": false,
+              "step": "1",
+              "minimum": "-50",
+              "maximum": "50"
+            },
+            {
+              "id": "banner.text_position_vertical",
+              "type": "number",
+              "format": "slider",
+              "inputType": "range",
+              "label": "ًموقع نصوص البانر رأسيا",
+              "description": "اذا اخترت 0 سيكون النص في المنتصف",
+              "labelHTML": null,
+              "icon": "sicon-pin",
+              "value": "0",
+              "required": false,
+              "step": "1",
+              "minimum": "-50",
+              "maximum": "50"
+            },
+            {
               "id": "banner.block_title",
               "type": "string",
               "format": "text",
@@ -2702,6 +2640,18 @@
               "maxLength": "150"
             },
             {
+              "id": "banner.blocktitle_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون العنوان الرئيسي",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#ffffff",
+              "required": false
+            },
+            {
               "id": "banner.subtext",
               "type": "string",
               "format": "text",
@@ -2717,6 +2667,18 @@
               "maxLength": "250"
             },
             {
+              "id": "banner.subtext_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون النص الفرعي ",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#FAFAFA",
+              "required": false
+            },
+            {
               "id": "banner.button_text",
               "type": "string",
               "format": "text",
@@ -2730,6 +2692,30 @@
               "required": false,
               "minLength": "2",
               "maxLength": "100"
+            },
+            {
+              "id": "banner.button_text_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون نص الزر",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#FAFAFA",
+              "required": false
+            },
+            {
+              "id": "banner.button_bg",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون خلفية الزر",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#262626",
+              "required": false
             },
             {
               "type": "items",
@@ -3009,7 +2995,6 @@
       "path": "home.AR_our_products",
       "image": "https://cdn.files.salla.network/homepage/1954265887/18b990f3-09fc-41d0-b3f0-9547fe6c726c.webp",
       "fields": [
-       
         {
           "id": "section_title",
           "type": "string",
@@ -3218,94 +3203,6 @@
       "image": "https://cdn.files.salla.network/homepage/1954265887/6f7b89e0-5031-4110-82db-e328c4edc6fd.webp",
       "fields": [
         {
-          "id": "blocktitle_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون العنوان الرئيسي",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#ffffff",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "subtext_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون النص الفرعي ",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#FAFAFA",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "button_text_color",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون نص الزر",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#FAFAFA",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "button_bg",
-          "type": "string",
-          "format": "color",
-          "inputType": "color",
-          "label": "لون خلفية الزر",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-format-fill",
-          "value": "#262626",
-          "required": false,
-          "conditions": [
-            {
-              "id": "use_custom_colors",
-              "operation": "=",
-              "value": true
-            }
-          ]
-        },
-        {
-          "id": "transparent_button",
-          "type": "boolean",
-          "format": "switch",
-          "label": "جعل لون خلفية الزر شفافة",
-          "description": null,
-          "labelHTML": null,
-          "icon": "sicon-toggle-off",
-          "value": true,
-          "selected": true,
-          "required": false
-        },
-        {
           "id": "center_text",
           "type": "boolean",
           "format": "switch",
@@ -3370,6 +3267,18 @@
               "maxLength": "100"
             },
             {
+              "id": "banner.blocktitle_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون العنوان الرئيسي",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#ffffff",
+              "required": false
+            },
+            {
               "id": "banner.subtext",
               "type": "string",
               "format": "text",
@@ -3385,6 +3294,18 @@
               "maxLength": "200"
             },
             {
+              "id": "banner.subtext_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون النص الفرعي ",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#FAFAFA",
+              "required": false
+            },
+            {
               "id": "banner.button_text",
               "type": "string",
               "format": "text",
@@ -3398,6 +3319,42 @@
               "required": false,
               "minLength": "2",
               "maxLength": "50"
+            },
+            {
+              "id": "banner.button_text_color",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون نص الزر",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#FAFAFA",
+              "required": false
+            },
+            {
+              "id": "banner.button_bg",
+              "type": "string",
+              "format": "color",
+              "inputType": "color",
+              "label": "لون خلفية الزر",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-format-fill",
+              "value": "#262626",
+              "required": false
+            },
+            {
+              "id": "banner.transparent_button",
+              "type": "boolean",
+              "format": "switch",
+              "label": "جعل لون خلفية الزر شفافة",
+              "description": null,
+              "labelHTML": null,
+              "icon": "sicon-toggle-off",
+              "value": true,
+              "selected": true,
+              "required": false
             },
             {
               "type": "items",
@@ -4021,11 +3978,26 @@
           "required": false
         },
         {
-          "id": "text_position",
+          "id": "text_position_horizontal",
           "type": "number",
           "format": "slider",
           "inputType": "range",
           "label": "موقع نصوص البانر أفقياُ",
+          "description": "اذا اخترت 0 سيكون النص في المنتصف",
+          "labelHTML": null,
+          "icon": "sicon-pin",
+          "value": "0",
+          "required": false,
+          "step": "1",
+          "minimum": "-50",
+          "maximum": "50"
+        },
+        {
+          "id": "text_position_vertical",
+          "type": "number",
+          "format": "slider",
+          "inputType": "range",
+          "label": "ًموقع نصوص البانر رأسيا",
           "description": "اذا اخترت 0 سيكون النص في المنتصف",
           "labelHTML": null,
           "icon": "sicon-pin",
