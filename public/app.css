@@ -1441,6 +1441,9 @@ select{
 .min-h-screen{
     min-height: 100vh;
 }
+.min-h-\[375px\]{
+    min-height: 375px;
+}
 .\!w-1\/4{
     width: 25% !important;
 }
@@ -29568,6 +29571,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         margin-left: 7rem;
         margin-right: 7rem;
     }
+    .lg\:mx-10{
+        margin-left: 2.5rem;
+        margin-right: 2.5rem;
+    }
     .lg\:-mb-2{
         margin-bottom: -0.5rem;
     }
@@ -29640,6 +29647,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:min-h-\[528px\]{
         min-height: 528px;
     }
+    .lg\:min-h-\[605px\]{
+        min-height: 605px;
+    }
+    .lg\:min-h-\[650px\]{
+        min-height: 650px;
+    }
     .lg\:\!w-\[66\%\]{
         width: 66% !important;
     }
@@ -29681,6 +29694,12 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .lg\:max-w-full{
         max-width: 100%;
+    }
+    .lg\:max-w-\[82\.1\%\]{
+        max-width: 82.1%;
+    }
+    .lg\:max-w-\[97\.4\%\]{
+        max-width: 97.4%;
     }
     .lg\:grid-cols-2{
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -29890,12 +29909,25 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
 }
 @media (min-width: 1280px){
+    .xl\:mx-28{
+        margin-left: 7rem;
+        margin-right: 7rem;
+    }
+    .xl\:max-w-\[97\.4\%\]{
+        max-width: 97.4%;
+    }
     .xl\:gap-8{
         gap: 2rem;
     }
     .xl\:px-0{
         padding-left: 0px;
         padding-right: 0px;
+    }
+}
+@media (min-width: 1536px){
+    .\32xl\:mx-28{
+        margin-left: 7rem;
+        margin-right: 7rem;
     }
 }
 .ltr\:left-0:where([dir="ltr"], [dir="ltr"] *){

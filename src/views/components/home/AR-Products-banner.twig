@@ -4,7 +4,7 @@
 	<div  class="grid lg:grid-cols-3 grid-cols-1 lg:px-4 py-8">
 
 
-			<div class="lg:col-span-2 lg:order-1 order-3 mx-auto lg:mx-0">
+			<div class="lg:col-span-2 lg:order-1 order-3 mx-auto lg:mx-0 self-center">
 				<div class="lg:block hidden features-products-head text text-font text-center md:mb-6 mb-4">
 
 
@@ -19,7 +19,7 @@
 
 				</div>
 
-					<div class="relative lg:mx-28">
+					<div class="relative xl:mx-28 lg:mx-10">
 					    <div class="gap-2 arrows flex items-center h-fit max-w-fit justify-between lg:hidden absolute -top-4 ltr:left-0 rtl:right-0 -translate-y-full z-2">
 												<button class="salla-slider-prev items-center justify-center border h-8 w-8 bg-white/50 rounded-full ltr:order-2">
 							<i class="sicon-caret-right  text-sm text-primary"></i>
@@ -30,7 +30,7 @@
 
 						
 					</div>
-						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block mt-[-80px] sm:max-w-[480px] lg:max-w-full max-w-[90vw] w-full lg:mt-0 relative lg:px-7" type="carousel" class="product-slider" slider-config='{
+						<salla-products-slider source="{{ source_type }}" limit="{{ limit }}" {% if source_type in ['selected', 'categories'] %} source-value="[{{ source_value | map(item => item.id) | join(',') }}]" {% endif %} display-all-url="{{ display_all_url }}" class="block mt-[-80px] sm:max-w-[480px] xl:max-w-[97.4%] lg:max-w-full mx-auto max-w-[90vw] w-full lg:mt-0 relative lg:px-7" type="carousel" class="product-slider" slider-config='{
 													       "slidesPerView": 2,
 													      "spaceBetween": 20,
 													       "centeredSlides": false,
@@ -72,7 +72,7 @@
                 
 	
 
-			<div class="overflow-hidden mx-auto lg:mx-0 h-[clamp(23.438rem,18.1767rem+22.4483vw,40.625rem)] lg:col-span-1 w-full max-w-132 lg:max-w-full relative lg:order-1 order-2">
+			<div class="overflow-hidden mx-auto lg:mx-0 h-[clamp(23.438rem,18.1767rem+22.4483vw,40.625rem)] lg:col-span-1 w-full max-w-132 lg:max-w-full lg:min-h-[650px] min-h-[375px] relative lg:order-1 order-2">
 					<a href="{{component.url}}" class="hidden md:block absolute bottom-4 ltr:left-4 rtl:right-4 text-sm font-semibold underline" style="color: var(--color-background)">
 							{{ component.url_text }}
 					</a>
@@ -114,10 +114,18 @@
 		@media(min-width: 1024px) {
 
 	.Ar-products-banner .s-products-slider-slider{
-		padding:0px 24px;
+		padding:0px 28px;
 	}
 
 		}
+		.Ar-products-banner .s-products-slider-slider .s-product-card-image{
+			max-height: 405px;
+			min-height: 261px;
+			height: clamp(16.313rem, 13.1440rem + 13.5211vw, 25.313rem) !important;
+			flex: none;
+
+		}
+
 
 
 </style>
