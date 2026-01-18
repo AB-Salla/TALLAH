@@ -239,14 +239,14 @@ watchAndAdjustHeader() {
         
         if (document.querySelector('#mainnav') && document.querySelector('#mainnav').classList.contains('fixed-pinned') || adHidden || !ad || !ad.children.length) {
             if (document.querySelector('.index .store-header')) document.querySelector('.index .store-header').style.top = '';
-            ['#search-panel-wrapper', '#mega-content', '#mobile-menu-content'].forEach(function(s) {
+            ['#mobile-menu-overlay'].forEach(function(s) {
                 var el = document.querySelector(s);
                 if (el) el.style.marginTop = '';
             });
         } else if (ad) {
             const h = ad.children.length * 46;
             if (document.querySelector('.index .store-header')) document.querySelector('.index .store-header').style.top = h + 'px';
-            ['#search-panel-wrapper', '#mega-content', '#mobile-menu-content'].forEach(function(s) {
+            [ '#mobile-menu-overlay'].forEach(function(s) {
                 var el = document.querySelector(s);
                 if (el) el.style.marginTop = h + 'px';
             });
@@ -292,13 +292,11 @@ watchAndAdjustHeader() {
 }
   initiateStickyMenu() {
     let header = this.element("#mainnav"),
-      height = this.element("#mainnav .inner")?.clientHeight;
-
+    height = this.element("#mainnav .inner")?.clientHeight;
     // Declare magicMenu variable
-    let mobileMenu = document.getElementById("mobile-menu-wrapper");
-
+    let mobileMenu = document.getElementById("mobile-menu-overlay");
     let magicMenu = document.getElementById("mega-content");
-    let searchModal = document.getElementById("search-overlay-background");
+    let searchModal = document.getElementById("search-panel-wrapper");
 
     //when it's landing page, there is no header
     if (!header) {
