@@ -27,11 +27,7 @@ salla.onReady(async () =>  {
 
 
 
-  function updateHeaderHeight() {
-    if (!header) return;
-    const height = header.getBoundingClientRect().height;
-    document.documentElement.style.setProperty("--header-height", `${height}px`);
-  }
+
 
   function showMenu(tabElement, index) {
     clearTimeout(hideTimeout);
@@ -112,7 +108,7 @@ function hideMenu() {
 
       menu.children.forEach((child, idx) => {
         const li = createListItem(child.title, child.url, "child");
-        li.addEventListener("mouseenter", () => renderSubMenu(child));
+        li.addEventListener("mouseover", () => renderSubMenu(child));
         childList.appendChild(li);
 
         if (idx === 0) renderSubMenu(child);
@@ -243,7 +239,7 @@ function hideMenu() {
       tab.appendChild(underline);
       tabs.appendChild(tab);
 
-      tab.addEventListener("mouseenter", () => {
+      tab.addEventListener("mouseover", () => {
         renderMenu(index, tab);
       });
 
@@ -258,22 +254,22 @@ function hideMenu() {
   // ----------------------------------------
   // Hover & Interaction Events
   // ----------------------------------------
-  wrapper?.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+  wrapper?.addEventListener("mouseover", () => clearTimeout(hideTimeout));
   wrapper?.addEventListener("mouseleave", () => {
     hideTimeout = setTimeout(hideMenu, 200);
   });
 
-  megaContent?.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+  megaContent?.addEventListener("mouseover", () => clearTimeout(hideTimeout));
   megaContent?.addEventListener("mouseleave", () => {
     hideTimeout = setTimeout(hideMenu, 200);
   });
 
-  simpleMenu?.addEventListener("mouseenter", () => clearTimeout(hideTimeout));
+  simpleMenu?.addEventListener("mouseover", () => clearTimeout(hideTimeout));
   simpleMenu?.addEventListener("mouseleave", () => {
     hideTimeout = setTimeout(hideMenu, 200);
   });
 
-  overlay?.addEventListener("mouseenter", hideMenu);
+  overlay?.addEventListener("mouseover", hideMenu);
   overlay?.addEventListener("click", hideMenu);
 
   //  Fix: handle dynamic links (simple menu click)
@@ -286,7 +282,4 @@ function hideMenu() {
     }
   });
 
-  // Responsive
-  window.addEventListener("resize", updateHeaderHeight);
-  updateHeaderHeight();
 });

@@ -861,8 +861,8 @@
     {
       "type": "boolean",
       "icon": "sicon-toggle-off",
-      "label": "عرض المنتجات الجذء الجانبي في صفحة المنتج",
-      "description": "عند التفعيل سيتم عرض منتجات  في الجذء الجانبي  لصفحة المنتج",
+      "label": "عرض المنتجات الجزء الجانبي في صفحة المنتج",
+      "description": "عند التفعيل سيتم عرض منتجات  في الجزء الجانبي  لصفحة المنتج",
       "id": "single_side_products",
       "format": "switch",
       "required": false,
@@ -1132,7 +1132,7 @@
       "type": "boolean",
       "icon": "sicon-toggle-off",
       "label": "عرض المنتجات من نفس الفئة في صفحة المنتج",
-      "description": "عند التفعيل سيتم عرض منتجات من نفس الفئة في الجذء الجانبي  لصفحة المنتج",
+      "description": "عند التفعيل سيتم عرض منتجات من نفس الفئة في الجزء الجانبي  لصفحة المنتج",
       "id": "show_selected_products",
       "format": "switch",
       "required": false,
@@ -2663,8 +2663,8 @@
               "value": "0",
               "required": false,
               "step": "1",
-              "minimum": "-50",
-              "maximum": "50"
+              "minimum": "-300",
+              "maximum": "300"
             },
             {
               "id": "banner.block_title",
@@ -4086,8 +4086,8 @@
           "value": "0",
           "required": false,
           "step": "1",
-          "minimum": "-25",
-          "maximum": "25"
+          "minimum": "-300",
+          "maximum": "300"
         },
         {
           "id": "block_title",

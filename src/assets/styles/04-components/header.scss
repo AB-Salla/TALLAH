@@ -139,7 +139,6 @@
     .inner {
       transform: translate3d(0, 0, 0);
       backdrop-filter: blur(20px);
-      background-color: #00000077;
 
       @media (max-width: 1024px){
         transform: none;
@@ -210,27 +209,6 @@ salla-user-menu{
 .top-navbar.not-home *{
   @apply text-font;
 }
-
-
-.product-single #mega-content{
-  @apply top-[calc(var(--header-height)+40px)] !important;
-}
-body #mega-content.scrolled{
-  @apply top-[60px] !important;
-}
-.product-single #mobile-menu-wrapper > .tabs{
-  @apply mt-[calc(var(--header-height)+40px)] !important;
-}
-#mobile-menu-wrapper.scrolled > .tabs{
-  @apply mt-[60px] !important;
-}
-.product-single #search-overlay-background + #search-panel-wrapper {
-  @apply top-[calc(var(--header-height)+40px)] !important;
-}
-#search-overlay-background.scrolled + #search-panel-wrapper {
-  @apply top-14 !important;
-}
-
 .s-user-menu-trigger{
   @apply p-0 rounded-sm;
 }

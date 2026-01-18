@@ -7,6 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const siteHeaderMobile = document.querySelector('.site-header-mobile'); 
   const overlayContainer = document.getElementById('search-overlay-container');
   const panel = document.getElementById('search-panel');
+  const panelWrapper = document.getElementById('search-panel-wrapper');
   const toggleBtns = document.querySelectorAll('#search-toggle');
   const input = document.getElementById('custom-search-input');
   const resultsContainer = document.getElementById('custom-search-results');
@@ -156,7 +157,9 @@ document.addEventListener('DOMContentLoaded', () => {
     document.dispatchEvent(new CustomEvent("closeMobileMenu"));
 
     updatePanelPosition(); // Update the panel position based on the header
-    overlayContainer.classList.remove('hidden'); // Show the overlay container
+    overlayContainer.classList.remove('hidden');
+    panelWrapper.classList.remove('overflow-hidden'); // Show the overlay container
+    panelWrapper.classList.remove('pointer-events-none'); // Show the overlay container
     if (header) header.style.backgroundColor = window.header_bg_color; // Set the header background color
     if (siteHeader) siteHeader.style.color =  window.header_text_color;
     if (siteHeaderMobile) siteHeaderMobile.style.color = window.header_text_color;
@@ -174,6 +177,10 @@ document.addEventListener('DOMContentLoaded', () => {
   function closeSearchPanel() {
     panel.classList.add('-translate-y-full'); // Slide the panel out of view
     panel.classList.remove('translate-y-0');
+    panelWrapper.classList.add('overflow-hidden'); // Show the overlay container
+    panelWrapper.classList.add('pointer-events-none'); // Show the overlay container
+
+
 
     // Wait for the transition to finish, then hide the overlay and reset inputs
     panel.addEventListener('transitionend', () => {
