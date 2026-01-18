@@ -16,7 +16,7 @@
           {{ component.section_title }}
         </h1>
         {% if component.section_sub_title  %}
-        <p class="text-[clamp(.75rem,1.0204rem+0.9796vw,1)]  leading-6 font-normal text-primary subtitle {% if component.center_block_ttitle %} mx-auto {% endif %}">
+        <p class="text-[clamp(.75rem,1.0204rem+0.9796vw,1)]  leading-6 font-normal text-primary subtitle max-w-[230px] md:max-w-full {% if component.center_block_ttitle %} mx-auto {% endif %}">
             {{ component.section_sub_title }}
         </p>
         {% endif %}
@@ -47,14 +47,14 @@
             class="product-slider"
             slider-config='{
               "slidesPerView": 1.5,
-              "spaceBetween": 12,
+              "spaceBetween": 10,
               "speed": 1000,
               "effect": "slide",
               "lazy": true,
               "breakpoints": {
-                "480": { "slidesPerView": 2, "spaceBetween": 12 },
-                "768": { "slidesPerView": 3, "spaceBetween": 12 },
-                "1240": { "slidesPerView": {{component.grid_cols_number}}, "spaceBetween": 12 }
+                "480": { "slidesPerView": 2, "spaceBetween": 10 },
+                "768": { "slidesPerView": 3, "spaceBetween": 10 },
+                "1240": { "slidesPerView": {{component.grid_cols_number}}, "spaceBetween": 10 }
               },
               "autoplay": {{ component.isp_autoPlay ? "{
                 \"delay\": 3000,
@@ -127,6 +127,9 @@
 .NG-products-{{position}} .s-slider-block__title-nav{
     display: none !important;
 }
+    .s-products-list-vertical-cards{
+      gap: 10px !important;
+    }
 {% if component.use_custom_colors %}
 
 	.NG-products-{{position}} .blocktitle{

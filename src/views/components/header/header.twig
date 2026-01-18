@@ -802,6 +802,35 @@ Global Variables (from Theme)
 	</div>
 
 	<div class="side-panel__bottom mt-auto p-5 flex flex-col gap-5 border-t border-font-secondary">
+   <div class=" border-gray-200 border-b py-5 mb-5">
+     
+      <label for="coupon" class="block text-sm">{{
+        trans("pages.cart.have_coupon")
+      }}</label>
+      <div class="mt-2.5 relative">
+        <input placeholder="{{ trans("pages.cart.coupon_placeholder") }}"
+        {{ cart.coupon ? "disabled" : "" }}
+        class="rtl:pl-24 ltr:pr-24 form-input
+        bg-[color-mix(in_srgb,var(--color-primary)_5%,transparent)]" value="{{
+          cart.coupon
+        }}" id="coupon-input-sidecart" name="coupon" aria-label="Apply coupon"
+        type="text">
+
+        <salla-button
+          class="btn--coupon {{
+            cart.coupon
+              ? 'has-coupon btn--danger'
+              : 'has-not-coupon btn--default'
+          }}"
+          loader-position="center"
+          id="coupon-btn-sidecart"
+        >
+          <span class="coupon-text">{{ trans("pages.cart.save_coupon") }}</span>
+          <i class="sicon-cancel icon text-xl w-8"></i>
+        </salla-button>
+      </div>
+      <span class="text-xs text-red-700" id="coupon-error-sidecart"></span>
+    </div>
 		<div class="flex justify-between text-sm">
 			<span class="text-gray-500">{{ trans('pages.cart.items_total') }}</span>
 			<b id="sidecart-subtotal"></b>
@@ -822,18 +851,19 @@ Global Variables (from Theme)
 					</small>
 				{% endif %}
 			</div>
+
 			<strong id="sidecart-total" class="total-value text-lg"></strong>
 		</div>
     <div class="flex gap-1">
       <a href="{{ link('cart') }}"
         id="sidecart-submit"
-        class="cart-submit-btn flex-1 flex items-center justify-center gap-2 bg-primary text-white rounded-lg py-3 hover:bg-primary/90 transition">
+        class="cart-submit-btn flex-1 flex items-center justify-center gap-2 bg-primary text-background  py-3 hover:bg-primary transition">
         <i class="smticon-cart text-lg"></i>
         <span>{{ trans('pages.cart.goToCartPage') }}</span>
       </a>
 
       <button
-        class="close-side-panel flex-1 bg-gray-100 flex items-center justify-center gap-4 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-md py-3 hover:bg-gray-200 dark:hover:bg-gray-700 transition">
+        class="close-side-panel flex-1 bg-batext-background font-medium border border-1 border-primary flex items-center justify-center gap-4  text-primary dark:text-gray-300 py-3 hover:bg-gray-200  transition">
         {{ trans('pages.offer.continue_shopping') }}
       </button>
     </div>

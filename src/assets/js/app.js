@@ -44,6 +44,7 @@ class App extends AppHelpers {
     this.initHideEndedCountDown();
     this.watchAndAdjustHeader();
     this.init_SideCart();
+    this.initSideCartCoupon();
     salla.comment.event.onAdded(() => window.location.reload());
 
     this.status = "ready";
@@ -675,21 +676,18 @@ watchAndAdjustHeader() {
               </a>
 
               <div class="space-y-1 flex-grow w-full">
-                ${
-                  !item.is_taxable
-                    ? `<small>${getLocalizedMessageinner(
-                        "tax_included"
-                      )}</small>`
-                    : ""
-                }
-
                 <h2 class=" font-medium
                 text-sm
                 leading-5
                 tracking-wide
                 lg:text-base
                 lg:leading-6 line-clamp-2">
-                  <a href="${item_url}">${item.product_name}</a>
+                  <a href="${item_url}" class="font-medium
+                text-sm
+                leading-5
+                tracking-wide
+                lg:text-base
+                lg:leading-6 line-clamp-2">${item.product_name}</a>
                 </h2>
                 <div class="flex justify-between items-center gap-4">
                 <span class="item-price font-medium">
@@ -786,6 +784,86 @@ watchAndAdjustHeader() {
       if (e.key === "Escape") toggleCart(false);
     });
   }
+async initSideCartCoupon() {
+  const input = document.querySelector("#coupon-input-sidecart");
+  const btn = document.querySelector("#coupon-btn-sidecart");
+  const error = document.querySelector("#coupon-error-sidecart");
+
+  if (!input || !btn || !error) return;
+
+  const clearError = () => {
+    error.innerText = "";
+    input.classList.remove("has-error");
+  };
+
+  const applyToggle = (applied, couponCode = "") => {
+    input.value = applied ? couponCode : "";
+    input.toggleAttribute("disabled", applied);
+    input.classList.remove("has-error");
+
+    btn.classList.toggle("btn--danger", applied);
+    btn.classList.toggle("btn--default", !applied);
+
+    const span = btn.querySelector("span.coupon-text");
+    const icon = btn.querySelector("i.sicon-cancel");
+    if (span && icon) {
+      span.style.display = applied ? "none" : "inline-block";
+      icon.style.display = applied ? "inline-block" : "none";
+    }
+  };
+
+  // 🔹 عند التحميل الأول، مزامنة الكوبون مع الكارت
+  try {
+    const res = await salla.api.cart.details();
+    const cart = res.data.cart;
+    if (cart?.coupon) {
+      applyToggle(true, cart.coupon);
+    }
+  } catch (err) {
+    console.error("❌ Failed to fetch cart for sidecart coupon", err);
+  }
+
+  // 🔹 حدث الضغط على زر الكوبون
+  btn.addEventListener("click", async () => {
+    const applied = btn.classList.contains("btn--danger");
+
+    if (!applied && !input.value.trim()) {
+      error.innerText = "* الرجاء إدخال كود الكوبون";
+      input.classList.add("has-error");
+      return;
+    }
+
+    try {
+      btn.disabled = true;
+      if (applied) {
+        await salla.cart.deleteCoupon();
+        applyToggle(false);
+      } else {
+        await salla.cart.addCoupon(input.value.trim());
+        applyToggle(true, input.value.trim());
+      }
+    } catch (err) {
+      error.innerText =
+        err.response?.data?.error?.message || "حدث خطأ في تطبيق الكوبون";
+      input.classList.add("has-error");
+    } finally {
+      btn.disabled = false;
+    }
+  });
+
+  // 🔹 الضغط على Enter
+  input.addEventListener("keyup", (e) => {
+    if (e.key === "Enter") btn.click();
+    clearError();
+  });
+
+  // 🔹 مزامنة الكوبون عند أي تحديث للكارت
+  salla.event.cart.onUpdated(async (data) => {
+    const couponCode = data.coupon || "";
+    applyToggle(!!couponCode, couponCode);
+  });
+}
+
   initiateModals() {
     this.onClick("[data-modal-trigger]", (e) => {
       let id = "#" + e.target.dataset.modalTrigger;

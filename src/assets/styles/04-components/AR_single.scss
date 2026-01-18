@@ -313,6 +313,7 @@ salla-add-product-button{
     transition: all 0.5s ease-in-out;
   }
   .image-slider {
+    justify-content: start;
     display: flex;
     gap: 10px;
     flex-direction: row-reverse;
@@ -749,7 +750,7 @@ salla-add-product-button{
     }
   }
   .swiper {
-    margin-left: 0 !important;
+    margin: 0 !important;
   }
   .main-content {
     .s-button-wrap svg {
@@ -793,6 +794,9 @@ salla-add-product-button{
   }
 }
 .side_products {
+  .s-product-card-promotion-title{
+    display: none;
+  }
   .s-product-card-rating{
     display: none;
   }
@@ -882,7 +886,7 @@ salla-add-product-button{
       }
     }
   }
-  .single{
+  .single .single-product-slider{
     .swiper.s-slider-container {
   padding: 16px 12px !important;
 }
