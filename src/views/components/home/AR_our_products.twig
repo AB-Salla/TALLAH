@@ -1,6 +1,6 @@
 {% set source_type = component.source_type %}
 {% set source_value = source_type == 'categories' ? component.categories : (source_type == 'selected' ? component.products : []) %}
-<section class="NG-products-{{position}} NG-products products-slider products-slider-{{position}}">
+<section class="AR-products-{{position}} AR-products products-slider products-slider-{{position}}">
   <div class="py-8 ">
     <div class="px-[10px]">
 
@@ -16,14 +16,14 @@
           {{ component.section_title }}
         </h1>
         {% if component.section_sub_title  %}
-        <p class="text-[clamp(.75rem,1.0204rem+0.9796vw,1)]  leading-6 font-normal text-primary subtitle max-w-[230px] md:max-w-full {% if component.center_block_ttitle %} mx-auto {% endif %}">
+        <p class="text-[clamp(.75rem,1.0204rem+0.9796vw,1)] underline hidden md:block leading-6 font-normal text-primary subtitle max-w-[230px] md:max-w-full {% if component.center_block_ttitle %} mx-auto {% endif %}">
             {{ component.section_sub_title }}
         </p>
         {% endif %}
         </div>
 
        {# {% if not component.enable_controls %} #}
-          <a href="{{ component.rh_cat_btn_url }}" class="text-graytext cat-link text-[clamp(1rem,1rem+0vw,1rem)] md:leading-6 font-normal underlineADD TO WISHLIST"
+          <a href="{{ component.rh_cat_btn_url }}" class="shrink-0 text-graytext cat-link text-[clamp(1rem,1rem+0vw,1rem)] md:leading-6 font-normal underlineADD TO WISHLIST"
              data-sal="slide-left"
              data-sal-duration="600"
              data-sal-repeat="true"
@@ -111,20 +111,24 @@
 
 <style>
 @media (min-width: 1024px) {
-    .NG-products-{{position}}{
+    .AR-products-{{position}}{
       .s-products-list-vertical-cards {
         grid-template-columns: repeat(4, minmax(0, 1fr));
-      }
+        gap:12px;
+      }      
   } 
 }
-.NG-products-{{position}} .swiper.s-slider-container {
+.AR-products-{{position}} .s-products-list-vertical-cards {
+      gap:16px;
+}
+.AR-products-{{position}} .swiper.s-slider-container {
     padding: 10px 16px !important;
 }
-  .NG-products-{{position}}  .s-products-slider-card {
+  .AR-products-{{position}}  .s-products-slider-card {
     max-width: 100%;
     padding: 0 !important;
     }
-.NG-products-{{position}} .s-slider-block__title-nav{
+.AR-products-{{position}} .s-slider-block__title-nav{
     display: none !important;
 }
     .s-products-list-vertical-cards{
@@ -132,15 +136,15 @@
     }
 {% if component.use_custom_colors %}
 
-	.NG-products-{{position}} .blocktitle{
+	.AR-products-{{position}} .blocktitle{
 		color: {{component.blocktitle_color_light}} !important;
 
 	}
-	.NG-products-{{position}} .subtitle{
+	.AR-products-{{position}} .subtitle{
 		color: {{component.subtitle_color}} !important;
 
 	}
-	.NG-products-{{position}} .cat-link{
+	.AR-products-{{position}} .cat-link{
 		color: {{component.link_color_light}};
 
 	}

@@ -85,7 +85,10 @@
 {% extends "layouts.master" %}
 
 {% block content %}
-	<div class="single pt-8 lg:pt-16 bg-background ">
+				<nav class="breadcrumbs w-full py-2 px-4 lg:hidden">
+				<salla-breadcrumb></salla-breadcrumb>
+			</nav>
+	<div class="single lg:pt-7 bg-background ">
 		<div class="bg-background">
 			<div class="flex flex-col items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row lg:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  lg:top-8 !w-full lg:!w-[66%] pb-8 lg:pb-16  shrink-0">
@@ -256,7 +259,7 @@
             {# Wishlist Button #}
 			{% hook 'product:single.description.start' %}
 				{# tittle && brand #}
-				<nav class="breadcrumbs w-full py-5">
+				<nav class="breadcrumbs w-full lg:block hidden">
 				<salla-breadcrumb></salla-breadcrumb>
 			</nav>
                 {% if product.brand.name %}
