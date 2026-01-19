@@ -459,5 +459,8 @@
 {% block scripts %}
     <script defer src="{{ 'checkout.js' | asset }}"></script>
 
-
+    <script>
+        window.cartItems = {{ cart.items | default([]) | json_encode|raw }};
+        console.log(window.cartItems);
+    </script>
 {% endblock %}

@@ -87,8 +87,8 @@
 {% block content %}
 	<div class="single pt-8 lg:pt-16 bg-background ">
 		<div class="bg-background">
-			<div class="flex flex-col items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row md:gap-8   lg:px-14" id="product-{{ product.id }}">
-				<div class="sidebar relative lg:!sticky  top-8 !w-full lg:!w-[66%] pb-8 lg:pb-16  shrink-0">
+			<div class="flex flex-col items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row lg:px-14" id="product-{{ product.id }}">
+				<div class="sidebar relative lg:!sticky  lg:top-8 !w-full lg:!w-[66%] pb-8 lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
 					<div class=" grid-cols-2 gap-2 lg:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
@@ -707,17 +707,17 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
                 <salla-tab-content slot="content" name="tab_two">
                	{# Comments Area #}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-2  single">
-    <div class="lg:col-span-2 order-2 lg:order-1 comments">
+    <div class=" order-2 lg:order-1 comments {{ user.type == 'user' ? 'lg:col-span-2' : 'lg:col-span-3' }}">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     </div>
      <div class="col-span-1 order-1 lg:order-2 comment-form">
-                     <salla-rating-stars
+                     {# <salla-rating-stars
                       value="{{ product.rating.stars ?? 0 }}"
                       reviews="{{ product.rating.count ?? 0 }}">
-                      </salla-rating-stars>
-                      {% if product.rating.count == 0 %}
+                      </salla-rating-stars> #}
+                      {# {% if product.rating.count == 0 %}
                       <div class="text-center mb">({{ trans('pages.single.no') }})</div>
-                      {% endif %}
+                      {% endif %} #}
                       <div class="mt-4 lg:mt-5">
                           <salla-comment-form></salla-comment-form>
                     </div>
@@ -768,6 +768,11 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				"spaceBetween": 12	,
 				"speed": 1000,
 				"effect": "slide",
+				"autoplay": {
+                    "delay": 3000,
+                    "disableOnInteraction": false,
+                    "pauseOnMouseEnter": true
+                    },
 				"breakpoints": {
 					"551": { "slidesPerView": 2.2, "spaceBetween": 12 },
 					"786": { "slidesPerView": 3, "spaceBetween": 12 },
@@ -786,7 +791,7 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% set images = theme.settings.get('image_collection') %}
 
 {% if images is not empty and theme.settings.get('img_in_single') %}
-    <div class="product-image-gallery  gap-4 ltr:pl-4 rtl:pr-4 lg:px-16 py-6  md:py-14 bg-[#e9e9e9] overflow-x-hidden"
+    <div class="product-image-gallery  gap-4 ltr:pl-4 rtl:pr-4 lg:!px-16 py-6  md:py-14 bg-[#e9e9e9] overflow-x-hidden"
 	{% if theme.settings.get('bg_color') %}  style="background-color: {{theme.settings.get('bg_color_gellary') }};" {% endif %}
 	
 	>
@@ -800,6 +805,11 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 				"spaceBetween": 8	,
 				"speed": 1000,
 				"effect": "slide",
+				"autoplay": {
+                    "delay": 3000,
+                    "disableOnInteraction": false,
+                    "pauseOnMouseEnter": true
+                    },
 				"breakpoints": {
 					"551": { "slidesPerView": 2, "spaceBetween": 8 },
 					"786": { "slidesPerView": 3, "spaceBetween": 16 },
