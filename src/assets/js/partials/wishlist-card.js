@@ -69,7 +69,7 @@ class WishlistCard extends HTMLElement {
 
   getProductBadge() {
     if (this.product.promotion_title) {
-      return `<div class="s-product-card-promotion-title  ">${this.product.promotion_title}</div>`;
+      return `<div class="s-product-card-promotion-title  min-w-fit">${this.product.promotion_title}</div>`;
     }
     if (this.showQuantity && this.product?.quantity) {
       return `<div
