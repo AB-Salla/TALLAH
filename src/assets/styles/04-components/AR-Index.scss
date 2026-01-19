@@ -1,3 +1,6 @@
+.mm-ocd__content{
+  @apply ltr:pr-3 rtl:pl-3;
+}
 .AR-index,
 .mm-ocd__content {
   @apply bg-background;
@@ -44,7 +47,7 @@
 
   .s-filters-widget-container {
     background-color: transparent;
-    @apply lg:px-0 px-2 py-4 m-0 rounded-none;
+    @apply lg:px-0 ltr:pr-2.5 rtl:pl-2.5 px-2 py-4 m-0 rounded-none;
   }
   .s-filters-widget-more {
     background: var(--color-primary);
