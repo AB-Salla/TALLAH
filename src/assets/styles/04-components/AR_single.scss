@@ -890,6 +890,10 @@ salla-add-product-button{
     .swiper.s-slider-container {
   padding: 16px 12px !important;
 }
+    .swiper.s-slider-container.swiper-horizontal {
+        padding: 0px !important;
+
+    }
      .s-tabs-content {
     transition: all 0.5s ease-in-out;
     opacity: 0;
@@ -897,8 +901,7 @@ salla-add-product-button{
     overflow: hidden;
     display: block;
   }
-  .s-tabs-content-wrapper{
-  }
+
   .s-tabs-content.s-tabs-content-selected {
     opacity: 1;
     max-height: 1000px;
