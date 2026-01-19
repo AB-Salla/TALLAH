@@ -16,14 +16,14 @@
           {{ component.section_title }}
         </h1>
         {% if component.section_sub_title  %}
-        <p class="text-[clamp(.75rem,1.0204rem+0.9796vw,1)]  leading-6 font-normal text-primary subtitle max-w-[230px] md:max-w-full {% if component.center_block_ttitle %} mx-auto {% endif %}">
+        <p class="text-[clamp(.75rem,1.0204rem+0.9796vw,1)] underline hidden md:block leading-6 font-normal text-primary subtitle max-w-[230px] md:max-w-full {% if component.center_block_ttitle %} mx-auto {% endif %}">
             {{ component.section_sub_title }}
         </p>
         {% endif %}
         </div>
 
        {# {% if not component.enable_controls %} #}
-          <a href="{{ component.rh_cat_btn_url }}" class="text-graytext cat-link text-[clamp(1rem,1rem+0vw,1rem)] md:leading-6 font-normal underlineADD TO WISHLIST"
+          <a href="{{ component.rh_cat_btn_url }}" class="shrink-0 text-graytext cat-link text-[clamp(1rem,1rem+0vw,1rem)] md:leading-6 font-normal underlineADD TO WISHLIST"
              data-sal="slide-left"
              data-sal-duration="600"
              data-sal-repeat="true"
