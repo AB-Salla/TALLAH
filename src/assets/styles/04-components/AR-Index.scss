@@ -2,13 +2,9 @@
 .mm-ocd__content {
   @apply bg-background;
     .s-products-list-wrapper.s-products-list-filters-results{
-      @apply gap-6;
+      @apply gap-2;
    }
-  .s-products-list-wrapper.s-products-list-filters-results{
-    @media (min-width:768px) {
-      @apply gap-7;
-    }
-  }
+  
   .filters-trigger .sicon-filter{
     @apply text-primary border border-primary  ;
     padding: 6.5px;
