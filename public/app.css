@@ -1534,9 +1534,6 @@ input:where([type='file']):focus{
 .w-\[28px\]{
     width: 28px;
 }
-.w-\[30\%\]{
-    width: 30%;
-}
 .w-\[323px\]{
     width: 323px;
 }
@@ -1554,9 +1551,6 @@ input:where([type='file']):focus{
 }
 .w-\[66px\]{
     width: 66px;
-}
-.w-\[70\%\]{
-    width: 70%;
 }
 .w-\[70px\]{
     width: 70px;
@@ -2331,9 +2325,6 @@ input:where([type='file']):focus{
     background-color: rgba(39, 39, 42, 1);
     background-color: rgba(39, 39, 42, var(--tw-bg-opacity, 1));
 }
-.bg-black\/20{
-    background-color: rgba(0, 0, 0, 0.2);
-}
 .bg-opacity-50{
     --tw-bg-opacity: 0.5;
 }
@@ -2774,10 +2765,6 @@ input:where([type='file']):focus{
     font-size: 0.75rem;
     line-height: 1rem;
 }
-.\!text-sm{
-    font-size: 0.875rem !important;
-    line-height: 1.25rem !important;
-}
 .font-bold{
     font-weight: 700;
 }
@@ -3038,12 +3025,6 @@ input:where([type='file']):focus{
     --tw-text-opacity: 1;
     color: rgba(39, 39, 42, 1);
     color: rgba(39, 39, 42, var(--tw-text-opacity, 1));
-}
-.text-white\/70{
-    color: rgba(255, 255, 255, 0.7);
-}
-.text-white\/80{
-    color: rgba(255, 255, 255, 0.8);
 }
 .underline{
     text-decoration-line: underline;
@@ -29116,18 +29097,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     transform: translate(-0.25rem, var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
     transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
 }
-.group[data-price-updated="true"] .group-data-\[price-updated\=true\]\:flex{
-    display: flex;
-}
-.group[data-price-updated="true"] .group-data-\[price-updated\=true\]\:hidden{
-    display: none;
-}
-.group[data-price-updated="true"] .group-data-\[price-updated\=true\]\:opacity-0{
-    opacity: 0;
-}
-.group[data-price-updated="true"] .group-data-\[price-updated\=true\]\:opacity-100{
-    opacity: 1;
-}
 .dark *.dark\:text-gray-300{
     --tw-text-opacity: 1;
     color: rgba(209, 213, 219, 1);
@@ -29917,14 +29886,6 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .lg\:text-xs{
         font-size: 0.75rem;
         line-height: 1rem;
-    }
-    .lg\:\!text-base{
-        font-size: 1rem !important;
-        line-height: 1.5rem !important;
-    }
-    .lg\:text-2xl{
-        font-size: 1.5rem;
-        line-height: 2rem;
     }
     .lg\:font-medium{
         font-weight: 500;

@@ -2838,7 +2838,7 @@
       "title": "بانر منتجات - عربي",
       "icon": "sicon-store",
       "path": "home.AR-Products-banner",
-      "image": "https://cdn.files.salla.network/homepage/1954265887/df14f886-e706-4062-a8d8-18bcee84a483.webp",
+      "image": "https://cdn.files.salla.network/homepage/1954265887/5b390ef4-e3c6-4bcd-82d1-663ade0f0496.webp",
       "fields": [
         {
           "id": "banner_image",
@@ -2849,7 +2849,7 @@
           "labelHTML": null,
           "placeholder": "e.g. https://hostname.com/image.png",
           "icon": "sicon-image",
-          "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
+          "value": "https://cdn.files.salla.network/homepage/1954265887/df14f886-e706-4062-a8d8-18bcee84a483.webp",
           "required": true
         },
         {
