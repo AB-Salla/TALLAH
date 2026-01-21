@@ -445,8 +445,8 @@
 					
 
 					{# Add to cart #}
-					<div class="w-full flex flex-row-reverse mt-3 gap-3 justify-center">
-                        <div>
+					<div class="w-full flex flex-row-reverse mt-3 gap-3 justify-center ">
+                        <div class="w-[30%]">
 						{# Quantity #}
 						{% if product.is_hidden_quantity or product.type == 'booking' %}
 							<input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
@@ -460,12 +460,10 @@
 						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="sticky-product-bar__btn" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
 						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
 							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
-							<div class="flex items-center justify-center gap-1">
+							<div class="flex items-center justify-center gap-1 w-[70%]">
 								<span class="font-medium !text-base">
 									{{ product.add_to_cart_label }}
-									lukaaaaaaa
 								</span>
-								luka
 								<section class="flex rounded-md rounded-b-none">
 						{# total price#}
 						<div class="center-between w-full">
