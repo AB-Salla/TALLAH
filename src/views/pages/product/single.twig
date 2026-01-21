@@ -442,7 +442,31 @@
 				{% hook 'product:single.form.end' %}
 				
 				<section class="rounded-md rounded-b-none bg-background sticky-product-bar ">
-					<section class="flex rounded-md rounded-b-none">
+					
+
+					{# Add to cart #}
+					<div class="w-full flex flex-row-reverse mt-3 gap-3 justify-center">
+                        <div>
+						{# Quantity #}
+						{% if product.is_hidden_quantity or product.type == 'booking' %}
+							<input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
+						{% else %}
+							<div class="sticky-product-bar__quantity ">
+								<salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity" class="border-gray-200 flex justify-end"></salla-quantity-input>
+							</div>
+						{% endif %}
+					</div>
+						<salla-add-product-button  width="wide" {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
+						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="sticky-product-bar__btn" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
+						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
+							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
+							<div class="flex items-center justify-center gap-1">
+								<span class="font-medium !text-base">
+									{{ product.add_to_cart_label }}
+									lukaaaaaaa
+								</span>
+								luka
+								<section class="flex rounded-md rounded-b-none">
 						{# total price#}
 						<div class="center-between w-full">
 							<label class="form-label">
@@ -470,27 +494,6 @@
 							<div class="out-of-stock min-h-7 leading-7 hidden text-base  font-bold">{{ trans('pages.products.out_of_stock')}}</div>
 						</div>
 					</section>
-
-					{# Add to cart #}
-					<div class="w-full flex flex-row-reverse mt-3 gap-3 justify-center">
-                        <div>
-						{# Quantity #}
-						{% if product.is_hidden_quantity or product.type == 'booking' %}
-							<input type="hidden" value="1" name="quantity" aria-label="Quantity"/>
-						{% else %}
-							<div class="sticky-product-bar__quantity ">
-								<salla-quantity-input max="{{ product.max_quantity }}" value="1" name="quantity" aria-label="Quantity" class="border-gray-200 flex justify-end"></salla-quantity-input>
-							</div>
-						{% endif %}
-					</div>
-						<salla-add-product-button  width="wide" {{theme.settings.get('sticky_add_to_cart') ? ' support-sticky-bar' : ''}} 
-						{{product.is_require_shipping ? 'required-shipping' : ''}} amount="{{ product.base_currency_price }}" class="sticky-product-bar__btn" product-status="{{ product.status }}" product-type="{{ product.type }}" product-id="{{ product.id }}" loader-position="end" type="submit" width="wide" {# Notify availability props#} 
-						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
-							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
-							<div class="flex items-center justify-center gap-1">
-								<span class="font-medium !text-base">
-									{{ product.add_to_cart_label }}
-								</span>
 							</div>
 						</salla-add-product-button>
 						
