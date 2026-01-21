@@ -2560,7 +2560,7 @@
               "labelHTML": null,
               "placeholder": "e.g. https://hostname.com/image.png",
               "icon": "sicon-image",
-              "value": "https://cdn.files.salla.network/homepage/1954265887/6b55e651-2cf1-42d7-b909-304c4fabcfe2.webp",
+              "value": "https://cdn.files.salla.network/homepage/1954265887/3236aab3-a228-4238-82d5-150a64ce0877.webp ",
               "required": false
             },
             {
@@ -2572,7 +2572,7 @@
               "labelHTML": null,
               "placeholder": "e.g. https://hostname.com/image.png",
               "icon": "sicon-image",
-              "value": "https://cdn.files.salla.network/homepage/1954265887/6b55e651-2cf1-42d7-b909-304c4fabcfe2.webp",
+              "value": "https://cdn.files.salla.network/homepage/1954265887/ab8b1de8-f4c9-451b-8f5c-c8286273f96a.webp",
               "required": false
             },
             {
@@ -2838,7 +2838,7 @@
       "title": "بانر منتجات - عربي",
       "icon": "sicon-store",
       "path": "home.AR-Products-banner",
-      "image": "https://cdn.files.salla.network/homepage/1954265887/9457c3de-2126-44ee-a811-ba431740d0f1.webp",
+      "image": "https://cdn.files.salla.network/homepage/1954265887/5b390ef4-e3c6-4bcd-82d1-663ade0f0496.webp",
       "fields": [
         {
           "id": "banner_image",
@@ -2849,7 +2849,7 @@
           "labelHTML": null,
           "placeholder": "e.g. https://hostname.com/image.png",
           "icon": "sicon-image",
-          "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
+          "value": "https://cdn.files.salla.network/homepage/1954265887/df14f886-e706-4062-a8d8-18bcee84a483.webp",
           "required": true
         },
         {
@@ -3278,7 +3278,7 @@
               "labelHTML": null,
               "placeholder": "e.g. https://hostname.com/image.png",
               "icon": "sicon-image",
-              "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+              "value": "https://cdn.files.salla.network/homepage/1954265887/f3500394-44bf-46b8-8fa1-71369ca7bba7.webp",
               "required": false
             },
             {
@@ -3290,7 +3290,7 @@
               "labelHTML": null,
               "placeholder": "e.g. https://hostname.com/image.png",
               "icon": "sicon-image",
-              "value": "https://cdn.files.salla.network/homepage/2070588102/8b4f5a89-f479-4fca-af54-40bd399e39c7.webp",
+              "value": "https://cdn.files.salla.network/homepage/1954265887/2a9b1ab9-0f68-43cd-9843-2dbdc3ab3667.webp",
               "required": false
             },
             {
@@ -3488,7 +3488,7 @@
           "labelHTML": null,
           "placeholder": "e.g. https://hostname.com/image.png",
           "icon": "sicon-image",
-          "value": "https://cdn.files.salla.network/homepage/1954265887/479dd951-05e9-4dad-8cb4-830488f94a3b.webp",
+          "value": "https://cdn.files.salla.network/homepage/1954265887/16d169f2-189b-4d01-a02a-39258868bfdf.webp",
           "required": true
         },
         {
@@ -4007,7 +4007,7 @@
           "labelHTML": null,
           "placeholder": "e.g. https://hostname.com/image.png",
           "icon": "sicon-image",
-          "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
+          "value": "https://cdn.files.salla.network/homepage/1954265887/9bdfb53d-2bb3-469c-8a0b-960a603e94f1.webp",
           "required": false
         },
         {
@@ -4019,7 +4019,7 @@
           "labelHTML": null,
           "placeholder": "e.g. https://hostname.com/image.png",
           "icon": "sicon-image",
-          "value": "https://cdn.files.salla.network/homepage/1954265887/3c1df5de-9c0f-4a55-94db-fd1bc040a9db.webp",
+          "value": "https://cdn.files.salla.network/homepage/1954265887/ed02dc26-a31f-4f7f-9f13-5c3fd1835d51.webp",
           "required": false
         },
         {

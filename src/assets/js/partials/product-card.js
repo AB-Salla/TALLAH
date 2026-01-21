@@ -309,14 +309,14 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
         >
           ${visible.map(item => `
             <button
-              class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 cursor-pointer"
+              class="px-2 py-1  md:px-[18px] md:py-[7px] border border-[#9F9FA9] text-sm transition-all duration-200 cursor-pointer"
               data-option-id="${item.id}">
               ${item.name}
             </button>
           `).join("")}
 
           ${remaining > 0 ? `
-            <span class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 flex items-center justify-center">
+            <span class="px-2 py-1  md:px-[18px] md:py-[7px] border border-[#9F9FA9] text-sm transition-all duration-200 flex items-center justify-center">
               +${remaining}
             </span>
           ` : ""}
