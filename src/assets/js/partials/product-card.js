@@ -254,7 +254,7 @@ class ProductCard extends HTMLElement {
       const MAX_VISIBLE = 3;
       const isArabic = document.documentElement.lang === "ar";
 
-function renderOption(option) {
+const renderOption = (option) =>  {
   const items = option.details || [];
 
 const SIZE_LABEL = isArabic ? "المقاس" : "Size";
