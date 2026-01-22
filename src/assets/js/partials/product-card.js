@@ -267,7 +267,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
     <div class="colors-wrapper mb-3">
     ${window.option_images?
       `<span class="block">
-        ${COLOR_LABEL} : <span class="selected-color font-semibold"></span>
+        ${COLOR_LABEL} : <span class="selected-color font-semibold ${this.product.status !== 'sale' ? 'event-none':''}"></span>
       </span>`:``
     }
         <div
@@ -276,7 +276,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
         >
           ${visible.map(item => `
             <span
-              class="w-6 h-6 rounded-full border cursor-pointer inline-block transition-all duration-200"
+              class="w-6 h-6 rounded-full border cursor-pointer inline-block ${this.product.status !== 'sale' ? 'event-none':''} transition-all duration-200"
               style="background-color:${item.color}"
               title="${item.name}"
               data-option-id="${item.id}">
@@ -297,7 +297,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
 
   if (option.type === "single-option") {
     return `
-      <div class="sizes-wrapper mb-3">
+      <div class="sizes-wrapper mb-3 ${this.product.status !== 'sale' ? 'event-none':''}">
        ${window.option_images?
       `<span class="block">
         ${SIZE_LABEL} :  <span class="selected-size font-semibold"></span>
@@ -309,7 +309,10 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
         >
           ${visible.map(item => `
             <button
-              class="px-2 py-1  md:px-[18px] md:py-[7px] border border-[#9F9FA9] text-sm transition-all duration-200 cursor-pointer"
+              class="px-2 py-1  md:px-[18px] md:py-[7px] border  border-[#9F9FA9] text-sm transition-all duration-200 cursor-pointer
+              ${this.product.status !== 'sale' ? 'event-none':''}
+              "
+              ${this.product.status !== 'sale' ? disabled:""}
               data-option-id="${item.id}">
               ${item.name}
             </button>
