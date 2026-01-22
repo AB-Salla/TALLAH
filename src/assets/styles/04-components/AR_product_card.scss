@@ -1,7 +1,22 @@
 .btn-ready {
   background-color: #000 !important; /* أسود */
 }
+.strike-diagonal {
+  position: relative;
+  overflow: hidden;
+}
 
+.strike-diagonal::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 140%;
+  height: 1.5px;
+  background-color: #000000c5; /* gray */
+  transform: rotate(-35deg);
+  transform-origin: center;
+}
 .btn-ready .add-icon {
   color: #9ca3af !important; /* رصاصي */
 }

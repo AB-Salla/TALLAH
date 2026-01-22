@@ -1,6 +1,6 @@
-/*!*******************************************************************************************************************************************************************************************!*\
-  !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/postcss-loader/dist/cjs.js!./node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
-  \*******************************************************************************************************************************************************************************************/
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/.pnpm/css-loader@6.11.0_webpack@5.99.9/node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].use[1]!./node_modules/.pnpm/postcss-loader@7.3.4_postcs_cf25b54d9897dba8c8a1b0c09cbd8d11/node_modules/postcss-loader/dist/cjs.js!./node_modules/.pnpm/sass-loader@13.3.3_sass@1.85.1_webpack@5.99.9/node_modules/sass-loader/dist/cjs.js!./src/assets/styles/app.scss ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 @charset "UTF-8";
 /*
  * IMPORTANT NOTE: Theme based on Tailwindcss but for the purpose of simplifing the DOM we use
@@ -292,7 +292,7 @@ body.mm-ocd-opened{overflow-y:hidden;overscroll-behavior:none}
     --tw-contain-style:  ;
 }
 /*
- ! tailwindcss v3.4.19 | MIT License | https://tailwindcss.com
+ ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com
 */
 /*
 1. Prevent padding and border from affecting element width. (https://github.com/mozdevs/cssremedy/issues/4)
@@ -622,7 +622,7 @@ video {
 [hidden]:where(:not([hidden="until-found"])) {
   display: none;
 }
-input:where([type='text']),input:where(:not([type])),input:where([type='email']),input:where([type='url']),input:where([type='password']),input:where([type='number']),input:where([type='date']),input:where([type='datetime-local']),input:where([type='month']),input:where([type='search']),input:where([type='tel']),input:where([type='time']),input:where([type='week']),select:where([multiple]),textarea,select{
+[type='text'],input:where(:not([type])),[type='email'],[type='url'],[type='password'],[type='number'],[type='date'],[type='datetime-local'],[type='month'],[type='search'],[type='tel'],[type='time'],[type='week'],[multiple],textarea,select{
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
@@ -638,7 +638,7 @@ input:where([type='text']),input:where(:not([type])),input:where([type='email'])
     line-height: 1.5rem;
     --tw-shadow: 0 0 rgba(0,0,0,0);
 }
-input:where([type='text']):focus, input:where(:not([type])):focus, input:where([type='email']):focus, input:where([type='url']):focus, input:where([type='password']):focus, input:where([type='number']):focus, input:where([type='date']):focus, input:where([type='datetime-local']):focus, input:where([type='month']):focus, input:where([type='search']):focus, input:where([type='tel']):focus, input:where([type='time']):focus, input:where([type='week']):focus, select:where([multiple]):focus, textarea:focus, select:focus{
+[type='text']:focus, input:where(:not([type])):focus, [type='email']:focus, [type='url']:focus, [type='password']:focus, [type='number']:focus, [type='date']:focus, [type='datetime-local']:focus, [type='month']:focus, [type='search']:focus, [type='tel']:focus, [type='time']:focus, [type='week']:focus, [multiple]:focus, textarea:focus, select:focus{
     outline: 2px solid transparent;
     outline-offset: 2px;
     --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
@@ -682,7 +682,7 @@ select{
     -webkit-print-color-adjust: exact;
             print-color-adjust: exact;
 }
-select:where([multiple]),select:where([size]:not([size="1"])){
+[multiple],[size]:where(select:not([size="1"])){
     background-image: none;
     background-image: initial;
     background-position: 0 0;
@@ -695,7 +695,7 @@ select:where([multiple]),select:where([size]:not([size="1"])){
     -webkit-print-color-adjust: inherit;
             print-color-adjust: inherit;
 }
-input:where([type='checkbox']),input:where([type='radio']){
+[type='checkbox'],[type='radio']{
     -webkit-appearance: none;
        -moz-appearance: none;
             appearance: none;
@@ -717,13 +717,13 @@ input:where([type='checkbox']),input:where([type='radio']){
     border-width: 1px;
     --tw-shadow: 0 0 rgba(0,0,0,0);
 }
-input:where([type='checkbox']){
+[type='checkbox']{
     border-radius: 0px;
 }
-input:where([type='radio']){
+[type='radio']{
     border-radius: 100%;
 }
-input:where([type='checkbox']):focus,input:where([type='radio']):focus{
+[type='checkbox']:focus,[type='radio']:focus{
     outline: 2px solid transparent;
     outline-offset: 2px;
     --tw-ring-inset: var(--tw-empty,/*!*/ /*!*/);
@@ -735,38 +735,38 @@ input:where([type='checkbox']):focus,input:where([type='radio']):focus{
     box-shadow: /*!*/ /*!*/ 0 0 0 0px #fff, /*!*/ /*!*/ 0 0 0 calc(2px + 2px) #2563eb, var(--tw-shadow);
     box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow);
 }
-input:where([type='checkbox']):checked,input:where([type='radio']):checked{
+[type='checkbox']:checked,[type='radio']:checked{
     border-color: transparent;
     background-color: currentColor;
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
 }
-input:where([type='checkbox']):checked{
+[type='checkbox']:checked{
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='M12.207 4.793a1 1 0 010 1.414l-5 5a1 1 0 01-1.414 0l-2-2a1 1 0 011.414-1.414L6.5 9.086l4.293-4.293a1 1 0 011.414 0z'/%3e%3c/svg%3e");
 }
 @media (forced-colors: active) {
-    input:where([type='checkbox']):checked{
+    [type='checkbox']:checked{
         -webkit-appearance: auto;
            -moz-appearance: auto;
                 appearance: auto;
     }
 }
-input:where([type='radio']):checked{
+[type='radio']:checked{
     background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
 }
 @media (forced-colors: active) {
-    input:where([type='radio']):checked{
+    [type='radio']:checked{
         -webkit-appearance: auto;
            -moz-appearance: auto;
                 appearance: auto;
     }
 }
-input:where([type='checkbox']):checked:hover,input:where([type='checkbox']):checked:focus,input:where([type='radio']):checked:hover,input:where([type='radio']):checked:focus{
+[type='checkbox']:checked:hover,[type='checkbox']:checked:focus,[type='radio']:checked:hover,[type='radio']:checked:focus{
     border-color: transparent;
     background-color: currentColor;
 }
-input:where([type='checkbox']):indeterminate{
+[type='checkbox']:indeterminate{
     background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 16 16'%3e%3cpath stroke='white' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M4 8h8'/%3e%3c/svg%3e");
     border-color: transparent;
     background-color: currentColor;
@@ -775,17 +775,17 @@ input:where([type='checkbox']):indeterminate{
     background-repeat: no-repeat;
 }
 @media (forced-colors: active) {
-    input:where([type='checkbox']):indeterminate{
+    [type='checkbox']:indeterminate{
         -webkit-appearance: auto;
            -moz-appearance: auto;
                 appearance: auto;
     }
 }
-input:where([type='checkbox']):indeterminate:hover,input:where([type='checkbox']):indeterminate:focus{
+[type='checkbox']:indeterminate:hover,[type='checkbox']:indeterminate:focus{
     border-color: transparent;
     background-color: currentColor;
 }
-input:where([type='file']){
+[type='file']{
     background: transparent none repeat 0 0 / auto auto padding-box border-box scroll;
     background: initial;
     border-color: inherit;
@@ -795,7 +795,7 @@ input:where([type='file']){
     font-size: inherit;
     line-height: inherit;
 }
-input:where([type='file']):focus{
+[type='file']:focus{
     outline: 1px solid ButtonText;
     outline: 1px auto -webkit-focus-ring-color;
 }
@@ -1187,7 +1187,7 @@ input:where([type='file']):focus{
     margin-top: -80px;
 }
 .mt-\[clamp\(0\.875rem\2c 0\.5306rem\+1\.4694vw\2c 2rem\)\]{
-    margin-top: clamp(0.875rem, 0.5306rem + 1.4694vw, 2rem);
+    margin-top: clamp(0.875rem,0.5306rem + 1.4694vw,2rem);
 }
 .mt-auto{
     margin-top: auto;
@@ -1374,13 +1374,13 @@ input:where([type='file']):focus{
     height: 70vh;
 }
 .h-\[clamp\(15\.313rem\2c 12\.2518rem\+13\.0612vw\2c 25\.313rem\)\]{
-    height: clamp(15.313rem, 12.2518rem + 13.0612vw, 25.313rem);
+    height: clamp(15.313rem,12.2518rem + 13.0612vw,25.313rem);
 }
 .h-\[clamp\(22\.813rem\2c 16\.4037rem\+27\.3463vw\2c 43\.75rem\)\]{
-    height: clamp(22.813rem, 16.4037rem + 27.3463vw, 43.75rem);
+    height: clamp(22.813rem,16.4037rem + 27.3463vw,43.75rem);
 }
 .h-\[clamp\(23\.438rem\2c 18\.1767rem\+22\.4483vw\2c 40\.625rem\)\]{
-    height: clamp(23.438rem, 18.1767rem + 22.4483vw, 40.625rem);
+    height: clamp(23.438rem,18.1767rem + 22.4483vw,40.625rem);
 }
 .h-auto{
     height: auto;
@@ -2689,61 +2689,61 @@ input:where([type='file']):focus{
     font-size: 16px;
 }
 .text-\[clamp\(\.75rem\2c 1\.0204rem\+0\.9796vw\2c 1\)\]{
-    font-size: clamp(.75rem, 1.0204rem + 0.9796vw, 1);
+    font-size: clamp(.75rem,1.0204rem + 0.9796vw,1);
 }
 .text-\[clamp\(\.8rem\2c 0\.9282rem\+0\.3218vw\2c 1rem\)\]{
-    font-size: clamp(.8rem, 0.9282rem + 0.3218vw, 1rem);
+    font-size: clamp(.8rem,0.9282rem + 0.3218vw,1rem);
 }
 .text-\[clamp\(0\.75rem\2c 0\.6447rem\+0\.4493vw\2c 1\.094rem\)\]{
-    font-size: clamp(0.75rem, 0.6447rem + 0.4493vw, 1.094rem);
+    font-size: clamp(0.75rem,0.6447rem + 0.4493vw,1.094rem);
 }
 .text-\[clamp\(0\.75rem\2c 0\.75rem\+0vw\2c 0\.75rem\)\]{
-    font-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
+    font-size: clamp(0.75rem,0.75rem + 0vw,0.75rem);
 }
 .text-\[clamp\(0\.75rem\2c 0\.7985rem\+0\.3265vw\2c 1rem\)\]{
-    font-size: clamp(0.75rem, 0.7985rem + 0.3265vw, 1rem);
+    font-size: clamp(0.75rem,0.7985rem + 0.3265vw,1rem);
 }
 .text-\[clamp\(0\.7775rem\2c 0\.6163rem\+0\.6876vw\2c 1\.003125rem\)\]{
-    font-size: clamp(0.7775rem, 0.6163rem + 0.6876vw, 1.003125rem);
+    font-size: clamp(0.7775rem,0.6163rem + 0.6876vw,1.003125rem);
 }
 .text-\[clamp\(0\.875rem\2c 0\.7602rem\+0\.4898vw\2c 1\.25rem\)\]{
-    font-size: clamp(0.875rem, 0.7602rem + 0.4898vw, 1.25rem);
+    font-size: clamp(0.875rem,0.7602rem + 0.4898vw,1.25rem);
 }
 .text-\[clamp\(0\.875rem\2c 0\.7985rem\+0\.3265vw\2c 1\.125rem\)\]{
-    font-size: clamp(0.875rem, 0.7985rem + 0.3265vw, 1.125rem);
+    font-size: clamp(0.875rem,0.7985rem + 0.3265vw,1.125rem);
 }
 .text-\[clamp\(0\.875rem\2c 0\.8032rem\+0\.3218vw\2c 1\.125rem\)\]{
-    font-size: clamp(0.875rem, 0.8032rem + 0.3218vw, 1.125rem);
+    font-size: clamp(0.875rem,0.8032rem + 0.3218vw,1.125rem);
 }
 .text-\[clamp\(0\.875rem\2c 0\.8391rem\+0\.1609vw\2c 1rem\)\]{
-    font-size: clamp(0.875rem, 0.8391rem + 0.1609vw, 1rem);
+    font-size: clamp(0.875rem,0.8391rem + 0.1609vw,1rem);
 }
 .text-\[clamp\(1\.110625rem\2c 0\.8807rem\+0\.981vw\2c 1\.4325rem\)\]{
-    font-size: clamp(1.110625rem, 0.8807rem + 0.981vw, 1.4325rem);
+    font-size: clamp(1.110625rem,0.8807rem + 0.981vw,1.4325rem);
 }
 .text-\[clamp\(1\.375rem\2c 1\.1216rem\+1\.0811vw\2c 2rem\)\]{
-    font-size: clamp(1.375rem, 1.1216rem + 1.0811vw, 2rem);
+    font-size: clamp(1.375rem,1.1216rem + 1.0811vw,2rem);
 }
 .text-\[clamp\(1\.5rem\2c 1\.0408rem\+1\.9592vw\2c 3rem\)\]{
-    font-size: clamp(1.5rem, 1.0408rem + 1.9592vw, 3rem);
+    font-size: clamp(1.5rem,1.0408rem + 1.9592vw,3rem);
 }
 .text-\[clamp\(1\.5rem\2c 1\.2704rem\+0\.9796vw\2c 2\.25rem\)\]{
-    font-size: clamp(1.5rem, 1.2704rem + 0.9796vw, 2.25rem);
+    font-size: clamp(1.5rem,1.2704rem + 0.9796vw,2.25rem);
 }
 .text-\[clamp\(1rem\2c 0\.6429rem\+1\.5238vw\2c 1\.5rem\)\]{
-    font-size: clamp(1rem, 0.6429rem + 1.5238vw, 1.5rem);
+    font-size: clamp(1rem,0.6429rem + 1.5238vw,1.5rem);
 }
 .text-\[clamp\(1rem\2c 0\.9282rem\+0\.3218vw\2c 1\.25rem\)\]{
-    font-size: clamp(1rem, 0.9282rem + 0.3218vw, 1.25rem);
+    font-size: clamp(1rem,0.9282rem + 0.3218vw,1.25rem);
 }
 .text-\[clamp\(1rem\2c 0\.95rem\+0\.3vw\2c 1\.125rem\)\]{
-    font-size: clamp(1rem, 0.95rem + 0.3vw, 1.125rem);
+    font-size: clamp(1rem,0.95rem + 0.3vw,1.125rem);
 }
 .text-\[clamp\(1rem\2c 1\.0204rem\+0\.9796vw\2c 1\.25rem\)\]{
-    font-size: clamp(1rem, 1.0204rem + 0.9796vw, 1.25rem);
+    font-size: clamp(1rem,1.0204rem + 0.9796vw,1.25rem);
 }
 .text-\[clamp\(1rem\2c 1rem\+0vw\2c 1rem\)\]{
-    font-size: clamp(1rem, 1rem + 0vw, 1rem);
+    font-size: clamp(1rem,1rem + 0vw,1rem);
 }
 .text-base{
     font-size: 1rem;
@@ -3137,14 +3137,19 @@ input:where([type='file']):focus{
 }
 .backdrop-blur-sm{
     --tw-backdrop-blur: blur(4px);
+    -webkit-backdrop-filter: blur(4px) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
     backdrop-filter: blur(4px) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .backdrop-filter{
+    -webkit-backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
     backdrop-filter: var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);
 }
 .transition{
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -3275,7 +3280,9 @@ input:where([type='file']):focus{
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -3296,7 +3303,9 @@ input:where([type='file']):focus{
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -4878,7 +4887,9 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -4909,7 +4920,9 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     align-items: center;
     justify-content: center;
     font-weight: 500;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -4948,7 +4961,9 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     padding-bottom: 0.125rem;
     color: #414042;
     color: var(--color-primary);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -5292,7 +5307,9 @@ input[type=radio].sr-only:checked ~ div.s-app-install-alert-cancel-button {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -6448,7 +6465,9 @@ input[type=radio].sr-only:checked ~ div.s-conditional-offer-checkpoint-label {
     font-size: 0.875rem;
     line-height: 1.25rem;
     line-height: 1;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -6960,7 +6979,9 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -7006,7 +7027,9 @@ input[type=radio].sr-only:checked ~ div.s-count-down-end-text {
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -7925,7 +7948,9 @@ input[type=radio].sr-only:checked ~ div.s-file-upload-profile-image .s-file-uplo
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -9886,7 +9911,9 @@ input[type=radio].sr-only:checked ~ div.s-map-my-location-button {
     font-size: 0.875rem;
     line-height: 1.25rem;
     line-height: 1;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -9976,7 +10003,9 @@ input[type=radio].sr-only:checked ~ div.s-map-my-location-button {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -10022,7 +10051,9 @@ input[type=radio].sr-only:checked ~ div.s-map-my-location-button {
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
     padding-left: 0.5rem;
     padding-right: 0.5rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -10566,7 +10597,9 @@ input[type=radio].sr-only:checked ~ div.s-multiple-bundle-product-checkbox {
     --tw-text-opacity: 1;
     color: rgba(22, 163, 74, 1);
     color: rgba(22, 163, 74, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -11035,7 +11068,9 @@ input[type=radio].sr-only:checked ~ div.s-offer-corner-badge {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 500ms;
 }
@@ -11097,7 +11132,9 @@ input[type=radio].sr-only:checked ~ div.s-offer-corner-badge {
     --tw-text-opacity: 1;
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 500ms;
 }
@@ -11468,7 +11505,9 @@ input[type=radio].sr-only:checked ~ div.s-offer-bank-payment-discount-percent {
     --tw-text-opacity: 1;
     color: rgba(156, 163, 175, 1);
     color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 500ms;
 }
@@ -15935,7 +15974,9 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -15963,12 +16004,18 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
 .s-rating-modal-thanks-btn:hover{
     opacity: 0.8;
+}
+.s-rating-modal-thanks-btn {
+  /* Disabled state */
+  /* Button Variants */
 }
 .s-rating-modal-thanks-btn .loader {
   width: 0;
@@ -15976,9 +16023,6 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
   height: 16px;
   transform: scale(0);
   transition: 0.3s;
-}
-.s-rating-modal-thanks-btn {
-  /* Disabled state */
 }
 .s-rating-modal-thanks-btn.btn:disabled{
     cursor: default;
@@ -16000,9 +16044,6 @@ input[type=radio].sr-only:checked ~ div.s-quick-order-expandable .s-form-group >
 }
 .s-rating-modal-thanks-btn:disabled .s-button-text{
     opacity: 0.7;
-}
-.s-rating-modal-thanks-btn {
-  /* Button Variants */
 }
 @media only screen and (min-width: 1024px) {
   .main-menu .sub-menu .s-rating-modal-thanks-btn {
@@ -17446,7 +17487,9 @@ input[type=radio].s-scopes-sr-only:checked ~ div.absolute {
     z-index: 99;
     max-height: 14rem;
     border-radius: 0.375rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -17626,7 +17669,9 @@ input[type=radio].sr-only:checked ~ div.s-search-results {
     padding-right: 1rem;
     padding-top: 0.75rem;
     padding-bottom: 0.75rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
@@ -18079,7 +18124,9 @@ input[type=radio].sr-only:checked ~ div.s-slider-v-centered .s-slider-block__tit
     border-color: rgba(209, 213, 219, var(--tw-border-opacity, 1));
     font-size: 1.25rem;
     line-height: 1.75rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -18305,7 +18352,9 @@ salla-slider div[slot='thumbs'] > div{
     margin-top: 0.625rem;
     max-height: 360px;
     width: 100vw;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -18403,7 +18452,9 @@ input[type=radio].sr-only:checked ~ div.s-slider-vertical .s-slider-thumbs-next 
     background-color: rgba(249, 250, 251, 1);
     background-color: rgba(249, 250, 251, var(--tw-bg-opacity, 1));
     padding: 0px;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -18599,7 +18650,9 @@ salla-slider .model-entry:before{
     border-width: 1px;
     font-size: 0.875rem;
     line-height: 1.25rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -20056,7 +20109,9 @@ input[type=radio].sr-only:checked ~ div.s-user-menu-red-dot .s-user-menu-avatar-
     --tw-text-opacity: 1;
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -21422,12 +21477,18 @@ salla-button.copied i:before {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
 .btn:hover{
     opacity: 0.8;
+}
+.btn {
+  /* Disabled state */
+  /* Button Variants */
 }
 .btn .loader {
   width: 0;
@@ -21569,7 +21630,9 @@ salla-button.copied i:before {
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -21640,7 +21703,9 @@ input[type=radio].sr-only:checked ~ div.btn--close {
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
     opacity: 0;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -21682,9 +21747,6 @@ input[type=radio].sr-only:checked ~ div.btn--close {
         padding-left: 1.25rem;
     }
 }
-.btn {
-  /* Disabled state */
-}
 .btn.btn:disabled{
     cursor: default;
     border-width: 1px;
@@ -21705,9 +21767,6 @@ input[type=radio].sr-only:checked ~ div.btn--close {
 }
 .btn:disabled .s-button-text{
     opacity: 0.7;
-}
-.btn {
-  /* Button Variants */
 }
 .btn--danger{
     --tw-bg-opacity: 1;
@@ -21831,7 +21890,9 @@ salla-button.has-coupon button{
 .link--primary{
     color: #414042;
     color: var(--color-primary);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -21839,7 +21900,9 @@ salla-button.has-coupon button{
     color: var(--color-primary-dark);
 }
 #btn-show-more{
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -22162,7 +22225,9 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
     font-size: 0.875rem;
     line-height: 1.25rem;
     line-height: 1;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -22269,7 +22334,8 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
 }
 .main-nav-container.fixed-header .inner {
   transform: translate3d(0, 0, 0);
-  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
 }
 @media (max-width: 1024px) {
   .main-nav-container.fixed-header .inner {
@@ -22413,6 +22479,22 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 .store-footer {
   margin: 0 !important;
 }
+.store-footer {
+  position: relative;
+  margin-top: 2rem;
+  --tw-bg-opacity: 1;
+  background-color: rgba(14, 15, 15, 1);
+  background-color: rgba(14, 15, 15, var(--tw-bg-opacity, 1));
+  color: var(--color-background);
+}
+.group.store-footer.cursor-pointer *{
+    pointer-events: auto;
+}
+@media (min-width: 640px){
+    .store-footer{
+        margin-top: 4rem;
+    }
+}
 .store-footer .s-payments-list-item {
   width: 50px !important;
   background-color: var(--color-background) !important;
@@ -22447,25 +22529,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
   letter-spacing: 0em;
 }
 .store-footer .footer-description p{
-    font-size: clamp(0.75rem, 0.75rem + 0vw, 0.75rem);
+    font-size: clamp(0.75rem,0.75rem + 0vw,0.75rem);
     font-weight: 300;
     line-height: 1.25rem;
-}
-.store-footer{
-    position: relative;
-    margin-top: 2rem;
-    --tw-bg-opacity: 1;
-    background-color: rgba(14, 15, 15, 1);
-    background-color: rgba(14, 15, 15, var(--tw-bg-opacity, 1));
-    color: var(--color-background);
-}
-.group.store-footer.cursor-pointer *{
-    pointer-events: auto;
-}
-@media (min-width: 640px){
-    .store-footer{
-        margin-top: 4rem;
-    }
 }
 .store-footer a{
     transition-property: opacity;
@@ -22508,7 +22574,7 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 }
 .store-footer h3{
     margin-bottom: 0.75rem;
-    font-size: clamp(1rem, 0.9617rem + 0.1633vw, 1.125rem);
+    font-size: clamp(1rem,0.9617rem + 0.1633vw,1.125rem);
     font-weight: 500;
     line-height: 25px;
 }
@@ -22525,7 +22591,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
     border-width: 1px;
     font-size: 0.875rem;
     line-height: 1.25rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -22635,7 +22703,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
         padding: 0.75rem;
         font-size: 0.875rem;
         line-height: 1.25rem;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 300ms;
     }
@@ -22701,7 +22771,9 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
         --tw-shadow-colored: 5px 10px 30px var(--tw-shadow-color);
         box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 5px 10px 30px #2B2D340D;;
         box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 150ms;
     }
@@ -23559,11 +23631,13 @@ section.s-block-0{
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
-    --tw-content: '';
-    content: '';
+    --tw-content: "";
+    content: "";
     content: var(--tw-content);
 }
 input[type=radio].sr-only div.s-block--hero-slider .swiper-slide .swiper-lazy:after {
@@ -23583,8 +23657,8 @@ input[type=radio].sr-only:checked ~ div.s-block--hero-slider .swiper-slide .swip
     height: 100%;
     width: 100%;
     background-color: rgba(0, 0, 0, 0.6);
-    --tw-content: '';
-    content: '';
+    --tw-content: "";
+    content: "";
     content: var(--tw-content);
 }
 input[type=radio].sr-only div.s-block--hero-slider .swiper-slide .overlay-bg:after {
@@ -23759,8 +23833,8 @@ input[type=radio].sr-only:checked ~ div.s-block--hero-slider .swiper-slide .over
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
-    --tw-content: '';
-    content: '';
+    --tw-content: "";
+    content: "";
     content: var(--tw-content);
 }
 input[type=radio].sr-only div.has-overlay:after {
@@ -24096,7 +24170,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -24117,12 +24193,18 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
 .s-block--slider-with-bg .s-slider-block__display-all:hover{
     opacity: 0.8;
+}
+.s-block--slider-with-bg .s-slider-block__display-all {
+  /* Disabled state */
+  /* Button Variants */
 }
 .s-block--slider-with-bg .s-slider-block__display-all .loader {
   width: 0;
@@ -24130,9 +24212,6 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
   height: 16px;
   transform: scale(0);
   transition: 0.3s;
-}
-.s-block--slider-with-bg .s-slider-block__display-all {
-  /* Disabled state */
 }
 .s-block--slider-with-bg .s-slider-block__display-all.btn:disabled{
     cursor: default;
@@ -24155,22 +24234,21 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
 .s-block--slider-with-bg .s-slider-block__display-all:disabled .s-button-text{
     opacity: 0.7;
 }
-.s-block--slider-with-bg .s-slider-block__display-all {
-  /* Button Variants */
-  border-width: 1px;
-  --tw-border-opacity: 1;
-  border-color: rgba(229, 231, 235, 1);
-  border-color: rgba(229, 231, 235, var(--tw-border-opacity, 1));
-  --tw-bg-opacity: 1;
-  background-color: rgba(255, 255, 255, 1);
-  background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
-  --tw-text-opacity: 1;
-  color: rgba(156, 163, 175, 1);
-  color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
-  --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
-  box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow)
+.s-block--slider-with-bg .s-slider-block__display-all{
+    border-width: 1px;
+    --tw-border-opacity: 1;
+    border-color: rgba(229, 231, 235, 1);
+    border-color: rgba(229, 231, 235, var(--tw-border-opacity, 1));
+    --tw-bg-opacity: 1;
+    background-color: rgba(255, 255, 255, 1);
+    background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
+    --tw-text-opacity: 1;
+    color: rgba(156, 163, 175, 1);
+    color: rgba(156, 163, 175, var(--tw-text-opacity, 1));
+    --tw-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --tw-shadow-colored: 0 1px 2px 0 var(--tw-shadow-color);
+    box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
 }
 .s-block--slider-with-bg .s-slider-block__display-all:hover{
     border-color: #414042;
@@ -24233,7 +24311,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
     padding: 0.75rem;
     text-align: center;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 500ms;
 }
@@ -24279,7 +24359,9 @@ input[type=radio].sr-only:checked ~ div.s-block--slider-with-bg .slider-bg:befor
     --tw-text-opacity: 1;
     color: rgba(75, 85, 99, 1);
     color: rgba(75, 85, 99, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 500ms;
 }
@@ -25084,7 +25166,9 @@ input[type=radio].sr-only:checked ~ div.pie-wrapper {
         --tw-shadow-colored: -1px -2px 9px 0 var(--tw-shadow-color);
         box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), -1px -2px 9px 0 rgba(0,0,0,0.05);
         box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-delay: 500ms;
         transition-duration: 700ms;
@@ -25107,7 +25191,9 @@ input[type=radio].sr-only:checked ~ div.pie-wrapper {
         transform: translate(var(--tw-translate-x), 1.25rem) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
         transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
         opacity: 0;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-duration: 700ms;
         transition-timing-function: cubic-bezier(0.55, 0, 0.1, 1);
@@ -25121,6 +25207,10 @@ input[type=radio].sr-only:checked ~ div.pie-wrapper {
   .is-sticky-product-bar .sticky-product-bar__price,
   .is-sticky-product-bar .sticky-product-bar .form-label{
         display: none;
+    }
+  .is-sticky-product-bar .sticky-product-bar__quantity{
+        margin: 0px;
+        transition-delay: 900ms;
     }
   .is-sticky-product-bar .sticky-product-bar__quantity salla-quantity-input{
         width: 100%;
@@ -25140,10 +25230,6 @@ input[type=radio].sr-only:checked ~ div.pie-wrapper {
 }
   .is-sticky-product-bar .sticky-product-bar__quantity salla-quantity-input .s-quantity-input-input{
         width: 80%;
-    }
-  .is-sticky-product-bar .sticky-product-bar__quantity{
-        margin: 0px;
-        transition-delay: 900ms;
     }
   .is-sticky-product-bar .sticky-product-bar salla-add-product-button{
         margin: 0px;
@@ -25574,7 +25660,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     --tw-text-opacity: 1;
     color: rgba(107, 114, 128, 1);
     color: rgba(107, 114, 128, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -25649,7 +25737,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     background-color: rgba(255, 255, 255, var(--tw-bg-opacity, 1));
     font-size: 0.875rem;
     line-height: 1.25rem;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -25696,7 +25786,9 @@ salla-quantity-input[max="1"] .s-quantity-input-button{
     --tw-text-opacity: 1;
     color: rgba(255, 255, 255, 1);
     color: rgba(255, 255, 255, var(--tw-text-opacity, 1));
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 150ms;
 }
@@ -26230,8 +26322,8 @@ input[type=radio].sr-only:checked ~ div.points-ways__list .way-item__icon span {
   --tw-bg-opacity: 1;
   background-color: rgba(245, 247, 249, 1);
   background-color: rgba(245, 247, 249, var(--tw-bg-opacity, 1));
-  --tw-content: '';
-  content: '';
+  --tw-content: "";
+  content: "";
   content: var(--tw-content);
 }
 input[type=radio].sr-only div.landing-page > header:before {
@@ -26318,7 +26410,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
         --tw-shadow-colored: -1px -2px 9px 0 var(--tw-shadow-color);
         box-shadow: 0 0 rgba(0,0,0,0), 0 0 rgba(0,0,0,0), -1px -2px 9px 0 rgba(0,0,0,0.05);
         box-shadow: var(--tw-ring-offset-shadow, 0 0 rgba(0,0,0,0)), var(--tw-ring-shadow, 0 0 rgba(0,0,0,0)), var(--tw-shadow);
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
         transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+        transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
         transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
         transition-delay: 500ms;
         transition-duration: 700ms;
@@ -26378,6 +26472,21 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .btn-ready { /* أسود */
 }
+.strike-diagonal {
+  position: relative;
+  overflow: hidden;
+}
+.strike-diagonal::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 140%;
+  height: 1.5px;
+  background-color: rgba(0, 0, 0, 0.7725490196); /* gray */
+  transform: rotate(-35deg);
+  transform-origin: center;
+}
 .btn-ready .add-icon {
   color: #9ca3af !important;
 }
@@ -26397,6 +26506,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-entry {
   background-color: var(--color-background);
+  /* When wishlist is added */
+  /* When wishlist is not added */
+  /* Hide not_filled version when added */
+  /* When wishlist is added */
+  /* Hide the empty icon when added */
+  /* When wishlist is not added */
+  /* Hide the filled icon when not added */
 }
 .s-product-card-entry .s-product-card-wishlist-btn {
   position: static !important;
@@ -26447,9 +26563,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border-radius: 50% !important;
   margin: 0 !important;
 }
-.s-product-card-entry {
-  /* When wishlist is added */
-}
 .s-product-card-entry .s-product-card-wishlist-added span svg {
   fill: var(--color-font) !important;
 }
@@ -26458,23 +26571,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg:hover { /* Keep same color or change if needed */
 }
-.s-product-card-entry {
-  /* When wishlist is not added */
-}
 .s-product-card-entry .not-added span svg {
   fill: var(--color-font) !important;
 }
 .s-product-card-entry .not-added span svg:hover {
   fill: var(--color-font) !important;
 }
-.s-product-card-entry {
-  /* Hide not_filled version when added */
-}
 .s-product-card-entry .s-product-card-wishlist-added span .not_filled {
   display: none;
-}
-.s-product-card-entry {
-  /* When wishlist is added */
 }
 .s-product-card-entry .s-product-card-wishlist-added span svg {
   fill: var(--color-font) !important;
@@ -26482,23 +26586,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-entry .s-product-card-wishlist-added span svg:hover {
   fill: var(--color-font) !important;
 }
-.s-product-card-entry {
-  /* Hide the empty icon when added */
-}
 .s-product-card-entry .s-product-card-wishlist-added span .not_filled {
   display: none;
-}
-.s-product-card-entry {
-  /* When wishlist is not added */
 }
 .s-product-card-entry .not-added span svg {
   fill: var(--color-font) !important;
 }
 .s-product-card-entry .not-added span svg:hover {
   fill: var(--color-font) !important;
-}
-.s-product-card-entry {
-  /* Hide the filled icon when not added */
 }
 .s-product-card-entry .not-added span .filled {
   display: none;
@@ -26538,12 +26633,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .s-product-card-image::before {
   font-family: "sallaicons";
 }
+.s-product-card-vertical {
+  border-radius: 0 !important;
+}
 .s-product-card-vertical:hover .card-floating-btn {
   bottom: 0 !important;
   opacity: 1 !important;
-}
-.s-product-card-vertical {
-  border-radius: 0 !important;
 }
 .s-product-card-vertical .s-product-card-image {
   border-radius: 0 !important;
@@ -26791,6 +26886,15 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .mobile_buttons {
   gap: 8px;
+  /* الزر يكون مرجعية للتمركز */
+  /* أثناء اللودينج */
+  /* إخفاء القلب + النص */
+  /* تمركز اللودر في النص */
+  /* إظهار اللودر أثناء اللودينج */
+  /* NOT ADDED state */
+  /* When wishlist is not added */
+  /* Hide empty icon when added */
+  /* Hide filled icon when not added */
 }
 .single .mobile_buttons salla-social-share button {
   border: 1px solid var(--color-font) !important;
@@ -26805,29 +26909,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   border: 1px solid var(--color-font) !important;
   border-radius: 1px !important;
 }
-.single .mobile_buttons {
-  /* الزر يكون مرجعية للتمركز */
-}
 .single .mobile_buttons .s-button-element {
   position: relative;
-}
-.single .mobile_buttons {
-  /* أثناء اللودينج */
 }
 .single .mobile_buttons .s-button-element[loading],
 .single .mobile_buttons .s-button-wrap.is-loading .s-button-element {
   pointer-events: none;
 }
-.single .mobile_buttons {
-  /* إخفاء القلب + النص */
-}
 .single .mobile_buttons .s-button-element[loading] .s-button-text,
 .single .mobile_buttons .s-button-wrap.is-loading .s-button-text {
   opacity: 0;
   visibility: hidden;
-}
-.single .mobile_buttons {
-  /* تمركز اللودر في النص */
 }
 .single .mobile_buttons .s-button-element .s-button-loader {
   position: absolute;
@@ -26837,16 +26929,10 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   opacity: 0;
   visibility: hidden;
 }
-.single .mobile_buttons {
-  /* إظهار اللودر أثناء اللودينج */
-}
 .single .mobile_buttons .s-button-element[loading] .s-button-loader,
 .single .mobile_buttons .s-button-wrap.is-loading .s-button-loader {
   opacity: 1;
   visibility: visible;
-}
-.single .mobile_buttons {
-  /* NOT ADDED state */
 }
 .single .mobile_buttons .btn--wishlist .is-added span svg {
   fill: rgb(170, 0, 0) !important;
@@ -26854,23 +26940,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .mobile_buttons .btn--wishlist .is-added span svg:hover {
   fill: red !important;
 }
-.single .mobile_buttons {
-  /* When wishlist is not added */
-}
 .single .mobile_buttons .btn--wishlist .not-added span svg {
   fill: var(--color-font) !important;
 }
 .single .mobile_buttons .btn--wishlist .not-added span svg:hover {
   fill: var(--color-font) !important;
 }
-.single .mobile_buttons {
-  /* Hide empty icon when added */
-}
 .single .mobile_buttons .btn--wishlist .is-added span .not_filled {
   display: none !important;
-}
-.single .mobile_buttons {
-  /* Hide filled icon when not added */
 }
 .single .mobile_buttons .btn--wishlist .not-added span .filled {
   display: none !important;
@@ -26947,6 +27024,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     padding: 10px;
   }
 }
+.single {
+  /* NOT ADDED state */
+  /* When wishlist is not added */
+  /* Hide empty icon when added */
+  /* Hide filled icon when not added */
+}
 .single salla-add-product-button salla-button button {
   height: 48px !important;
 }
@@ -27013,6 +27096,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .single .comment-form salla-rating-stars {
   padding-bottom: 10px !important;
+  margin-bottom: 0px !important;
 }
 .single .comment-form salla-rating-stars {
   padding-top: 16px;
@@ -27022,6 +27106,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   display: block;
   border-radius: 10px;
   text-align: center;
+  margin-top: 20px;
 }
 @media (min-width: 768px) {
   .single .comment-form salla-rating-stars {
@@ -27030,12 +27115,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   .single .comment-form salla-rating-stars {
     margin-top: 50px;
   }
-}
-.single .comment-form salla-rating-stars {
-  margin-bottom: 0px !important;
-}
-.single .comment-form salla-rating-stars {
-  margin-top: 20px;
 }
 .single .comment-form .s-rating-stars-wrapper {
   display: flex;
@@ -27091,17 +27170,11 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .swiper-slide {
   height: 100%;
 }
-.single {
-  /* NOT ADDED state */
-}
 .single .btn--wishlist .is-added span svg {
   fill: var(--color-font) !important;
 }
 .single .btn--wishlist .is-added span svg:hover {
   fill: var(--color-font) !important;
-}
-.single {
-  /* When wishlist is not added */
 }
 .single .btn--wishlist .not-added span svg {
   fill: var(--color-font) !important;
@@ -27109,14 +27182,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .btn--wishlist .not-added span svg:hover {
   fill: var(--color-font) !important;
 }
-.single {
-  /* Hide empty icon when added */
-}
 .single .btn--wishlist .is-added span .not_filled {
   display: none !important;
-}
-.single {
-  /* Hide filled icon when not added */
 }
 .single .btn--wishlist .not-added span .filled {
   display: none !important;
@@ -27172,7 +27239,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   width: 100%;
   height: 100%;
   background: rgba(255, 255, 255, 0.35);
-  backdrop-filter: saturate(120%) blur(1px);
+  -webkit-backdrop-filter: saturate(120%) blur(1px);
+          backdrop-filter: saturate(120%) blur(1px);
   opacity: 0.5;
   border-radius: 0;
   border-width: 0;
@@ -27683,6 +27751,18 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .single-product-slider .s-tabs-active::after {
   width: 70%;
 }
+#quick-eye-model {
+  /* الصورة الاكتيف */
+  /* الخيار المعطل (اختر) */
+  /* عنوان الخيار (الحجم / اللون) */
+  /* إلغاء الوضع المخفي/المتحرك */
+  /* إظهار القائمة على طول */
+  /* تنسيق العناصر */
+  /* إخفاء زر الفتح/الإغلاق */
+  /* ====== الأساس ====== */
+  /* ====== الألوان الرسمية لكل منصة ====== */
+  /* ====== تأثير hover ====== */
+}
 #quick-eye-model .s-product-options-option {
   display: grid;
   grid-template-columns: repeat(1, minmax(0, 1fr));
@@ -27739,23 +27819,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model .product-thumbs-image {
   transition: opacity 0.3s ease;
 }
-#quick-eye-model {
-  /* الصورة الاكتيف */
-}
 #quick-eye-model .product-thumbs-image.swiper-slide-thumb-active {
   opacity: 1 !important;
-}
-#quick-eye-model {
-  /* الخيار المعطل (اختر) */
 }
 #quick-eye-model .radio-placeholder span {
   background: #f3f4f6;
   color: #9ca3af;
   cursor: not-allowed;
   border-style: dashed;
-}
-#quick-eye-model {
-  /* عنوان الخيار (الحجم / اللون) */
 }
 #quick-eye-model .custom-option-title {
   color: #1f2937;
@@ -27769,18 +27840,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
     overflow: scroll;
   }
 }
-#quick-eye-model {
-  /* إلغاء الوضع المخفي/المتحرك */
-}
 #quick-eye-model salla-social-share .s-social-share-wrapper {
   display: flex !important;
 }
 #quick-eye-model salla-social-share .s-social-share-wrapper {
   align-items: center;
   gap: 8px; /* مسافة بين الأيقونات */
-}
-#quick-eye-model {
-  /* إظهار القائمة على طول */
 }
 #quick-eye-model salla-social-share .s-social-share-list {
   display: flex !important;
@@ -27796,9 +27861,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   height: 100%;
   overflow: visible;
 }
-#quick-eye-model {
-  /* تنسيق العناصر */
-}
 #quick-eye-model salla-social-share .s-social-share-list li {
   transform: none !important;
   opacity: 1 !important;
@@ -27806,15 +27868,9 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model salla-social-share .s-social-share-list li {
   margin: 0;
 }
-#quick-eye-model {
-  /* إخفاء زر الفتح/الإغلاق */
-}
 #quick-eye-model salla-social-share slot-fb,
 #quick-eye-model salla-social-share .s-social-share-btn {
   display: none !important;
-}
-#quick-eye-model {
-  /* ====== الأساس ====== */
 }
 #quick-eye-model .s-social-share-list {
   display: flex;
@@ -27841,14 +27897,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   fill: var(--color-font-light); /* لون الأيقونة */
   transition: all 0.3s ease;
 }
-#quick-eye-model {
-  /* ====== الألوان الرسمية لكل منصة ====== */
-}
 #quick-eye-model .s-social-share-list svg {
   fill: var(--color-font); /* Neutral Gray */
-}
-#quick-eye-model {
-  /* ====== تأثير hover ====== */
 }
 #quick-eye-model .s-social-share-list li a:hover {
   background-color: #414042;
@@ -27883,13 +27933,13 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model .s-modal-close svg {
   fill: var(--color-background);
 }
+#quick-eye-model .swiper-wrapper {
+  max-height: 310px;
+}
 @media (min-width: 768px) {
   #quick-eye-model .swiper-wrapper {
     max-height: 522px;
   }
-}
-#quick-eye-model .swiper-wrapper {
-  max-height: 310px;
 }
 #quick-eye-model .salla-slider {
   height: 100%;
@@ -27928,14 +27978,17 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 #quick-eye-model .product-thumbs-image::after {
   display: none;
 }
+#quick-eye-model .product-images-slider .s-slider-container {
+  max-height: 310px;
+  flex: 1;
+}
 @media (min-width: 768px) {
   #quick-eye-model .product-images-slider .s-slider-container {
     max-height: 522px;
   }
 }
-#quick-eye-model .product-images-slider .s-slider-container {
-  max-height: 310px;
-  flex: 1;
+#quick-eye-model .s-slider-thumbs {
+  max-height: 80px;
 }
 @media (min-width: 768px) {
   #quick-eye-model .s-slider-thumbs {
@@ -27946,9 +27999,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   #quick-eye-model .s-slider-thumbs {
     display: none;
   }
-}
-#quick-eye-model .s-slider-thumbs {
-  max-height: 80px;
 }
 #quick-eye-model .product-images-slider .s-slider-thumbs-container {
   padding: 0;
@@ -27964,7 +28014,8 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin: 0 0 0px;
 }
 #quick-eye-model .s-modal-overlay {
-  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
 }
 @media (max-width: 640px) {
   #quick-eye-model .swiper {
@@ -28197,6 +28248,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart_slider .s-slider-block__title-nav {
   display: none;
 }
+.cart {
+  /* When wishlist is not added */
+  /* الحالة الافتراضية */
+  /* لما يكون في wishlist */
+  /* لما يكون مش في wishlist */
+}
 .cart .s-products-slider-card {
   max-width: 100% !important;
 }
@@ -28256,32 +28313,20 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .cart .btn--wishlist .is-added span svg:hover {
   fill: #e11d48 !important;
 }
-.cart {
-  /* When wishlist is not added */
-}
 .cart .btn--wishlist .not-added span svg {
   fill: var(--color-font) !important;
 }
 .cart .btn--wishlist .not-added span svg:hover {
   fill: var(--color-font) !important;
 }
-.cart {
-  /* الحالة الافتراضية */
-}
 .cart .s-product-card-wishlist-btn .filled {
   display: none;
-}
-.cart {
-  /* لما يكون في wishlist */
 }
 .cart .s-product-card-wishlist-btn.s-product-card-wishlist-added .filled {
   display: block;
 }
 .cart .s-product-card-wishlist-btn.s-product-card-wishlist-added .not-filled {
   display: none;
-}
-.cart {
-  /* لما يكون مش في wishlist */
 }
 .cart .s-product-card-wishlist-btn:not(.s-product-card-wishlist-added) .not-filled {
   display: block;
@@ -28313,9 +28358,12 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   margin-top: 5px !important;
   margin-left: 8px !important;
   margin-right: 8px !important;
+  background-color: var(--color-background) !important;
 }
 .cart .s-form-control {
   color: var(--color-font);
+  border-color: #414042;
+  border-color: var(--color-primary);
 }
 @media (max-width: 768px) {
   .cart .s-form-control {
@@ -28324,13 +28372,6 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .cart .s-form-control .s-product-options-option-booking .s-product-options-option-content {
   margin: 0 !important;
-}
-.cart .s-form-control {
-  background-color: var(--color-background) !important;
-}
-.cart .s-form-control {
-  border-color: #414042;
-  border-color: var(--color-primary);
 }
 .cart .s-form-control .s-product-options-option-label {
   margin-top: 5px;
@@ -28982,7 +29023,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     font-size: 0.875rem;
     line-height: 1.25rem;
     font-weight: 700;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, -webkit-backdrop-filter;
     transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter, -webkit-backdrop-filter;
     transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     transition-duration: 300ms;
 }
@@ -29318,6 +29361,13 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-\[90vh\]{
         height: 90vh;
     }
+    .md\:h-full{
+        height: 100%;
+    }
+    .md\:h-fit{
+        height: -moz-fit-content;
+        height: fit-content;
+    }
     .md\:w-1\/2{
         width: 50%;
     }
@@ -29350,6 +29400,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
+    }
+    .md\:w-fit{
+        width: -moz-fit-content;
+        width: fit-content;
     }
     .md\:max-w-1\/2{
         max-width: 50%;
@@ -29432,6 +29486,16 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         margin-bottom: calc(0px * 0);
         margin-bottom: calc(0px * var(--tw-space-y-reverse));
     }
+    .md\:rounded-none{
+        border-radius: 0px;
+    }
+    .md\:rounded-\[40px\]{
+        border-radius: 40px;
+    }
+    .md\:bg-primary{
+        background-color: #414042;
+        background-color: var(--color-primary);
+    }
     .md\:p-5{
         padding: 1.25rem;
     }
@@ -29494,6 +29558,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 9px;
         padding-bottom: 9px;
     }
+    .md\:px-\[6px\]{
+        padding-left: 6px;
+        padding-right: 6px;
+    }
     .md\:\!pb-9{
         padding-bottom: 2.25rem !important;
     }
@@ -29525,6 +29593,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:tracking-normal{
         letter-spacing: 0em;
+    }
+    .md\:text-background{
+        color: var(--color-background);
     }
     .md\:opacity-0{
         opacity: 0;
