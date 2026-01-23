@@ -955,3 +955,8 @@ salla-add-product-button{
 
   }
 }
+@media (max-width: 640px) {
+    .is-sticky-product-bar .sticky-product-bar__quantity salla-quantity-input {
+        width: 96px !important;
+    }
+}
