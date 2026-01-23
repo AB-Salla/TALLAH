@@ -921,37 +921,42 @@ salla-add-product-button{
       fill: var(--color-background);
     }
   }
-  .s-tabs-header {
-    border: none !important;
-    justify-content: center;
-    border-bottom: 1px solid #E4E4E7 !important;
+}
+.s-tabs-header {
+  border: none !important;
+  justify-content: center;
+  border-bottom: 1px solid #E4E4E7 !important;
+}
+.s-tabs-header-item {
+  padding-bottom: 16px;
+  @apply font-semibold  leading-7 tracking-normal ;
+  font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
+  background-color: transparent;
+  color: var(--color-primary);
+  opacity: .7;
+   &::after {
+    content: "";
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0%;
+    height: 3px;
+    background-color: var(--color-primary);
+    transition: all .3s ease-in-out;
   }
-  .s-tabs-header-item {
-    padding-bottom: 16px;
-    @apply font-semibold  leading-7 tracking-normal ;
-    font-size: clamp(1.25rem, 1.0299rem + 0.939vw, 1.875rem);
-    background-color: transparent;
-    color: var(--color-primary);
-    opacity: .7;
-     &::after {
-      content: "";
-      position: absolute;
-      bottom: -2px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 0%;
-      height: 3px;
-      background-color: var(--color-primary);
-      transition: all .3s ease-in-out;
-    }
-  }
-  .s-tabs-active {
-    color: var(--color-primary);
-    position: relative;
-   opacity: 1;
-    &::after {
-      width: 70%;
+}
+.s-tabs-active {
+  color: var(--color-primary);
+  position: relative;
+ opacity: 1;
+  &::after {
+    width: 70%;
 
+  }
+}
+@media (max-width: 640px) {
+    .is-sticky-product-bar .sticky-product-bar__quantity salla-quantity-input {
+        width: 96px !important;
     }
-  }
-  }
+}
