@@ -489,23 +489,27 @@
 							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
 							<div class="flex items-center justify-center gap-1">
 								<span class="font-medium !text-base flex gap-2">
-									{{ product.add_to_cart_label }} (
-													<div class="flex whitespace-nowrap gap-4 items-center sm:hidden">
-														<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap flex">
-															<h4 class="font-medium text-sm leading-5 tracking-wide text-center text-background">{{product.sale_price|money}}</h4>
-															<span class="font-medium text-sm leading-5 tracking-wide text-center text-background line-through">{{product.regular_price|money}}</span>
-														</div>
+									{{ product.add_to_cart_label }} 
+									<div class="flex sm:hidden">
 
-														<div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
-															{% if product.starting_price %}
-																<span class="">{{ trans('pages.products.starting_price') }}</span>
-															{% endif %}
-															<h2 class="font-medium text-sm leading-5 tracking-wide text-center text-background">
-																{{product.starting_price ? product.starting_price|money : product.price|money }}
-															</h2>
-														</div>
-													</div>
-											 )
+										(
+											<div class="flex whitespace-nowrap gap-4 items-center sm:hidden">
+												<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap flex">
+													<h4 class="font-medium text-sm leading-5 tracking-wide text-center text-background">{{product.sale_price|money}}</h4>
+													<span class="font-medium text-sm leading-5 tracking-wide text-center text-background line-through">{{product.regular_price|money}}</span>
+												</div>
+												
+												<div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+													{% if product.starting_price %}
+													<span class="">{{ trans('pages.products.starting_price') }}</span>
+													{% endif %}
+													<h2 class="font-medium text-sm leading-5 tracking-wide text-center text-background">
+														{{product.starting_price ? product.starting_price|money : product.price|money }}
+													</h2>
+												</div>
+											</div>
+											)
+										</div>
 								</span>
 							</div>
 						</salla-add-product-button>
