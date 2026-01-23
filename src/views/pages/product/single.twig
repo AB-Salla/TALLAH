@@ -489,11 +489,11 @@
 							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
 							<div class="flex items-center justify-center gap-1">
 								<span class="font-medium !text-base flex gap-2">
-									{{ product.add_to_cart_label }} {% if theme.settings.get('sticky_add_to_cart') %}
+									{{ product.add_to_cart_label }} ( {% if theme.settings.get('sticky_add_to_cart') %}
 													<div class="flex whitespace-nowrap gap-4 items-center sm:hidden">
 														<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
 															<h4 class="text-primary font-bold text-xl lg:text-[28px] inline-block">{{product.sale_price|money}}</h4>
-															<span class="text-gray-500 text-xl line-through">{{product.regular_price|money}}</span>
+															<span class="text-background text-xl line-through">{{product.regular_price|money}}</span>
 														</div>
 
 														<div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
@@ -505,7 +505,7 @@
 															</h2>
 														</div>
 													</div>
-											{% endif %}
+											{% endif %} )
 								</span>
 							</div>
 						</salla-add-product-button>
