@@ -291,6 +291,14 @@ watchAndAdjustHeader() {
     };
 }
   initiateStickyMenu() {
+    // Create and update CSS variable for scroll Y
+    window.addEventListener('scroll', () => {
+      const scrollY = window.scrollY || window.pageYOffset;
+      document.documentElement.style.setProperty('--scroll-y', `${scrollY}px`);
+    });
+
+    // Set initial value
+    document.documentElement.style.setProperty('--scroll-y', '0px');
     let header = this.element("#mainnav"),
     height = this.element("#mainnav .inner")?.clientHeight;
     // Declare magicMenu variable
@@ -311,16 +319,16 @@ watchAndAdjustHeader() {
     window.addEventListener(
       "scroll",
       () => {
-        window.scrollY >= header.offsetTop + height
-          ? header.classList.add("fixed-pinned", "animated")
+        window.scrollY >= 1
+          ? header.classList.add("fixed-pinned")
           : header.classList.remove("fixed-pinned");
-        window.scrollY >= 200
+        window.scrollY >= 1
           ? header.classList.add("fixed-header")
-          : header.classList.remove("fixed-header", "animated");
+          : header.classList.remove("fixed-header");
 
         // Add scrolled class to magicMenu when scrolling
         function toggleScrollClass(element) {
-          if (window.scrollY >= 200) {
+          if (window.scrollY >= 1) {
               element.classList.replace("not-scrolled", "scrolled");
           } else {
               element.classList.replace("scrolled", "not-scrolled");

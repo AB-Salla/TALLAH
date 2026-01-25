@@ -1,7 +1,15 @@
 {
   "blocks": {
     "header": {
-      "cart": "Cart"
+      "cart": "Cart",
+      "search_label": "Search",
+      "no_results": "No Results Found",
+      "trending": "Trending",
+      "featured_categories": "Featured Categories",
+      "day": "d",
+      "hour": "h",
+      "minute": "m",
+      "second": "s"
     },
     "appBanner": {
       "download_now": "download now"
