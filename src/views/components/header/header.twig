@@ -54,9 +54,12 @@ Global Variables (from Theme)
 	{% endif %}
 
 	<style>
-		#search-panel-wrapper.scrolled {
+        #search-panel-wrapper.scrolled {
 			top: 54px;
 		}
+                #search-panel-wrapper.not-scrolled {
+			top: var(--header-height);
+                }
 		#mainnav:before {
 			background: {{initial_bg}};
 		}
@@ -94,16 +97,15 @@ Global Variables (from Theme)
 			color: {{header_text_color}}
 			!important;
 		}
-		{% if page.slug == 'index' %}
-			.fixed-pinned + #mega-content {
-				top: 60px;
+			 #mega-content.scrolled {
+				top: 54px;
 			}
-		{% endif %}
 	</style>
 
 	{# If hover is enabled, define CSS rule to apply dynamic background and text color on hover using CSS variables #}
-	{% if header_hover %}
 		<style>
+        	{% if header_hover %}
+
 			.site-header.active-overlay {
 				background: {{header_bg_color}}
 				!important;
@@ -116,7 +118,7 @@ Global Variables (from Theme)
 			header:hover .top-navbar {
 				background: var(--hover-bg) !important;
 			}
-			header:hover .top-navbar:is(p, span, a) {
+			header:hover .top-navbar :is(p, span, a) {
 				color: var(--hover-text) !important;
 			}
 			header:hover .inner {
@@ -125,8 +127,9 @@ Global Variables (from Theme)
 			header:hover .hover-box {
 				color: var(--hover-text) !important;
 			}
+            	{% endif %}
+
 		</style>
-	{% endif %}
 
 	{# 'group' = parent hover trigger for .hover-box #}
 	<div class="relative">
@@ -314,7 +317,7 @@ Global Variables (from Theme)
 			</div>
 
 			{# Mega menu wrapper #}
-			<div id="custom-mega-menu-wrapper" class="hidden lg:relative lg:h-full lg:flex lg:items-center flex-1 justify-start">
+			<div id="custom-mega-menu-wrapper" class="hidden lg:relative lg:h-full lg:flex lg:items-center flex-1 justify-start not-scrolled">
 				<div
 					id="custom-mega-menu" class="relative h-full">
 					<!-- Tabs -->
@@ -480,7 +483,7 @@ Global Variables (from Theme)
 </div>
 
 {# Search Panel #}
-<div id="search-panel-wrapper" class="fixed w-full h-full lg:h-[70vh] overflow-hidden pointer-events-none" style="">
+<div id="search-panel-wrapper" class="fixed w-full h-full lg:h-[70vh] overflow-hidden pointer-events-none not-scrolled">
 	<div id="search-panel" class="relative z-30 w-full bg-white transition-all duration-300 -translate-y-full">
 		<div class="mx-auto flex flex-col items-start gap-6 lg:gap-[32px] w-full max-w-full px-4 py-4 lg:w-[777px] lg:px-0 lg:py-6">
 			<div class="flex h-[40px] items-center self-stretch">
