@@ -38,7 +38,7 @@ Global Variables (from Theme)
 		{% if page.slug == 'index' %}
 		{# Homepage header variables #}
 			{% if header_hover %}
-			{% set initial_bg = 'linear-gradient(0deg, rgba(17, 16, 16, 0) , rgba(17, 16, 16, 10), rrgba(17, 16, 16, 60) )' %}
+			{% set initial_bg = 'linear-gradient(0deg, rgba(17, 16, 16, 0) 0%, rgba(17, 16, 16, 0.1) 10%, rgba(17, 16, 16, 0.6) 65%)' %}
 			{% set initial_text = 'white' %}
 			{% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
 		{% else %}
