@@ -55,7 +55,7 @@ Global Variables (from Theme)
     
     <style>
     #search-panel-wrapper.scrolled{
-      top:56px;
+      top:54px;
     }
     #mainnav:before{
       background:{{initial_bg}};
@@ -63,8 +63,11 @@ Global Variables (from Theme)
     #mobile-menu-overlay{
       top:var(--header-height);
     }
+    .fixed-pinned #mobile-menu-overlay{
+      top:var(--header-height);
+    }
         #mobile-menu-overlay.scrolled{
-      top:56px;
+      top:54px;
     }
         .fixed-pinned.site-header {
             background: {{ header_bg_color }} !important;
@@ -454,7 +457,7 @@ Global Variables (from Theme)
         </div>
         
         {# Search Panel #}
-        <div id="search-panel-wrapper" class="fixed w-full h-full lg:h-[70vh] overflow-hidden not-scrolled pointer-events-none" style="">
+        <div id="search-panel-wrapper" class="fixed w-full h-full lg:h-[70vh] overflow-hidden pointer-events-none" style="">
             <div id="search-panel" class="relative z-30 w-full bg-white transition-all duration-300 -translate-y-full">
                 <div class="mx-auto flex flex-col items-start gap-6 lg:gap-[32px] w-full max-w-full px-4 py-4 lg:w-[777px] lg:px-0 lg:py-6">
                     <div class="flex h-[40px] items-center self-stretch">
@@ -619,7 +622,7 @@ Global Variables (from Theme)
 6) SEARCH OVERLAY PANEL
 ===================================== #}
 <div id="search-overlay-container" class="fixed inset-0 z-20 hidden">
-  <div id="search-overlay-background" class="not-scrolled sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"
+  <div id="search-overlay-background" class=" sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"
    ></div>
 
 
