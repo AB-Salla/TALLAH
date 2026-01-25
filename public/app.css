@@ -22305,8 +22305,6 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
   left: 0;
   width: 100%;
   z-index: 29;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-  transform: translate3d(0, -100%, 0);
 }
 @media (max-width: 1024px) {
   .main-nav-container.fixed-pinned .inner {
@@ -22323,11 +22321,6 @@ input[type=radio].sr-only:checked ~ div.radio-images__badge {
 .main-nav-container.fixed-pinned .main-menu > li > a {
   padding-top: 20px;
   padding-bottom: 20px;
-}
-.main-nav-container.fixed-header .inner {
-  transform: translate3d(0, 0, 0);
-  -webkit-backdrop-filter: blur(20px);
-          backdrop-filter: blur(20px);
 }
 @media (max-width: 1024px) {
   .main-nav-container.fixed-header .inner {
@@ -22467,6 +22460,16 @@ input[type=radio].sr-only:checked ~ div#nav-cart span {
 .s-user-menu-trigger img{
     height: 1.75rem;
     width: 1.75rem;
+}
+.main-nav-container.fixed-pinned .inner {
+  background: rgba(255, 255, 255, 0.144);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
+}
+.home .main-nav-container.fixed-pinned .inner {
+  background: rgba(0, 0, 0, 0.144);
+  -webkit-backdrop-filter: blur(20px);
+          backdrop-filter: blur(20px);
 }
 .store-footer {
   margin: 0 !important;

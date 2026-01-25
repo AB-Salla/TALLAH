@@ -27,7 +27,7 @@ Global Variables (from Theme)
 
 
 
-<header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full absolute top-0 left-0 ' : 'relative'}} z-50">
+<header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full absolute top-0 left-0 home' : 'relative'}} z-50">
     {# =====================================
       1) TOP NOTIFICATION BAR (Clickable)
       ====================================== #}
@@ -429,7 +429,7 @@ Global Variables (from Theme)
 
         
         {# Mega Content #}
-        <div id="mega-content" class="not-scrolled fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 transform scale-y-0 opacity-0 pointer-events-none origin-top shadow-lg transition-all duration-300 -translate-y-full border-t border-gray-500" style="background: {{ header_bg_color }};">
+        <div id="mega-content" class="not-scrolled fixed flex flex-row items-start gap-[49px] left-0 w-screen h-[70vh] z-20 transform scale-y-0 opacity-0 pointer-events-none origin-top transition-all duration-300 -translate-y-full border-t border-gray-500" style="background: {{ header_bg_color }};">
             {# Left: Child Categories Wrapper #}
             <div class="flex w-[328px] h-full flex-col items-start gap-[20px] shrink-0 bg-zinc-100">
                 <ul id="mega-childs" class="w-full p-[48px_68px_48px_64px] space-y-2" style="color: {{ initial_text }};"></ul>
@@ -455,7 +455,7 @@ Global Variables (from Theme)
         
         {# Search Panel #}
         <div id="search-panel-wrapper" class="fixed w-full h-full lg:h-[70vh] overflow-hidden not-scrolled pointer-events-none" style="">
-            <div id="search-panel" class="relative z-30 w-full bg-white shadow-lg transition-all duration-300 -translate-y-full">
+            <div id="search-panel" class="relative z-30 w-full bg-white transition-all duration-300 -translate-y-full">
                 <div class="mx-auto flex flex-col items-start gap-6 lg:gap-[32px] w-full max-w-full px-4 py-4 lg:w-[777px] lg:px-0 lg:py-6">
                     <div class="flex h-[40px] items-center self-stretch">
                         <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -472,7 +472,7 @@ Global Variables (from Theme)
                         <div class="relative w-full mx-auto">
                             <input id="custom-search-input" type="text" placeholder="{% if language.iso_code == 'ar' %}ابحث{% else %}Search{% endif %}" class="w-full border-0 border-b border-gray-300 focus:outline-none focus:border-b focus:border-gray-500"/>
                             <!-- Results Dropdown -->
-                            <div id="custom-search-results" class="absolute left-0 right-0 bg-white border border-gray-200 rounded-lg shadow-lg z-50 hidden">
+                            <div id="custom-search-results" class="absolute left-0 right-0 bg-white border border-gray-200 rounded-lg z-50 hidden">
                                 <ul id="custom-search-list" class="divide-y divide-gray-100 max-h-64 overflow-y-auto"></ul>
                                 <div id="custom-no-results" class="text-gray-500 px-4 py-2 hidden">لا توجد نتائج</div>
                             </div>
@@ -603,7 +603,7 @@ Global Variables (from Theme)
 4) SIMPLE MENU (Fallback / compact)
 ===================================== #}
 <div id="simple-menu" class="w-[242px] h-[375px]  p-[24px_24px_40px_24px] items-start gap-[16px] shrink-0 
-     flex flex-col bg-white shadow-md fixed  z-20 
+     flex flex-col bg-white fixed  z-20 
             transform scale-y-0 opacity-0 pointer-events-none 
             origin-top transition-all duration-200" >
   <ul id="simple-menu-list" class="flex flex-col p-4 space-y-2 text-sm text-black"></ul>

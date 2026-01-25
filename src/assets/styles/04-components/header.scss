@@ -102,6 +102,7 @@
   }
 
   &.fixed-pinned {
+
     .inner {
       position: fixed;
       top: 0;
@@ -109,8 +110,6 @@
       left: 0;
       width: 100%;
       z-index: 29;
-      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-      transform: translate3d(0, -100%, 0);
 
       @media (max-width: 1024px){
         transform: none;
@@ -137,8 +136,6 @@
 
   &.fixed-header {
     .inner {
-      transform: translate3d(0, 0, 0);
-      backdrop-filter: blur(20px);
 
       @media (max-width: 1024px){
         transform: none;
@@ -215,4 +212,12 @@ salla-user-menu{
 
 .s-user-menu-trigger img{
   @apply h-7 w-7;
+}
+.main-nav-container.fixed-pinned .inner{
+  background: rgba(255, 255, 255, 0.144);
+  backdrop-filter: blur(20px);
+}
+.home .main-nav-container.fixed-pinned .inner{
+  background: rgba(0, 0, 0, 0.144);
+  backdrop-filter: blur(20px);
 }
