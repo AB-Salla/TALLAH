@@ -314,26 +314,22 @@ watchAndAdjustHeader() {
         window.scrollY >= header.offsetTop + height
           ? header.classList.add("fixed-pinned", "animated")
           : header.classList.remove("fixed-pinned");
-        window.scrollY >= 200
+        window.scrollY >= 1
           ? header.classList.add("fixed-header")
           : header.classList.remove("fixed-header", "animated");
 
         // Add scrolled class to magicMenu when scrolling
         function toggleScrollClass(element) {
-          if (window.scrollY >= 200) {
+          if (window.scrollY >= 1) {
               element.classList.replace("not-scrolled", "scrolled");
           } else {
               element.classList.replace("scrolled", "not-scrolled");
           }
       }
-       window.scrollY >= 1
-          ? mobileMenu.classList.add("scrolled")
-          : mobileMenu.classList.remove("scrolled");
-                 window.scrollY >= 1
-          ? searchModal.classList.add("scrolled")
-          : searchModal.classList.remove("scrolled");
 
       if (magicMenu) toggleScrollClass(magicMenu);
+      if (mobileMenu) toggleScrollClass(mobileMenu);
+      if (searchModal) toggleScrollClass(searchModal);
       },
       { passive: true }
     );
