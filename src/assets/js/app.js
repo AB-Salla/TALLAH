@@ -516,7 +516,7 @@ watchAndAdjustHeader() {
 // ===============================
 
 
-  async init_SideCart() {
+async init_SideCart() {
     if (window.location.pathname.includes("/cart")) {
       // إذا كنا في صفحة الكارت، لا نحتاج للسايد كارت
       return;
