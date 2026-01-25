@@ -2453,10 +2453,6 @@ select{
     padding-left: 12px;
     padding-right: 12px;
 }
-.px-\[6px\]{
-    padding-left: 6px;
-    padding-right: 6px;
-}
 .px-\[8px\]{
     padding-left: 8px;
     padding-right: 8px;
@@ -2517,10 +2513,6 @@ select{
     padding-top: 20px;
     padding-bottom: 20px;
 }
-.py-\[3px\]{
-    padding-top: 3px;
-    padding-bottom: 3px;
-}
 .py-\[48px\]{
     padding-top: 48px;
     padding-bottom: 48px;
@@ -2528,10 +2520,6 @@ select{
 .py-\[4px\]{
     padding-top: 4px;
     padding-bottom: 4px;
-}
-.py-\[5px\]{
-    padding-top: 5px;
-    padding-bottom: 5px;
 }
 .py-\[6px\]{
     padding-top: 6px;
@@ -26476,6 +26464,21 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 }
 .btn-ready { /* أسود */
 }
+.strike-diagonal {
+  position: relative;
+  overflow: hidden;
+}
+.strike-diagonal::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: -10%;
+  width: 140%;
+  height: 1.5px;
+  background-color: rgba(0, 0, 0, 0.7725490196); /* gray */
+  transform: rotate(-35deg);
+  transform-origin: center;
+}
 .btn-ready .add-icon {
   color: #9ca3af !important;
 }
@@ -27701,14 +27704,14 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
 .single .single-product-slider .s-comments-item-has-order-check-icon svg {
   fill: var(--color-background);
 }
-.single .single-product-slider .s-tabs-header {
+.s-tabs-header {
   border: none !important;
   border-bottom: 1px solid #E4E4E7 !important;
 }
-.single .single-product-slider .s-tabs-header {
+.s-tabs-header {
   justify-content: center;
 }
-.single .single-product-slider .s-tabs-header-item {
+.s-tabs-header-item {
   padding-bottom: 16px;
   font-weight: 600;
   line-height: 1.75rem;
@@ -27719,7 +27722,7 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   color: var(--color-primary);
   opacity: 0.7;
 }
-.single .single-product-slider .s-tabs-header-item::after {
+.s-tabs-header-item::after {
   content: "";
   position: absolute;
   bottom: -2px;
@@ -27731,14 +27734,19 @@ input[type=radio].sr-only:checked ~ div.landing-page > header:before {
   background-color: var(--color-primary);
   transition: all 0.3s ease-in-out;
 }
-.single .single-product-slider .s-tabs-active {
+.s-tabs-active {
   color: #414042;
   color: var(--color-primary);
   position: relative;
   opacity: 1;
 }
-.single .single-product-slider .s-tabs-active::after {
+.s-tabs-active::after {
   width: 70%;
+}
+@media (max-width: 640px) {
+  .is-sticky-product-bar .sticky-product-bar__quantity salla-quantity-input {
+    width: 96px !important;
+  }
 }
 #quick-eye-model {
   /* الصورة الاكتيف */
@@ -29187,6 +29195,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .sm\:grid{
         display: grid;
     }
+    .sm\:hidden{
+        display: none;
+    }
     .sm\:h-5{
         height: 1.25rem;
     }
@@ -29350,6 +29361,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     .md\:h-\[90vh\]{
         height: 90vh;
     }
+    .md\:h-fit{
+        height: -moz-fit-content;
+        height: fit-content;
+    }
     .md\:w-1\/2{
         width: 50%;
     }
@@ -29382,6 +29397,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
     }
     .md\:w-auto{
         width: auto;
+    }
+    .md\:w-fit{
+        width: -moz-fit-content;
+        width: fit-content;
     }
     .md\:max-w-1\/2{
         max-width: 50%;
@@ -29464,6 +29483,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         margin-bottom: calc(0px * 0);
         margin-bottom: calc(0px * var(--tw-space-y-reverse));
     }
+    .md\:rounded-\[40px\]{
+        border-radius: 40px;
+    }
     .md\:p-5{
         padding: 1.25rem;
     }
@@ -29490,6 +29512,10 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-left: 1.5rem;
         padding-right: 1.5rem;
     }
+    .md\:px-\[18px\]{
+        padding-left: 18px;
+        padding-right: 18px;
+    }
     .md\:px-\[20px\]{
         padding-left: 20px;
         padding-right: 20px;
@@ -29514,9 +29540,9 @@ body.font-dinnextltarabic-regular .btn--add-to-cart {
         padding-top: 1.5rem;
         padding-bottom: 1.5rem;
     }
-    .md\:py-\[10px\]{
-        padding-top: 10px;
-        padding-bottom: 10px;
+    .md\:py-\[7px\]{
+        padding-top: 7px;
+        padding-bottom: 7px;
     }
     .md\:py-\[9px\]{
         padding-top: 9px;

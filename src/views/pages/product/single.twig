@@ -488,8 +488,28 @@
 						{% if product.notify_availability %} {{ product.notify_availability.subscribed ? 'is-subscribed' : '' }} channels="{{ product.notify_availability.channels|join(',') }}" subscribed-options="{{ product.notify_availability.subscribed_options|json_encode }}" 
 							{{ product.notify_availability.options ? 'notify-options-availability' : '' }} {% endif %}>
 							<div class="flex items-center justify-center gap-1">
-								<span class="font-medium !text-base">
-									{{ product.add_to_cart_label }}
+								<span class="font-medium !text-base flex gap-2">
+									{{ product.add_to_cart_label }} 
+									<div class="flex sm:hidden">
+
+										(
+											<div class="flex whitespace-nowrap gap-4 items-center sm:hidden">
+												<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap flex">
+													<h4 class="font-medium text-sm leading-5 tracking-wide text-center text-background">{{product.sale_price|money}}</h4>
+													<span class="font-medium text-sm leading-5 tracking-wide text-center text-background line-through">{{product.regular_price|money}}</span>
+												</div>
+												
+												<div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
+													{% if product.starting_price %}
+													<span class="">{{ trans('pages.products.starting_price') }}</span>
+													{% endif %}
+													<h2 class="font-medium text-sm leading-5 tracking-wide text-center text-background">
+														{{product.starting_price ? product.starting_price|money : product.price|money }}
+													</h2>
+												</div>
+											</div>
+											)
+										</div>
 								</span>
 							</div>
 						</salla-add-product-button>
@@ -869,4 +889,5 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% if product.has_3d_image %}
 		<script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 	{% endif %}
+	
 {% endblock %}

@@ -254,7 +254,7 @@ class ProductCard extends HTMLElement {
       const MAX_VISIBLE = 3;
       const isArabic = document.documentElement.lang === "ar";
 
-function renderOption(option) {
+const renderOption = (option) =>  {
   const items = option.details || [];
 
 const SIZE_LABEL = isArabic ? "المقاس" : "Size";
@@ -267,7 +267,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
     <div class="colors-wrapper mb-3">
     ${window.option_images?
       `<span class="block">
-        ${COLOR_LABEL} : <span class="selected-color font-semibold"></span>
+        ${COLOR_LABEL} : <span class="selected-color font-semibold ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50':''}"></span>
       </span>`:``
     }
         <div
@@ -276,7 +276,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
         >
           ${visible.map(item => `
             <span
-              class="w-6 h-6 rounded-full border cursor-pointer inline-block transition-all duration-200"
+              class="w-6 h-6 rounded-full border  inline-block ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50':' cursor-pointer'} transition-all duration-200"
               style="background-color:${item.color}"
               title="${item.name}"
               data-option-id="${item.id}">
@@ -297,7 +297,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
 
   if (option.type === "single-option") {
     return `
-      <div class="sizes-wrapper mb-3">
+      <div class="sizes-wrapper mb-3 ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50':''}">
        ${window.option_images?
       `<span class="block">
         ${SIZE_LABEL} :  <span class="selected-size font-semibold"></span>
@@ -309,14 +309,17 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
         >
           ${visible.map(item => `
             <button
-              class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 cursor-pointer"
+              class="px-2 py-1  md:px-[18px] md:py-[7px] border  border-[#9F9FA9] text-sm transition-all duration-200 
+              ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50 strike-diagonal':'cursor-pointer'}
+              "
+             ${this.product.status !== 'sale' ? 'disabled="disabled"' : ""}
               data-option-id="${item.id}">
               ${item.name}
             </button>
           `).join("")}
 
           ${remaining > 0 ? `
-            <span class="px-2 py-[5px]  md:px-4 md:py-[10px] border border-[#9F9FA9] text-sm transition-all duration-200 flex items-center justify-center">
+            <span class="px-2 py-1  md:px-[18px] md:py-[7px] border border-[#9F9FA9] text-sm transition-all duration-200 flex items-center justify-center">
               +${remaining}
             </span>
           ` : ""}
@@ -462,13 +465,13 @@ ${window.option_images && window.product_card_options ? `
             ${this.product.status !== "sale" ? `
               
               <button
-                class="w-full py-[6px] md:py-3 flex items-center justify-center p-0  notify text-center bg-primary text-background"
+                class="w-full py-[6px] md:py-3 flex items-center justify-center gap-2 p-0  notify text-center bg-primary text-background"
                 ${this.product.status !== "sale" ? "" : ""}>
-            ${isArabic ? "ذكرني  عند توافرة":"Notify Me" }
+            ${isArabic ? "ذكرني  عند توافرة":"Notify Me" } <i class="sicon-bell"></i>
             </button>
               `:`<button
                 class="salla-add-product-button transition-all duration-300 w-full py-[6px] md:py-3 flex items-center justify-center p-0  text-center bg-primary text-font"
-                ${this.product.status !== "sale" ? "disabled" : ""}>
+                ${this.product.status !== 'sale' ? 'disabled="disabled"' : ""}>
 
             <span class="text-background add-icon">${
               this.product.add_to_cart_label
@@ -629,8 +632,15 @@ ${window.option_images && window.product_card_options ? `
               ``: ` ${
   this.product.status !== "sale"
     ? `
-      <button class="bg-primary px-[6px] py-[3px] text-[12px] md:text-base md:py-[9px] md:px-[20px] notify text-background">
-         ${isArabic ? "ذكرني  عند توافرة":"Notify Me" }
+      <button class=" md:text-base md:py-[9px] md:px-[20px] notify
+      text-[12px] md:rounded-[40px] md:h-fit md:w-fit 
+       w-8 h-8 flex items-center justify-center p-0 bg-[#F4F4F5] rounded-full 
+      
+      ">
+      <span class="md:block hidden">
+      ${isArabic ? "ذكرني":"Notify Me" } <i class="sicon-bell"></i>
+      </span>
+        <i class="sicon-bell block md:hidden"></i>
       </button>
     `
     : (!window.product_card_options && !window.option_images)
