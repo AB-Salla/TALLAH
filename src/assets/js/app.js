@@ -644,7 +644,7 @@ watchAndAdjustHeader() {
 
           function updateCartCount(count, lang) {
             if (lang === "ar") {
-              return `(${count} منتج)`;
+              return `(${count} ${document.documentElement.lang == "ar" ? "منتج":"products"})`;
             } else {
               return `(${count} item${count !== 1 ? "s" : ""})`;
             }
@@ -757,7 +757,7 @@ watchAndAdjustHeader() {
         }
       } catch (err) {
         console.error("❌ Cart fetch error:", err);
-        itemsWrap.innerHTML = `<div class="p-4 text-sm text-red-500">حدث خطأ في تحميل السلة</div>`;
+        itemsWrap.innerHTML = `<div class="p-4 text-sm text-red-500">${document.documentElement.lang== ar ? 'حدث خطأ في تحميل السلة' :"Something went wrong"}</div>`;
       }
     }
 
@@ -834,7 +834,7 @@ async initSideCartCoupon() {
     const applied = btn.classList.contains("btn--danger");
 
     if (!applied && !input.value.trim()) {
-      error.innerText = "* الرجاء إدخال كود الكوبون";
+      error.innerText = `${document.documentElement.lang == "ar" ? "الرجاء إدخال كود الكوبون":"Please Add Copoun"}`;
       input.classList.add("has-error");
       return;
     }
