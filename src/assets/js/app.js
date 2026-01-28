@@ -3,6 +3,7 @@ import Swal from "sweetalert2";
 import Anime from "./partials/anime";
 import initTootTip from "./partials/tooltip";
 import AppHelpers from "./app-helpers";
+import { t } from "./i18n";
 import "./partials/custom-search-panel.js";
 import "./partials/custom-menu.js";
 import "./partials/custom-menu-mobile.js";
@@ -757,7 +758,10 @@ watchAndAdjustHeader() {
         }
       } catch (err) {
         console.error("❌ Cart fetch error:", err);
-        itemsWrap.innerHTML = `<div class="p-4 text-sm text-red-500">حدث خطأ في تحميل السلة</div>`;
+        itemsWrap.innerHTML = `<div class="p-4 text-sm text-red-500">${t(
+          "common.cart_load_error",
+          { ar: "حدث خطأ في تحميل السلة", en: "Failed to load the cart" }
+        )}</div>`;
       }
     }
 
@@ -834,7 +838,10 @@ async initSideCartCoupon() {
     const applied = btn.classList.contains("btn--danger");
 
     if (!applied && !input.value.trim()) {
-      error.innerText = "* الرجاء إدخال كود الكوبون";
+      error.innerText = t("common.coupon_enter_code_required", {
+        ar: "* الرجاء إدخال كود الكوبون",
+        en: "* Please enter a coupon code",
+      });
       input.classList.add("has-error");
       return;
     }
@@ -850,7 +857,11 @@ async initSideCartCoupon() {
       }
     } catch (err) {
       error.innerText =
-        err.response?.data?.error?.message || "حدث خطأ في تطبيق الكوبون";
+        err.response?.data?.error?.message ||
+        t("common.coupon_apply_error", {
+          ar: "حدث خطأ في تطبيق الكوبون",
+          en: "There was an error applying the coupon",
+        });
       input.classList.add("has-error");
     } finally {
       btn.disabled = false;

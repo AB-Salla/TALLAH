@@ -59,6 +59,11 @@
   "common": {
     "bank_offer_sub_title_multiple": "Pay for your purchases via one of the following bank cards and get the specified discount",
     "bank_offer_sub_title_single": "Pay for your purchases via :bank_name bank card and get discount",
+    "cart_load_error": "Failed to load the cart",
+    "coupon_apply_error": "There was an error applying the coupon",
+    "coupon_enter_code_required": "* Please enter a coupon code",
+    "show_all": "Show All",
+    "shop_all": "Shop All",
     "wishlist_empty": "Your wishlist is empty",
     "rating": "Reviews"
   },

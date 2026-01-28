@@ -1,3 +1,5 @@
+import { t } from "../i18n";
+
 salla.onReady(async () =>  {
 
 
@@ -155,7 +157,7 @@ function hideMenu() {
       ul.className = "space-y-1 text-sm text-zinc-500 pr-6";
 
       const li = createListItem(
-        window.languageCode === "ar" ? "تسوق الكل" : "Shop All",
+        t("common.shop_all", { ar: "تسوق الكل", en: "Shop All" }),
         category.url,
         "shop-all"
       );

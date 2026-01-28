@@ -59,6 +59,11 @@
   "common": {
     "bank_offer_sub_title_multiple": "ادفع قيمة مشترياتك عبر أحد البطاقات البنكة التالية واحصل على الخصم المحدد",
     "bank_offer_sub_title_single": "ادفع قيمة مشترياتك عبر أحد بطاقات بنك :bank_name واحصل على خصم بنسبة ",
+    "cart_load_error": "حدث خطأ في تحميل السلة",
+    "coupon_apply_error": "حدث خطأ في تطبيق الكوبون",
+    "coupon_enter_code_required": "* الرجاء إدخال كود الكوبون",
+    "show_all": "عرض الكل",
+    "shop_all": "تسوق الكل",
     "wishlist_empty": "قائمة الرغبات الخاصة بك فارغة",
     "rating": "أراء العملاء"
   },

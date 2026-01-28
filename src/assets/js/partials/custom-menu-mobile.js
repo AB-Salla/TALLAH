@@ -1,3 +1,5 @@
+import { t } from "../i18n";
+
 salla.onReady(async () => {
   const {
     wrapper,
@@ -141,11 +143,7 @@ function renderMenuContent(menu, contentContainer, renderSubcategories) {
     link.href = menu.url || "#";
     link.className = "flex items-center gap-2 p-[12px_0_12px_8px] cursor-pointer text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
     
-    if (window.languageCode === "ar") {
-      link.textContent = "عرض الكل";
-    } else {
-      link.textContent = "Show All";
-    }
+    link.textContent = t("common.show_all", { ar: "عرض الكل", en: "Show All" });
 
     emptyBlock.appendChild(link);
     contentContainer.appendChild(emptyBlock);
@@ -247,7 +245,7 @@ function renderSubcategories(category, subcategoryContainer) {
 
     const a = document.createElement("a");
     a.href = category.url ?? "#";
-    a.textContent = window.languageCode === "ar" ? "تسوق الكل" : "Shop All";
+    a.textContent = t("common.shop_all", { ar: "تسوق الكل", en: "Shop All" });
     a.className = "text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
 
     li.appendChild(a);
