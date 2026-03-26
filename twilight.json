@@ -120,7 +120,7 @@
         {
             "type": "static",
             "format": "title",
-            "id": "colors_of_our_theme",
+            "id": "header_options",
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات أعلى الصفحة</div>",
             "variant": "h6"
         },
@@ -828,7 +828,7 @@
         {
             "type": "static",
             "format": "title",
-            "id": "colors_of_our_theme",
+            "id": "single-options",
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'  >خيارات صفحة المنتج</div>",
             "variant": "h6"
         },
@@ -1207,7 +1207,7 @@
         {
             "type": "static",
             "format": "title",
-            "id": "colors_of_our_theme",
+            "id": "gallery-options",
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'> خيارات معرض الصور (صفحة المنتج)</div>",
             "variant": "h6"
         },
@@ -1296,7 +1296,7 @@
         {
             "type": "static",
             "format": "title",
-            "id": "colors_of_our_theme",
+            "id": "product-features-options",
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'> مميزات المنتج (صفحة المنتج)</div>",
             "variant": "h6"
         },
@@ -1584,7 +1584,7 @@
         {
             "type": "static",
             "format": "title",
-            "id": "colors_of_our_theme",
+            "id": "popup-options",
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' style='background: #18181B;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px; margin-bottom:24px;'> خيارات الموديل التسويقي (صفحة المنتج)</div>",
             "variant": "h6"
         },
