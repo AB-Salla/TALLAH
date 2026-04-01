@@ -265,6 +265,37 @@
             "required": false
         },
         {
+            "id": "add_another_logo",
+            "type": "boolean",
+            "format": "switch",
+            "label": "إضافة لوجو الهوفر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": true,
+            "required": false
+        },
+        {
+            "id": "another_logo_img",
+            "type": "string",
+            "format": "image",
+            "label": "صورة",
+            "description": null,
+            "labelHTML": null,
+            "placeholder": "e.g. https://hostname.com/image.png",
+            "icon": "sicon-image",
+            "value": "",
+            "required": false,
+            "conditions": [
+            {
+              "id": "add_another_logo",
+              "operation": "=",
+              "value": true
+            }
+          ]
+        },
+        {
             "id": "header-hover",
             "type": "boolean",
             "format": "switch",
@@ -1278,7 +1309,7 @@
                     "labelHTML": null,
                     "placeholder": "e.g. https://hostname.com/image.png",
                     "icon": "sicon-image",
-                    "value": "https://cdn.files.salla.network/homepage/2070588102/1b6ef42c-f853-49f6-a3bf-56f3391a5c08.webp",
+                    "value": " ",
                     "required": false
                 }
             ],
