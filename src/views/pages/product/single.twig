@@ -90,8 +90,8 @@
 			</nav>
 	<div class="single lg:pt-7 bg-background ">
 		<div class="bg-background">
-			<div class="flex flex-col items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row lg:px-14" id="product-{{ product.id }}">
-				<div class="sidebar relative lg:!sticky  lg:top-8 !w-full lg:!w-[66%] pb-8 lg:pb-16  shrink-0">
+			<div class="flex flex-col lg:gap-8 gap-4 items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row lg:px-14" id="product-{{ product.id }}">
+				<div class="sidebar relative lg:!sticky  lg:top-8 !w-full lg:!w-[66%] lg:pb-16  shrink-0">
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
 					<div class=" grid-cols-2 gap-2 lg:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
