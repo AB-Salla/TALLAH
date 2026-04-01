@@ -15,6 +15,10 @@ Global Variables (from Theme)
 {% set header_bg_color = theme.settings.get('header-background-color') ?? '#ffffff' %}
 {% set header_text_color = theme.settings.get('header-text-color') ?? '#000000' %}
 {% set advanced_menu = theme.settings.get('advanced-menu') %}
+{% set add_another_logo = theme.settings.get('add_another_logo')%}
+{% set another_logo_img = theme.settings.get('another_logo_img')%}
+
+
 
 {# Expose a couple vars to JS context #}
 <script>
@@ -127,7 +131,58 @@ Global Variables (from Theme)
 			header:hover .hover-box {
 				color: var(--hover-text) !important;
 			}
+			header:hover .logo-primary{
+				opacity:0;
+				
+			}
+			header:hover .logo-secondary{
+				opacity:1;
+				
+			}
+			.fixed-pinned.fixed-header{
+				.active-overlay {
+				background: {{header_bg_color}}
+				!important;
+				color: {{header_text_color}}
+				!important;
+			}
+			 .inner {
+				background: var(--hover-bg) !important;
+			}
+			.top-navbar {
+				background: var(--hover-bg) !important;
+			}
+			 .top-navbar :is(p, span, a) {
+				color: var(--hover-text) !important;
+			}
+			 .inner {
+				background: var(--hover-bg) !important;
+			}
+			 .hover-box {
+				color: var(--hover-text) !important;
+			}
+			 .logo-primary{
+				opacity:0;
+				
+			}
+			 .logo-secondary{
+				opacity:1;
+				
+			}
+
+			}
             	{% endif %}
+				{% if page.slug != 'index' %}
+				
+			header .logo-primary{
+				opacity:0;
+				
+			}
+			header .logo-secondary{
+				opacity:1;
+				
+			}
+			{% endif %}
 
 		</style>
 
@@ -307,7 +362,45 @@ Global Variables (from Theme)
 			{# LOGO SECTION #}
 			<div class="flex flex-col py-5 px-3 gap-[12px] flex-1 justify-center items-center" style="color: {{ initial_text }};">
 				<a class="navbar-brand" href="{{ store.url }}">
-					<img fetchpriority="high" width="100%" height="100%" loading="eager" src="{{ store.logo }}" alt="{{ store.name }} logo">
+					{% if add_another_logo and another_logo_img %}
+
+						<div class="relative">
+
+							<img
+								fetchpriority="high"
+								width="100%"
+								height="100%"
+								loading="eager"
+								src="{{ store.logo }}"
+								alt="{{ store.name }} logo"
+								class="logo-primary block transition-opacity duration-300"
+							>
+
+							<img
+								fetchpriority="high"
+								width="100%"
+								height="100%"
+								loading="eager"
+								src="{{ another_logo_img }}"
+								alt="{{ store.name }} alternate logo"
+								class="logo-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300"
+							>
+
+						</div>
+
+					{% else %}
+
+						<img
+							fetchpriority="high"
+							width="100%"
+							height="100%"
+							loading="eager"
+							src="{{ store.logo }}"
+							alt="{{ store.name }} logo"
+						>
+
+					{% endif %}
+
 					{% if is_page('index') %}
 						<h1 class="sr-only">{{ store.name }}</h1>
 					{% else %}
