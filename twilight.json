@@ -288,12 +288,12 @@
             "value": "",
             "required": false,
             "conditions": [
-            {
-              "id": "add_another_logo",
-              "operation": "=",
-              "value": true
-            }
-          ]
+                {
+                    "id": "add_another_logo",
+                    "operation": "=",
+                    "value": true
+                }
+            ]
         },
         {
             "id": "header-hover",
@@ -2567,10 +2567,12 @@
         },
         {
             "key": "bc3ece68-4c35-44a0-829d-696d08e0e842",
-            "title": "بانر رئيسي (متحرك) - عربي",
+            "title": {
+                "ar": "بانر رئيسي (متحرك) - عربي",
+                "en": null
+            },
             "icon": "sicon-store",
             "path": "home.AR-Hero-section",
-            "image": "https://cdn.files.salla.network/homepage/1954265887/4667c9ed-af96-41f7-ba35-51a9fc924b92.webp",
             "fields": [
                 {
                     "id": "banner",
@@ -2591,8 +2593,8 @@
                             "labelHTML": null,
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
-                            "value": "https://cdn.files.salla.network/homepage/1954265887/3236aab3-a228-4238-82d5-150a64ce0877.webp ",
-                            "required": false
+                            "value": "https://cdn.files.salla.network/homepage/1954265887/3236aab3-a228-4238-82d5-150a64ce0877.webp",
+                            "required": true
                         },
                         {
                             "id": "banner.mobile_bg",
@@ -2604,7 +2606,7 @@
                             "placeholder": "e.g. https://hostname.com/image.png",
                             "icon": "sicon-image",
                             "value": "https://cdn.files.salla.network/homepage/1954265887/ab8b1de8-f4c9-451b-8f5c-c8286273f96a.webp",
-                            "required": false
+                            "required": true
                         },
                         {
                             "id": "banner.transparent_button",
@@ -2668,36 +2670,6 @@
                             "required": false
                         },
                         {
-                            "id": "banner.text_position_horizontal",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "موقع نصوص البانر أفقياُ",
-                            "description": "اذا اخترت 0 سيكون النص في المنتصف",
-                            "labelHTML": null,
-                            "icon": "sicon-pin",
-                            "value": "0",
-                            "required": false,
-                            "step": "1",
-                            "minimum": "-25",
-                            "maximum": "25"
-                        },
-                        {
-                            "id": "banner.text_position_vertical",
-                            "type": "number",
-                            "format": "slider",
-                            "inputType": "range",
-                            "label": "ًموقع نصوص البانر رأسيا",
-                            "description": "اذا اخترت 0 سيكون النص في المنتصف",
-                            "labelHTML": null,
-                            "icon": "sicon-pin",
-                            "value": "0",
-                            "required": false,
-                            "step": "1",
-                            "minimum": "-300",
-                            "maximum": "300"
-                        },
-                        {
                             "id": "banner.block_title",
                             "type": "string",
                             "format": "text",
@@ -2711,7 +2683,7 @@
                                 "en": "Discover Timeless Luxury"
                             },
                             "multilanguage": true,
-                            "required": true,
+                            "required": false,
                             "minLength": "2",
                             "maxLength": "150"
                         },
@@ -2747,7 +2719,7 @@
                             "type": "string",
                             "format": "color",
                             "inputType": "color",
-                            "label": "لون النص الفرعي ",
+                            "label": "لون النص الفرعي",
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-format-fill",
@@ -2798,7 +2770,7 @@
                             "icon": "sicon-link",
                             "label": "رابط الزر",
                             "id": "banner.url",
-                            "value": null,
+                            "value": [],
                             "description": null,
                             "required": false,
                             "format": "variable-list",
