@@ -2609,34 +2609,10 @@
                             "required": true
                         },
                         {
-                            "id": "banner.transparent_button",
-                            "type": "boolean",
-                            "format": "switch",
-                            "label": "جعل لون خلفية الزر شفافة",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-toggle-off",
-                            "value": true,
-                            "selected": true,
-                            "required": false
-                        },
-                        {
-                            "id": "banner.button_bottom",
-                            "type": "boolean",
-                            "format": "switch",
-                            "label": "إظهار الزر أسفل البانر",
-                            "description": null,
-                            "labelHTML": null,
-                            "icon": "sicon-toggle-off",
-                            "value": true,
-                            "selected": true,
-                            "required": false
-                        },
-                        {
                             "id": "banner.items_alignment",
                             "type": "items",
                             "format": "dropdown-list",
-                            "label": "محاذاة الزر والنصوص",
+                            "label": "محاذاة الزر والنصوص رأسي",
                             "description": null,
                             "labelHTML": null,
                             "icon": "sicon-keyboard_arrow_down",
@@ -2678,10 +2654,7 @@
                             "labelHTML": null,
                             "placeholder": "Placeholder text ..",
                             "icon": "sicon-format-text-alt",
-                            "value": {
-                                "ar": "Discover Timeless Luxury",
-                                "en": "Discover Timeless Luxury"
-                            },
+                            "value": null,
                             "multilanguage": true,
                             "required": false,
                             "minLength": "2",
@@ -2724,6 +2697,30 @@
                             "labelHTML": null,
                             "icon": "sicon-format-fill",
                             "value": "#FAFAFA",
+                            "required": false
+                        },
+                        {
+                            "id": "banner.transparent_button",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "جعل لون خلفية الزر شفافة",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": true,
+                            "required": false
+                        },
+                        {
+                            "id": "banner.button_bottom",
+                            "type": "boolean",
+                            "format": "switch",
+                            "label": "إظهار الزر أسفل البانر",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-toggle-off",
+                            "value": true,
+                            "selected": true,
                             "required": false
                         },
                         {
