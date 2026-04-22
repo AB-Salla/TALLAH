@@ -2646,6 +2646,43 @@
                             "required": false
                         },
                         {
+                            "id": "banner.items_alignment_vertical",
+                            "type": "items",
+                            "format": "dropdown-list",
+                            "label": "محاذاة النصوص عمودياً",
+                            "description": null,
+                            "labelHTML": null,
+                            "icon": "sicon-keyboard_arrow_down",
+                            "selected": [
+                                {
+                                    "label": "منتصف",
+                                    "value": "center",
+                                    "key": "vertical-center"
+                                }
+                            ],
+                            "options": [
+                                {
+                                    "label": "أعلى",
+                                    "value": "start",
+                                    "key": "vertical-start"
+                                },
+                                {
+                                    "label": "منتصف",
+                                    "value": "center",
+                                    "key": "vertical-center"
+                                },
+                                {
+                                    "label": "أسفل",
+                                    "value": "end",
+                                    "key": "vertical-end"
+                                }
+                            ],
+                            "source": "Manual",
+                            "multichoice": false,
+                            "searchable": true,
+                            "required": false
+                        },
+                        {
                             "id": "banner.block_title",
                             "type": "string",
                             "format": "text",
