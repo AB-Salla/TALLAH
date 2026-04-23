@@ -536,7 +536,7 @@
         {
             "type": "static",
             "format": "title",
-            "id": "cart_settings",
+            "id": "cart_page_settings",
             "value": "<div class='flex-center p-3 text-center font-bold text-lg ' style='background: #1e1e1e;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px;'>خيـارات صفحة سلة المشتريات</div>",
             "variant": "h6"
         },
@@ -1470,7 +1470,7 @@
                     ]
                 },
                 {
-                    "id": "add_image",
+                    "id": "newsletter_sp_add_image",
                     "type": "string",
                     "format": "image",
                     "label": "إضافة صورة الخدمة",
@@ -1609,7 +1609,7 @@
         },
         {
             "type": "static",
-            "id": "static-line1",
+            "id": "static-line2",
             "format": "line"
         },
         {
