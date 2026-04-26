@@ -1551,7 +1551,7 @@
             "required": false
         },
         {
-            "id": "add_image",
+            "id": "newsletter_sp_add_image",
             "type": "string",
             "format": "image",
             "label": "إضافة صورة",
