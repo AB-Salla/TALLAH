@@ -536,7 +536,7 @@
         {
             "type": "static",
             "format": "title",
-            "id": "cart_settings",
+            "id": "cart_settings2",
             "value": "<div class='flex-center p-3 text-center font-bold text-lg ' style='background: #1e1e1e;padding: 4px;color: #fff;border-radius: 8px; margin-bottom:24px;'>خيـارات صفحة سلة المشتريات</div>",
             "variant": "h6"
         },
