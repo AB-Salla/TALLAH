@@ -250,7 +250,7 @@
             "value": null,
             "required": false,
             "minLength": 6,
-            "maxLength": 300
+            "maxLength": "500"
         },
         {
             "id": "icon_color",
