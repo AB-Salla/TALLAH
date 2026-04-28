@@ -1371,7 +1371,7 @@
             "icon": "sicon-list-add",
             "fields": [
                 {
-                    "id": "rh_features_active_select_icons",
+                    "id": "rh_features_pros_select_icons",
                     "type": "items",
                     "format": "dropdown-list",
                     "label": "أختر نوع الأيقونة",
@@ -1408,7 +1408,7 @@
                     "required": false
                 },
                 {
-                    "id": "icon_proudct",
+                    "id": "icon_proudct_pros",
                     "type": "string",
                     "format": "icon",
                     "label": "ايقونه",
@@ -1419,7 +1419,7 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "rh_features_active_select_icons",
+                            "id": "rh_features_pros_select_icons",
                             "operation": "=",
                             "value": "salla_icon",
                             "value_index": ".",
@@ -1428,7 +1428,7 @@
                     ]
                 },
                 {
-                    "id": "anmaite_url",
+                    "id": "anmaite_url_pros",
                     "type": "static",
                     "format": "title",
                     "label": "رابط مكتبة الأيقونات المتحركة",
@@ -1437,7 +1437,7 @@
                     "icon": "sicon-format-text",
                     "conditions": [
                         {
-                            "id": "rh_features_active_select_icons",
+                            "id": "rh_features_pros_select_icons",
                             "operation": "=",
                             "value": "animated_icon",
                             "value_index": ".",
@@ -1446,7 +1446,7 @@
                     ]
                 },
                 {
-                    "id": "anmait_icon",
+                    "id": "anmaite_icon_pros",
                     "type": "string",
                     "format": "text",
                     "label": "رمز الايقونة المتحركة",
@@ -1461,7 +1461,7 @@
                     "maxLength": "100",
                     "conditions": [
                         {
-                            "id": "rh_features_active_select_icons",
+                            "id": "rh_features_pros_select_icons",
                             "operation": "=",
                             "value": "animated_icon",
                             "value_index": ".",
@@ -1470,7 +1470,7 @@
                     ]
                 },
                 {
-                    "id": "add_image",
+                    "id": "add_image_pros",
                     "type": "string",
                     "format": "image",
                     "label": "إضافة صورة الخدمة",
@@ -1482,7 +1482,7 @@
                     "required": false,
                     "conditions": [
                         {
-                            "id": "rh_features_active_select_icons",
+                            "id": "rh_features_pros_select_icons",
                             "operation": "=",
                             "value": "image_services",
                             "value_index": ".",
@@ -1491,7 +1491,7 @@
                     ]
                 },
                 {
-                    "id": "block_title",
+                    "id": "block_title_pros",
                     "type": "string",
                     "format": "text",
                     "label": "العنوان الرئيسي",

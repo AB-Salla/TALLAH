@@ -584,7 +584,7 @@
 						{% endif %}  gap-8">
                             {% for item in theme.settings.get('rh_features_store_pros') %}
                                 {# احسب عدد الحروف في النص #}
-                                {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
+                                {% set title = is_ar ? item.block_title_pros.ar : item.block_title_pros.en %}
     					{% set description = is_ar ? item.description_feature.ar : item.description_feature.en %}
                                 {% set is_long = title|length > 20 %}
 								
@@ -594,16 +594,16 @@
 text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col
 {% endif %} ">
                                 <span class="flex items-center justify-center w-6 h-6">
-                                    {% if item.rh_features_active_select_icons == "image_services" %}
-                                    <img src="{{ item.add_image }}"
-                                        alt="{{ item.block_title.ar }}"
+                                    {% if item.rh_features_pros_select_icons == "image_services" %}
+                                    <img src="{{ item.add_image_pros }}"
+                                        alt="{{ item.block_title_pros.ar }}"
                                         class="w-full h-full object-contain">
-                                    {% elseif item.rh_features_active_select_icons == "salla_icon" %}
-                                    <i class="{{ item.icon_proudct }} text-primary text-4xl leading-none features__icon"></i>
-                                    {% elseif item.rh_features_active_select_icons == "animated_icon" %}
+                                    {% elseif item.rh_features_pros_select_icons == "salla_icon" %}
+                                    <i class="{{ item.icon_proudct_pros }} text-primary text-4xl leading-none features__icon"></i>
+                                    {% elseif item.rh_features_pros_select_icons == "animated_icon" %}
                                     <lord-icon 
                                         id="my-icon"
-                                        src="https://cdn.lordicon.com/{{ item.anmait_icon }}.json"
+                                        src="https://cdn.lordicon.com/{{ item.anmaite_icon_pros }}.json"
                                         trigger="loop"
                                         style="width:24px;height:24px">
                                     </lord-icon>
