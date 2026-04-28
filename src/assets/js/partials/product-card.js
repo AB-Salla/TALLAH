@@ -458,7 +458,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
                   </salla-add-product-button>
             </div>
 ${window.option_images && window.product_card_options ? `
-            <div class="card-floating-btn opacity-100 bottom-0 md:opacity-0 absolute md:bottom-[-100%] transition-all duration-700 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
+            <div class="card-floating-btn hidden md:block md:opacity-0 absolute md:bottom-[-100%] transition-all duration-700 w-full bg-[color-mix(in_srgb,var(--color-background)_90%,transparent)] p-3">
                    
               ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
             ${this.options.map(opt => renderOption(opt)).join("")}
@@ -564,11 +564,14 @@ ${window.option_images && window.product_card_options ? `
             this.isSpecial ? "s-product-card-content-extra-padding" : ""
           }">
           ${!window.option_images ? `
-              ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
-            ${this.options.map(opt => renderOption(opt)).join("")}
-          </div>`:``}
-            `:`
-            `}
+    ${window.product_card_options ?`<div class="s-product-card-content-options flex flex-col mb-2">
+  ${this.options.map(opt => renderOption(opt)).join("")}
+</div>`:``}
+  `: window.option_images && window.product_card_options ? `
+    <div class="md:hidden s-product-card-content-options flex flex-col mb-2">
+      ${this.options.map(opt => renderOption(opt)).join("")}
+    </div>
+  ` : ``}
         
           
             <h3 class="s-product-card-content-title line-clamp-2 text-[clamp(0.875rem,0.8032rem+0.3218vw,1.125rem)] font-normal !leading-[24px] text-graytext">
