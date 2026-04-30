@@ -4102,36 +4102,6 @@
                     "required": false
                 },
                 {
-                    "id": "text_position_horizontal",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "موقع نصوص البانر أفقياُ",
-                    "description": "اذا اخترت 0 سيكون النص في المنتصف",
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "0",
-                    "required": false,
-                    "step": "1",
-                    "minimum": "-50",
-                    "maximum": "50"
-                },
-                {
-                    "id": "text_position_vertical",
-                    "type": "number",
-                    "format": "slider",
-                    "inputType": "range",
-                    "label": "ًموقع نصوص البانر رأسيا",
-                    "description": "اذا اخترت 0 سيكون النص في المنتصف",
-                    "labelHTML": null,
-                    "icon": "sicon-pin",
-                    "value": "0",
-                    "required": false,
-                    "step": "1",
-                    "minimum": "-300",
-                    "maximum": "300"
-                },
-                {
                     "id": "block_title",
                     "type": "string",
                     "format": "text",
