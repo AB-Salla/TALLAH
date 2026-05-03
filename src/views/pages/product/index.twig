@@ -54,7 +54,11 @@
 				<div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
 					<div class="mb-4 sm:mb-6 flex justify-between items-center">
 						<h1 class="primary-bold md:text-xl text-sm lg:text-center w-full lg:block hidden" id="page-main-title">{{ page.title|raw }}</h1>
-          
+                       {% if filters %}
+								<a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2 ">
+									<i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
+								</a>
+						{% endif %}
 						<div class="flex items-center space-x-2 rtl:space-x-reverse">
 	
 							{% if sort_options|length %}
@@ -65,11 +69,7 @@
 									</select>
 							{% endif %}
 						</div>
-                        {% if filters %}
-								<a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2 ">
-									<i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
-								</a>
-						{% endif %}
+           
   
 
 					</div>
