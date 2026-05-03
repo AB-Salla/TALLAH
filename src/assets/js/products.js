@@ -33,7 +33,7 @@ class Products extends BasePage {
             trigger = app.element("a[href='#filters-menu']"),
             close = app.element("button.close-filters");
 
-        if (!filters) {
+        if (!filters || !trigger || !close) {
             return;
         }
         filters = new MobileMenu(filters, "(max-width: 1024px)", "( slidingSubmenus: false)");
