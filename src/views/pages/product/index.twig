@@ -42,7 +42,7 @@
 						<button class=" mb-4  text-center w-3/4 text-primary p-1 lg:flex  items-center gap-2">
                         							<i class="sicon-tune"></i>
 
-							<span class="button-text tetx-base font-semibold">{{ trans('pages.index.filters') }}</span>
+							<span class="button-text tetx-base font-semibold">{{ trans('pages.index.filters') }} <p>{{ page.slug }}</p></span>
 						</button>
 						<salla-filters 
 							id="filters-menu" 
@@ -85,17 +85,18 @@
 
 					{% hook 'product:index.items.start' %}
 					<div class="flex min-h-screen">
-						{% if page.slug == 'cat.show' %}
+						{% if category %}
     {% set source_type = 'categories' %}
-{% elseif page.slug == 'search' %}
-    {% set source_type = 'search' %}
+    {% set source_val = category.id %}
 {% else %}
-    {% set source_type = 'categories' %}
+    {% set source_type = 'latest' %}
+    {% set source_val = '' %}
 {% endif %}
 
 <salla-products-list 
+    class="flex-1 min-w-0" 
     source="{{ source_type }}" 
-    source-value="{{ page.id }}" 
+    source-value="{{ source_val }}" 
     {{ filters ? 'filters-results' : '' }}>
 </salla-products-list>
 						
