@@ -27,6 +27,7 @@
 		<nav class="breadcrumbs w-full pt-5 center-between text-2xl !block">
 			<salla-breadcrumb></salla-breadcrumb>
 		</nav>
+		
 	</div>
 
 	
@@ -84,7 +85,20 @@
 
 					{% hook 'product:index.items.start' %}
 					<div class="flex min-h-screen">
-						<salla-products-list class="flex-1 min-w-0" source="{{ page.slug }}" source-value="{{ page.id }}" {{ filters ?'filters-Results':'' }}></salla-products-list>
+						{% if page.slug == 'cat.show' %}
+    {% set source_type = 'categories' %}
+{% elseif page.slug == 'search' %}
+    {% set source_type = 'search' %}
+{% else %}
+    {% set source_type = 'categories' %}
+{% endif %}
+
+<salla-products-list 
+    source="{{ source_type }}" 
+    source-value="{{ page.id }}" 
+    {{ filters ? 'filters-results' : '' }}>
+</salla-products-list>
+						
 					</div>
 					{% hook 'product:index.items.end' %}
 				</div>
