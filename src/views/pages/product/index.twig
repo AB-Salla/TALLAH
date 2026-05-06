@@ -39,9 +39,11 @@
 					<button class="btn--close-sm close-filters sicon-cancel lg:hidden"></button>
 					<div class="md:w-72 lg:sticky lg:top-20 flex-none hidden lg:block">
 						<button class=" mb-4  text-center w-3/4 text-primary p-1 lg:flex  items-center gap-2">
-                        							<i class="sicon-tune"></i>
-
-							<span class="button-text tetx-base font-semibold">{{ trans('pages.index.filters') }}</span>
+                        	
+							<i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+								<path d="M6.4 3.2L14.2 3.2M6.4 3.2C6.4 3.86274 5.86274 4.4 5.2 4.4C4.53726 4.4 4 3.86274 4 3.2M6.4 3.2C6.4 2.53726 5.86274 2 5.2 2C4.53726 2 4 2.53726 4 3.2M1 3.2H4M6.4 12.8H14.2M6.4 12.8C6.4 13.4627 5.86274 14 5.2 14C4.53726 14 4 13.4627 4 12.8M6.4 12.8C6.4 12.1373 5.86274 11.6 5.2 11.6C4.53726 11.6 4 12.1373 4 12.8M1 12.8L4 12.8M11.2 8L14.2 8M11.2 8C11.2 8.66274 10.6627 9.2 10 9.2C9.33726 9.2 8.8 8.66274 8.8 8M11.2 8C11.2 7.33726 10.6627 6.8 10 6.8C9.33726 6.8 8.8 7.33726 8.8 8M1 8H8.8" stroke="#27272A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg></i>
+							<span class="button-text text-base font-semibold">{{ trans('pages.index.filters') }}</span>
 						</button>
 						<salla-filters 
 							id="filters-menu" 
