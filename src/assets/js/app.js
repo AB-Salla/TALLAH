@@ -676,9 +676,9 @@ watchAndAdjustHeader() {
           <div class="grid grid-cols-1 lg:grid-cols-3 items-start justify-between gap-4">
             <div class="flex flex-1 gap-4 items-center  lg:col-span-2">
 
-              <a href="${item_url}" class="w-24 h-20">
+              <a href="${item_url}" class="w-24 h-32 md:h-24">
                 <img src="${img}" alt="${item.product_name}"
-                     class="w-full h-full  object-contain" />
+                     class="w-full h-full  object-cover" />
               </a>
 
               <div class="space-y-1 flex-grow w-full">
