@@ -456,7 +456,92 @@
 	</div>
 {% endblock %}
 
+
+
 {% block scripts %}
+    <style>
+        /* ==========================================================
+        Cart Page Custom Styling
+        Added directly inside the Twig file and scoped to this page
+        ========================================================== */
+
+        .s-conditional-offer-container {
+            background-color: transparent;
+        }
+
+        /* Desktop */
+        @media (min-width: 768px) {
+            .s-conditional-offer-container {
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
+                padding-bottom: 25px;
+                gap: 0;
+            }
+        }
+
+        .s-conditional-offer-progress-line-inactive {
+            height: 4px;
+            border-radius: 42px;
+            background: rgba(196, 33, 38, 0.15);
+        }
+
+        .s-conditional-offer-progress-line-active {
+            height: 4px;
+            border-radius: 42px;
+            background: #C42126;
+        }
+
+        .s-conditional-offer-active-checkpoint {
+            border-color: #C42126;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .s-conditional-offer-progress-container {
+                margin-bottom: 0;
+                height: 5rem;
+            }
+
+            .s-conditional-offer-container {
+                gap: 0;
+                padding-top: 0;
+            }
+
+            .s-conditional-offer-checkpoint {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .s-cart-item-offers-container {
+            margin-top: 0;
+        }
+
+        .s-cart-item-offers-container .s-cart-item-offers-details div {
+            display: flex;
+            gap: 4px;
+        }
+
+        .s-cart-item-offers-container .s-cart-item-offers-title {
+            margin-bottom: 0;
+        }
+
+        .s-cart-item-offers-container .s-cart-item-offers-discount {
+            align-content: center;
+        }
+
+        @media (max-width: 1024px) {
+            .s-cart-item-offers-title {
+                font-size: 10px;
+            }
+        }
+
+        .attachments {
+            margin-top: 8px;
+        }
+    </style>
+
     <script defer src="{{ 'checkout.js' | asset }}"></script>
 
     <script>
