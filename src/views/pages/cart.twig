@@ -346,13 +346,18 @@
                             <b data-cart-total>{{ cart.total|money }}</b>
                         </div>
 
-                        <div class="cart-submit-wrap">
-                            {% hook 'cart:submit.start' %}
-                            <salla-button id="cart-submit" loader-position="center" width="wide">
-                                {{ trans('pages.cart.complete_order') }}
-                            </salla-button>
-                            {% hook 'cart:submit.end' %}
-                        </div>
+                      <div class="cart-submit-wrap {% if theme.settings.get('sticky_cart_button') %} sticky-cart-button {% else %} md:static md:p-0 md:border-0 {% endif %}">
+    {% hook 'cart:submit.start' %}
+
+    <salla-button
+        id="cart-submit"
+        loader-position="center"
+        width="wide">
+        {{ trans('pages.cart.complete_order') }}
+    </salla-button>
+
+    {% hook 'cart:submit.end' %}
+</div>
                         {% if loyalty and user.loyalty_points %}
                         <div class="  rounded-md my-6 bg-[#F4F0EB]">
                             <salla-loyalty customer-points='{{ user.loyalty_points }}'
@@ -555,8 +560,67 @@
         .attachments {
             margin-top: 8px;
         }
-    </style>
+@media (max-width: 767px) {
+    .sticky-cart-button {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999999;
+        background: #ffffff;
+        padding: 16px;
+        border-top: 1px solid #e5e7eb;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+    }
 
+    .sticky-cart-button #cart-submit {
+        width: 100%;
+    }
+
+    /* Prevent page content from being hidden behind the fixed button */
+    body {
+        padding-bottom: 90px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sticky-cart-button {
+        position: static;
+        background: transparent;
+        padding: 0;
+        border-top: 0;
+        box-shadow: none;
+    }
+}
+    </style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const wrap = document.querySelector('.cart-submit-wrap');
+    if (!wrap || !wrap.classList.contains('sticky-cart-button')) return; // stop if setting is off
+
+    const placeholder = document.createElement('div');
+    placeholder.id = 'cart-submit-placeholder';
+    wrap.parentElement.insertBefore(placeholder, wrap); // save original position
+
+    function handleResize() {
+        if (window.innerWidth < 768) {
+            if (wrap.parentElement !== document.body) {
+                document.body.appendChild(wrap);
+            }
+            wrap.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:999999;background:white;padding:1rem;border-top:1px solid #e5e7eb;display:block;';
+        } else {
+            const ph = document.getElementById('cart-submit-placeholder');
+            if (ph && wrap.parentElement !== ph.parentElement) {
+                ph.parentElement.insertBefore(wrap, ph);
+            }
+            wrap.style.cssText = 'position:static;padding:0;border-top:none;background:transparent;z-index:auto;';
+        }
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+});
+</script>
     <script defer src="{{ 'checkout.js' | asset }}"></script>
 
     <script>
