@@ -570,6 +570,18 @@
             ]
         },
         {
+            "id": "sticky_cart_button",
+            "type": "boolean",
+            "format": "switch",
+            "label": "تثبيت زر اتمام الطلب اسفل الشاشة في الجوال",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-toggle-off",
+            "value": true,
+            "selected": false,
+            "required": false
+        },
+        {
             "id": "rh_features_store_car",
             "type": "collection",
             "format": "collection",
