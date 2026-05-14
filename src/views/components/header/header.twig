@@ -720,6 +720,36 @@ Global Variables (from Theme)
 	{{ trans('pages.checkout.cart') }}
 	<span class="sidecart-products-count text-gray-500 text-sm"></span>
 </h2>
+                    <div class="shadow-default p-5 xs:p-7 bg-transparent {{ cart.free_shipping_bar ? '' : 'hidden' }}" id="free-shipping">
+                        <div class="flex rtl:space-x-reverse space-x-3 items-center">
+                            
+                            <i class="bg-primary !hidden text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
+                            {% set is_free=cart.free_shipping_bar.has_free_shipping %}
+                            <div class="flex-1">
+                                 
+                                <p class="flex gap-1 shipping-item text-sm font- text-gray-500">
+                                        <i class=" {{ theme.is_rtl ? 'flip-x':'' }}"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                    height="20" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M20 3.75V5H8.125V14.375H11.9725C12.2513 13.3006 13.2175 12.5 14.375 12.5C15.5325 12.5 16.4987 13.3006 16.7775 14.375H17.5V11.25H18.75V15.625H16.7775C16.4987 16.6994 15.5325 17.5 14.375 17.5C13.2175 17.5 12.2513 16.6994 11.9725 15.625H6.7775C6.49875 16.6994 5.5325 17.5 4.375 17.5C3.2175 17.5 2.25125 16.6994 1.9725 15.625H0V10.5275L0.0393753 10.4294L1.28938 6.67938L1.425 6.25H6.875V3.75H20ZM19.375 6.25V7.5H13.75V6.25H19.375ZM6.875 7.5H2.32438L1.25 10.7031V14.375H1.9725C2.25125 13.3006 3.2175 12.5 4.375 12.5C5.5325 12.5 6.49875 13.3006 6.7775 14.375H6.875V7.5ZM18.75 8.75V10H15V8.75H18.75ZM14.375 13.75C13.6769 13.75 13.125 14.3019 13.125 15C13.125 15.6981 13.6769 16.25 14.375 16.25C15.0731 16.25 15.625 15.6981 15.625 15C15.625 14.3019 15.0731 13.75 14.375 13.75ZM4.375 13.75C3.67687 13.75 3.125 14.3019 3.125 15C3.125 15.6981 3.67687 16.25 4.375 16.25C5.07312 16.25 5.625 15.6981 5.625 15C5.625 14.3019 5.07312 13.75 4.375 13.75Z"
+                                        fill="#71717B" />
+                                </svg></i>
+                                        <span id="free-shipping-msg">{{ (is_free
+                                            ?trans('pages.cart.has_free_shipping')
+                                            :trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}))
+                                            | raw }}</span>
+                                    <span class="emoji {{ is_free?'':'hidden' }}" id="free-shipping-applied">🎉</span>
+                                </p>
+                            </div>
+                        </div>
+      <div class="mt-2 overflow-hidden {{ is_free ? 'hidden' : '' }}"
+     id="free-shipping-bar"
+      style="height:4px; background-color:#E4E4E7;">
+    <div class="progress-bg transition-all duration-500 h-full bg-[#C5992C]"
+         style="width:{{ cart.free_shipping_bar.percent }}%">
+    </div>
+</div>
+                    </div>
 <div id="sidecart-items"></div></div><div class="side-panel__bottom mt-auto p-5 flex flex-col gap-5 border-t border-font-secondary">
 <div class=" border-gray-200 border-b py-5 mb-5">
 
