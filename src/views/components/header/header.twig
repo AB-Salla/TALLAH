@@ -765,12 +765,13 @@ Global Variables (from Theme)
 	<strong id="sidecart-total" class="total-value text-lg"></strong>
 </div>
 <div class="flex gap-1">
+		<button class="close-side-panel flex-1 bg-batext-background font-medium border border-1 border-primary flex items-center justify-center gap-4  text-primary dark:text-gray-300 py-3 hover:bg-gray-200  transition">
+		{{ trans('pages.offer.continue_shopping') }}
+	</button>
 	<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn flex-1 flex items-center justify-center gap-2 bg-primary text-background  py-3 hover:bg-primary transition">
 		<i class="smticon-cart text-lg"></i>
 		<span>{{ trans('pages.cart.goToCartPage') }}</span>
 	</a>
 
-	<button class="close-side-panel flex-1 bg-batext-background font-medium border border-1 border-primary flex items-center justify-center gap-4  text-primary dark:text-gray-300 py-3 hover:bg-gray-200  transition">
-		{{ trans('pages.offer.continue_shopping') }}
-	</button>
+
 </div></div></aside><div id="sidecart-overlay" class="fixed inset-0 bg-black/50 z-[100] hidden opacity-0 transition-opacity duration-300"></div>
