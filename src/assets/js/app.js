@@ -664,6 +664,7 @@ watchAndAdjustHeader() {
                 "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp";
 
               return `
+
       <form onchange="salla.form.onChange('cart.updateItem', event)"
             id="item-${item.id}" novalidate>
 
@@ -698,6 +699,12 @@ watchAndAdjustHeader() {
                 <div class="flex justify-between items-center gap-4">
                 <span class="item-price font-medium">
                   ${salla.money(item.price)}
+                </span>
+                <span class="item-price font-medium line-through text-[#9F9FA9]">
+                  ${salla.money(item.original_price)}
+                </span>
+                <span class="item-price font-medium text-[#E7000B]">
+                  ${product.promotion_title}
                 </span>
                 </div>
                 </div>
