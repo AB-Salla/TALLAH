@@ -92,6 +92,11 @@
 		<div class="bg-background">
 			<div class="flex flex-col lg:gap-8 gap-4 items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row lg:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  lg:top-8 !w-full lg:!w-[66%] lg:pb-16  shrink-0">
+					{# promotion  #}
+                    {% if product.promotion_title %}
+                                <div class="promotion-title">{{ product.promotion_title }}</div>
+                	{% endif %}
+
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
 					<div class=" grid-cols-2 gap-2 lg:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
@@ -139,10 +144,9 @@
 								}
 							}'
 						>
+						
 
-                            {% if product.promotion_title %}
-                                <div class="promotion-title">{{ product.promotion_title }}</div>
-                            {% endif %}
+                    
 
                             {# Calories Badge #}
                             {% if product.calories %}
@@ -208,9 +212,6 @@
                                 show-controls="false" 
                                 show-thumbs-controls="false">
 
-                            {% if product.promotion_title %}
-                                <div class="promotion-title">{{ product.promotion_title }}</div>
-                            {% endif %}
 
                             {# Calories Badge #}
                             {% if product.calories %}
@@ -326,8 +327,8 @@
 				<div class="flex items-center justify-between pb-2 border-b border-[#E4E4E7] mb-4 ">
 					<div class="flex whitespace-nowrap gap-4 items-center">
 						<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-							<h4 class="text-primary font-bold text-xl lg:text-[28px] inline-block">{{product.sale_price|money}}</h4>
-							<span class="text-gray-500 text-xl line-through">{{product.regular_price|money}}</span>
+							<h4 class="text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</h4>
+							<span class="text-[#9F9FA9] text-xl line-through">{{product.regular_price|money}}</span>
 						</div>
 
 						<div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
@@ -453,8 +454,8 @@
 
 							<div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
 								<div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
-									<h2 class="total-price text-primary font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
-									<span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
+									<h2 class="total-price text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</h2>
+									<span class="before-price text-[#9F9FA9] text-xl line-through">{{product.regular_price|money}}</span>
 								</div>
 								
 								<div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
