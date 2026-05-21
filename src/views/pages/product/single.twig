@@ -572,73 +572,6 @@
 			<div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
-					 {% if theme.settings.get('features_switch') %}
-                <section class=" py-2">
-                    <div class="">
-                       
-						{% set is_ar = request.locale == 'ar' %}
-						{{theme.settings.get('features_col_single')}}
-                        <div class="grid {% if theme.settings.get('features_col_single') %}
-							grid-cols-1 justify-start items-start
-						{% else %}
-							grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-start sm:justify-center items-start sm:items-center
-						{% endif %}  gap-8">
-                            {% for item in theme.settings.get('rh_features_store_pros') %}
-                                {# احسب عدد الحروف في النص #}
-                                {% set title = is_ar ? item.block_title_pros.ar : item.block_title_pros.en %}
-    					{% set description = is_ar ? item.description_feature.ar : item.description_feature.en %}
-                                {% set is_long = title|length > 20 %}
-								
-                                <div class="  w-auto  {% if theme.settings.get('features_col_single') %}
-								text-start gap-4 flex justify-start  items-center
-{% else %}
-text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col
-{% endif %} ">
-                                <span class="flex items-center justify-center w-6 h-6">
-                                    {% if item.rh_features_pros_select_icons == "image_services" %}
-                                    <img src="{{ item.add_image_pros }}"
-                                        alt="{{ item.block_title_pros.ar }}"
-                                        class="w-full h-full object-contain">
-                                    {% elseif item.rh_features_pros_select_icons == "salla_icon" %}
-                                    <i class="{{ item.icon_proudct_pros }} text-primary text-4xl leading-none features__icon"></i>
-                                    {% elseif item.rh_features_pros_select_icons == "animated_icon" %}
-                                    <lord-icon 
-                                        id="my-icon"
-                                        src="https://cdn.lordicon.com/{{ item.anmaite_icon_pros }}.json"
-                                        trigger="loop"
-                                        style="width:24px;height:24px">
-                                    </lord-icon>
-                              
-
-                                    <script>
-                                    // Wait for the element to load
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        const icon = document.getElementById("my-icon");
-                                        const color = getComputedStyle(document.documentElement)
-                                        .getPropertyValue("--color-primary")
-                                        .trim();
-                                        // Apply dynamic color using JS
-                                        icon.setAttribute("colors", `primary:${color},secondary:${color}`);
-                                    });
-                                    </script>
-                                    {% endif %}
-                                </span>
-								<div >
-									<h3 class="text-[14px] font-semibold text-font leading-[140%]">
-										{{ title }}
-									</h3>
-									<h3 class="text-[14px] font-semibold text-font leading-[140%]">
-										{{ description }}
-									</h3>
-								</div>
-                                </div>
-                                {% endfor %}
-                            </div>
-
-                </section>
-        {% endif %}
-
-		{# test  #}
 
      {# get the selected view type (horizontal | vertical) #}
       {% set view_type = theme.settings.get('selling-points-view')|default('horizontal') %}
@@ -822,7 +755,6 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
 
 
-		{# end test  #}
 		 {% if theme.settings.get('single_side_products') %}
 		 {% set raw_side_source = theme.settings.get('single_side_source') %}
 
