@@ -1554,6 +1554,119 @@
                 }
             ]
         },
+                {
+            "id": "selling-points",
+            "type": "collection",
+            "format": "collection",
+            "label": "نقاط البيع الرئيسية",
+            "description": "أضف نقاط البيع الرئيسية لمتجرك",
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "selling-points.selling-point-image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "صورة",
+                    "description": "أضف صورة مربعة",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "required": false
+                },
+                {
+                    "id": "selling-points.selling-point-title",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                },
+                {
+                    "id": "selling-points.selling-point-description",
+                    "type": "string",
+                    "format": "text",
+                    "label": "محتوى",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "100"
+                },
+                {
+                    "id": "selling-points.selling-point-link-content",
+                    "type": "string",
+                    "format": "text",
+                    "label": "عنوان الرابط",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": null,
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "30"
+                },
+                {
+                    "id": "selling-points.selling-point-link",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "الرابط",
+                    "description": "أضف رابط اذا وجد",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "100"
+                }
+            ],
+            "value": [],
+            "minLength": 1,
+            "maxLength": "3"
+        },
+        {
+            "id": "selling-points-view",
+            "type": "items",
+            "format": "dropdown-list",
+            "label": "طريقة عرض نقاط البيع الرئيسية",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-keyboard_arrow_down",
+            "selected": [],
+            "options": [
+                {
+                    "label": "أفقي",
+                    "value": "horizontal",
+                    "key": "be7154ff-d097-461f-b6f2-3c9973a62e22"
+                },
+                {
+                    "label": "رأسي",
+                    "value": "vertical",
+                    "key": "0e7cfc62-a970-4276-b727-08be89fcad73"
+                }
+            ],
+            "source": "Manual",
+            "multichoice": false,
+            "searchable": false,
+            "required": false
+        },
         {
             "id": "newsletter_sp_view_modal",
             "type": "boolean",

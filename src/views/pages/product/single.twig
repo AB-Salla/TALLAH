@@ -637,6 +637,192 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 
                 </section>
         {% endif %}
+
+		{# test  #}
+
+     {# get the selected view type (horizontal | vertical) #}
+      {% set view_type = theme.settings.get('selling-points-view')|default('horizontal') %}
+      {% set selling_points = theme.settings.get('selling-points') %}
+
+      {% if selling_points and selling_points|length > 0 %}
+      {# mobile view #}
+      <div class=" lg:hidden flex flex-col items-start gap-6 py-6 self-stretch">
+        {% for point in selling_points %}
+        <div class="flex items-center gap-4 self-stretch  flex-row">
+
+          {# image #}
+          {% if point['selling-point-image'] %}
+          <img src="{{ point['selling-point-image'] }}"
+            alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+            class="w-8 h-8 aspect-square" />
+          {% endif %}
+
+          {# title + description + link #}
+          <div class="flex flex-col items-start flex-1">
+
+            {# title #}
+            {% if point['selling-point-title'] %}
+            <span class="text-sm font-semibold leading-5 tracking-normal self-stretch">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-title']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-title']['en']|default('') }}
+              {% endif %}
+            </span>
+            {% endif %}
+
+            {# description & link #}
+
+            <p class="text-xs font-medium leading-4 tracking-normal self-stretch">
+              {% if point['selling-point-description'] %}
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-description']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-description']['en']|default('') }}
+              {% endif %}
+              {% endif %}
+              {# link (if exists) #}
+              {% if point['selling-point-link'] is not empty %}
+              <a href="{{ point['selling-point-link'] }}"
+                class="text-xs font-medium leading-4 underline underline-offset-2">
+                {% if language.iso_code == 'ar' %}
+                {{ point['selling-point-link-content']['ar']|default('المزيد') }}
+                {% else %}
+                {{ point['selling-point-link-content']['en']|default('Learn more') }}
+                {% endif %}
+              </a>
+              {% endif %}
+            </p>
+
+
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {# Horizontal View #}
+      {% if view_type == 'horizontal' %}
+      <div class="hidden lg:flex py-6 items-start gap-4 flex-row w-full">
+        {% for point in selling_points %}
+        <div class="flex flex-col items-center text-center gap-2 px-2 flex-1 min-w-[150px]">
+
+          {# image fixed at top #}
+          {% if point['selling-point-image'] %}
+          <div class="flex-shrink-0">
+            <img src="{{ point['selling-point-image'] }}"
+              alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+              class="w-8 h-8 aspect-square" />
+          </div>
+          {% endif %}
+
+          {# text content below image #}
+          <div class="flex flex-col items-center gap-1 text-center flex-1">
+
+            {# title #}
+            {% if point['selling-point-title'] %}
+            <span class="text-sm font-semibold leading-5">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-title']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-title']['en']|default('') }}
+              {% endif %}
+            </span>
+            {% endif %}
+
+            {# description #}
+            {% if point['selling-point-description'] %}
+            <p class="text-xs font-medium leading-4">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-description']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-description']['en']|default('') }}
+              {% endif %}
+            </p>
+            {% endif %}
+
+            {# link (if exists) #}
+            {% if point['selling-point-link'] is not empty %}
+            <a href="{{ point['selling-point-link'] }}"
+              class="text-xs font-medium leading-4 underline underline-offset-2">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-link-content']['ar']|default('المزيد') }}
+              {% else %}
+              {{ point['selling-point-link-content']['en']|default('Learn more') }}
+              {% endif %}
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+
+      {# Vertical View #}
+      {% if view_type == 'vertical' %}
+      <div class="hidden lg:flex flex-col items-start gap-6 py-6 self-stretch">
+        {% for point in selling_points %}
+        <div class="flex items-center gap-4 self-stretch  flex-row">
+
+          {# image #}
+          {% if point['selling-point-image'] %}
+          <img src="{{ point['selling-point-image'] }}"
+            alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+            class="w-8 h-8 aspect-square" />
+          {% endif %}
+
+          {# title + description + link #}
+          <div class="flex flex-col items-start flex-1">
+
+            {# title #}
+            {% if point['selling-point-title'] %}
+            <span class="text-sm font-semibold leading-5 tracking-normal self-stretch">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-title']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-title']['en']|default('') }}
+              {% endif %}
+            </span>
+            {% endif %}
+
+            {# description & link #}
+
+            <p class="text-xs font-medium leading-4 tracking-normal self-stretch">
+              {% if point['selling-point-description'] %}
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-description']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-description']['en']|default('') }}
+              {% endif %}
+              {% endif %}
+              {# link (if exists) #}
+              {% if point['selling-point-link'] is not empty %}
+              <a href="{{ point['selling-point-link'] }}"
+                class="text-xs font-medium leading-4 underline underline-offset-2">
+                {% if language.iso_code == 'ar' %}
+                {{ point['selling-point-link-content']['ar']|default('المزيد') }}
+                {% else %}
+                {{ point['selling-point-link-content']['en']|default('Learn more') }}
+                {% endif %}
+              </a>
+              {% endif %}
+            </p>
+
+
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% endif %}
+
+
+
+
+
+		{# end test  #}
 		 {% if theme.settings.get('single_side_products') %}
 		 {% set raw_side_source = theme.settings.get('single_side_source') %}
 
