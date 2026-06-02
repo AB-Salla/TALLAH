@@ -238,21 +238,6 @@
             "required": false
         },
         {
-            "id": "header_topnav_icon_url",
-            "type": "string",
-            "format": "text",
-            "label": "أيقونة أعلى الهيدر",
-            "description": "أضف أيقونة لأعلى الهيدر ( يمكنك أضافة أيقونة للعربي وللأنجليزي )",
-            "labelHTML": null,
-            "placeholder": "Placeholder text ..",
-            "icon": "sicon-format-text-alt",
-            "value": null,
-            "multilanguage": true,
-            "required": false,
-            "minLength": 6,
-            "maxLength": "100"
-        },
-        {
             "id": "header_topnav_link_url",
             "type": "string",
             "format": "url",

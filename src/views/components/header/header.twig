@@ -189,8 +189,9 @@ Global Variables (from Theme)
 	{# 'group' = parent hover trigger for .hover-box #}
 	<div class="relative">
 		<div id="mainnav" class="main-nav-container overflow-hidden relative !h-fit !min-h-fit before:absolute before:content-[''] before:h-full before:w-full before:inset-0 before:-z-1">
+			
 			{% if link_url %}
-				<a href="{{ link_url }}" class="block no-underline top-lace" style="text-decoration: none;">
+				<a href="{{ link_url }}" target="_blank" rel="noopener noreferrer" class="block no-underline top-lace" style="text-decoration: none;">
 				{% endif %}
 
 				<div class="top-lace flex w-full h-[38px] p-[7px_21px] justify-center items-center gap-[4px] lg:flex lg:px-[30px] lg:py-[7px] lg:justify-between lg:items-center lg:self-stretch {{ is_rtl ? 'flex-row-reverse' : 'flex-row' }}" style="background: {{ topnav_bg }}; color: {{ topnav_text_color }};">
