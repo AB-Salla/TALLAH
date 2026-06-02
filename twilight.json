@@ -552,6 +552,63 @@
             "selected": true
         },
         {
+            "id": "cart_page_features",
+            "type": "collection",
+            "format": "collection",
+            "label": "أضف مميزات التسوق",
+            "description": "أضف مميزات )التسوق من متجرك",
+            "labelHTML": null,
+            "item_label": null,
+            "icon": "sicon-list-add",
+            "fields": [
+                {
+                    "id": "cart_page_features.cart_features_image",
+                    "type": "string",
+                    "format": "image",
+                    "label": "أضف صورة",
+                    "description": "أضف صورة مربعة",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://hostname.com/image.png",
+                    "icon": "sicon-image",
+                    "value": null,
+                    "required": false
+                },
+                {
+                    "id": "cart_page_features.cart_features_content",
+                    "type": "string",
+                    "format": "text",
+                    "label": "محتوي",
+                    "description": null,
+                    "labelHTML": null,
+                    "placeholder": "Placeholder text ..",
+                    "icon": "sicon-format-text-alt",
+                    "value": "أضف المحتوي",
+                    "multilanguage": true,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": "1000"
+                },
+                {
+                    "id": "cart_page_features.cart_features_link",
+                    "type": "string",
+                    "format": "url",
+                    "inputType": "url",
+                    "label": "رابط",
+                    "description": "أضف رابط إن وجد",
+                    "labelHTML": null,
+                    "placeholder": "e.g. https://salla.sa",
+                    "icon": "sicon-link",
+                    "value": null,
+                    "required": false,
+                    "minLength": 6,
+                    "maxLength": 30
+                }
+            ],
+            "value": [],
+            "minLength": "0",
+            "maxLength": "3"
+        },
+        {
             "type": "boolean",
             "icon": "sicon-toggle-off",
             "label": "تفعيل المميزات في شكل عمودي في صفحة سلة المشتريات",

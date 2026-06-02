@@ -369,6 +369,40 @@
                         <div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
+
+                    {# test features #}
+                    {% set features = theme.settings.get('cart_page_features') %}
+
+                {% if features is not empty %}
+                <div class="grid grid-cols-3 gap-4">
+                    {% for feature in features %}
+                    <div class="flex flex-col items-center text-center gap-2">
+
+                        {# Image #}
+                        {% if feature.cart_features_image %}
+                        <img src="{{ feature.cart_features_image }}"
+                            alt="{{ feature.cart_features_content[language.iso_code]|default('feature') }}"
+                            class="w-16 h-16 object-contain mb-3" />
+                        {% endif %}
+
+                        {# Content #}
+                        {% set content = feature.cart_features_content[language.iso_code]|default('') %}
+                        {% if feature.cart_features_link %}
+                        <a href="{{ feature.cart_features_link }}"
+                            class="text-zinc-800 text-center  text-lg font-light leading-5 tracking-normal">
+                            {{ content }}
+                        </a>
+                        {% else %}
+                        <span class="text-zinc-800 text-center  text-lg font-light leading-5 tracking-normal">
+                            {{ content }}
+                        </span>
+                        {% endif %}
+
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+{# end test  #}
 					 {% if theme.settings.get('features_switch_cart') %}
                         <section class=" py-2">
                             <div class="">
