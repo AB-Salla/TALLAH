@@ -2,9 +2,9 @@
 Global Variables (from Theme)
 ------------------------------- #}
 {% set topnav_bg = theme.settings.get('header-topnav-background') ?? 'var(--600, #000)' %}
-{% set topnav_text_color = theme.settings.get('header-topnav-text-color') ?? '#fff' %}
-{% set topnav_text = theme.settings.get('header-topnav-text') ?? 'Get access on launches and offers.' %}
-{% set topnav_special_text = theme.settings.get('header-topnav-special-text') ?? 'Sign Up For Texts' %}
+{% set topnav_text_color  = theme.settings.get('header-topnav-text-color')  %}
+{% set topnav_text = theme.settings.get('header-topnav-text') %}
+{% set topnav_special_text = theme.settings.get('header-topnav-special-text') %}
 {% set topnav_special_text_color = theme.settings.get('header-topnav-special-text-color') ?? '#666666' %}
 {% set link_url = theme.settings.get('header_topnav_link_url') %}
 {% set is_rtl = language.iso_code == 'ar' %}
@@ -231,13 +231,14 @@ Global Variables (from Theme)
 					</div>
 
 					{# First Text #}
-					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block">
-						{{ user.language.code == 'ar' ? topnav_text.ar : topnav_text.en }}
+					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block" style="color: {{ topnav_text_color }}" >
+						{{ topnav_text }}
 					</span>
+
 
 					{# Special Text with custom color #}
 					<span class="text-center text-[11px] not-italic font-normal leading-[16px] tracking-normal lg:text-xs lg:leading-5" style="color: {{ topnav_special_text_color }}">
-						{{ user.language.code == 'ar' ? topnav_special_text.ar : topnav_special_text.en }}
+						{{ topnav_special_text}}
 					</span>
 
 					{# Icon - User Image or Default #}
@@ -246,6 +247,14 @@ Global Variables (from Theme)
 						{% set icon_color = theme.settings.get('icon_color') %}
 						{% if icon %}
 							<i style="color:{{ icon_color }}" class="{{ pro.salla_icon ?: 'sicon-home' }} text-primary text-sm"></i>
+						{% endif %}
+					</span>
+					
+					{# Icon - User Image or Default #}
+					<span class="flex justify-center items-center w-[14px] h-[14px] lg:w-4 lg:h-4">
+						{% set icon_url = theme.settings.get('header-topnav-icon-url') %}
+						{% if icon_url %}
+						<img src="{{ icon_url }}" alt="Icon" class="w-[14px] h-[14px] lg:w-4 lg:h-4" />
 						{% endif %}
 					</span>
 				</div>
