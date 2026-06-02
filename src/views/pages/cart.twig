@@ -366,11 +366,9 @@
                             ></salla-loyalty>
                         </div>
                         {% endif %}
-                        <div class="mt-5">
-                        <salla-payments></salla-payments>
-                    </div>
 
-                    {# test features #}
+
+                   
                     {% set features = theme.settings.get('cart_page_features') %}
 
                 {% if features is not empty %}
@@ -382,18 +380,18 @@
                         {% if feature.cart_features_image %}
                         <img src="{{ feature.cart_features_image }}"
                             alt="{{ feature.cart_features_content[language.iso_code]|default('feature') }}"
-                            class="w-16 h-16 object-contain mb-3" />
+                            class="w-8 h-8 object-contain mb-3" />
                         {% endif %}
 
                         {# Content #}
                         {% set content = feature.cart_features_content[language.iso_code]|default('') %}
                         {% if feature.cart_features_link %}
                         <a href="{{ feature.cart_features_link }}"
-                            class="text-zinc-800 text-center  text-lg font-light leading-5 tracking-normal">
+                            class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal">
                             {{ content }}
                         </a>
                         {% else %}
-                        <span class="text-zinc-800 text-center  text-lg font-light leading-5 tracking-normal">
+                        <span class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal">
                             {{ content }}
                         </span>
                         {% endif %}
@@ -402,62 +400,10 @@
                     {% endfor %}
                 </div>
                 {% endif %}
-{# end test  #}
-					 {% if theme.settings.get('features_switch_cart') %}
-                        <section class=" py-2">
-                            <div class="">
-                            
-                                {% set is_ar = request.locale == 'ar' %}
-
-
-                                <div class="grid {% if theme.settings.get('features_col') %}
-                                grid-cols-1
-                                {% else %}
-                                grid-cols-3
-                                {% endif %}  justify-start sm:justify-center  items-start sm:items-center gap-4">
-                                    {% for item in theme.settings.get('rh_features_store_car') %}
-                                        {# احسب عدد الحروف في النص #}
-                                        {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
-                                        {% set is_long = title|length > 20 %}
-                                        <div class="text-start sm:text-center gap-4 flex  justify-center items-center  flex-col  w-auto ">
-                                        <span class="flex items-center justify-center w-9 h-9">
-                                            {% if item.rh_features_active_select_icons == "image_services" %}
-                                            <img src="{{ item.add_image }}"
-                                                alt="{{ item.block_title.ar }}"
-                                                class="w-full h-full object-contain">
-                                            {% elseif item.rh_features_active_select_icons == "salla_icon" %}
-                                            <i class="{{ item.icon_proudct }} text-primary text-4xl leading-none features__icon"></i>
-                                            {% elseif item.rh_features_active_select_icons == "animated_icon" %}
-                                            <lord-icon 
-                                                id="my-icon"
-                                                src="https://cdn.lordicon.com/{{ item.anmait_icon }}.json"
-                                                trigger="loop"
-                                                style="width:24px;height:24px">
-                                            </lord-icon>
-                                            <script>
-                                            // Wait for the element to load
-                                            document.addEventListener("DOMContentLoaded", () => {
-                                                const icon = document.getElementById("my-icon");
-                                                const color = getComputedStyle(document.documentElement)
-                                                .getPropertyValue("--color-primary")
-                                                .trim();
-                                                // Apply dynamic color using JS
-                                                icon.setAttribute("colors", `primary:${color},secondary:${color}`);
-                                            });
-                                            </script>
-                                            {% endif %}
-                                        </span>
-                                        <div >
-                                            <h3 class="text-[14px] text-center font-normal text-font leading-[140%]">
-                                                {{ title }}
-                                            </h3>
-                                        </div>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-
-                        </section>
-                {% endif %}
+                    <div class="mt-5">
+                        <salla-payments></salla-payments>
+                    </div>
+					
                     {# {% endif %} #}
                         {% hook 'cart:summary.end' %}
                     </div>
