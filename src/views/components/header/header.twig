@@ -241,15 +241,7 @@ Global Variables (from Theme)
 						{{ topnav_special_text}}
 					</span>
 
-					{# Icon - User Image or Default #}
-					<span class="flex justify-center items-center w-[14px] h-[14px] lg:w-4 lg:h-4">
-						{% set icon = theme.settings.get('header_topnav_icon_url') %}
-						{% set icon_color = theme.settings.get('icon_color') %}
-						{% if icon %}
-							<i style="color:{{ icon_color }}" class="{{ pro.salla_icon ?: 'sicon-home' }} text-primary text-sm"></i>
-						{% endif %}
-					</span>
-					
+
 					{# Icon - User Image or Default #}
 					<span class="flex justify-center items-center w-[14px] h-[14px] lg:w-4 lg:h-4">
 						{% set icon_url = theme.settings.get('header-topnav-icon-url') %}
