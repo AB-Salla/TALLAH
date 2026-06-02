@@ -369,27 +369,20 @@ Global Variables (from Theme)
 				<a class="navbar-brand" href="{{ store.url }}">
 					{% if add_another_logo and another_logo_img %}
 
-						<div class="relative">
+<div class="relative  w-full h-full group">
 
 							<img
-								fetchpriority="high"
-								width="100%"
-								height="100%"
-								loading="eager"
-								src="{{ store.logo }}"
-								alt="{{ store.name }} logo"
-								class="logo-primary block transition-opacity duration-300"
-							>
+									src="{{ store.logo }}"
+									class="logo-primary w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
+									alt="{{ store.name }}"
+								>
 
-							<img
-								fetchpriority="high"
-								width="100%"
-								height="100%"
-								loading="eager"
-								src="{{ another_logo_img }}"
-								alt="{{ store.name }} alternate logo"
-								class="logo-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300"
-							>
+								<img
+									src="{{ another_logo_img }}"
+									class="logo-secondary absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+									alt="{{ store.name }} alternate logo"
+								>
+
 
 						</div>
 
