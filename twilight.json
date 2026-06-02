@@ -229,6 +229,17 @@
         {
             "id": "header_topnav_icon_url",
             "type": "string",
+            "format": "icon",
+            "label": "أيقونة أعلى الهيدر",
+            "description": null,
+            "labelHTML": null,
+            "icon": "sicon-user-circle",
+            "value": "sicon-store",
+            "required": false
+        },
+        {
+            "id": "header_topnav_icon_url",
+            "type": "string",
             "format": "text",
             "label": "أيقونة أعلى الهيدر",
             "description": "أضف أيقونة لأعلى الهيدر ( يمكنك أضافة أيقونة للعربي وللأنجليزي )",
