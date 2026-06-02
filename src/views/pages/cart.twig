@@ -372,7 +372,7 @@
                     {% set features = theme.settings.get('cart_page_features') %}
 
                 {% if features is not empty %}
-                <div class="grid grid-cols-3 gap-4">
+                <div class="grid grid-cols-3 gap-4 mt-5">
                     {% for feature in features %}
                     <div class="flex flex-col items-center text-center gap-2">
 
@@ -387,11 +387,11 @@
                         {% set content = feature.cart_features_content[language.iso_code]|default('') %}
                         {% if feature.cart_features_link %}
                         <a href="{{ feature.cart_features_link }}"
-                            class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal">
+                            class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal  w-full " style="overflow-wrap: break-word;">
                             {{ content }}
                         </a>
                         {% else %}
-                        <span class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal">
+                        <span class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal  w-full " style="overflow-wrap: break-word;">
                             {{ content }}
                         </span>
                         {% endif %}

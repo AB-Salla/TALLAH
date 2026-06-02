@@ -555,7 +555,7 @@
             "id": "cart_page_features",
             "type": "collection",
             "format": "collection",
-            "label": "أضف مميزات التسوق",
+            "label": "أضف مميزات المتجر",
             "description": "أضف مميزات )التسوق من متجرك",
             "labelHTML": null,
             "item_label": null,
@@ -586,7 +586,7 @@
                     "multilanguage": true,
                     "required": false,
                     "minLength": 6,
-                    "maxLength": "1000"
+                    "maxLength": "50"
                 },
                 {
                     "id": "cart_page_features.cart_features_link",
@@ -601,7 +601,7 @@
                     "value": null,
                     "required": false,
                     "minLength": 6,
-                    "maxLength": 30
+                    "maxLength": 1000
                 }
             ],
             "value": [],
