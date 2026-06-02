@@ -578,7 +578,7 @@
                     "type": "string",
                     "format": "text",
                     "label": "محتوي",
-                    "description": null,
+                    "description": "ادخل عنوان حتى ٥٠ حرف",
                     "labelHTML": null,
                     "placeholder": "Placeholder text ..",
                     "icon": "sicon-format-text-alt",
@@ -607,7 +607,7 @@
             "value": [],
             "minLength": "0",
             "maxLength": "3",
-             "conditions": [
+            "conditions": [
                 {
                     "id": "features_switch_cart",
                     "operation": "=",
@@ -1233,8 +1233,7 @@
             "value": "<div class='flex-center p-3  text-center font-bold text-lg' > مميزات المنتج (صفحة المنتج)</div>",
             "variant": "h6"
         },
-
-                {
+        {
             "id": "selling-points",
             "type": "collection",
             "format": "collection",
