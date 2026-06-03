@@ -328,7 +328,7 @@ watchAndAdjustHeader() {
 
         // Add scrolled class to magicMenu when scrolling
         function toggleScrollClass(element) {
-          if (window.scrollY >= 1) {
+          if (window.scrollY >= 50) {
               element.classList.replace("not-scrolled", "scrolled");
           } else {
               element.classList.replace("scrolled", "not-scrolled");
