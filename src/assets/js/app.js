@@ -319,7 +319,7 @@ watchAndAdjustHeader() {
     window.addEventListener(
       "scroll",
       () => {
-        window.scrollY >= 1
+        window.scrollY >= 100
           ? header.classList.add("fixed-pinned")
           : header.classList.remove("fixed-pinned");
         window.scrollY >= 1
@@ -328,7 +328,7 @@ watchAndAdjustHeader() {
 
         // Add scrolled class to magicMenu when scrolling
         function toggleScrollClass(element) {
-          if (window.scrollY >= 50) {
+          if (window.scrollY >= 100) {
               element.classList.replace("not-scrolled", "scrolled");
           } else {
               element.classList.replace("scrolled", "not-scrolled");

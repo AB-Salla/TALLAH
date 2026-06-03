@@ -56,7 +56,6 @@ Global Variables (from Theme)
 		{% set initial_text = header_text_color %}
 		{% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
 	{% endif %}
-
 	<style>
         #search-panel-wrapper.scrolled {
 			top: 54px;
@@ -188,7 +187,7 @@ Global Variables (from Theme)
 
 	{# 'group' = parent hover trigger for .hover-box #}
 	<div class="relative">
-		<div id="mainnav" class="main-nav-container overflow-hidden relative !h-fit !min-h-fit before:absolute before:content-[''] before:h-full before:w-full before:inset-0 before:-z-1">
+		<div id="mainnav" class="main-nav-container relative !h-fit !min-h-fit before:absolute before:content-[''] before:h-full before:w-full before:inset-0 before:-z-1">
 			
 			{% if link_url %}
 				<a href="{{ link_url }}" target="_blank" rel="noopener noreferrer" class="block no-underline top-lace" style="text-decoration: none;">
@@ -288,7 +287,7 @@ Global Variables (from Theme)
 	</div>
 
 	<div
-		class="inner group w-full" style="{{ hover_vars }};">
+		class="inner group w-full sticky top-0 z-50" style="{{ hover_vars }};">
 		{# header for pc view #}
 		<div
 			class="site-header hover-box w-full h-[60px] px-16 flex flex-row-reverse justify-between items-center hidden lg:flex" style="color: {{ initial_text }};">
