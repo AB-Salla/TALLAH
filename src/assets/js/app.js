@@ -305,6 +305,7 @@ watchAndAdjustHeader() {
     let mobileMenu = document.getElementById("mobile-menu-overlay");
     let magicMenu = document.getElementById("mega-content");
     let searchModal = document.getElementById("search-panel-wrapper");
+    let simpleMenu = document.getElementById("simple-menu");
 
     //when it's landing page, there is no header
     if (!header) {
@@ -338,6 +339,7 @@ watchAndAdjustHeader() {
       if (magicMenu) toggleScrollClass(magicMenu);
       if (mobileMenu) toggleScrollClass(mobileMenu);
       if (searchModal) toggleScrollClass(searchModal);
+      if (simpleMenu) toggleScrollClass(simpleMenu);
       },
       { passive: true }
     );

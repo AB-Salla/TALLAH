@@ -19,9 +19,9 @@ Global Variables (from Theme)
 {% set another_logo_img = theme.settings.get('another_logo_img')%}
 
 
-
 {# Expose a couple vars to JS context #}
 <script>
+	
   window.isAdvancedMenuEnabled = {{ advanced_menu ? 'true' : 'false' }};
   window.header_bg_color = '{{ header_bg_color }}';
   window.header_text_color = '{{ header_text_color}}';
@@ -29,7 +29,7 @@ Global Variables (from Theme)
   window.languageCode = '{{ language.iso_code }}';
 </script>
 
-
+ 
 
 <header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full absolute top-0 left-0 home' : 'relative'}} z-50">
 	{# =====================================
@@ -102,6 +102,14 @@ Global Variables (from Theme)
 		}
 			 #mega-content.scrolled {
 				top: 54px;
+			}
+
+		
+			#simple-menu.scrolled {
+				top: 54px;
+			}
+			#simple-menu.not-scrolled {
+				top: var(--header-height);
 			}
 	</style>
 
@@ -704,10 +712,10 @@ Global Variables (from Theme)
 	3) DESKTOP MEGA MENU LAYER
 	===================================== #}{# in pc view #}{# Background Overlay #}<div id="mega-overlay-background" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden"> </div>{# =====================================
 	4) SIMPLE MENU (Fallback / compact)
-	===================================== #}<div id="simple-menu" class="w-[242px] h-[375px]  p-[24px_24px_40px_24px] items-start gap-[16px] shrink-0
+	===================================== #}<div id="simple-menu" class="not-scrolled w-[242px] h-[375px]  p-[24px_24px_40px_24px] items-start gap-[16px] shrink-0
 	     flex flex-col bg-white fixed  z-20
 	            transform scale-y-0 opacity-0 pointer-events-none
-	            origin-top transition-all duration-200" style="top: var(--header-height);"><ul id="simple-menu-list" class="flex flex-col p-4 space-y-2 text-sm text-black"></ul></div>{# =====================================
+	            origin-top transition-all duration-200" ><ul id="simple-menu-list" class="flex flex-col p-4 space-y-2 text-sm text-black"></ul></div>{# =====================================
 	6) SEARCH OVERLAY PANEL
 	===================================== #}<div id="search-overlay-container" class="fixed inset-0 z-20 hidden"><div id="search-overlay-background" class=" sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"></div></div><aside id="sidecart-panel" class="side-panel bg-white side-panel--left fixed top-0 h-full bg-bg-light dark:bg-bg-dark z-[101] w-full md:w-[437px] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto"><div class="side-panel__top flex items-center relative z-[2] p-5">
 <button class="menu-close bg-[var(--color-primary)] text-white rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="close">
@@ -803,3 +811,70 @@ Global Variables (from Theme)
 
 </div></div></aside><div id="sidecart-overlay" class="fixed inset-0 bg-black/50 z-[100] hidden opacity-0 transition-opacity duration-300"></div>
 
+{# fix simple menu  #}
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const simpleMenu = document.getElementById("simple-menu");
+    const ad = document.querySelector("salla-advertisement");
+    const header = document.querySelector("#mainnav");
+
+    if (!simpleMenu) return;
+
+    function getAdHeight() {
+        if (!ad) return 0;
+
+        const style = getComputedStyle(ad);
+        const hidden =
+            style.display === "none" ||
+            style.visibility === "hidden" ||
+            style.height === "0px" ||
+            ad.offsetHeight === 0;
+
+        return hidden ? 0 : ad.offsetHeight;
+    }
+
+    function updateHeaderVariable() {
+        const scrolled = window.scrollY > 0;
+        const headerHeight = header ? header.getBoundingClientRect().height : 0;
+        // Only include ad height when at the top
+        const adHeight = !scrolled ? getAdHeight() : 0;
+
+        document.documentElement.style.setProperty(
+            "--header-height",
+            (headerHeight + adHeight) + "px"
+        );
+    }
+
+    function updateSimpleMenu() {
+        const scrolled = window.scrollY > 0;
+        simpleMenu.classList.toggle("scrolled", scrolled);
+        simpleMenu.classList.toggle("not-scrolled", !scrolled);
+    }
+
+    function updateAll() {
+        updateHeaderVariable();
+        updateSimpleMenu();
+    }
+
+    // Run once immediately
+    updateAll();
+
+    // Re-run after a tick so the ad/header have rendered
+    setTimeout(updateAll, 100);
+    setTimeout(updateAll, 500); // fallback for slow-loading ad
+
+    window.addEventListener("scroll", updateAll);
+    window.addEventListener("resize", updateAll);
+
+    // Watch ad for size changes (handles ad appearing/disappearing)
+    if (ad) {
+        const ro = new ResizeObserver(updateAll);
+        ro.observe(ad);
+    }
+    if (header) {
+        const ro = new ResizeObserver(updateAll);
+        ro.observe(header);
+    }
+});
+</script>
