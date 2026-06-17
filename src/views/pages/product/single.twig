@@ -800,8 +800,8 @@
 	{% endif %}
 		<div class="feature flex items-start justify-between gap-[18px] flex-col pt-3 lg:pt-8">
 					{% if product.has_metadata %}
-						<div class="flex items-center justify-start gap-2">
-							<salla-metadata></salla-metadata>
+						<div class="flex items-center justify-start gap-2 w-full">
+							<salla-metadata class="w-full"></salla-metadata>
 						</div>
 					{% endif %}
 				</div>
@@ -994,6 +994,8 @@
     .s-product-card-content-category {
         display: none !important;
     }
+
+	
 </style>
 {% endif %} 
 
@@ -1005,8 +1007,96 @@
 	window.status_product={{product.status|json_encode|raw}};
 	window.product_category_id = {{ product.category.id | json_encode | raw }};
 	</script>
+	<script>
+(function () {
+  const metadata = document.querySelector("salla-metadata");
+
+  if (!metadata) {
+    console.error(" <salla-metadata> not found!");
+    return;
+  }
+
+  function initFaqAccordion() {
+
+    const rows = metadata.querySelectorAll(".s-metadata-row");
+
+    if (!rows.length) {
+      console.warn(" No FAQ rows inside <salla-metadata>");
+      return;
+    }
+
+    rows.forEach((row) => {
+      const title = row.querySelector(".s-metadata-row-name");
+      const value = row.querySelector(".s-metadata-row-value");
+
+      if (!title || !value) return;
+
+      // Prevent duplicate listeners
+      if (title.dataset.bound) return;
+      title.dataset.bound = "true";
+
+
+      title.addEventListener("click", () => {
+        
+
+        if (row.classList.contains("open")) {
+          value.style.maxHeight = value.scrollHeight + "px";
+
+          requestAnimationFrame(() => {
+            value.style.maxHeight = "0";
+          });
+
+          row.classList.remove("open");
+          value.classList.remove("open");
+
+        } else {
+          value.style.maxHeight = value.scrollHeight + "px";
+
+          row.classList.add("open");
+          value.classList.add("open");
+
+          value.addEventListener(
+            "transitionend",
+            () => {
+              if (row.classList.contains("open")) {
+                value.style.maxHeight = "none";
+              }
+            },
+            { once: true }
+          );
+        }
+      });
+    });
+  }
+
+  // Check if Salla component is already hydrated
+  if (metadata.classList.contains("hydrated")) {
+    initFaqAccordion();
+  } else {
+    console.log(" Waiting for hydration...");
+
+    const observer = new MutationObserver((mutations, obs) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class" &&
+          metadata.classList.contains("hydrated")
+        ) {
+          initFaqAccordion();
+          obs.disconnect();
+        }
+      });
+    });
+
+    observer.observe(metadata, { attributes: true });
+  }
+})();
+</script>
 	{% if product.has_3d_image %}
 		<script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 	{% endif %}
 	
 {% endblock %}
+
+
+
