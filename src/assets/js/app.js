@@ -698,7 +698,30 @@ watchAndAdjustHeader() {
                 lg:text-base
                 lg:leading-6 line-clamp-2">${item.product_name}</a>
                 </h2>
-                <div class="flex justify-between items-center gap-4">
+                <button type="button"
+              class="delete-btn text-gray-500 hover:text-red-500"
+              data-item-id="${item.id}">
+              <i class="sicon-trash-2"></i>
+            </button>
+                
+                </div>
+                </div>
+                <div class="flex lg:flex-col items-end justify-between mt-3 h-full">
+               
+          </div>
+            <div>
+             <button type="button"
+              class="delete-btn text-gray-500 hover:text-red-500"
+              data-item-id="${item.id}">
+              <i class="sicon-trash-2"></i>
+            </button>
+                <salla-quantity-input
+                  cart-item-id="${item.id}"
+                  max="500"
+                  value="${item.quantity}"
+                  name="quantity">
+                </salla-quantity-input>
+<div class="flex items-center gap-1">
                 <span class="item-price font-medium">
                   ${salla.money(item.price)}
                 </span>
@@ -710,23 +733,6 @@ watchAndAdjustHeader() {
                 </span>
                 </div>
                 </div>
-                </div>
-                <div class="flex lg:flex-col items-end justify-between mt-3 h-full">
-                <button type="button"
-              class="delete-btn text-gray-500 hover:text-red-500"
-              data-item-id="${item.id}">
-              <i class="sicon-trash-2"></i>
-            </button>
-                <salla-quantity-input
-                  cart-item-id="${item.id}"
-                  max="500"
-                  value="${item.quantity}"
-                  name="quantity">
-                </salla-quantity-input>
-          </div>
-
-            
-
           </div>
         </section>
       </form>
