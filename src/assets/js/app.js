@@ -698,12 +698,22 @@ watchAndAdjustHeader() {
                 lg:text-base
                 lg:leading-6 line-clamp-2">${item.product_name}</a>
                 </h2>
-                ${item.options && item.options.length ? `
-                <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1">
-                  ${item.options.map(opt => `
-                    <span class="text-xs text-gray-500">${opt.name}: <span class="text-gray-700 font-medium">${opt.value}</span></span>
-                  `).join('')}
-                </div>` : ''}
+                ${item.options && item.options.length ? (() => {
+                  const labels = item.options.map(opt => {
+                    // opt.value is an option-value ID; resolve it to a display name
+                    // using the product details already fetched in item.details
+                    const productOption = item.details?.options?.find(
+                      o => String(o.id) === String(opt.name) || o.name === opt.name
+                    );
+                    const detail = productOption?.details?.find(
+                      d => String(d.id) === String(opt.value)
+                    );
+                    return detail?.name || detail?.title || opt.value;
+                  }).filter(Boolean);
+                  return labels.length
+                    ? `<p class="text-xs text-gray-500 mt-1">${labels.join(' / ')}</p>`
+                    : '';
+                })() : ''}
                 <div class="flex justify-between items-center gap-4">
                 <span class="item-price font-medium">
                   ${salla.money(item.price)}
