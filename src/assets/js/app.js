@@ -698,22 +698,20 @@ watchAndAdjustHeader() {
                 lg:text-base
                 lg:leading-6 line-clamp-2">${item.product_name}</a>
                 </h2>
-                ${item.options && item.options.length ? (() => {
-                  const labels = item.options.map(opt => {
-                    // opt.value is an option-value ID; resolve it to a display name
-                    // using the product details already fetched in item.details
-                    const productOption = item.details?.options?.find(
-                      o => String(o.id) === String(opt.name) || o.name === opt.name
-                    );
-                    const detail = productOption?.details?.find(
-                      d => String(d.id) === String(opt.value)
-                    );
-                    return detail?.name || detail?.title || opt.value;
+                ${(() => {
+                  const opts = item.options;
+                  if (!opts || !opts.length) return '';
+                  // Flatten all option value details from the fetched product into one lookup map
+                  const allDetails = (item.details?.options || []).flatMap(o => o.details || []);
+                  const labels = opts.map(opt => {
+                    // opt.value is the selected option-value ID
+                    const match = allDetails.find(d => String(d.id) === String(opt.value));
+                    return match?.name || match?.title || null;
                   }).filter(Boolean);
                   return labels.length
-                    ? `<p class="text-xs text-gray-500 mt-1">${labels.join(' / ')}</p>`
+                    ? `<p class="text-xs text-gray-500 mt-1 leading-relaxed">${labels.join(' / ')}</p>`
                     : '';
-                })() : ''}
+                })()}
                 <div class="flex justify-between items-center gap-4">
                 <span class="item-price font-medium">
                   ${salla.money(item.price)}
