@@ -698,6 +698,12 @@ watchAndAdjustHeader() {
                 lg:text-base
                 lg:leading-6 line-clamp-2">${item.product_name}</a>
                 </h2>
+                ${item.options && item.options.length ? `
+                <div class="flex flex-wrap gap-x-3 gap-y-1 mt-1">
+                  ${item.options.map(opt => `
+                    <span class="text-xs text-gray-500">${opt.name}: <span class="text-gray-700 font-medium">${opt.value}</span></span>
+                  `).join('')}
+                </div>` : ''}
                 <div class="flex justify-between items-center gap-4">
                 <span class="item-price font-medium">
                   ${salla.money(item.price)}
@@ -705,9 +711,7 @@ watchAndAdjustHeader() {
                 <span class="item-price font-medium line-through text-[#9F9FA9]">
                   ${salla.money(item.original_price)}
                 </span>
-                <span class="item-price font-medium text-[#E7000B]">
-                  ${product.promotion_title}
-                </span>
+                ${item.promotion_title ? `<span class="item-price font-medium text-[#E7000B]">${item.promotion_title}</span>` : ''}
                 </div>
                 </div>
                 </div>
