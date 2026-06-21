@@ -637,11 +637,10 @@ ${window.option_images && window.product_card_options ? `
               </div>`
                 : ``
             }
-            ${window.option_images ?
-              ``: ` ${
+            ${
   this.product.status !== "sale"
     ? `
-      <button class=" md:text-base md:py-[9px] md:px-[20px] notify
+      <button class="${window.option_images ? 'md:hidden' : ''} md:text-base md:py-[9px] md:px-[20px] notify
       text-[12px] md:rounded-[40px] md:h-fit md:w-fit 
        w-8 h-8 flex items-center justify-center p-0 bg-[#F4F4F5] rounded-full 
       
@@ -668,18 +667,17 @@ ${window.option_images && window.product_card_options ? `
         </salla-add-product-button>
       `
       : `
-      ${!window.option_images ? ` <button
-          class="salla-add-product-button w-8 h-8 flex items-center justify-center p-0 bg-[#F4F4F5] rounded-full">
+        <button
+          class="salla-add-product-button ${window.option_images ? 'md:hidden' : ''} w-8 h-8 flex items-center justify-center p-0 bg-[#F4F4F5] rounded-full">
           <i class="text-base add-icon sicon-${
             this.product.type === "booking"
               ? "calendar-time"
               : "shopping-bag"
           }"></i>
           <i class="loader hidden animate-spin sicon-loading"></i>
-        </button>`:``}
-       
+        </button>
       `
-}`
+}
             }
           
 
@@ -781,8 +779,6 @@ ${window.option_images && window.product_card_options ? `
 // المتغيرات لتخزين الخيارات المختارة
 const selectedOptions = {};
 const checkOptionsCompletion = () => {
-  if (!addBtn) return;
-
   // كل الاوبشنز المطلوبة
   const requiredOptions = this.options.filter(opt => opt.required);
 
@@ -791,11 +787,13 @@ const checkOptionsCompletion = () => {
     opt => selectedOptions[opt.id]
   );
 
-  if (allSelected) {
-    addBtn.classList.add("btn-ready");
-  } else {
-    addBtn.classList.remove("btn-ready");
-  }
+  this.querySelectorAll(".salla-add-product-button").forEach((btn) => {
+    if (allSelected) {
+      btn.classList.add("btn-ready");
+    } else {
+      btn.classList.remove("btn-ready");
+    }
+  });
 };
 
 // الخيار المخفي (مثل thumbnail)
@@ -864,66 +862,72 @@ this.singleOptions.forEach(option => {
 
 // =========================================
 // زر "أضف للسلة"
-const addBtn = this.querySelector(".salla-add-product-button");
+// NOTE: there can be more than one add-to-cart button rendered for the
+// same product (e.g. the mobile inline button + the desktop floating
+// panel button), so we bind a click handler to ALL of them instead of
+// only the first match.
+const addBtns = this.querySelectorAll(".salla-add-product-button");
 
-addBtn?.addEventListener("click", async () => {
-  if (addBtn.disabled || addBtn.classList.contains("loading")) return;
+addBtns.forEach((addBtn) => {
+  addBtn.addEventListener("click", async () => {
+    if (addBtn.disabled || addBtn.classList.contains("loading")) return;
 
-  const isArabic = salla.config.language === "ar";
+    const isArabic = salla.config.language === "ar";
 
-  // =============================
-  // Required validation
-  const missing = this.options.find(
-    opt => opt.required && !selectedOptions[opt.id]
-  );
-
-  if (missing) {
-    salla.notify.error(
-      isArabic
-        ? `من فضلك اختر ${missing.name}`
-        : `Please select ${missing.name}`
+    // =============================
+    // Required validation
+    const missing = this.options.find(
+      opt => opt.required && !selectedOptions[opt.id]
     );
-    return;
-  }
 
-  // =============================
-  // START LOADING
-  addBtn.classList.add("loading");
-  addBtn.disabled = true;
-
-  const icon = addBtn.querySelector(".add-icon");
-  const loader = addBtn.querySelector(".loader");
-
-  if (icon) icon.classList.add("hidden");
-  if (loader) loader.classList.remove("hidden");
-
-  try {
-    const res = await salla.cart.addItem({
-      id: this.product.id,
-      quantity: 1,
-      options: selectedOptions
-    });
-
-    if (!res.success) {
-      throw new Error(res.error || "Add to cart failed");
+    if (missing) {
+      salla.notify.error(
+        isArabic
+          ? `من فضلك اختر ${missing.name}`
+          : `Please select ${missing.name}`
+      );
+      return;
     }
 
-  } catch (err) {
-    console.error(err);
-    salla.notify.error(
-      isArabic
-        ? "حدث خطأ أثناء الإضافة"
-        : "Something went wrong"
-    );
-  } finally {
     // =============================
-    // STOP LOADING
-    addBtn.classList.remove("loading");
-    addBtn.disabled = false;
+    // START LOADING
+    addBtn.classList.add("loading");
+    addBtn.disabled = true;
 
-    if (icon) icon.classList.remove("hidden");
-    if (loader) loader.classList.add("hidden");
-  }
+    const icon = addBtn.querySelector(".add-icon");
+    const loader = addBtn.querySelector(".loader");
+
+    if (icon) icon.classList.add("hidden");
+    if (loader) loader.classList.remove("hidden");
+
+    try {
+      const res = await salla.cart.addItem({
+        id: this.product.id,
+        quantity: 1,
+        options: selectedOptions
+      });
+
+      if (!res.success) {
+        throw new Error(res.error || "Add to cart failed");
+      }
+
+    } catch (err) {
+      console.error(err);
+      salla.notify.error(
+        isArabic
+          ? "حدث خطأ أثناء الإضافة"
+          : "Something went wrong"
+      );
+    } finally {
+      // =============================
+      // STOP LOADING
+      addBtn.classList.remove("loading");
+      addBtn.disabled = false;
+
+      if (icon) icon.classList.remove("hidden");
+      if (loader) loader.classList.add("hidden");
+    }
+  });
 });
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".notify");
