@@ -125,13 +125,19 @@ class ProductCard extends HTMLElement {
 
 
   getProductBadge() {
-    if (this.product?.preorder?.label ) {
-      return `<div class="s-product-card-promotion-title min-w-fit">${this.product.preorder.label}</div>`;
-    }
+  const isArabic = document.documentElement.lang === 'ar';
 
-    if (this.product.promotion_title) {
-      return `<div class="s-product-card-promotion-title min-w-fit">${this.product.promotion_title}</div>`;
-    }
+  if (this.product?.preorder?.label) {
+    return `<div class="s-product-card-promotion-title min-w-fit">
+      ${this.product.preorder.label}
+    </div>`;
+  }
+
+  if (this.product.promotion_title) {
+    return `<div class="s-product-card-promotion-title min-w-fit bg-black">
+      ${this.product.promotion_title} ${isArabic ? 'خصم' : 'off'}
+    </div>`;
+  }
     if (this.showQuantity && this.product?.quantity) {
       return `<div
         class="s-product-card-quantity">${this.remained} ${salla.helpers.number(
