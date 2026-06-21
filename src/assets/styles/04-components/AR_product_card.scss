@@ -20,6 +20,30 @@
 .btn-ready .add-icon {
   color: #9ca3af !important; /* رصاصي */
 }
+
+/* OOS circular color swatch — diagonal line overlay */
+.color-oos {
+  position: relative;
+  overflow: hidden;
+}
+.color-oos::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  width: 120%;
+  height: 1.5px;
+  background-color: rgba(255, 255, 255, 0.85);
+  transform: rotate(-45deg);
+  transform-origin: center;
+  pointer-events: none;
+}
+
+/* Disabled state when a selected variant is OOS */
+.salla-add-product-button.variant-oos {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
 .carousel-slider .swiper-wrapper > div {
         padding-left: 0 !important;
         padding-right: 0 !important;

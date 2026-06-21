@@ -280,14 +280,17 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           class="colors flex gap-2 flex-wrap"
           data-color-option="${option.id}"
         >
-          ${visible.map(item => `
+          ${visible.map(item => {
+            const isItemOOS = !!(item.is_out_of_stock || item.quantity === 0);
+            return `
             <span
-              class="w-6 h-6 rounded-full border  inline-block ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50':' cursor-pointer'} transition-all duration-200"
+              class="w-6 h-6 rounded-full border inline-block relative ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50' : isItemOOS ? 'cursor-pointer opacity-60 color-oos' : 'cursor-pointer'} transition-all duration-200"
               style="background-color:${item.color}"
               title="${item.name}"
-              data-option-id="${item.id}">
+              data-option-id="${item.id}"
+              data-out-of-stock="${isItemOOS}">
             </span>
-          `).join("")}
+          `}).join("")}
 
           ${remaining > 0 ? `
             <span class="w-6 h-6 flex items-center justify-center text-xs border rounded-full bg-gray-100 text-gray-700">
@@ -313,16 +316,19 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           class="sizes flex gap-2 flex-wrap"
           data-single-option="${option.id}"
         >
-          ${visible.map(item => `
+          ${visible.map(item => {
+            const isItemOOS = !!(item.is_out_of_stock || item.quantity === 0);
+            return `
             <button
-              class="px-2 py-1  md:px-[18px] md:py-[7px] border  border-[#9F9FA9] text-sm transition-all duration-200 
-              ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50 strike-diagonal':'cursor-pointer'}
+              class="px-2 py-1  md:px-[18px] md:py-[7px] border  border-[#9F9FA9] text-sm transition-all duration-200
+              ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50 strike-diagonal' : isItemOOS ? 'strike-diagonal opacity-50 cursor-pointer' : 'cursor-pointer'}
               "
              ${this.product.status !== 'sale' ? 'disabled="disabled"' : ""}
-              data-option-id="${item.id}">
+              data-option-id="${item.id}"
+              data-out-of-stock="${isItemOOS}">
               ${item.name}
             </button>
-          `).join("")}
+          `}).join("")}
 
           ${remaining > 0 ? `
             <span class="px-2 py-1  md:px-[18px] md:py-[7px] border border-[#9F9FA9] text-sm transition-all duration-200 flex items-center justify-center">
@@ -777,6 +783,35 @@ ${window.option_images && window.product_card_options ? `
 // ==========================================
 // المتغيرات لتخزين الخيارات المختارة
 const selectedOptions = {};
+let selectedVariantOOS = false;
+
+const _originalAddLabel = this.product.add_to_cart_label || this.getAddButtonLabel();
+const _isArabicCard = document.documentElement.lang === 'ar';
+
+const updateCartBtnState = () => {
+  this.querySelectorAll(".salla-add-product-button").forEach((btn) => {
+    const icon = btn.querySelector(".add-icon");
+    if (selectedVariantOOS) {
+      btn.disabled = true;
+      btn.classList.add("variant-oos");
+      if (icon) icon.textContent = _isArabicCard ? "نفذت الكمية" : "Out of Stock";
+    } else {
+      btn.disabled = false;
+      btn.classList.remove("variant-oos");
+      if (icon) icon.textContent = _originalAddLabel;
+    }
+  });
+  // Toggle notify button visibility based on variant OOS state
+  this.querySelectorAll(".notify").forEach((btn) => {
+    if (selectedVariantOOS) {
+      btn.classList.remove("hidden");
+    } else {
+      // only hide if product itself is in stock; out-of-stock products always show notify
+      if (this.product.status === "sale") btn.classList.add("hidden");
+    }
+  });
+};
+
 const checkOptionsCompletion = () => {
   // كل الاوبشنز المطلوبة
   const requiredOptions = this.options.filter(opt => opt.required);
@@ -793,6 +828,7 @@ const checkOptionsCompletion = () => {
       btn.classList.remove("btn-ready");
     }
   });
+  updateCartBtnState();
 };
 
 // الخيار المخفي (مثل thumbnail)
@@ -813,7 +849,14 @@ this.colorOptions.forEach(option => {
   this.querySelectorAll(`[data-color-option="${option.id}"] span[data-option-id]`)
     .forEach(el => {
       el.addEventListener("click", () => {
-        selectedOptions[option.id] = el.dataset.optionId;
+        const isOOS = el.dataset.outOfStock === "true";
+        selectedVariantOOS = isOOS;
+
+        if (!isOOS) {
+          selectedOptions[option.id] = el.dataset.optionId;
+        } else {
+          delete selectedOptions[option.id];
+        }
 
         // UI active ring
         el.parentElement.querySelectorAll("span[data-option-id]")
@@ -839,7 +882,15 @@ this.singleOptions.forEach(option => {
   this.querySelectorAll(`[data-single-option="${option.id}"] button`)
     .forEach(el => {
       el.addEventListener("click", () => {
-        selectedOptions[option.id] = el.dataset.optionId;
+        const isOOS = el.dataset.outOfStock === "true";
+        selectedVariantOOS = isOOS;
+
+        if (!isOOS) {
+          selectedOptions[option.id] = el.dataset.optionId;
+        } else {
+          // Don't count OOS variant as a valid selection
+          delete selectedOptions[option.id];
+        }
 
         // UI active button
         el.parentElement.querySelectorAll("button")
@@ -852,7 +903,7 @@ this.singleOptions.forEach(option => {
         if (label) {
           label.textContent = el.textContent.trim();
         }
-      checkOptionsCompletion();
+        checkOptionsCompletion();
       });
     });
 });
@@ -869,7 +920,12 @@ const addBtns = this.querySelectorAll(".salla-add-product-button");
 
 addBtns.forEach((addBtn) => {
   addBtn.addEventListener("click", async () => {
-    if (addBtn.disabled || addBtn.classList.contains("loading")) return;
+    if (addBtn.classList.contains("loading")) return;
+    // If button is disabled due to OOS variant, route to notify instead
+    if (addBtn.disabled || selectedVariantOOS) {
+      if (selectedVariantOOS) window.openNewsletterModal?.();
+      return;
+    }
 
     const isArabic = salla.config.language === "ar";
 
@@ -907,16 +963,26 @@ addBtns.forEach((addBtn) => {
       });
 
       if (!res.success) {
-        throw new Error(res.error || "Add to cart failed");
+        const errMsg = res.error || "";
+        const isStockError = /out.of.stock|unavailable|quantity|stock/i.test(errMsg);
+        throw Object.assign(new Error(errMsg), { isStockError });
       }
 
     } catch (err) {
       console.error(err);
-      salla.notify.error(
-        isArabic
-          ? "حدث خطأ أثناء الإضافة"
-          : "Something went wrong"
-      );
+      if (err.isStockError) {
+        salla.notify.error(
+          isArabic
+            ? "هذا المنتج غير متوفر بالكمية المطلوبة"
+            : "This item is currently out of stock"
+        );
+      } else {
+        salla.notify.error(
+          isArabic
+            ? "حدث خطأ أثناء الإضافة، يرجى المحاولة مرة أخرى"
+            : "Something went wrong, please try again"
+        );
+      }
     } finally {
       // =============================
       // STOP LOADING
