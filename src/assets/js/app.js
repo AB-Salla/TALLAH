@@ -676,59 +676,65 @@ watchAndAdjustHeader() {
         <section class="cart-item bg-[#fff] p-2  mb-4"
                  data-id="${item.id}">
 
-          <div class="grid grid-cols-3 gap-4 items-start">
+          <div class="grid grid-cols-[96px_1fr] gap-3 items-start">
+  
+  <!-- IMAGE -->
+  <a href="${item_url}" class="w-24 h-24 row-span-2">
+    <img src="${img}" 
+         alt="${item.product_name}"
+         class="w-full h-full object-cover" />
+  </a>
 
-  <div class="flex gap-4 items-center col-span-2">
-    <a href="${item_url}" class="w-24 h-32 md:h-24">
-      <img src="${img}" 
-           alt="${item.product_name}"
-           class="w-full h-full object-cover">
+  <!-- TOP ROW: name + delete -->
+  <div class="flex justify-between items-start gap-2">
+    <a href="${item_url}" class="text-sm font-medium line-clamp-2">
+      ${item.product_name}
     </a>
 
-              <div class="space-y-1 flex-grow w-full">
-                <h2 class=" font-medium
-                text-sm
-                leading-5
-                tracking-wide
-                lg:text-base
-                lg:leading-6 line-clamp-2">
-                  <a href="${item_url}" class="font-medium
-                text-sm
-                leading-5
-                tracking-wide
-                lg:text-base
-                lg:leading-6 line-clamp-2">${item.product_name}</a>
-                </h2>
-                <div class="flex justify-between items-center gap-4">
-                <span class="item-price font-medium">
-                  ${salla.money(item.price)}
-                </span>
-                <span class="item-price font-medium line-through text-[#9F9FA9]">
-                  ${salla.money(item.original_price)}
-                </span>
-                <span class="item-price font-medium text-[#E7000B]">
-                  ${product.promotion_title}
-                </span>
-                </div>
-                </div>
-                </div>
-                <div class="flex lg:flex-col items-end justify-between mt-3 h-full">
-                <button type="button"
-              class="delete-btn text-gray-500 hover:text-red-500"
-              data-item-id="${item.id}">
-              <i class="sicon-trash-2"></i>
-            </button>
-                <salla-quantity-input
-                  cart-item-id="${item.id}"
-                  max="500"
-                  value="${item.quantity}"
-                  name="quantity">
-                </salla-quantity-input>
-          </div>
+    <button type="button"
+            class="delete-btn text-gray-500 hover:text-red-500"
+            data-item-id="${item.id}">
+      <i class="sicon-trash-2"></i>
+    </button>
+  </div>
 
-            
+  <!-- BOTTOM ROW: price + qty -->
+  <div class="flex justify-between items-center">
+    
+    <!-- PRICE -->
+    <div class="flex items-center gap-2">
+      <span class="font-medium">
+        ${salla.money(item.price)}
+      </span>
 
-          </div>
+      ${
+        item.original_price > item.price
+          ? `<span class="line-through text-[#9F9FA9]">
+               ${salla.money(item.original_price)}
+             </span>`
+          : ''
+      }
+
+      ${
+        item.promotion_title
+          ? `<span class="text-[#E7000B]">
+               ${item.promotion_title}
+             </span>`
+          : ''
+      }
+    </div>
+
+    <!-- QTY -->
+    <salla-quantity-input
+      cart-item-id="${item.id}"
+      max="500"
+      value="${item.quantity}"
+      name="quantity">
+    </salla-quantity-input>
+
+  </div>
+
+</div>
         </section>
       </form>
     `;
