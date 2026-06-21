@@ -180,6 +180,7 @@ salla-add-product-button{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         gap: 10px;
+        padding: 4px !important;
       }
       .radio-label {
         max-height: fit-content;
