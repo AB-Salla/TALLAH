@@ -39,9 +39,11 @@
 					<button class="btn--close-sm close-filters sicon-cancel lg:hidden"></button>
 					<div class="md:w-72 lg:sticky lg:top-20 flex-none hidden lg:block">
 						<button class=" mb-4  text-center w-3/4 text-primary p-1 lg:flex  items-center gap-2">
-                        							<i class="sicon-tune"></i>
-
-							<span class="button-text tetx-base font-semibold">{{ trans('pages.index.filters') }}</span>
+                        	
+							<i><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+								<path d="M6.4 3.2L14.2 3.2M6.4 3.2C6.4 3.86274 5.86274 4.4 5.2 4.4C4.53726 4.4 4 3.86274 4 3.2M6.4 3.2C6.4 2.53726 5.86274 2 5.2 2C4.53726 2 4 2.53726 4 3.2M1 3.2H4M6.4 12.8H14.2M6.4 12.8C6.4 13.4627 5.86274 14 5.2 14C4.53726 14 4 13.4627 4 12.8M6.4 12.8C6.4 12.1373 5.86274 11.6 5.2 11.6C4.53726 11.6 4 12.1373 4 12.8M1 12.8L4 12.8M11.2 8L14.2 8M11.2 8C11.2 8.66274 10.6627 9.2 10 9.2C9.33726 9.2 8.8 8.66274 8.8 8M11.2 8C11.2 7.33726 10.6627 6.8 10 6.8C9.33726 6.8 8.8 7.33726 8.8 8M1 8H8.8" stroke="#27272A" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+								</svg></i>
+							<span class="button-text text-base font-semibold">{{ trans('pages.index.filters') }}</span>
 						</button>
 						<salla-filters 
 							id="filters-menu" 
@@ -54,7 +56,11 @@
 				<div class="main-content flex-1 w-full {{ filters ? 'ltr:lg:ml-8 rtl:lg:mr-8' : '' }}">
 					<div class="mb-4 sm:mb-6 flex justify-between items-center">
 						<h1 class="primary-bold md:text-xl text-sm lg:text-center w-full lg:block hidden" id="page-main-title">{{ page.title|raw }}</h1>
-          
+                       {% if filters %}
+								<a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2 ">
+									<i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
+								</a>
+						{% endif %}
 						<div class="flex items-center space-x-2 rtl:space-x-reverse">
 	
 							{% if sort_options|length %}
@@ -65,21 +71,16 @@
 									</select>
 							{% endif %}
 						</div>
-                        {% if filters %}
-								<a href="#filters-menu" class="filters-trigger bg-border-color text-primary lg:hidden mt-2 ">
-									<i class="sicon-filter text-gray-text text-2xl me-2.5"></i>
-								</a>
-						{% endif %}
+           
   
 
 					</div>
                     <div class="flex lg:hidden items-center justify-between mb-4">
-             	 <div class="flex-1 justify-start flex items-center gap-1.5 text-2xl">
-						<button id="grid-two-columns" class="two-columns transition-all duration-300 ease-in-out"><i class="sicon-pause"></i></button>
-						<button id="grid-one-column" class="rotate-90 one-column transition-all duration-300 ease-in-out -mt-[5px]"><i class="sicon-pause"></i></button>
-					</div>
-                        <h1 class="primary-bold md:text-xl text-sm lg:text-center flex-1 justify-end text-end" id="page-main-title">{{ page.title|raw }}</h1>
-                       
+						<h1 class="primary-bold md:text-xl text-sm lg:text-center flex-1" id="page-main-title">{{ page.title|raw }}</h1>
+						<div class="flex-1 justify-end flex items-center gap-1.5 text-2xl">
+							<button id="grid-two-columns" class="two-columns transition-all duration-300 ease-in-out"><i class="sicon-pause"></i></button>
+							<button id="grid-one-column" class="rotate-90 one-column transition-all duration-300 ease-in-out -mt-[5px]"><i class="sicon-pause"></i></button>
+						</div>
                     </div>
 
 					{% hook 'product:index.items.start' %}

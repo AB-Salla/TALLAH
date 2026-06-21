@@ -92,6 +92,11 @@
 		<div class="bg-background">
 			<div class="flex flex-col lg:gap-8 gap-4 items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row lg:px-14" id="product-{{ product.id }}">
 				<div class="sidebar relative lg:!sticky  lg:top-8 !w-full lg:!w-[66%] lg:pb-16  shrink-0">
+					{# promotion  #}
+                    {% if product.promotion_title %}
+                                <div class="promotion-title">{{ product.promotion_title }}</div>
+                	{% endif %}
+
 					{% set has_many_images = product.images|length > 1 %}
                     {% if theme.settings.get('grid_or_slider_products_page') %}
 					<div class=" grid-cols-2 gap-2 lg:gap-4 {% if theme.settings.get('grid_or_slider_in_mobile') %} hidden
@@ -139,10 +144,9 @@
 								}
 							}'
 						>
+						
 
-                            {% if product.promotion_title %}
-                                <div class="promotion-title">{{ product.promotion_title }}</div>
-                            {% endif %}
+                    
 
                             {# Calories Badge #}
                             {% if product.calories %}
@@ -208,9 +212,6 @@
                                 show-controls="false" 
                                 show-thumbs-controls="false">
 
-                            {% if product.promotion_title %}
-                                <div class="promotion-title">{{ product.promotion_title }}</div>
-                            {% endif %}
 
                             {# Calories Badge #}
                             {% if product.calories %}
@@ -326,8 +327,8 @@
 				<div class="flex items-center justify-between pb-2 border-b border-[#E4E4E7] mb-4 ">
 					<div class="flex whitespace-nowrap gap-4 items-center">
 						<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-							<h4 class="text-primary font-bold text-xl lg:text-[28px] inline-block">{{product.sale_price|money}}</h4>
-							<span class="text-gray-500 text-xl line-through">{{product.regular_price|money}}</span>
+							<h4 class="text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</h4>
+							<span class="text-[#9F9FA9] text-xl line-through">{{product.regular_price|money}}</span>
 						</div>
 
 						<div class="gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
@@ -453,8 +454,8 @@
 
 							<div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
 								<div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
-									<h2 class="total-price text-primary font-bold text-xl inline-block">{{product.sale_price|money}}</h2>
-									<span class="before-price text-gray-500 line-through">{{product.regular_price|money}}</span>
+									<h2 class="total-price text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</h2>
+									<span class="before-price text-[#9F9FA9] text-xl line-through">{{product.regular_price|money}}</span>
 								</div>
 								
 								<div class="starting-or-normal-price gap-4 {{ product.is_on_sale ? 'hidden' : 'flex' }}">
@@ -571,71 +572,189 @@
 			<div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
-					 {% if theme.settings.get('features_switch') %}
-                <section class=" py-2">
-                    <div class="">
-                       
-						{% set is_ar = request.locale == 'ar' %}
-						{{theme.settings.get('features_col_single')}}
-                        <div class="grid {% if theme.settings.get('features_col_single') %}
-							grid-cols-1 justify-start items-start
-						{% else %}
-							grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 justify-start sm:justify-center items-start sm:items-center
-						{% endif %}  gap-8">
-                            {% for item in theme.settings.get('rh_features_store_pros') %}
-                                {# احسب عدد الحروف في النص #}
-                                {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
-    					{% set description = is_ar ? item.description_feature.ar : item.description_feature.en %}
-                                {% set is_long = title|length > 20 %}
-								
-                                <div class="  w-auto  {% if theme.settings.get('features_col_single') %}
-								text-start gap-4 flex justify-start  items-center
-{% else %}
-text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-center  sm:flex-col
-{% endif %} ">
-                                <span class="flex items-center justify-center w-6 h-6">
-                                    {% if item.rh_features_active_select_icons == "image_services" %}
-                                    <img src="{{ item.add_image }}"
-                                        alt="{{ item.block_title.ar }}"
-                                        class="w-full h-full object-contain">
-                                    {% elseif item.rh_features_active_select_icons == "salla_icon" %}
-                                    <i class="{{ item.icon_proudct }} text-primary text-4xl leading-none features__icon"></i>
-                                    {% elseif item.rh_features_active_select_icons == "animated_icon" %}
-                                    <lord-icon 
-                                        id="my-icon"
-                                        src="https://cdn.lordicon.com/{{ item.anmait_icon }}.json"
-                                        trigger="loop"
-                                        style="width:24px;height:24px">
-                                    </lord-icon>
-                              
 
-                                    <script>
-                                    // Wait for the element to load
-                                    document.addEventListener("DOMContentLoaded", () => {
-                                        const icon = document.getElementById("my-icon");
-                                        const color = getComputedStyle(document.documentElement)
-                                        .getPropertyValue("--color-primary")
-                                        .trim();
-                                        // Apply dynamic color using JS
-                                        icon.setAttribute("colors", `primary:${color},secondary:${color}`);
-                                    });
-                                    </script>
-                                    {% endif %}
-                                </span>
-								<div >
-									<h3 class="text-[14px] font-semibold text-font leading-[140%]">
-										{{ title }}
-									</h3>
-									<h3 class="text-[14px] font-semibold text-font leading-[140%]">
-										{{ description }}
-									</h3>
-								</div>
-                                </div>
-                                {% endfor %}
-                            </div>
+     {# get the selected view type (horizontal | vertical) #}
+      {% set view_type = theme.settings.get('selling-points-view')|default('horizontal') %}
+      {% set selling_points = theme.settings.get('selling-points') %}
 
-                </section>
-        {% endif %}
+      {% if selling_points and selling_points|length > 0 %}
+      {# mobile view #}
+      <div class=" lg:hidden flex flex-col items-start gap-6 py-6 self-stretch">
+        {% for point in selling_points %}
+        <div class="flex items-center gap-4 self-stretch  flex-row">
+
+          {# image #}
+          {% if point['selling-point-image'] %}
+          <img src="{{ point['selling-point-image'] }}"
+            alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+            class="w-8 h-8 aspect-square" />
+          {% endif %}
+
+          {# title + description + link #}
+          <div class="flex flex-col items-start flex-1">
+
+            {# title #}
+            {% if point['selling-point-title'] %}
+            <span class="text-sm font-semibold leading-5 tracking-normal self-stretch">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-title']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-title']['en']|default('') }}
+              {% endif %}
+            </span>
+            {% endif %}
+
+            {# description & link #}
+
+            <p class="text-xs font-medium leading-4 tracking-normal self-stretch">
+              {% if point['selling-point-description'] %}
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-description']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-description']['en']|default('') }}
+              {% endif %}
+              {% endif %}
+              {# link (if exists) #}
+              {% if point['selling-point-link'] is not empty %}
+              <a href="{{ point['selling-point-link'] }}"
+                class="text-xs font-medium leading-4 underline underline-offset-2">
+                {% if language.iso_code == 'ar' %}
+                {{ point['selling-point-link-content']['ar']|default('المزيد') }}
+                {% else %}
+                {{ point['selling-point-link-content']['en']|default('Learn more') }}
+                {% endif %}
+              </a>
+              {% endif %}
+            </p>
+
+
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {# Horizontal View #}
+      {% if view_type == 'horizontal' %}
+      <div class="hidden lg:flex py-6 items-start gap-4 flex-row w-full">
+        {% for point in selling_points %}
+        <div class="flex flex-col items-center text-center gap-2 px-2 flex-1 min-w-[150px]">
+
+          {# image fixed at top #}
+          {% if point['selling-point-image'] %}
+          <div class="flex-shrink-0">
+            <img src="{{ point['selling-point-image'] }}"
+              alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+              class="w-8 h-8 aspect-square" />
+          </div>
+          {% endif %}
+
+          {# text content below image #}
+          <div class="flex flex-col items-center gap-1 text-center flex-1">
+
+            {# title #}
+            {% if point['selling-point-title'] %}
+            <span class="text-sm font-semibold leading-5">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-title']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-title']['en']|default('') }}
+              {% endif %}
+            </span>
+            {% endif %}
+
+            {# description #}
+            {% if point['selling-point-description'] %}
+            <p class="text-xs font-medium leading-4">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-description']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-description']['en']|default('') }}
+              {% endif %}
+            </p>
+            {% endif %}
+
+            {# link (if exists) #}
+            {% if point['selling-point-link'] is not empty %}
+            <a href="{{ point['selling-point-link'] }}"
+              class="text-xs font-medium leading-4 underline underline-offset-2">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-link-content']['ar']|default('المزيد') }}
+              {% else %}
+              {{ point['selling-point-link-content']['en']|default('Learn more') }}
+              {% endif %}
+            </a>
+            {% endif %}
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+
+      {# Vertical View #}
+      {% if view_type == 'vertical' %}
+      <div class="hidden lg:flex flex-col items-start gap-6 py-6 self-stretch">
+        {% for point in selling_points %}
+        <div class="flex items-center gap-4 self-stretch  flex-row">
+
+          {# image #}
+          {% if point['selling-point-image'] %}
+          <img src="{{ point['selling-point-image'] }}"
+            alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+            class="w-8 h-8 aspect-square" />
+          {% endif %}
+
+          {# title + description + link #}
+          <div class="flex flex-col items-start flex-1">
+
+            {# title #}
+            {% if point['selling-point-title'] %}
+            <span class="text-sm font-semibold leading-5 tracking-normal self-stretch">
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-title']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-title']['en']|default('') }}
+              {% endif %}
+            </span>
+            {% endif %}
+
+            {# description & link #}
+
+            <p class="text-xs font-medium leading-4 tracking-normal self-stretch">
+              {% if point['selling-point-description'] %}
+              {% if language.iso_code == 'ar' %}
+              {{ point['selling-point-description']['ar']|default('') }}
+              {% else %}
+              {{ point['selling-point-description']['en']|default('') }}
+              {% endif %}
+              {% endif %}
+              {# link (if exists) #}
+              {% if point['selling-point-link'] is not empty %}
+              <a href="{{ point['selling-point-link'] }}"
+                class="text-xs font-medium leading-4 underline underline-offset-2">
+                {% if language.iso_code == 'ar' %}
+                {{ point['selling-point-link-content']['ar']|default('المزيد') }}
+                {% else %}
+                {{ point['selling-point-link-content']['en']|default('Learn more') }}
+                {% endif %}
+              </a>
+              {% endif %}
+            </p>
+
+
+
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+
+      {% endif %}
+
+
+
+
+
 		 {% if theme.settings.get('single_side_products') %}
 		 {% set raw_side_source = theme.settings.get('single_side_source') %}
 
@@ -681,8 +800,8 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	{% endif %}
 		<div class="feature flex items-start justify-between gap-[18px] flex-col pt-3 lg:pt-8">
 					{% if product.has_metadata %}
-						<div class="flex items-center justify-start gap-2">
-							<salla-metadata></salla-metadata>
+						<div class="flex items-center justify-start gap-2 w-full">
+							<salla-metadata class="w-full"></salla-metadata>
 						</div>
 					{% endif %}
 				</div>
@@ -875,6 +994,8 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
     .s-product-card-content-category {
         display: none !important;
     }
+
+	
 </style>
 {% endif %} 
 
@@ -886,8 +1007,96 @@ text-start sm:text-center gap-4 flex justify-start  sm:justify-center items-cent
 	window.status_product={{product.status|json_encode|raw}};
 	window.product_category_id = {{ product.category.id | json_encode | raw }};
 	</script>
+	<script>
+(function () {
+  const metadata = document.querySelector("salla-metadata");
+
+  if (!metadata) {
+    console.error(" <salla-metadata> not found!");
+    return;
+  }
+
+  function initFaqAccordion() {
+
+    const rows = metadata.querySelectorAll(".s-metadata-row");
+
+    if (!rows.length) {
+      console.warn(" No FAQ rows inside <salla-metadata>");
+      return;
+    }
+
+    rows.forEach((row) => {
+      const title = row.querySelector(".s-metadata-row-name");
+      const value = row.querySelector(".s-metadata-row-value");
+
+      if (!title || !value) return;
+
+      // Prevent duplicate listeners
+      if (title.dataset.bound) return;
+      title.dataset.bound = "true";
+
+
+      title.addEventListener("click", () => {
+        
+
+        if (row.classList.contains("open")) {
+          value.style.maxHeight = value.scrollHeight + "px";
+
+          requestAnimationFrame(() => {
+            value.style.maxHeight = "0";
+          });
+
+          row.classList.remove("open");
+          value.classList.remove("open");
+
+        } else {
+          value.style.maxHeight = value.scrollHeight + "px";
+
+          row.classList.add("open");
+          value.classList.add("open");
+
+          value.addEventListener(
+            "transitionend",
+            () => {
+              if (row.classList.contains("open")) {
+                value.style.maxHeight = "none";
+              }
+            },
+            { once: true }
+          );
+        }
+      });
+    });
+  }
+
+  // Check if Salla component is already hydrated
+  if (metadata.classList.contains("hydrated")) {
+    initFaqAccordion();
+  } else {
+    console.log(" Waiting for hydration...");
+
+    const observer = new MutationObserver((mutations, obs) => {
+      mutations.forEach((mutation) => {
+        if (
+          mutation.type === "attributes" &&
+          mutation.attributeName === "class" &&
+          metadata.classList.contains("hydrated")
+        ) {
+          initFaqAccordion();
+          obs.disconnect();
+        }
+      });
+    });
+
+    observer.observe(metadata, { attributes: true });
+  }
+})();
+</script>
 	{% if product.has_3d_image %}
 		<script type="module" defer src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 	{% endif %}
 	
 {% endblock %}
+
+
+

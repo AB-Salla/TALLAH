@@ -66,19 +66,19 @@
                             <input type="hidden" name="id" value="{{ item.id }}">
                                 <!-- product -->
                                 <div class="md:flex rtl:space-x-reverse md:space-x-12 items-start justify-between md:mb-8 last:mb-0">
-                                    <div class="flex flex-col md:flex-row  flex-1 rtl:space-x-reverse space-x-4 justify-between">
-                                        <div class="flex gap-2 mb-3">
+                                    <div class="flex flex-col md:flex-row  flex-1 w-full justify-between">
+                                        <div class="flex gap-2 mb-3 w-full">
 
                                             <a href="{{ item.url }}" class="relative overflow-hidden shrink-0">
                                                 {% if loop.first %}
                                                     <img src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="flex-none w-[95px] md:w-[120px] h-[195px] md:h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="flex-none w-[110px] md:w-[120px] h-[195px] md:h-[140px] border border-gray-200 bg-gray-100 object-center object-cover">
                                                 {% else %}
                                                     <img src="{{ 'images/s-empty.png' | cdn }}"
                                                         data-src="{{ item.product_image }}"
                                                         alt="{{ item.product_name }}"
-                                                        class="lazy flex-none w-[95px] md:w-[120px] h-[195px] md:h-[140px] border border-gray-200 bg-gray-100 rounded-md object-center object-cover">
+                                                        class="lazy flex-none w-[110px] md:w-[120px] h-[195px] md:h-[140px] border border-gray-200 bg-gray-100 object-center object-cover">
                                                 {% endif %}
     
                                                 <!-- free product ribbon -->
@@ -88,7 +88,7 @@
                                                 <!-- end free product ribbon -->
                                                 
                                             </a>
-                                            <div class="space-y-1">
+                                            <div class="space-y-1 flex-grow basis-0 min-w-0 w-full">
                                                 <h1 class="font-mediumtext-[clamp(0.875rem,0.85rem+0.3vw,1rem)] mb-4 text-font leading-5 md:leading-6 tracking-wide md:tracking-normal line-clamp-2">
                                                     <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
                                                 </h1>
@@ -108,6 +108,10 @@
                                                 tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
                                                 <span class="  font-medium text-lg leading-8 
                                                 tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                                
+                                               {% if item.product.promotion_title %}
+                                                <span class="text-rose-700 text-sm">{{ item.product.promotion_title }}</span>
+                                                {% endif %}
                                                
                                                 {% if item.weight_label %}
                                                 <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
@@ -169,7 +173,7 @@
                                                 </salla-quantity-input>
                                             {% endif %}
                                             
-                                            
+                                            {# desktop #}
                                             <div class="hidden md:flex gap-1 flex-row-reverse items-center">
                                                 <span class="  font-medium
                                                 text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
@@ -183,7 +187,10 @@
                                                 tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
                                                 <span class="  font-medium text-lg leading-8 
                                                 tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
-                                               
+                                               {% if item.product.promotion_title %}
+                                               <span class="text-rose-700 text-sm">{{ item.product.promotion_title }}</span>
+                                
+                                {% endif %}
                                                 {% if item.weight_label %}
                                                 <p class="text-sm text-gray-500 "> {{ trans('pages.products.weight') }}
                                                  <span>{{ item.weight_label }}</span>
@@ -242,11 +249,18 @@
                 <div class="sticky top-24 w-full lg:w-[419px] rtl:lg:mr-8 ltr:lg:ml-8">
                     <div class="shadow-default bg-[color-mix(in_srgb,var(--color-primary)_5%,white)] p-5 xs:p-7 rounded-md mb-5 relative {{ cart.free_shipping_bar ? '' : 'hidden' }}" id="free-shipping">
                         <div class="flex rtl:space-x-reverse space-x-3 items-center">
+                            
                             <i class="bg-primary !hidden text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
                             {% set is_free=cart.free_shipping_bar.has_free_shipping %}
                             <div class="flex-1">
-                                <h4 class="shipping-item font-bold text-sm mb-1.5">{{ trans('pages.cart.free_shipping') }}</h4>
-                                <p class="shipping-item text-sm font- text-gray-500">
+                                 
+                                <p class="flex gap-1 shipping-item text-sm font- text-gray-500">
+                                        <i class=" {{ theme.is_rtl ? 'flip-x':'' }}"><svg xmlns="http://www.w3.org/2000/svg" width="20"
+                                    height="20" viewBox="0 0 20 20" fill="none">
+                                    <path
+                                        d="M20 3.75V5H8.125V14.375H11.9725C12.2513 13.3006 13.2175 12.5 14.375 12.5C15.5325 12.5 16.4987 13.3006 16.7775 14.375H17.5V11.25H18.75V15.625H16.7775C16.4987 16.6994 15.5325 17.5 14.375 17.5C13.2175 17.5 12.2513 16.6994 11.9725 15.625H6.7775C6.49875 16.6994 5.5325 17.5 4.375 17.5C3.2175 17.5 2.25125 16.6994 1.9725 15.625H0V10.5275L0.0393753 10.4294L1.28938 6.67938L1.425 6.25H6.875V3.75H20ZM19.375 6.25V7.5H13.75V6.25H19.375ZM6.875 7.5H2.32438L1.25 10.7031V14.375H1.9725C2.25125 13.3006 3.2175 12.5 4.375 12.5C5.5325 12.5 6.49875 13.3006 6.7775 14.375H6.875V7.5ZM18.75 8.75V10H15V8.75H18.75ZM14.375 13.75C13.6769 13.75 13.125 14.3019 13.125 15C13.125 15.6981 13.6769 16.25 14.375 16.25C15.0731 16.25 15.625 15.6981 15.625 15C15.625 14.3019 15.0731 13.75 14.375 13.75ZM4.375 13.75C3.67687 13.75 3.125 14.3019 3.125 15C3.125 15.6981 3.67687 16.25 4.375 16.25C5.07312 16.25 5.625 15.6981 5.625 15C5.625 14.3019 5.07312 13.75 4.375 13.75Z"
+                                        fill="#71717B" />
+                                </svg></i>
                                         <span id="free-shipping-msg">{{ (is_free
                                             ?trans('pages.cart.has_free_shipping')
                                             :trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}))
@@ -255,12 +269,13 @@
                                 </p>
                             </div>
                         </div>
-                        <div class="mt-8 bg-border-color rounded-full {{ is_free ? ' hidden' : '' }}" id="free-shipping-bar">
-                            <div class="progress-bg transition-all duration-500 h-2.5 bg-[#C5992C] relative rounded-full flex justify-end"
-                                 style="width:{{ cart.free_shipping_bar.percent }}%">
-                                <i class="inline-block sicon-shipping-fast absolute -top-5 rtl:left-0 ltr:right-0 {{ theme.is_rtl ? 'flip-x':'' }}"></i>
-                            </div>
-                        </div>
+      <div class="mt-2 overflow-hidden {{ is_free ? 'hidden' : '' }}"
+     id="free-shipping-bar"
+      style="height:4px; background-color:#E4E4E7;">
+    <div class="progress-bg transition-all duration-500 h-full bg-[#C5992C]"
+         style="width:{{ cart.free_shipping_bar.percent }}%">
+    </div>
+</div>
                     </div>
                     
 
@@ -270,28 +285,9 @@
 
                     <div class="shadow-default bg-white p-5 xs:p-7 rounded-md mb-5 relative transition-height duration-1000">
                         <h2 class="font-bold text-sm mb-5">{{ trans('pages.cart.summary') }}</h2>
-
-                        <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500"> {{ trans(cart.tax_amount ? "pages.cart.items_total_without_tax" : "pages.cart.items_total") }} </span>
-                            <b id="sub-total">{{ cart.sub_total|money }}</b>
-                        </div>
-
-                        {% if cart.options|length %}
-                          <div class="flex justify-between text-sm mb-5">
-                            <span class="text-gray-500">{{ trans('pages.cart.order_options_total') }}</span>
-                            <b id="cart-options-total">{{ cart.options_total|money }}</b>
-                          </div>
-                        {% endif %}
-
-                        <div id="shipping-cost"
-                             class="flex justify-between text-sm mb-5 {{ cart.has_shipping ? '' : 'hidden' }}">
-                            <span class="text-gray-500">{{ trans('pages.cart.shipping_cost') }}</span>
-                            <b>{{ cart.real_shipping_cost|money }}</b>
-                        </div>
-
                         {# todo :: use form #}
                         {# {% if store.settings.cart.apply_coupon_enabled %} #}
-                            <div class="border-t border-gray-200 border-b py-5 mb-5">
+                            <div class="border-gray-200 border-b pb-5 mb-5">
                                 <label for="coupon"
                                        class="block text-sm ">{{ trans('pages.cart.have_coupon') }}</label>
                                 <div class="mt-2.5 relative">
@@ -312,6 +308,25 @@
                                 <span class="text-xs text-red-700" id="coupon-error"></span>
                             </div>
                         {# {% endif %} #}
+                        <div class="flex justify-between text-sm mb-5">
+                            <span class="text-gray-500"> {{ trans(cart.tax_amount ? "pages.cart.items_total_without_tax" : "pages.cart.items_total") }} </span>
+                            <b id="sub-total">{{ cart.sub_total|money }}</b>
+                        </div>
+
+                        {% if cart.options|length %}
+                          <div class="flex justify-between text-sm mb-5">
+                            <span class="text-gray-500">{{ trans('pages.cart.order_options_total') }}</span>
+                            <b id="cart-options-total">{{ cart.options_total|money }}</b>
+                          </div>
+                        {% endif %}
+
+                        <div id="shipping-cost"
+                             class="flex justify-between text-sm mb-5 {{ cart.has_shipping ? '' : 'hidden' }}">
+                            <span class="text-gray-500">{{ trans('pages.cart.shipping_cost') }}</span>
+                            <b>{{ cart.real_shipping_cost|money }}</b>
+                        </div>
+
+
 
                         <!-- coupon discount -->
                         <div id="total-discount" class="flex justify-between text-sm {{ cart.total_discount ? '' : 'hidden' }}">
@@ -331,13 +346,18 @@
                             <b data-cart-total>{{ cart.total|money }}</b>
                         </div>
 
-                        <div class="cart-submit-wrap">
-                            {% hook 'cart:submit.start' %}
-                            <salla-button id="cart-submit" loader-position="center" width="wide">
-                                {{ trans('pages.cart.complete_order') }}
-                            </salla-button>
-                            {% hook 'cart:submit.end' %}
-                        </div>
+                      <div class="cart-submit-wrap {% if theme.settings.get('sticky_cart_button') %} sticky-cart-button {% else %} md:static md:p-0 md:border-0 {% endif %}">
+    {% hook 'cart:submit.start' %}
+
+    <salla-button
+        id="cart-submit"
+        loader-position="center"
+        width="wide">
+        {{ trans('pages.cart.complete_order') }}
+    </salla-button>
+
+    {% hook 'cart:submit.end' %}
+</div>
                         {% if loyalty and user.loyalty_points %}
                         <div class="  rounded-md my-6 bg-[#F4F0EB]">
                             <salla-loyalty customer-points='{{ user.loyalty_points }}'
@@ -346,64 +366,44 @@
                             ></salla-loyalty>
                         </div>
                         {% endif %}
-                        <div class="mt-5">
+
+
+                   
+                    {% set features = theme.settings.get('cart_page_features') %}
+
+                {% if features is not empty %}
+                <div class="grid grid-cols-3 gap-4 mt-5">
+                    {% for feature in features %}
+                    <div class="flex flex-col items-center text-center gap-2">
+
+                        {# Image #}
+                        {% if feature.cart_features_image %}
+                        <img src="{{ feature.cart_features_image }}"
+                            alt="{{ feature.cart_features_content[language.iso_code]|default('feature') }}"
+                            class="w-8 h-8 object-contain mb-3" />
+                        {% endif %}
+
+                        {# Content #}
+                        {% set content = feature.cart_features_content[language.iso_code]|default('') %}
+                        {% if feature.cart_features_link %}
+                        <a href="{{ feature.cart_features_link }}"
+                            class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal  w-full " style="overflow-wrap: break-word;">
+                            {{ content }}
+                        </a>
+                        {% else %}
+                        <span class="text-zinc-800 text-center  text-sm font-light leading-5 tracking-normal  w-full " style="overflow-wrap: break-word;">
+                            {{ content }}
+                        </span>
+                        {% endif %}
+
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+                    <div class="mt-5">
                         <salla-payments></salla-payments>
                     </div>
-					 {% if theme.settings.get('features_switch_cart') %}
-                        <section class=" py-2">
-                            <div class="">
-                            
-                                {% set is_ar = request.locale == 'ar' %}
-
-
-                                <div class="grid {% if theme.settings.get('features_col') %}
-                                grid-cols-1
-                                {% else %}
-                                grid-cols-3
-                                {% endif %}  justify-start sm:justify-center  items-start sm:items-center gap-4">
-                                    {% for item in theme.settings.get('rh_features_store_car') %}
-                                        {# احسب عدد الحروف في النص #}
-                                        {% set title = is_ar ? item.block_title.ar : item.block_title.en %}
-                                        {% set is_long = title|length > 20 %}
-                                        <div class="text-start sm:text-center gap-4 flex  justify-center items-center  flex-col  w-auto ">
-                                        <span class="flex items-center justify-center w-9 h-9">
-                                            {% if item.rh_features_active_select_icons == "image_services" %}
-                                            <img src="{{ item.add_image }}"
-                                                alt="{{ item.block_title.ar }}"
-                                                class="w-full h-full object-contain">
-                                            {% elseif item.rh_features_active_select_icons == "salla_icon" %}
-                                            <i class="{{ item.icon_proudct }} text-primary text-4xl leading-none features__icon"></i>
-                                            {% elseif item.rh_features_active_select_icons == "animated_icon" %}
-                                            <lord-icon 
-                                                id="my-icon"
-                                                src="https://cdn.lordicon.com/{{ item.anmait_icon }}.json"
-                                                trigger="loop"
-                                                style="width:24px;height:24px">
-                                            </lord-icon>
-                                            <script>
-                                            // Wait for the element to load
-                                            document.addEventListener("DOMContentLoaded", () => {
-                                                const icon = document.getElementById("my-icon");
-                                                const color = getComputedStyle(document.documentElement)
-                                                .getPropertyValue("--color-primary")
-                                                .trim();
-                                                // Apply dynamic color using JS
-                                                icon.setAttribute("colors", `primary:${color},secondary:${color}`);
-                                            });
-                                            </script>
-                                            {% endif %}
-                                        </span>
-                                        <div >
-                                            <h3 class="text-[14px] text-center font-normal text-font leading-[140%]">
-                                                {{ title }}
-                                            </h3>
-                                        </div>
-                                        </div>
-                                        {% endfor %}
-                                    </div>
-
-                        </section>
-                {% endif %}
+					
                     {# {% endif %} #}
                         {% hook 'cart:summary.end' %}
                     </div>
@@ -456,7 +456,151 @@
 	</div>
 {% endblock %}
 
+
+
 {% block scripts %}
+    <style>
+        /* ==========================================================
+        Cart Page Custom Styling
+        Added directly inside the Twig file and scoped to this page
+        ========================================================== */
+
+        .s-conditional-offer-container {
+            background-color: transparent;
+        }
+
+        /* Desktop */
+        @media (min-width: 768px) {
+            .s-conditional-offer-container {
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
+                padding-bottom: 25px;
+                gap: 0;
+            }
+        }
+
+        .s-conditional-offer-progress-line-inactive {
+            height: 4px;
+            border-radius: 42px;
+            background: rgba(196, 33, 38, 0.15);
+        }
+
+        .s-conditional-offer-progress-line-active {
+            height: 4px;
+            border-radius: 42px;
+            background: #C42126;
+        }
+
+        .s-conditional-offer-active-checkpoint {
+            border-color: #C42126;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .s-conditional-offer-progress-container {
+                margin-bottom: 0;
+                height: 5rem;
+            }
+
+            .s-conditional-offer-container {
+                gap: 0;
+                padding-top: 0;
+            }
+
+            .s-conditional-offer-checkpoint {
+                width: 50px;
+                height: 50px;
+            }
+        }
+
+        .s-cart-item-offers-container {
+            margin-top: 0;
+        }
+
+        .s-cart-item-offers-container .s-cart-item-offers-details div {
+            display: flex;
+            gap: 4px;
+        }
+
+        .s-cart-item-offers-container .s-cart-item-offers-title {
+            margin-bottom: 0;
+        }
+
+        .s-cart-item-offers-container .s-cart-item-offers-discount {
+            align-content: center;
+        }
+
+        @media (max-width: 1024px) {
+            .s-cart-item-offers-title {
+                font-size: 10px;
+            }
+        }
+
+        .attachments {
+            margin-top: 8px;
+        }
+@media (max-width: 767px) {
+    .sticky-cart-button {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        z-index: 999999;
+        background: #ffffff;
+        padding: 16px;
+        border-top: 1px solid #e5e7eb;
+        box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+    }
+
+    .sticky-cart-button #cart-submit {
+        width: 100%;
+    }
+
+    /* Prevent page content from being hidden behind the fixed button */
+    body {
+        padding-bottom: 90px;
+    }
+}
+
+@media (min-width: 768px) {
+    .sticky-cart-button {
+        position: static;
+        background: transparent;
+        padding: 0;
+        border-top: 0;
+        box-shadow: none;
+    }
+}
+    </style>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const wrap = document.querySelector('.cart-submit-wrap');
+    if (!wrap || !wrap.classList.contains('sticky-cart-button')) return; // stop if setting is off
+
+    const placeholder = document.createElement('div');
+    placeholder.id = 'cart-submit-placeholder';
+    wrap.parentElement.insertBefore(placeholder, wrap); // save original position
+
+    function handleResize() {
+        if (window.innerWidth < 768) {
+            if (wrap.parentElement !== document.body) {
+                document.body.appendChild(wrap);
+            }
+            wrap.style.cssText = 'position:fixed;bottom:0;left:0;right:0;z-index:999999;background:white;padding:1rem;border-top:1px solid #e5e7eb;display:block;';
+        } else {
+            const ph = document.getElementById('cart-submit-placeholder');
+            if (ph && wrap.parentElement !== ph.parentElement) {
+                ph.parentElement.insertBefore(wrap, ph);
+            }
+            wrap.style.cssText = 'position:static;padding:0;border-top:none;background:transparent;z-index:auto;';
+        }
+    }
+
+    handleResize();
+    window.addEventListener('resize', handleResize);
+});
+</script>
     <script defer src="{{ 'checkout.js' | asset }}"></script>
 
     <script>

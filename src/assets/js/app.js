@@ -305,6 +305,7 @@ watchAndAdjustHeader() {
     let mobileMenu = document.getElementById("mobile-menu-overlay");
     let magicMenu = document.getElementById("mega-content");
     let searchModal = document.getElementById("search-panel-wrapper");
+    let simpleMenu = document.getElementById("simple-menu");
 
     //when it's landing page, there is no header
     if (!header) {
@@ -319,7 +320,7 @@ watchAndAdjustHeader() {
     window.addEventListener(
       "scroll",
       () => {
-        window.scrollY >= 1
+        window.scrollY >= 100
           ? header.classList.add("fixed-pinned")
           : header.classList.remove("fixed-pinned");
         window.scrollY >= 1
@@ -328,7 +329,7 @@ watchAndAdjustHeader() {
 
         // Add scrolled class to magicMenu when scrolling
         function toggleScrollClass(element) {
-          if (window.scrollY >= 1) {
+          if (window.scrollY >= 100) {
               element.classList.replace("not-scrolled", "scrolled");
           } else {
               element.classList.replace("scrolled", "not-scrolled");
@@ -338,6 +339,7 @@ watchAndAdjustHeader() {
       if (magicMenu) toggleScrollClass(magicMenu);
       if (mobileMenu) toggleScrollClass(mobileMenu);
       if (searchModal) toggleScrollClass(searchModal);
+      if (simpleMenu) toggleScrollClass(simpleMenu);
       },
       { passive: true }
     );
@@ -664,6 +666,7 @@ watchAndAdjustHeader() {
                 "https://cdn.salla.sa/form-builder/l48OVh1I5UsWqxsN8cNwutoWTK8OS4r1iUVjYD3B.webp";
 
               return `
+
       <form onchange="salla.form.onChange('cart.updateItem', event)"
             id="item-${item.id}" novalidate>
 
@@ -673,52 +676,65 @@ watchAndAdjustHeader() {
         <section class="cart-item bg-[#fff] p-2  mb-4"
                  data-id="${item.id}">
 
-          <div class="grid grid-cols-1 lg:grid-cols-3 items-start justify-between gap-4">
-            <div class="flex flex-1 gap-4 items-center  lg:col-span-2">
+          <div class="grid grid-cols-[96px_1fr] gap-3 items-start">
+  
+  <!-- IMAGE -->
+  <a href="${item_url}" class="w-24 h-24 row-span-2">
+    <img src="${img}" 
+         alt="${item.product_name}"
+         class="w-full h-full object-cover" />
+  </a>
 
-              <a href="${item_url}" class="w-24 h-20">
-                <img src="${img}" alt="${item.product_name}"
-                     class="w-full h-full  object-contain" />
-              </a>
+  <!-- TOP ROW: name + delete -->
+  <div class="flex justify-between items-start gap-2">
+    <a href="${item_url}" class="text-sm font-medium line-clamp-2">
+      ${item.product_name}
+    </a>
 
-              <div class="space-y-1 flex-grow w-full">
-                <h2 class=" font-medium
-                text-sm
-                leading-5
-                tracking-wide
-                lg:text-base
-                lg:leading-6 line-clamp-2">
-                  <a href="${item_url}" class="font-medium
-                text-sm
-                leading-5
-                tracking-wide
-                lg:text-base
-                lg:leading-6 line-clamp-2">${item.product_name}</a>
-                </h2>
-                <div class="flex justify-between items-center gap-4">
-                <span class="item-price font-medium">
-                  ${salla.money(item.price)}
-                </span>
-                </div>
-                </div>
-                </div>
-                <div class="flex lg:flex-col items-end justify-between mt-3 h-full">
-                <button type="button"
-              class="delete-btn text-gray-500 hover:text-red-500"
-              data-item-id="${item.id}">
-              <i class="sicon-trash-2"></i>
-            </button>
-                <salla-quantity-input
-                  cart-item-id="${item.id}"
-                  max="500"
-                  value="${item.quantity}"
-                  name="quantity">
-                </salla-quantity-input>
-          </div>
+    <button type="button"
+            class="delete-btn text-gray-500 hover:text-red-500"
+            data-item-id="${item.id}">
+      <i class="sicon-trash-2"></i>
+    </button>
+  </div>
 
-            
+  <!-- BOTTOM ROW: price + qty -->
+  <div class="flex justify-between items-center">
+    
+    <!-- PRICE -->
+    <div class="flex items-center gap-2">
+      <span class="font-medium">
+        ${salla.money(item.price)}
+      </span>
 
-          </div>
+      ${
+        item.original_price > item.price
+          ? `<span class="line-through text-[#9F9FA9]">
+               ${salla.money(item.original_price)}
+             </span>`
+          : ''
+      }
+
+      ${
+        item.promotion_title
+          ? `<span class="text-[#E7000B]">
+               ${item.promotion_title}
+             </span>`
+          : ''
+      }
+    </div>
+
+    <!-- QTY -->
+    <salla-quantity-input
+      cart-item-id="${item.id}"
+      max="500"
+      value="${item.quantity}"
+      name="quantity">
+    </salla-quantity-input>
+
+  </div>
+
+</div>
         </section>
       </form>
     `;

@@ -1,7 +1,7 @@
 {
   "blocks": {
     "header": {
-      "cart": "Cart",
+      "cart": "My Cart",
       "search_label": "Search",
       "no_results": "No Results Found",
       "trending": "Trending",
