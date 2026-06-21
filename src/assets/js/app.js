@@ -718,7 +718,7 @@ watchAndAdjustHeader() {
       ${
         item.promotion_title
           ? `<span class="text-[#E7000B]">
-               ${item.promotion_title}
+               ${item.product.promotion_title}
              </span>`
           : ''
       }
