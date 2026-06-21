@@ -870,4 +870,38 @@ document.addEventListener("DOMContentLoaded", function () {
         ro.observe(header);
     }
 });
+
+
+
+
+
+// user menu drop down 
+document.addEventListener('DOMContentLoaded', function () {
+  function position(menu, trigger) {
+    const rect = trigger.getBoundingClientRect();
+
+    menu.style.top = (rect.bottom + 8) + 'px';
+
+    if (document.documentElement.dir === 'rtl') {
+      menu.style.left = rect.left + 'px';
+      menu.style.right = 'auto';
+    } else {
+      menu.style.right = (window.innerWidth - rect.right) + 'px';
+      menu.style.left = 'auto';
+    }
+  }
+
+  document.querySelectorAll('.dropdown-toggler').forEach(toggler => {
+    const trigger = toggler.querySelector('.dropdown__trigger');
+    const menu = toggler.querySelector('.dropdown__menu');
+
+    trigger.addEventListener('click', () => {
+      requestAnimationFrame(() => position(menu, trigger));
+    });
+
+    window.addEventListener('resize', () => position(menu, trigger));
+    window.addEventListener('scroll', () => position(menu, trigger));
+  });
+});
+
 </script>
