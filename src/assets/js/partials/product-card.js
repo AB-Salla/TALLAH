@@ -60,11 +60,23 @@ class ProductCard extends HTMLElement {
     return `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;
   }
 
+  static _isItemOOS(item) {
+    // Cover all field names Salla may use across API versions
+    return !!(
+      item?.is_out_of_stock === true ||
+      item?.out_of_stock === true ||
+      item?.availability === 'out_of_stock' ||
+      item?.status === 'out' ||
+      item?.status === 'out_of_stock' ||
+      (typeof item?.quantity === 'number' && item.quantity === 0)
+    );
+  }
+
   async getProductImage(productId) {
   // المفتاح للتخزين المؤقت
   const cacheKey = `product_${productId}_details`;
-  
-  // 1. جرب تجيب البيانات من الكاش أولاً
+
+  // Bust cache if it was written before OOS fields were tracked
   const cachedData = sessionStorage.getItem(cacheKey);
   
   if (cachedData) {
@@ -92,7 +104,13 @@ class ProductCard extends HTMLElement {
       };
       
       sessionStorage.setItem(cacheKey, JSON.stringify(dataToCache));
-      
+
+      // TEMP: log option shape so we can confirm field names for OOS detection
+      if (this.options.length) {
+        const sample = this.options[0]?.details?.[0];
+        console.log('[ProductCard] option sample item:', sample);
+      }
+
     } catch (error) {
       console.error(`❌ خطأ في جلب بيانات المنتج ${productId}:`, error);
       // استخدم البيانات الأساسية إذا فشل الطلب
@@ -281,7 +299,7 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           data-color-option="${option.id}"
         >
           ${visible.map(item => {
-            const isItemOOS = !!(item.is_out_of_stock || item.quantity === 0);
+            const isItemOOS = ProductCard._isItemOOS(item);
             return `
             <span
               class="w-6 h-6 rounded-full border inline-block relative ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50' : isItemOOS ? 'cursor-pointer opacity-60 color-oos' : 'cursor-pointer'} transition-all duration-200"
@@ -317,10 +335,10 @@ const COLOR_LABEL = isArabic ? "اللون" : "Color";
           data-single-option="${option.id}"
         >
           ${visible.map(item => {
-            const isItemOOS = !!(item.is_out_of_stock || item.quantity === 0);
+            const isItemOOS = ProductCard._isItemOOS(item);
             return `
             <button
-              class="px-2 py-1  md:px-[18px] md:py-[7px] border  border-[#9F9FA9] text-sm transition-all duration-200
+              class="px-2 py-1 md:px-[18px] md:py-[7px] border border-[#9F9FA9] text-sm transition-all duration-200
               ${this.product.status !== 'sale' ? 'pointer-events-none opacity-50 strike-diagonal' : isItemOOS ? 'strike-diagonal opacity-50 cursor-pointer' : 'cursor-pointer'}
               "
              ${this.product.status !== 'sale' ? 'disabled="disabled"' : ""}
@@ -962,19 +980,35 @@ addBtns.forEach((addBtn) => {
         options: selectedOptions
       });
 
-      if (!res.success) {
-        const errMsg = res.error || "";
-        const isStockError = /out.of.stock|unavailable|quantity|stock/i.test(errMsg);
-        throw Object.assign(new Error(errMsg), { isStockError });
+      // Salla SDK can either reject OR resolve with a failure body
+      if (res && res.success === false) {
+        const errMsg = res.error || res.message || "";
+        throw Object.assign(new Error(errMsg), { _sallaFail: true, _msg: errMsg });
       }
 
     } catch (err) {
-      console.error(err);
-      if (err.isStockError) {
+      console.error('[ProductCard] addItem error:', err);
+
+      // Gather every string Salla might put the reason in
+      const errText = [
+        err._msg,
+        err.message,
+        err.error,
+        err.response?.data?.message,
+        err.response?.data?.error,
+        typeof err.response?.data === 'string' ? err.response.data : '',
+      ].filter(Boolean).join(' ').toLowerCase();
+
+      const STOCK_PATTERN = /out.of.stock|out_of_stock|unavailable|quantity|stock|نفذ|غير متوفر/i;
+      const isStockError = STOCK_PATTERN.test(errText) || selectedVariantOOS;
+
+      if (isStockError) {
+        selectedVariantOOS = true;
+        updateCartBtnState();
         salla.notify.error(
           isArabic
-            ? "هذا المنتج غير متوفر بالكمية المطلوبة"
-            : "This item is currently out of stock"
+            ? "هذا الخيار غير متوفر حالياً"
+            : "This option is currently out of stock"
         );
       } else {
         salla.notify.error(
