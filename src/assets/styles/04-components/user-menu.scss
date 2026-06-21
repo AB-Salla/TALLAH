@@ -1,5 +1,5 @@
 .s-user-menu-dropdown{
-  @apply rtl:left-[unset] ltr:right-[unset];
+  @apply rtl:left-[unset] ltr:right-[unset] z-[51];
 }
 // Dropdown toggler
 .dropdown__trigger {
