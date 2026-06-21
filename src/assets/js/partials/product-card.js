@@ -134,7 +134,7 @@ class ProductCard extends HTMLElement {
   }
 
   if (this.product.promotion_title) {
-    return `<div class="s-product-card-promotion-title min-w-fit bg-black">
+    return `<div class="s-product-card-promotion-title min-w-fit">
       ${this.product.promotion_title} ${isArabic ? 'خصم' : 'off'}
     </div>`;
   }
