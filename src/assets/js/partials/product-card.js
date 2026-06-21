@@ -676,9 +676,8 @@ ${window.option_images && window.product_card_options ? `
           }"></i>
           <i class="loader hidden animate-spin sicon-loading"></i>
         </button>
-      `
-}
-            }
+      `}
+            
           
 
            
