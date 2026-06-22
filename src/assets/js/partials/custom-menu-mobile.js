@@ -140,7 +140,9 @@ function renderMenuContent(menu, contentContainer, renderSubcategories) {
     const link = document.createElement("a");
     link.href = menu.url || "#";
     link.className = "flex items-center gap-2 p-[12px_0_12px_8px] cursor-pointer text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
-    
+    salla.lang.onLoaded(() => {
+  console.log(salla.lang.get("blocks.view_all"));
+});
     link.textContent = salla.lang.get('blocks.view_all');
 
     emptyBlock.appendChild(link);
