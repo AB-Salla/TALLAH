@@ -176,9 +176,9 @@ salla-add-product-button{
   .s-product-options-option-content {
     width: 100%;
     .custom-radio-options {
-      @media (max-width: 768px) {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
+      @media (max-width: 768px) {
         gap: 10px;
       }
       .radio-label {
