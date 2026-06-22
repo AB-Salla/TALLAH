@@ -175,10 +175,10 @@ salla-add-product-button{
 
   .s-product-options-option-content {
     width: 100%;
+    display: grid;
+     grid-template-columns: repeat(3, 1fr);
     .custom-radio-options {
       @media (max-width: 768px) {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
         gap: 10px;
       }
       .radio-label {
@@ -521,10 +521,6 @@ salla-add-product-button{
   }
 
   .custom-radio-options {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: start;
     gap: 8px;
 
     label {
