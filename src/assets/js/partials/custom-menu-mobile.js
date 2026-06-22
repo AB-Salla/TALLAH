@@ -52,7 +52,7 @@ function getDOMElements() {
   };
 }
 
-  function isHomePage() {
+function isHomePage() {
   return window.isHomePage === true;
 }
 
@@ -81,12 +81,12 @@ function toggleMobileMenu({ wrapper, subcategoryContainer, iconOpen, iconClose, 
     iconClose.classList.remove("hidden");
     subcategoryContainer.scrollTop = 0;
     contentContainer.scrollTop = 0;
-    if (siteHeaderMobile) siteHeaderMobile.style.color =  window.header_text_color;
+    if (siteHeaderMobile) siteHeaderMobile.style.color = window.header_text_color;
     document.body.style.overflow = 'hidden'; 
   }
 }
 
-function closeMobileMenu({ wrapper, subcategoryContainer, iconOpen, iconClose, isRTL,siteHeaderMobile }) {
+function closeMobileMenu({ wrapper, subcategoryContainer, iconOpen, iconClose, isRTL, siteHeaderMobile }) {
   wrapper.classList.add(isRTL ? "translate-x-full" : "-translate-x-full");
   subcategoryContainer.classList.add(isRTL ? "-translate-x-full" : "translate-x-full");
   subcategoryContainer.style.visibility = "hidden";
@@ -105,28 +105,31 @@ async function loadAndRenderMenu(tabsContainer, contentContainer, renderSubcateg
 
   tabsContainer.innerHTML = "";
 
-  menus.forEach((menu, index) => {
-    const tab = document.createElement("button");
-    tab.textContent = menu.title;
-    tab.className = `relative flex justify-center items-center gap-[8px] px-[8px] py-[4px] whitespace-nowrap ${
-      index === 0 ? "text-black border-b-2 border-black" : "text-gray-500"
-    }`;
+  // ✅ Wait for language to be loaded before rendering menu content
+  salla.lang.onLoaded(() => {
+    menus.forEach((menu, index) => {
+      const tab = document.createElement("button");
+      tab.textContent = menu.title;
+      tab.className = `relative flex justify-center items-center gap-[8px] px-[8px] py-[4px] whitespace-nowrap ${
+        index === 0 ? "text-black border-b-2 border-black" : "text-gray-500"
+      }`;
 
-    tab.addEventListener("click", () => {
-      [...tabsContainer.children].forEach(btn => {
-        btn.classList.remove("text-black", "border-b-2", "border-black");
-        btn.classList.add("text-gray-500");
+      tab.addEventListener("click", () => {
+        [...tabsContainer.children].forEach(btn => {
+          btn.classList.remove("text-black", "border-b-2", "border-black");
+          btn.classList.add("text-gray-500");
+        });
+        tab.classList.remove("text-gray-500");
+        tab.classList.add("text-black", "border-b-2", "border-black");
+
+        renderMenuContent(menu, contentContainer, renderSubcategories);
       });
-      tab.classList.remove("text-gray-500");
-      tab.classList.add("text-black", "border-b-2", "border-black");
 
-      renderMenuContent(menu, contentContainer, renderSubcategories);
+      tabsContainer.appendChild(tab);
     });
 
-    tabsContainer.appendChild(tab);
+    renderMenuContent(menus[0], contentContainer, renderSubcategories);
   });
-
-  renderMenuContent(menus[0], contentContainer, renderSubcategories);
 }
 
 function renderMenuContent(menu, contentContainer, renderSubcategories) {
@@ -141,6 +144,7 @@ function renderMenuContent(menu, contentContainer, renderSubcategories) {
     link.href = menu.url || "#";
     link.className = "flex items-center gap-2 p-[12px_0_12px_8px] cursor-pointer text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
     
+    // ✅ Using translation key instead of hard-coded text
     link.textContent = salla.lang.get('blocks.view_all');
 
     emptyBlock.appendChild(link);
@@ -176,8 +180,6 @@ function renderMenuContent(menu, contentContainer, renderSubcategories) {
       
       titleWrapper.appendChild(icon);
     }
-    // If no subcategories, we could optionally add a different indicator or nothing
-    // The titleLink already handles navigation to the category page
 
     block.appendChild(titleWrapper);
     contentContainer.appendChild(block);
@@ -243,7 +245,8 @@ function renderSubcategories(category, subcategoryContainer) {
 
     const a = document.createElement("a");
     a.href = category.url ?? "#";
-    a.textContent = window.languageCode === "ar" ? "تسوق الكل" : "Shop All";
+    // ✅ Using translation key instead of hard-coded text
+    a.textContent = salla.lang.get('blocks.view_all');
     a.className = "text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
 
     li.appendChild(a);
