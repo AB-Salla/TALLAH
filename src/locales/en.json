@@ -9,9 +9,9 @@
       "day": "d",
       "hour": "h",
       "minute": "m",
-      "second": "s"
+      "second": "s",
+      "view_all": "Show All" 
     },
-    "view_all": "Show More" ,
     "appBanner": {
       "download_now": "download now"
     }
