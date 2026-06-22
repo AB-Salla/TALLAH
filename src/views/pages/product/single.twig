@@ -88,6 +88,14 @@
 				<nav class="breadcrumbs w-full py-2 px-4 lg:hidden">
 				<salla-breadcrumb></salla-breadcrumb>
 			</nav>
+
+      {#
+        Hook: product.single.before_product_info
+        Fires before the main product information section (images, title, price, etc.).
+        Use this hook to inject custom content or components above the product details area.
+    #}
+    <div class="s-blocks-wrapper s-before-product-info !mt-0">{% hook 'product.single.before_product_info' %}</div>
+
 	<div class="single lg:pt-7 bg-background ">
 		<div class="bg-background">
 			<div class="flex flex-col lg:gap-8 gap-4 items-center overflow-x-hidden lg:overflow-x-visible lg:items-start lg:flex-row lg:px-14" id="product-{{ product.id }}">
@@ -849,6 +857,12 @@
                 <salla-tab-content slot="content" name="tab_two">
                	{# Comments Area #}
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-2  single">
+        {#
+        Hook: product.single.before_customer_reviews
+        Fires before the customer reviews/comments section.
+        Use this hook to inject content between the product info and the reviews block.
+    #}
+    <div class="s-blocks-wrapper s-before-reviews">{% hook 'product.single.before_customer_reviews' %}</div>
     <div class=" order-2 lg:order-1 comments {{ user.type == 'user' ? 'lg:col-span-2' : 'lg:col-span-3' }}">
         <salla-comments item-id="{{product.id}}" type="product"></salla-comments>
     </div>
@@ -874,6 +888,12 @@
 
 {% if theme.settings.get("single_products") %}
 
+    {#
+        Hook: product.single.before_product_recommendations
+        Fires before the similar/related products slider.
+        Use this hook to inject content between the reviews and the recommendations section.
+    #}
+    <div class="s-blocks-wrapper s-before-related">{% hook 'product.single.before_product_recommendations' %}</div>
 
 	{# Similar Products Area #}
 	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 overflow-x-hidden my-6">
@@ -929,6 +949,13 @@
 </salla-products-slider>
 		</div>
 	</div>
+  {#
+        Hook: product.single.after_product_recommendations
+        Fires after the similar/related products slider, at the very end of the product page content.
+        Use this hook to append content below the recommendations section.
+    #}
+    <div class="s-blocks-wrapper s-after-related">{% hook 'product.single.after_product_recommendations' %}</div>
+    
 	{% endif %}
 	{% set images = theme.settings.get('image_collection') %}
 

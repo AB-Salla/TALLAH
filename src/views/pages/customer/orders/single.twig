@@ -78,6 +78,9 @@
             <span class="inline-block text-primary mx-2"><i class="sicon-gift-sharing"></i>&nbsp;{{ trans('pages.orders.gift_tag') }}</span>
         {% endif %}
     </h1>
+    <div class="flex items-center gap-3 flex-wrap">
+        <salla-edit-order-button />
+    </div>
     {% if order.links | length %}
         <div class="flex space-x-2 rtl:space-x-reverse text-start flex-none px-2">
             {% for link in order.links %}

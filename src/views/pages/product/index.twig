@@ -29,7 +29,13 @@
 		</nav>
 	</div>
 
-	
+		{#
+    Hook: product.index.before_products_group_with_filter
+    Fires before the products grid and filter sidebar wrapper.
+    Use this hook to inject content above the products listing area.
+  #}
+	<div class="s-blocks-wrapper s-before-products-list !mt-0">{% hook 'product.index.before_products_group_with_filter' %}</div>
+
 		<div
 			class="container mb-10 mt-4 md:mt-10">
 			{# add breadcumbs container in pages to make a space in case breadcrumbs is off #}
@@ -90,6 +96,13 @@
 					{% hook 'product:index.items.end' %}
 				</div>
 			</div>
+				{#
+    Hook: product.index.after_products_group_with_filter
+    Fires after the products grid and filter sidebar wrapper.
+    Use this hook to inject content below the products listing area.
+  #}
+	<div class="s-blocks-wrapper s-after-products-list">{% hook 'product.index.after_products_group_with_filter' %}</div>
+
 		</div>
 	</div>
 
@@ -97,6 +110,12 @@
 	{% if store.settings.category.testimonial_enabled %}
 		{% component 'home.testimonials' %}
 	{% endif %}
+	{#
+    Hook: product.index.after_testimonials
+    Fires after the testimonials (store reviews) section.
+    Use this hook to inject content below the testimonials area.
+  #}
+	<div class="s-blocks-wrapper s-after-testimonials">{% hook 'product.index.after_testimonials' %}</div>
 	</section>
 <style>
 @media (max-width:1024px){

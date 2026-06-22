@@ -327,7 +327,12 @@
                         </div>
 
 
-
+                        {% if store.settings.cart.apply_coupon_enabled %}
+                            <div class="py-5 mb-5">
+                                <salla-cart-coupons></salla-cart-coupons>
+                            </div>
+                        {% endif %}
+                        
                         <!-- coupon discount -->
                         <div id="total-discount" class="flex justify-between text-sm {{ cart.total_discount ? '' : 'hidden' }}">
                             <span class="text-gray-500 block  h-10">{{ trans('pages.cart.discount') }}</span>
@@ -360,10 +365,10 @@
 </div>
                         {% if loyalty and user.loyalty_points %}
                         <div class="  rounded-md my-6 bg-[#F4F0EB]">
-                            <salla-loyalty customer-points='{{ user.loyalty_points }}'
-                                prize-points='{{ loyalty.prize.points }}'
-                                prize-title='{{ loyalty.prize.title }}'
-                            ></salla-loyalty>
+                            <salla-loyalty-panel
+                            prize-points='{{ loyalty.prize.points }}'
+                            prize-title='{{ loyalty.prize.title }}'>
+                        </salla-loyalty-panel>
                         </div>
                         {% endif %}
 

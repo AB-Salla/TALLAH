@@ -141,7 +141,7 @@ function renderMenuContent(menu, contentContainer, renderSubcategories) {
     link.href = menu.url || "#";
     link.className = "flex items-center gap-2 p-[12px_0_12px_8px] cursor-pointer text-[#27272A] font-sans text-[14px] font-medium leading-[24px] tracking-[0.4px]";
     
-    document.documentElement.lang === "ar"? link.textContent = "عرض الكل" : link.textContent = "Show All";
+    link.textContent = salla.lang.get('blocks.view_all');
 
     emptyBlock.appendChild(link);
     contentContainer.appendChild(emptyBlock);
