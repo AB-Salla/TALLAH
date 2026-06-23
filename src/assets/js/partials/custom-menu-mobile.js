@@ -1,4 +1,4 @@
-salla.onReady(async () => {
+salla.onReady(() => salla.lang.onLoaded()).then(async () => {
   const {
     wrapper,
     tabsContainer,
