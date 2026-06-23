@@ -26,6 +26,12 @@
     ],
     "settings": [
         {
+  "type": "static",
+  "id": "theme_support_banner",
+  "format": "title",
+  "value": "<div style='display:flex;width:100%;padding:20px 16px;flex-direction:column;gap:16px;align-items:center;background-color:#20636e;border-radius:12px;margin:0 auto'><div style='display:flex;width:255px;flex-direction:column;gap:4px;align-items:center'><span style='font-family:beIN New Arabic Font 2017;font-size:20px;font-weight:700;line-height:28px;color:#ffffff;white-space:nowrap'>تحتاج مساعدة في تصميم متجرك؟</span><span style='font-family:beIN New Arabic Font 2017;font-size:16px;font-weight:600;line-height:24px;color:#ffffff;text-align:center;white-space:nowrap'>نساعدك تحسّن شكل وأداء متجرك</span></div><div style='display:flex;gap:12px;justify-content:center;align-items:center;align-self:stretch'><a href='https://wa.me/966549594303' target='_blank' style='display:flex;align-items:center;justify-content:center;gap:8px;width:140px;height:44px;color:#fff;text-decoration:none;font-size:16px;font-weight:600'><span style='display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center'><img src='https://static.codia.ai/image/2026-06-23/wiHmAAovQd.png' style='width:20px;height:20px;display:block'/></span><span>تواصل معنا</span></a><a href='https://wa.me/966549594303' target='_blank' style='display:flex;align-items:center;justify-content:center;gap:8px;width:140px;height:44px;color:#fff;text-decoration:none;font-size:16px;font-weight:600'><span style='display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center'><img src='https://static.codia.ai/image/2026-06-23/fohcW3Amhm.png' style='width:20px;height:20px;display:block'/></span><span>استكشف خدماتنا</span></a><a href='https://salla.com/themes/1973930642' target='_blank' style='display:flex;align-items:center;justify-content:center;gap:8px;width:140px;height:44px;color:#fff;text-decoration:none;font-size:16px;font-weight:600'><span style='display:inline-flex;width:20px;height:20px;align-items:center;justify-content:center'><img src='https://static.codia.ai/image/2026-06-23/mwxqcRpxuU.png' style='width:20px;height:20px;display:block'/></span><span>شاركنا رأيك</span></a></div></div>"
+},
+        {
             "id": "squar_photo_bg_image_size",
             "type": "items",
             "format": "dropdown-list",
