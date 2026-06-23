@@ -26,6 +26,12 @@
     ],
     "settings": [
         {
+        "type": "static",
+        "id": "theme_support_banner",
+        "format": "title",
+        "value": "<div style='display:flex;padding:20px 16px;flex-direction:column;gap:16px;align-items:center;background:#20636e;border-radius:12px;margin:16px auto;color:#fff'><div style='text-align:center'><div style='font-size:20px;font-weight:700;margin-bottom:4px'>تحتاج مساعدة في تصميم متجرك؟</div><div style='font-size:16px;font-weight:600'>نساعدك تحسّن شكل وأداء متجرك</div></div><div style='display:flex;gap:12px;flex-wrap:wrap;justify-content:center'><a href='https://your-feedback-link.com' target='_blank' style='color:#fff;text-decoration:none;font-weight:600'>شاركنا رأيك</a><a href='https://your-services-link.com' target='_blank' style='color:#fff;text-decoration:none;font-weight:600'>استكشف خدماتنا</a><a href='https://wa.me/201234567890' target='_blank' style='color:#fff;text-decoration:none;font-weight:600'>تواصل معنا</a></div></div>"
+        },
+        {
             "id": "squar_photo_bg_image_size",
             "type": "items",
             "format": "dropdown-list",
