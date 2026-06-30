@@ -238,8 +238,16 @@ Global Variables (from Theme)
 							</span>
 						</div>
 					</div>
-<pre>{{ topnav_text|json_encode }}</pre>
-<pre>{{ topnav_text_color|json_encode }}</pre>
+<pre>
+topnav_text: {{ topnav_text|json_encode }}
+topnav_text_color: {{ topnav_text_color|json_encode }}
+topnav_special_text: {{ topnav_special_text|json_encode }}
+topnav_special_text_color: {{ topnav_special_text_color|json_encode }}
+day: {{ trans('blocks.header.day')|json_encode }}
+hour: {{ trans('blocks.header.hour')|json_encode }}
+minute: {{ trans('blocks.header.minute')|json_encode }}
+second: {{ trans('blocks.header.second')|json_encode }}
+</pre>
 					{# First Text #}
 					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block" style="color: {{ topnav_text_color }}" >
 						test text
