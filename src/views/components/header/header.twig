@@ -2,7 +2,8 @@
 Global Variables (from Theme)
 ------------------------------- #}
 {% set topnav_bg = theme.settings.get('header-topnav-background') ?? 'var(--600, #000)' %}
-{% set topnav_text_color  = theme.settings.get('header-topnav-text-color')  %}
+{% set _topnav_text_color_raw = theme.settings.get('header-topnav-text-color') %}
+{% set topnav_text_color = _topnav_text_color_raw is iterable ? (_topnav_text_color_raw[language.iso_code] ?? '') : (_topnav_text_color_raw ?? '') %}
 {% set _topnav_text_raw = theme.settings.get('header-topnav-text') %}
 {% set topnav_text = _topnav_text_raw is iterable ? (_topnav_text_raw[language.iso_code] ?? '') : _topnav_text_raw %}
 {% set _topnav_special_text_raw = theme.settings.get('header-topnav-special-text') %}
