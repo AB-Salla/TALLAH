@@ -2,9 +2,9 @@
 Global Variables (from Theme)
 ------------------------------- #}
 {% set topnav_bg = theme.settings.get('header-topnav-background') ?? 'var(--600, #000)' %}
-{% set topnav_text_color  = theme.settings.get('header-topnav-text-color')  %}
-{% set topnav_text = theme.settings.get('header-topnav-text') %}
-{% set topnav_special_text = theme.settings.get('header-topnav-special-text') %}
+{% set topnav_text_color = theme.settings.get('header-topnav-text-color') ?? '#fff' %}
+{% set topnav_text = theme.settings.get('header-topnav-text') ?? 'Get access on launches and offers.' %}
+{% set topnav_special_text = theme.settings.get('header-topnav-special-text') ?? 'Sign Up For Texts' %}
 {% set topnav_special_text_color = theme.settings.get('header-topnav-special-text-color') ?? '#666666' %}
 {% set link_url = theme.settings.get('header_topnav_link_url') %}
 {% set is_rtl = language.iso_code == 'ar' %}
@@ -19,9 +19,9 @@ Global Variables (from Theme)
 {% set another_logo_img = theme.settings.get('another_logo_img')%}
 
 
+
 {# Expose a couple vars to JS context #}
 <script>
-	
   window.isAdvancedMenuEnabled = {{ advanced_menu ? 'true' : 'false' }};
   window.header_bg_color = '{{ header_bg_color }}';
   window.header_text_color = '{{ header_text_color}}';
@@ -29,7 +29,7 @@ Global Variables (from Theme)
   window.languageCode = '{{ language.iso_code }}';
 </script>
 
- 
+
 
 <header class="store-header {{ header_bg }} {{page.slug == 'index'  ? 'w-full absolute top-0 left-0 home' : 'relative'}} z-50">
 	{# =====================================
@@ -56,6 +56,7 @@ Global Variables (from Theme)
 		{% set initial_text = header_text_color %}
 		{% set hover_vars = '--hover-bg:' ~ header_bg_color ~ '; --hover-text:' ~ header_text_color %}
 	{% endif %}
+
 	<style>
         #search-panel-wrapper.scrolled {
 			top: 54px;
@@ -102,14 +103,6 @@ Global Variables (from Theme)
 		}
 			 #mega-content.scrolled {
 				top: 54px;
-			}
-
-		
-			#simple-menu.scrolled {
-				top: 54px;
-			}
-			#simple-menu.not-scrolled {
-				top: var(--header-height);
 			}
 	</style>
 
@@ -195,10 +188,9 @@ Global Variables (from Theme)
 
 	{# 'group' = parent hover trigger for .hover-box #}
 	<div class="relative">
-		<div id="mainnav" class="main-nav-container relative !h-fit !min-h-fit before:absolute before:content-[''] before:h-full before:w-full before:inset-0 before:-z-1">
-			
+		<div id="mainnav" class="main-nav-container overflow-hidden relative !h-fit !min-h-fit before:absolute before:content-[''] before:h-full before:w-full before:inset-0 before:-z-1">
 			{% if link_url %}
-				<a href="{{ link_url }}" target="_blank" rel="noopener noreferrer" class="block no-underline top-lace" style="text-decoration: none;">
+				<a href="{{ link_url }}" class="block no-underline top-lace" style="text-decoration: none;">
 				{% endif %}
 
 				<div class="top-lace flex w-full h-[38px] p-[7px_21px] justify-center items-center gap-[4px] lg:flex lg:px-[30px] lg:py-[7px] lg:justify-between lg:items-center lg:self-stretch {{ is_rtl ? 'flex-row-reverse' : 'flex-row' }}" style="background: {{ topnav_bg }}; color: {{ topnav_text_color }};">
@@ -239,14 +231,13 @@ Global Variables (from Theme)
 					</div>
 
 					{# First Text #}
-					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block" style="color: {{ topnav_text_color }}" >
-						{{ topnav_text }}
+					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block">
+						{{ user.language.code == 'ar' ? topnav_text.ar : topnav_text.en }}
 					</span>
-
 
 					{# Special Text with custom color #}
 					<span class="text-center text-[11px] not-italic font-normal leading-[16px] tracking-normal lg:text-xs lg:leading-5" style="color: {{ topnav_special_text_color }}">
-						{{ topnav_special_text}}
+						{{ user.language.code == 'ar' ? topnav_special_text.ar : topnav_special_text.en }}
 					</span>
 
 					{# Icon - User Image or Default #}
@@ -254,12 +245,9 @@ Global Variables (from Theme)
 						{% set icon = theme.settings.get('header_topnav_icon_url') %}
 						{% set icon_color = theme.settings.get('icon_color') %}
 						{% if icon %}
-							<i style="color:{{ icon_color }}"
-								class="{{ icon ?: 'sicon-home' }} text-sm">
-								</i>
+							<i style="color:{{ icon_color }}" class="{{ pro.salla_icon ?: 'sicon-home' }} text-primary text-sm"></i>
 						{% endif %}
 					</span>
-					
 				</div>
 			</div>
 		</div>
@@ -295,7 +283,7 @@ Global Variables (from Theme)
 	</div>
 
 	<div
-		class="inner group w-full sticky top-0 z-50" style="{{ hover_vars }};">
+		class="inner group w-full" style="{{ hover_vars }};">
 		{# header for pc view #}
 		<div
 			class="site-header hover-box w-full h-[60px] px-16 flex flex-row-reverse justify-between items-center hidden lg:flex" style="color: {{ initial_text }};">
@@ -376,20 +364,27 @@ Global Variables (from Theme)
 				<a class="navbar-brand" href="{{ store.url }}">
 					{% if add_another_logo and another_logo_img %}
 
-<div class="relative  w-full h-full group">
+						<div class="relative">
 
 							<img
-									src="{{ store.logo }}"
-									class="logo-primary w-full h-full object-contain transition-opacity duration-300 group-hover:opacity-0"
-									alt="{{ store.name }}"
-								>
+								fetchpriority="high"
+								width="100%"
+								height="100%"
+								loading="eager"
+								src="{{ store.logo }}"
+								alt="{{ store.name }} logo"
+								class="logo-primary block transition-opacity duration-300"
+							>
 
-								<img
-									src="{{ another_logo_img }}"
-									class="logo-secondary absolute inset-0 w-full h-full object-contain opacity-0 transition-opacity duration-300 group-hover:opacity-100"
-									alt="{{ store.name }} alternate logo"
-								>
-
+							<img
+								fetchpriority="high"
+								width="100%"
+								height="100%"
+								loading="eager"
+								src="{{ another_logo_img }}"
+								alt="{{ store.name }} alternate logo"
+								class="logo-secondary absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300"
+							>
 
 						</div>
 
@@ -582,7 +577,7 @@ Global Variables (from Theme)
 
 {# Search Panel #}
 <div id="search-panel-wrapper" class="fixed w-full h-full lg:h-[70vh] overflow-hidden pointer-events-none not-scrolled">
-	<div id="search-panel" class="h-full relative z-30 w-full bg-white transition-all duration-300 -translate-y-full">
+	<div id="search-panel" class="relative z-30 w-full bg-white transition-all duration-300 -translate-y-full">
 		<div class="mx-auto flex flex-col items-start gap-6 lg:gap-[32px] w-full max-w-full px-4 py-4 lg:w-[777px] lg:px-0 lg:py-6">
 			<div class="flex h-[40px] items-center self-stretch">
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewbox="0 0 20 20" fill="none">
@@ -712,10 +707,10 @@ Global Variables (from Theme)
 	3) DESKTOP MEGA MENU LAYER
 	===================================== #}{# in pc view #}{# Background Overlay #}<div id="mega-overlay-background" class="fixed inset-0 bg-black bg-opacity-50 z-10 hidden"> </div>{# =====================================
 	4) SIMPLE MENU (Fallback / compact)
-	===================================== #}<div id="simple-menu" class="not-scrolled w-[242px] h-[375px]  p-[24px_24px_40px_24px] items-start gap-[16px] shrink-0
+	===================================== #}<div id="simple-menu" class="w-[242px] h-[375px]  p-[24px_24px_40px_24px] items-start gap-[16px] shrink-0
 	     flex flex-col bg-white fixed  z-20
 	            transform scale-y-0 opacity-0 pointer-events-none
-	            origin-top transition-all duration-200" ><ul id="simple-menu-list" class="flex flex-col p-4 space-y-2 text-sm text-black"></ul></div>{# =====================================
+	            origin-top transition-all duration-200"><ul id="simple-menu-list" class="flex flex-col p-4 space-y-2 text-sm text-black"></ul></div>{# =====================================
 	6) SEARCH OVERLAY PANEL
 	===================================== #}<div id="search-overlay-container" class="fixed inset-0 z-20 hidden"><div id="search-overlay-background" class=" sm:top-0 absolute left-0 right-0 bottom-0 bg-black bg-opacity-50"></div></div><aside id="sidecart-panel" class="side-panel bg-white side-panel--left fixed top-0 h-full bg-bg-light dark:bg-bg-dark z-[101] w-full md:w-[437px] flex flex-col transform translate-x-full rtl:-translate-x-full transition-transform duration-300 ease-in-out invisible !pointer-events-auto"><div class="side-panel__top flex items-center relative z-[2] p-5">
 <button class="menu-close bg-[var(--color-primary)] text-white rounded-full absolute top-5 rtl:left-5 ltr:right-5 w-7 h-7 flex items-center justify-center" aria-label="close">
@@ -725,36 +720,6 @@ Global Variables (from Theme)
 	{{ trans('pages.checkout.cart') }}
 	<span class="sidecart-products-count text-gray-500 text-sm"></span>
 </h2>
-                    <div class="shadow-default p-5 xs:p-7 bg-transparent {{ cart.free_shipping_bar ? '' : 'hidden' }}" id="free-shipping">
-                        <div class="flex rtl:space-x-reverse space-x-3 items-center">
-                            
-                            <i class="bg-primary !hidden text-white rounded-icon sicon-shipping-fast {{ theme.is_rtl ? 'flip-x':'' }}"></i>
-                            {% set is_free=cart.free_shipping_bar.has_free_shipping %}
-                            <div class="flex-1">
-                                 
-                                <p class="flex gap-1 shipping-item text-sm font- text-gray-500">
-                                        <i class=" {{ theme.is_rtl ? 'flip-x':'' }}"><svg xmlns="http://www.w3.org/2000/svg" width="20"
-                                    height="20" viewBox="0 0 20 20" fill="none">
-                                    <path
-                                        d="M20 3.75V5H8.125V14.375H11.9725C12.2513 13.3006 13.2175 12.5 14.375 12.5C15.5325 12.5 16.4987 13.3006 16.7775 14.375H17.5V11.25H18.75V15.625H16.7775C16.4987 16.6994 15.5325 17.5 14.375 17.5C13.2175 17.5 12.2513 16.6994 11.9725 15.625H6.7775C6.49875 16.6994 5.5325 17.5 4.375 17.5C3.2175 17.5 2.25125 16.6994 1.9725 15.625H0V10.5275L0.0393753 10.4294L1.28938 6.67938L1.425 6.25H6.875V3.75H20ZM19.375 6.25V7.5H13.75V6.25H19.375ZM6.875 7.5H2.32438L1.25 10.7031V14.375H1.9725C2.25125 13.3006 3.2175 12.5 4.375 12.5C5.5325 12.5 6.49875 13.3006 6.7775 14.375H6.875V7.5ZM18.75 8.75V10H15V8.75H18.75ZM14.375 13.75C13.6769 13.75 13.125 14.3019 13.125 15C13.125 15.6981 13.6769 16.25 14.375 16.25C15.0731 16.25 15.625 15.6981 15.625 15C15.625 14.3019 15.0731 13.75 14.375 13.75ZM4.375 13.75C3.67687 13.75 3.125 14.3019 3.125 15C3.125 15.6981 3.67687 16.25 4.375 16.25C5.07312 16.25 5.625 15.6981 5.625 15C5.625 14.3019 5.07312 13.75 4.375 13.75Z"
-                                        fill="#71717B" />
-                                </svg></i>
-                                        <span id="free-shipping-msg">{{ (is_free
-                                            ?trans('pages.cart.has_free_shipping')
-                                            :trans('pages.cart.free_shipping_alert', {'amount': cart.free_shipping_bar.remaining|money}))
-                                            | raw }}</span>
-                                    <span class="emoji {{ is_free?'':'hidden' }}" id="free-shipping-applied">🎉</span>
-                                </p>
-                            </div>
-                        </div>
-      <div class="mt-2 overflow-hidden {{ is_free ? 'hidden' : '' }}"
-     id="free-shipping-bar"
-      style="height:4px; background-color:#E4E4E7;">
-    <div class="progress-bg transition-all duration-500 h-full bg-[#C5992C]"
-         style="width:{{ cart.free_shipping_bar.percent }}%">
-    </div>
-</div>
-                    </div>
 <div id="sidecart-items"></div></div><div class="side-panel__bottom mt-auto p-5 flex flex-col gap-5 border-t border-font-secondary">
 <div class=" border-gray-200 border-b py-5 mb-5">
 
@@ -800,81 +765,12 @@ Global Variables (from Theme)
 	<strong id="sidecart-total" class="total-value text-lg"></strong>
 </div>
 <div class="flex gap-1">
-		<button class="close-side-panel flex-1 bg-batext-background font-medium border border-1 border-primary flex items-center justify-center gap-4  text-primary dark:text-gray-300 py-3 hover:bg-gray-200  transition">
-		{{ trans('pages.offer.continue_shopping') }}
-	</button>
 	<a href="{{ link('cart') }}" id="sidecart-submit" class="cart-submit-btn flex-1 flex items-center justify-center gap-2 bg-primary text-background  py-3 hover:bg-primary transition">
 		<i class="smticon-cart text-lg"></i>
 		<span>{{ trans('pages.cart.goToCartPage') }}</span>
 	</a>
 
-
+	<button class="close-side-panel flex-1 bg-batext-background font-medium border border-1 border-primary flex items-center justify-center gap-4  text-primary dark:text-gray-300 py-3 hover:bg-gray-200  transition">
+		{{ trans('pages.offer.continue_shopping') }}
+	</button>
 </div></div></aside><div id="sidecart-overlay" class="fixed inset-0 bg-black/50 z-[100] hidden opacity-0 transition-opacity duration-300"></div>
-
-{# fix simple menu  #}
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-
-    const simpleMenu = document.getElementById("simple-menu");
-    const ad = document.querySelector("salla-advertisement");
-    const header = document.querySelector("#mainnav");
-
-    if (!simpleMenu) return;
-
-    function getAdHeight() {
-        if (!ad) return 0;
-
-        const style = getComputedStyle(ad);
-        const hidden =
-            style.display === "none" ||
-            style.visibility === "hidden" ||
-            style.height === "0px" ||
-            ad.offsetHeight === 0;
-
-        return hidden ? 0 : ad.offsetHeight;
-    }
-
-    function updateHeaderVariable() {
-        const scrolled = window.scrollY > 0;
-        const headerHeight = header ? header.getBoundingClientRect().height : 0;
-        // Only include ad height when at the top
-        const adHeight = !scrolled ? getAdHeight() : 0;
-
-        document.documentElement.style.setProperty(
-            "--header-height",
-            (headerHeight + adHeight) + "px"
-        );
-    }
-
-    function updateSimpleMenu() {
-        const scrolled = window.scrollY > 0;
-        simpleMenu.classList.toggle("scrolled", scrolled);
-        simpleMenu.classList.toggle("not-scrolled", !scrolled);
-    }
-
-    function updateAll() {
-        updateHeaderVariable();
-        updateSimpleMenu();
-    }
-
-    // Run once immediately
-    updateAll();
-
-    // Re-run after a tick so the ad/header have rendered
-    setTimeout(updateAll, 100);
-    setTimeout(updateAll, 500); // fallback for slow-loading ad
-
-    window.addEventListener("scroll", updateAll);
-    window.addEventListener("resize", updateAll);
-
-    // Watch ad for size changes (handles ad appearing/disappearing)
-    if (ad) {
-        const ro = new ResizeObserver(updateAll);
-        ro.observe(ad);
-    }
-    if (header) {
-        const ro = new ResizeObserver(updateAll);
-        ro.observe(header);
-    }
-});
-</script>
