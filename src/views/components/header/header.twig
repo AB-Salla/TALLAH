@@ -39,6 +39,7 @@ Global Variables (from Theme)
 	{# =====================================
 	      2) HEADER CORE (Hover styles supported)
 	      ====================================== #}
+		  
 		{% if page.slug == 'index' %}
 		{# Homepage header variables #}
 			{% if header_hover %}
@@ -237,16 +238,17 @@ Global Variables (from Theme)
 							</span>
 						</div>
 					</div>
-
+<pre>{{ topnav_text|json_encode }}</pre>
+<pre>{{ topnav_text_color|json_encode }}</pre>
 					{# First Text #}
 					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block" style="color: {{ topnav_text_color }}" >
-						{{ topnav_text }}
+						test text
 					</span>
 
 
 					{# Special Text with custom color #}
 					<span class="text-center text-[11px] not-italic font-normal leading-[16px] tracking-normal lg:text-xs lg:leading-5" style="color: {{ topnav_special_text_color }}">
-						{{ topnav_special_text}}
+						test text
 					</span>
 
 					{# Icon - User Image or Default #}
