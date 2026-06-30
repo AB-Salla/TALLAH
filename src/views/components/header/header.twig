@@ -239,6 +239,7 @@ Global Variables (from Theme)
 					</div>
 
 					{# First Text #}
+					<pre>{{ topnav_text|json_encode(constant('JSON_PRETTY_PRINT')) }}</pre>
 					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block" style="color: {{ topnav_text_color }}" >
 						{{ topnav_text }}
 					</span>
