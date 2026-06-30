@@ -239,6 +239,10 @@ Global Variables (from Theme)
 					</div>
 
 					{# First Text #}
+					<pre>
+						{{ user.language.code == 'ar' ? topnav_text.ar : topnav_text.en }}
+						{{ topnav_text }}
+					</pre>
 					<span class="text-center text-[10px] not-italic font-medium leading-[20px] tracking-normal lg:text-xs lg:leading-5 hidden lg:block" style="color: {{ topnav_text_color }}" >
 						{{ user.language.code == 'ar' ? topnav_text.ar : topnav_text.en }}
 					</span>
