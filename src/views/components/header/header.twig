@@ -3,10 +3,13 @@ Global Variables (from Theme)
 ------------------------------- #}
 {% set topnav_bg = theme.settings.get('header-topnav-background') ?? 'var(--600, #000)' %}
 {% set topnav_text_color  = theme.settings.get('header-topnav-text-color')  %}
-{% set topnav_text = theme.settings.get('header-topnav-text') %}
-{% set topnav_special_text = theme.settings.get('header-topnav-special-text') %}
+{% set _topnav_text_raw = theme.settings.get('header-topnav-text') %}
+{% set topnav_text = _topnav_text_raw is iterable ? (_topnav_text_raw[language.iso_code] ?? '') : _topnav_text_raw %}
+{% set _topnav_special_text_raw = theme.settings.get('header-topnav-special-text') %}
+{% set topnav_special_text = _topnav_special_text_raw is iterable ? (_topnav_special_text_raw[language.iso_code] ?? '') : _topnav_special_text_raw %}
 {% set topnav_special_text_color = theme.settings.get('header-topnav-special-text-color') ?? '#666666' %}
-{% set link_url = theme.settings.get('header_topnav_link_url') %}
+{% set _link_url_raw = theme.settings.get('header_topnav_link_url') %}
+{% set link_url = _link_url_raw is iterable ? (_link_url_raw[language.iso_code] ?? '') : _link_url_raw %}
 {% set is_rtl = language.iso_code == 'ar' %}
 {% set countdown_target = theme.settings.get('header-topnav-count-down') %}
 {% set countdown_bg = theme.settings.get('count-down-background') ?? '#3f3f46' %}
@@ -419,7 +422,13 @@ Global Variables (from Theme)
 				<div
 					id="custom-mega-menu" class="relative h-full">
 					<!-- Tabs -->
-					<ul id="menu-tabs" class="flex gap-6 h-full items-center"></ul>
+					<ul id="menu-tabs" class="flex gap-6 h-full items-center">
+						<li class="menu-skeleton h-4 w-16 rounded bg-current opacity-20 animate-pulse"></li>
+						<li class="menu-skeleton h-4 w-20 rounded bg-current opacity-20 animate-pulse"></li>
+						<li class="menu-skeleton h-4 w-14 rounded bg-current opacity-20 animate-pulse"></li>
+						<li class="menu-skeleton h-4 w-24 rounded bg-current opacity-20 animate-pulse"></li>
+						<li class="menu-skeleton h-4 w-16 rounded bg-current opacity-20 animate-pulse"></li>
+					</ul>
 				</div>
 			</div>
 		</div>
@@ -648,7 +657,9 @@ Global Variables (from Theme)
 				{% set categories = theme.settings.get('popular_categories') %}
 				{% set valid_categories = [] %}
 				{% for category in categories %}
-					{% set image = category['popular_categories_image'] | trim %}
+					{% set _img_raw = category['popular_categories_image'] %}
+					{% set image = _img_raw is iterable ? (_img_raw['url'] ?? (_img_raw[language.iso_code] ?? '')) : (_img_raw ?? '') %}
+					{% set image = image | trim %}
 					{% if image != '' %}
 						{% set valid_categories = valid_categories | merge([category]) %}
 					{% endif %}
@@ -663,8 +674,11 @@ Global Variables (from Theme)
 							<div slot="items">
 								{% for category in valid_categories %}
 									<div>
-										{% set link = category['popular_categories_link'] %}
-										{% set image = category['popular_categories_image'] | trim %}
+										{% set _lnk_raw = category['popular_categories_link'] %}
+										{% set link = _lnk_raw is iterable ? (_lnk_raw[language.iso_code] ?? '') : (_lnk_raw ?? '') %}
+										{% set _img2_raw = category['popular_categories_image'] %}
+										{% set image = _img2_raw is iterable ? (_img2_raw['url'] ?? (_img2_raw[language.iso_code] ?? '')) : (_img2_raw ?? '') %}
+										{% set image = image | trim %}
 										{% if image != '' %}
 											{% if link %}
 												<a href="{{ link }}" class="bg-gray-100 aspect-[4/3] flex items-center justify-center overflow-hidden">
@@ -686,7 +700,7 @@ Global Variables (from Theme)
 		</div>
 	</div>
 </div>
-<div id="mobile-menu-overlay" class="not-scrolled fixed inset-0 z-30 lg:hidden bg-black bg-opacity-50 transition-opacity duration-300">
+<div id="mobile-menu-overlay" class="not-scrolled fixed inset-0 z-30 lg:hidden bg-black bg-opacity-50 transition-opacity duration-300 {{ is_rtl ? 'translate-x-full' : '-translate-x-full' }}">
 	<div
 		id="mobile-menu-wrapper" class="absolute top-0 left-0 right-0 z-30 bg-white flex flex-col max-h-[calc(100vh-56px)] overflow-hidden">
 
@@ -694,14 +708,21 @@ Global Variables (from Theme)
 		<div class="tabs border-t border-b text-sm font-semibold gap-[12px] py-3 px-4 ">
 			<div class="flex flex-col items-center gap-[12px] self-stretch">
 				<div
-					id="mobile-menu-tabs" class="flex justify-around gap-[16px] w-full overflow-x-auto no-scrollbar"><!-- Tabs injected here -->
+					id="mobile-menu-tabs" class="flex justify-around gap-[16px] w-full overflow-x-auto no-scrollbar">
+						<div class="menu-skeleton h-4 w-16 rounded bg-zinc-200 animate-pulse"></div>
+						<div class="menu-skeleton h-4 w-20 rounded bg-zinc-200 animate-pulse"></div>
+						<div class="menu-skeleton h-4 w-14 rounded bg-zinc-200 animate-pulse"></div>
 				</div>
 			</div>
 		</div>
 
 		{# Scrollable Menu Content #}
 		<div
-			id="mobile-menu-content" class="flex-1 flex flex-col overflow-y-auto p-5 no-scrollbar"><!-- Filled by JS -->
+			id="mobile-menu-content" class="flex-1 flex flex-col overflow-y-auto p-5 no-scrollbar">
+				<div class="menu-skeleton h-4 w-3/4 rounded bg-zinc-200 animate-pulse mb-4"></div>
+				<div class="menu-skeleton h-4 w-1/2 rounded bg-zinc-200 animate-pulse mb-4"></div>
+				<div class="menu-skeleton h-4 w-2/3 rounded bg-zinc-200 animate-pulse mb-4"></div>
+				<div class="menu-skeleton h-4 w-3/5 rounded bg-zinc-200 animate-pulse mb-4"></div>
 		</div>
 
 		{# Optional: Subcategory Panel #}

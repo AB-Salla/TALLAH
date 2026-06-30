@@ -218,6 +218,8 @@ function hideMenu() {
     const res = await salla.api.component.getMenus();
     menus = res.data;
 
+    tabs.innerHTML = "";
+
     menus.forEach((menu, index) => {
       const tab = document.createElement("li");
       tab.className =
