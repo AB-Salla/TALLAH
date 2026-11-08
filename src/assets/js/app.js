@@ -8,11 +8,34 @@ import "./partials/custom-menu.js";
 import "./partials/custom-menu-mobile.js";
 import "./partials/custom-top-nav.js";
 
+// The editor default (https://s.salla.sa) and links back to the current page are not subscription endpoints
+function isUsableSubscriptionUrl(value) {
+  if (!value || !value.trim()) return false;
+
+  let url;
+  try {
+    url = new URL(value, window.location.href);
+  } catch (error) {
+    return false;
+  }
+
+  if (url.protocol !== "http:" && url.protocol !== "https:") return false;
+
+  const isEditorDefault =
+    url.hostname === "s.salla.sa" && url.pathname === "/" && !url.search;
+  const isCurrentPage =
+    url.origin === window.location.origin &&
+    url.pathname === window.location.pathname;
+
+  return !isEditorDefault && !isCurrentPage;
+}
+
 class App extends AppHelpers {
   constructor() {
     super();
     window.app = this;
     window.openNewsletterModal = this.openNewsletterModal;
+    window.isUsableSubscriptionUrl = isUsableSubscriptionUrl;
     global.openEyeModel = (id) => {
       import("./partials/eye-model")
         .then((eye) => {
@@ -380,7 +403,8 @@ watchAndAdjustHeader() {
         cancel: "إلغاء",
         email: "البريد الإلكتروني",
         invalid: "صيغة البريد الإلكتروني غير صحيحة",
-        success: "تم الاشتراك بنجاح! شكراً لك",
+        sent: "تم إرسال طلبك. شكراً لك",
+        unavailable: "الخدمة غير متاحة حالياً",
       },
       en: {
         placeholder: "Enter your email address",
@@ -388,7 +412,8 @@ watchAndAdjustHeader() {
         cancel: "Cancel",
         email: "Email",
         invalid: "Invalid email format",
-        success: "Subscription successful! Thank you",
+        sent: "Your request has been sent. Thank you",
+        unavailable: "This service is currently unavailable",
       },
     };
     return messages[lang][key];
@@ -411,7 +436,7 @@ watchAndAdjustHeader() {
         <i class="sicon-cancel text-[16px]"></i>
       </button>
  <div class="w-[70px] h-[70px] mx-auto">
-        <img src="${window.add_image}" class="w-full h-auto"/>
+        <img src="${window.add_image}" alt="" class="w-full h-auto"/>
       </div>
       <div class="text-center mb-6">
         <h2 class="text-primary font-semibold text-lg">
@@ -492,6 +517,13 @@ watchAndAdjustHeader() {
   form.addEventListener("submit", (e) => {
     e.preventDefault();
 
+    // Never submit (or report success) when no real URL is configured
+    if (!isUsableSubscriptionUrl(form.getAttribute("action"))) {
+      console.warn("Newsletter: no valid subscription URL is configured, the form was not submitted.");
+      salla.notify.error(getMessage("unavailable"));
+      return;
+    }
+
     const email = emailInput.value.trim();
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -508,8 +540,12 @@ watchAndAdjustHeader() {
       mode: "no-cors",
     })
       .then(() => {
-        salla.notify.success(getMessage("success"));
+        // no-cors replies are opaque, so only confirm that the request was sent
+        salla.notify.info(getMessage("sent"));
         closeModal();
+      })
+      .catch(() => {
+        salla.notify.error(getMessage("unavailable"));
       })
       .finally(() => {
         submitBtn.disabled = false;

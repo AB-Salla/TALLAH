@@ -1,7 +1,7 @@
 <section class="s-block s-block--testimonials s-block--custom-testimonials container overflow-hidden">
 	<div class="s-reviews-container">
 		<div class="s-reviews-header-wrapper">
-			<h1 class="s-reviews-header">{{ trans('blocks.home.testimonials') }}</h1>
+			<h2 class="s-reviews-header">{{ trans('blocks.home.testimonials') }}</h2>
 		</div>
 		<salla-slider id="custom-testimonials-{{ position }}-slider" centered slides-per-view="1" type="testimonials" class="testimonials-slider s-slider-wrapper" centered controls-outer auto-play>
 			<div slot="items">
@@ -10,7 +10,7 @@
 						<div class="s-reviews-testimonial">
 							<div class="s-reviews-testimonial__inner">
 								<div class="s-reviews-testimonial__avatar">
-					<img src="{{ 'images/s-empty.png' | asset }}" data-src="{{ item.avatar }}" alt="{{ item.name|trim ? item.name : 'testimonial-' ~ index }}" class="lazy loaded">
+					<img src="{{ 'images/s-empty.png' | asset }}" data-src="{{ item.avatar }}" alt="" class="lazy loaded">
 								</div>
 								<div class="s-reviews-testimonial__text">
 									<p class="">{{ item.text }}</p>

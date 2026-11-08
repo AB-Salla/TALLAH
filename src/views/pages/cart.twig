@@ -89,9 +89,9 @@
                                                 
                                             </a>
                                             <div class="space-y-1 flex-grow basis-0 min-w-0 w-full">
-                                                <h1 class="font-mediumtext-[clamp(0.875rem,0.85rem+0.3vw,1rem)] mb-4 text-font leading-5 md:leading-6 tracking-wide md:tracking-normal line-clamp-2">
+                                                <h2 class="text-3xl font-mediumtext-[clamp(0.875rem,0.85rem+0.3vw,1rem)] mb-4 text-font leading-5 md:leading-6 tracking-wide md:tracking-normal line-clamp-2">
                                                     <a href="{{ item.url }}" class="text-base">{{ item.product_name }}</a>
-                                                </h1>
+                                                </h2>
     
                                                
                                                {% include 'pages.partials.product.options' with {product:item} %}
@@ -105,9 +105,9 @@
                                                                                                 <span class="  font-medium
                                                 text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
                                                 leading-5 md:leading-8
-                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}">{{ item.original_price|money }}</span>
                                                 <span class="  font-medium text-lg leading-8 
-                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}">{{ item.price|money }}</span>
                                                 
                                                {% if item.product.promotion_title %}
                                                 <span class="text-rose-700 text-sm">{{ item.product.promotion_title }}</span>
@@ -184,9 +184,9 @@
                                                                                                 <span class="  font-medium
                                                 text-[clamp(1rem,0.95rem+0.3vw,1.125rem)]
                                                 leading-5 md:leading-8
-                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}" id="original_price">{{ item.original_price|money }}</span>
+                                                tracking-normal text-sm text-[#9F9FA9] line-through item-original-price {{ item.is_on_sale ? '' : 'hidden' }}">{{ item.original_price|money }}</span>
                                                 <span class="  font-medium text-lg leading-8 
-                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}" id="has_discount">{{ item.price|money }}</span>
+                                                tracking-normal item-price {{ item.has_discount ?  'text-font' : 'text-sm text-gray-500' }}">{{ item.price|money }}</span>
                                                {% if item.product.promotion_title %}
                                                <span class="text-rose-700 text-sm">{{ item.product.promotion_title }}</span>
                                 
@@ -376,7 +376,7 @@
                    
                     {% set features = theme.settings.get('cart_page_features') %}
 
-                {% if features is not empty %}
+                {% if theme.settings.get('features_switch_cart', true) and features is not empty %}
                 <div class="grid grid-cols-3 gap-4 mt-5">
                     {% for feature in features %}
                     <div class="flex flex-col items-center text-center gap-2">
@@ -384,7 +384,7 @@
                         {# Image #}
                         {% if feature.cart_features_image %}
                         <img src="{{ feature.cart_features_image }}"
-                            alt="{{ feature.cart_features_content[language.iso_code]|default('feature') }}"
+                            alt=""
                             class="w-8 h-8 object-contain mb-3" />
                         {% endif %}
 
@@ -422,9 +422,9 @@
     <div class="single-product-slider rtl:mr-5 ltr:ml-5 md:rtl:mr-10 md:ltr:ml-10 mb-5 md:mb-10 cart_slider overflow-x-hidden">
 		<div class="w-full flex flex-col justify-center items-start text-center pb-4 md:pb-8">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
-				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
+				<h2 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
 				{{ trans('pages.single.similar') }}
-				</h1>
+				</h2>
 			</span>
 		</div>
 		<div class="products-fixed-slider-{{position}} relative">

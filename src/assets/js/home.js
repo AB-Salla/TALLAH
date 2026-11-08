@@ -6,6 +6,78 @@ window.fslightbox = Lightbox;
 class Home extends BasePage {
     onReady() {
         this.initFeaturedTabs();
+        this.initHeroAutoplayControl();
+    }
+
+    /**
+     * Pause/play button for the automatic slide change of the hero slider (WCAG 2.2.2).
+     * Used in views/components/home/AR-Hero-section.twig, which only renders the button and the autoplay
+     * when there is more than one banner. The slider keeps its manual navigation in every state.
+     */
+    initHeroAutoplayControl() {
+        const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+        document.querySelectorAll('.AR-slider-hero-section').forEach(async section => {
+            const toggle = section.querySelector('.hero-autoplay-toggle');
+            const slider = section.querySelector('salla-slider');
+            if (!toggle || !slider || toggle.dataset.ready) {
+                return;
+            }
+
+            await customElements.whenDefined('salla-slider');
+
+            // The Swiper instance is created after the component loads, so wait for it (bounded)
+            let sliderApi;
+            for (let attempt = 0; attempt < 20 && !sliderApi; attempt++) {
+                sliderApi = await slider.sliderInstance?.();
+                sliderApi || (await new Promise(resolve => setTimeout(resolve, 250)));
+            }
+
+            // No autoplay (single banner): keep the button hidden
+            if (!sliderApi?.autoplay || !sliderApi.params.autoplay || toggle.dataset.ready) {
+                return;
+            }
+            toggle.dataset.ready = 'true';
+
+            // Once the visitor pauses, nothing (hover, tab visibility, slide change, motion setting) restarts it
+            let pausedByUser = false;
+
+            const iconPause = toggle.querySelector('.icon-pause');
+            const iconPlay = toggle.querySelector('.icon-play');
+            const render = () => {
+                const playing = sliderApi.autoplay.running;
+                toggle.setAttribute('aria-label', playing ? toggle.dataset.labelPause : toggle.dataset.labelPlay);
+                iconPause.toggleAttribute('hidden', !playing);
+                iconPlay.toggleAttribute('hidden', playing);
+            };
+
+            toggle.addEventListener('click', () => {
+                if (sliderApi.autoplay.running) {
+                    pausedByUser = true;
+                    sliderApi.autoplay.stop();
+                } else {
+                    pausedByUser = false;
+                    sliderApi.autoplay.start();
+                }
+            });
+
+            sliderApi.on('autoplayStart', render);
+            sliderApi.on('autoplayStop', render);
+
+            // Respect the system "reduce motion" setting on load and when it changes during the session
+            const applyMotionPreference = () => {
+                if (reducedMotion.matches) {
+                    sliderApi.autoplay.stop();
+                } else if (!pausedByUser) {
+                    sliderApi.autoplay.start();
+                }
+            };
+            reducedMotion.matches && sliderApi.autoplay.stop();
+            reducedMotion.addEventListener('change', applyMotionPreference);
+
+            render();
+            toggle.removeAttribute('hidden');
+        });
     }
 
     /**

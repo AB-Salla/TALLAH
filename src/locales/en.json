@@ -3,6 +3,7 @@
     "header": {
       "cart": "My Cart",
       "search_label": "Search",
+      "open_search": "Open Search",
       "no_results": "No Results Found",
       "trending": "Trending",
       "featured_categories": "Featured Categories",
@@ -67,5 +68,9 @@
     "newsletter_title": "Register your email address and receive the latest news and special offers.",
     "newsletter_input_placeholder": "Enter your email",
     "newsletter_button": "Subscribe"
+  },
+  "hero": {
+    "pause_autoplay": "Pause automatic slide show",
+    "resume_autoplay": "Resume automatic slide show"
   }
 }

@@ -1,8 +1,9 @@
+{% set has_many_banners = component.banner|length > 1 %}
 <section class="AR-slider-hero-section AR-slider-hero-section-{{position}}">
 	<div class="wrapper">
 		<div class="relative">
 			{# banner #}
-			<salla-slider id="sub-banner-slider-{{position}}" class="subbanner-slider" auto-play="true" loop="true"
+			<salla-slider id="sub-banner-slider-{{position}}" class="subbanner-slider" {% if has_many_banners %}auto-play="true" {% endif %}loop="true"
 				show-controls="false" type="carousel" slider-config='{
     "parallax": true,
     "pagination": {
@@ -11,11 +12,13 @@
       "clickable": true
     },
     "spaceBetween": 0,
+    {% if has_many_banners %}
     "autoplay": {
       "delay": 2000,
       "disableOnInteraction": false,
       "pauseOnMouseEnter": true
     }, 
+    {% endif %}
     "lazy": true, 
     "speed": 1000,
     "loop": true
@@ -25,16 +28,16 @@
 						<div class="banner banner-{{loop.index}} flex flex-col relative md:h-[90vh] h-[100svh] md:px-4 px-2 py-16 overflow-hidden">
 
 							{% if not item.button_text %}
-							<a class="w-full h-full absolute inset-0 z-[5]" href="{{item.url}}"></a>
+							{% set link_label = (item.block_title ?: item.subtext)|striptags|trim %}<a class="w-full h-full absolute inset-0 z-[5]" href="{{item.url}}"{% if link_label %} aria-label="{{ link_label|e('html_attr') }}"{% endif %}></a>
 							{% endif %}
 
 							<div class="text-wrapper h-full flex flex-col {{ item.items_alignment == ['center'] ? 'text-center items-center' : item.items_alignment == ['start'] ? 'text-start items-start' : 'text-end items-end' }} {{ item.items_alignment_vertical == ['start'] ? 'justify-start' : item.items_alignment_vertical == ['end'] ? 'justify-end' : 'justify-center' }} mx-auto relative z-2 container">
 
 								<div class="position {{ item.items_alignment == ['center'] ? 'text-center items-center' : item.items_alignment == ['start'] ? 'text-start items-start' : 'text-end items-end' }} flex flex-col sm:gap-4 gap-2">
 									{% if item.block_title %}
-									<h1 data-swiper-parallax="-700" aria-label="Block title"
+									<h2 data-swiper-parallax="-700"
 										class="leading-snug blocktitle blocktitle-{{loop.index}} text-[clamp(1.5rem,1.0408rem+1.9592vw,3rem)] text-background font-medium transition-all duration-700 ease-in-out">
-										{{item.block_title}}</h1>
+										{{item.block_title}}</h2>
 									{% endif %}
 									{% if item.subtext %}
 									<p data-swiper-parallax="-500"
@@ -66,6 +69,16 @@
 			</salla-slider>
 			<div class="swiper-pagination !bottom-8 justify-center gap-2 !absolute items-center m-0 flex !w-1/4 !left-1/2 -translate-x-1/2">
 			</div>
+			{# Pause/play for the automatic slide change (WCAG 2.2.2). Shown by home.js once the slider is ready #}
+			{% if has_many_banners %}
+			<button type="button" class="hero-autoplay-toggle" hidden
+				aria-label="{{ trans('hero.pause_autoplay') }}"
+				data-label-pause="{{ trans('hero.pause_autoplay') }}"
+				data-label-play="{{ trans('hero.resume_autoplay') }}">
+				<svg class="icon-pause" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false"><rect x="3" y="2" width="3.5" height="12" rx="1"/><rect x="9.5" y="2" width="3.5" height="12" rx="1"/></svg>
+				<svg class="icon-play" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true" focusable="false" hidden><path d="M4 2.5v11a1 1 0 0 0 1.5.86l9-5.5a1 1 0 0 0 0-1.72l-9-5.5A1 1 0 0 0 4 2.5z"/></svg>
+			</button>
+			{% endif %}
 
 		</div>
 	</div>
@@ -94,9 +107,11 @@
 		color: {{item.subtext_color}};
 	}
 
+	{# Mobile scrim: a dark layer over the banner image, only when the text keeps its default light color #}
+	{% set mobile_scrim = (item.block_title or item.subtext) and ((not item.block_title) or ((not item.blocktitle_color) or ((item.blocktitle_color|lower|trim) == '') or ((item.blocktitle_color|lower|trim) in ['#fff', '#ffffff']))) and ((not item.subtext) or ((not item.subtext_color) or ((item.subtext_color|lower|trim) == '') or ((item.subtext_color|lower|trim) in ['#fff', '#ffffff']))) %}
 	/* Mobile */
 	.AR-slider-hero-section-{{position}} .banner-{{loop.index}} {
-		background: url({{item.mobile_bg}}) center center / cover no-repeat;
+		background: {% if mobile_scrim %}linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), {% endif %}url({{item.mobile_bg}}) center center / cover no-repeat;
 	}
 
 	{% if item.transparent_button %}
@@ -142,5 +157,38 @@
 
 	.carousel-slider .swiper:where([dir="rtl"], [dir="rtl"] *) {
 		padding-left: 0;
+	}
+
+	.AR-slider-hero-section .hero-autoplay-toggle {
+		position: absolute;
+		z-index: 6;
+		bottom: 1.5rem;
+		inset-inline-end: 1rem;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 2.5rem;
+		height: 2.5rem;
+		border: 0;
+		border-radius: 9999px;
+		background: rgba(0, 0, 0, 0.5);
+		color: #fff;
+		cursor: pointer;
+	}
+
+	.AR-slider-hero-section .hero-autoplay-toggle[hidden],
+	.AR-slider-hero-section .hero-autoplay-toggle [hidden] {
+		display: none;
+	}
+
+	@media (max-width: 767px) {
+		/* thin (300) small text over an image is hard to read */
+		.AR-slider-hero-section .subtext {
+			font-weight: 400;
+		}
+		/* keep the pause/play button clear of a long bottom call to action */
+		.AR-slider-hero-section .hero-autoplay-toggle {
+			bottom: 1rem;
+		}
 	}
 </style>

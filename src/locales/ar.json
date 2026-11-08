@@ -3,6 +3,7 @@
     "header": {
       "cart": "سلتي",
       "search_label": "بحث",
+      "open_search": "فتح البحث",
       "no_results": "لا توجد نتائج",
       "trending": "كلمات بحث رائجة",
       "featured_categories": "فئات شائعة",
@@ -67,5 +68,9 @@
     "newsletter_title": "سجّلي بريدك الإلكتروني واحصلي على آخر الأخبار والعروض الخاصة ",
     "newsletter_input_placeholder": "أدخل بريدك الالكتروني",
     "newsletter_button": "اشتراك"
+  },
+  "hero": {
+    "pause_autoplay": "إيقاف الحركة التلقائية",
+    "resume_autoplay": "استئناف الحركة التلقائية"
   }
 }

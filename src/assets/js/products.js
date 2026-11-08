@@ -21,11 +21,88 @@ class Products extends BasePage {
         });
 
         salla.event.once('salla-products-list::products.fetched', res=>{
-            res.title && (app.element('#page-main-title').innerHTML = res.title);
+            if (!res.title) {
+                return;
+            }
+
+            // The page title is rendered by the server (desktop and mobile headings)
+            const titles = document.querySelectorAll('[id^="page-main-title"]');
+            const hasServerTitle = Array.from(titles).some(title => title.textContent.trim());
+
+            // Search pages build their title from the query, and a heading without a title has nothing to preserve
+            if (res.source === 'search' || !hasServerTitle) {
+                titles[0] && (titles[0].innerHTML = res.title);
+                return;
+            }
+
+            // res.title is "name - count", but the name is missing when the category is not part of the filters,
+            // leaving only the count. Keep the real title and show the count next to it as a separate element
+            const total = res.data ? res.data.length : 0;
+            let countText = salla.lang.choice('blocks.header.products_count', total);
+            if (total === 15) {
+                countText = countText.replace(total, salla.lang.get('common.elements.more_than') + ' ' + total);
+            }
+
+            titles.forEach(title => {
+                const oldCount = title.querySelector('.products-count');
+                oldCount && oldCount.remove();
+
+                const count = document.createElement('span');
+                count.className = 'products-count mx-1 text-sm font-normal text-gray-500';
+                count.textContent = countText;
+                title.appendChild(count);
+            });
         });
 
 
+        this.initEmptyStateActions();
         this.initiateMobileMenu()
+    }
+
+    /**
+     * <salla-products-list> renders the empty state itself (icon + "no products") but offers no next step.
+     * Add one under it: clear the filters when some are applied, otherwise keep shopping.
+     * It only reacts to that placeholder, so loading and failed requests (no placeholder) show nothing extra.
+     * The home link and label come from #empty-state-actions in views/pages/product/index.twig.
+     */
+    initEmptyStateActions() {
+        const list = app.element('salla-products-list');
+        const data = document.getElementById('empty-state-actions');
+        if (!list || !data) {
+            return;
+        }
+
+        // Salla keeps the applied filters in the url as filters[...]
+        const hasFilters = () => Array.from(new URLSearchParams(window.location.search).keys()).some(key => key.startsWith('filters'));
+
+        const addActions = () => {
+            const placeholder = list.querySelector('.s-products-list-placeholder');
+            if (!placeholder || placeholder.querySelector('.empty-state-actions')) {
+                return;
+            }
+
+            const filters = document.querySelector('salla-filters');
+            const button = document.createElement('salla-button');
+            if (hasFilters() && filters && filters.resetFilters) {
+                button.setAttribute('color', 'gray');
+                button.setAttribute('fill', 'outline');
+                button.textContent = salla.lang.get('pages.categories.filters_reset');
+                button.addEventListener('click', () => filters.resetFilters());
+            } else {
+                button.setAttribute('color', 'primary');
+                button.setAttribute('href', data.dataset.homeUrl);
+                button.textContent = data.dataset.continueLabel;
+            }
+
+            const actions = document.createElement('div');
+            actions.className = 'empty-state-actions mt-4 flex justify-center';
+            actions.appendChild(button);
+            placeholder.appendChild(actions);
+        };
+
+        // the placeholder is added and removed by the component (first load, filters, sorting)
+        new MutationObserver(addActions).observe(list, { childList: true, subtree: true });
+        addActions();
     }
 
     initiateMobileMenu() {

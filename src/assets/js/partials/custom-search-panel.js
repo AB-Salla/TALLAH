@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const overlayContainer = document.getElementById('search-overlay-container');
   const panel = document.getElementById('search-panel');
   const panelWrapper = document.getElementById('search-panel-wrapper');
-  const toggleBtns = document.querySelectorAll('#search-toggle');
+  const toggleBtns = document.querySelectorAll('[data-search-toggle]');
   const input = document.getElementById('custom-search-input');
   const resultsContainer = document.getElementById('custom-search-results');
   const resultsList = document.getElementById('custom-search-list');
@@ -22,6 +22,101 @@ document.addEventListener('DOMContentLoaded', () => {
   let lastQuery = '';  // Store the last searched term to avoid duplicate requests
   let loading = false; // Flag to manage loading state
   let debounceTimer;   // Timer to manage debounced search input
+  let activeIndex = -1; // Index of the suggestion highlighted with the keyboard (-1 means none)
+
+  // Combobox/listbox semantics: the input keeps focus and exposes the highlighted suggestion via aria-activedescendant
+  input.setAttribute('role', 'combobox');
+  input.setAttribute('aria-autocomplete', 'list');
+  input.setAttribute('aria-haspopup', 'listbox');
+  input.setAttribute('aria-controls', resultsList.id);
+  input.setAttribute('aria-expanded', 'false');
+  resultsList.setAttribute('role', 'listbox');
+  if (input.placeholder) resultsList.setAttribute('aria-label', input.placeholder);
+
+  /**
+   * Function to get the suggestions currently rendered in the list
+   */
+  function getOptions() {
+    return resultsList.querySelectorAll('[role="option"]');
+  }
+
+  /**
+   * Function to highlight a suggestion and expose it to assistive technologies
+   * @param {number} index - Index of the suggestion to highlight, or -1 to clear the highlight
+   */
+  function setActive(index) {
+    const options = getOptions();
+
+    options.forEach((option, i) => {
+      const isActive = i === index;
+      option.classList.toggle('bg-gray-100', isActive);
+      option.setAttribute('aria-selected', String(isActive));
+    });
+
+    activeIndex = index;
+
+    if (index >= 0 && options[index]) {
+      input.setAttribute('aria-activedescendant', options[index].id);
+      options[index].scrollIntoView({ block: 'nearest' }); // Keep the highlighted suggestion visible in the scrollable list
+    } else {
+      input.removeAttribute('aria-activedescendant');
+    }
+  }
+
+  /**
+   * Function to keep aria-expanded in sync with the visibility of the suggestions
+   */
+  function syncExpanded() {
+    const expanded = !resultsContainer.classList.contains('hidden') && getOptions().length > 0;
+    input.setAttribute('aria-expanded', String(expanded));
+  }
+
+  // Whenever the results are shown or hidden (typing, outside click, closing the panel), sync ARIA and drop the highlight
+  new MutationObserver(() => {
+    syncExpanded();
+    if (resultsContainer.classList.contains('hidden')) setActive(-1);
+  }).observe(resultsContainer, { attributes: true, attributeFilter: ['class'] });
+
+  // Typing changes the query, so any previous highlight no longer applies
+  input.addEventListener('input', () => setActive(-1));
+
+  // Keyboard support: ArrowDown/ArrowUp move the highlight, Enter opens it, Escape closes the suggestions and then the panel
+  input.addEventListener('keydown', (e) => {
+    if (e.isComposing) return; // Do not interfere with text composition
+
+    const options = getOptions();
+    const resultsVisible = !resultsContainer.classList.contains('hidden');
+
+    switch (e.key) {
+      case 'ArrowDown':
+      case 'ArrowUp': {
+        if (!resultsVisible || options.length === 0) return;
+        e.preventDefault(); // Keep the caret from jumping inside the input
+
+        const step = e.key === 'ArrowDown' ? 1 : -1;
+        // From "nothing highlighted", ArrowDown goes to the first suggestion and ArrowUp to the last one
+        const next = activeIndex === -1
+          ? (step === 1 ? 0 : options.length - 1)
+          : (activeIndex + step + options.length) % options.length;
+        setActive(next);
+        break;
+      }
+      case 'Enter':
+        // Only open a suggestion the user highlighted; never pick one automatically
+        if (resultsVisible && options[activeIndex]) {
+          e.preventDefault();
+          options[activeIndex].querySelector('a')?.click(); // Same navigation as a mouse click
+        }
+        break;
+      case 'Escape':
+        if (resultsVisible) {
+          resultsContainer.classList.add('hidden'); // First Escape only closes the suggestions
+        } else {
+          document.dispatchEvent(new CustomEvent('closeSearchPanel')); // Next Escape closes the whole panel
+        }
+        break;
+    }
+  });
 
   // Event listener for search input, implementing debounce to optimize API calls
   input.addEventListener('input', (e) => {
@@ -47,11 +142,12 @@ document.addEventListener('DOMContentLoaded', () => {
    * @param {string} val - The search query term
    */
   function search(val) {
+    // Prevent duplicate API requests only while the same query is loading or its results are still visible
+    const resultsVisible = !resultsContainer.classList.contains('hidden');
+    if (val === lastQuery && (loading || resultsVisible)) return;
+
     noResults.style.display = 'none'; // Hide no-results message initially
     loading = true; // Set loading state to true
-
-    // Prevent duplicate API requests if the query is the same as the last one
-    if (val === lastQuery) return;
     lastQuery = val;
 
     // Fetch the products using the search query
@@ -70,8 +166,8 @@ document.addEventListener('DOMContentLoaded', () => {
         salla.event.emit('Products Searched', val);
       })
       .catch(err => {
-        
-        
+        lastQuery = ''; // Allow the same query to be retried after a failed request
+
         // Handle errors other than duplicate query
         if (err !== 'Query is same as previous one!') {
           resultsList.innerHTML = '';  // Clear the results list
@@ -84,6 +180,56 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
+   * Function to build the price markup of a search suggestion
+   * Follows the price logic used in product-card.js
+   * @param {Object} product - Product returned by salla.product.fetch
+   * @returns {string} - Price HTML, a dash, or an empty string when no valid price exists
+   */
+  function getPriceHtml(product) {
+    const isValidPrice = (value) => Number.isFinite(Number(value)) && Number(value) > 0;
+    // Only validated numbers are passed to salla.money, never raw API text
+    const format = (value) => salla.money(Number(value));
+
+    if (product.is_on_sale) {
+      // Fall back to the regular selling price when sale_price is missing
+      const current = [product.sale_price, product.price].find(isValidPrice);
+
+      if (current !== undefined) {
+        // Show the original price struck through only when it is valid and higher
+        const original = isValidPrice(product.regular_price) && Number(product.regular_price) > Number(current)
+          ? `<span class="line-through ms-1">${format(product.regular_price)}</span>`
+          : '';
+        return `<span class="font-medium text-gray-900">${format(current)}</span>${original}`;
+      }
+    } else if (isValidPrice(product.starting_price)) {
+      return `${salla.lang.get('pages.products.starting_price')} ${format(product.starting_price)}`;
+    } else if (isValidPrice(product.price)) {
+      return format(product.price);
+    }
+
+    // No usable price: follow the store's "show price as dash" setting
+    return salla.config.get('store.settings.product.show_price_as_dash') ? '-' : '';
+  }
+
+  /**
+   * Function to turn a product or image url into a link target, only http(s) urls are allowed
+   * @param {string} url - Url returned by the API
+   * @returns {string} - Absolute url, or an empty string when the value is missing or not http(s)
+   */
+  function getSafeProductUrl(url) {
+    if (!url) return ''; // A missing value must not fall back to the current page
+    try {
+      const parsed = new URL(url, window.location.href);
+      return parsed.protocol === 'http:' || parsed.protocol === 'https:' ? parsed.href : '';
+    } catch (error) {
+      return '';
+    }
+  }
+
+  // Pressing a suggestion must not move the focus out of the input (clicks and new tab opening still work)
+  resultsList.addEventListener('mousedown', (e) => e.preventDefault());
+
+  /**
    * Function to render search results in the UI
    * @param {Array} products - List of products to display
    */
@@ -91,24 +237,52 @@ document.addEventListener('DOMContentLoaded', () => {
     resultsList.innerHTML = ''; // Clear any previous results
 
     // Loop through each product and create a list item
-    products.forEach(product => {
+    products.forEach((product, index) => {
       const item = document.createElement('li');
-      item.className = 'px-4 py-2 hover:bg-gray-100 cursor-pointer';  // Apply styling
-      item.innerHTML = `
-        <div class="flex gap-2 items-center space-x-4">
-          <img src="${product.image.url}" alt="${product.name}" class="w-10 h-10 object-cover " />
-          <div>
-            <p class="text-sm font-medium">${product.name}</p>
-            <p class="text-xs text-gray-500">${product.price?.price ?? ''}</p>
-          </div>
-        </div>
-      `;
-      item.onclick = () => window.location.href = product.url; // Redirect to product page on click
+      item.id = `custom-search-option-${index}`; // Referenced by aria-activedescendant
+      item.setAttribute('role', 'option');
+      item.setAttribute('aria-selected', 'false');
+      item.className = 'hover:bg-gray-100';  // Apply styling (no cursor-pointer: the theme sets pointer-events:none on its children, which would disable the link)
+      // The whole row is a real link (new tab, copy link...). It is not a tab stop: focus stays in the input
+      // Product data is API text: build the row with DOM APIs so name and image url are never parsed as HTML
+      const link = document.createElement('a');
+      link.className = 'block px-4 py-2';
+      link.tabIndex = -1;
+      const safeUrl = getSafeProductUrl(product.url);
+      if (safeUrl) link.href = safeUrl;
+
+      const row = document.createElement('div');
+      row.className = 'flex gap-2 items-center space-x-4';
+
+      const safeImage = getSafeProductUrl(product.image?.url);
+      if (safeImage) {
+        const img = document.createElement('img');
+        img.src = safeImage;
+        img.alt = '';
+        img.className = 'w-10 h-10 object-cover ';
+        row.appendChild(img);
+      } else {
+        row.appendChild(Object.assign(document.createElement('span'), { className: 'w-10 h-10 shrink-0' })); // Keep the row layout when there is no usable image
+      }
+
+      const info = document.createElement('div');
+      const name = document.createElement('p');
+      name.className = 'text-sm font-medium';
+      name.textContent = product.name ?? '';
+      const price = document.createElement('p');
+      price.className = 'text-xs text-gray-500';
+      price.innerHTML = getPriceHtml(product); // Built only from validated numbers (salla.money) and theme translations
+      info.append(name, price);
+      row.appendChild(info);
+      link.appendChild(row);
+      item.appendChild(link);
       resultsList.appendChild(item); // Append the item to the results list
     });
 
     resultsContainer.classList.remove('hidden'); // Show results container
     noResults.classList.add('hidden'); // Hide no results message
+    setActive(-1); // New results start without a highlighted suggestion
+    syncExpanded();
   }
 
   /**
@@ -118,6 +292,8 @@ document.addEventListener('DOMContentLoaded', () => {
     resultsList.innerHTML = ''; // Clear any previous results
     noResults.style.display = 'block'; // Show the "No Results" message
     resultsContainer.classList.remove('hidden'); // Ensure results container is visible
+    setActive(-1);
+    syncExpanded();
   }
 
   // Close the search dropdown when clicking outside of the results or input
@@ -150,9 +326,18 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /**
+   * Function to reflect the panel state on every search button (desktop and mobile headers)
+   * @param {boolean} expanded - Whether the search panel is open
+   */
+  function setToggleExpanded(expanded) {
+    toggleBtns.forEach((btn) => btn.setAttribute('aria-expanded', String(expanded)));
+  }
+
+  /**
    * Function to open the search panel with animations
    */
   function openSearchPanel() {
+    setToggleExpanded(true);
     // Close mobile menu before opening the search panel
     document.dispatchEvent(new CustomEvent("closeMobileMenu"));
 
@@ -169,12 +354,18 @@ document.addEventListener('DOMContentLoaded', () => {
       panel.classList.remove('-translate-y-full');
       panel.classList.add('translate-y-0');
     });
+
+    // Focus synchronously (inside the user's click) so mobile browsers can show the keyboard;
+    // preventScroll avoids a page jump while the panel is still sliding in
+    input.focus({ preventScroll: true });
   }
 
   /**
    * Function to close the search panel with animations
    */
   function closeSearchPanel() {
+    setToggleExpanded(false);
+    input.blur(); // Drop the focus right away so the mobile keyboard closes with the panel
     panel.classList.add('-translate-y-full'); // Slide the panel out of view
     panel.classList.remove('translate-y-0');
     panelWrapper.classList.add('overflow-hidden'); // Show the overlay container

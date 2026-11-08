@@ -114,14 +114,14 @@
 					{% endif %}">
 						{% for image in product.images %}
 							{% if image.three_d_image_url %}
-								<model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+								<model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt|trim ? image.alt : product.name }}"></model-viewer>
 							{% else %}
 								<a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
 									class=" {% if not has_many_images %} col-span-2 {% endif %} img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
 									{% if loop.first %}
-										<img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+										<img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt|trim ? image.alt : product.name }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
 									{% else %}
-										<img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+										<img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt|trim ? image.alt : product.name }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
 									{% endif %}
 								</a>
 							{% endif %}
@@ -140,10 +140,12 @@
 							slider-config='{
 								"slidesPerView": 1.2,
 								"spaceBetween": 10,
+							{% if theme.settings.get('enable_autoplay') and has_many_images %}
 							"autoplay": {
 									"delay": 3000,
 									"disableOnInteraction": false
 								},
+							{% endif %}
 								"breakpoints": {
 									"768": {
 										"slidesPerView": 1.2,
@@ -167,14 +169,14 @@
                             <div slot="items">
                                 {% for image in product.images %}
                                     {% if image.three_d_image_url %}
-                                        <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+                                        <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt|trim ? image.alt : product.name }}"></model-viewer>
                                     {% else %}
                                         <a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
                                             class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
                                             {% if loop.first %}
-                                                <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                                <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt|trim ? image.alt : product.name }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                             {% else %}
-                                                <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                                <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt|trim ? image.alt : product.name }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                             {% endif %}
                                         </a>
                                     {% endif %}
@@ -191,11 +193,12 @@
                                 type="thumbs" 
                                 loop="false" 
                                 grid-thumbs="false"
-								{% if theme.settings.get("enable_autoplay") %}
+								{% if theme.settings.get("enable_autoplay") and has_many_images %}
 								slider-config='{
 									"autoplay": {
 										"delay": 3000,
-										"disableOnInteraction": false
+										"disableOnInteraction": false{% if theme.settings.get('imageZoom') %},
+										"pauseOnMouseEnter": true{% endif %}
 									}
 								}'
 								{% endif %}
@@ -232,14 +235,14 @@
                             <div slot="items">
                                 {% for image in product.images %}
                                     {% if image.three_d_image_url %}
-                                        <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt }}"></model-viewer>
+                                        <model-viewer style="min-height: 500px;" class="swiper-slide model-entry w-full h-full" loading="eager" camera-controls touch-action="pan-y" auto-rotate poster="{{ image.url }}" src="{{ image.three_d_image_url }}" shadow-intensity="1" alt="{{ image.alt|trim ? image.alt : product.name }}"></model-viewer>
                                     {% else %}
                                         <a data-fslightbox="product_{{ product.id }}" data-img-id="{{ image.id }}" data-slid-index="{{ loop.index-1 }}" {% if image.video_url %} data-video-src="{{ image.video_url }}" {% endif %} data-caption="{{ image.alt }}" data-infinite="false" data-type="{{ image.video_url?'youtube':'image' }}" href="{{ (image.video_url is iterable ? image.video_url|first : image.video_url)|default(image.url) }}" aria-label="{{ product.name }}" 
                                             class=" img_items swiper-slide magnify-wrapper homeslider__slide  {{ image.video_url?'video-entry':'' }}  rounded-3xl">
                                             {% if loop.first %}
-                                                <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                                <img id="{{image.id}}" fetchpriority="high" loading="eager" src="{{ image.url }}" alt="{{ image.alt|trim ? image.alt : product.name }}" class="w-full h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                             {% else %}
-                                                <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
+                                                <img id="{{image.id}}" src="{{ 'images/s-empty.png' | cdn }}" data-src="{{ image.url }}" alt="{{ image.alt|trim ? image.alt : product.name }}" class="w-full lazy h-full  object-{{ theme.settings.get('slider_background_size') }} w-full {{ image.three_d_image_url ? 'model-poster' : '' }}">
                                             {% endif %}
                                         </a>
                                     {% endif %}
@@ -251,9 +254,9 @@
                                     {% for image in product.images %}
                                         <div class="slide--one-fourth {{ image.video_url?'video-entry':'' }} {{ image.three_d_image_url?'model-entry':'' }}" data-caption="{{ image.alt }}">
                                             {% if loop.index == 1 %}
-                                                <img src="{{ image.url }}" loading="eager" class="object-cover w-full h-full bg-gray-100 overflow-hidden" title="{{ image.alt }}" alt="{{ image.alt }}"/>
+                                                <img src="{{ image.url }}" loading="eager" class="object-cover w-full h-full bg-gray-100 overflow-hidden" title="{{ image.alt }}" alt="{{ image.alt|trim ? image.alt : product.name }}"/>
                                             {% else %}
-                                                <img data-src="{{ image.url }}" src="{{ 'images/s-empty.png' | cdn }}" class="object-cover w-full h-full lazy bg-gray-100  overflow-hidden" title="{{ image.alt }}" alt="{{ image.alt }}"/>
+                                                <img data-src="{{ image.url }}" src="{{ 'images/s-empty.png' | cdn }}" class="object-cover w-full h-full lazy bg-gray-100  overflow-hidden" title="{{ image.alt }}" alt="{{ image.alt|trim ? image.alt : product.name }}"/>
                                             {% endif %}
                                         </div>
                                     {% endfor %}
@@ -335,7 +338,7 @@
 				<div class="flex items-center justify-between pb-2 border-b border-[#E4E4E7] mb-4 ">
 					<div class="flex whitespace-nowrap gap-4 items-center">
 						<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap">
-							<h4 class="text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</h4>
+							<span class="text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</span>
 							<span class="text-[#9F9FA9] text-xl line-through">{{product.regular_price|money}}</span>
 						</div>
 
@@ -343,9 +346,9 @@
 							{% if product.starting_price %}
 								<span class="">{{ trans('pages.products.starting_price') }}</span>
 							{% endif %}
-							<h2 class="font-bold text-xl lg:text-[28px] inline-block text-primary">
+							<span class="font-bold text-xl lg:text-[28px] inline-block text-primary">
 								{{product.starting_price ? product.starting_price|money : product.price|money }}
-							</h2>
+							</span>
 						</div>
 					</div>
 				</div>
@@ -462,7 +465,7 @@
 
 							<div class="flex whitespace-nowrap price-wrapper gap-4 items-center">
 								<div class="{{ product.is_on_sale ? '' : 'hidden' }} price_is_on_sale space-x-2 rtl:space-x-reverse whitespace-nowrap">
-									<h2 class="total-price text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</h2>
+									<span class="total-price text-primary font-bold text-2xl inline-block">{{product.sale_price|money}}</span>
 									<span class="before-price text-[#9F9FA9] text-xl line-through">{{product.regular_price|money}}</span>
 								</div>
 								
@@ -470,9 +473,9 @@
 									{% if product.starting_price %}
 										<span class="starting-price-title">{{ trans('pages.products.starting_price') }}</span>
 									{% endif %}
-									<h2 class="total-price font-bold text-xl inline-block text-primary">
+									<span class="total-price font-bold text-xl inline-block text-primary">
 										{{product.starting_price ? product.starting_price|money : product.price|money }}
-									</h2>
+									</span>
 								</div>
 							</div>
 
@@ -504,7 +507,7 @@
 										(
 											<div class="flex whitespace-nowrap gap-4 items-center sm:hidden">
 												<div class="{{ product.is_on_sale ? '' : 'hidden' }} space-x-2 rtl:space-x-reverse whitespace-nowrap flex">
-													<h4 class="font-medium text-sm leading-5 tracking-wide text-center text-background">{{product.sale_price|money}}</h4>
+													<span class="font-medium text-sm leading-5 tracking-wide text-center text-background">{{product.sale_price|money}}</span>
 													<span class="font-medium text-sm leading-5 tracking-wide text-center text-background line-through">{{product.regular_price|money}}</span>
 												</div>
 												
@@ -512,9 +515,9 @@
 													{% if product.starting_price %}
 													<span class="">{{ trans('pages.products.starting_price') }}</span>
 													{% endif %}
-													<h2 class="font-medium text-sm leading-5 tracking-wide text-center text-background">
+													<span class="font-medium text-sm leading-5 tracking-wide text-center text-background">
 														{{product.starting_price ? product.starting_price|money : product.price|money }}
-													</h2>
+													</span>
 												</div>
 											</div>
 											)
@@ -594,7 +597,7 @@
           {# image #}
           {% if point['selling-point-image'] %}
           <img src="{{ point['selling-point-image'] }}"
-            alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+            alt=""
             class="w-8 h-8 aspect-square" />
           {% endif %}
 
@@ -651,7 +654,7 @@
           {% if point['selling-point-image'] %}
           <div class="flex-shrink-0">
             <img src="{{ point['selling-point-image'] }}"
-              alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+              alt=""
               class="w-8 h-8 aspect-square" />
           </div>
           {% endif %}
@@ -708,7 +711,7 @@
           {# image #}
           {% if point['selling-point-image'] %}
           <img src="{{ point['selling-point-image'] }}"
-            alt="{% if language.iso_code == 'ar' %}{{ point['selling-point-title']['ar']|default('') }}{% else %}{{ point['selling-point-title']['en']|default('') }}{% endif %}"
+            alt=""
             class="w-8 h-8 aspect-square" />
           {% endif %}
 
@@ -784,9 +787,9 @@
 		<div class="side_products pt-4 border-t border-t-[color-mix(in_srgb,var(--color-primary)15%,white)]">
 		<div class="w-full flex flex-col justify-center items-start text-center">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
-				<h1 class="font-semibold text-base leading-6 tracking-normal">
+				<h2 class="font-semibold text-base leading-6 tracking-normal">
 				{{ trans('pages.single.selected') }}
-				</h1>
+				</h2>
 			</span>
 		</div>
 		<div class="products-fixed-slider-{{position}} relative">
@@ -899,9 +902,9 @@
 	<div class="single-product-slider rtl:mr-5 ltr:ml-5 lg:rtl:mr-10 lg:ltr:ml-10 overflow-x-hidden my-6">
 		<div class="w-full flex flex-col justify-start items-start text-start pb-3">
 			<span class=" flex items-center gap-2 overflow-hidden pb-4">
-				<h1 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
+				<h2 class="text-[clamp(1.375rem,1.1216rem+1.0811vw,2rem)] font-medium leading-[28px] text-font">
 				{{ trans('pages.single.similar') }}
-				</h1>
+				</h2>
 			</span>
 		</div>
 		<div class="products-fixed-slider-{{position}} relative">
